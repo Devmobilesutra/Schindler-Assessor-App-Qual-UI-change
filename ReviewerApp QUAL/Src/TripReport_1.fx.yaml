@@ -1,0 +1,1866 @@
+TripReport_1 As screen:
+
+    Container9_7 As groupContainer.verticalAutoLayoutContainer:
+        Height: =Parent.Height
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutMode: =LayoutMode.Auto
+        Width: =Parent.Width
+        ZIndex: =1
+
+        Container3_22 As groupContainer.manualLayoutContainer:
+            Fill: =Header.HeaderFill
+            FillPortions: =0
+            Height: =80
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            Width: =Parent.Width
+            ZIndex: =1
+
+            Image1_28 As image:
+                Fill: =RGBA(255, 255, 255, 1)
+                Height: =Parent.Height
+                Image: =Schindler_logo_PNG1
+                PaddingBottom: =5
+                PaddingLeft: =2
+                PaddingRight: =1
+                PaddingTop: =5
+                Width: =Container3_22.Width/10
+                ZIndex: =1
+
+            Image2_34 As image:
+                Fill: =RGBA(253, 222, 207, 1)
+                Height: =50
+                Image: =userdata.userImage
+                RadiusBottomLeft: =91
+                RadiusBottomRight: =91
+                RadiusTopLeft: =91
+                RadiusTopRight: =91
+                Width: =50
+                X: =Label3_23.X+Label3_23.Width
+                Y: =16
+                ZIndex: =2
+
+            Icon1_23 As icon.Bell:
+                Color: =RGBA(255, 255, 0, 1)
+                Height: =Parent.Height/2
+                Icon: =Icon.Bell
+                Visible: =false
+                Width: =Parent.Width/28
+                X: =Label1_29.X+Label1_29.Width+10
+                Y: =Parent.Height/4
+                ZIndex: =5
+
+            Label1_29 As label:
+                Align: =Align.Center
+                Color: =Header.HeaderColor
+                Font: =Header.HeaderFont
+                FontWeight: =Header.FontWeight
+                Height: =Parent.Height
+                Size: =Header.HeaderUserFontSize
+                Text: |-
+                    =//"SCHD0023"
+                    //LookUp(ReviewerAD,mail=userdata.userEmail,displayName)
+                    userdata.userdisplayName
+                Width: =Container3_22.Width/8
+                X: =Image2_34.X+ Image2_34.Height
+                ZIndex: =6
+
+            Label3_23 As label:
+                Align: =Align.Center
+                Color: =Header.HeaderColor
+                Font: =Header.HeaderFont
+                FontWeight: =Header.FontWeight
+                Height: =Parent.Height
+                Size: =Header.HeaderFontSize
+                Text: ="Report"
+                Width: =Container3_22.Width/1.6
+                X: =Image1_28.Width+Image1_28.X
+                ZIndex: =8
+
+        Container22_2 As groupContainer.verticalAutoLayoutContainer:
+            Height: =Parent.Height
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            LayoutOverflowY: =LayoutOverflow.Scroll
+            PaddingLeft: =20
+            PaddingRight: =20
+            ZIndex: =3
+
+            Container20_7 As groupContainer.verticalAutoLayoutContainer:
+                FillPortions: =0
+                Height: =90
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutJustifyContent: =LayoutJustifyContent.Center
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                PaddingLeft: =20
+                Width: =Parent.Width
+                Y: =Container3_22.Height+Container3_22.Y
+                ZIndex: =1
+
+                Button1_11 As button:
+                    BorderColor: =referenceCSS.RActiveColor
+                    Color: =referenceCSS.RColorBlack
+                    Fill: =RGBA(255, 255, 255, 1)
+                    Height: =Parent.Height/1.5
+                    HoverColor: =Self.Color
+                    HoverFill: =Self.Fill //ColorFade(RGBA(56, 96, 178, 1), -20%)
+                    OnSelect: |-
+                        =Back();
+                        ClearCollect(asdfghjk,Sort(
+                           // Sort(
+                                //Filter(
+                                    GroupBy(
+                                        AddColumns(
+                                            Filter(
+                                                checkpointItem_ActionItem,
+                                                priority = "High" && assignmentId.Id=glryProject.Selected.Id
+                                            ),
+                                           // "assign",
+                                           // assignmentId.Id,
+                                            "unit",
+                                            bankUnitId.unitNumber,
+                                            "section",
+                                            section_id.sectionName,
+                                            "sectionSequence",
+                                            section_id.sectionSequence
+                                        ),
+                                      //  "assign",
+                                        "unit",
+                                        "section",
+                                        "sectionSequence",
+                                        "data"
+                                    ),
+                                  //  assign = glryProject.Selected.Id
+                              //  ),
+                           //     sectionSequence,
+                            //    Ascending
+                            //) 
+                             unit,
+                            Ascending
+                        ));
+                    PaddingLeft: =0
+                    PressedBorderColor: =Self.BorderColor
+                    PressedColor: =Self.Color
+                    PressedFill: =Self.Fill
+                    RadiusBottomLeft: =0
+                    RadiusBottomRight: =0
+                    RadiusTopLeft: =0
+                    RadiusTopRight: =0
+                    Text: = "back"
+                    Width: =Parent.Width/6
+                    ZIndex: =1
+
+            Container34_30 As groupContainer.horizontalAutoLayoutContainer:
+                AlignInContainer: =AlignInContainer.Start
+                FillPortions: =0
+                Height: =60
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                Width: =Parent.Width
+                Y: =Container20_7.Height+Container20_7.Y
+                ZIndex: =2
+
+                Container36_4 As groupContainer.verticalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.Start
+                    FillPortions: =0
+                    Height: =Parent.Height
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    Width: =Parent.Width/2
+                    ZIndex: =1
+
+                    Label2_3 As label:
+                        Font: =referenceCSS.RFont
+                        FontWeight: =FontWeight.Bold
+                        Height: =Parent.Height
+                        Size: =referenceCSS.RFontSize-2
+                        Text: ="Trip Report "
+                        Width: =Parent.Width
+                        ZIndex: =1
+
+                Container36_6 As groupContainer.verticalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.Start
+                    FillPortions: =0
+                    Height: =Parent.Height
+                    LayoutAlignItems: =LayoutAlignItems.End
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutJustifyContent: =LayoutJustifyContent.Center
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    Visible: =false
+                    Width: =Parent.Width/2
+                    ZIndex: =2
+
+                    Button9_4 As button:
+                        AlignInContainer: =AlignInContainer.Center
+                        Color: =RGBA(255,255,255,1)
+                        Fill: =referenceCSS.RActiveColor
+                        Height: =50
+                        HoverFill: |-
+                            =//ColorFade(RGBA(56, 96, 178, 1), -20%)
+                            Self.Fill
+                        Text: ="Approve"
+                        Width: =Parent.Width/3
+                        X: =
+                        ZIndex: =1
+
+            Container34_31 As groupContainer.horizontalAutoLayoutContainer:
+                FillPortions: =0
+                Height: =60
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                Width: =Parent.Width
+                Y: =Container34_30.Height+Container34_30.Y
+                ZIndex: =3
+
+                Label4_2 As label:
+                    FillPortions: =1
+                    Font: =referenceCSS.RFont
+                    FontWeight: =FontWeight.Semibold
+                    Height: =Parent.Height
+                    Size: =referenceCSS.RFontSize
+                    Text: =lblProjectName.Text
+                    ZIndex: =1
+
+            Container34_32 As groupContainer.horizontalAutoLayoutContainer:
+                FillPortions: =0
+                Height: =40
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                Width: =Parent.Width
+                Y: =Container34_31.Height+Container34_31.Y
+                ZIndex: =4
+
+                Label15_2 As label:
+                    Font: =referenceCSS.RFont
+                    FontWeight: =FontWeight.Bold
+                    Height: =Parent.Height
+                    Size: =referenceCSS.RLabelFontSize
+                    Text: ="Assessor Name "
+                    Width: |-
+                        =//Parent.Width/6
+                        250
+                    ZIndex: =1
+
+                Label16_2 As label:
+                    FillPortions: =1
+                    Font: =referenceCSS.RFont
+                    Height: =Parent.Height
+                    Size: =referenceCSS.RInputFontSize
+                    Text: |-
+                        =/*LookUp(BankTripReport,assignmentId.Id=glryProject.Selected.Id && bankId.Id=glryProject.Selected.bankId.Id,assessor_name)*/
+                        glryProject.Selected.assessorName
+                    X: =Label15_2.Width+Label15_2.X
+                    ZIndex: =2
+
+            Container34_33 As groupContainer.horizontalAutoLayoutContainer:
+                FillPortions: =0
+                Height: =40
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                Width: =Parent.Width
+                Y: =Container34_32.Height+Container34_32.Y
+                ZIndex: =5
+
+                Label18_2 As label:
+                    Font: =referenceCSS.RFont
+                    FontWeight: =FontWeight.Bold
+                    Height: =Parent.Height
+                    Size: =referenceCSS.RLabelFontSize
+                    Text: ="Reviewer Name "
+                    Width: |-
+                        =//Parent.Width/6
+                        250
+                    ZIndex: =1
+
+                Label19_2 As label:
+                    FillPortions: =1
+                    Font: =referenceCSS.RFont
+                    Height: =Parent.Height
+                    Size: =referenceCSS.RInputFontSize
+                    Text: |-
+                        =/*LookUp(BankTripReport,assignmentId.Id=glryProject.Selected.Id && bankId.Id=glryProject.Selected.bankId.Id,reviewer_name)*/
+                        glryProject.Selected.reviewerName
+                    X: =Label18_2.Width+Label18_2.X
+                    ZIndex: =2
+
+            Container34_34 As groupContainer.horizontalAutoLayoutContainer:
+                FillPortions: =0
+                Height: =40
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                Width: =Parent.Width
+                Y: =Container34_33.Height+Container34_33.Y
+                ZIndex: =6
+
+                Label20_6 As label:
+                    Font: =referenceCSS.RFont
+                    FontWeight: =FontWeight.Bold
+                    Height: =Parent.Height
+                    Size: =referenceCSS.RLabelFontSize
+                    Text: ="G.O./Commision Number "
+                    Width: |-
+                        =//Parent.Width/6
+                        250
+                    ZIndex: =1
+
+                Label23_6 As label:
+                    FillPortions: =1
+                    Font: =referenceCSS.RFont
+                    Height: =Parent.Height
+                    Size: =referenceCSS.RInputFontSize
+                    Text: |-
+                        =//lblBankName.Text
+                        LookUp(BankTripReport,assignmentId.Id=glryProject.Selected.Id && bankId.Id=glryProject.Selected.bankId.Id,bankId.goNumber)
+                    X: =Label20_6.Width+Label20_6.X
+                    ZIndex: =2
+
+            Container34_35 As groupContainer.horizontalAutoLayoutContainer:
+                FillPortions: =0
+                Height: =40
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                Width: =Parent.Width
+                Y: =Container34_34.Height+Container34_34.Y
+                ZIndex: =7
+
+                Label28_3 As label:
+                    Font: =referenceCSS.RFont
+                    FontWeight: =FontWeight.Bold
+                    Height: =Parent.Height
+                    Size: =14
+                    Text: ="Assessment Date "
+                    Width: =250
+                    ZIndex: =1
+
+                Label29_3 As label:
+                    Font: =referenceCSS.RFont
+                    Height: =Parent.Height
+                    Size: =referenceCSS.RInputFontSize
+                    Text: |-
+                        =/*LookUp(BankTripReport,assignmentId.Id=glryProject.Selected.Id && bankId.Id=glryProject.Selected.bankId.Id,Text(assignmentId.assignedDate,"mm-dd-yyyy"))*/
+                        Text(glryProject.Selected.assignedDate,"mm-dd-yyyy")
+                    Width: =Parent.Width/6
+                    X: =Label28_3.Width+Label28_3.X
+                    ZIndex: =2
+
+                Label30_3 As label:
+                    Font: =referenceCSS.RFont
+                    FontWeight: =FontWeight.Bold
+                    Height: =Parent.Height
+                    Size: =referenceCSS.RLabelFontSize
+                    Text: ="Product Type "
+                    Width: |-
+                        =//Parent.Width/7
+                        180
+                    ZIndex: =3
+
+                Label33_3 As label:
+                    Font: =referenceCSS.RFont
+                    Size: =referenceCSS.RInputFontSize
+                    Text: |-
+                        =//LookUp(schindlerBanks,goNumber=lblBankName.Text,productId.product_Type)
+                        LookUp(BankTripReport,assignmentId.Id=glryProject.Selected.Id && bankId.Id=glryProject.Selected.bankId.Id,product_id.product_Type)
+                    Width: =Parent.Width/6
+                    X: =Label30_3.Width+Label30_3.X
+                    ZIndex: =4
+
+                Label34_5 As label:
+                    Font: =referenceCSS.RFont
+                    FontWeight: =FontWeight.Bold
+                    Text: |-
+                        ="Product Name :"
+                    Visible: =false
+                    Width: =180
+                    ZIndex: =5
+
+                Label35_5 As label:
+                    Font: =referenceCSS.RFont
+                    Height: =0
+                    Size: =referenceCSS.RLabelFontSize
+                    Text: =LookUp(schindlerBanks,goNumber=lblBankName.Text,productId.product_Name)
+                    Visible: =false
+                    Width: |-
+                        =//Parent.Width/6
+                        250
+                    ZIndex: =6
+
+            Container34_36 As groupContainer.horizontalAutoLayoutContainer:
+                FillPortions: =0
+                Height: =40
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                Width: =Parent.Width
+                Y: =Container34_35.Height+Container34_35.Y
+                ZIndex: =8
+
+                Label31_2 As label:
+                    Font: =referenceCSS.RFont
+                    FontWeight: =FontWeight.Bold
+                    Height: =Parent.Height
+                    Size: =referenceCSS.RLabelFontSize
+                    Text: ="Assessment Type "
+                    Width: |-
+                        =//Parent.Width/5
+                        250
+                    ZIndex: =1
+
+                Label32_2 As label:
+                    FillPortions: =1
+                    Font: =referenceCSS.RFont
+                    Height: =Parent.Height
+                    Size: =referenceCSS.RInputFontSize
+                    Text: |-
+                        =/*LookUp(BankTripReport,assignmentId.Id=glryProject.Selected.Id && bankId.Id=glryProject.Selected.bankId.Id,assignmentId.assessmentType)*/
+                        glryProject.Selected.assessmentType
+                    X: =Label31_2.Width+Label31_2.X
+                    ZIndex: =2
+
+            Container34_37 As groupContainer.horizontalAutoLayoutContainer:
+                FillPortions: =0
+                Height: =60
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                Y: =Container34_36.Height+Container34_36.Y
+                ZIndex: =9
+
+                Label36_2 As label:
+                    Color: =referenceCSS.RActiveColor
+                    Font: =referenceCSS.RFont
+                    FontWeight: =FontWeight.Semibold
+                    Height: =Parent.Height
+                    Size: =referenceCSS.RFontSize-2
+                    Text: |-
+                        =//LookUp(schindlerBanks,goNumber=lblBankName.Text,productId.product_Name)& "   Series"
+                        LookUp(BankTripReport,assignmentId.Id=glryProject.Selected.Id && bankId.Id=glryProject.Selected.bankId.Id,product_id.product_Name)& "  Series"
+                    Width: =Parent.Width
+                    ZIndex: =1
+
+            Container34_38 As groupContainer.horizontalAutoLayoutContainer:
+                FillPortions: =0
+                Height: =60
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                Y: =Container34_37.Height+Container34_37.Y
+                ZIndex: =10
+
+                Label37_7 As label:
+                    Font: =referenceCSS.RFont
+                    FontWeight: =FontWeight.Bold
+                    Height: =Parent.Height
+                    Size: =referenceCSS.RLabelFontSize
+                    Text: ="Summary"
+                    Width: =Parent.Width
+                    ZIndex: =1
+
+            Container35_5 As groupContainer.verticalAutoLayoutContainer:
+                FillPortions: =0
+                Height: |-
+                    =//200
+                    Label38_5.Height
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutMinHeight: =200
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                Width: =Parent.Width
+                Y: =Container34_38.Height+Container34_38.Y
+                ZIndex: =11
+
+                Label38_5 As label:
+                    AlignInContainer: =AlignInContainer.Start
+                    AutoHeight: =true
+                    FillPortions: =1
+                    Font: =referenceCSS.RFont
+                    LayoutMinHeight: =100
+                    Size: =referenceCSS.RInputFontSize
+                    Text: |-
+                        =//LookUp(BankTripReport,bankId.goNumber=lblBankName.Text,Summary)
+                        LookUp(BankTripReport,assignmentId.Id=glryProject.Selected.Id && bankId.Id=glryProject.Selected.bankId.Id,Summary)
+                    Width: =Parent.Width
+                    ZIndex: =1
+
+            Container34_39 As groupContainer.horizontalAutoLayoutContainer:
+                FillPortions: =0
+                Height: =60
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                Y: =Container35_5.Height+Container35_5.Y
+                ZIndex: =12
+
+                Label37_8 As label:
+                    Font: =referenceCSS.RFont
+                    FontWeight: =FontWeight.Bold
+                    Height: =Parent.Height
+                    Size: =referenceCSS.RLabelFontSize
+                    Text: ="Background"
+                    Width: =Parent.Width
+                    ZIndex: =1
+
+            Container35_6 As groupContainer.verticalAutoLayoutContainer:
+                FillPortions: =0
+                Height: =Label38_6.Height
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                Width: =Parent.Width
+                Y: =Container34_39.Height+Container34_39.Y
+                ZIndex: =13
+
+                Label38_6 As label:
+                    AutoHeight: =true
+                    FillPortions: =1
+                    Font: =referenceCSS.RFont
+                    LayoutMinHeight: =100
+                    Size: =referenceCSS.RInputFontSize
+                    Text: |-
+                        =//LookUp(BankTripReport,bankId.goNumber=lblBankName.Text,Background)
+                        LookUp(BankTripReport,assignmentId.Id=glryProject.Selected.Id && bankId.Id=glryProject.Selected.bankId.Id,Background)
+                    Width: =Parent.Width
+                    ZIndex: =1
+
+            Container34_40 As groupContainer.horizontalAutoLayoutContainer:
+                FillPortions: =0
+                Height: =60
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                PaddingBottom: =10
+                Y: =Container35_6.Height+Container35_6.Y
+                ZIndex: =14
+
+                Label37_9 As label:
+                    Font: =referenceCSS.RFont
+                    FontWeight: =FontWeight.Bold
+                    Height: =Parent.Height
+                    Size: =referenceCSS.RLabelFontSize
+                    Text: ="Conclusion and Recomendation"
+                    Width: =Parent.Width
+                    ZIndex: =1
+
+            Container34_41 As groupContainer.horizontalAutoLayoutContainer:
+                FillPortions: =0
+                Height: =40
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                Width: =Parent.Width
+                Y: =Container34_40.Height+Container34_40.Y
+                ZIndex: =15
+
+                Label20_7 As label:
+                    Font: =referenceCSS.RFont
+                    FontWeight: =FontWeight.Bold
+                    Height: =Parent.Height
+                    Size: =referenceCSS.RLabelFontSize
+                    Text: ="G.O. Number "
+                    Width: =Parent.Width/6
+                    ZIndex: =1
+
+                Label23_7 As label:
+                    Color: =referenceCSS.RActiveColor
+                    FillPortions: =1
+                    Font: =referenceCSS.RFont
+                    FontWeight: =FontWeight.Semibold
+                    Height: =Parent.Height
+                    Size: =referenceCSS.RInputFontSize
+                    Text: |-
+                        =//lblBankName.Text
+                        LookUp(BankTripReport,assignmentId.Id=glryProject.Selected.Id && bankId.Id=glryProject.Selected.bankId.Id,bankId.goNumber)
+                    ZIndex: =2
+
+            Container34_42 As groupContainer.horizontalAutoLayoutContainer:
+                FillPortions: =0
+                Height: =40
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                Width: =Parent.Width
+                Y: =Container34_41.Height+Container34_41.Y
+                ZIndex: =16
+
+                Label20_8 As label:
+                    Font: =referenceCSS.RFont
+                    FontWeight: =FontWeight.Bold
+                    Height: =Parent.Height
+                    Size: =referenceCSS.RLabelFontSize
+                    Text: ="Product Name "
+                    Width: =Parent.Width/6
+                    ZIndex: =1
+
+                Label23_8 As label:
+                    FillPortions: =1
+                    Font: =referenceCSS.RFont
+                    Height: =Parent.Height
+                    Size: =referenceCSS.RInputFontSize
+                    Text: |-
+                        =//LookUp(schindlerBanks,goNumber=lblBankName.Text,productId.product_Name)
+                        LookUp(BankTripReport,assignmentId.Id=glryProject.Selected.Id && bankId.Id=glryProject.Selected.bankId.Id,product_id.product_Name)
+                    ZIndex: =2
+
+            ctnCheckpointitemVA_3 As groupContainer.verticalAutoLayoutContainer:
+                AlignInContainer: =AlignInContainer.SetByContainer
+                FillPortions: =0
+                Height: |-
+                    =Parent.Height
+                    //glryCheckpointIiemVA.Height
+                    //CountRows(Gallery1_3.AllItems)*(Gallery1_3.TemplateHeight)
+                    //(CountRows(Gallery1_3.AllItems)*(Gallery1_3.TemplateHeight))+Gallery5_6.Height+Gallery14_3.Height
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutMinHeight: =1000
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                Width: =Parent.Width -50
+                Y: =ctnClintName_4.Height
+                ZIndex: =17
+
+                "glryCheckpointIiemVA_3 As gallery.'BrowseLayout_Flexible_SocialFeed_ver4.0'":
+                    AlignInContainer: =AlignInContainer.SetByContainer
+                    BorderColor: =RGBA(109, 49, 162, 1)
+                    Fill: |
+                        =RGBA(239,239,239,1)
+                    FillPortions: =0
+                    Height: |-
+                        =//(CountRows(glryCheckpointIiemVA.AllItems)*(glryCheckpointIiemVA.TemplateHeight+glryCheckpointIiemVA.TemplatePadding))+glryActionItemsVA.Height+glryCheckpointitemimagesVA.Height
+                        Parent.Height
+                    Items: |
+                        =Sort(
+                            Sort(
+                            Sort(
+                               // Sort(
+                                    Filter(
+                                        checkpointItemAssessment,
+                                        assignmentId.Id = glryAssignmentBS.Selected.assignmentId.Id 
+                                        /*&& bankUnitId.unitNumber = glryAssignmentBS.Selected.bankUnitId.unitNumber */
+                                         && checkpointItem_annotation <> Blank()
+                                    ),
+                                   // checkpointitemSequence,
+                                   // Ascending
+                                //),
+                               checkpointAssessment_Id.CheckpointSequence,
+                                Ascending
+                            ),
+                            section_Id.sectionSequence,
+                            Ascending
+                        ),
+                        bankUnitId.unitNumber,
+                        Ascending
+                        )
+                    Layout: =Layout.Vertical
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =320
+                    TemplatePadding: =4
+                    TemplateSize: |-
+                        =//900
+                        If(CountRows(glryActionItemsVA_3.AllItems)>0,CountRows(glryActionItemsVA_3.AllItems)*glryActionItemsVA_3.TemplateHeight)+If(CountRows(glryCheckpointitemimagesVA_3.AllItems)>0,CountRows(glryCheckpointitemimagesVA_3.AllItems)*(glryCheckpointitemimagesVA_3.TemplateHeight+glryCheckpointitemimagesVA_3.TemplatePadding))+iconLineVA_3.Height+iconlineannotationVA_4.Height+ctnSectionVA_4.Height+ctnItemVA_3.Height+ctnfindingVA_3.Height+ctnCheckpointVA_3.Height+ctnAssessmentDetailsVA_3.Height+ctnAnnotationVA_3.Height
+                        
+                        //(CountRows(glryActionItemsVA.AllItems)*glryActionItemsVA.TemplateHeight)+(CountRows(glryCheckpointitemimagesVA.AllItems)*(glryCheckpointitemimagesVA.TemplateHeight+glryCheckpointitemimagesVA.TemplatePadding))+iconLineVA.Height+iconlineannotationVA.Height+ctnSectionVA.Height+ctnItemVA.Height+ctnfindingVA.Height+ctnCheckpointVA.Height+ctnAssessmentDetailsVA.Height+ctnAnnotationVA.Height
+                        
+                        //If(CountRows(glryActionItemsVA.AllItems)>0,CountRows(glryActionItemsVA.AllItems)*glryActionItemsVA.TemplateHeight,5)+If(CountRows(glryCheckpointitemimagesVA.AllItems)>0,CountRows(glryCheckpointitemimagesVA.AllItems)*(glryCheckpointitemimagesVA.TemplateHeight+glryCheckpointitemimagesVA.TemplatePadding),5) +iconLineVA.Height+iconlineannotationVA.Height+ctnSectionVA.Height+ctnItemVA.Height+ctnfindingVA.Height+ctnCheckpointVA.Height+ctnAssessmentDetailsVA.Height+ctnAnnotationVA.Height
+                    Width: =Parent.Width
+                    X: =100
+                    ZIndex: =1
+
+                    "glryCheckpointitemimagesVA_3 As gallery.'BrowseLayout_Vertical_TwoTextOneImageTwoColumnVariant_ver4.0'":
+                        BorderColor: =RGBA(168, 0, 0, 1)
+                        Height: |-
+                            =CountRows(glryCheckpointitemimagesVA_3.AllItems)*(glryCheckpointitemimagesVA_3.TemplateHeight)
+                            +glryCheckpointitemimagesVA_3.TemplatePadding
+                            
+                            //Parent.Height
+                        Items: |+
+                            =//checkpointItem_Images
+                            //Filter(GC_checkpointItem_ActionItem,checkpointItem_Id.checkpointItemId.checkpointItemId=ItemID && checkpointItem_Id.assessmentStatus="open")
+                            //Filter(GC_checkpointItem_Images,checkpointItem_Id.checkpointItemId.checkpointItemId=varCheckpointitemID && bankUnitId.Id=varBankUnitId &&assignmentId.startDate<>glryProject.Selected.startDate)
+                            //[1,2,3,4,5,6]
+                            
+                            Filter(checkpointItem_Images,
+                                    assignmentId.Id=glryAssignmentBS.Selected.assignmentId.Id  && 
+                                   /* bankUnitId.Id=glryAssignmentBS.Selected.bankUnitId.Id    &&*/ 
+                                     //checkpointItem_Id.checkpointItemName=lblItemnameVA.Text
+                                     checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)'=ThisItem.'checkpointItemAssessment (quantum_checkpointitemassessment)' )
+                            
+                                  //  checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' =LookUp(checkpointItemAssessment,checkpointItemName =LblAssStatuscountBS_14.Text,'checkpointItemAssessment (quantum_checkpointitemassessment)')
+                                    
+                            
+                        Layout: =Layout.Vertical
+                        ShowScrollbar: =false
+                        TemplatePadding: =4
+                        TemplateSize: =600
+                        Width: =Parent.Width/1.08
+                        X: =10
+                        Y: |-
+                            =//glryActionItemsVA.Height + glryActionItemsVA.Y
+                            //iconlineannotationVA_1.Height+iconlineannotationVA_1.Y
+                            
+                            If(CountRows(glryActionItemsVA_3.AllItems)>0,glryActionItemsVA_3.Y+glryActionItemsVA_3.Height,iconlineannotationVA_4.Y + iconlineannotationVA_4.Height)
+                            //glryActionItemsVA.Y+glryActionItemsVA.Height
+                        ZIndex: =1
+
+                        imgcheckpointitemimageVA_3 As image:
+                            BorderColor: =RGBA(0, 0, 0, 1)
+                            BorderThickness: =2
+                            CalculateOriginalDimensions: =true
+                            Height: |-
+                                =//450
+                                //Parent.TemplateHeight/1.2
+                                //imgcheckpointitemimageVA.OriginalHeight
+                                Parent.TemplateHeight/1.2
+                            Image: |-
+                                =//camera
+                                ThisItem.Image.Full
+                            OnSelect: |-
+                                =Set(VarFullImage,ThisItem.Image.Full);
+                                Navigate(Screen1);
+                            PaddingBottom: =5
+                            PaddingTop: =5
+                            Width: |-
+                                =Parent.TemplateWidth/2
+                                //144
+                                //imgcheckpointitemimageVA.OriginalWidth
+                            X: =Parent.Width/3.5
+                            Y: =16
+                            ZIndex: =1
+
+                        lblimageannotationVA_3 As label:
+                            AutoHeight: =true
+                            Height: =Self.Size * 1.8
+                            OnSelect: =
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Size: =referenceCSS.RLabelFontSize
+                            Text: =ThisItem.image_annotation
+                            VerticalAlign: =VerticalAlign.Top
+                            Width: =Parent.TemplateWidth/1.1
+                            X: =110.0471380471381
+                            Y: |-
+                                =imgcheckpointitemimageVA_3.Y +
+                                 imgcheckpointitemimageVA_3.Height+10
+                            ZIndex: =2
+
+                    iconLineVA_3 As icon.HorizontalLine:
+                        Color: =RGBA(204, 204, 204, 1)
+                        Fill: =RGBA(204, 204, 204, 1)
+                        Height: =3
+                        Icon: =Icon.HorizontalLine
+                        OnSelect: =Select(Parent)
+                        PaddingRight: =30
+                        PaddingTop: =30
+                        Width: =Parent.Width/1.08 //Label22_3.Width
+                        X: =20
+                        Y: |-
+                            =ctnItemVA_3.Height+ctnItemVA_3.Y
+                            //ctnAssessmentType_6.Height+ctnAssessmentType_6.Y
+                        ZIndex: =8
+
+                    "glryActionItemsVA_3 As gallery.'BrowseLayout_Flexible_SocialFeed_ver4.0'":
+                        BorderColor: =RGBA(0, 134, 208, 1)
+                        Height: |
+                            =(CountRows(glryActionItemsVA_3.AllItems)*(glryActionItemsVA_3.TemplateHeight))
+                            //Parent.Height
+                        Items: |-
+                            =//Filter(GC_checkpointItem_ActionItem,checkpointItem_Id.checkpointItemId.checkpointItemId=varCheckpointitemID)
+                            //&& checkpointItem_Id.assessmentStatus="open")
+                            
+                            ///Filter(GC_checkpointItem_ActionItem,checkpointItem_Id.checkpointItemId.checkpointItemId=varCheckpointitemID && bankUnitId.Id=varBankUnitId &&assignmentId.startDate<>glryProject.Selected.startDate)
+                            //[1,1]
+                            Filter(checkpointItem_ActionItem,
+                                 assignmentId.Id=glryAssignmentBS.Selected.assignmentId.Id 
+                                 /*&& 
+                                 bankUnitId.Id =glryAssignmentBS.Selected.bankUnitId.Id */
+                                    && 
+                                  checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)'=ThisItem.'checkpointItemAssessment (quantum_checkpointitemassessment)' && priority="High")
+                            
+                                // checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)'=LookUp(checkpointItemAssessment,checkpointItemName=lblItemnameVA.Text,'checkpointItemAssessment (quantum_checkpointitemassessment)')
+                                // checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' =LookUp(checkpointItemAssessment,checkpointItemName =LblAssStatuscountBS_14.Text,'checkpointItemAssessment (quantum_checkpointitemassessment)') 
+                                // )
+                            
+                            ////&& checkpointItem_Id 'checkpointItemAssessment (quantum_checkpointitemassessment)'=ThisItem.'checkpointItemAssessment (quantum_checkpointitemassessment)'
+                            
+                            
+                            //&& checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)'="977a7491-ab06-4654-a0a8-d3b5d260f48d"
+                            
+                            
+                            /*GroupBy( AddColumns(Filter(checkpointItem_ActionItem,assignmentId.Id=glryBankGo_1.Selected.assignmentId.Id && bankUnitId.Id=glryBankGo_1.Selected.bankUnitId.Id  ),
+                              
+                                    "_itemId", checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)'
+                                ),
+                                "_itemId",
+                                "dataRecords"
+                            )*/
+                            
+                            /*GroupBy( AddColumns(checkpointItem_ActionItem,
+                              
+                                    "_itemId", checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)'
+                                ),
+                            
+                                
+                                "_itemId",
+                                "dataRecords"
+                            )*/
+                        Layout: =Layout.Vertical
+                        LoadingSpinner: =LoadingSpinner.Data
+                        ShowScrollbar: =false
+                        TemplatePadding: =4
+                        TemplateSize: =200
+                        Width: =1308
+                        Y: =iconlineannotationVA_4.Y + iconlineannotationVA_4.Height
+                        ZIndex: =9
+
+                        lblActionVA_3 As label:
+                            FontWeight: =FontWeight.Bold
+                            Height: =Self.Size * 1.8
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =0
+                            PaddingLeft: =40
+                            PaddingRight: =40
+                            PaddingTop: =0
+                            Size: =referenceCSS.RLabelFontSize
+                            Text: |-
+                                =//ThisItem.Value
+                                "Actions"
+                            VerticalAlign: =VerticalAlign.Top
+                            Width: =Parent.TemplateWidth - 112
+                            Y: =(Self.Height / 2)
+                            ZIndex: =2
+
+                        lblActionnameVA_3 As label:
+                            AutoHeight: =true
+                            Height: =30
+                            OnSelect: =Select(Parent)
+                            PaddingLeft: =40
+                            PaddingRight: =40
+                            Text: =ThisItem.ActionItem_Name
+                            Width: =1300
+                            Y: =lblActionVA_3.Height+lblActionVA_3.Y
+                            ZIndex: =3
+
+                        ctnActionVA_3 As groupContainer.verticalAutoLayoutContainer:
+                            Height: =100
+                            LayoutDirection: =LayoutDirection.Vertical
+                            LayoutMode: =LayoutMode.Auto
+                            Width: =Parent.Width/1.08
+                            Y: =lblActionnameVA_3.Height+lblActionnameVA_3.Y+10
+                            ZIndex: =4
+
+                            ctnlabelsactionVA_3 As groupContainer.horizontalAutoLayoutContainer:
+                                AlignInContainer: =AlignInContainer.SetByContainer
+                                Height: =40
+                                LayoutGap: =20
+                                LayoutMinHeight: =100
+                                LayoutMinWidth: =250
+                                LayoutMode: =LayoutMode.Auto
+                                PaddingLeft: =40
+                                PaddingRight: =40
+                                Width: =Parent.Width -50
+                                X: =20
+                                Y: =ctnActionVA_3.Y
+                                ZIndex: =1
+
+                                lblPriorityVA_3 As label:
+                                    Font: =referenceCSS.RFont
+                                    FontWeight: =FontWeight.Semibold
+                                    Size: =referenceCSS.RLabelFontSize
+                                    Text: ="Priority"
+                                    Width: |
+                                        =If(TryScreen.Width>900,Parent.Width/6,120)//Parent.Width/4
+                                    X: =ctnlabelsactionVA_3.X
+                                    ZIndex: =1
+
+                                lblOwnerVA_3 As label:
+                                    Font: =referenceCSS.RFont
+                                    FontWeight: =FontWeight.Semibold
+                                    Size: =referenceCSS.RLabelFontSize
+                                    Text: ="Owner"
+                                    Width: =If(TryScreen.Width>900,Parent.Width/6,120)
+                                    X: =lblPriorityVA_3.X+lblPriorityVA_3.Height
+                                    ZIndex: =2
+
+                                lblTimeEstimateVA_3 As label:
+                                    Font: =referenceCSS.RFont
+                                    FontWeight: =FontWeight.Semibold
+                                    Size: =referenceCSS.RLabelFontSize
+                                    Text: ="Time estimate"
+                                    Width: =If(TryScreen.Width>900,Parent.Width/6,200)
+                                    X: =lblOwnerVA_3.X+lblOwnerVA_3.Height
+                                    ZIndex: =3
+
+                                lblMaterialEstimateVA_3 As label:
+                                    Font: =referenceCSS.RFont
+                                    FontWeight: =FontWeight.Semibold
+                                    Size: =referenceCSS.RLabelFontSize
+                                    Text: ="Material Estimate "
+                                    Width: =If(TryScreen.Width>900,Parent.Width/6,250)
+                                    X: =lblTimeEstimateVA_3.X +lblTimeEstimateVA_3.Height
+                                    ZIndex: =4
+
+                                lblDurationAR_1 As label:
+                                    Font: =referenceCSS.RFont
+                                    FontWeight: =FontWeight.Semibold
+                                    OnSelect: =
+                                    PaddingBottom: =0
+                                    PaddingLeft: =0
+                                    PaddingRight: =0
+                                    PaddingTop: =0
+                                    Size: =referenceCSS.RLabelFontSize
+                                    Text: ="Due Date "
+                                    Width: =If(TryScreen.Width>900,Parent.Width/6,250)
+                                    X: =txtTimeEstimateValueAR.Width+txtTimeEstimateValueAR.X+30
+                                    Y: =lblOwnerIdAR.Y + lblOwnerIdAR.Height
+                                    ZIndex: =5
+
+                            ctnValueactionVA_3 As groupContainer.horizontalAutoLayoutContainer:
+                                AlignInContainer: =AlignInContainer.SetByContainer
+                                Height: =50
+                                LayoutAlignItems: =LayoutAlignItems.Center
+                                LayoutGap: =20
+                                LayoutMinHeight: =100
+                                LayoutMinWidth: =250
+                                LayoutMode: =LayoutMode.Auto
+                                PaddingLeft: =40
+                                PaddingRight: =40
+                                Width: =Parent.Width - 50
+                                X: =20
+                                Y: =ctnlabelsactionVA_3.Y+ctnlabelsactionVA_3.Height
+                                ZIndex: =2
+
+                                lblPriorityvalueVA_3 As label:
+                                    AutoHeight: =true
+                                    Font: =referenceCSS.RFont
+                                    Size: =referenceCSS.RLabelFontSize
+                                    Text: |-
+                                        =//"high"
+                                        ThisItem.priority
+                                    Width: =If(TryScreen.Width>900,Parent.Width/6,120)
+                                    ZIndex: =1
+
+                                lblOwnervalueVA_3 As label:
+                                    AutoHeight: =true
+                                    Font: =referenceCSS.RFont
+                                    Size: =referenceCSS.RLabelFontSize
+                                    Text: |-
+                                        =//"LPD north"
+                                        ThisItem.OwnerId
+                                    Width: =If(TryScreen.Width>900,Parent.Width/6,120)
+                                    ZIndex: =2
+
+                                lblTimeestimatevalueVA_3 As label:
+                                    AutoHeight: =true
+                                    Font: =referenceCSS.RFont
+                                    Size: =referenceCSS.RLabelFontSize
+                                    Text: |-
+                                        =//"3 days"
+                                        ThisItem.TimeEstimate
+                                    Visible: =false
+                                    Width: =//If(TryScreen.Width>900,Parent.Width/5,200)
+                                    ZIndex: =3
+
+                                lblMaterialestimatevalueVA_3 As label:
+                                    AutoHeight: =true
+                                    Font: =referenceCSS.RFont
+                                    Size: =referenceCSS.RLabelFontSize
+                                    Text: |-
+                                        =//"Material 1"
+                                        ThisItem.MaterialEstimate
+                                    Visible: =false
+                                    Width: =//If(TryScreen.Width>900,Parent.Width/5,250)
+                                    ZIndex: =4
+
+                                txtTimeEstimateValueAR_1 As text:
+                                    BorderColor: =RGBA(0, 0, 0, 1)
+                                    Default: =ThisItem.TimeEstimate
+                                    DisplayMode: =If(comp=true || VarReviewerResult=true,DisplayMode.View,DisplayMode.Edit)
+                                    Fill: =If(comp=true || VarReviewerResult=true, RGBA(237, 237, 237, 1),RGBA(255,255,255,1))
+                                    Font: =referenceCSS.RFont
+                                    Format: =TextFormat.Number
+                                    Height: =30
+                                    HoverBorderColor: =RGBA(0, 0, 0, 1)
+                                    HoverFill: =RGBA(255, 255, 255, 1)
+                                    MaxLength: =5
+                                    OnChange: |-
+                                        =If(Len(txtTimeEstimateValueAR_1.Text)=5,Notify("Time Estimate should be less than 5 digits.",NotificationType.Warning));
+                                        UpdateIf(checkpointItem_ActionItem,checkpointItemActionItemsId=ThisItem.checkpointItemActionItemsId,{TimeEstimate:txtTimeEstimateValueAR_1.Text});
+                                    OnSelect: =
+                                    PaddingLeft: =5
+                                    Size: =referenceCSS.RInputFontSize
+                                    Width: =If(TryScreen.Width>900,Parent.Width/6,200)
+                                    X: =lblTimeestimateAR.X + lblTimeestimateAR.Width
+                                    Y: =//lblOwnerIdAR.Y + lblOwnerIdAR.Height
+                                    ZIndex: =5
+
+                                txtMaterialValueAR_1 As text:
+                                    BorderColor: =RGBA(0, 0, 0, 1)
+                                    Default: =ThisItem.MaterialEstimate
+                                    DisabledFill: =RGBA(255, 255, 255, 1)
+                                    DisplayMode: =If(comp=true || VarReviewerResult=true,DisplayMode.View,DisplayMode.Edit)
+                                    Fill: =If(comp=true || VarReviewerResult=true, RGBA(237, 237, 237, 1),RGBA(255,255,255,1))
+                                    Font: =referenceCSS.RFont
+                                    Format: =TextFormat.Number
+                                    Height: =30
+                                    HoverBorderColor: =RGBA(0, 0, 0, 1)
+                                    HoverColor: =//RGBA(0, 0, 0, 1)
+                                    HoverFill: =RGBA(255, 255, 255, 1)
+                                    MaxLength: =5
+                                    OnChange: |-
+                                        =If(Len(txtMaterialValueAR_1.Text)=5,Notify("Material Estimate should be less than 5 digits.",NotificationType.Warning));
+                                        UpdateIf(checkpointItem_ActionItem,checkpointItemActionItemsId=ThisItem.checkpointItemActionItemsId,{MaterialEstimate:txtMaterialValueAR_1.Text});
+                                    OnSelect: =
+                                    PaddingLeft: =5
+                                    Size: =referenceCSS.RInputFontSize
+                                    Width: =If(TryScreen.Width>900,Parent.Width/6,250)
+                                    X: =lblTimeEstimateVA_3.Width+lblTimeEstimateVA_3.X 
+                                    Y: =lblOwnerIdValueAR.Y +lblOwnerIdValueAR.Height
+                                    ZIndex: =6
+
+                                DatePicker3_3 As datepicker:
+                                    BorderColor: =RGBA(0, 0, 0, 1)
+                                    DefaultDate: |-
+                                        =ThisItem.DueDate
+                                        ///If(ThisItem.DueDate=Blank(),Now(),ThisItem.DueDate)
+                                        //If(IsBlank(Self.SelectedDate), Text(Blank()))
+                                    DisabledBorderColor: =RGBA(153, 153, 153, 1)
+                                    DisabledColor: =RGBA(179, 179, 179, 1)
+                                    DisplayMode: =If(comp=true || VarReviewerResult=true,DisplayMode.View,DisplayMode.Edit)
+                                    Fill: =If(comp=true || VarReviewerResult=true, RGBA(237, 237, 237, 1),RGBA(255,255,255,1))
+                                    Height: =30
+                                    InputTextPlaceholder: |-
+                                        =If(IsBlank(Self.SelectedDate), Text(Date(2000,01,01), Self.Format, Self.Language))
+                                        //If(IsBlank(Self.SelectedDate),Text(Blank()))
+                                    OnChange: |-
+                                        =UpdateIf(checkpointItem_ActionItem,checkpointItemActionItemsId=ThisItem.checkpointItemActionItemsId,{DueDate:DatePicker3_3.SelectedDate});
+                                    OnSelect: =
+                                    Size: =referenceCSS.RInputFontSize
+                                    StartYear: =1947
+                                    Width: =If(TryScreen.Width>900,Parent.Width/6,250)
+                                    X: =lblMaterialEstimateVA_3.Width+lblMaterialEstimateVA_3.X
+                                    ZIndex: =7
+
+                        iconlineActionVA_3 As icon.HorizontalLine:
+                            Color: =RGBA(204, 204, 204, 1)
+                            Fill: =RGBA(204, 204, 204, 1)
+                            Height: =3
+                            Icon: =Icon.HorizontalLine
+                            OnSelect: =Select(Parent)
+                            Width: =Parent.Width/1.08
+                            X: =20
+                            Y: =ctnActionVA_3.Y+ctnActionVA_3.Height
+                            ZIndex: =5
+
+                    btnActionVA_3 As button:
+                        Fill: =RGBA(54, 176, 75, 1)
+                        Font: =referenceCSS.RFont
+                        HoverColor: =Self.Color
+                        HoverFill: |-
+                            =//ColorFade(RGBA(56, 96, 178, 1), -20%)
+                            Self.Fill
+                        OnSelect: |-
+                            =If(mytext = "close Action", UpdateContext({mytext: "Action Closed"}), UpdateContext({mytext: "close Action"})) ;
+                        PressedFill: =Self.Fill
+                        Text: |-
+                            =//If(Btn,true,"closed Action","close Action")
+                            mytext
+                        Visible: =false
+                        X: =Parent.Width/3
+                        Y: =376
+                        ZIndex: =11
+
+                    iconlineannotationVA_4 As icon.HorizontalLine:
+                        Color: =RGBA(204, 204, 204, 1)
+                        Fill: =RGBA(204, 204, 204, 1)
+                        Height: =3
+                        Icon: =Icon.HorizontalLine
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =20
+                        Width: =Parent.Width/1.08
+                        X: =20
+                        Y: |-
+                            =//Button2_5.Height+Button2_5.Y+10
+                            ctnAnnotationVA_3.Y+lblAnnotationVA_3.Height+lblItemAnnotationVA_3.Height+10
+                        ZIndex: =12
+
+                    ctnSectionVA_4 As groupContainer.horizontalAutoLayoutContainer:
+                        Height: =40//Parent.Height/2.5
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                        LayoutMode: =LayoutMode.Auto
+                        PaddingLeft: =20
+                        PaddingRight: =43
+                        Width: =Parent.Width -150
+                        Y: =40//Parent.Y
+                        ZIndex: =13
+
+                        lblSectionVA_4 As label:
+                            Font: =globalcss.fontRobotoR
+                            FontWeight: =FontWeight.Bold
+                            Height: =Parent.Height
+                            LayoutMinWidth: =170
+                            PaddingLeft: =0
+                            Size: =referenceCSS.RLabelFontSize
+                            Text: ="Section "
+                            ZIndex: =3
+
+                        lblSectionNameVA_4 As label:
+                            Color: =referenceCSS.RColorBlack
+                            FillPortions: =1
+                            Font: =globalcss.fontRobotoR
+                            Size: =referenceCSS.RLabelFontSize
+                            Text: |-
+                                =//"BBBB"
+                                //LookUp(sectionAssessment,'sectionAssessment (quantum_sectionassessment)'=ThisItem.section_Id.'sectionAssessment (quantum_sectionassessment)',sectionName)
+                                ThisItem.section_Id.sectionName
+                            Width: =Parent.Width/2.5
+                            X: =lblSectionVA_4.X+lblSectionVA_4.Width
+                            ZIndex: =4
+
+                    ctnItemVA_3 As groupContainer.horizontalAutoLayoutContainer:
+                        Height: =40//Parent.Height/2.5
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                        LayoutMode: =LayoutMode.Auto
+                        PaddingLeft: =20
+                        PaddingRight: =40
+                        Width: =Parent.Width-150
+                        Y: =ctnCheckpointVA_3.Height+ctnCheckpointVA_3.Y
+                        ZIndex: =14
+
+                        lblItemVA_3 As label:
+                            Font: =globalcss.fontRobotoR
+                            FontWeight: =FontWeight.Bold
+                            Height: =Parent.Height
+                            PaddingLeft: =0
+                            Size: =referenceCSS.RLabelFontSize
+                            Text: ="Item "
+                            ZIndex: =3
+
+                        lblItemnameVA_3 As label:
+                            Color: =referenceCSS.RColorBlack
+                            FillPortions: =1
+                            Font: =globalcss.fontRobotoR
+                            Size: =referenceCSS.RLabelFontSize
+                            Text: |-
+                                =//"AAAA"
+                                ThisItem.checkpointItemName
+                            Width: =Parent.Width-400
+                            ZIndex: =4
+
+                    ctnfindingVA_3 As groupContainer.horizontalAutoLayoutContainer:
+                        Height: =40//Parent.Height/2.5
+                        LayoutMode: =LayoutMode.Auto
+                        PaddingLeft: =20
+                        PaddingRight: =20
+                        Width: =1308
+                        Y: |-
+                            =//ctnbank_18.Y+ctnbank_18.Height
+                            iconLineVA_3.Y+iconLineVA_3.Height
+                        ZIndex: =15
+
+                        lblfindingVA_3 As label:
+                            Font: =globalcss.fontRobotoR
+                            Height: =Parent.Height
+                            LayoutMinWidth: =170
+                            PaddingLeft: =0
+                            Size: =referenceCSS.RLabelFontSize
+                            Text: ="Checkpoint item findings "
+                            Width: =500
+                            ZIndex: =3
+
+                    ctnCheckpointVA_3 As groupContainer.horizontalAutoLayoutContainer:
+                        Height: =40//Parent.Height/2.5
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                        LayoutMode: =LayoutMode.Auto
+                        PaddingLeft: =20
+                        PaddingRight: =40
+                        Width: =Parent.Width - 150
+                        Y: =ctnSectionVA_4.Y+ctnSectionVA_4.Height
+                        ZIndex: =16
+
+                        lblCheckpointVA_3 As label:
+                            Font: =globalcss.fontRobotoR
+                            FontWeight: =FontWeight.Bold
+                            Height: =Parent.Height
+                            LayoutMinWidth: =170
+                            PaddingLeft: =0
+                            Size: =referenceCSS.RLabelFontSize
+                            Text: ="Checkpoint "
+                            ZIndex: =3
+
+                        lblCheckpointnameVA_3 As label:
+                            Color: =referenceCSS.RColorBlack
+                            FillPortions: =1
+                            Font: =globalcss.fontRobotoR
+                            Size: =referenceCSS.RLabelFontSize
+                            Text: |-
+                                =//"AAAA"
+                                ThisItem.checkpointAssessment_Id.checkpointName
+                                
+                                //varComment
+                            Width: =Parent.Width-400
+                            ZIndex: =4
+
+                    ctnAssessmentDetailsVA_3 As groupContainer.verticalAutoLayoutContainer:
+                        Height: |-
+                            =//Parent.Height/4
+                            100
+                        LayoutMode: =LayoutMode.Auto
+                        PaddingLeft: =40
+                        Visible: =false
+                        Width: =Parent.Width-80
+                        Y: =//ctnbank_7.Height+ctnbank_7.Y
+                        ZIndex: =17
+
+                        ctnAssessmentTypeVA_3 As groupContainer.verticalAutoLayoutContainer:
+                            AlignInContainer: =AlignInContainer.SetByContainer
+                            FillPortions: =0
+                            Height: =Parent.Height
+                            LayoutDirection: =LayoutDirection.Vertical
+                            LayoutMinHeight: =100
+                            LayoutMinWidth: =250
+                            LayoutMode: =LayoutMode.Auto
+                            Width: =Parent.Width/3
+                            X: =lblAssessmentTypeVA_3.Width+lblAssessmentTypeVA_3.X
+                            ZIndex: =5
+
+                            lblAssessmentTypeVA_3 As label:
+                                FontWeight: =FontWeight.Bold
+                                PaddingBottom: =8
+                                PaddingLeft: =8
+                                PaddingRight: =8
+                                PaddingTop: =8
+                                Size: =referenceCSS.RLabelFontSize
+                                Text: |-
+                                    ="Assessment Type : "
+                                Width: =Parent.Width
+                                ZIndex: =1
+
+                            lblAssessmenttypeValueVA_3 As label:
+                                PaddingBottom: =0
+                                PaddingLeft: =8
+                                PaddingRight: =8
+                                PaddingTop: =0
+                                Size: =referenceCSS.RLabelFontSize
+                                Text: |-
+                                    =//"initial assessment"
+                                    glryProject.Selected.assessmentType
+                                Width: =Parent.Width
+                                ZIndex: =2
+
+                        ctnAssessmentbyVA_3 As groupContainer.verticalAutoLayoutContainer:
+                            AlignInContainer: =AlignInContainer.SetByContainer
+                            FillPortions: =0
+                            Height: =Parent.Height
+                            LayoutDirection: =LayoutDirection.Vertical
+                            LayoutMinHeight: =100
+                            LayoutMinWidth: =250
+                            LayoutMode: =LayoutMode.Auto
+                            Width: =Parent.Width/3
+                            X: =//lblAssessmentByPFS_4.Width+lblAssessmentByPFS_4.X
+                            ZIndex: =6
+
+                            lblAssessmntbyVA_3 As label:
+                                FontWeight: =FontWeight.Bold
+                                PaddingBottom: =8
+                                PaddingLeft: =8
+                                PaddingRight: =8
+                                PaddingTop: =8
+                                Size: =referenceCSS.RLabelFontSize
+                                Text: |-
+                                    ="Assessment by:"
+                                Width: =Parent.Width
+                                ZIndex: =1
+
+                            lblAssessornameVA_3 As label:
+                                PaddingBottom: =0
+                                PaddingLeft: =8
+                                PaddingRight: =8
+                                PaddingTop: =0
+                                Size: =referenceCSS.RLabelFontSize
+                                Text: |-
+                                    =//"Assessor Name "
+                                    glryProject.Selected.assessorName
+                                Width: =Parent.Width
+                                ZIndex: =2
+
+                        ctnAssessmentDateVA_3 As groupContainer.verticalAutoLayoutContainer:
+                            AlignInContainer: =AlignInContainer.SetByContainer
+                            FillPortions: =0
+                            Height: =Parent.Height
+                            LayoutDirection: =LayoutDirection.Vertical
+                            LayoutMinHeight: =100
+                            LayoutMinWidth: =250
+                            LayoutMode: =LayoutMode.Auto
+                            Width: =Parent.Width/3
+                            X: =lblAssessmentDateVA_3.Width+lblAssessmentDateVA_3.X
+                            ZIndex: =7
+
+                            lblAssessmentDateVA_3 As label:
+                                FontWeight: =FontWeight.Bold
+                                PaddingBottom: =8
+                                PaddingLeft: =8
+                                PaddingRight: =8
+                                PaddingTop: =8
+                                Size: =referenceCSS.RLabelFontSize
+                                Text: ="Date"
+                                Width: =Parent.Width
+                                ZIndex: =1
+
+                            lblAssessordateVA_3 As label:
+                                PaddingBottom: =0
+                                PaddingLeft: =8
+                                PaddingRight: =8
+                                PaddingTop: =0
+                                Size: =referenceCSS.RLabelFontSize
+                                Text: |-
+                                    =glryProject.Selected.completionDate
+                                    //"25/3/2022"
+                                Width: =Parent.Width
+                                ZIndex: =2
+
+                    ctnAnnotationVA_3 As groupContainer.horizontalAutoLayoutContainer:
+                        Height: =150
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutMode: =LayoutMode.Auto
+                        PaddingLeft: =20
+                        PaddingRight: =40
+                        Width: =1308
+                        Y: |-
+                            =//Icon3_12.Y+Icon3_12.Height+10 
+                            ctnfindingVA_3.Height+ctnfindingVA_3.Y
+                        ZIndex: =18
+
+                        lblAnnotationVA_3 As label:
+                            Font: =globalcss.fontRobotoR
+                            FontWeight: =FontWeight.Bold
+                            PaddingLeft: =0
+                            Size: =referenceCSS.RLabelFontSize
+                            Text: ="Annotation "
+                            Width: =220
+                            ZIndex: =3
+
+                        lblItemAnnotationVA_3 As label:
+                            AutoHeight: =true
+                            Font: =referenceCSS.RFont
+                            Height: =30
+                            LineHeight: =1.5
+                            OnSelect: =//Select(Parent)
+                            Size: =referenceCSS.RLabelFontSize
+                            Text: |-
+                                =///ThisItem.checkpointItem_Id.checkpointItem_annotation
+                                //"Have a new layout sub drawn to match as built machine room aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                                ThisItem.checkpointItem_annotation
+                            Width: =Parent.Width/1.2
+                            X: =40
+                            Y: =lblAnnotationVA_3.Height+lblAnnotationVA_3.Y
+                            ZIndex: =5
+
+                    iconglrybroderVA_3 As rectangle:
+                        BorderColor: =RGBA(255, 0, 0, 1)
+                        BorderThickness: =2
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: |-
+                            =//210+
+                            //(CountRows(glryActionItemsVA.AllItems)*glryActionItemsVA.TemplateHeight)+(CountRows(glryCheckpointitemimagesVA.AllItems)*glryCheckpointitemimagesVA.TemplateHeight)+iconLineVA.Height+btnActionVA.Height+iconlineannotationVA.Height+ctnSectionVA.Height+ctnItemVA.Height+ctnfindingVA.Height+ctnCheckpointVA.Height+ctnAssessmentDetailsVA.Height+ctnAnnotationVA.Height
+                            
+                            //If(CountRows(glryActionItemsVA.AllItems)>0,CountRows(glryActionItemsVA.AllItems)*glryActionItemsVA.TemplateHeight,5)+If(CountRows(glryCheckpointitemimagesVA.AllItems)>0,CountRows(glryCheckpointitemimagesVA.AllItems)*(glryCheckpointitemimagesVA.TemplateHeight+glryCheckpointitemimagesVA.TemplatePadding),5) +iconLineVA.Height+iconlineannotationVA.Height+ctnSectionVA.Height+ctnItemVA.Height+ctnfindingVA.Height+ctnCheckpointVA.Height+ctnAssessmentDetailsVA.Height+ctnAnnotationVA.Height
+                            
+                            If(CountRows(glryActionItemsVA_3.AllItems)>0,CountRows(glryActionItemsVA_3.AllItems)*glryActionItemsVA_3.TemplateHeight)+If(CountRows(glryCheckpointitemimagesVA_3.AllItems)>0,CountRows(glryCheckpointitemimagesVA_3.AllItems)*(glryCheckpointitemimagesVA_3.TemplateHeight+glryCheckpointitemimagesVA_3.TemplatePadding))+iconLineVA_3.Height+iconlineannotationVA_4.Height+ctnSectionVA_4.Height+ctnItemVA_3.Height+ctnfindingVA_3.Height+ctnCheckpointVA_3.Height+ctnAssessmentDetailsVA_3.Height+ctnAnnotationVA_3.Height
+                             
+                             
+                             
+                             
+                             
+                             
+                             
+                             
+                             
+                             
+                             
+                             
+                             
+                             //If( (CountRows(Gallery14_3.AllItems)*Gallery14_3.TemplateHeight)/2=1, (CountRows(Gallery14_3.AllItems)*Gallery14_3.TemplateHeight),(CountRows(Gallery14_3.AllItems)*Gallery14_3.TemplateHeight)/2)
+                            //If(CountRows(Gallery14_3.AllItems)=1,380,CountRows(Gallery14_3.AllItems)*(Gallery14_3.TemplateHeight)/2)
+                            //700
+                        Width: =Parent.Width-20
+                        ZIndex: =19
+
+                    btnCheckpointitemCommentVA_3 As button:
+                        BorderThickness: =0
+                        Fill: =referenceCSS.RActiveColor
+                        FocusedBorderThickness: =
+                        Height: =30
+                        HoverFill: =Self.Fill //ColorFade(RGBA(56, 96, 178, 1), -20%)
+                        OnSelect: |-
+                            =//Set(varCommentId,ThisItem.section_Id);
+                            Set(varComment,true);
+                            Set(varItemComment,true);
+                            Set(varSectionComment,false);
+                            Set(varCheckpointComment,false);
+                            
+                            Refresh(checkpointItemAssessment);
+                        PressedColor: =Self.Color
+                        PressedFill: =Self.Fill
+                        Size: =referenceCSS.RInputFontSize
+                        Text: ="Comment"
+                        Visible: =false
+                        Width: =120
+                        X: =ctnItemVA_3.X+ctnItemVA_3.Width
+                        Y: =ctnItemVA_3.Y+5
+                        ZIndex: =20
+
+                    btnCheckointCommentVA_3 As button:
+                        BorderThickness: =0
+                        Fill: =referenceCSS.RActiveColor
+                        FocusedBorderThickness: =
+                        Height: =30
+                        HoverFill: =Self.Fill //ColorFade(RGBA(56, 96, 178, 1), -20%)
+                        OnSelect: |
+                            =Set(varComment,true);
+                            Set(varCheckpointComment,true);
+                            Set(varSectionComment,false);
+                            Set(varItemComment,false);
+                            
+                            Refresh(checkpointAssessment);
+                        PressedColor: =Self.Color
+                        PressedFill: =Self.Fill
+                        Size: =referenceCSS.RInputFontSize
+                        Text: ="Comment"
+                        Visible: =false
+                        Width: =120
+                        X: =ctnCheckpointVA_3.X+ctnCheckpointVA_3.Width
+                        Y: =ctnCheckpointVA_3.Y+5
+                        ZIndex: =21
+
+                    btnSectionCommentVA_3 As button:
+                        BorderThickness: =0
+                        Fill: =referenceCSS.RActiveColor
+                        FocusedBorderThickness: =
+                        Height: =30
+                        HoverFill: =Self.Fill //ColorFade(RGBA(56, 96, 178, 1), -20%)
+                        OnSelect: |-
+                            =Set(varComment,true);
+                            Set(varSectionComment,true);
+                            Set(varCheckpointComment,false);
+                            Set(varItemComment,false);
+                            Refresh(sectionAssessment);
+                            //Reset(TextInput2);
+                        PressedColor: =Self.Color
+                        PressedFill: =Self.Fill
+                        Size: =referenceCSS.RInputFontSize
+                        Text: ="Comment"
+                        Visible: =false
+                        Width: =120
+                        X: =ctnSectionVA_4.X+ctnSectionVA_4.Width
+                        Y: =ctnSectionVA_4.Y+5
+                        ZIndex: =22
+
+                    ctnSectionVA_5 As groupContainer.horizontalAutoLayoutContainer:
+                        Height: =40//Parent.Height/2.5
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                        LayoutMode: =LayoutMode.Auto
+                        PaddingLeft: =20
+                        PaddingRight: =43
+                        Width: =Parent.Width -150
+                        Y: =Parent.Y
+                        ZIndex: =23
+
+                        lblSectionVA_5 As label:
+                            Font: =globalcss.fontRobotoR
+                            FontWeight: =FontWeight.Bold
+                            Height: =Parent.Height
+                            LayoutMinWidth: =170
+                            PaddingLeft: =0
+                            Size: =referenceCSS.RLabelFontSize
+                            Text: ="Unit "
+                            ZIndex: =3
+
+                        lblSectionNameVA_5 As label:
+                            Color: =referenceCSS.RColorBlack
+                            FillPortions: =1
+                            Font: =globalcss.fontRobotoR
+                            Size: =referenceCSS.RLabelFontSize
+                            Text: |-
+                                =//"BBBB"
+                                //LookUp(sectionAssessment,'sectionAssessment (quantum_sectionassessment)'=ThisItem.section_Id.'sectionAssessment (quantum_sectionassessment)',sectionName)
+                                ThisItem.bankUnitId.unitNumber
+                            Width: =Parent.Width/2.5
+                            X: =lblSectionVA_5.X+lblSectionVA_5.Width
+                            ZIndex: =4
+
+            Container34_43 As groupContainer.horizontalAutoLayoutContainer:
+                FillPortions: =0
+                Height: =60
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                Y: =ctnCheckpointitemVA_3.Height+ctnCheckpointitemVA_3.Y
+                ZIndex: =18
+
+                Label37_10 As label:
+                    Font: =referenceCSS.RFont
+                    FontWeight: =FontWeight.Bold
+                    Height: =Parent.Height
+                    Size: =referenceCSS.RLabelFontSize
+                    Text: ="General Recomendation"
+                    Width: =Parent.Width
+                    ZIndex: =1
+
+            Container35_7 As groupContainer.verticalAutoLayoutContainer:
+                FillPortions: =0
+                Height: =TextInput3_1.Height + 20
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                PaddingBottom: =10
+                PaddingLeft: =15
+                PaddingRight: =15
+                PaddingTop: =10
+                Width: =Parent.Width
+                Y: =Container34_43.Height+Container34_43.Y
+                ZIndex: =19
+
+                Label38_7 As label:
+                    AutoHeight: =true
+                    FillPortions: =1
+                    Font: =referenceCSS.RFont
+                    LayoutMinHeight: =100
+                    Size: =referenceCSS.RInputFontSize
+                    Text: |-
+                        =//LookUp(BankTripReport,bankId.goNumber=lblBankName.Text,Background)
+                        LookUp(BankTripReport,assignmentId.Id=glryProject.Selected.Id,General_Recommendation)
+                    Visible: =false
+                    Width: =Parent.Width
+                    ZIndex: =1
+
+                TextInput3_1 As text:
+                    BorderColor: =RGBA(179, 179, 179, 1)
+                    Default: = LookUp(BankTripReport,assignmentId.Id=glryProject.Selected.Id,General_Recommendation)
+                    DisplayMode: =If(comp=true || VarReviewerResult=true,DisplayMode.View,DisplayMode.Edit)
+                    Fill: =If(comp=true || VarReviewerResult=true, RGBA(237, 237, 237, 1),RGBA(255,255,255,1))
+                    Font: =referenceCSS.RFont
+                    Height: =200
+                    HintText: =If(comp=true," ","Enter here")
+                    HoverBorderColor: =RGBA(179, 179, 179, 1)
+                    HoverFill: =RGBA(0, 0, 0, 0)
+                    Mode: =TextMode.MultiLine
+                    PaddingLeft: =5
+                    Size: =referenceCSS.RInputFontSize
+                    Width: =Parent.Width-80
+                    ZIndex: =2
+
+            Container34_44 As groupContainer.horizontalAutoLayoutContainer:
+                AlignInContainer: =AlignInContainer.Start
+                FillPortions: =0
+                Height: =60
+                LayoutAlignItems: =LayoutAlignItems.Center
+                LayoutJustifyContent: =LayoutJustifyContent.Center
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                Width: =Parent.Width
+                Y: =Container34_45.Height+Container34_45.Y
+                ZIndex: =20
+
+                Container12_2 As groupContainer.horizontalAutoLayoutContainer:
+                    Height: =Parent.Height
+                    LayoutJustifyContent: =LayoutJustifyContent.End
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    Width: =Parent.Width/2
+                    ZIndex: =5
+
+                    Button9_7 As button:
+                        Color: =RGBA(255,255,255,1)
+                        DisplayMode: =If(VarReviewerResult=true,DisplayMode.Disabled,DisplayMode.Edit)
+                        Fill: =referenceCSS.RActiveColor
+                        Height: =50
+                        HoverFill: |-
+                            =//ColorFade(RGBA(56, 96, 178, 1), -20%)
+                            Self.Fill
+                        OnSelect: |+
+                            = If(!IsEmpty(UpdateIf(BankTripReport,'BankTripReport (quantum_banktripreport)'=LookUp(BankTripReport,assignmentId.Id=glryProject.Selected.Id,'BankTripReport (quantum_banktripreport)'),{General_Recommendation:TextInput3_1.Text}));,
+                             Notify("General Recomendation Updated Successfully",NotificationType.Success))
+                            
+                        Text: ="Update"
+                        Visible: =If(comp=true,false,true)
+                        Width: =Parent.Width/3
+                        ZIndex: =1
+
+                Container12_3 As groupContainer.horizontalAutoLayoutContainer:
+                    Height: =Parent.Height
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    PaddingLeft: =20
+                    Width: =Parent.Width/2
+                    ZIndex: =6
+
+                    Button9_5 As button:
+                        Color: =RGBA(255,255,255,1)
+                        Fill: =referenceCSS.RActiveColor
+                        Height: =50
+                        HoverFill: |-
+                            =//ColorFade(RGBA(56, 96, 178, 1), -20%)
+                            Self.Fill
+                        OnSelect: |
+                            =Set(varComment,true);
+                            //Set(varItemComment,false);
+                            Set(varSectionComment,true);
+                            //Set(varCheckpointComment,false);
+                        Text: ="Comment"
+                        Visible: =If(comp=true,false,true)
+                        Width: =Parent.Width/3
+                        X: =Button9_7.Width+Button9_7.X+50
+                        ZIndex: =1
+
+            Container34_45 As groupContainer.horizontalAutoLayoutContainer:
+                AlignInContainer: =AlignInContainer.Start
+                FillPortions: =0
+                Height: =60
+                LayoutJustifyContent: =LayoutJustifyContent.Center
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                Width: =Parent.Width
+                Y: =Container35_7.Height+Container35_7.Y
+                ZIndex: =21
+
+                Container36_7 As groupContainer.verticalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.Start
+                    FillPortions: =0
+                    Height: =Parent.Height
+                    LayoutAlignItems: =LayoutAlignItems.End
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutJustifyContent: =LayoutJustifyContent.Center
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    Width: =Parent.Width/2
+                    ZIndex: =2
+
+                    Button9_8 As button:
+                        AlignInContainer: =AlignInContainer.Center
+                        Color: =RGBA(255,255,255,1)
+                        DisplayMode: =If(VarReviewerResult=true,DisplayMode.Disabled,DisplayMode.Edit)
+                        Fill: =referenceCSS.RActiveColor
+                        Height: =50
+                        HoverFill: |-
+                            =//ColorFade(RGBA(56, 96, 178, 1), -20%)
+                            Self.Fill
+                        OnSelect: |
+                            =Approve_Report.Run(glryProject.Selected.assessorEmail,glryProject.Selected.bankId.goNumber,glryProject.Selected.reviewerName);
+                            //UpdateIf(BankTripReport,'BankTripReport (quantum_banktripreport)'=LookUp(BankTripReport,assignmentId.Id=glryProject.Selected.Id,'BankTripReport (quantum_banktripreport)'),{General_Recommendation:TextInput3.Text});
+                            UpdateIf(
+                                assignments,
+                                Id = Assignid,
+                                {
+                                    isCompleted: "Completed",
+                                    completionDate: Now()
+                                }
+                            );
+                            UpdateIf(
+                                bankAssessment,
+                                assignmentId.Id =Assignid ,//&& bankId.Id = glryProject.Selected.bankId.Id,
+                                {Assessment_Status:"Completed"}
+                            );
+                            
+                            UpdateIf(
+                                unitAssessment,
+                                assignmentId.Id =Assignid,
+                                //bankUnitId.Id=LookUp(bankUnits, assignmentId.Id = glryProject.Selected.Id && bankId.Id = glryProject.Selected.bankId.Id,Id) ,
+                                {Assessment_status:"Completed"}
+                            );
+                            
+                            
+                            Navigate(DashboardScreen);
+                        Text: ="Approve"
+                        Visible: =If(comp=true,false,true)
+                        Width: =Parent.Width/3
+                        X: =
+                        ZIndex: =1
+
+    Group1_4 As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =9
+
+        Rectangle1_4 As rectangle:
+            Fill: =RGBA(0, 0, 0, 0.29)
+            Height: =Parent.Height
+            Visible: |-
+                =varComment
+                //varcomments
+            Width: =Parent.Width
+            ZIndex: =2
+
+        Rectangle5_4 As rectangle:
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =405
+            Visible: |-
+                =varComment
+                //varcomments
+            Width: =700
+            X: =(Parent.Width -Self.Width)/2
+            Y: =(Parent.Height - Self.Height)/2
+            ZIndex: =3
+
+        Container38_4 As groupContainer.horizontalAutoLayoutContainer:
+            Height: =50
+            LayoutMode: =LayoutMode.Auto
+            Visible: |-
+                =varComment
+                //varcomments
+            Width: =Rectangle5_4.Width
+            X: =Rectangle5_4.X
+            Y: =Rectangle5_4.Y+10
+            ZIndex: =4
+
+            Label41_4 As label:
+                FontWeight: =FontWeight.Semibold
+                PaddingLeft: =40
+                Text: |-
+                    ="Add Comments "
+                    //& 
+                    //If(varSectionComment = true,"",
+                      // varCheckpointComment = true,"Checkpoint ",
+                       //varItemComment = true,"Item")
+                Width: =Parent.Width-70
+                ZIndex: =1
+
+            Icon2_4 As icon.Cancel:
+                Color: =RGBA(153, 153, 153, 1)
+                Height: =35
+                Icon: =Icon.Cancel
+                OnSelect: =Set(varComment,false)
+                Width: =30
+                ZIndex: =2
+
+        Rectangle6_4 As rectangle:
+            BorderColor: =RGBA(179, 179, 179, 1)
+            BorderThickness: =2
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =250
+            Visible: |-
+                =varComment
+                //varcomments
+            Width: =656
+            X: =Rectangle5_4.X+20
+            Y: =Container38_4.Y+Container38_4.Height +10
+            ZIndex: =5
+
+        Icon4_4 As icon.Add:
+            Color: =RGBA(179, 179, 179, 1)
+            Fill: =RGBA(179, 179, 179, 1)
+            Height: =2
+            Icon: =Icon.HorizontalLine
+            Visible: |-
+                =varComment
+                //varcomments
+            Width: =Rectangle6_4.Width
+            X: =Rectangle6_4.X
+            Y: =Rectangle6_4.Y +Rectangle6_4.Height+10
+            ZIndex: =6
+
+        Button11_4 As button:
+            BorderThickness: =0
+            DisabledFill: =RGBA(237, 237, 237, 1)
+            DisplayMode: =If(VarReviewerResult=true,DisplayMode.Disabled,DisplayMode.Edit)
+            Fill: =referenceCSS.RActiveColor
+            FocusedBorderThickness: =
+            HoverFill: =//ColorFade(RGBA(56, 96, 178, 1), -20%)
+            OnSelect: |-
+                =ReportComment.Run(glryProject.Selected.assessorEmail,glryProject.Selected.reviewerName,glryProject.Selected.bankId.goNumber);
+                If(
+                    //For Section Comment
+                    varSectionComment = true,
+                    UpdateIf(BankTripReport,'BankTripReport (quantum_banktripreport)'=LookUp(BankTripReport,assignmentId.Id=glryProject.Selected.Id,'BankTripReport (quantum_banktripreport)'),{ReviewerComments:TextInput2_6.Text})
+                   /* //For Checkpoint Comment
+                    varCheckpointComment = true,
+                    UpdateIf(checkpointAssessment,checkpointAssessment = Gallery1_3.Selected.checkpointAssessment_Id.checkpointAssessment , {checkpointComment: TextInput2_1.Text}),
+                    
+                    varItemComment = true,
+                    UpdateIf(checkpointItemAssessment,'checkpointItemAssessment (quantum_checkpointitemassessment)'= Gallery1_3.Selected.'checkpointItemAssessment (quantum_checkpointitemassessment)',{checkpointItemComment:TextInput2_1.Text})
+                
+                //*/
+                
+                
+                
+                );
+                Concurrent(
+                Reset(TextInput2_6),
+                //Refresh(sectionAssessment),
+                Set(varComment , false),
+                Set(varSectionComment,false)
+                //Set(varCheckpointComment,false),
+                //Set(varItemComment,false)
+                  );
+                  Set(comment,true);
+                  
+                  Navigate(BankScreen);
+            PressedColor: =Self.Color
+            PressedFill: =Self.Fill
+            Text: ="Save"
+            Visible: |-
+                =varComment
+                //varcomments
+            X: =(Parent.Width-Self.Width)/2
+            Y: =Icon4_4.Y+20
+            ZIndex: =7
+
+        TextInput2_6 As text:
+            BorderThickness: =0
+            Default: |-
+                =If(
+                    varSectionComment = true,
+                
+                   // LookUp(sectionAssessment,sectionId.sectionId=varCommentId.sectionId.sectionId,sectionName)
+                   //Gallery1_3.Selected.section_Id.sectionComment
+                   LookUp(BankTripReport,assignmentId.Id=glryProject.Selected.Id,ReviewerComments)
+                   // ,
+                   // varCheckpointComment = true,
+                    //Gallery1_3.Selected.checkpointAssessment_Id.checkpointComment
+                    //,
+                    //varItemComment = true,
+                    //Gallery1_3.Selected.checkpointItemComment
+                )
+            DisplayMode: =If(VarReviewerResult=true,DisplayMode.View,DisplayMode.Edit)
+            Fill: =If(VarReviewerResult=true, RGBA(237, 237, 237, 1),RGBA(255,255,255,1))
+            FocusedBorderColor: =RGBA(179, 179, 179, 1)
+            Height: =Rectangle6_4.Height
+            HintText: ="Add Comments"
+            HoverBorderColor: =RGBA(179, 179, 179, 1)
+            HoverFill: =RGBA(0, 0, 0, 0)
+            Mode: =TextMode.MultiLine
+            PressedBorderColor: =RGBA(179, 179, 179, 1)
+            Size: =referenceCSS.RInputFontSize
+            Visible: |-
+                =varComment
+                //varcomments
+            Width: =Rectangle6_4.Width
+            X: =Rectangle6_4.X
+            Y: =Rectangle6_4.Y
+            ZIndex: =8
+
