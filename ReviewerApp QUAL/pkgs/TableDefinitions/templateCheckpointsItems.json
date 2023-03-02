@@ -1,7 +1,7 @@
 {
   "DatasetName": "default.cds",
   "EntityName": "templateCheckpointsItems",
-  "InstanceUrl": "https://sec02wellnessvisitsqual.crm4.dynamics.com/",
+  "InstanceUrl": "https://org037b8467.crm.dynamics.com/",
   "LocalReferenceDSJson": {
     "entitySetName": "shlaf_templatecheckpointsitems",
     "logicalName": "shlaf_templatecheckpointsitem"
