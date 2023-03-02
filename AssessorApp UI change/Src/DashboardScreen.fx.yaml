@@ -14,6 +14,7 @@ DashboardScreen As screen:
                     gcProjectAssignment,
                     "localprojectassignment"
            );
+         If(App.Width>App.Height,App.ActiveScreen.Orientation="Landscape",App.ActiveScreen.Orientation="Landscape");
 
     ctnMainDS As groupContainer.verticalAutoLayoutContainer:
         Height: =Parent.Height

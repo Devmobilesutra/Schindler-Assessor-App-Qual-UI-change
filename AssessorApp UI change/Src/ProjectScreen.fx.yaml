@@ -455,7 +455,9 @@ ProjectScreen As screen:
                 ShowScrollbar: =false
                 TemplatePadding: =10
                 TemplateSize: =400
-                Visible: =Q
+                Visible: |-
+                    =//Q
+                    true
                 Width: =Parent.Width
                 Y: ='ctnBack&onlinestatusPS'.Height+'ctnBack&onlinestatusPS'.Y
                 ZIndex: =2

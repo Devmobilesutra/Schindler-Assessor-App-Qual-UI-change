@@ -1625,9 +1625,9 @@ BankScreen As screen:
                                 If(
                                     (LookUp(
                                         GC_unitAssessment,
-                                        assignmentId.Id = varAssignmentId && bankUnitId.Id = ThisItem.bankUnitId.Id,
+                                        assignmentId.Id = varAssignmentId && bankUnitId.Id = ThisItem.bankUnitId.Id && UstatusUpdate=2,
                                         Assessment_status
-                                        ) = "Inprogress"
+                                        ) = "Inprogress" 
                                     ),
                                     DisplayMode.Edit,DisplayMode.Disabled
                                 )

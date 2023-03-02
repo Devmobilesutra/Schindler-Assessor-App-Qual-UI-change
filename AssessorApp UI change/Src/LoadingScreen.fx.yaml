@@ -32,7 +32,9 @@ LoadingScreen As screen:
                 Color: "DC0000",
                 FontSize: 20
             }
-        )
+        );
+        
+        If(App.Width>App.Height,App.ActiveScreen.Orientation="Landscape",App.ActiveScreen.Orientation="Landscape");
 
     ImgLS As image:
         Height: =Parent.Height
