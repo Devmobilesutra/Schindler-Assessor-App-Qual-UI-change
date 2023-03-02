@@ -94,46 +94,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "ViewAssessment.ctnMainBankViewAssessment.ctnMiddleBS_2.ctnCheckpointitemVA.glryCheckpointIiemVA.Items"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "ViewAssessment.ctnMainBankViewAssessment.ctnMiddleBS_2.ctnCheckpointitemVA.glryCheckpointIiemVA.Items",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 19,
-                  "charOffset": 1196,
-                  "snippet": {
-                    "text": ".CheckpointSequence"
-                  }
-                }
-              },
-              "properties": {
-                "member": "Items",
-                "module": "ViewAssessment",
-                "type": "ViewAssessment.ctnMainBankViewAssessment.ctnMiddleBS_2.ctnCheckpointitemVA.glryCheckpointIiemVA"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Sort"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-SuggestRemoteExecutionHint",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "projectAssignment.ctnProjectAssignment.ctnMainProjectAssignment.ctnMiddleProjectAssignmentPA.ctnMainPA.ctnExistingAssignment.GalleryExistingAssignment.lblUnitnumberEA.Text"
                 }
               ],

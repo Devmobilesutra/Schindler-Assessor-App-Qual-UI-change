@@ -323,7 +323,7 @@ ViewAssessment As screen:
                         //Filter(checkpointItemAssessment,bankUnitId.Id=glryBankGo_1.Selected.bankUnitId.unitNumber)
                         /*If(IsEmpty(Filter(checkpointItem_ActionItem,assignmentId.Id=glryBankGo_1.Selected.assignmentId.Id && bankUnitId.Id =glryBankGo_1.Selected.bankUnitId.Id && checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' =LookUp(checkpointItemAssessment,checkpointItemName =LblAssStatuscountBS_14.Text,'checkpointItemAssessment (quantum_checkpointitemassessment)'))),*/
                         Sort(
-                            Sort(
+                            //Sort(
                                // Sort(
                                     Filter(
                                         checkpointItemAssessment,
@@ -332,11 +332,11 @@ ViewAssessment As screen:
                                    // checkpointitemSequence,
                                    // Ascending
                                 //),
-                               checkpointAssessment_Id.CheckpointSequence,
+                               CheckpointItemSortSequence,
                                 Ascending
-                            ),
-                            section_Id.sectionSequence,
-                            Ascending
+                            //),
+                            //section_Id.sectionSequence,
+                            //Ascending
                         )
                         //&&
                          //CountRows(Filter(checkpointItem_ActionItem, checkpointItem_Id.quantum_checkpointitemassessment //=ThisRecord.'checkpointItemAssessment (quantum_checkpointitemassessment)')>0)
