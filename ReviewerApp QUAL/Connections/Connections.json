@@ -77,7 +77,8 @@
     "dependents": [
       "be9c0de5-1b0e-4911-936f-5beefa3d1219",
       "8c0b1405-f919-4e3f-94e7-c6b91f0b08e4",
-      "f58feedf-b36f-4d58-abee-f58470539c64"
+      "f58feedf-b36f-4d58-abee-f58470539c64",
+      "d6851de6-64cd-46bb-aab6-4ed446c89be8"
     ],
     "id": "2a3066fb-ddd0-4d90-a512-eb37c43ad294"
   },
@@ -445,6 +446,65 @@
     "dependents": [],
     "id": "c45365a4-ec6b-4ad8-9d25-f14c759e56da"
   },
+  "d6851de6-64cd-46bb-aab6-4ed446c89be8": {
+    "connectionParameters": {
+      "workFlowCallbackUri": "https://prod-39.westus.logic.azure.com:443/workflows/8b79c97882294801b69ffb91d0463b0e/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=udX_ljH1z46_jiF2LXw933MQ83bZrVQKSMStZvbpf3w",
+      "workflowEndpoint": "/subscriptions/2e6e5a0a-b35f-4167-82de-61b3afa7d1ec/resourceGroups/125c265eb1f0494da8a1bbce16d90b90-7c3abeda63c240e3a91ff97eb9ce26b9-env/providers/Microsoft.Logic/workflows/79b62ec0-4edd-7c30-65d9-9815387fe20e",
+      "workflowEntityId": "ca4ed269-d3b8-ed11-83fe-000d3a5655ba",
+      "workflowName": "79b62ec0-4edd-7c30-65d9-9815387fe20e",
+      "workflowPath": "/subscriptions/2e6e5a0a-b35f-4167-82de-61b3afa7d1ec/resourceGroups/125c265eb1f0494da8a1bbce16d90b90-7c3abeda63c240e3a91ff97eb9ce26b9-env/providers/Microsoft.Logic/workflows/79b62ec0-4edd-7c30-65d9-9815387fe20e"
+    },
+    "connectionRef": {
+      "displayName": "Logic flows",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1615/1.0.1615.3163/logicflows/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
+      "parameterHints": {
+        "2a3066fb-ddd0-4d90-a512-eb37c43ad294": {
+          "value": "shared_commondataserviceforapps"
+        },
+        "dc341652-360e-41fe-8b26-9156972b1174": {
+          "value": "shared_onedriveforbusiness"
+        },
+        "e0d6a5be-13d0-4578-a01b-88b6be172fff": {
+          "value": "shared_office365"
+        },
+        "workflowEntityId": {
+          "value": "ca4ed269-d3b8-ed11-83fe-000d3a5655ba"
+        },
+        "workflowName": {
+          "value": "79b62ec0-4edd-7c30-65d9-9815387fe20e"
+        }
+      },
+      "parameterHintsV2": {
+        "shared_commondataserviceforapps": {
+          "value": "2a3066fb-ddd0-4d90-a512-eb37c43ad294"
+        },
+        "shared_office365": {
+          "value": "e0d6a5be-13d0-4578-a01b-88b6be172fff"
+        },
+        "shared_onedriveforbusiness": {
+          "value": "dc341652-360e-41fe-8b26-9156972b1174"
+        },
+        "workflowEntityId": {
+          "value": "ca4ed269-d3b8-ed11-83fe-000d3a5655ba"
+        },
+        "workflowName": {
+          "value": "79b62ec0-4edd-7c30-65d9-9815387fe20e"
+        }
+      }
+    },
+    "datasets": {},
+    "dataSources": [
+      "Assessor_TR"
+    ],
+    "dependencies": {
+      "shared_commondataserviceforapps": "2a3066fb-ddd0-4d90-a512-eb37c43ad294",
+      "shared_office365": "e0d6a5be-13d0-4578-a01b-88b6be172fff",
+      "shared_onedriveforbusiness": "dc341652-360e-41fe-8b26-9156972b1174"
+    },
+    "dependents": [],
+    "id": "d6851de6-64cd-46bb-aab6-4ed446c89be8"
+  },
   "dc341652-360e-41fe-8b26-9156972b1174": {
     "connectionParameters": {
       "sku": "Enterprise"
@@ -461,7 +521,8 @@
     "dataSources": [],
     "dependencies": {},
     "dependents": [
-      "f58feedf-b36f-4d58-abee-f58470539c64"
+      "f58feedf-b36f-4d58-abee-f58470539c64",
+      "d6851de6-64cd-46bb-aab6-4ed446c89be8"
     ],
     "id": "dc341652-360e-41fe-8b26-9156972b1174"
   },
@@ -482,7 +543,8 @@
     "dependencies": {},
     "dependents": [
       "ac2dac18-4677-4d61-8d77-5a4e3812d485",
-      "28aafd65-a009-455e-be63-04c5881f60b0"
+      "28aafd65-a009-455e-be63-04c5881f60b0",
+      "d6851de6-64cd-46bb-aab6-4ed446c89be8"
     ],
     "id": "e0d6a5be-13d0-4578-a01b-88b6be172fff"
   },
