@@ -1429,6 +1429,9 @@ AssessmentScreen As screen:
                                 varSpinner,
                                 true
                             );
+                            
+                            Set(Varpatchlabel,"Uploading findings for " & LookUp(GC_templateCheckpoints,checkpointId=ChId,checkpointName) &" Please do not exit the app till upload is complete.");
+                            
                                 //for changing (tabs) depending on  assessment status upcomming to inprogress for first time
                                 //if collection contain assessment status upcomming or inprogress1 then we set variable to navigate dashboard screen 
                             If(
@@ -2817,11 +2820,11 @@ AssessmentScreen As screen:
             ZIndex: =8
 
         Label2 As label:
-            Color: =AllScreensCSS.RActiveColor
-            FontWeight: =FontWeight.Bold
+            FontWeight: =FontWeight.Semibold
+            Height: =60
             Text: =Varpatchlabel
             Visible: =varSpinner
-            Width: =450
+            Width: =700
             X: =(Parent.Width-Self.Width)/1.6
             Y: =(Parent.Height-Self.Height)/1.6
             ZIndex: =22
