@@ -10,7 +10,7 @@ AssessmentScreen As screen:
             DateDiff(
                 UserLastNavigatedTime,
                 Now(),
-                Seconds
+                TimeUnit.Seconds
             ) > SafetyCheckTime,
             Set(
                 safetyPopup,
@@ -469,7 +469,7 @@ AssessmentScreen As screen:
                                 DateDiff(
                                     UserLastNavigatedTime,
                                     Now(),
-                                    Seconds
+                                    TimeUnit.Seconds
                                 ) > SafetyCheckTime,
                                 Set(
                                     safetyPopup,
@@ -759,7 +759,7 @@ AssessmentScreen As screen:
                                 DateDiff(
                                     UserLastNavigatedTime,
                                     Now(),
-                                    Seconds
+                                    TimeUnit.Seconds
                                 ) > SafetyCheckTime,
                                 Set(
                                     safetyPopup,
@@ -1153,7 +1153,7 @@ AssessmentScreen As screen:
                                 DateDiff(
                                     UserLastNavigatedTime,
                                     Now(),
-                                    Seconds
+                                    TimeUnit.Seconds
                                 ) > SafetyCheckTime,
                                 Set(
                                     safetyPopup,
@@ -1411,7 +1411,7 @@ AssessmentScreen As screen:
                                 DateDiff(
                                     UserLastNavigatedTime,
                                     Now(),
-                                    Seconds
+                                    TimeUnit.Seconds
                                 ) > SafetyCheckTime,
                                 Set(
                                     safetyPopup,
@@ -2033,6 +2033,10 @@ AssessmentScreen As screen:
                                                 (assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && CIAstatusUpdate = 1) || (bankUnitId.Id = varBankUnitId && Action_status = "Close" && CIAstatusUpdate = 1)
                                             )
                                         ) > 0,
+                                        Set(
+                                VarPopupText,
+                                "Wait till actionItems and images are patching ..."
+                            );
                             // inside checkpoint Action item collection => rows contain status 1 => patch that rows to dataverse
                                         Patch(
                                             checkpointItem_ActionItem,

@@ -25,7 +25,7 @@ FindingScreen As screen:
             DateDiff(
                 UserLastNavigatedTime,
                 Now(),
-                Seconds
+                TimeUnit.Seconds
             ) > SafetyCheckTime,
             Set(
                 safetyPopup,
@@ -730,7 +730,7 @@ FindingScreen As screen:
 
                 Container12_4 As groupContainer.verticalAutoLayoutContainer:
                     AlignInContainer: =AlignInContainer.Start
-                    Fill: =If(C =false ,WhiteSmoke,RGBA(204, 204, 204, 1))
+                    Fill: =If(C =false ,Color.WhiteSmoke,RGBA(204, 204, 204, 1))
                     FillPortions: =0
                     Height: =Parent.Height
                     LayoutAlignItems: =LayoutAlignItems.Center
@@ -762,7 +762,7 @@ FindingScreen As screen:
                                 DateDiff(
                                     UserLastNavigatedTime,
                                     Now(),
-                                    Seconds
+                                    TimeUnit.Seconds
                                 ) > SafetyCheckTime,
                                 Set(
                                     safetyPopup,
@@ -793,7 +793,7 @@ FindingScreen As screen:
 
                 Container12_5 As groupContainer.verticalAutoLayoutContainer:
                     AlignInContainer: =AlignInContainer.Start
-                    Fill: =If(C =true ,WhiteSmoke,RGBA(204, 204, 204, 1))
+                    Fill: =If(C =true ,Color.WhiteSmoke,RGBA(204, 204, 204, 1))
                     FillPortions: =0
                     Height: =Parent.Height
                     LayoutDirection: =LayoutDirection.Vertical
@@ -857,7 +857,7 @@ FindingScreen As screen:
                 ctnPrevious As groupContainer.verticalAutoLayoutContainer:
                     Fill: |-
                         =//RGBA(0, 0, 0, 0)
-                        WhiteSmoke
+                        Color.WhiteSmoke
                     Height: |-
                         =Parent.Height
                         //PreviousFS.Height+100
@@ -875,7 +875,7 @@ FindingScreen As screen:
                         BorderColor: =RGBA(128, 128, 128, 1)
                         Fill: |-
                             =//RGBA(239,239,239,1)
-                            WhiteSmoke
+                            Color.WhiteSmoke
                         FillPortions: =0
                         Height: |-
                             =//+Label22_5.Height+Label21_4.Height+Icon3_13.Height+Icon3_15.Height+ctnDatePFS_5.Height
@@ -1417,7 +1417,7 @@ FindingScreen As screen:
                         AlignInContainer: =AlignInContainer.SetByContainer
                         Fill: |-
                             =//RGBA(239, 239, 239, 1)
-                            WhiteSmoke
+                            Color.WhiteSmoke
                         FillPortions: =0
                         Height: |-
                             =//Parent.Height
@@ -1475,7 +1475,7 @@ FindingScreen As screen:
                                     DateDiff(
                                         UserLastNavigatedTime,
                                         Now(),
-                                        Seconds
+                                        TimeUnit.Seconds
                                     ) > SafetyCheckTime,
                                     Set(
                                         safetyPopup,
@@ -1614,7 +1614,7 @@ FindingScreen As screen:
                                         DateDiff(
                                             UserLastNavigatedTime,
                                             Now(),
-                                            Seconds
+                                            TimeUnit.Seconds
                                         ) > SafetyCheckTime,
                                         Set(
                                             safetyPopup,
@@ -1669,7 +1669,7 @@ FindingScreen As screen:
                                         DateDiff(
                                             UserLastNavigatedTime,
                                             Now(),
-                                            Seconds
+                                            TimeUnit.Seconds
                                         ) > SafetyCheckTime,
                                         Set(
                                             safetyPopup,
@@ -1727,7 +1727,7 @@ FindingScreen As screen:
                                         DateDiff(
                                             UserLastNavigatedTime,
                                             Now(),
-                                            Seconds
+                                            TimeUnit.Seconds
                                         ) > SafetyCheckTime,
                                         Set(
                                             safetyPopup,
@@ -1775,7 +1775,7 @@ FindingScreen As screen:
                                         DateDiff(
                                             UserLastNavigatedTime,
                                             Now(),
-                                            Seconds
+                                            TimeUnit.Seconds
                                         ) > SafetyCheckTime,
                                         Set(
                                             safetyPopup,
@@ -1819,7 +1819,7 @@ FindingScreen As screen:
                                         DateDiff(
                                             UserLastNavigatedTime,
                                             Now(),
-                                            Seconds
+                                            TimeUnit.Seconds
                                         ) > SafetyCheckTime,
                                         Set(
                                             safetyPopup,
@@ -1873,7 +1873,7 @@ FindingScreen As screen:
                                 DisabledColor: =RGBA(0, 0, 0, 1)
                                 DisabledFill: =RGBA(204, 204, 204, 1)
                                 DisplayFields: =["shlaf_actionitemname"]
-                                DisplayMode: =If(Radio1.Selected.Value="Custom action",DisplayMode.Disabled,Edit)
+                                DisplayMode: =If(Radio1.Selected.Value="Custom action",DisplayMode.Disabled,DisplayMode.Edit)
                                 Font: =AllScreensCSS.RFont
                                 HoverFill: =RGBA(0, 0, 0, 0)
                                 InputTextPlaceholder: =LookUp(GC_checkpointItem_ActionItem,checkpointItemActionItemsId=ThisItem.checkpointItemActionItemsId && bankUnitId.Id=varBankUnitId && checkpointItem_Id.checkpointItemId.checkpointItemId=varCheckpointitemID,ThisItem.ActionItem_Name in Distinct(GC_actionItems,actionItemName).Result)
@@ -1889,7 +1889,7 @@ FindingScreen As screen:
                                         DateDiff(
                                             UserLastNavigatedTime,
                                             Now(),
-                                            Seconds
+                                            TimeUnit.Seconds
                                         ) > SafetyCheckTime,
                                         Set(
                                             safetyPopup,
@@ -1925,7 +1925,7 @@ FindingScreen As screen:
                                     If(ThisItem.ActionItem_Name in Distinct(GC_actionItems,actionItemName).Result,"",ThisItem.ActionItem_Name) 
                                 DisabledBorderColor: =RGBA(0, 0, 0, 1)
                                 DisabledFill: =RGBA(204, 204, 204, 1)
-                                DisplayMode: =If(Radio1.Selected.Value="Default action",DisplayMode.Disabled,Edit)
+                                DisplayMode: =If(Radio1.Selected.Value="Default action",DisplayMode.Disabled,DisplayMode.Edit)
                                 Font: =AllScreensCSS.RFont
                                 HintText: ="Write Action"
                                 HoverBorderColor: =RGBA(0, 0, 0, 1)
@@ -2044,7 +2044,7 @@ FindingScreen As screen:
                                         DateDiff(
                                             UserLastNavigatedTime,
                                             Now(),
-                                            Seconds
+                                            TimeUnit.Seconds
                                         ) > SafetyCheckTime,
                                         Set(
                                             safetyPopup,
@@ -2143,7 +2143,7 @@ FindingScreen As screen:
                                         DateDiff(
                                             UserLastNavigatedTime,
                                             Now(),
-                                            Seconds
+                                            TimeUnit.Seconds
                                         ) > SafetyCheckTime,
                                         Set(
                                             safetyPopup,
@@ -2189,7 +2189,7 @@ FindingScreen As screen:
                                         DateDiff(
                                             UserLastNavigatedTime,
                                             Now(),
-                                            Seconds
+                                            TimeUnit.Seconds
                                         ) > SafetyCheckTime,
                                         Set(
                                             safetyPopup,
@@ -2214,7 +2214,7 @@ FindingScreen As screen:
                                         DateDiff(
                                             UserLastNavigatedTime,
                                             Now(),
-                                            Seconds
+                                            TimeUnit.Seconds
                                         ) > SafetyCheckTime,
                                         Set(
                                             safetyPopup,
@@ -2259,7 +2259,7 @@ FindingScreen As screen:
                                         DateDiff(
                                             UserLastNavigatedTime,
                                             Now(),
-                                            Seconds
+                                            TimeUnit.Seconds
                                         ) > SafetyCheckTime,
                                         Set(
                                             safetyPopup,
@@ -2306,7 +2306,7 @@ FindingScreen As screen:
                                             DateDiff(
                                                 UserLastNavigatedTime,
                                                 Now(),
-                                                Seconds
+                                                TimeUnit.Seconds
                                             ) > SafetyCheckTime,
                                             Set(
                                                 safetyPopup,
@@ -2353,7 +2353,7 @@ FindingScreen As screen:
                                             DateDiff(
                                                 UserLastNavigatedTime,
                                                 Now(),
-                                                Seconds
+                                                TimeUnit.Seconds
                                             ) > SafetyCheckTime,
                                             Set(
                                                 safetyPopup,
@@ -2395,7 +2395,7 @@ FindingScreen As screen:
                                         DateDiff(
                                             UserLastNavigatedTime,
                                             Now(),
-                                            Seconds
+                                            TimeUnit.Seconds
                                         ) > SafetyCheckTime,
                                         Set(
                                             safetyPopup,
@@ -2513,7 +2513,7 @@ FindingScreen As screen:
                                         DateDiff(
                                             UserLastNavigatedTime,
                                             Now(),
-                                            Seconds
+                                            TimeUnit.Seconds
                                         ) > SafetyCheckTime,
                                         Set(
                                             safetyPopup,
@@ -2598,7 +2598,7 @@ FindingScreen As screen:
                                     DateDiff(
                                         UserLastNavigatedTime,
                                         Now(),
-                                        Seconds
+                                        TimeUnit.Seconds
                                     ) > SafetyCheckTime,
                                     Set(
                                         safetyPopup,

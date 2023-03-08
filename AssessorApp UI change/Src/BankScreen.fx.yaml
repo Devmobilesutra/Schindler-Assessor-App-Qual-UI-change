@@ -359,7 +359,7 @@ BankScreen As screen:
                                     assignmentId.Id = glryProject.Selected.Id
                                 ),
                                 bankUnitId.unitNumber,
-                                Ascending
+                                SortOrder.Ascending
                             ),
                             If(
                                 inpro = true || upcomp = true,
@@ -369,7 +369,7 @@ BankScreen As screen:
                                         assignmentId.Id = glryProject.Selected.Id
                                     ),
                                     bankUnitId.unitNumber,
-                                    Ascending
+                                    SortOrder.Ascending
                                 )
                             )
                         )

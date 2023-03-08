@@ -399,7 +399,7 @@ Screen1 As screen:
                     Default: |-
                         =//check summary is available for assignment if available then display summary
                         If(IsBlank(First(localBanktripReport).Summary)," ",First(localBanktripReport).Summary)
-                    DisplayMode: =If(comp=true,DisplayMode.View,Edit)
+                    DisplayMode: =If(comp=true,DisplayMode.View,DisplayMode.Edit)
                     FillPortions: =1
                     HintText: ="Enter here"
                     HoverBorderColor: =RGBA(179, 179, 179, 1)
@@ -426,7 +426,7 @@ Screen1 As screen:
                     Default: |-
                         =//check background is available for assignment if available then display background
                         If(IsBlank(First(localBanktripReport).Background)," ",First(localBanktripReport).Background)
-                    DisplayMode: =If(comp=true,DisplayMode.View,Edit)
+                    DisplayMode: =If(comp=true,DisplayMode.View,DisplayMode.Edit)
                     FillPortions: =1
                     HintText: ="Enter here"
                     HoverBorderColor: =RGBA(179, 179, 179, 1)

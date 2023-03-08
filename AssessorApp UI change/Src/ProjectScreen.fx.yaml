@@ -424,7 +424,7 @@ ProjectScreen As screen:
                                 assessorId = varLoggedAssessor && isCompleted = "Completed"
                             ),
                             startDate,
-                            Ascending
+                            SortOrder.Ascending
                         ),
                         If(
                             inpro = true,
@@ -434,7 +434,7 @@ ProjectScreen As screen:
                                     assessorId = varLoggedAssessor && isCompleted = "Inprogress"
                                 ),
                                 startDate,
-                                Ascending
+                                SortOrder.Ascending
                             ),
                             If(
                                 upcomp = true,
@@ -444,7 +444,7 @@ ProjectScreen As screen:
                                         assessorId = varLoggedAssessor && isCompleted = "Upcomming" || isCompleted = "Inprogress1"
                                     ),
                                     startDate,
-                                    Ascending
+                                    SortOrder.Ascending
                                 )
                             )
                         )
