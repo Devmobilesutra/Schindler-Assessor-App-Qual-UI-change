@@ -1934,6 +1934,7 @@ AssessmentScreen As screen:
                                                 assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && CIstatusUpdate = 1
                                             )
                                         ) > 0,
+                                        Set(Varpatchlabel,"Wait till CheckpointItems are submitting..");
                                 // inside checkpoint item assessment collection => rows contain status 1 => patch that rows to dataverse
                                         Patch(
                                             checkpointItemAssessment,
@@ -2033,10 +2034,7 @@ AssessmentScreen As screen:
                                                 (assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && CIAstatusUpdate = 1) || (bankUnitId.Id = varBankUnitId && Action_status = "Close" && CIAstatusUpdate = 1)
                                             )
                                         ) > 0,
-                                        Set(
-                                VarPopupText,
-                                "Wait till actionItems and images are patching ..."
-                            );
+                                       Set(Varpatchlabel,"Wait till ActionItems and Images are submitting..");
                             // inside checkpoint Action item collection => rows contain status 1 => patch that rows to dataverse
                                         Patch(
                                             checkpointItem_ActionItem,
@@ -2510,7 +2508,7 @@ AssessmentScreen As screen:
         Height: =Parent.Height
         Image: ='ajax-loader 2'
         ImagePosition: =ImagePosition.Center
-        Visible: =varSpinner
+        Visible: =true//varSpinner
         Width: =Parent.Width
         X: =(Parent.Width-Self.Width)/2
         Y: =(Parent.Height-Self.Height)/2
@@ -2717,6 +2715,14 @@ AssessmentScreen As screen:
             X: =Rectangle6_1.X
             Y: =Rectangle6_1.Y
             ZIndex: =15
+
+    Label2 As label:
+        Fill: =RGBA(255, 255, 255, 1)
+        Text: ="test text"
+        Width: =450
+        X: =(Parent.Width-Self.Width)/2
+        Y: =(Parent.Height-Self.Height)/1.6
+        ZIndex: =22
 
     grPatchSuccessAS As group:
         Height: =5
