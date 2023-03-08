@@ -2034,7 +2034,7 @@ AssessmentScreen As screen:
                                                 (assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && CIAstatusUpdate = 1) || (bankUnitId.Id = varBankUnitId && Action_status = "Close" && CIAstatusUpdate = 1)
                                             )
                                         ) > 0,
-                                       Set(Varpatchlabel,"Wait till ActionItems and Images are submitting..");
+                                       Set(Varpatchlabel,"Wait till ActionItems or Images are submitting..");
                             // inside checkpoint Action item collection => rows contain status 1 => patch that rows to dataverse
                                         Patch(
                                             checkpointItem_ActionItem,
@@ -2155,6 +2155,7 @@ AssessmentScreen As screen:
                                 );
                                 //net connected if loop
                             );
+                            Set(Varpatchlabel," ");
                             Set(
                                 popupsuccess,
                                 true
@@ -2504,11 +2505,13 @@ AssessmentScreen As screen:
         ZIndex: =2
 
     Image13 As image:
-        Fill: =RGBA(0, 0, 0, 0.29)
+        Fill: |-
+            =//RGBA(0, 0, 0, 0.29)
+            RGBA(0, 0, 0, 0.15)
         Height: =Parent.Height
         Image: ='ajax-loader 2'
         ImagePosition: =ImagePosition.Center
-        Visible: =true//varSpinner
+        Visible: =varSpinner
         Width: =Parent.Width
         X: =(Parent.Width-Self.Width)/2
         Y: =(Parent.Height-Self.Height)/2
@@ -2717,10 +2720,11 @@ AssessmentScreen As screen:
             ZIndex: =15
 
     Label2 As label:
-        Fill: =RGBA(255, 255, 255, 1)
-        Text: ="test text"
+        Color: =AllScreensCSS.RActiveColor
+        Text: =Varpatchlabel
+        Visible: =varSpinner
         Width: =450
-        X: =(Parent.Width-Self.Width)/2
+        X: =(Parent.Width-Self.Width)/1.9
         Y: =(Parent.Height-Self.Height)/1.6
         ZIndex: =22
 
