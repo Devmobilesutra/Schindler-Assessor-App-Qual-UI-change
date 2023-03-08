@@ -2829,6 +2829,7 @@ AssessmentScreen As screen:
             Visible: =varSpinner
             Width: =700
             X: =(Parent.Width-Self.Width)/1.6
-            Y: =(Parent.Height-Self.Height)/1.6
+            Y: |
+                =(Parent.Height-Self.Height)/1.6
             ZIndex: =22
 
