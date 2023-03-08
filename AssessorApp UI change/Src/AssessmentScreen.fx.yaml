@@ -2870,14 +2870,13 @@ AssessmentScreen As screen:
             Color: =RGBA(14, 161, 26, 1)
             Font: =AllScreensCSS.RFont
             FontWeight: =FontWeight.Bold
-            Height: =0
             PaddingBottom: =0
             Size: =18
-            Text: ="Success"
-            Visible: =//varSpinner
+            Text: ="Info"
+            Visible: =varSpinner
             Width: =350
             X: =(Parent.Width-Self.Width)/2
-            Y: =imgloaderBS_1.Y+imgloaderBS_1.Height
+            Y: =imgloaderBS_1.Y+imgloaderBS_1.Height+20
             ZIndex: =26
 
         lblsyncSuccessBS_1 As label:
