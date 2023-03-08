@@ -2504,19 +2504,6 @@ AssessmentScreen As screen:
         Visible: =false
         ZIndex: =2
 
-    Image13 As image:
-        Fill: |-
-            =//RGBA(0, 0, 0, 0.29)
-            RGBA(0, 0, 0, 0.15)
-        Height: =Parent.Height
-        Image: ='ajax-loader 2'
-        ImagePosition: =ImagePosition.Center
-        Visible: =varSpinner
-        Width: =Parent.Width
-        X: =(Parent.Width-Self.Width)/2
-        Y: =(Parent.Height-Self.Height)/2
-        ZIndex: =8
-
     grSafetyHeaderAS As group:
         Height: =5
         Width: =5
@@ -2719,15 +2706,6 @@ AssessmentScreen As screen:
             Y: =Rectangle6_1.Y
             ZIndex: =15
 
-    Label2 As label:
-        Color: =AllScreensCSS.RActiveColor
-        Text: =Varpatchlabel
-        Visible: =varSpinner
-        Width: =450
-        X: =(Parent.Width-Self.Width)/1.9
-        Y: =(Parent.Height-Self.Height)/1.6
-        ZIndex: =22
-
     grPatchSuccessAS As group:
         Height: =5
         Width: =5
@@ -2817,4 +2795,34 @@ AssessmentScreen As screen:
             X: =(Parent.Width-Self.Width)/2
             Y: =Label2_16.Y+ Self.Height+15
             ZIndex: =21
+
+    imgwaitcursor As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =23
+
+        Image13 As image:
+            Fill: |-
+                =//RGBA(0, 0, 0, 0.29)
+                RGBA(0, 0, 0, 0.15)
+            Height: =Parent.Height
+            Image: ='ajax-loader 2'
+            ImagePosition: =ImagePosition.Center
+            Visible: =true//varSpinner
+            Width: =Parent.Width
+            X: =(Parent.Width-Self.Width)/2
+            Y: =(Parent.Height-Self.Height)/2
+            ZIndex: =8
+
+        Label2 As label:
+            Color: =AllScreensCSS.RActiveColor
+            FontWeight: =FontWeight.Bold
+            Text: ="my name is master gogo .."//Varpatchlabel
+            Visible: =true//varSpinner
+            Width: =450
+            X: =(Parent.Width-Self.Width)/1.6
+            Y: =(Parent.Height-Self.Height)/1.6
+            ZIndex: =22
 

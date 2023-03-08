@@ -14943,6 +14943,36 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "App.varSpinner"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "App.varSpinner",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "varSpinner",
+                "module": "App",
+                "type": "App"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-UnusedVariables",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "App.VarExportPDF"
                 }
               ],
@@ -15224,6 +15254,36 @@
               },
               "properties": {
                 "member": "Count",
+                "module": "App",
+                "type": "App"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-UnusedVariables",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "App.Varpatchlabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "App.Varpatchlabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "Varpatchlabel",
                 "module": "App",
                 "type": "App"
               }
