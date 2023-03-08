@@ -1430,7 +1430,7 @@ AssessmentScreen As screen:
                                 true
                             );
                             
-                            Set(Varpatchlabel,"Uploading findings for " & LookUp(GC_templateCheckpoints,checkpointId=ChId,checkpointName) &" Please do not exit the app till upload is complete.");
+                            Set(Varpatchlabel,"Uploading findings for " & LookUp(GC_templateCheckpoints,checkpointId=ChId,checkpointName) &" . Please do not exit the app till upload is complete.");
                             
                                 //for changing (tabs) depending on  assessment status upcomming to inprogress for first time
                                 //if collection contain assessment status upcomming or inprogress1 then we set variable to navigate dashboard screen 
@@ -2037,7 +2037,7 @@ AssessmentScreen As screen:
                                                 (assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && CIAstatusUpdate = 1) || (bankUnitId.Id = varBankUnitId && Action_status = "Close" && CIAstatusUpdate = 1)
                                             )
                                         ) > 0,
-                                       Set(Varpatchlabel,"Uploading Actions and Images. Please do not exit the app till upload is complete.");
+                                       Set(Varpatchlabel,"Uploading Actions, Images and getting acknowledgement from cloud.");
                             // inside checkpoint Action item collection => rows contain status 1 => patch that rows to dataverse
                                         Patch(
                                             checkpointItem_ActionItem,
@@ -2157,7 +2157,7 @@ AssessmentScreen As screen:
                                         );
                                     );
                                     );
-                                    Set(Varpatchlabel,"Waiting for acknwoledgement from cloud.");
+                                    
                                 );
                                 //net connected if loop
                             );
