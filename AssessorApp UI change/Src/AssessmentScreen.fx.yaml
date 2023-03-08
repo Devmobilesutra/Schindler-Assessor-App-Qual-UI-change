@@ -1430,7 +1430,7 @@ AssessmentScreen As screen:
                                 true
                             );
                             
-                            Set(Varpatchlabel,"Uploading findings for "" " & LookUp(GC_templateCheckpoints,checkpointId=ChId,checkpointName) &" "" Please do not exit the app till upload is complete.");
+                            Set(Varpatchlabel,"Uploading findings for " & LookUp(GC_templateCheckpoints,checkpointId=ChId,checkpointName) &" Please do not exit the app till upload is complete.");
                             
                                 //for changing (tabs) depending on  assessment status upcomming to inprogress for first time
                                 //if collection contain assessment status upcomming or inprogress1 then we set variable to navigate dashboard screen 
