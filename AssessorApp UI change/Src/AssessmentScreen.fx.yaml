@@ -2810,7 +2810,7 @@ AssessmentScreen As screen:
             Height: =Parent.Height
             Image: ='ajax-loader 2'
             ImagePosition: =ImagePosition.Center
-            Visible: =true//varSpinner
+            Visible: =varSpinner
             Width: =Parent.Width
             X: =(Parent.Width-Self.Width)/2
             Y: =(Parent.Height-Self.Height)/2
@@ -2820,7 +2820,7 @@ AssessmentScreen As screen:
             Color: =AllScreensCSS.RActiveColor
             FontWeight: =FontWeight.Bold
             Text: =Varpatchlabel
-            Visible: =true//varSpinner
+            Visible: =varSpinner
             Width: =450
             X: =(Parent.Width-Self.Width)/1.6
             Y: =(Parent.Height-Self.Height)/1.6
