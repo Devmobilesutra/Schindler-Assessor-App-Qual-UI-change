@@ -2819,7 +2819,7 @@ AssessmentScreen As screen:
         Label2 As label:
             Color: =AllScreensCSS.RActiveColor
             FontWeight: =FontWeight.Bold
-            Text: ="my name is master gogo .."//Varpatchlabel
+            Text: =Varpatchlabel
             Visible: =true//varSpinner
             Width: =450
             X: =(Parent.Width-Self.Width)/1.6

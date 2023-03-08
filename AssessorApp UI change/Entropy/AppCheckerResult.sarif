@@ -15273,36 +15273,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "App.Varpatchlabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "App.Varpatchlabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "Varpatchlabel",
-                "module": "App",
-                "type": "App"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-UnusedVariables",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "App.._370092_add_plus_create_new_icon"
                 }
               ],
