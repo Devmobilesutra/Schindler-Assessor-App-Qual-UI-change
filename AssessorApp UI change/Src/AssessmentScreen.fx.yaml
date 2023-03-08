@@ -2824,12 +2824,12 @@ AssessmentScreen As screen:
 
         Label2 As label:
             FontWeight: =FontWeight.Semibold
-            Height: =60
+            Height: =90
             Text: =Varpatchlabel
             Visible: =varSpinner
-            Width: =700
-            X: =(Parent.Width-Self.Width)/1.6
+            Width: =500
+            X: =(Parent.Width-Self.Width)/1.5
             Y: |
-                =(Parent.Height-Self.Height)/1.6
+                =(Parent.Height-Self.Height)/1.4
             ZIndex: =22
 
