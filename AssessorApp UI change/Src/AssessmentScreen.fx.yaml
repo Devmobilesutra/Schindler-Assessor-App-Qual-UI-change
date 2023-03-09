@@ -2802,37 +2802,6 @@ AssessmentScreen As screen:
             Y: =Label2_16.Y+ Self.Height+15
             ZIndex: =21
 
-    imgwaitcursor As group:
-        Height: =5
-        Width: =5
-        X: =40
-        Y: =40
-        ZIndex: =23
-
-        Image13 As image:
-            Fill: |-
-                =//RGBA(0, 0, 0, 0.29)
-                RGBA(0, 0, 0, 0.15)
-            Height: =Parent.Height
-            Image: ='ajax-loader 2'
-            ImagePosition: =ImagePosition.Center
-            Visible: =//varSpinner
-            Width: =Parent.Width
-            X: =(Parent.Width-Self.Width)/2
-            Y: =(Parent.Height-Self.Height)/2
-            ZIndex: =8
-
-        Label2 As label:
-            FontWeight: =FontWeight.Semibold
-            Height: =90
-            Text: =Varpatchlabel
-            Visible: =//varSpinner
-            Width: =500
-            X: =(Parent.Width-Self.Width)/1.6
-            Y: |
-                =(Parent.Height-Self.Height)/1.4
-            ZIndex: =22
-
     grPatchSuccessBS_1 As group:
         Height: =5
         Width: =5
