@@ -2872,11 +2872,11 @@ AssessmentScreen As screen:
             FontWeight: =FontWeight.Bold
             PaddingBottom: =0
             Size: =18
-            Text: ="Info"
+            Text: ="Submitting.."
             Visible: =varSpinner
             Width: =350
             X: =(Parent.Width-Self.Width)/2
-            Y: =imgloaderBS_1.Y+imgloaderBS_1.Height+20
+            Y: =imgloaderBS_1.Y+imgloaderBS_1.Height+10
             ZIndex: =26
 
         lblsyncSuccessBS_1 As label:
@@ -2889,6 +2889,6 @@ AssessmentScreen As screen:
             Visible: =varSpinner
             Width: =350
             X: =(Parent.Width-Self.Width)/2
-            Y: =lblSyncSuccessPatchBS_1.Y+lblSyncSuccessPatchBS_1.Height+20
+            Y: =lblSyncSuccessPatchBS_1.Y+lblSyncSuccessPatchBS_1.Height+10
             ZIndex: =27
 
