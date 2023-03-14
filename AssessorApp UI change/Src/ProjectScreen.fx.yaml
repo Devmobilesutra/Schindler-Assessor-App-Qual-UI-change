@@ -404,7 +404,7 @@ ProjectScreen As screen:
 
                     TimerglryProject As timer:
                         AutoStart: =true
-                        Duration: =100
+                        Duration: =50
                         OnTimerEnd: =Set(Q,true)
                         Visible: =false
                         ZIndex: =2
@@ -456,8 +456,8 @@ ProjectScreen As screen:
                 TemplatePadding: =10
                 TemplateSize: =400
                 Visible: |-
-                    =//Q
-                    true
+                    =Q
+                    //true
                 Width: =Parent.Width
                 Y: ='ctnBack&onlinestatusPS'.Height+'ctnBack&onlinestatusPS'.Y
                 ZIndex: =2
