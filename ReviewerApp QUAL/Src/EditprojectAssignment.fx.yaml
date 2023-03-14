@@ -702,7 +702,20 @@ EditprojectAssignment As screen:
                                             )
                                         );
                                 
-                                          
+                                          UpdateIf(BankTripReport,assignmentId.Id=nprojectassignment,
+                                      {
+                                          reviewer_email:LookUp(
+                                                        ReviewerAD,
+                                                        displayName = cboxReviewerEditA.Selected.displayName,
+                                                        mail),
+                                          reviewer_name:cboxReviewerEditA.Selected.displayName ,
+                                          reviewer_id:LookUp(
+                                                        ReviewerAD,
+                                                        displayName = cboxReviewerEditA.Selected.displayName,
+                                                        id)    
+                                      }
+                                          );
+                                
                                      If(!IsBlank(patchresult),
                                      //Notify("Success");
                                        Set(updatePopup,true);

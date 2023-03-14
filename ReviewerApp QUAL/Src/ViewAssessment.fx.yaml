@@ -333,7 +333,7 @@ ViewAssessment As screen:
                                    // Ascending
                                 //),
                                CheckpointItemSortSequence,
-                                Ascending
+                                SortOrder.Ascending
                             //),
                             //section_Id.sectionSequence,
                             //Ascending

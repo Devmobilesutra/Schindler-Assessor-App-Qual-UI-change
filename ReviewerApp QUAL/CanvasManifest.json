@@ -1,7 +1,7 @@
 {
   "FormatVersion": "0.24",
   "Header": {
-    "DocVersion": "1.328",
+    "DocVersion": "1.330",
     "MinVersionToLoad": "1.327",
     "MSAppStructureVersion": "2.0"
   },
@@ -19,7 +19,7 @@
       "blockmovingcontrol": true,
       "cdsdataformatting": false,
       "classiccontrols": false,
-      "consistentreturnschemafortabularfunctions": false,
+      "consistentreturnschemafortabularfunctions": true,
       "copyandmerge": true,
       "datatablev2control": true,
       "dataverseactionsenabled": false,
@@ -31,6 +31,7 @@
       "enableactionenhancedcomponentproperties": false,
       "enableappembeddingux": false,
       "enablebarcodereaderfeature": false,
+      "enablechatbotfeature": false,
       "enablecomponentnamemaps": true,
       "enablecomponentscopeoldbehavior": false,
       "enableeditcacherefreshfrequency": false,
@@ -101,11 +102,11 @@
     "FileID": "d8e123f6-7ca3-417f-b88d-d1ca4ef725ac",
     "Id": "d592be94-de9c-4682-adf8-1286413d3866",
     "InstrumentationKey": "",
-    "Name": "Schindler Reviewer App QUAL",
+    "Name": "Quantum Reviewer App",
     "OriginatingVersion": "1.320"
   },
   "PublishInfo": {
-    "AppName": "Schindler Reviewer App QUAL",
+    "AppName": "Quantum Reviewer App",
     "BackgroundColor": "RGBA(0,176,240,1)",
     "IconColor": "RGBA(255,255,255,1)",
     "IconName": "Edit",

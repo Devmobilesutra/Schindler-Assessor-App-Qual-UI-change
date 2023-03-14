@@ -141,7 +141,7 @@ TripReport As screen:
                             //    Ascending
                             //) 
                              unit,
-                            Ascending
+                            SortOrder.Ascending
                         ));
                     PaddingLeft: =0
                     PressedBorderColor: =Self.BorderColor
@@ -658,9 +658,9 @@ TripReport As screen:
                                         "data"
                                     ),
                                 sort,
-                                Ascending
+                                SortOrder.Ascending
                             ) ,
-                             unit,Ascending
+                             unit,SortOrder.Ascending
                         )
                     Layout: =Layout.Vertical
                     LayoutMinHeight: =287
@@ -692,7 +692,7 @@ TripReport As screen:
                         Height: |-
                             =//(CountRows(Gallery15.AllItems)*Gallery15.TemplateHeight)
                             Parent.Height
-                        Items: =Sort(ThisItem.data,Sort,Ascending)
+                        Items: =Sort(ThisItem.data,Icon.Sort,SortOrder.Ascending)
                         Layout: =Layout.Vertical
                         TemplatePadding: =1
                         TemplateSize: =300
