@@ -1152,7 +1152,7 @@ ViewAssessment As screen:
                     OnSelect: |+
                         =//generate assessment pdf by automate flow 
                         Set(VarExportPDFLable,"Unit " & glryAssignmentBS.Selected.bankUnitId.unitNumber & " Assessment PDF will be sent to your Email Id");
-                        Set(VarExportPDF,ExportUnitPDF.Run(glryProject.Selected.assignments,glryAssignmentBS.Selected.bankUnitId.bankUnits,glryProject.Selected.assessorEmail));
+                        Set(VarExportPDF,ExportUnitPDF.Run(glryProject.Selected.assignments,glryAssignmentBS.Selected.bankUnitId.bankUnits,glryProject.Selected.reviewerEmail));
                         
                     PressedColor: =Self.Color
                     PressedFill: =Self.Fill
