@@ -2802,7 +2802,7 @@ AssessmentScreen As screen:
             Y: =Label2_16.Y+ Self.Height+15
             ZIndex: =21
 
-    grPatchSuccessBS_1 As group:
+    grPatchWaitCursor As group:
         Height: =5
         Width: =5
         X: =40

@@ -7495,7 +7495,7 @@
       "StyleName": "",
       "Type": "ControlInfo"
     },
-    "grPatchSuccessBS_1": {
+    "grPatchWaitCursor": {
       "AllowAccessToGlobals": true,
       "ControlPropertyState": [
         "X",
@@ -7513,23 +7513,13 @@
       "IsLocked": false,
       "LayoutName": "",
       "MetaDataIDKey": "",
-      "Name": "grPatchSuccessBS_1",
+      "Name": "grPatchWaitCursor",
       "ParentIndex": 28,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
           "Category": "Design",
-          "PropertyName": "Height",
-          "RuleProviderType": "Unknown"
-        },
-        {
-          "Category": "Design",
-          "PropertyName": "Width",
-          "RuleProviderType": "Unknown"
-        },
-        {
-          "Category": "Design",
-          "PropertyName": "X",
+          "PropertyName": "ZIndex",
           "RuleProviderType": "Unknown"
         },
         {
@@ -7539,7 +7529,17 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "ZIndex",
+          "PropertyName": "X",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Width",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Height",
           "RuleProviderType": "Unknown"
         }
       ],
