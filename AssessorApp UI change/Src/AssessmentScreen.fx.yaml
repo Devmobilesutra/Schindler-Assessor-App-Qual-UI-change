@@ -2852,12 +2852,13 @@ AssessmentScreen As screen:
             Align: =Align.Center
             Font: =AllScreensCSS.RFont
             FontWeight: =FontWeight.Semibold
-            Height: =100
+            Height: =140
             Size: =15
             Text: =Varpatchlabel
+            VerticalAlign: =VerticalAlign.Top
             Visible: =varSpinner
             Width: =350
             X: =(Parent.Width-Self.Width)/2
-            Y: =lblSyncSuccessPatchBS_1.Y+lblSyncSuccessPatchBS_1.Height
+            Y: =lblSyncSuccessPatchBS_1.Y+lblSyncSuccessPatchBS_1.Height+10
             ZIndex: =27
 
