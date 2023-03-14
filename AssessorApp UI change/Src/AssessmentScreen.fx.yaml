@@ -2037,7 +2037,7 @@ AssessmentScreen As screen:
                                                 (assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && CIAstatusUpdate = 1) || (bankUnitId.Id = varBankUnitId && Action_status = "Close" && CIAstatusUpdate = 1)
                                             )
                                         ) > 0,
-                                       Set(Varpatchlabel,"Uploading CheckpointItemActions, CheckpointItemImages.");
+                                       Set(Varpatchlabel,"Uploading Actions, Images.");
                             // inside checkpoint Action item collection => rows contain status 1 => patch that rows to dataverse
                                         Patch(
                                             checkpointItem_ActionItem,
