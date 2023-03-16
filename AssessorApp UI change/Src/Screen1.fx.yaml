@@ -1488,6 +1488,17 @@ Screen1 As screen:
             Y: =lblotificationTRS_1.Y+ lblotificationTRS_1.Height+10
             ZIndex: =7
 
+    Button2 As button:
+        OnSelect: |+
+            =//Set(VarPDF,"");
+            //Set(VarPDF,PDF(Gallery15_1));
+            Set(varPDF,PDF(Screen1))
+            
+        Text: ="Button"
+        X: =1116
+        Y: =98
+        ZIndex: =21
+
     groupcommentTRS_1 As group:
         Height: =5
         Width: =5
@@ -1616,4 +1627,15 @@ Screen1 As screen:
             X: =iconRectangleCommentTRS_1.X
             Y: =iconRectangleCommentTRS_1.Y
             ZIndex: =20
+
+    PdfViewer3 As pdfViewer:
+        BorderColor: =RGBA(0, 0, 0, 1)
+        Document: =varPDF
+        Fill: =RGBA(0, 0, 0, 0.5)
+        Height: =489
+        ShowControls: =true
+        Width: =357
+        X: =1009
+        Y: =126
+        ZIndex: =22
 

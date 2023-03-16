@@ -68,7 +68,7 @@
       "optimizedforteamsmeeting": false,
       "packagemodernruntime": false,
       "parallelcodegen": false,
-      "pdffunction": false,
+      "pdffunction": true,
       "projectionmapping": true,
       "reactformulabar": false,
       "reliableconcurrent": true,
@@ -127,6 +127,7 @@
     "FindingScreen",
     "TripReportScreen",
     "ViewAssessmentScreen",
-    "Screen1"
+    "Screen1",
+    "Screen2"
   ]
 }
