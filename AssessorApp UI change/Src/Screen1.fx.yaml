@@ -1492,7 +1492,7 @@ Screen1 As screen:
         OnSelect: |
             =Set(VarPDF,"");
             //Set(VarPDF,PDF(Gallery15_1));
-            Set(VarPDF,PDF(Gallery15_1))
+            Set(VarPDF,PDF(Gallery15_1,{ExpandContainers:true}))
         Text: ="Button"
         X: =1116
         Y: =98
