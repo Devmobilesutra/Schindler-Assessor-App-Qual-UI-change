@@ -1489,11 +1489,10 @@ Screen1 As screen:
             ZIndex: =7
 
     Button2 As button:
-        OnSelect: |+
-            =//Set(VarPDF,"");
+        OnSelect: |
+            =Set(VarPDF,"");
             //Set(VarPDF,PDF(Gallery15_1));
-            Set(varPDF,PDF(Screen1))
-            
+            Set(VarPDF,PDF(Gallery15_1))
         Text: ="Button"
         X: =1116
         Y: =98
@@ -1630,12 +1629,12 @@ Screen1 As screen:
 
     PdfViewer3 As pdfViewer:
         BorderColor: =RGBA(0, 0, 0, 1)
-        Document: =varPDF
+        Document: =VarPDF
         Fill: =RGBA(0, 0, 0, 0.5)
         Height: =489
         ShowControls: =true
         Width: =357
-        X: =1009
-        Y: =126
+        X: =879
+        Y: =138
         ZIndex: =22
 
