@@ -1075,7 +1075,23 @@ DashboardScreen As screen:
 
         Button3 As button:
             Fill: =AllScreensCSS.RActiveColor
-            OnSelect: =Set(VarReportIssue,false);
+            OnSelect: |
+                =Set(VarReportGuid,GUID());
+                Patch(
+                    ReportIssueMasters,
+                    Defaults(ReportIssueMasters),
+                    {
+                        Id:VarReportGuid,
+                        ReportedBy: varLoggedAssessor,
+                        ReportDescription: TextInput1.Text
+                    }
+                );
+                
+                
+                Set(
+                    VarReportIssue,
+                    false
+                );
             Text: ="Submit"
             Visible: =VarReportIssue
             X: =(Parent.Width-Self.Width)/2
