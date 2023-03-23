@@ -1086,18 +1086,51 @@ DashboardScreen As screen:
             HoverColor: =Self.Color
             HoverFill: =Self.Fill
             OnSelect: |
-                =Set(VarReportGuid,GUID());
+                =Set(
+                    VarReportGuid,
+                    Text(GUID())
+                );
                 Patch(
                     ReportIssueMasters,
                     Defaults(ReportIssueMasters),
                     {
-                        Id:VarReportGuid,
+                        Id: VarReportGuid,
                         ReportedBy: VarUserEmail,
                         ReportDescription: TextInput1.Text
                     }
                 );
+                Set(qwertg, LookUp(
+                            ReportIssueMasters,
+                            Id = VarReportGuid
+                        ));
+                Patch(
+                    ReportIssueAssessments,
+                    Defaults(ReportIssueAssessments),
+                    {
+                        Id: Text(GUID()),
+                        ReportIssueMasterId: LookUp(
+                            ReportIssueMasters,
+                            Id = VarReportGuid
+                        ),
+                        AssignmentId: LookUp(
+                            assignments,
+                            Id = ""
+                        ),
+                        GoNumber: "234",
+                        UnitNumber: "sdfg",
+                        CheckpointItemName: "asd",
                 
-                
+                        ActionCount: 23,
+                        SavedActionCount: 12,
+                        UnsubmitedActionCount: 1,
+                        SubmitedActionCount: 10,
+                        
+                        ImageCount: 22,
+                        SavedImageCount: 3,
+                        UnsubmitedImageCount: 9,
+                        SubmitedImageCount: 10
+                    }
+                );
                 Set(
                     VarReportIssue,
                     false
