@@ -1108,13 +1108,13 @@ DashboardScreen As screen:
                     Defaults(ReportIssueAssessments),
                     {
                         Id: Text(GUID()),
-                        ReportIssueMasterId: LookUp(
+                        ReportIssueMasterId:LookUp(
                             ReportIssueMasters,
                             Id = VarReportGuid
                         ),
                         AssignmentId: LookUp(
                             assignments,
-                            Id = ""
+                            Id = "01ebfcfa-9327-4d60-9337-f8d2d39a76f7"
                         ),
                         GoNumber: "234",
                         UnitNumber: "sdfg",
