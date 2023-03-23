@@ -2,6 +2,7 @@ DashboardScreen As screen:
     OnVisible: |-
         =
         //Set(LogOutTimer, -1800);
+        Set(VarReportIssue,false);
         Set(varPatchTimer,false);
         UpdateIf(
                 gcProjectAssignment,
@@ -881,6 +882,9 @@ DashboardScreen As screen:
                 AlignInContainer: =AlignInContainer.Start
                 BorderThickness: =0
                 Fill: =AllScreensCSS.RActiveColor
+                OnSelect: |-
+                    =
+                    Set(VarReportIssue,true);
                 Text: ="Report Issue"
                 ZIndex: =1
 
@@ -1011,12 +1015,14 @@ DashboardScreen As screen:
         Rectangle1 As rectangle:
             Fill: =RGBA(0, 0, 0, 0.29)
             Height: =Parent.Height
+            Visible: =VarReportIssue
             Width: =Parent.Width
             ZIndex: =15
 
         Rectangle2 As rectangle:
             Fill: =RGBA(255, 255, 255, 1)
             Height: =405
+            Visible: =VarReportIssue
             Width: =700
             X: =(Parent.Width -Self.Width)/2
             Y: =(Parent.Height - Self.Height)/2
@@ -1025,6 +1031,7 @@ DashboardScreen As screen:
         Container2 As groupContainer.horizontalAutoLayoutContainer:
             Height: =50
             LayoutMode: =LayoutMode.Auto
+            Visible: =VarReportIssue
             Width: =Rectangle2.Width
             X: =Rectangle2.X
             Y: =Rectangle2.Y+10
@@ -1049,6 +1056,7 @@ DashboardScreen As screen:
             Default: =""
             Height: =250
             HintText: ="Enter.."
+            Visible: =VarReportIssue
             Width: =656
             X: =Rectangle2.X+20
             Y: =Container2.Y+Container2.Height +10
@@ -1059,6 +1067,7 @@ DashboardScreen As screen:
             Fill: =RGBA(179, 179, 179, 1)
             Height: =2
             Icon: =Icon.HorizontalLine
+            Visible: =VarReportIssue
             Width: =TextInput1.Width
             X: =TextInput1.X
             Y: =TextInput1.Y +TextInput1.Height+10
@@ -1066,7 +1075,9 @@ DashboardScreen As screen:
 
         Button3 As button:
             Fill: =AllScreensCSS.RActiveColor
+            OnSelect: =Set(VarReportIssue,false);
             Text: ="Submit"
+            Visible: =VarReportIssue
             X: =(Parent.Width-Self.Width)/2
             Y: =Icon2.Y+20
             ZIndex: =20
