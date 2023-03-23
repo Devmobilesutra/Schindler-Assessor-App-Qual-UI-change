@@ -1103,6 +1103,7 @@ DashboardScreen As screen:
                             ReportIssueMasters,
                             Id = VarReportGuid
                         ));
+                        Refresh(ReportIssueMasters);
                 Patch(
                     ReportIssueAssessments,
                     Defaults(ReportIssueAssessments),

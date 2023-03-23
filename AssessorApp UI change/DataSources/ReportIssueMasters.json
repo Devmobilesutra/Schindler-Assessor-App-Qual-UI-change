@@ -6,7 +6,6 @@
     "IsSampleData": false,
     "IsWritable": true,
     "LogicalName": "shlaf_reportissuemaster",
-    "MaxGetRowsCount": 2000,
     "Name": "ReportIssueMasters",
     "NativeCDSDataSourceInfoNameMapping": {
       "_ownerid_value": "Owner",
