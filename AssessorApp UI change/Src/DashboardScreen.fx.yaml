@@ -1083,6 +1083,7 @@ DashboardScreen As screen:
             Fill: =AllScreensCSS.RActiveColor
             FocusedBorderColor: =//Self.BorderColor
             FocusedBorderThickness: =0
+            HoverColor: =Self.Color
             HoverFill: =Self.Fill
             OnSelect: |
                 =Set(VarReportGuid,GUID());
