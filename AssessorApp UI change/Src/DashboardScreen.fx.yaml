@@ -882,6 +882,7 @@ DashboardScreen As screen:
                 AlignInContainer: =AlignInContainer.Start
                 BorderThickness: =0
                 Fill: =AllScreensCSS.RActiveColor
+                FocusedBorderThickness: =//4
                 HoverFill: =//ColorFade(RGBA(56, 96, 178, 1), -20%)
                 OnSelect: |-
                     =
