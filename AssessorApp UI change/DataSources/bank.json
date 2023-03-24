@@ -20,6 +20,7 @@
     "IsSampleData": false,
     "IsWritable": true,
     "LogicalName": "quantum_bank",
+    "MaxGetRowsCount": 2000,
     "Name": "bank",
     "NativeCDSDataSourceInfoNameMapping": {
       "_ownerid_value": "Owner",
