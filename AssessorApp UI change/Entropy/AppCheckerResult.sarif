@@ -15483,36 +15483,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "App.testt"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "App.testt",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "testt",
-                "module": "App",
-                "type": "App"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-UnusedVariables",
-          "ruleIndex": 5
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "App.popup1"
                 }
               ],

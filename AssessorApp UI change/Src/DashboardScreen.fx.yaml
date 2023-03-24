@@ -1096,6 +1096,7 @@ DashboardScreen As screen:
                     VarReportGuid,
                     Text(GUID())
                 );
+                
                 Patch(
                     ReportIssueMasters,
                     Defaults(ReportIssueMasters),
@@ -1106,21 +1107,16 @@ DashboardScreen As screen:
                         Sender:"Assessor"
                     }
                 );
-                Set(
-                    testt,
-                    LookUp(
-                        ReportIssueMasters,
-                        Id = VarReportGuid
-                    )
-                );
                 
                 Refresh(ReportIssueMasters);
                 
+                Clear(tempReportIssueAssessment);
+                
                 ForAll(
                     GC_checkpointItemAssessment As i,
-                    Patch(
-                        ReportIssueAssessments,
-                        Defaults(ReportIssueAssessments),
+                    Collect(
+                        tempReportIssueAssessment,
+                        //Defaults(tempReportIssueAssessment),
                         {
                             Id: Text(GUID()),
                             ReportIssueMasterId: LookUp(
