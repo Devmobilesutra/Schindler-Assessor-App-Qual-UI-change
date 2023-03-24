@@ -886,12 +886,13 @@ DashboardScreen As screen:
                 HoverBorderColor: =Self.Fill
                 HoverColor: =Self.Color
                 HoverFill: =//ColorFade(Self.Fill, -20%)
-                OnSelect: |-
+                OnSelect: |
                     =
                     Set(VarReportIssue,true);
                 PressedColor: =Self.Color
                 PressedFill: =Self.Fill
-                Text: ="Report Issue"
+                Text: =CountRows(tempReportIssueAssessment) & "  " & CountRows(GC_checkpointItemAssessment)  & " Report Issue" 
+                Width: =260
                 ZIndex: =1
 
             imgGraphicDS As image:
@@ -1117,13 +1118,22 @@ DashboardScreen As screen:
                         Text('ReportIssueAssessment (shlaf_reportissueassessmentid)') = "0d0c02db-1aca-ed11-b597-000d3a5655ba"
                     )
                 );
+                
+                Set(
+                    Vartemp,
+                    LookUp(
+                        ReportIssueMasters,
+                        Id = VarReportGuid
+                    )
+                );
+                Clear(tempReportIssueAssessment);
                 ForAll(
                     GC_checkpointItemAssessment As i,
                     Collect(
                         tempReportIssueAssessment,
                         {
                             Id: Text(GUID()),
-                            ReportIssueMasterId: LookUp(
+                            ReportIssueMaster: LookUp(
                                 ReportIssueMasters,
                                 Id = VarReportGuid
                             ),
@@ -1190,9 +1200,8 @@ DashboardScreen As screen:
                     ReportIssueAssessments,
                     ShowColumns(
                         tempReportIssueAssessment,
-                        "shlaf_reportissueassessmentid",
                         "shlaf_id",
-                        "shlaf_ReportIssueMasterId",
+                        "shlaf_ReportIssueMaster",
                         "shlaf_gonumber",
                         "shlaf_AssignmentId",
                         "shlaf_unitnumber",
