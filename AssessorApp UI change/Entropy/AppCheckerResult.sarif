@@ -94,6 +94,86 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "DashboardScreen.Button3.OnSelect"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "DashboardScreen.Button3.OnSelect",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 61,
+                  "charOffset": 374,
+                  "snippet": {
+                    "text": "Text('ReportIssueAssessment (shlaf_reportissueassessmentid)')"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnSelect",
+                "module": "DashboardScreen",
+                "type": "DashboardScreen.Button3"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "LookUp"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-SuggestRemoteExecutionHint",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "DashboardScreen.Button3.OnSelect"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "DashboardScreen.Button3.OnSelect",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 1,
+                  "charOffset": 435,
+                  "snippet": {
+                    "text": "="
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnSelect",
+                "module": "DashboardScreen",
+                "type": "DashboardScreen.Button3"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "LookUp"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-SuggestRemoteExecutionHint",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "CompHeader.HeaderContainer_1.SchindlerLogo.AccessibleLabel"
                 }
               ],

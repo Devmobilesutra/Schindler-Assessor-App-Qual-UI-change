@@ -1054,7 +1054,9 @@ DashboardScreen As screen:
                 Color: =RGBA(153, 153, 153, 1)
                 Height: =35
                 Icon: =Icon.Cancel
-                OnSelect: =Set(VarReportIssue,false);
+                OnSelect: |-
+                    =Set(VarReportIssue,false);
+                    Reset(TextInput1);
                 Width: =30
                 ZIndex: =2
 
@@ -1110,13 +1112,12 @@ DashboardScreen As screen:
                 
                 Refresh(ReportIssueMasters);
                 
-                Clear(tempReportIssueAssessment);
-                
+                ClearCollect(tempReportIssueAssessment,LookUp(ReportIssueAssessments,Text('ReportIssueAssessment (shlaf_reportissueassessmentid)')="7db608e1-1aca-ed11-b597-000d3a5655ba"));
+                /*
                 ForAll(
                     GC_checkpointItemAssessment As i,
                     Collect(
                         tempReportIssueAssessment,
-                        //Defaults(tempReportIssueAssessment),
                         {
                             Id: Text(GUID()),
                             ReportIssueMasterId: LookUp(
@@ -1183,10 +1184,27 @@ DashboardScreen As screen:
                     
                 );
                 
+                 Patch(
+                                ReportIssueMasters,
+                                ShowColumns(
+                                    DropColumns(
+                                        Filter(
+                                            GcSectionAssessment,
+                                            assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && SstatusUpdate = 1
+                                        ),
+                                        "SstatusUpdate"
+                                    )
+                                    tempReportIssueAssessment
+                               
+                            );
+                
+                       */     
+                
                 Set(
                     VarReportIssue,
                     false
                 );
+                Reset(TextInput1);
                 
                 /*Patch(
                         ReportIssueAssessments,
