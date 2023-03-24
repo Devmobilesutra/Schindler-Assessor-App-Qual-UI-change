@@ -1,0 +1,238 @@
+Screen2 As screen:
+
+    DataTable1 As dataTable.datatable:
+        BorderStyle: =BorderStyle.Solid
+        DisplayMode: =DisplayMode.Edit
+        Fill: =RGBA(0, 0, 0, 0)
+        Height: =768
+        Items: =Sort(ReportIssueAssessments,'Modified On',SortOrder.Ascending)
+        Width: =1326
+        X: =40
+        Y: =0
+        ZIndex: =1
+
+        shlaf_actioncount_Column1 As dataTableColumn.textualColumn:
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="shlaf_actioncount"
+            FieldName: ="shlaf_actioncount"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =1
+            Text: =ThisItem.shlaf_actioncount
+            Width: =100
+            X: =0
+            Y: =0
+            ZIndex: =1
+
+        shlaf_AssignmentId_Column1 As dataTableColumn.textualColumn:
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="shlaf_AssignmentId"
+            FieldName: ="shlaf_AssignmentId"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =2
+            Text: =ThisItem.shlaf_AssignmentId
+            Width: =100
+            X: =0
+            Y: =0
+            ZIndex: =2
+
+        shlaf_checkpointitemname_Column1 As dataTableColumn.textualColumn:
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="shlaf_checkpointitemname"
+            FieldName: ="shlaf_checkpointitemname"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =3
+            Text: =ThisItem.shlaf_checkpointitemname
+            Width: =100
+            X: =0
+            Y: =0
+            ZIndex: =3
+
+        shlaf_gonumber_Column1 As dataTableColumn.textualColumn:
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="shlaf_gonumber"
+            FieldName: ="shlaf_gonumber"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =4
+            Text: =ThisItem.shlaf_gonumber
+            Width: =100
+            X: =0
+            Y: =0
+            ZIndex: =4
+
+        shlaf_id_Column2 As dataTableColumn.textualColumn:
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="shlaf_id"
+            FieldName: ="shlaf_id"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =5
+            Text: =ThisItem.shlaf_id
+            Width: =100
+            X: =0
+            Y: =0
+            ZIndex: =5
+
+        shlaf_imagecount_Column1 As dataTableColumn.textualColumn:
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="shlaf_imagecount"
+            FieldName: ="shlaf_imagecount"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =6
+            Text: =ThisItem.shlaf_imagecount
+            Width: =100
+            X: =0
+            Y: =0
+            ZIndex: =6
+
+        shlaf_reportissueassessment_Column1 As dataTableColumn.textualColumn:
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="shlaf_reportissueassessment"
+            FieldName: ="shlaf_reportissueassessment"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =7
+            Text: =ThisItem.shlaf_reportissueassessment
+            Width: =100
+            X: =838
+            Y: =0
+            ZIndex: =7
+
+        shlaf_reportissueassessmentid_Column1 As dataTableColumn.textualColumn:
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="shlaf_reportissueassessmentid"
+            FieldName: ="shlaf_reportissueassessmentid"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =8
+            Text: =ThisItem.shlaf_reportissueassessmentid
+            Width: =100
+            X: =0
+            Y: =0
+            ZIndex: =8
+
+        shlaf_ReportIssueMaster_Column1 As dataTableColumn.textualColumn:
+            AutoWidth: =false
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="shlaf_ReportIssueMaster"
+            FieldName: ="shlaf_ReportIssueMaster"
+            FieldVariantName: ="textualColumn"
+            Height: =768
+            LayoutHeight: =Parent.Height
+            Order: =9
+            Text: =ThisItem.shlaf_ReportIssueMaster
+            Width: =264
+            X: =933
+            Y: =0
+            ZIndex: =9
+
+        shlaf_savedactioncount_Column1 As dataTableColumn.textualColumn:
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="shlaf_savedactioncount"
+            FieldName: ="shlaf_savedactioncount"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =10
+            Text: =ThisItem.ReportIssueMaster.ReportDescription
+            Width: =100
+            X: =0
+            Y: =0
+            ZIndex: =10
+
+        shlaf_savedimagecount_Column1 As dataTableColumn.textualColumn:
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="shlaf_savedimagecount"
+            FieldName: ="shlaf_savedimagecount"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =11
+            Text: =ThisItem.shlaf_savedimagecount
+            Width: =100
+            X: =0
+            Y: =0
+            ZIndex: =11
+
+        shlaf_submitedactioncount_Column1 As dataTableColumn.textualColumn:
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="shlaf_submitedactioncount"
+            FieldName: ="shlaf_submitedactioncount"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =12
+            Text: =ThisItem.shlaf_submitedactioncount
+            Width: =100
+            X: =0
+            Y: =0
+            ZIndex: =12
+
+        shlaf_submitedimagecount_Column1 As dataTableColumn.textualColumn:
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="shlaf_submitedimagecount"
+            FieldName: ="shlaf_submitedimagecount"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =13
+            Text: =ThisItem.shlaf_submitedimagecount
+            Width: =100
+            X: =0
+            Y: =0
+            ZIndex: =13
+
+        shlaf_unitnumber_Column1 As dataTableColumn.textualColumn:
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="shlaf_unitnumber"
+            FieldName: ="shlaf_unitnumber"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =14
+            Text: =ThisItem.shlaf_unitnumber
+            Width: =100
+            X: =0
+            Y: =0
+            ZIndex: =14
+
+        shlaf_unsubmitedactioncount_Column1 As dataTableColumn.textualColumn:
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="shlaf_unsubmitedactioncount"
+            FieldName: ="shlaf_unsubmitedactioncount"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =15
+            Text: =ThisItem.shlaf_unsubmitedactioncount
+            Width: =100
+            X: =0
+            Y: =0
+            ZIndex: =15
+
+        shlaf_unsubmitedimagecount_Column1 As dataTableColumn.textualColumn:
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="shlaf_unsubmitedimagecount"
+            FieldName: ="shlaf_unsubmitedimagecount"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =16
+            Text: =ThisItem.shlaf_unsubmitedimagecount
+            Width: =100
+            X: =0
+            Y: =0
+            ZIndex: =16
+

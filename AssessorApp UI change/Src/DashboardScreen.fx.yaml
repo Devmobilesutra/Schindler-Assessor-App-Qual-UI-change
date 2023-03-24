@@ -891,7 +891,7 @@ DashboardScreen As screen:
                     Set(VarReportIssue,true);
                 PressedColor: =Self.Color
                 PressedFill: =Self.Fill
-                Text: =CountRows(tempReportIssueAssessment) & "  " & CountRows(GC_checkpointItemAssessment)  & " Report Issue" 
+                Text: =CountRows(tempReportIssueAssessment) & CountRows(GC_checkpointItemAssessment)  & " Report Issue" 
                 Width: =260
                 ZIndex: =1
 
@@ -1110,7 +1110,9 @@ DashboardScreen As screen:
                         Sender: "Assessor"
                     }
                 );
+                
                 Refresh(ReportIssueMasters);
+                
                 ClearCollect(
                     tempReportIssueAssessment,
                     LookUp(
@@ -1119,11 +1121,13 @@ DashboardScreen As screen:
                     )
                 );
                 
+                ClearCollect(tempdATA12,ReportIssueMasters);
+                
                 Set(
                     Vartemp,
                     LookUp(
                         ReportIssueMasters,
-                        Id = VarReportGuid
+                        Id = "55162567-8c36-40a1-a05b-6ebe58ec9bb3"
                     )
                 );
                 Clear(tempReportIssueAssessment);
@@ -1141,6 +1145,7 @@ DashboardScreen As screen:
                                 assignments,
                                 Id = i.assignmentId.Id
                             ),
+                            
                             GoNumber: i.bankUnitId.unitNumber,
                             UnitNumber: i.bankUnitId.unitNumber,
                             CheckpointItemName: i.checkpointItemName,
@@ -1191,7 +1196,7 @@ DashboardScreen As screen:
                                     GC_checkpointItem_Images,
                                     checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = i.'checkpointItemAssessment (quantum_checkpointitemassessment)' && CIIstatusUpdate = 2
                                 )
-                            )
+                            ),master
                         }
                     );
                     
