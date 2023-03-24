@@ -253,23 +253,41 @@ DashboardScreen As screen:
                     ZIndex: =4
 
         ctnImageDashboardScreen As groupContainer.verticalAutoLayoutContainer:
-            AlignInContainer: =AlignInContainer.SetByContainer
+            AlignInContainer: =AlignInContainer.Center
             FillPortions: =0
             Height: =If(App.Height<900, Parent.Height ,Parent.Height/3)
-            LayoutAlignItems: =LayoutAlignItems.End
+            LayoutAlignItems: =LayoutAlignItems.Center
             LayoutDirection: =LayoutDirection.Vertical
             LayoutMinHeight: =100
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
             LayoutWrap: =true
-            Width: =Parent.Width
+            Width: =Parent.Width-40
+            X: =
             ZIndex: =5
+
+            Button11_5 As button:
+                AlignInContainer: =AlignInContainer.End
+                BorderThickness: =0
+                DisabledFill: =RGBA(237, 237, 237, 1)
+                DisplayMode: =If(VarReviewerResult=true,DisplayMode.Disabled,DisplayMode.Edit)
+                Fill: =referenceCSS.RActiveColor
+                FocusedBorderThickness: =
+                HoverFill: =//ColorFade(RGBA(56, 96, 178, 1), -20%)
+                OnSelect: =
+                PressedColor: =Self.Color
+                PressedFill: =Self.Fill
+                Text: ="Report Issue"
+                Visible: |-
+                    =varComment
+                    //varcomments
+                ZIndex: =1
 
             imgDashboardScreen As image:
                 Height: =Parent.Height
                 Image: =graphic
                 Width: =Parent.Width-500
-                ZIndex: =1
+                ZIndex: =2
 
         ctnLogoDashboardScreen As groupContainer.verticalAutoLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
