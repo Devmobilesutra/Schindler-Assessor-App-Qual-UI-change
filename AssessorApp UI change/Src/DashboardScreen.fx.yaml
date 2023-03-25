@@ -1196,7 +1196,7 @@ DashboardScreen As screen:
                                     GC_checkpointItem_Images,
                                     checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = i.'checkpointItemAssessment (quantum_checkpointitemassessment)' && CIIstatusUpdate = 2
                                 )
-                            ),master
+                            )
                         }
                     );
                     
