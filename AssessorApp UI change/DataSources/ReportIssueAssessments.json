@@ -6,6 +6,7 @@
     "IsSampleData": false,
     "IsWritable": true,
     "LogicalName": "shlaf_reportissueassessment",
+    "MaxGetRowsCount": 2000,
     "Name": "ReportIssueAssessments",
     "NativeCDSDataSourceInfoNameMapping": {
       "_ownerid_value": "Owner",
@@ -36,7 +37,7 @@
       "shlaf_reportissueassessment_ProcessSession": "Process Sessions",
       "shlaf_reportissueassessment_SyncErrors": "Sync Errors",
       "shlaf_reportissueassessmentid": "ReportIssueAssessment",
-      "shlaf_ReportIssueMaster": "ReportIssueMaster",
+      "shlaf_ReportIssueMaster": "ReportIssueMasterLID",
       "shlaf_savedactioncount": "SavedActionCount",
       "shlaf_savedimagecount": "SavedImageCount",
       "shlaf_submitedactioncount": "SubmitedActionCount",

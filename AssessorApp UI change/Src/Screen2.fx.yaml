@@ -146,7 +146,7 @@ Screen2 As screen:
             Height: =Parent.Height
             LayoutHeight: =Parent.Height
             Order: =10
-            Text: =ThisItem.ReportIssueMaster.ReportDescription
+            Text: =ThisItem.ReportIssueMasterLID.ReportDescription
             Width: =100
             X: =0
             Y: =0

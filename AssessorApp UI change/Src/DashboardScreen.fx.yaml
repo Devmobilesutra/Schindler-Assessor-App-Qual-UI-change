@@ -1137,7 +1137,7 @@ DashboardScreen As screen:
                         tempReportIssueAssessment,
                         {
                             Id: Text(GUID()),
-                            ReportIssueMaster: LookUp(
+                            ReportIssueMasterLID: LookUp(
                                 ReportIssueMasters,
                                 Id = VarReportGuid
                             ),
