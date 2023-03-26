@@ -891,8 +891,10 @@ DashboardScreen As screen:
                     Set(VarReportIssue,true);
                 PressedColor: =Self.Color
                 PressedFill: =Self.Fill
-                Text: =CountRows(tempReportIssueAssessment) & CountRows(GC_checkpointItemAssessment)  & " Report Issue" 
-                Width: =260
+                Text: |-
+                    =//CountRows(tempReportIssueAssessment) & CountRows(GC_checkpointItemAssessment)  &
+                     " Report Issue" 
+                Width: =200
                 ZIndex: =1
 
             imgGraphicDS As image:
@@ -1096,136 +1098,142 @@ DashboardScreen As screen:
             HoverColor: =Self.Color
             HoverFill: =//Self.Fill
             OnSelect: |
-                =Set(
-                    VarReportGuid,
-                    Text(GUID())
-                );
-                Patch(
-                    ReportIssueMasters,
-                    Defaults(ReportIssueMasters),
-                    {
-                        Id: VarReportGuid,
-                        ReportedBy: VarUserEmail,
-                        ReportDescription: TextInput1.Text,
-                        Sender: "Assessor"
-                    }
-                );
-                
-                Refresh(ReportIssueMasters);
-                
-                ClearCollect(
-                    tempReportIssueAssessment,
-                    LookUp(
-                        ReportIssueAssessments,
-                        Id = "0d0c02db-1aca-ed11-b597-000d3a5655ba"
-                    )
-                );
-                
-                ClearCollect(tempdATA12,ReportIssueMasters);
-                
-                Set(
-                    Vartemp,
-                    LookUp(
+                =If(
+                    IsBlank(TextInput1.Text),
+                    Notify(
+                        "Please Enter Issue description.",
+                        NotificationType.Warning
+                    );
+                    ,
+                    Set(
+                        VarReportGuid,
+                        Text(GUID())
+                    );
+                    Patch(
                         ReportIssueMasters,
-                        Id = "55162567-8c36-40a1-a05b-6ebe58ec9bb3"
-                    )
-                );
-                Clear(tempReportIssueAssessment);
-                ForAll(
-                    GC_checkpointItemAssessment As i,
-                    Collect(
-                        tempReportIssueAssessment,
+                        Defaults(ReportIssueMasters),
                         {
-                            Id: Text(GUID()),
-                            ReportIssueMasterLID: LookUp(
-                                ReportIssueMasters,
-                                Id = VarReportGuid
-                            ),
-                            AssignmentId: LookUp(
-                                assignments,
-                                Id = i.assignmentId.Id
-                            ),
-                            
-                            GoNumber: i.bankUnitId.unitNumber,
-                            UnitNumber: i.bankUnitId.unitNumber,
-                            CheckpointItemName: i.checkpointItemName,
-                            ActionCount: CountRows(
-                                Filter(
-                                    GC_checkpointItem_ActionItem,
-                                    checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = i.'checkpointItemAssessment (quantum_checkpointitemassessment)'
-                                )
-                            ),
-                            SavedActionCount: CountRows(
-                                Filter(
-                                    GC_checkpointItem_ActionItem,
-                                    checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = i.'checkpointItemAssessment (quantum_checkpointitemassessment)' && CIAstatusUpdate = 0
-                                )
-                            ),
-                            UnsubmitedActionCount: CountRows(
-                                Filter(
-                                    GC_checkpointItem_ActionItem,
-                                    checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = i.'checkpointItemAssessment (quantum_checkpointitemassessment)' && CIAstatusUpdate = 1
-                                )
-                            ),
-                            SubmitedActionCount: CountRows(
-                                Filter(
-                                    GC_checkpointItem_ActionItem,
-                                    checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = i.'checkpointItemAssessment (quantum_checkpointitemassessment)' && CIAstatusUpdate = 2
-                                )
-                            ),
-                            ImageCount: CountRows(
-                                Filter(
-                                    GC_checkpointItem_Images,
-                                    checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = i.'checkpointItemAssessment (quantum_checkpointitemassessment)'
-                                )
-                            ),
-                            SavedImageCount: CountRows(
-                                Filter(
-                                    GC_checkpointItem_Images,
-                                    checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = i.'checkpointItemAssessment (quantum_checkpointitemassessment)' && CIIstatusUpdate = 0
-                                )
-                            ),
-                            UnsubmitedImageCount: CountRows(
-                                Filter(
-                                    GC_checkpointItem_Images,
-                                    checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = i.'checkpointItemAssessment (quantum_checkpointitemassessment)' && CIIstatusUpdate = 1
-                                )
-                            ),
-                            SubmitedImageCount: CountRows(
-                                Filter(
-                                    GC_checkpointItem_Images,
-                                    checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = i.'checkpointItemAssessment (quantum_checkpointitemassessment)' && CIIstatusUpdate = 2
-                                )
-                            )
+                            Id: VarReportGuid,
+                            ReportedBy: VarUserEmail,
+                            ReportDescription: TextInput1.Text,
+                            Sender: "Assessor"
                         }
                     );
+                    Refresh(ReportIssueMasters);
+                    ClearCollect(
+                        tempReportIssueAssessment,
+                        LookUp(
+                            ReportIssueAssessments,
+                            Id = "0d0c02db-1aca-ed11-b597-000d3a5655ba"
+                        )
+                    );
+                    ClearCollect(
+                        tempdATA12,
+                        ReportIssueMasters
+                    );
+                    Set(
+                        Vartemp,
+                        LookUp(
+                            ReportIssueMasters,
+                            Id = "55162567-8c36-40a1-a05b-6ebe58ec9bb3"
+                        )
+                    );
+                    Clear(tempReportIssueAssessment);
+                    ForAll(
+                        GC_checkpointItemAssessment As i,
+                        Collect(
+                            tempReportIssueAssessment,
+                            {
+                                Id: Text(GUID()),
+                                ReportIssueMasterLID: LookUp(
+                                    ReportIssueMasters,
+                                    Id = VarReportGuid
+                                ),
+                                AssignmentId: LookUp(
+                                    assignments,
+                                    Id = i.assignmentId.Id
+                                ),
+                                GoNumber: i.bankUnitId.unitNumber,
+                                UnitNumber: i.bankUnitId.unitNumber,
+                                CheckpointItemName: i.checkpointItemName,
+                                ActionCount: CountRows(
+                                    Filter(
+                                        GC_checkpointItem_ActionItem,
+                                        checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = i.'checkpointItemAssessment (quantum_checkpointitemassessment)'
+                                    )
+                                ),
+                                SavedActionCount: CountRows(
+                                    Filter(
+                                        GC_checkpointItem_ActionItem,
+                                        checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = i.'checkpointItemAssessment (quantum_checkpointitemassessment)' && CIAstatusUpdate = 0
+                                    )
+                                ),
+                                UnsubmitedActionCount: CountRows(
+                                    Filter(
+                                        GC_checkpointItem_ActionItem,
+                                        checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = i.'checkpointItemAssessment (quantum_checkpointitemassessment)' && CIAstatusUpdate = 1
+                                    )
+                                ),
+                                SubmitedActionCount: CountRows(
+                                    Filter(
+                                        GC_checkpointItem_ActionItem,
+                                        checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = i.'checkpointItemAssessment (quantum_checkpointitemassessment)' && CIAstatusUpdate = 2
+                                    )
+                                ),
+                                ImageCount: CountRows(
+                                    Filter(
+                                        GC_checkpointItem_Images,
+                                        checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = i.'checkpointItemAssessment (quantum_checkpointitemassessment)'
+                                    )
+                                ),
+                                SavedImageCount: CountRows(
+                                    Filter(
+                                        GC_checkpointItem_Images,
+                                        checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = i.'checkpointItemAssessment (quantum_checkpointitemassessment)' && CIIstatusUpdate = 0
+                                    )
+                                ),
+                                UnsubmitedImageCount: CountRows(
+                                    Filter(
+                                        GC_checkpointItem_Images,
+                                        checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = i.'checkpointItemAssessment (quantum_checkpointitemassessment)' && CIIstatusUpdate = 1
+                                    )
+                                ),
+                                SubmitedImageCount: CountRows(
+                                    Filter(
+                                        GC_checkpointItem_Images,
+                                        checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = i.'checkpointItemAssessment (quantum_checkpointitemassessment)' && CIIstatusUpdate = 2
+                                    )
+                                )
+                            }
+                        );
+                    );
+                    Patch(
+                        ReportIssueAssessments,
+                        ShowColumns(
+                            tempReportIssueAssessment,
+                            "shlaf_reportissueassessment",
+                            "shlaf_ReportIssueMaster",
+                            "shlaf_gonumber",
+                            "shlaf_AssignmentId",
+                            "shlaf_unitnumber",
+                            "shlaf_checkpointitemname",
+                            "shlaf_actioncount",
+                            "shlaf_savedactioncount",
+                            "shlaf_submitedactioncount",
+                            "shlaf_unsubmitedactioncount",
+                            "shlaf_imagecount",
+                            "shlaf_savedimagecount",
+                            "shlaf_submitedimagecount",
+                            "shlaf_unsubmitedimagecount"
+                        )
+                    );
+                    Set(
+                        VarReportIssue,
+                        false
+                    );
+                    Reset(TextInput1);
                     
                 );
-                Patch(
-                    ReportIssueAssessments,
-                    ShowColumns(
-                        tempReportIssueAssessment,
-                        "shlaf_reportissueassessment",
-                        "shlaf_ReportIssueMaster",
-                        "shlaf_gonumber",
-                        "shlaf_AssignmentId",
-                        "shlaf_unitnumber",
-                        "shlaf_checkpointitemname",
-                        "shlaf_actioncount",
-                        "shlaf_savedactioncount",
-                        "shlaf_submitedactioncount",
-                        "shlaf_unsubmitedactioncount",
-                        "shlaf_imagecount",
-                        "shlaf_savedimagecount",
-                        "shlaf_submitedimagecount",
-                        "shlaf_unsubmitedimagecount"
-                    )
-                );
-                Set(
-                    VarReportIssue,
-                    false
-                );
-                Reset(TextInput1);
                 /*Patch(
                         ReportIssueAssessments,
                         Defaults(ReportIssueAssessments),
