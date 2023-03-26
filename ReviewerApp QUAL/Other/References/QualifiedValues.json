@@ -254,6 +254,13 @@
       "Kind": "default.cds_aaduser_forms",
       "Namespace": "AAD Users (Forms)",
       "Values": {}
+    },
+    {
+      "Kind": "default.cds_shlaf_reportissuemaster_forms",
+      "Namespace": "ReportIssueMasters (Forms)",
+      "Values": {
+        "Information": "f758cc73-1746-4146-bcd4-f063079a9f51"
+      }
     }
   ]
 }
