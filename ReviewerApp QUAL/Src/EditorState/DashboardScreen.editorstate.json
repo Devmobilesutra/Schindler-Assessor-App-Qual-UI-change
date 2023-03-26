@@ -2332,7 +2332,15 @@
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
-        "ZIndex"
+        "ZIndex",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "PaddingLeft",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        }
       ],
       "DynamicProperties": [
         {
@@ -2487,6 +2495,11 @@
         {
           "Category": "Design",
           "PropertyName": "Fill",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "PaddingLeft",
           "RuleProviderType": "Unknown"
         }
       ],
@@ -9661,14 +9674,7 @@
     "TextInput2_7": {
       "AllowAccessToGlobals": true,
       "ControlPropertyState": [
-        {
-          "AFDDataSourceName": "",
-          "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "",
-          "InvariantPropertyName": "Default",
-          "IsLockable": false,
-          "NameMapSourceSchema": "?"
-        },
+        "Default",
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
