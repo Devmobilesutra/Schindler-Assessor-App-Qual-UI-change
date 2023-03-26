@@ -268,11 +268,10 @@ DashboardScreen As screen:
             Button11_5 As button:
                 BorderThickness: =0
                 DisabledFill: =RGBA(237, 237, 237, 1)
-                DisplayMode: =If(VarReviewerResult=true,DisplayMode.Disabled,DisplayMode.Edit)
                 Fill: =referenceCSS.RActiveColor
                 FocusedBorderThickness: =
                 HoverFill: =//ColorFade(RGBA(56, 96, 178, 1), -20%)
-                OnSelect: =
+                OnSelect: =Set(VarReportIssue,true);
                 PressedColor: =Self.Color
                 PressedFill: =Self.Fill
                 Text: ="Report Issue"
@@ -372,4 +371,139 @@ DashboardScreen As screen:
             PaddingTop: =5
             Width: =ctnHeaderDashboardScreen.Width/10
             ZIndex: =4
+
+    ReportIssueGroup As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =11
+
+        Rectangle1_5 As rectangle:
+            Fill: =RGBA(0, 0, 0, 0.29)
+            Height: =Parent.Height
+            Visible: =VarReportIssue
+            Width: =Parent.Width
+            ZIndex: =4
+
+        Rectangle5_5 As rectangle:
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =405
+            Visible: =VarReportIssue
+            Width: =700
+            X: =(Parent.Width -Self.Width)/2
+            Y: =(Parent.Height - Self.Height)/2
+            ZIndex: =5
+
+        Container38_5 As groupContainer.horizontalAutoLayoutContainer:
+            Height: =50
+            LayoutMode: =LayoutMode.Auto
+            Visible: =VarReportIssue
+            Width: =Rectangle5_5.Width
+            X: =Rectangle5_5.X
+            Y: =Rectangle5_5.Y+10
+            ZIndex: =6
+
+            Label41_5 As label:
+                FontWeight: =FontWeight.Semibold
+                PaddingLeft: =40
+                Text: ="Add issue description "
+                Width: =Parent.Width-70
+                ZIndex: =1
+
+            Icon2_5 As icon.Cancel:
+                Color: =RGBA(153, 153, 153, 1)
+                Height: =35
+                Icon: =Icon.Cancel
+                OnSelect: |-
+                    =Set(VarReportIssue,false);
+                    Reset(TextInput2_7);
+                Width: =30
+                ZIndex: =2
+
+        Rectangle6_5 As rectangle:
+            BorderColor: =RGBA(179, 179, 179, 1)
+            BorderThickness: =2
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =250
+            Visible: =VarReportIssue
+            Width: =656
+            X: =Rectangle5_5.X+20
+            Y: =Container38_5.Y+Container38_5.Height +10
+            ZIndex: =7
+
+        Icon4_5 As icon.Add:
+            Color: =RGBA(179, 179, 179, 1)
+            Fill: =RGBA(179, 179, 179, 1)
+            Height: =2
+            Icon: =Icon.HorizontalLine
+            Visible: =VarReportIssue
+            Width: =Rectangle6_5.Width
+            X: =Rectangle6_5.X
+            Y: =Rectangle6_5.Y +Rectangle6_5.Height+10
+            ZIndex: =8
+
+        Button11_6 As button:
+            BorderThickness: =0
+            DisabledFill: =RGBA(237, 237, 237, 1)
+            Fill: =referenceCSS.RActiveColor
+            FocusedBorderThickness: =
+            HoverFill: =//ColorFade(RGBA(56, 96, 178, 1), -20%)
+            OnSelect: |-
+                =Set(
+                    VarReportGUID,
+                    Text(GUID())
+                );
+                Patch(
+                    ReportIssueMasters,
+                    Defaults(ReportIssueMasters),
+                    {
+                        Id: VarReportGUID,
+                        ReportedBy: User().Email,
+                        ReportDescription: TextInput2_7.Text,
+                        Sender: "Reviewer"
+                    }
+                );
+                
+                Set(VarReportIssue,false);
+                Reset(TextInput2_7);
+            PressedColor: =Self.Color
+            PressedFill: =Self.Fill
+            Text: ="Save"
+            Visible: =VarReportIssue
+            X: =(Parent.Width-Self.Width)/2
+            Y: =Icon4_5.Y+20
+            ZIndex: =9
+
+        TextInput2_7 As text:
+            BorderThickness: =0
+            Default: |-
+                =
+                If(
+                    varSectionComment = true,
+                
+                   // LookUp(sectionAssessment,sectionId.sectionId=varCommentId.sectionId.sectionId,sectionName)
+                   glryCheckpointIiemVA.Selected.section_Id.sectionComment
+                    ,
+                    varCheckpointComment = true,
+                    glryCheckpointIiemVA.Selected.checkpointAssessment_Id.checkpointComment
+                    ,
+                    varItemComment = true,
+                    glryCheckpointIiemVA.Selected.checkpointItemComment
+                )
+            Fill: =RGBA(255,255,255,1)
+            FocusedBorderColor: =RGBA(179, 179, 179, 1)
+            FocusedBorderThickness: =2
+            Height: =Rectangle6_5.Height
+            HintText: ="Enter.."
+            HoverBorderColor: =RGBA(179, 179, 179, 1)
+            HoverFill: =RGBA(0, 0, 0, 0)
+            Mode: =TextMode.MultiLine
+            PressedBorderColor: =RGBA(179, 179, 179, 1)
+            Size: =referenceCSS.RInputFontSize
+            Visible: =VarReportIssue
+            Width: =Rectangle6_5.Width
+            X: =Rectangle6_5.X
+            Y: =Rectangle6_5.Y
+            ZIndex: =10
 
