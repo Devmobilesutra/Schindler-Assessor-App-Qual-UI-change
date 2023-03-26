@@ -2332,7 +2332,8 @@
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
-        "ZIndex"
+        "ZIndex",
+        "PaddingLeft"
       ],
       "DynamicProperties": [
         {
@@ -2399,6 +2400,11 @@
       "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
+        {
+          "Category": "Design",
+          "PropertyName": "PaddingLeft",
+          "RuleProviderType": "Unknown"
+        },
         {
           "Category": "Design",
           "PropertyName": "BorderStyle",
