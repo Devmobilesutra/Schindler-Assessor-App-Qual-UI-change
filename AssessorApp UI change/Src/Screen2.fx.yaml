@@ -33,7 +33,7 @@ Screen2 As screen:
             Height: =Parent.Height
             LayoutHeight: =Parent.Height
             Order: =2
-            Text: =ThisItem.shlaf_AssignmentId
+            Text: =ThisItem.AssignmentId.Id
             Width: =100
             X: =0
             Y: =0
@@ -75,7 +75,7 @@ Screen2 As screen:
             Height: =Parent.Height
             LayoutHeight: =Parent.Height
             Order: =5
-            Text: =ThisItem.shlaf_id
+            Text: =ThisItem.Id
             Width: =100
             X: =0
             Y: =0
@@ -132,7 +132,7 @@ Screen2 As screen:
             Height: =768
             LayoutHeight: =Parent.Height
             Order: =9
-            Text: =ThisItem.shlaf_ReportIssueMaster
+            Text: =ThisItem.ReportIssueMasterLID.Id
             Width: =264
             X: =933
             Y: =0

@@ -6,7 +6,6 @@
     "IsSampleData": false,
     "IsWritable": true,
     "LogicalName": "shlaf_reportissueassessment",
-    "MaxGetRowsCount": 2000,
     "Name": "ReportIssueAssessments",
     "NativeCDSDataSourceInfoNameMapping": {
       "_ownerid_value": "Owner",
@@ -26,7 +25,6 @@
       "shlaf_checkpointitemname": "CheckpointItemName",
       "shlaf_gonumber": "GoNumber",
       "shlaf_imagecount": "ImageCount",
-      "shlaf_masterid": "masterId",
       "shlaf_reportissueassessment": "Id",
       "shlaf_reportissueassessment_AsyncOperations": "System Jobs",
       "shlaf_reportissueassessment_BulkDeleteFailures": "Bulk Delete Failures",
