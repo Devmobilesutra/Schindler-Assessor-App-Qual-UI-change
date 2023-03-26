@@ -256,7 +256,6 @@ DashboardScreen As screen:
             AlignInContainer: =AlignInContainer.Center
             FillPortions: =0
             Height: =If(App.Height<900, Parent.Height ,Parent.Height/3)
-            LayoutAlignItems: =LayoutAlignItems.Center
             LayoutDirection: =LayoutDirection.Vertical
             LayoutMinHeight: =100
             LayoutMinWidth: =250
@@ -267,7 +266,6 @@ DashboardScreen As screen:
             ZIndex: =5
 
             Button11_5 As button:
-                AlignInContainer: =AlignInContainer.End
                 BorderThickness: =0
                 DisabledFill: =RGBA(237, 237, 237, 1)
                 DisplayMode: =If(VarReviewerResult=true,DisplayMode.Disabled,DisplayMode.Edit)
@@ -278,14 +276,14 @@ DashboardScreen As screen:
                 PressedColor: =Self.Color
                 PressedFill: =Self.Fill
                 Text: ="Report Issue"
-                Visible: |-
-                    =varComment
-                    //varcomments
+                Width: =200
                 ZIndex: =1
 
             imgDashboardScreen As image:
+                AlignInContainer: =AlignInContainer.Start
                 Height: =Parent.Height
                 Image: =graphic
+                PaddingLeft: =
                 Width: =Parent.Width-500
                 ZIndex: =2
 
