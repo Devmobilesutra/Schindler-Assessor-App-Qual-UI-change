@@ -874,7 +874,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "shlaf_reportissueassessment_Column1",
-      "ParentIndex": 6,
+      "ParentIndex": 14,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -967,7 +967,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "shlaf_reportissueassessmentid_Column1",
-      "ParentIndex": 7,
+      "ParentIndex": 6,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -1068,7 +1068,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "shlaf_ReportIssueMaster_Column1",
-      "ParentIndex": 8,
+      "ParentIndex": 15,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -1173,7 +1173,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "shlaf_savedactioncount_Column1",
-      "ParentIndex": 9,
+      "ParentIndex": 7,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -1266,7 +1266,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "shlaf_savedimagecount_Column1",
-      "ParentIndex": 10,
+      "ParentIndex": 8,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -1359,7 +1359,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "shlaf_submitedactioncount_Column1",
-      "ParentIndex": 11,
+      "ParentIndex": 9,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -1452,7 +1452,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "shlaf_submitedimagecount_Column1",
-      "ParentIndex": 12,
+      "ParentIndex": 10,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -1545,7 +1545,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "shlaf_unitnumber_Column1",
-      "ParentIndex": 13,
+      "ParentIndex": 11,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -1638,7 +1638,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "shlaf_unsubmitedactioncount_Column1",
-      "ParentIndex": 14,
+      "ParentIndex": 12,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -1731,7 +1731,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "shlaf_unsubmitedimagecount_Column1",
-      "ParentIndex": 15,
+      "ParentIndex": 13,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {

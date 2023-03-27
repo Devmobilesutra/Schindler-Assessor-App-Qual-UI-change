@@ -1127,17 +1127,6 @@ DashboardScreen As screen:
                             Id = "0d0c02db-1aca-ed11-b597-000d3a5655ba"
                         )
                     );
-                    ClearCollect(
-                        tempdATA12,
-                        ReportIssueMasters
-                    );
-                    Set(
-                        Vartemp,
-                        LookUp(
-                            ReportIssueMasters,
-                            Id = "55162567-8c36-40a1-a05b-6ebe58ec9bb3"
-                        )
-                    );
                     Clear(tempReportIssueAssessment);
                     ForAll(
                         GC_checkpointItemAssessment As i,

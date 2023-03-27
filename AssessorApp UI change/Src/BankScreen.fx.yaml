@@ -413,8 +413,89 @@ BankScreen As screen:
                         Font: =AllScreensCSS.ButtonFont
                         HoverColor: =Self.Color
                         HoverFill: =Self.Fill
-                        OnSelect: |
-                            =//for safety check to show default selected
+                        OnSelect: |-
+                            =//check collection is empty or not ? if empty then load data from local cache 
+                            If(
+                                IsEmpty(GcSectionAssessment) && IsEmpty(GcCheckpointAssessment) && IsEmpty(GC_checkpointItemAssessment) && IsEmpty(GC_checkpointItem_ActionItem) && IsEmpty(GC_checkpointItem_Images),
+                               Concurrent(
+                                    LoadData(
+                                        GcSectionAssessment,
+                                        "localsectionassessment",true
+                                    );
+                                   ,
+                                    LoadData(
+                                        GcCheckpointAssessment,
+                                        "localcheckpointassessment",true
+                                    );
+                                    ,
+                                    LoadData(
+                                        GC_checkpointItemAssessment,
+                                        "localcheckpointitemassessment",true
+                                    );
+                                    ,
+                                    LoadData(
+                                        GC_checkpointItem_ActionItem,
+                                        "localcheckpointitemactionitem",true
+                                    );
+                                    ,
+                                    LoadData(
+                                        GC_checkpointItem_Images,
+                                        "localcheckpointitemimage",true
+                                    );
+                                
+                            );
+                            );
+                            //Here we check if network is available or not, if available then check collection is empty or not ,if collection is empty then get specific assessor data from dataverse and store it into collection and save collection to cache
+                            If(
+                                Connection.Connected,
+                             //   Concurrent(
+                                
+                                        If(
+                                            CountRows(
+                                                Filter(
+                                                    GcSectionAssessment,
+                                                    bankUnitId.Id = ThisItem.bankUnitId.Id
+                                                )
+                                            )<1,
+                            
+                                      Navigate(ViewAssessmentScreen);
+                                );
+                             // );
+                            );
+                            
+                            
+                            If(
+                                comp = true,
+                                Navigate(ViewAssessmentScreen),
+                                Set(
+                                    varSafety,
+                                    false
+                                );
+                                
+                            //here set variable for selected product model.
+                            Set(
+                                    CId,
+                                    ThisItem.productModel
+                                );
+                                
+                            //set variable for selected bankunitId.
+                            Set(
+                                    varBankUnitId,
+                                    ThisItem.bankUnitId.Id
+                                );
+                                
+                                      
+                            Navigate(SectionScreen);
+                                
+                            );
+                            
+                            
+                            
+                            
+                            
+                            /********************27 March change for optimize
+                            
+                            //check collection is empty or not ? if empty then load data from local cache 
                             If(
                                 IsEmpty(GcSectionAssessment) && IsEmpty(GcCheckpointAssessment) && IsEmpty(GC_checkpointItemAssessment) && IsEmpty(GC_checkpointItem_ActionItem) && IsEmpty(GC_checkpointItem_Images),
                                Concurrent(
@@ -768,6 +849,7 @@ BankScreen As screen:
                             Navigate(SectionScreen);
                                 
                             );
+                            */
                         PressedBorderColor: =Self.BorderColor
                         PressedColor: |
                             =Self.Color
