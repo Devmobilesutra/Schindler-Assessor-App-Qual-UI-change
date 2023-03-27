@@ -1,0 +1,110 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "shlaf_reportissueassessments",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "shlaf_reportissueassessment",
+    "MaxGetRowsCount": 2000,
+    "Name": "ReportIssueAssessments",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "shlaf_actioncount": "ActionCount",
+      "shlaf_AssignmentId": "AssignmentId",
+      "shlaf_checkpointitemname": "CheckpointItemName",
+      "shlaf_gonumber": "GoNumber",
+      "shlaf_imagecount": "ImageCount",
+      "shlaf_reportissueassessment": "Id",
+      "shlaf_reportissueassessment_AsyncOperations": "System Jobs",
+      "shlaf_reportissueassessment_BulkDeleteFailures": "Bulk Delete Failures",
+      "shlaf_reportissueassessment_DuplicateBaseRecord": "Duplicate Records (shlaf_reportissueassessment_DuplicateBaseRecord)",
+      "shlaf_reportissueassessment_DuplicateMatchingRecord": "Duplicate Records (shlaf_reportissueassessment_DuplicateMatchingRecord)",
+      "shlaf_reportissueassessment_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "shlaf_reportissueassessment_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "shlaf_reportissueassessment_ProcessSession": "Process Sessions",
+      "shlaf_reportissueassessment_SyncErrors": "Sync Errors",
+      "shlaf_reportissueassessmentid": "ReportIssueAssessment",
+      "shlaf_ReportIssueMaster": "ReportIssueMasterLID",
+      "shlaf_savedactioncount": "SavedActionCount",
+      "shlaf_savedimagecount": "SavedImageCount",
+      "shlaf_submitedactioncount": "SubmitedActionCount",
+      "shlaf_submitedimagecount": "SubmitedImageCount",
+      "shlaf_unitnumber": "UnitNumber",
+      "shlaf_unsubmitedactioncount": "UnsubmitedActionCount",
+      "shlaf_unsubmitedimagecount": "UnsubmitedImageCount",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "ReportIssueAssessments",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "ReportIssueAssessments (Views)",
+    "Name": "_shlaf_reportissueassessment_views",
+    "RelatedEntityName": "ReportIssueAssessments",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "575ee307-4d79-4ac8-94e1-73de18b18c4a": "Active ReportIssueAssessments",
+      "a0d58511-6834-42cc-8b06-16a8af2c78d5": "ReportIssueAssessment Advanced Find View",
+      "c1d36bd4-6a2d-423d-a576-2b668eb45501": "ReportIssueAssessment Associated View",
+      "cd2af5d1-9921-4228-ac68-e38786bbab6e": "Inactive ReportIssueAssessments",
+      "f806df7a-4253-421a-8045-0132ba40a862": "ReportIssueAssessment Lookup View"
+    }
+  },
+  {
+    "DisplayName": "Status (ReportIssueAssessments)",
+    "Name": "shlaf_reportissueassessment_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "ReportIssueAssessments"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "ReportIssueAssessments",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (ReportIssueAssessments)",
+    "Name": "shlaf_reportissueassessment_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "ReportIssueAssessments"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "ReportIssueAssessments",
+    "Type": "OptionSetInfo"
+  }
+]
