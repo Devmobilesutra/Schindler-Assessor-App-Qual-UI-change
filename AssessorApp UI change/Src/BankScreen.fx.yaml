@@ -597,10 +597,6 @@ BankScreen As screen:
                                                 2
                                             )
                                         );
-                            
-                                            
-                                      
-                            
                                       Navigate(ViewAssessmentScreen);
                                 );
                              // );
