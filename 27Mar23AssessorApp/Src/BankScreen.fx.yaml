@@ -211,10 +211,10 @@ BankScreen As screen:
                                 varReportPopup,
                                 false
                             );
-                            Set(
+                            /*Set(
                                 popupTripReportSuccess,
                                 false
-                            );
+                            );*/
                             
                             Refresh(BankTripReport);
                             Refresh(checkpointItem_ActionItem);
@@ -364,14 +364,24 @@ BankScreen As screen:
                         RadiusTopRight: =18
                         Size: =AllScreensCSS.RfontsizeInput
                         Text: |-
-                            =If(Connection.Connected,
-                            If(comp=true,
-                            "View Report",
-                            If(IsBlank(LookUp(
-                                BankTripReport,
-                                assignmentId.Id = glryProject.Selected.Id && bankId.Id = glryProject.Selected.bankId.Id
-                            )),"Generate Report","Edit Report")),
-                            "Trip Report")
+                            =If(
+                                Connection.Connected,
+                                If(
+                                    comp = true,
+                                    "View Report",
+                                    If(
+                                        IsBlank(
+                                            LookUp(
+                                                BankTripReport,
+                                                assignmentId.Id = glryProject.Selected.Id && bankId.Id = glryProject.Selected.bankId.Id
+                                            )
+                                        ),
+                                        "Generate Report",
+                                        "Edit Report"
+                                    )
+                                ),
+                                "Trip Report"
+                            )
                         Width: =Parent.Width/6.5
                         ZIndex: =6
 
@@ -657,7 +667,12 @@ BankScreen As screen:
                                         );
                                         Navigate(SectionScreen);
                                         ,
-                                        Notify("Locally saved data is available please submit ");
+                                        Notify(" Unsubmited data Available for " & First(GcSectionAssessment).bankUnitId.unitNumber & " unit ,Please submit . ");
+                                        Set(VarPopupLocalDataText,"
+                                     Unsubmited data Available for " & First(GcSectionAssessment).bankUnitId.unitNumber & "  unit ,Please submit .
+                                ");
+                                     Set(VarPopupLocalData,true);
+                            
                                     );
                                     ,
                                     Navigate(SectionScreen);
@@ -2528,14 +2543,14 @@ BankScreen As screen:
         iconOuterRectangleTripReportBS As rectangle:
             Fill: =RGBA(0, 0, 0, 0.29)
             Height: =Parent.Height
-            Visible: =popupTripReportSuccess
+            Visible: =VarPopupLocalData
             Width: =Parent.Width
             ZIndex: =9
 
         iconInnerRectangleTripReportBS As rectangle:
             Fill: =RGBA(255, 255, 255, 1)
             Height: =270
-            Visible: =popupTripReportSuccess
+            Visible: =VarPopupLocalData
             Width: =400
             X: =(Parent.Width-Self.Width)/2
             Y: =Parent.Height/3
@@ -2544,7 +2559,7 @@ BankScreen As screen:
         imgInfoBS As image:
             Height: =52
             Image: =info
-            Visible: =popupTripReportSuccess
+            Visible: =VarPopupLocalData
             Width: =52
             X: =(Parent.Width-Self.Width)/2
             Y: =iconInnerRectangleTripReportBS.Y+20
@@ -2559,7 +2574,7 @@ BankScreen As screen:
             PaddingBottom: =0
             Size: =18
             Text: ="Success"
-            Visible: =popupTripReportSuccess
+            Visible: =VarPopupLocalData
             Width: =350
             X: =(Parent.Width-Self.Width)/2
             Y: =imgInfoBS.Y+imgInfoBS.Height
@@ -2571,8 +2586,8 @@ BankScreen As screen:
             FontWeight: =FontWeight.Semibold
             Height: =100
             Size: =15
-            Text: =VarPopupSyncText 
-            Visible: =popupTripReportSuccess
+            Text: =VarPopupLocalDataText
+            Visible: =VarPopupLocalData
             Width: =350
             X: =(Parent.Width-Self.Width)/2
             Y: =lblSuccesspopupBS.Y+lblSuccesspopupBS.Height+20
@@ -2583,11 +2598,11 @@ BankScreen As screen:
             Font: =AllScreensCSS.RFont
             HoverFill: =RGBA(75, 125, 6, 1)
             OnSelect: |
-                =Set(popupTripReportSuccess,false);
+                =//Set(popupTripReportSuccess,false);
             PressedBorderColor: =RGBA(1, 43, 1, 0)
             PressedFill: =Self.Fill
             Text: ="Ok"
-            Visible: =popupTripReportSuccess
+            Visible: =VarPopupLocalData
             Width: =120
             X: =(Parent.Width-Self.Width)/2
             Y: =lblTripReportSuccessBS.Y+ lblTripReportSuccessBS.Height+5
