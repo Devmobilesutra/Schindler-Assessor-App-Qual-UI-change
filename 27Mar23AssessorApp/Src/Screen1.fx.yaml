@@ -398,7 +398,11 @@ Screen1 As screen:
                     BorderColor: =RGBA(179, 179, 179, 1)
                     Default: |-
                         =//check summary is available for assignment if available then display summary
-                        If(IsBlank(First(localBanktripReport).Summary)," ",First(localBanktripReport).Summary)
+                        If(
+                            IsBlank(First(localBanktripReport).Summary),
+                            " ",
+                            First(localBanktripReport).Summary
+                        )
                     DisplayMode: =If(comp=true,DisplayMode.View,DisplayMode.Edit)
                     FillPortions: =1
                     HintText: ="Enter here"
@@ -548,9 +552,16 @@ Screen1 As screen:
                         //CountRows(Gallery15_1.AllItems)*(Gallery15_1.TemplateHeight)
                         Parent.Height
                     Items: |
-                        =//Sort(Sort(Sort(Filter(GC_checkpointItem_ActionItem,assignmentId.Id=glryProject.Selected.Id && CIAstatusUpdate = 2 && priority = "High"),checkpoint_id.CheckpointSequence),section_id.sectionSequence),bankUnitId.unitNumber)
+                        =
                         
-                        Sort(Sort(Sort(Sort(Filter(GC_checkpointItem_ActionItem,assignmentId.Id=glryProject.Selected.Id && CIAstatusUpdate = 2 && priority = "High"),checkpointItem_Id.checkpointitemSequence),checkpoint_id.CheckpointSequence),section_id.sectionSequence),bankUnitId.unitNumber)
+                                    Sort(
+                                        Filter(
+                                            checkpointItem_ActionItem,
+                                            assignmentId.Id = glryProject.Selected.Id && priority = "High"
+                                        ),
+                                        ActionSortSequence
+                                    )
+                        //Sort(Sort(Sort(Sort(Filter(checkpointItem_ActionItem,assignmentId.Id=glryProject.Selected.Id  && priority = "High"),checkpointItem_Id.checkpointitemSequence),checkpoint_id.CheckpointSequence),section_id.sectionSequence),bankUnitId.unitNumber)
                         
                         
                         
@@ -644,7 +655,7 @@ Screen1 As screen:
                         PaddingRight: =0
                         PaddingTop: =0
                         Size: =16
-                        Text: =//ThisItem.MaterialEstimate
+                        Text: =//""
                         VerticalAlign: =VerticalAlign.Top
                         Visible: =false
                         Width: =120
@@ -763,7 +774,7 @@ Screen1 As screen:
                         PaddingRight: =0
                         PaddingTop: =0
                         Size: =16
-                        Text: ="Time Estimate"
+                        Text: ="Time Estimate "
                         VerticalAlign: =VerticalAlign.Top
                         Width: =160
                         X: =txtMaterialValueAR.Width+txtMaterialValueAR.X+40
@@ -779,9 +790,7 @@ Screen1 As screen:
                         PaddingRight: =0
                         PaddingTop: =0
                         Size: =16
-                        Text: |-
-                            =//ThisItem.checkpoint_id.checkpointName
-                            LookUp(GcCheckpointAssessment,checkpointAssessment_id=ThisItem.checkpoint_id.checkpointAssessment_id,checkpointName)
+                        Text: =ThisItem.checkpoint_id.checkpointName
                         VerticalAlign: =VerticalAlign.Top
                         Width: =Parent.Width -230
                         X: =lblCheckpointAR.X+lblCheckpointAR.Width
@@ -797,9 +806,7 @@ Screen1 As screen:
                         PaddingRight: =0
                         PaddingTop: =0
                         Size: =16
-                        Text: |-
-                            =//ThisItem.checkpointItem_Id.checkpointItemName
-                            LookUp(GC_checkpointItemAssessment,'checkpointItemAssessment (quantum_checkpointitemassessment)'=ThisItem.checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)',checkpointItemName)
+                        Text: =ThisItem.checkpointItem_Id.checkpointItemName
                         VerticalAlign: =VerticalAlign.Top
                         Width: =Parent.Width -230
                         X: =lblItemAR.X+lblItemAR.Width
@@ -841,7 +848,7 @@ Screen1 As screen:
                         Height: =30
                         OnSelect: =Select(Parent)
                         Size: =16
-                        Text: =ThisItem.MaterialEstimate
+                        Text: =ThisItem.MaterialEstimate 
                         Width: =140
                         X: =LblMaterialEstimateAR.X+LblMaterialEstimateAR.Width
                         Y: =lblOwnerIdValueAR_1.Y +lblOwnerIdValueAR_1.Height
@@ -886,11 +893,7 @@ Screen1 As screen:
                         Font: =AllScreensCSS.RFont
                         Height: =30
                         Size: =16
-                        Text: |
-                            =//ThisItem.ActionItem_Name
-                            //"Unit : "  &
-                             LookUp(gcBankunit,Id=ThisItem.bankUnitId.Id,unitNumber) 
-                            //&"                 " & "Section : " & ThisItem.section_id.sectionName
+                        Text: =ThisItem.bankUnitId.unitNumber
                         Width: =Parent.Width/2
                         X: =Label22_2.Width
                         Y: =10
@@ -902,11 +905,7 @@ Screen1 As screen:
                         Font: =AllScreensCSS.RFont
                         Height: =30
                         Size: =16
-                        Text: |
-                            =//ThisItem.ActionItem_Name
-                            //"Section : " & 
-                            //ThisItem.section_id.sectionName
-                            LookUp(GcSectionAssessment,'sectionAssessment (quantum_sectionassessment)'=ThisItem.section_id.'sectionAssessment (quantum_sectionassessment)',sectionName)
+                        Text: =ThisItem.section_id.sectionName
                         Width: =Parent.Width/2
                         X: =Label22_3.Width
                         Y: =Label22_3.Height

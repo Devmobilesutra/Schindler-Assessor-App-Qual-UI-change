@@ -206,8 +206,50 @@ BankScreen As screen:
                         Font: =AllScreensCSS.ButtonFont
                         HoverColor: =RGBA(0, 0, 0, 1)
                         HoverFill: =Self.Fill
-                        OnSelect: |+
+                        OnSelect: |
                             =Set(
+                                varReportPopup,
+                                false
+                            );
+                            Set(
+                                popupTripReportSuccess,
+                                false
+                            );
+                            
+                            Refresh(BankTripReport);
+                            Refresh(checkpointItem_ActionItem);
+                            
+                            If(
+                                IsBlank(
+                                    LookUp(
+                                        BankTripReport,
+                                        assignmentId.Id = glryProject.Selected.Id
+                                            //&& bankId.Id = glryProject.Selected.bankId.Id
+                                    )
+                                ),
+                                Set(
+                                    VarTripReportNotification,
+                                    "Trip report saved successfully."
+                                ),
+                                ClearCollect(
+                                    localBanktripReport,
+                                    LookUp(
+                                        BankTripReport,
+                                        assignmentId.Id = glryProject.Selected.Id
+                                            //&& bankId.Id = glryProject.Selected.bankId.Id
+                                    )
+                                );
+                                Set(
+                                    VarTripReportNotification,
+                                    "Trip report Updated successfully."
+                                )
+                            );
+                            Navigate(Screen1);
+                            
+                            
+                            
+                            /*
+                            Set(
                                 varReportPopup,
                                 false
                             );
@@ -216,7 +258,7 @@ BankScreen As screen:
                             Refresh(BankTripReport);
                             
                             //check checkpointItem ActionItem collection is empty or not if empty then load data from cache (only first time load )
-                            /*If(
+                            If(
                                 IsEmpty(GC_checkpointItem_ActionItem),
                                 LoadData(
                                     GC_checkpointItem_ActionItem,
@@ -224,7 +266,7 @@ BankScreen As screen:
                                     true
                                 );
                                 
-                            );*/
+                            );
                             
                             Clear(tempdata);
                             ForAll(
@@ -235,8 +277,7 @@ BankScreen As screen:
                                 If(
                                     CountRows(
                                         Filter(
-                                            checkpointItemAssessment,
-                                            //GC_checkpointItemAssessment,
+                                              GC_checkpointItemAssessment,
                                              //GC_checkpointItem_ActionItem,
                                             bankUnitId.Id = i.bankUnitId.Id
                                         )
@@ -271,7 +312,16 @@ BankScreen As screen:
                                         "Trip report Updated successfully."
                                     )
                                 );
-                                /*
+                            
+                                Navigate(Screen1);
+                                ,
+                                Set(VarPopupSyncText,"
+                                 Assessment records are not found in your local device . please click each unit to get assessment records from server .
+                                ");
+                                Set(popupTripReportSuccess,true);
+                            
+                            );*/
+                              /*
                                 ClearCollect(localCollectionAction,
                                 Sort(
                                 Sort(
@@ -303,15 +353,6 @@ BankScreen As screen:
                                 ),
                                 Ascending
                             ););*/
-                                Navigate(Screen1);
-                                ,
-                                Set(VarPopupSyncText,"
-                                 Assessment records are not found in your local device . please click each unit to get assessment records from server .
-                                ");
-                                Set(popupTripReportSuccess,true);
-                            
-                            );
-                            
                         PaddingLeft: =0
                         PaddingRight: =0
                         PressedBorderColor: =Self.Color
