@@ -1809,7 +1809,7 @@ FindingScreen As screen:
                                 Fill: =AllScreensCSS.RActiveColor
                                 Font: =AllScreensCSS.ButtonFont
                                 HoverFill: =AllScreensCSS.RActiveColor
-                                OnSelect: |-
+                                OnSelect: |
                                     =/*//for reset ideal timer
                                     Reset(tmr_logout);
                                     Set(UserLastNavigated, Now());*/
@@ -1833,23 +1833,51 @@ FindingScreen As screen:
                                         
                                     );
                                     
-                                    Remove(GC_checkpointItem_ActionItem,ThisItem);
-                                    SaveData(GC_checkpointItem_ActionItem,"localcheckpointitemactionitem");
+                                    //Remove actions
+                                    Remove(
+                                        GC_checkpointItem_ActionItem,
+                                        ThisItem
+                                    );
+                                    SaveData(
+                                        GC_checkpointItem_ActionItem,
+                                        "localcheckpointitemactionitem"
+                                    );
                                     
+                                    //collect Id's of removed actions
+                                    Collect(
+                                        gcActionItemDelete,
+                                        {id: ThisItem.checkpointItemActionItemsId}
+                                    );
+                                    SaveData(
+                                        gcActionItemDelete,
+                                        "localgcActionItemDelete"
+                                    );
                                     
-                                    Collect(gcActionItemDelete,{id:ThisItem.checkpointItemActionItemsId});
-                                     SaveData(
-                                                gcActionItemDelete,
-                                                "localgcActionItemDelete"
-                                            );
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                            
+                                    //for updating status of unit assessment to 0 for save status
+                                    UpdateIf(
+                                        GC_unitAssessment,
+                                        assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId,
+                                        {UstatusUpdate: 0}
+                                    );
+                                    //for updating status of section assessment to 0 for save status
+                                    UpdateIf(
+                                        GcSectionAssessment,
+                                        'sectionAssessment (quantum_sectionassessment)' = varSA,
+                                        {SstatusUpdate: 0}
+                                    );
+                                     //for updating status of checkpoint assessment to 0 for save status
+                                    UpdateIf(
+                                        GcCheckpointAssessment,
+                                        checkpointAssessment_id = GuidId,
+                                        {CstatusUpdate: 0}
+                                    );
+                                    //for checkpoint  Item annotation - checkpoint Item Assessment
+                                           //record exist then update that record using update if function
+                                    UpdateIf(
+                                        GC_checkpointItemAssessment,
+                                        'checkpointItemAssessment (quantum_checkpointitemassessment)' = varCItemA,
+                                        {CIstatusUpdate: 0}
+                                    );
                                 PressedFill: =AllScreensCSS.RActiveColor
                                 RadiusBottomLeft: =1
                                 RadiusBottomRight: =1
@@ -2443,8 +2471,10 @@ FindingScreen As screen:
                                             GC_checkpointItem_Images,
                                             ThisItem
                                         );
-                                        SaveData(GC_checkpointItem_Images,"localcheckpointitemimage");
-                                    
+                                        SaveData(
+                                            GC_checkpointItem_Images,
+                                            "localcheckpointitemimage"
+                                        );
                                         Collect(
                                             gcImageDelete,
                                             {id: ThisItem.checkpointItemImagesId}
@@ -2452,6 +2482,34 @@ FindingScreen As screen:
                                         SaveData(
                                             gcImageDelete,
                                             "localgcImageDelete"
+                                        );
+                                        
+                                        //for updating status of unit assessment to 0 for save status
+                                    UpdateIf(
+                                            GC_unitAssessment,
+                                            assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId,
+                                            {UstatusUpdate: 0}
+                                        );
+                                        
+                                    //for updating status of section assessment to 0 for save status
+                                    UpdateIf(
+                                            GcSectionAssessment,
+                                            'sectionAssessment (quantum_sectionassessment)' = varSA,
+                                            {SstatusUpdate: 0}
+                                        );
+                                     //for updating status of checkpoint assessment to 0 for save status
+                                    UpdateIf(
+                                            GcCheckpointAssessment,
+                                            checkpointAssessment_id = GuidId,
+                                            {CstatusUpdate: 0}
+                                        );
+                                        
+                                    //for checkpoint  Item annotation - checkpoint Item Assessment
+                                           //record exist then update that record using update if function
+                                    UpdateIf(
+                                            GC_checkpointItemAssessment,
+                                            'checkpointItemAssessment (quantum_checkpointitemassessment)' = varCItemA,
+                                            {CIstatusUpdate: 0}
                                         );
                                         ,
                                         Notify("Here,Image is mandatory.So you can't delete it,change the image.")
@@ -2480,7 +2538,7 @@ FindingScreen As screen:
                                 Color: =AllScreensCSS.RColorBlack
                                 DisplayMode: |-
                                     =If(
-                                        CountRows(GlryImagesFS.AllItems) = 6,DisplayMode.Disabled,DisplayMode.Edit)
+                                        CountRows(GlryImagesFS.AllItems) >=4,DisplayMode.Disabled,DisplayMode.Edit)
                                 Font: =AllScreensCSS.RFont
                                 FontWeight: =FontWeight.Bold
                                 Size: =18
@@ -2500,7 +2558,7 @@ FindingScreen As screen:
                                 BorderColor: =AllScreensCSS.RActiveColor
                                 DisplayMode: |-
                                     =If(
-                                        CountRows(GlryImagesFS.AllItems) = 6,DisplayMode.Disabled,DisplayMode.Edit)
+                                        CountRows(GlryImagesFS.AllItems) >= 4,DisplayMode.Disabled,DisplayMode.Edit)
                                 Fill: =AllScreensCSS.RActiveColor
                                 Font: =AllScreensCSS.ButtonFont
                                 HoverFill: =AllScreensCSS.RActiveColor
@@ -2530,7 +2588,7 @@ FindingScreen As screen:
                                     
                                     Set(UP,false);
                                     If(
-                                        CountRows(GlryImagesFS.AllItems) < 6,
+                                        CountRows(GlryImagesFS.AllItems) < 4,
                                         Collect(
                                           GC_checkpointItem_Images,
                                                   {
