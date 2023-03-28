@@ -887,8 +887,34 @@ DashboardScreen As screen:
                 HoverColor: =Self.Color
                 HoverFill: =//ColorFade(Self.Fill, -20%)
                 OnSelect: |
-                    =
-                    Set(VarReportIssue,true);
+                    =//check collection is empty or not ? if empty then load data from local cache 
+                    If(
+                        IsEmpty(GC_checkpointItemAssessment) && IsEmpty(GC_checkpointItem_ActionItem) && IsEmpty(GC_checkpointItem_Images),
+                        Concurrent(
+                            LoadData(
+                                GC_checkpointItemAssessment,
+                                "localcheckpointitemassessment",
+                                true
+                            );
+                            ,
+                            LoadData(
+                                GC_checkpointItem_ActionItem,
+                                "localcheckpointitemactionitem",
+                                true
+                            );
+                            ,
+                            LoadData(
+                                GC_checkpointItem_Images,
+                                "localcheckpointitemimage",
+                                true
+                            );
+                        );
+                        
+                    );
+                    Set(
+                        VarReportIssue,
+                        true
+                    );
                 PressedColor: =Self.Color
                 PressedFill: =Self.Fill
                 Text: |-
@@ -1119,6 +1145,7 @@ DashboardScreen As screen:
                             Sender: "Assessor"
                         }
                     );
+                
                     Refresh(ReportIssueMasters);
                     ClearCollect(
                         tempReportIssueAssessment,
@@ -1128,6 +1155,7 @@ DashboardScreen As screen:
                         )
                     );
                     Clear(tempReportIssueAssessment);
+                    
                     ForAll(
                         GC_checkpointItemAssessment As i,
                         Collect(
