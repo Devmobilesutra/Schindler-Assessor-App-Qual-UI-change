@@ -791,21 +791,27 @@ AssessmentScreen As screen:
                             //else 
                               // allow user to check this checkpoinitem as complete .
                               // update status of selected row in  collection GC_checkpointitemAssessment as Check.
-                            If(/*(glryItmesAS.Selected.checkpointItemImage='checkpointItemImage (templateCheckpointsItems)'.Yes
+                            /*(glryItmesAS.Selected.checkpointItemImage='checkpointItemImage (templateCheckpointsItems)'.Yes
                              && glryItmesAS.Selected.checkItemIsApplicable='checkItemIsApplicable (templateCheckpointsItems)'.No 
                              || chglryCheckpointsSS_2.Selected.checkIsApplicable = 'checkIsApplicable (templateCheckpoints)'.No 
                              //||glrySectionSS.Selected.se
                               && IsBlank(LookUp(GC_checkpointItem_Images,
                                     assignmentId.Id=varAssignmentId && bankUnitId.Id=varBankUnitId && 
                                     checkpointItem_Id.checkpointItemId.checkpointItemId=varCheckpointitemID))) ||*/
-                                (glryItmesAS.Selected.checkpointItemImage ='checkpointItemImage (templateCheckpointsItems)'.Yes &&
+                               
                                // glryItmesAS.Selected.checkItemIsApplicable='checkItemIsApplicable (templateCheckpointsItems)'.No) ||      ////(glryItmesAS.Selected.checkpointItemImage ='checkpointItemImage (templateCheckpointsItems)'.Yes &&//glryItmesAS.Selected.checkItemIsApplicable='checkItemIsApplicable (templateCheckpointsItems)'.Yes)
+                                // || Not("NA option" in chglryCheckpointsSS_2.Selected.checkpointName)
+                            
+                            If(
+                             (glryItmesAS.Selected.checkpointItemImage ='checkpointItemImage (templateCheckpointsItems)'.Yes &&
+                            
                                 Not("NA option" in glryItmesAS.Selected.checkpointItemName) 
-                              // || Not("NA option" in chglryCheckpointsSS_2.Selected.checkpointName)
-                            && IsBlank(
+                             
+                               && IsBlank(
                                     LookUp(
                                         GC_checkpointItem_Images,
-                                        assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && //checkpointItem_Id.checkpointItemId.checkpointItemId = varCheckpointitemID
+                                        assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId &&    
+                                        //checkpointItem_Id.checkpointItemId.checkpointItemId = varCheckpointitemID
                                         checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)'=varCItemA
                                     )
                                 )),
