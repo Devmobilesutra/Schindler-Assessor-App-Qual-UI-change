@@ -483,6 +483,7 @@ BankScreen As screen:
                                 varBankUnitId,
                                 ThisItem.bankUnitId.Id
                             );
+                            
                             //check collection is empty or not ? if empty then load data from local cache 
                             If(
                                 IsEmpty(GcSectionAssessment) && IsEmpty(GcCheckpointAssessment) && IsEmpty(GC_checkpointItemAssessment) && IsEmpty(GC_checkpointItem_ActionItem) && IsEmpty(GC_checkpointItem_Images),
@@ -583,83 +584,97 @@ BankScreen As screen:
                                             )
                                         ) < 1,
                                         Notify("Getting data from dataverse.");
-                                        ClearCollect(
-                                            GcSectionAssessmentAdd,
-                                            Filter(
-                                                sectionAssessment,
-                                                //assignmentId.assessorId = varLoggedAssessor
-                                                bankUnitId.Id = ThisItem.bankUnitId.Id
-                                            )
+                                        Set(
+                                            VarGetAssessmentData,
+                                            true
                                         );
-                                        //Adding column for status maintain
-                            ClearCollect(
-                                            GcSectionAssessment,
-                                            AddColumns(
+                                        Concurrent(
+                                            ClearCollect(
                                                 GcSectionAssessmentAdd,
-                                                "SstatusUpdate",
-                                                2
-                                            )
-                                        );
-                                        ClearCollect(
-                                            GcCheckpointAssessmentAdd,
-                                            Filter(
-                                                checkpointAssessment,
-                                                bankUnitId.Id = ThisItem.bankUnitId.Id
-                                            )
-                                        );
-                                            //Adding column for status maintain
-                            ClearCollect(
-                                            GcCheckpointAssessment,
-                                            AddColumns(
+                                                Filter(
+                                                    sectionAssessment,
+                                                //assignmentId.assessorId = varLoggedAssessor
+                                                    bankUnitId.Id = ThisItem.bankUnitId.Id
+                                                )
+                                            );
+                                        //Adding column for status maintain
+                                           ClearCollect(
+                                                GcSectionAssessment,
+                                                AddColumns(
+                                                    GcSectionAssessmentAdd,
+                                                    "SstatusUpdate",
+                                                    2
+                                                )
+                                            );
+                                            ,
+                                            ClearCollect(
                                                 GcCheckpointAssessmentAdd,
-                                                "CstatusUpdate",
-                                                2
-                                            )
-                                        );
-                                        ClearCollect(
-                                            GC_checkpointItemAssessmentAdd,
-                                            Filter(
-                                                checkpointItemAssessment,
-                                                bankUnitId.Id = ThisItem.bankUnitId.Id
-                                            )
-                                        );
-                                        ClearCollect(
-                                            GC_checkpointItemAssessment,
-                                            AddColumns(
+                                                Filter(
+                                                    checkpointAssessment,
+                                                    bankUnitId.Id = ThisItem.bankUnitId.Id
+                                                )
+                                            );
+                                            //Adding column for status maintain
+                                            ClearCollect(
+                                                GcCheckpointAssessment,
+                                                AddColumns(
+                                                    GcCheckpointAssessmentAdd,
+                                                    "CstatusUpdate",
+                                                    2
+                                                )
+                                            );
+                                            ,
+                                            ClearCollect(
                                                 GC_checkpointItemAssessmentAdd,
-                                                "CIstatusUpdate",
-                                                2
-                                            )
-                                        );
-                                        ClearCollect(
-                                            GC_checkpointItem_ActionItemAdd,
-                                            Filter(
-                                                checkpointItem_ActionItem,
-                                                bankUnitId.Id = ThisItem.bankUnitId.Id
-                                            )
-                                        );
-                                        ClearCollect(
-                                            GC_checkpointItem_ActionItem,
-                                            AddColumns(
+                                                Filter(
+                                                    checkpointItemAssessment,
+                                                    bankUnitId.Id = ThisItem.bankUnitId.Id
+                                                )
+                                            );
+                                            ClearCollect(
+                                                GC_checkpointItemAssessment,
+                                                AddColumns(
+                                                    GC_checkpointItemAssessmentAdd,
+                                                    "CIstatusUpdate",
+                                                    2
+                                                )
+                                            );
+                                            ,
+                                            ClearCollect(
                                                 GC_checkpointItem_ActionItemAdd,
-                                                "CIAstatusUpdate",
-                                                2
-                                            )
-                                        );
-                                        ClearCollect(
-                                            GC_checkpointItem_ImagesAdd,
-                                            Filter(
-                                                checkpointItem_Images,
-                                                bankUnitId.Id = ThisItem.bankUnitId.Id
-                                            )
-                                        );
-                                        ClearCollect(
-                                            GC_checkpointItem_Images,
-                                            AddColumns(
+                                                Filter(
+                                                    checkpointItem_ActionItem,
+                                                    bankUnitId.Id = ThisItem.bankUnitId.Id
+                                                )
+                                            );
+                                            ClearCollect(
+                                                GC_checkpointItem_ActionItem,
+                                                AddColumns(
+                                                    GC_checkpointItem_ActionItemAdd,
+                                                    "CIAstatusUpdate",
+                                                    2
+                                                )
+                                            );
+                                            ,
+                                            ClearCollect(
                                                 GC_checkpointItem_ImagesAdd,
-                                                "CIIstatusUpdate",
-                                                2
-                                            )
+                                                Filter(
+                                                    checkpointItem_Images,
+                                                    bankUnitId.Id = ThisItem.bankUnitId.Id
+                                                )
+                                            );
+                                            ClearCollect(
+                                                GC_checkpointItem_Images,
+                                                AddColumns(
+                                                    GC_checkpointItem_ImagesAdd,
+                                                    "CIIstatusUpdate",
+                                                    2
+                                                )
+                                            );
+                                        );
+                                        Set(
+                                            VarGetAssessmentData,
+                                            false
                                         );
                                         Navigate(SectionScreen);
                                         ,
@@ -2589,6 +2604,15 @@ BankScreen As screen:
             X: =(Parent.Width-Self.Width)/2
             Y: =lblTripReportSuccessBS.Y+ lblTripReportSuccessBS.Height+10
             ZIndex: =14
+
+    Image4 As image:
+        Fill: =RGBA(0, 0, 0, 0.29)
+        Height: =Parent.Height
+        Image: ='ajax-loader 2'
+        ImagePosition: =ImagePosition.Center
+        Visible: =VarGetAssessmentData
+        Width: =Parent.Width
+        ZIndex: =21
 
     grpTripReportBS_1 As group:
         Height: =5
