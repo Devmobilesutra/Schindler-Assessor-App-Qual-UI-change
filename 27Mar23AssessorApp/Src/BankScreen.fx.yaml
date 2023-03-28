@@ -216,7 +216,7 @@ BankScreen As screen:
                             Refresh(BankTripReport);
                             
                             //check checkpointItem ActionItem collection is empty or not if empty then load data from cache (only first time load )
-                            If(
+                            /*If(
                                 IsEmpty(GC_checkpointItem_ActionItem),
                                 LoadData(
                                     GC_checkpointItem_ActionItem,
@@ -224,7 +224,7 @@ BankScreen As screen:
                                     true
                                 );
                                 
-                            );
+                            );*/
                             
                             Clear(tempdata);
                             ForAll(
@@ -235,7 +235,9 @@ BankScreen As screen:
                                 If(
                                     CountRows(
                                         Filter(
-                                            GC_checkpointItemAssessment, //GC_checkpointItem_ActionItem,
+                                            checkpointItemAssessment,
+                                            //GC_checkpointItemAssessment,
+                                             //GC_checkpointItem_ActionItem,
                                             bankUnitId.Id = i.bankUnitId.Id
                                         )
                                     ) < 1,
@@ -303,7 +305,9 @@ BankScreen As screen:
                             ););*/
                                 Navigate(Screen1);
                                 ,
-                                Set(VarPopupSyncText,"Assessment records are not found in your local device . please click each unit to get assessment records from server .");
+                                Set(VarPopupSyncText,"
+                                 Assessment records are not found in your local device . please click each unit to get assessment records from server .
+                                ");
                                 Set(popupTripReportSuccess,true);
                             
                             );
