@@ -610,22 +610,36 @@ SectionScreen As screen:
                                     ThisItem.checkpointId
                                 );
                                 
+                                 /*IsBlank(
+                                                LookUp(
+                                                    GcCheckpointAssessment,
+                                                    assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && sectionId.'sectionAssessment (quantum_sectionassessment)' = varSA && checkpointId.checkpointId = ChId
+                                                )
+                                            );*/
+                                
                                 If(
                                     !IsBlank(LookUp(GcCheckpointAssessment,
                                             assignmentId.Id=varAssignmentId && 
                                             bankUnitId.Id = varBankUnitId && 
-                                            sectionId.sectionId.sectionId=VarSectionId && 
-                                            checkpointId.checkpointId = ChId)),
+                                           // sectionId.sectionId.sectionId=VarSectionId && 
+                                            sectionId.'sectionAssessment (quantum_sectionassessment)' = varSA &&
+                                            checkpointId.checkpointId = ChId
+                                            )),
+                                  
                                      Set(GuidId,LookUp(
                                             GcCheckpointAssessment,
                                             assignmentId.Id=varAssignmentId && 
                                             bankUnitId.Id = varBankUnitId  && 
-                                            sectionId.'sectionAssessment (quantum_sectionassessment)'=varSA &&
-                                            checkpointId.checkpointId = ThisItem.checkpointId ,checkpointAssessment_id
-                                        ))
+                                            sectionId.'sectionAssessment (quantum_sectionassessment)'=varSA
+                                             && checkpointId.checkpointId = ThisItem.checkpointId ,
+                                             checkpointAssessment_id
+                                        ));
+                                          Notify("guidDDDDDDDDDDDD" & GuidId ,NotificationType.Error);
                                  
-                                    );
-                                     Navigate(AssessmentScreen);   
+                                   );
+                                
+                                       // Notify("guid" & GuidId,NotificationType.Error);
+                                         Navigate(AssessmentScreen);   
                                        UpdateContext({locInfoExpanded:false});
                             PressedBorderColor: =Self.BorderColor
                             PressedColor: =Self.Color
