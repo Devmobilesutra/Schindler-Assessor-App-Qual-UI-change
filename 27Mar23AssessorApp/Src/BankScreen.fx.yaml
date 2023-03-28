@@ -680,7 +680,7 @@ BankScreen As screen:
                                         ,
                                         Set(
                                             VarPopupLocalDataText,
-                                            "Unsubmited data Available for " & First(GcSectionAssessment).bankUnitId.unitNumber & "  unit ,Please submit .
+                                            "Please submit finding of unit " & First(GcSectionAssessment).bankUnitId.unitNumber & " saved in your device .
                                 "
                                         );
                                         Set(
