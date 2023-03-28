@@ -610,13 +610,6 @@ SectionScreen As screen:
                                     ThisItem.checkpointId
                                 );
                                 
-                                 /*IsBlank(
-                                                LookUp(
-                                                    GcCheckpointAssessment,
-                                                    assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && sectionId.'sectionAssessment (quantum_sectionassessment)' = varSA && checkpointId.checkpointId = ChId
-                                                )
-                                            );*/
-                                
                                 If(
                                     !IsBlank(LookUp(GcCheckpointAssessment,
                                             assignmentId.Id=varAssignmentId && 
@@ -633,12 +626,10 @@ SectionScreen As screen:
                                             sectionId.'sectionAssessment (quantum_sectionassessment)'=varSA
                                              && checkpointId.checkpointId = ThisItem.checkpointId ,
                                              checkpointAssessment_id
-                                        ));
-                                          Notify("guidDDDDDDDDDDDD" & GuidId ,NotificationType.Error);
-                                 
+                                        )); 
                                    );
                                 
-                                       // Notify("guid" & GuidId,NotificationType.Error);
+                                  
                                          Navigate(AssessmentScreen);   
                                        UpdateContext({locInfoExpanded:false});
                             PressedBorderColor: =Self.BorderColor
