@@ -3097,12 +3097,55 @@ FindingScreen As screen:
             Fill: =RGBA(54, 176, 75, 1)
             Font: =AllScreensCSS.RFont
             HoverFill: =RGBA(75, 125, 6, 1)
-            OnSelect: |-
+            OnSelect: |
                 =//Set(C, false );
                 //Set(P, true );
-                Set(VarPrevNav,false);
-                Set(PopupCloseAction, false );
-                UpdateIf(GC_checkpointItem_ActionItem,checkpointItemActionItemsId=SelectedcheckpointItemActionItemsId,{Action_status:"Close",CIAstatusUpdate:1});Navigate(FindingScreen);
+                Set(
+                    VarPrevNav,
+                    false
+                );
+                Set(
+                    PopupCloseAction,
+                    false
+                );
+                UpdateIf(
+                    GC_checkpointItem_ActionItem,
+                    checkpointItemActionItemsId = SelectedcheckpointItemActionItemsId,
+                    {
+                        Action_status: "Close",
+                        CIAstatusUpdate: 1
+                    }
+                );
+                
+                 //for updating status of unit assessment to 0 for save status
+                UpdateIf(
+                        GC_unitAssessment,
+                        assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId,
+                        {UstatusUpdate: 0}
+                    );
+                    
+                //for updating status of section assessment to 0 for save status
+                UpdateIf(
+                        GcSectionAssessment,
+                        'sectionAssessment (quantum_sectionassessment)' = varSA,
+                        {SstatusUpdate: 0}
+                    );
+                 //for updating status of checkpoint assessment to 0 for save status
+                UpdateIf(
+                        GcCheckpointAssessment,
+                        checkpointAssessment_id = GuidId,
+                        {CstatusUpdate: 0}
+                    );
+                    
+                //for checkpoint  Item annotation - checkpoint Item Assessment
+                       //record exist then update that record using update if function
+                UpdateIf(
+                        GC_checkpointItemAssessment,
+                        'checkpointItemAssessment (quantum_checkpointitemassessment)' = varCItemA,
+                        {CIstatusUpdate: 0}
+                    );
+                
+                Navigate(FindingScreen);
             PressedBorderColor: =RGBA(1, 43, 1, 0)
             PressedFill: =Self.Fill
             Text: ="Ok"
