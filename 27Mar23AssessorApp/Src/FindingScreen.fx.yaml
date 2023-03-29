@@ -2130,6 +2130,12 @@ FindingScreen As screen:
                                 Y: =Label20_8.Y
                                 ZIndex: =2
 
+                            Label5 As label:
+                                FontWeight: =FontWeight.Bold
+                                Text: =" Unit Action Count - " & CountRows(GC_checkpointItem_ActionItem)
+                                Width: =Parent.Width/2
+                                ZIndex: =3
+
                         "GlryImagesFS As gallery.'BrowseLayout_Vertical_TwoTextOneImageTwoColumnVariant_ver4.0'":
                             AlignInContainer: =AlignInContainer.Start
                             FillPortions: =0
@@ -2634,6 +2640,20 @@ FindingScreen As screen:
                                 Width: =40
                                 Y: =lblAddImageFS.Y
                                 ZIndex: =3
+
+                            Label4 As label:
+                                FontWeight: =FontWeight.Bold
+                                Text: |-
+                                    ="   Unit Images Count - " & CountRows(  GC_checkpointItem_Images)
+                                                      /*  Filter(
+                                                            GC_checkpointItem_Images ,
+                                                           // assignmentId.Id =varAssignmentId
+                                    
+                                                           // checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = varCItemA 
+                                                        )
+                                                    )*/
+                                Width: =Parent.Width/2
+                                ZIndex: =4
 
                         btnSaveFS As button:
                             AlignInContainer: =AlignInContainer.Center
