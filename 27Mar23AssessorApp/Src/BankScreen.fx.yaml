@@ -1094,17 +1094,20 @@ BankScreen As screen:
                             If(
                                 CountRows(
                                     Filter(
-                                        GcSectionAssessment,
+                                        //GcSectionAssessment,
+                                        sectionAssessment,
                                         assignmentId.Id = varAssignmentId && bankUnitId.Id = ThisItem.bankUnitId.Id && sectionComment <> Blank()
                                     )
                                 ) = 0 && CountRows(
                                     Filter(
-                                        GcCheckpointAssessment,
+                                        //GcCheckpointAssessment,
+                                        checkpointAssessment,
                                         assignmentId.Id = varAssignmentId && bankUnitId.Id = ThisItem.bankUnitId.Id && checkpointComment <> Blank()
                                     )
                                 ) = 0 && CountRows(
                                     Filter(
-                                        GC_checkpointItemAssessment,
+                                       //GC_checkpointItemAssessment,
+                                       checkpointItemAssessment,
                                         assignmentId.Id = varAssignmentId && bankUnitId.Id = ThisItem.bankUnitId.Id && checkpointItemComment <> Blank()
                                     )
                                 ) = 0,
