@@ -1376,6 +1376,24 @@ AssessmentScreen As screen:
                         Y: =Button7.Y+(Button7.Height/3)
                         ZIndex: =12
 
+                Label6 As label:
+                    Align: =Align.Center
+                    FontWeight: =FontWeight.Bold
+                    Text: |-
+                        ="Checkpoint Action Count " & CountRows(
+                            Filter(
+                                GC_checkpointItem_ActionItem,
+                                checkpoint_id.checkpointAssessment_id = GuidId
+                            )
+                        ) & "  and Images Count " & CountRows(
+                            Filter(
+                                GC_checkpointItem_Images,
+                                checkpoint_id.checkpointAssessment_id = GuidId
+                            )
+                        )
+                    Width: =Parent.Width-60
+                    ZIndex: =3
+
                 ctnFooterAS As groupContainer.verticalAutoLayoutContainer:
                     AlignInContainer: =AlignInContainer.SetByContainer
                     FillPortions: =0
@@ -1391,7 +1409,7 @@ AssessmentScreen As screen:
                     PaddingRight: =40
                     Width: =Parent.Width
                     Y: =glryItmesAS.Y+glryItmesAS.Height
-                    ZIndex: =2
+                    ZIndex: =4
 
                     btnSubmit As button:
                         AlignInContainer: =AlignInContainer.Center
