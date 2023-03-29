@@ -394,7 +394,7 @@ BankScreen As screen:
                 LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
                 PaddingTop: =5
-                Width: =Parent.Width
+                Width: =Parent.Width -60
                 Y: =ctnClintNameBS.Height
                 ZIndex: =3
 
@@ -403,6 +403,7 @@ BankScreen As screen:
                     Fill: |-
                         =//RGBA(237, 237, 237, 1)
                         RGBA(242, 242, 242, 1)
+                    FillPortions: =0
                     Height: =CountRows(glryUnitBS.AllItems)*glryUnitBS.TemplateHeight
                     Items: |-
                         =//check comp variable is true or false if true then dislay data from assignmentUnit Dataverse table else check inpro or upcomp variable is true if one of them is true then display data from gcAssignmentunit collection
@@ -435,7 +436,7 @@ BankScreen As screen:
                     ShowScrollbar: =false
                     TemplateSize: =600
                     Visible: =Q
-                    Width: =Parent.Width/1.05
+                    Width: =Parent.Width
                     Y: =ctnHeaderBS.Height+300
                     ZIndex: =1
 
@@ -1274,7 +1275,7 @@ BankScreen As screen:
                         Visible: |-
                             =
                             If(comp= true , false , true )
-                        Width: =Parent.Width/8.5
+                        Width: =Parent.Width/8.2
                         X: =(Parent.Width-Self.Width-btnStartAssessmentBS.Width)-75
                         Y: =30
                         ZIndex: =4
