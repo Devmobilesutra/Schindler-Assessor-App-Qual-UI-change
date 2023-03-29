@@ -449,7 +449,7 @@ FindingScreen As screen:
                             );
                             Navigate(AssessmentScreen);
                         PaddingBottom: =10
-                        PaddingLeft: =20
+                        PaddingLeft: =10
                         PaddingRight: =10
                         PaddingTop: =10
                         PressedBorderColor: =Self.BorderColor
@@ -2448,7 +2448,8 @@ FindingScreen As screen:
                                         glryItmesAS.Selected.checkpointItemImage = 'checkpointItemImage (templateCheckpointsItems)'.Yes && CountRows(
                                             Filter(
                                                 GC_checkpointItem_Images,
-                                                assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpointItem_Id.checkpointItemId.checkpointItemId = varCheckpointitemID
+                                                assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && //checkpointItem_Id.checkpointItemId.checkpointItemId = varCheckpointitemID
+                                                checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = varCItemA
                                             )
                                         ) > 1,
                                         Set(
@@ -2593,8 +2594,18 @@ FindingScreen As screen:
                                     );
                                     
                                     Set(UP,false);
+                                    Set(VarImagesNav,false);
                                     If(
                                         CountRows(GlryImagesFS.AllItems) < 4,
+                                        
+                                        If(CountRows( GC_checkpointItem_Images)>=10,
+                                                    //Notify("Your locally save images are more than 100 this may cause your app unstable.");
+                                                    Set(VarSaveAssessmenttext,"Your locally save images are more than 100 this may cause your app unstable.");
+                                                    Set(VarImagesNav,true);
+                                                    Set(popupsuccess1,true);
+                                                    );
+                                                   
+                                    
                                         Collect(
                                           GC_checkpointItem_Images,
                                                   {
@@ -2625,8 +2636,8 @@ FindingScreen As screen:
                                             }
                                         );
                                     If(
-                                        CountRows(GlryImagesFS.AllItems) >=6,
-                                        Notify("You can capture 6 images only."),
+                                        CountRows(GlryImagesFS.AllItems) >=4,
+                                        Notify("You can capture 4 images only."),
                                         NotificationType.Warning
                                     ));
                                     Set(varImage,true);
@@ -2821,6 +2832,7 @@ FindingScreen As screen:
                                                         }
                                                     )
                                             );
+                                            Set(VarSaveAssessmenttext,"Assessment findings saved locally. It will be submitted for review once submit button is clicked.");
                                             Set(
                                                 popupsuccess1,
                                                 true
@@ -2942,14 +2954,14 @@ FindingScreen As screen:
         Rectangle1_9 As rectangle:
             Fill: =RGBA(0, 0, 0, 0.29)
             Height: =Parent.Height
-            Visible: =popupsuccess1=true
+            Visible: =popupsuccess1 = true
             Width: =Parent.Width
             ZIndex: =8
 
         Rectangle2_9 As rectangle:
             Fill: =RGBA(255, 255, 255, 1)
             Height: =280
-            Visible: =popupsuccess1=true
+            Visible: =popupsuccess1 = true
             Width: =400
             X: =(Parent.Width-Self.Width)/2
             Y: =Parent.Height/3
@@ -2957,8 +2969,8 @@ FindingScreen As screen:
 
         Image2_21 As image:
             Height: =52
-            Image: =Group
-            Visible: =popupsuccess1=true
+            Image: = If(VarImagesNav = true ,info,Group)
+            Visible: =popupsuccess1 = true
             Width: =52
             X: =(Parent.Width-Self.Width)/2
             Y: =Rectangle2_9.Y+20
@@ -2969,9 +2981,10 @@ FindingScreen As screen:
             Color: =RGBA(14, 161, 26, 1)
             Font: =AllScreensCSS.RFont
             FontWeight: =FontWeight.Bold
+            PaddingBottom: =0
             Size: =18
-            Text: ="Success"
-            Visible: =popupsuccess1=true
+            Text: =If(VarImagesNav = true ,"Info","Success")
+            Visible: =popupsuccess1 = true
             Width: =324
             X: =(Parent.Width-Self.Width)/2
             Y: =Image2_21.Y+Self.Height+10
@@ -2984,27 +2997,38 @@ FindingScreen As screen:
             Height: =100
             Size: =15
             Text: |
-                ="Assessment findings saved locally. It will be submitted for review once submit button is clicked."
-            Visible: =popupsuccess1=true
+                =VarSaveAssessmenttext
+            Visible: =popupsuccess1 = true
             Width: =350
             X: =(Parent.Width-Self.Width)/2
-            Y: =Label1_21.Y+ Label1_21.Height+2
+            Y: =Label1_21.Y+ Label1_21.Height
             ZIndex: =12
 
         btnSuccess_4 As button:
             Fill: =RGBA(54, 176, 75, 1)
             Font: =AllScreensCSS.RFont
             HoverFill: =RGBA(75, 125, 6, 1)
-            OnSelect: |
-                =Set(
+            OnSelect: |+
+                =
+                If( VarImagesNav = false,
+                
+                Set(
                     popupsuccess1,
                     false
                 );
-                Navigate(AssessmentScreen);
+                Navigate(AssessmentScreen);,
+                
+                Set(
+                    popupsuccess1,
+                    false
+                );
+                Set(VarImagesNav,false));
+                
+                
             PressedBorderColor: =RGBA(1, 43, 1, 0)
             PressedFill: =Self.Fill
             Text: ="Ok"
-            Visible: =popupsuccess1=true
+            Visible: =popupsuccess1 = true
             Width: =120
             X: =(Parent.Width-Self.Width)/2
             Y: =Label2_11.Y+ Label2_11.Height+10

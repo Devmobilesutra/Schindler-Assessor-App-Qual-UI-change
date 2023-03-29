@@ -664,6 +664,10 @@ DashboardScreen As screen:
                     )
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
+                RadiusBottomLeft: =10
+                RadiusBottomRight: =10
+                RadiusTopLeft: =10
+                RadiusTopRight: =10
                 Width: =Parent.Width/2.15
                 Y: =ctnHeaderDS.Height
                 ZIndex: =2
@@ -764,6 +768,10 @@ DashboardScreen As screen:
                     )
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
+                RadiusBottomLeft: =10
+                RadiusBottomRight: =10
+                RadiusTopLeft: =10
+                RadiusTopRight: =10
                 Width: =Parent.Width/2.15
                 Y: =ctnHeaderDS.Height
                 ZIndex: =3
