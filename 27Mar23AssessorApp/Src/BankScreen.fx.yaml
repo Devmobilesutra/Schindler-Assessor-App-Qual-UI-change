@@ -1090,8 +1090,8 @@ BankScreen As screen:
                         BorderColor: =AllScreensCSS.RColorBlack
                         Color: =AllScreensCSS.RColorBlack
                         DisplayMode: |-
-                            =DisplayMode.Edit
-                            /*If(
+                            =//DisplayMode.Edit
+                            If(
                                 CountRows(
                                     Filter(
                                         GcSectionAssessment,
@@ -1110,13 +1110,13 @@ BankScreen As screen:
                                 ) = 0,
                                 DisplayMode.Disabled,
                                 DisplayMode.Edit
-                            )*/
+                            )
                         Fill: =AllScreensCSS.RColorWhite
                         Font: =AllScreensCSS.ButtonFont
                         HoverColor: =RGBA(0, 0, 0, 1)
                         HoverFill: =Self.Fill
                         OnSelect: |
-                            =Set(
+                            =/*Set(
                                     varBankUnitId,
                                     ThisItem.bankUnitId.Id
                                 );
@@ -1124,8 +1124,8 @@ BankScreen As screen:
                               Set(
                                         VarPopupSyncText,
                                         "Getting reviewer's comments."
-                                    );
-                                    Set(popupSyncSuccess,true);
+                                 );
+                                 Set(popupSyncSuccess,true);
                                     
                                       //getting specific unit assessment data from dataverse and store it into temporary collection. 
                             ClearCollect(
@@ -1199,7 +1199,7 @@ BankScreen As screen:
                                             )
                                             );
                                  Set(popupSyncSuccess,false); 
-                            
+                            */
                             Set(varComment,true);
                             Set(varUnitId,ThisItem.bankUnitId);
                             Set(varSectionComment,true);
@@ -2280,7 +2280,8 @@ BankScreen As screen:
                     If(
                         varComment = true,
                         Filter(
-                            GC_unitAssessment,
+                            //GC_unitAssessment,
+                            unitAssessment,
                             assignmentId.Id = varAssignmentId && bankUnitId.Id = varUnitId.Id
                         )
                     )
@@ -2298,7 +2299,8 @@ BankScreen As screen:
                     Items: |-
                         =//Display checkpoint item wise comment
                         Filter(
-                            GC_checkpointItemAssessment,
+                            //GC_checkpointItemAssessment,
+                            checkpointItemAssessment,
                             assignmentId.Id = varAssignmentId && 
                             bankUnitId.Id = ThisItem.bankUnitId.Id && 
                             checkpointItemComment <> Blank()
@@ -2355,7 +2357,8 @@ BankScreen As screen:
                     Items: |-
                         =//Display checkpoint wise comment
                         Filter(
-                            GcCheckpointAssessment,
+                            //GcCheckpointAssessment,
+                            checkpointAssessment,
                             assignmentId.Id = varAssignmentId && 
                             bankUnitId.Id = ThisItem.bankUnitId.Id && 
                             checkpointComment <> Blank()
@@ -2414,7 +2417,8 @@ BankScreen As screen:
                     Items: |-
                         =//display section wise comments
                         Filter(
-                            GcSectionAssessment,
+                            //GcSectionAssessment,
+                            sectionAssessment,
                             assignmentId.Id = varAssignmentId && 
                             bankUnitId.Id = ThisItem.bankUnitId.Id && 
                             sectionComment <> Blank()
