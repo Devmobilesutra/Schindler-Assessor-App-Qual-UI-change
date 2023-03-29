@@ -1170,7 +1170,7 @@ DashboardScreen As screen:
                                     assignments,
                                     Id = i.assignmentId.Id
                                 ),
-                                GoNumber: i.bankUnitId.unitNumber,
+                                GoNumber: i.assignmentId.GONumber,
                                 UnitNumber: i.bankUnitId.unitNumber,
                                 CheckpointItemName: i.checkpointItemName,
                                 ActionCount: CountRows(

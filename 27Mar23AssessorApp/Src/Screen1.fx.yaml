@@ -554,13 +554,13 @@ Screen1 As screen:
                     Items: |
                         =
                         
-                                    Sort(
+                                   Sort( Sort(
                                         Filter(
                                             checkpointItem_ActionItem,
                                             assignmentId.Id = glryProject.Selected.Id && priority = "High"
                                         ),
                                         ActionSortSequence
-                                    )
+                                    ),bankUnitId.unitNumber)
                         //Sort(Sort(Sort(Sort(Filter(checkpointItem_ActionItem,assignmentId.Id=glryProject.Selected.Id  && priority = "High"),checkpointItem_Id.checkpointitemSequence),checkpoint_id.CheckpointSequence),section_id.sectionSequence),bankUnitId.unitNumber)
                         
                         
