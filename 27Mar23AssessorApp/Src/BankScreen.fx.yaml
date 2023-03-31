@@ -505,6 +505,14 @@ BankScreen As screen:
                                             bankUnitId.Id = ThisItem.bankUnitId.Id
                                         )
                                     ) < 1 ,
+                                     If(
+                                        CountRows(
+                                            Filter(
+                                                GcSectionAssessment,
+                                                //  bankUnitId.Id = ThisItem.bankUnitId.Id
+                                                SstatusUpdate = 0 || SstatusUpdate = 1
+                                            )
+                                        ) < 1 ,
                                         Notify("Getting data from dataverse.");
                                         Set(
                                             VarGetAssessmentData,
@@ -567,7 +575,7 @@ BankScreen As screen:
                              
                                     Navigate(SectionScreen);
                                 );
-                             // );
+                              );
                             //);
                             /*If(
                                 comp = true,
