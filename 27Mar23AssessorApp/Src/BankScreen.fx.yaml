@@ -470,11 +470,7 @@ BankScreen As screen:
                         HoverColor: =Self.Color
                         HoverFill: =Self.Fill
                         OnSelect: |-
-                            =Clear(GC_checkpointItemAssessment);
-                            Clear(GC_checkpointItem_ActionItem);
-                            Clear(GC_checkpointItem_Images);
-                            Clear(GcCheckpointAssessment);
-                            
+                            =
                             
                             Set(
                                 varSafety,
@@ -968,7 +964,7 @@ BankScreen As screen:
                                         ) = "Inprogress"
                                     ),
                                     "Resume"  & " "& CountRows(GcSectionAssessment)  & " " & CountRows(GcCheckpointAssessment)  & " " & CountRows(GC_checkpointItemAssessment)  & " " & CountRows(GC_checkpointItem_ActionItem)  & "  "& CountRows(GC_checkpointItem_Images),
-                                    "Start Assessment"
+                                    "Start Assessment"  & " "& CountRows(GcSectionAssessment)  & " " & CountRows(GcCheckpointAssessment)  & " " & CountRows(GC_checkpointItemAssessment)  & " " & CountRows(GC_checkpointItem_ActionItem)  & "  "& CountRows(GC_checkpointItem_Images)
                                 )
                             )
                         Width: =ctnunitAssessmentBS.Width/4
