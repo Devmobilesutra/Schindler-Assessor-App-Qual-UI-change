@@ -908,12 +908,12 @@ SectionScreen As screen:
                                     ) < 1 && CountRows(
                                         Filter(
                                             GC_checkpointItem_ActionItem,
-                                            bankUnitId.Id = varBankUnitId
+                                            section_id.'sectionAssessment (quantum_sectionassessment)'=varSA
                                         )
                                     ) < 1 && CountRows(
                                         Filter(
                                             GC_checkpointItem_Images,
-                                            bankUnitId.Id = varBankUnitId
+                                            section_id.'sectionAssessment (quantum_sectionassessment)'=varSA
                                         )
                                     ) < 1,
                                     If(
@@ -952,7 +952,7 @@ SectionScreen As screen:
                                                 GcCheckpointAssessmentAdd,
                                                 Filter(
                                                     checkpointAssessment,
-                                                    bankUnitId.Id = varBankUnitId
+                                                    sectionId.'sectionAssessment (quantum_sectionassessment)'=varSA
                                                 )
                                             );
                                             //Adding column for status maintain
@@ -969,7 +969,7 @@ SectionScreen As screen:
                                                 GC_checkpointItemAssessmentAdd,
                                                 Filter(
                                                     checkpointItemAssessment,
-                                                    bankUnitId.Id = varBankUnitId
+                                                    section_Id.'sectionAssessment (quantum_sectionassessment)'=varSA
                                                 )
                                             );
                                             ClearCollect(
@@ -985,8 +985,8 @@ SectionScreen As screen:
                                                 GC_checkpointItem_ActionItemAdd,
                                                 Filter(
                                                     checkpointItem_ActionItem,
-                                                    bankUnitId.Id = varBankUnitId
-                                                )
+                                                    section_id.'sectionAssessment (quantum_sectionassessment)'=varSA
+                                                     )
                                             );
                                             ClearCollect(
                                                 GC_checkpointItem_ActionItem,
@@ -1001,7 +1001,7 @@ SectionScreen As screen:
                                                 GC_checkpointItem_ImagesAdd,
                                                 Filter(
                                                     checkpointItem_Images,
-                                                    bankUnitId.Id = varBankUnitId
+                                                    section_id.'sectionAssessment (quantum_sectionassessment)'=varSA
                                                 )
                                             );
                                             ClearCollect(
@@ -1036,7 +1036,7 @@ SectionScreen As screen:
                                         TempCheckpointAssessment,
                                         Filter(
                                             checkpointAssessment,
-                                            assignmentId.assessorId = varLoggedAssessor && assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId
+                                            assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && sectionId.'sectionAssessment (quantum_sectionassessment)'=varSA
                                         )
                                     );
                                     
@@ -1054,7 +1054,7 @@ SectionScreen As screen:
                                         TempCheckpointItemAssessment,
                                         Filter(
                                             checkpointItemAssessment,
-                                            assignmentId.assessorId = varLoggedAssessor && assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId
+                                            assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && section_Id.'sectionAssessment (quantum_sectionassessment)'=varSA
                                         )
                                     );
                                     
