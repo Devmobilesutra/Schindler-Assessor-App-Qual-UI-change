@@ -486,39 +486,13 @@ BankScreen As screen:
                             );
                             //check collection is empty or not ? if empty then load data from local cache 
                             If(
-                                IsEmpty(GcSectionAssessment) && IsEmpty(GcCheckpointAssessment) && IsEmpty(GC_checkpointItemAssessment) && IsEmpty(GC_checkpointItem_ActionItem) && IsEmpty(GC_checkpointItem_Images),
-                                Concurrent(
+                                IsEmpty(GcSectionAssessment),
+                               
                                     LoadData(
                                         GcSectionAssessment,
                                         "localsectionassessment",
                                         true
-                                    );
-                                    ,
-                                    LoadData(
-                                        GcCheckpointAssessment,
-                                        "localcheckpointassessment",
-                                        true
-                                    );
-                                    ,
-                                    LoadData(
-                                        GC_checkpointItemAssessment,
-                                        "localcheckpointitemassessment",
-                                        true
-                                    );
-                                    ,
-                                    LoadData(
-                                        GC_checkpointItem_ActionItem,
-                                        "localcheckpointitemactionitem",
-                                        true
-                                    );
-                                    ,
-                                    LoadData(
-                                        GC_checkpointItem_Images,
-                                        "localcheckpointitemimage",
-                                        true
-                                    );
-                                );
-                                
+                                    );    
                             );
                             //Here we check if network is available or not, if available then check collection is empty or not ,if collection is empty then get specific assessor data from dataverse and store it into collection and save collection to cache
                             If(
@@ -530,65 +504,13 @@ BankScreen As screen:
                                             GcSectionAssessment,
                                             bankUnitId.Id = ThisItem.bankUnitId.Id
                                         )
-                                    ) < 1 && CountRows(
-                                        Filter(
-                                            GcCheckpointAssessment,
-                                            bankUnitId.Id = ThisItem.bankUnitId.Id
-                                        )
-                                    ) < 1 && CountRows(
-                                        Filter(
-                                            GC_checkpointItemAssessment,
-                                            bankUnitId.Id = ThisItem.bankUnitId.Id
-                                        )
-                                    ) < 1 && CountRows(
-                                        Filter(
-                                            GC_checkpointItem_ActionItem,
-                                            bankUnitId.Id = ThisItem.bankUnitId.Id
-                                        )
-                                    ) < 1 && CountRows(
-                                        Filter(
-                                            GC_checkpointItem_Images,
-                                            bankUnitId.Id = ThisItem.bankUnitId.Id
-                                        )
-                                    ) < 1,
-                                    If(
-                                        CountRows(
-                                            Filter(
-                                                GcSectionAssessment,
-                                                  //  bankUnitId.Id = ThisItem.bankUnitId.Id
-                                                SstatusUpdate = 0 || SstatusUpdate = 1
-                                            )
-                                        ) < 1 && CountRows(
-                                            Filter(
-                                                GcCheckpointAssessment,
-                                                  //  bankUnitId.Id = ThisItem.bankUnitId.Id
-                                                CstatusUpdate = 0 || CstatusUpdate = 1
-                                            )
-                                        ) < 1 && CountRows(
-                                            Filter(
-                                                GC_checkpointItemAssessment,
-                                                    //  bankUnitId.Id = ThisItem.bankUnitId.Id
-                                                CIstatusUpdate = 0 || CIstatusUpdate = 1
-                                            )
-                                        ) < 1 && CountRows(
-                                            Filter(
-                                                GC_checkpointItem_ActionItem,
-                                                    //bankUnitId.Id = ThisItem.bankUnitId.Id
-                                                CIAstatusUpdate = 0 || CIAstatusUpdate = 1
-                                            )
-                                        ) < 1 && CountRows(
-                                            Filter(
-                                                GC_checkpointItem_Images,
-                                                 //   bankUnitId.Id = ThisItem.bankUnitId.Id
-                                                CIIstatusUpdate = 0 || CIIstatusUpdate = 1
-                                            )
-                                        ) < 1,
+                                    ) < 1 ,
                                         Notify("Getting data from dataverse.");
                                         Set(
                                             VarGetAssessmentData,
                                             true
                                         );
-                                        Concurrent(
+                                       
                                             ClearCollect(
                                                 GcSectionAssessmentAdd,
                                                 Filter(
@@ -606,72 +528,7 @@ BankScreen As screen:
                                                     2
                                                 )
                                             );
-                                            ,
-                                            ClearCollect(
-                                                GcCheckpointAssessmentAdd,
-                                                Filter(
-                                                    checkpointAssessment,
-                                                    bankUnitId.Id = ThisItem.bankUnitId.Id
-                                                )
-                                            );
-                                            //Adding column for status maintain
-                            ClearCollect(
-                                                GcCheckpointAssessment,
-                                                AddColumns(
-                                                    GcCheckpointAssessmentAdd,
-                                                    "CstatusUpdate",
-                                                    2
-                                                )
-                                            );
-                                            ,
-                                            ClearCollect(
-                                                GC_checkpointItemAssessmentAdd,
-                                                Filter(
-                                                    checkpointItemAssessment,
-                                                    bankUnitId.Id = ThisItem.bankUnitId.Id
-                                                )
-                                            );
-                                            ClearCollect(
-                                                GC_checkpointItemAssessment,
-                                                AddColumns(
-                                                    GC_checkpointItemAssessmentAdd,
-                                                    "CIstatusUpdate",
-                                                    2
-                                                )
-                                            );
-                                            ,
-                                            ClearCollect(
-                                                GC_checkpointItem_ActionItemAdd,
-                                                Filter(
-                                                    checkpointItem_ActionItem,
-                                                    bankUnitId.Id = ThisItem.bankUnitId.Id
-                                                )
-                                            );
-                                            ClearCollect(
-                                                GC_checkpointItem_ActionItem,
-                                                AddColumns(
-                                                    GC_checkpointItem_ActionItemAdd,
-                                                    "CIAstatusUpdate",
-                                                    2
-                                                )
-                                            );
-                                            ,
-                                            ClearCollect(
-                                                GC_checkpointItem_ImagesAdd,
-                                                Filter(
-                                                    checkpointItem_Images,
-                                                    bankUnitId.Id = ThisItem.bankUnitId.Id
-                                                )
-                                            );
-                                            ClearCollect(
-                                                GC_checkpointItem_Images,
-                                                AddColumns(
-                                                    GC_checkpointItem_ImagesAdd,
-                                                    "CIIstatusUpdate",
-                                                    2
-                                                )
-                                            );
-                                        );
+                                    
                                         Set(
                                             VarGetAssessmentData,
                                             false
@@ -707,46 +564,11 @@ BankScreen As screen:
                                             {sectionComment: i.sectionComment}
                                         )
                                     );
-                             //getting specific unit assessment data from dataverse and store it into temporary collection 
-                            ClearCollect(
-                                        TempCheckpointAssessment,
-                                        Filter(
-                                            checkpointAssessment,
-                                            assignmentId.assessorId = varLoggedAssessor && assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId
-                                        )
-                                    );
-                                    
-                            //Updating checkpoint comments from temporary collection to main collection.
-                            ForAll(
-                                        TempCheckpointAssessment As j,
-                                        UpdateIf(
-                                            GcCheckpointAssessment,
-                                            checkpointAssessment_id = j.checkpointAssessment_id,
-                                            {checkpointComment: j.checkpointComment}
-                                        )
-                                    );
-                               //getting specific unit assessment data from dataverse and store it into temporary collection.
-                            ClearCollect(
-                                        TempCheckpointItemAssessment,
-                                        Filter(
-                                            checkpointItemAssessment,
-                                            assignmentId.assessorId = varLoggedAssessor && assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId
-                                        )
-                                    );
-                                    
-                            //Updating checkpoint item assessment comment from temporary collection to main collection.
-                            ForAll(
-                                        TempCheckpointItemAssessment As k,
-                                        UpdateIf(
-                                            GC_checkpointItemAssessment,
-                                            'checkpointItemAssessment (quantum_checkpointitemassessment)' = k.'checkpointItemAssessment (quantum_checkpointitemassessment)',
-                                            {checkpointItemComment: k.checkpointItemComment}
-                                        )
-                                    );
+                             
                                     Navigate(SectionScreen);
                                 );
                              // );
-                            );
+                            //);
                             /*If(
                                 comp = true,
                                 Navigate(ViewAssessmentScreen)   
