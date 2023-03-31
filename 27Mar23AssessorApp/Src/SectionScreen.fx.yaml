@@ -837,7 +837,7 @@ SectionScreen As screen:
                             );
                             
                             Set(VarSectionId,ThisItem.sectionId);
-                            UpdateContext({locInfoExpanded:true});
+                            //UpdateContext({locInfoExpanded:true});
                             Set(varExpanded,true);
                             //for collecting section assessment ID if record exist
                             //if user clicks first time then create a new GUID id for the section and sava in a variable.incase user adds any findings then create a new row for corsponding section in GcSectionAssessment collection 
@@ -1017,7 +1017,8 @@ SectionScreen As screen:
                                             VarGetAssessmentData,
                                             false
                                         );
-                                        Navigate(SectionScreen);
+                                        //Navigate(SectionScreen);
+                                        UpdateContext({locInfoExpanded:true});
                                         ,
                                         Set(
                                             VarPopupLocalDataText,
@@ -1066,7 +1067,8 @@ SectionScreen As screen:
                                             {checkpointItemComment: k.checkpointItemComment}
                                         )
                                     );
-                                    Navigate(SectionScreen);
+                                    //Navigate(SectionScreen);
+                                    UpdateContext({locInfoExpanded:true});
                                 );
                              // );
                             );
