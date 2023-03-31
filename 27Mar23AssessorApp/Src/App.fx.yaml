@@ -1,6 +1,6 @@
 App As appinfo:
     BackEnabled: =false
-    OnStart: |
+    OnStart: |-
         =//safety timer
         Set(SafetyCheckTime,1800);
         
@@ -423,9 +423,10 @@ App As appinfo:
         Clear(GC_bankAssessmentAdd);
         Clear(GC_unitAssessmentAdd);
         Clear(GcSectionAssessmentAdd);
-        Clear(GcCheckpointAssessmentAdd);
+        /*Clear(GcCheckpointAssessmentAdd);
         Clear(GC_checkpointItemAssessmentAdd);
         Clear(GC_checkpointItem_ActionItemAdd);
         Clear(GC_checkpointItem_ImagesAdd);
+        */
     SizeBreakpoints: =[600,700, 900, 1200,1500,1800]
 
