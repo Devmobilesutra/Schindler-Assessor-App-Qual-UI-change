@@ -23875,7 +23875,7 @@
                 },
                 "region": {
                   "charLength": 28,
-                  "charOffset": 1367,
+                  "charOffset": 1369,
                   "snippet": {
                     "text": "GC_checkpointItem_ActionItem"
                   }
@@ -23912,7 +23912,7 @@
                 },
                 "region": {
                   "charLength": 24,
-                  "charOffset": 1408,
+                  "charOffset": 1410,
                   "snippet": {
                     "text": "GC_checkpointItem_Images"
                   }
@@ -23949,7 +23949,7 @@
                 },
                 "region": {
                   "charLength": 28,
-                  "charOffset": 1771,
+                  "charOffset": 1773,
                   "snippet": {
                     "text": "GC_checkpointItem_ActionItem"
                   }
@@ -23990,7 +23990,7 @@
                 },
                 "region": {
                   "charLength": 127,
-                  "charOffset": 1748,
+                  "charOffset": 1750,
                   "snippet": {
                     "text": "LoadData(\r\n            GC_checkpointItem_ActionItem,\r\n            \"localcheckpointitemactionitem\",\r\n            true\r\n        )"
                   }
@@ -24030,7 +24030,7 @@
                 },
                 "region": {
                   "charLength": 24,
-                  "charOffset": 1920,
+                  "charOffset": 1922,
                   "snippet": {
                     "text": "GC_checkpointItem_Images"
                   }
@@ -24071,7 +24071,7 @@
                 },
                 "region": {
                   "charLength": 118,
-                  "charOffset": 1897,
+                  "charOffset": 1899,
                   "snippet": {
                     "text": "LoadData(\r\n            GC_checkpointItem_Images,\r\n            \"localcheckpointitemimage\",\r\n            true\r\n        )"
                   }
@@ -24111,7 +24111,7 @@
                 },
                 "region": {
                   "charLength": 28,
-                  "charOffset": 2764,
+                  "charOffset": 2766,
                   "snippet": {
                     "text": "GC_checkpointItem_ActionItem"
                   }
@@ -24148,7 +24148,7 @@
                 },
                 "region": {
                   "charLength": 151,
-                  "charOffset": 2739,
+                  "charOffset": 2741,
                   "snippet": {
                     "text": "Filter(\r\n                GC_checkpointItem_ActionItem,\r\n                section_id.'sectionAssessment (quantum_sectionassessment)'=varSA\r\n            )"
                   }
@@ -24188,7 +24188,7 @@
                 },
                 "region": {
                   "charLength": 10,
-                  "charOffset": 2811,
+                  "charOffset": 2813,
                   "snippet": {
                     "text": "section_id"
                   }
@@ -24228,7 +24228,7 @@
                 },
                 "region": {
                   "charLength": 48,
-                  "charOffset": 2821,
+                  "charOffset": 2823,
                   "snippet": {
                     "text": ".'sectionAssessment (quantum_sectionassessment)'"
                   }
@@ -24265,7 +24265,7 @@
                 },
                 "region": {
                   "charLength": 1,
-                  "charOffset": 2869,
+                  "charOffset": 2871,
                   "snippet": {
                     "text": "="
                   }
@@ -24306,7 +24306,7 @@
                 },
                 "region": {
                   "charLength": 24,
-                  "charOffset": 2958,
+                  "charOffset": 2960,
                   "snippet": {
                     "text": "GC_checkpointItem_Images"
                   }
@@ -24343,7 +24343,7 @@
                 },
                 "region": {
                   "charLength": 147,
-                  "charOffset": 2933,
+                  "charOffset": 2935,
                   "snippet": {
                     "text": "Filter(\r\n                GC_checkpointItem_Images,\r\n                section_id.'sectionAssessment (quantum_sectionassessment)'=varSA\r\n            )"
                   }
@@ -24383,7 +24383,7 @@
                 },
                 "region": {
                   "charLength": 10,
-                  "charOffset": 3001,
+                  "charOffset": 3003,
                   "snippet": {
                     "text": "section_id"
                   }
@@ -24423,7 +24423,7 @@
                 },
                 "region": {
                   "charLength": 48,
-                  "charOffset": 3011,
+                  "charOffset": 3013,
                   "snippet": {
                     "text": ".'sectionAssessment (quantum_sectionassessment)'"
                   }
@@ -24460,7 +24460,7 @@
                 },
                 "region": {
                   "charLength": 1,
-                  "charOffset": 3059,
+                  "charOffset": 3061,
                   "snippet": {
                     "text": "="
                   }
@@ -24501,7 +24501,7 @@
                 },
                 "region": {
                   "charLength": 28,
-                  "charOffset": 3686,
+                  "charOffset": 3688,
                   "snippet": {
                     "text": "GC_checkpointItem_ActionItem"
                   }
@@ -24538,7 +24538,7 @@
                 },
                 "region": {
                   "charLength": 207,
-                  "charOffset": 3657,
+                  "charOffset": 3659,
                   "snippet": {
                     "text": "Filter(\r\n                    GC_checkpointItem_ActionItem,\r\n                        //bankUnitId.Id = ThisItem.bankUnitId.Id\r\n                    CIAstatusUpdate = 0 || CIAstatusUpdate = 1\r\n                )"
                   }
@@ -24578,7 +24578,7 @@
                 },
                 "region": {
                   "charLength": 15,
-                  "charOffset": 3803,
+                  "charOffset": 3805,
                   "snippet": {
                     "text": "CIAstatusUpdate"
                   }
@@ -24618,7 +24618,7 @@
                 },
                 "region": {
                   "charLength": 1,
-                  "charOffset": 3819,
+                  "charOffset": 3821,
                   "snippet": {
                     "text": "="
                   }
@@ -24659,7 +24659,7 @@
                 },
                 "region": {
                   "charLength": 15,
-                  "charOffset": 3826,
+                  "charOffset": 3828,
                   "snippet": {
                     "text": "CIAstatusUpdate"
                   }
@@ -24699,7 +24699,7 @@
                 },
                 "region": {
                   "charLength": 1,
-                  "charOffset": 3842,
+                  "charOffset": 3844,
                   "snippet": {
                     "text": "="
                   }
@@ -24740,7 +24740,7 @@
                 },
                 "region": {
                   "charLength": 24,
-                  "charOffset": 3944,
+                  "charOffset": 3946,
                   "snippet": {
                     "text": "GC_checkpointItem_Images"
                   }
@@ -24777,7 +24777,7 @@
                 },
                 "region": {
                   "charLength": 203,
-                  "charOffset": 3915,
+                  "charOffset": 3917,
                   "snippet": {
                     "text": "Filter(\r\n                    GC_checkpointItem_Images,\r\n                     //   bankUnitId.Id = ThisItem.bankUnitId.Id\r\n                    CIIstatusUpdate = 0 || CIIstatusUpdate = 1\r\n                )"
                   }
@@ -24817,7 +24817,7 @@
                 },
                 "region": {
                   "charLength": 15,
-                  "charOffset": 4057,
+                  "charOffset": 4059,
                   "snippet": {
                     "text": "CIIstatusUpdate"
                   }
@@ -24857,7 +24857,7 @@
                 },
                 "region": {
                   "charLength": 1,
-                  "charOffset": 4073,
+                  "charOffset": 4075,
                   "snippet": {
                     "text": "="
                   }
@@ -24898,7 +24898,7 @@
                 },
                 "region": {
                   "charLength": 15,
-                  "charOffset": 4080,
+                  "charOffset": 4082,
                   "snippet": {
                     "text": "CIIstatusUpdate"
                   }
@@ -24938,7 +24938,7 @@
                 },
                 "region": {
                   "charLength": 1,
-                  "charOffset": 4096,
+                  "charOffset": 4098,
                   "snippet": {
                     "text": "="
                   }
@@ -24979,7 +24979,7 @@
                 },
                 "region": {
                   "charLength": 268,
-                  "charOffset": 5849,
+                  "charOffset": 5851,
                   "snippet": {
                     "text": "ClearCollect(\r\n                    GC_checkpointItem_ActionItem,\r\n                    AddColumns(\r\n                        GC_checkpointItem_ActionItemAdd,\r\n                        \"CIAstatusUpdate\",\r\n                        2\r\n                    )\r\n                )"
                   }
@@ -25019,7 +25019,7 @@
                 },
                 "region": {
                   "charLength": 28,
-                  "charOffset": 5884,
+                  "charOffset": 5886,
                   "snippet": {
                     "text": "GC_checkpointItem_ActionItem"
                   }
@@ -25056,7 +25056,7 @@
                 },
                 "region": {
                   "charLength": 260,
-                  "charOffset": 6446,
+                  "charOffset": 6448,
                   "snippet": {
                     "text": "ClearCollect(\r\n                    GC_checkpointItem_Images,\r\n                    AddColumns(\r\n                        GC_checkpointItem_ImagesAdd,\r\n                        \"CIIstatusUpdate\",\r\n                        2\r\n                    )\r\n                )"
                   }
@@ -25096,7 +25096,7 @@
                 },
                 "region": {
                   "charLength": 24,
-                  "charOffset": 6481,
+                  "charOffset": 6483,
                   "snippet": {
                     "text": "GC_checkpointItem_Images"
                   }
@@ -25133,7 +25133,7 @@
                 },
                 "region": {
                   "charLength": 1,
-                  "charOffset": 5830,
+                  "charOffset": 5832,
                   "snippet": {
                     "text": ";"
                   }
@@ -25170,7 +25170,7 @@
                 },
                 "region": {
                   "charLength": 1,
-                  "charOffset": 6427,
+                  "charOffset": 6429,
                   "snippet": {
                     "text": ";"
                   }
@@ -25207,7 +25207,7 @@
                 },
                 "region": {
                   "charLength": 2422,
-                  "charOffset": 4300,
+                  "charOffset": 4302,
                   "snippet": {
                     "text": "Concurrent(\r\n                ClearCollect(\r\n                    GcCheckpointAssessmentAdd,\r\n                    Filter(\r\n                        checkpointAssessment,\r\n                        sectionId.'sectionAssessment (quantum_sectionassessment)'=varSA\r\n                    )\r\n                );\r\n                //Adding column for status maintain\r\nClearCollect(\r\n                    GcCheckpointAssessment,\r\n                    AddColumns(\r\n                        GcCheckpointAssessmentAdd,\r\n                        \"CstatusUpdate\",\r\n                        2\r\n                    )\r\n                );\r\n                ,\r\n                ClearCollect(\r\n                    GC_checkpointItemAssessmentAdd,\r\n                    Filter(\r\n                        checkpointItemAssessment,\r\n                        section_Id.'sectionAssessment (quantum_sectionassessment)'=varSA\r\n                    )\r\n                );\r\n                ClearCollect(\r\n                    GC_checkpointItemAssessment,\r\n                    AddColumns(\r\n                        GC_checkpointItemAssessmentAdd,\r\n                        \"CIstatusUpdate\",\r\n                        2\r\n                    )\r\n                );\r\n                ,\r\n                ClearCollect(\r\n                    GC_checkpointItem_ActionItemAdd,\r\n                    Filter(\r\n                        checkpointItem_ActionItem,\r\n                        section_id.'sectionAssessment (quantum_sectionassessment)'=varSA\r\n                         )\r\n                );\r\n                ClearCollect(\r\n                    GC_checkpointItem_ActionItem,\r\n                    AddColumns(\r\n                        GC_checkpointItem_ActionItemAdd,\r\n                        \"CIAstatusUpdate\",\r\n                        2\r\n                    )\r\n                );\r\n                ,\r\n                ClearCollect(\r\n                    GC_checkpointItem_ImagesAdd,\r\n                    Filter(\r\n                        checkpointItem_Images,\r\n                        section_id.'sectionAssessment (quantum_sectionassessment)'=varSA\r\n                    )\r\n                );\r\n                ClearCollect(\r\n                    GC_checkpointItem_Images,\r\n                    AddColumns(\r\n                        GC_checkpointItem_ImagesAdd,\r\n                        \"CIIstatusUpdate\",\r\n                        2\r\n                    )\r\n                );\r\n            )"
                   }
