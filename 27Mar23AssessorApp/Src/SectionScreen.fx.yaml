@@ -898,12 +898,12 @@ SectionScreen As screen:
                                     CountRows(
                                         Filter(
                                             GcCheckpointAssessment,
-                                            bankUnitId.Id = varBankUnitId
+                                            sectionId.'sectionAssessment (quantum_sectionassessment)'=varSA
                                         )
                                     ) < 1 && CountRows(
                                         Filter(
                                             GC_checkpointItemAssessment,
-                                            bankUnitId.Id = varBankUnitId
+                                            section_Id.'sectionAssessment (quantum_sectionassessment)' = varSA
                                         )
                                     ) < 1 && CountRows(
                                         Filter(
