@@ -835,7 +835,7 @@ SectionScreen As screen:
                                 );
                                 
                             );
-                            ClearCollect(datatesttt,LookUp(
+                            ClearCollect(datatesttt,Filter(
                                             GcCheckpointAssessment,
                                             bankUnitId.Id = varBankUnitId 
                                             //&&  sectionId.sectionId.sectionId = ThisItem.sectionId
