@@ -506,8 +506,29 @@ BankScreen As screen:
                                             GcSectionAssessment,
                                             bankUnitId.Id = ThisItem.bankUnitId.Id
                                         )
-                                    ) < 1 ,
-                                     If(
+                                    ) > 0 ,
+                                  //getting specific unit assessment data from dataverse and store it into temporary collection. 
+                                    ClearCollect(
+                                        TempSectionAssessment,
+                                        Filter(
+                                            sectionAssessment,
+                                            assignmentId.assessorId = varLoggedAssessor && assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId
+                                        )
+                                    );
+                                    
+                            //Updating section comment from temporary collection to main collection. 
+                            ForAll(
+                                        TempSectionAssessment As i,
+                                        UpdateIf(
+                                            GcSectionAssessment,
+                                            'sectionAssessment (quantum_sectionassessment)' = i.'sectionAssessment (quantum_sectionassessment)',
+                                            {sectionComment: i.sectionComment}
+                                        )
+                                    );
+                             
+                                    Navigate(SectionScreen);
+                                    ,     
+                                    If(
                                         CountRows(
                                             Filter(
                                                 GcSectionAssessment,
@@ -555,27 +576,7 @@ BankScreen As screen:
                                             true
                                         );
                                     );
-                                    ,
-                                   //getting specific unit assessment data from dataverse and store it into temporary collection. 
-                                    ClearCollect(
-                                        TempSectionAssessment,
-                                        Filter(
-                                            sectionAssessment,
-                                            assignmentId.assessorId = varLoggedAssessor && assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId
-                                        )
-                                    );
                                     
-                            //Updating section comment from temporary collection to main collection. 
-                            ForAll(
-                                        TempSectionAssessment As i,
-                                        UpdateIf(
-                                            GcSectionAssessment,
-                                            'sectionAssessment (quantum_sectionassessment)' = i.'sectionAssessment (quantum_sectionassessment)',
-                                            {sectionComment: i.sectionComment}
-                                        )
-                                    );
-                             
-                                    Navigate(SectionScreen);
                                 );
                               );
                             //);
