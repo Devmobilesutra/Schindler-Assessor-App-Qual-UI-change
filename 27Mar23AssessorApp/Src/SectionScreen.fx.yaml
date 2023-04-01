@@ -900,7 +900,7 @@ SectionScreen As screen:
                                         Filter(
                                             GcCheckpointAssessment,
                                             bankUnitId.Id = varBankUnitId 
-                                            
+                                            && sectionId.MasterSectionId=VarSectionId
                                             //&& sectionId.sectionId.templateSections = ThisItem.templateSections
                                             //sectionId.'sectionAssessment (quantum_sectionassessment)'=varSA
                                         )
@@ -1009,9 +1009,10 @@ SectionScreen As screen:
                                                 GcCheckpointAssessmentAdd,
                                                 Filter(
                                                     checkpointAssessment,
-                                                     bankUnitId.Id = varBankUnitId 
+                                                     bankUnitId.Id = varBankUnitId
+                                                     && sectionId.MasterSectionId = VarSectionId 
                                                     //&&  sectionId.sectionId.templateSections = ThisItem.templateSections
-                                                    && secId = ThisItem.sectionId
+                                                    //&& secId = ThisItem.sectionId
                                                      // sectionId.'sectionAssessment (quantum_sectionassessment)'=varSA
                                                 )
                                             );
