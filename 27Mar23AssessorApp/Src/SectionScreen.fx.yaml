@@ -900,23 +900,64 @@ SectionScreen As screen:
                                             GcCheckpointAssessment,
                                             sectionId.'sectionAssessment (quantum_sectionassessment)'=varSA
                                         )
-                                    ) < 1 && CountRows(
+                                    ) > 0 && CountRows(
                                         Filter(
                                             GC_checkpointItemAssessment,
                                             section_Id.'sectionAssessment (quantum_sectionassessment)' = varSA
                                         )
-                                    ) < 1 && CountRows(
+                                    ) > 0 && CountRows(
                                         Filter(
                                             GC_checkpointItem_ActionItem,
                                             section_id.'sectionAssessment (quantum_sectionassessment)'=varSA
                                         )
-                                    ) < 1 && CountRows(
+                                    ) > 0 && CountRows(
                                         Filter(
                                             GC_checkpointItem_Images,
                                             section_id.'sectionAssessment (quantum_sectionassessment)'=varSA
                                         )
-                                    ) < 1,
-                                    If(
+                                    ) > 0,
+                                   
+                             //getting specific unit assessment data from dataverse and store it into temporary collection 
+                            ClearCollect(
+                                        TempCheckpointAssessment,
+                                        Filter(
+                                            checkpointAssessment,
+                                            assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && sectionId.'sectionAssessment (quantum_sectionassessment)'=varSA
+                                        )
+                                    );
+                                    
+                            //Updating checkpoint comments from temporary collection to main collection.
+                            ForAll(
+                                        TempCheckpointAssessment As j,
+                                        UpdateIf(
+                                            GcCheckpointAssessment,
+                                            checkpointAssessment_id = j.checkpointAssessment_id,
+                                            {checkpointComment: j.checkpointComment}
+                                        )
+                                    );
+                               //getting specific unit assessment data from dataverse and store it into temporary collection.
+                            ClearCollect(
+                                        TempCheckpointItemAssessment,
+                                        Filter(
+                                            checkpointItemAssessment,
+                                            assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && section_Id.'sectionAssessment (quantum_sectionassessment)'=varSA
+                                        )
+                                    );
+                                    
+                            //Updating checkpoint item assessment comment from temporary collection to main collection.
+                            ForAll(
+                                        TempCheckpointItemAssessment As k,
+                                        UpdateIf(
+                                            GC_checkpointItemAssessment,
+                                            'checkpointItemAssessment (quantum_checkpointitemassessment)' = k.'checkpointItemAssessment (quantum_checkpointitemassessment)',
+                                            {checkpointItemComment: k.checkpointItemComment}
+                                        )
+                                    );
+                                    //Navigate(SectionScreen);
+                                    UpdateContext({locInfoExpanded:true});
+                                    Set(varExpanded,true);,
+                            
+                                     If(
                                          CountRows(
                                             Filter(
                                                 GcCheckpointAssessment,
@@ -1031,46 +1072,7 @@ SectionScreen As screen:
                                             true
                                         );
                                     );
-                                    ,
-                             //getting specific unit assessment data from dataverse and store it into temporary collection 
-                            ClearCollect(
-                                        TempCheckpointAssessment,
-                                        Filter(
-                                            checkpointAssessment,
-                                            assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && sectionId.'sectionAssessment (quantum_sectionassessment)'=varSA
-                                        )
-                                    );
                                     
-                            //Updating checkpoint comments from temporary collection to main collection.
-                            ForAll(
-                                        TempCheckpointAssessment As j,
-                                        UpdateIf(
-                                            GcCheckpointAssessment,
-                                            checkpointAssessment_id = j.checkpointAssessment_id,
-                                            {checkpointComment: j.checkpointComment}
-                                        )
-                                    );
-                               //getting specific unit assessment data from dataverse and store it into temporary collection.
-                            ClearCollect(
-                                        TempCheckpointItemAssessment,
-                                        Filter(
-                                            checkpointItemAssessment,
-                                            assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && section_Id.'sectionAssessment (quantum_sectionassessment)'=varSA
-                                        )
-                                    );
-                                    
-                            //Updating checkpoint item assessment comment from temporary collection to main collection.
-                            ForAll(
-                                        TempCheckpointItemAssessment As k,
-                                        UpdateIf(
-                                            GC_checkpointItemAssessment,
-                                            'checkpointItemAssessment (quantum_checkpointitemassessment)' = k.'checkpointItemAssessment (quantum_checkpointitemassessment)',
-                                            {checkpointItemComment: k.checkpointItemComment}
-                                        )
-                                    );
-                                    //Navigate(SectionScreen);
-                                    UpdateContext({locInfoExpanded:true});
-                                    Set(varExpanded,true);
                                 );
                              // );
                             );
