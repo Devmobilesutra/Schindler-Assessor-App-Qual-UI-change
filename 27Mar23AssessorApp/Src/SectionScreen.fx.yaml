@@ -1010,7 +1010,8 @@ SectionScreen As screen:
                                                 Filter(
                                                     checkpointAssessment,
                                                      bankUnitId.Id = varBankUnitId 
-                                                    &&  sectionId.sectionId.templateSections = ThisItem.templateSections
+                                                    //&&  sectionId.sectionId.templateSections = ThisItem.templateSections
+                                                    && secId = ThisItem.sectionId
                                                      // sectionId.'sectionAssessment (quantum_sectionassessment)'=varSA
                                                 )
                                             );
