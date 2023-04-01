@@ -898,12 +898,11 @@ SectionScreen As screen:
                                     CountRows(
                                         Filter(
                                             GcCheckpointAssessment,
-                                            //bankUnitId.Id = varBankUnitId 
-                                             //&& 
-                                             sectionId.sectionId.sectionId = ThisItem.sectionId
+                                            bankUnitId.Id = varBankUnitId 
+                                             //&& sectionId.sectionId.sectionId = ThisItem.sectionId
                                             //sectionId.'sectionAssessment (quantum_sectionassessment)'=varSA
                                         )
-                                    ) >= 1/* && CountRows(
+                                    ) >= 1 && CountRows(
                                         Filter(
                                             GC_checkpointItemAssessment,
                                             bankUnitId.Id = varBankUnitId 
@@ -925,7 +924,7 @@ SectionScreen As screen:
                                              //&& section_id.sectionId.sectionId = ThisItem.sectionId
                                             //section_id.'sectionAssessment (quantum_sectionassessment)'=varSA
                                         )
-                                    ) >= 1*/
+                                    ) >= 1
                                     ,
                             
                                     Notify("Getting comments");
@@ -1008,9 +1007,8 @@ SectionScreen As screen:
                                                 GcCheckpointAssessmentAdd,
                                                 Filter(
                                                     checkpointAssessment,
-                                                     //bankUnitId.Id = varBankUnitId 
-                                                   //  &&  
-                                                    sectionId.sectionId.sectionname = ThisItem.sectionname
+                                                     bankUnitId.Id = varBankUnitId 
+                                                   //  &&  sectionId.sectionId.sectionname = ThisItem.sectionname
                                                      // sectionId.'sectionAssessment (quantum_sectionassessment)'=varSA
                                                 )
                                             );
