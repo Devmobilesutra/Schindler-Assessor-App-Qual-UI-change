@@ -898,24 +898,34 @@ SectionScreen As screen:
                                     CountRows(
                                         Filter(
                                             GcCheckpointAssessment,
-                                            sectionId.'sectionAssessment (quantum_sectionassessment)'=varSA
+                                            bankUnitId.Id = varBankUnitId &&
+                                            sectionId.sectionId.sectionId = VarSectionId
+                                            //sectionId.'sectionAssessment (quantum_sectionassessment)'=varSA
                                         )
                                     ) > 0 && CountRows(
                                         Filter(
                                             GC_checkpointItemAssessment,
-                                            section_Id.'sectionAssessment (quantum_sectionassessment)' = varSA
+                                            bankUnitId.Id = varBankUnitId &&
+                                            section_Id.sectionId.sectionId = VarSectionId
+                            
+                                            //section_Id.'sectionAssessment (quantum_sectionassessment)' = varSA
                                         )
                                     ) > 0 && CountRows(
                                         Filter(
                                             GC_checkpointItem_ActionItem,
-                                            section_id.'sectionAssessment (quantum_sectionassessment)'=varSA
+                                             bankUnitId.Id = varBankUnitId &&
+                                             section_id.sectionId.sectionId = VarSectionId
+                                            //section_id.'sectionAssessment (quantum_sectionassessment)'=varSA
                                         )
                                     ) > 0 && CountRows(
                                         Filter(
                                             GC_checkpointItem_Images,
-                                            section_id.'sectionAssessment (quantum_sectionassessment)'=varSA
+                                             bankUnitId.Id = varBankUnitId &&
+                                             section_id.sectionId.sectionId = VarSectionId
+                                            //section_id.'sectionAssessment (quantum_sectionassessment)'=varSA
                                         )
                                     ) > 0,
+                            
                                     Notify("Getting comments");
                                    
                              //getting specific unit assessment data from dataverse and store it into temporary collection 
@@ -996,7 +1006,9 @@ SectionScreen As screen:
                                                 GcCheckpointAssessmentAdd,
                                                 Filter(
                                                     checkpointAssessment,
-                                                    sectionId.'sectionAssessment (quantum_sectionassessment)'=varSA
+                                                     bankUnitId.Id = varBankUnitId &&
+                                                     sectionId.sectionId.sectionId = VarSectionId
+                                                   // sectionId.'sectionAssessment (quantum_sectionassessment)'=varSA
                                                 )
                                             );
                                             //Adding column for status maintain
@@ -1013,7 +1025,9 @@ SectionScreen As screen:
                                                 GC_checkpointItemAssessmentAdd,
                                                 Filter(
                                                     checkpointItemAssessment,
-                                                    section_Id.'sectionAssessment (quantum_sectionassessment)'=varSA
+                                                     bankUnitId.Id = varBankUnitId &&
+                                                     section_Id.sectionId.sectionId = VarSectionId
+                                                    //section_Id.'sectionAssessment (quantum_sectionassessment)'=varSA
                                                 )
                                             );
                                             ClearCollect(
@@ -1029,7 +1043,9 @@ SectionScreen As screen:
                                                 GC_checkpointItem_ActionItemAdd,
                                                 Filter(
                                                     checkpointItem_ActionItem,
-                                                    section_id.'sectionAssessment (quantum_sectionassessment)'=varSA
+                                                     bankUnitId.Id = varBankUnitId &&
+                                                     section_id.sectionId.sectionId = VarSectionId
+                                                   // section_id.'sectionAssessment (quantum_sectionassessment)'=varSA
                                                      )
                                             );
                                             ClearCollect(
@@ -1045,7 +1061,9 @@ SectionScreen As screen:
                                                 GC_checkpointItem_ImagesAdd,
                                                 Filter(
                                                     checkpointItem_Images,
-                                                    section_id.'sectionAssessment (quantum_sectionassessment)'=varSA
+                                                     bankUnitId.Id = varBankUnitId &&
+                                                     section_id.sectionId.sectionId = VarSectionId
+                                                   // section_id.'sectionAssessment (quantum_sectionassessment)'=varSA
                                                 )
                                             );
                                             ClearCollect(
