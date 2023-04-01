@@ -835,6 +835,12 @@ SectionScreen As screen:
                                 );
                                 
                             );
+                            ClearCollect(datatesttt,LookUp(
+                                            GcCheckpointAssessment,
+                                            bankUnitId.Id = varBankUnitId 
+                                            //&&  sectionId.sectionId.sectionId = ThisItem.sectionId
+                                            //sectionId.'sectionAssessment (quantum_sectionassessment)'=varSA
+                                        ));
                             
                             Set(VarSectionId,ThisItem.sectionId);
                             //UpdateContext({locInfoExpanded:true});
