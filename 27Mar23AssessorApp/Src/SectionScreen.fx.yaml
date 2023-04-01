@@ -1086,7 +1086,7 @@ SectionScreen As screen:
                                       //  Notify("Please submit finding of unit " & First(GcSectionAssessment).bankUnitId.unitNumber & " saved in your device .");
                                         Set(
                                             VarPopupLocalDataText,
-                                            "Please submit finding of unit " & First(GcSectionAssessment).bankUnitId.unitNumber & " in section " & First(GcCheckpointAssessment).sectionId.sectionName & "saved in your device . "
+                                            "Please submit finding of section " & First(GcCheckpointAssessment).sectionId.sectionName & " saved in your device . "
                                         );
                                         Set(
                                             VarPopupLocalData,
