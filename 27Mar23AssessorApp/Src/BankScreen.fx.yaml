@@ -506,7 +506,8 @@ BankScreen As screen:
                                             GcSectionAssessment,
                                             bankUnitId.Id = ThisItem.bankUnitId.Id
                                         )
-                                    ) > 0 ,
+                                    ) >= 1  ,
+                                    Notify("Getting comments section");
                                   //getting specific unit assessment data from dataverse and store it into temporary collection. 
                                     ClearCollect(
                                         TempSectionAssessment,
@@ -566,6 +567,8 @@ BankScreen As screen:
                                         );
                                         Navigate(SectionScreen);
                                         ,
+                                        Notify("Please submit finding of unit " & First(GcSectionAssessment).bankUnitId.unitNumber & " saved in your device .
+                                ");
                                         Set(
                                             VarPopupLocalDataText,
                                             "Please submit finding of unit " & First(GcSectionAssessment).bankUnitId.unitNumber & " saved in your device .

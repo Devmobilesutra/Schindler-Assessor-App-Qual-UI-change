@@ -902,7 +902,7 @@ SectionScreen As screen:
                                             sectionId.sectionId.sectionId = ThisItem.sectionId
                                             //sectionId.'sectionAssessment (quantum_sectionassessment)'=varSA
                                         )
-                                    ) > 0 && CountRows(
+                                    ) >= 1 /*&& CountRows(
                                         Filter(
                                             GC_checkpointItemAssessment,
                                             bankUnitId.Id = varBankUnitId &&
@@ -910,21 +910,22 @@ SectionScreen As screen:
                             
                                             //section_Id.'sectionAssessment (quantum_sectionassessment)' = varSA
                                         )
-                                    ) > 0 && CountRows(
+                                    ) >= 1 && CountRows(
                                         Filter(
                                             GC_checkpointItem_ActionItem,
                                              bankUnitId.Id = varBankUnitId &&
                                              section_id.sectionId.sectionId = ThisItem.sectionId
                                             //section_id.'sectionAssessment (quantum_sectionassessment)'=varSA
                                         )
-                                    ) > 0 && CountRows(
+                                    ) >= 1 && CountRows(
                                         Filter(
                                             GC_checkpointItem_Images,
                                              bankUnitId.Id = varBankUnitId &&
                                              section_id.sectionId.sectionId = ThisItem.sectionId
                                             //section_id.'sectionAssessment (quantum_sectionassessment)'=varSA
                                         )
-                                    ) > 0,
+                                    ) >= 1*/
+                                    ,
                             
                                     Notify("Getting comments");
                                    
@@ -1006,9 +1007,9 @@ SectionScreen As screen:
                                                 GcCheckpointAssessmentAdd,
                                                 Filter(
                                                     checkpointAssessment,
-                                                     bankUnitId.Id = varBankUnitId &&
-                                                     sectionId.sectionId.sectionId = ThisItem.sectionId
-                                                   // sectionId.'sectionAssessment (quantum_sectionassessment)'=varSA
+                                                     bankUnitId.Id = varBankUnitId 
+                                                     &&   sectionId.sectionId.sectionname = ThisItem.sectionname
+                                                     // sectionId.'sectionAssessment (quantum_sectionassessment)'=varSA
                                                 )
                                             );
                                             //Adding column for status maintain
