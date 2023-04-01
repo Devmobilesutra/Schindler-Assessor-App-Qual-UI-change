@@ -451,7 +451,12 @@ AssessmentScreen As screen:
                         DisplayMode: |-
                             =//If(glryItmesAS.Selected.cboxItemsAS.Value=true,DisplayMode.Edit,View)
                             DisplayMode.Edit
-                        Fill: =AllScreensCSS.RColorWhite
+                        Fill: |-
+                            =      
+                            If(CountRows(Filter(
+                                    GC_checkpointItemAssessment,
+                                    checkpointItemId.checkpointItemId = ThisItem.checkpointItemId && bankUnitId.Id = varBankUnitId && assignmentId.isCompleted = "Completed" &&  !IsBlank(checkpointItem_annotation)))>0, AllScreensCSS.RActiveColor, AllScreensCSS.RColorWhite)
+                                 
                         Font: =AllScreensCSS.RFont
                         HoverColor: =RGBA(0, 0, 0, 1)
                         HoverFill: |-
