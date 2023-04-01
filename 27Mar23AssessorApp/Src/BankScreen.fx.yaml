@@ -470,9 +470,7 @@ BankScreen As screen:
                         HoverColor: =Self.Color
                         HoverFill: =Self.Fill
                         OnSelect: |-
-                            =
-                            
-                            Set(
+                            =Set(
                                 varSafety,
                                 false
                             );
@@ -567,12 +565,10 @@ BankScreen As screen:
                                         );
                                         Navigate(SectionScreen);
                                         ,
-                                        Notify("Please submit finding of unit " & First(GcSectionAssessment).bankUnitId.unitNumber & " saved in your device .
-                                ");
+                                        //Notify("Please submit finding of unit " & First(GcSectionAssessment).bankUnitId.unitNumber & " saved in your device .");
                                         Set(
                                             VarPopupLocalDataText,
-                                            "Please submit finding of unit " & First(GcSectionAssessment).bankUnitId.unitNumber & " saved in your device .
-                                "
+                                            "Please submit finding of section " & First(GcCheckpointAssessment).sectionId.sectionName & " in unit "& First(GcSectionAssessment).bankUnitId.unitNumber &  " saved in your device . "
                                         );
                                         Set(
                                             VarPopupLocalData,
