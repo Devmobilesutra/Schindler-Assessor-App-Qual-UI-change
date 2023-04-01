@@ -835,12 +835,7 @@ SectionScreen As screen:
                                 );
                                 
                             );
-                            ClearCollect(datatesttt,Filter(
-                                            GcCheckpointAssessment,
-                                            bankUnitId.Id = varBankUnitId 
-                                            //&&  sectionId.sectionId.sectionId = ThisItem.sectionId
-                                            //sectionId.'sectionAssessment (quantum_sectionassessment)'=varSA
-                                        ));
+                            
                             
                             Set(VarSectionId,ThisItem.sectionId);
                             //UpdateContext({locInfoExpanded:true});
@@ -905,7 +900,8 @@ SectionScreen As screen:
                                         Filter(
                                             GcCheckpointAssessment,
                                             bankUnitId.Id = varBankUnitId 
-                                            && sectionId.sectionId.templateSections = ThisItem.templateSections
+                                            
+                                            //&& sectionId.sectionId.templateSections = ThisItem.templateSections
                                             //sectionId.'sectionAssessment (quantum_sectionassessment)'=varSA
                                         )
                                     ) >= 1/* && CountRows(
