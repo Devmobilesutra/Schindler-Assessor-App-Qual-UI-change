@@ -961,10 +961,12 @@ BankScreen As screen:
                                         GC_unitAssessment,
                                         assignmentId.Id = varAssignmentId && bankUnitId.Id = ThisItem.bankUnitId.Id,
                                         Assessment_status
-                                        ) = "Inprogress"
-                                    ),
-                                    "Resume"  & " "& CountRows(GcSectionAssessment)  & " " & CountRows(GcCheckpointAssessment)  & " " & CountRows(GC_checkpointItemAssessment)  & " " & CountRows(GC_checkpointItem_ActionItem)  & "  "& CountRows(GC_checkpointItem_Images),
-                                    "Start Assessment"  & " "& CountRows(GcSectionAssessment)  & " " & CountRows(GcCheckpointAssessment)  & " " & CountRows(GC_checkpointItemAssessment)  & " " & CountRows(GC_checkpointItem_ActionItem)  & "  "& CountRows(GC_checkpointItem_Images)
+                                    ) = "Inprogress"),
+                                    "Resume Assessment"
+                                    // & " "& CountRows(GcSectionAssessment)  & " " & CountRows(GcCheckpointAssessment)  & " " & CountRows(GC_checkpointItemAssessment)  & " " & CountRows(GC_checkpointItem_ActionItem)  & "  "& CountRows(GC_checkpointItem_Images)
+                            ,
+                                    "Start Assessment"
+                                    //& " "& CountRows(GcSectionAssessment)  & " " & CountRows(GcCheckpointAssessment)  & " " & CountRows(GC_checkpointItemAssessment)  & " " & CountRows(GC_checkpointItem_ActionItem)  & "  "& CountRows(GC_checkpointItem_Images)
                                 )
                             )
                         Width: =ctnunitAssessmentBS.Width/4
