@@ -929,7 +929,8 @@ AssessmentScreen As screen:
                                                     GC_templateSections,
                                                     sectionId = VarSectionId,
                                                     sectionSequence
-                                                )
+                                                ),
+                                                MasterSectionId:VarSectionId
                                             }
                                         ),
                                         Set(
