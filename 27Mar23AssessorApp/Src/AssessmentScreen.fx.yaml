@@ -465,10 +465,6 @@ AssessmentScreen As screen:
                         OnSelect: |+
                             =//Notify("finding start",NotificationType.Information);
                             
-                            /*//for reset ideal timer
-                            Reset(tmr_logout);
-                            Set(UserLastNavigated, Now());*/
-                            
                             //for safety check
                             If(
                                 DateDiff(
@@ -517,7 +513,8 @@ AssessmentScreen As screen:
                                 sectionName:glrySectionSS.Selected.sectionname,
                                 AssessmentStatus:"Inprogress",
                                 SstatusUpdate:Blank(),
-                                sectionSequence:LookUp(GC_templateSections,sectionId=VarSectionId,sectionSequence)
+                                sectionSequence:LookUp(GC_templateSections,sectionId=VarSectionId,sectionSequence),
+                                MasterSectionId:VarSectionId
                                 }
                                 ),
                                 Set(varSA,LookUp(
@@ -1750,7 +1747,8 @@ AssessmentScreen As screen:
                                                 "quantum_sectionname",
                                                 "shlaf_sectioncomment",
                                                 "quantum_assessmentstatus",
-                                                "cr28a_sectionsequence"
+                                                "cr28a_sectionsequence",
+                                                "shlaf_mastersectionid"
                                             )
                                         );
                                         
