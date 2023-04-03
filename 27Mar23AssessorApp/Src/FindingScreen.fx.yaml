@@ -2598,9 +2598,9 @@ FindingScreen As screen:
                                     If(
                                         CountRows(GlryImagesFS.AllItems) < 4,
                                         
-                                        If(CountRows( GC_checkpointItem_Images)>=100,
+                                        If(CountRows( GC_checkpointItem_Images)>100,
                                                     //Notify("Your locally save images are more than 100 this may cause your app unstable.");
-                                                    Set(VarSaveAssessmenttext,"Your locally save images are more than 100 this may cause your app unstable.");
+                                                    Set(VarSaveAssessmenttext,"Please keep number of images to 100 for the section "& First(GcSectionAssessment).sectionName &". Large number of images may restrict working memory for the app.");
                                                     Set(VarImagesNav,true);
                                                     Set(popupsuccess1,true);
                                                     );
