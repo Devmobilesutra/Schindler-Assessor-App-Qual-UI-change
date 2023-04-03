@@ -1144,6 +1144,18 @@ DashboardScreen As screen:
                         Text(GUID())
                     );
                     Patch(
+                        CollectionCounts,
+                        Defaults(CollectionCounts),
+                        {
+                            MasterTemplateCheckpointItem:CountRows(GC_templateCheckpointsItem),
+                            MasterTemplateActionItems:CountRows(GC_actionItems),
+                            CheckpointItemAssessment:CountRows(GC_checkpointItemAssessment),
+                            CheckpointItemActionItem:CountRows(GC_checkpointItem_ActionItem),
+                            CheckpointItemImages:CountRows(GC_checkpointItem_Images),
+                            submittedBy:username
+                        }
+                    );
+                    Patch(
                         ReportIssueMasters,
                         Defaults(ReportIssueMasters),
                         {
@@ -1153,7 +1165,6 @@ DashboardScreen As screen:
                             Sender: "Assessor"
                         }
                     );
-                
                     Refresh(ReportIssueMasters);
                     ClearCollect(
                         tempReportIssueAssessment,
@@ -1163,7 +1174,6 @@ DashboardScreen As screen:
                         )
                     );
                     Clear(tempReportIssueAssessment);
-                    
                     ForAll(
                         GC_checkpointItemAssessment As i,
                         Collect(
