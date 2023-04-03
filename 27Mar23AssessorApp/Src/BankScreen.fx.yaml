@@ -497,7 +497,7 @@ BankScreen As screen:
                             //Here we check if network is available or not, if available then check collection is empty or not ,if collection is empty then get specific assessor data from dataverse and store it into collection and save collection to cache
                             If(
                                 Connection.Connected,
-                             //   Concurrent(
+                            
                                 If(
                                     CountRows(
                                         Filter(
@@ -506,6 +506,7 @@ BankScreen As screen:
                                         )
                                     ) >= 1  ,
                                     Notify("Getting comments section");
+                            
                                   //getting specific unit assessment data from dataverse and store it into temporary collection. 
                                     ClearCollect(
                                         TempSectionAssessment,
@@ -576,6 +577,18 @@ BankScreen As screen:
                                         );
                                     );
                                     
+                                ),
+                                
+                                If(
+                                    CountRows(
+                                        Filter(
+                                            GcSectionAssessment,
+                                            bankUnitId.Id = ThisItem.bankUnitId.Id
+                                        )
+                                    ) >= 1  ,
+                                    Navigate(SectionScreen);
+                                    ,
+                                    Notify("Net required to get current assessment data");
                                 );
                               );
                             //);

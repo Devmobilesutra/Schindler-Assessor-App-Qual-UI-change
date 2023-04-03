@@ -416,7 +416,7 @@ ProjectScreen As screen:
                     =//If comp variable is true then display completed assignment in gallery else
                     // check inpro variable is true then display inprogress assignment in gallery otherwise 
                     // check upcomp variable is true then display upcomming assignment in gallery 
-                    If(
+                    /*If(
                         comp = true,
                         Sort(
                             Filter(
@@ -425,13 +425,14 @@ ProjectScreen As screen:
                             ),
                             startDate,
                             SortOrder.Ascending
-                        ),
+                        ),*/
                         If(
                             inpro = true,
                             Sort(
                                 Filter(
                                     gcProjectAssignment,
-                                    assessorId = varLoggedAssessor && isCompleted = "Inprogress"
+                                    //assessorId = varLoggedAssessor && 
+                                    isCompleted = "Inprogress"
                                 ),
                                 startDate,
                                 SortOrder.Ascending
@@ -441,14 +442,15 @@ ProjectScreen As screen:
                                 Sort(
                                     Filter(
                                         gcProjectAssignment,
-                                        assessorId = varLoggedAssessor && isCompleted = "Upcomming" || isCompleted = "Inprogress1"
+                                        //assessorId = varLoggedAssessor && 
+                                        isCompleted = "Upcomming" || isCompleted = "Inprogress1"
                                     ),
                                     startDate,
                                     SortOrder.Ascending
                                 )
                             )
                         )
-                    )
+                    //)
                 Layout: =Layout.Vertical
                 LayoutMinHeight: =287
                 LayoutMinWidth: =320
@@ -456,8 +458,8 @@ ProjectScreen As screen:
                 TemplatePadding: =10
                 TemplateSize: =400
                 Visible: |-
-                    =Q
-                    //true
+                    =//Q
+                    true
                 Width: =Parent.Width
                 Y: ='ctnBack&onlinestatusPS'.Height+'ctnBack&onlinestatusPS'.Y
                 ZIndex: =2
