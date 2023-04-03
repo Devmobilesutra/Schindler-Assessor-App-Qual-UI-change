@@ -3165,7 +3165,10 @@ FindingScreen As screen:
                 UpdateIf(
                         GC_unitAssessment,
                         assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId,
-                        {UstatusUpdate: 0}
+                        {
+                            Assessment_status: "Inprogress",
+                            UstatusUpdate: 0
+                        }
                     );
                     
                 //for updating status of section assessment to 0 for save status

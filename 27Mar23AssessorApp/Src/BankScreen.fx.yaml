@@ -1158,7 +1158,7 @@ BankScreen As screen:
                                         assignmentId.Id = varAssignmentId && bankUnitId.Id = ThisItem.bankUnitId.Id 
                                         && UstatusUpdate = 0
                                     )
-                                ) > 0 ,'wd9G0yiWsMtJXt7-Save-Button-PNG-Transparent-Photo'
+                                ) >  0 ,'wd9G0yiWsMtJXt7-Save-Button-PNG-Transparent-Photo'
                             )
                         OnSelect: =Select(Parent)
                         Visible: |-
