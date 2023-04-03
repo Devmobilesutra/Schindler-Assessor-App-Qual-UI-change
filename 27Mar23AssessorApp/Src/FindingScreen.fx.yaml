@@ -2132,7 +2132,7 @@ FindingScreen As screen:
 
                             Label5 As label:
                                 FontWeight: =FontWeight.Bold
-                                Text: =" Unit Action Count - " & CountRows(GC_checkpointItem_ActionItem)
+                                Text: ="   Section Action Count - " & CountRows(GC_checkpointItem_ActionItem)
                                 Width: =Parent.Width/2
                                 ZIndex: =3
 
@@ -2655,7 +2655,7 @@ FindingScreen As screen:
                             Label4 As label:
                                 FontWeight: =FontWeight.Bold
                                 Text: |-
-                                    ="   Unit Images Count - " & CountRows(  GC_checkpointItem_Images)
+                                    ="   Section Images Count - " & CountRows(  GC_checkpointItem_Images)
                                                       /*  Filter(
                                                             GC_checkpointItem_Images ,
                                                            // assignmentId.Id =varAssignmentId
