@@ -892,7 +892,9 @@ SectionScreen As screen:
                             );
                             //Here we check if network is available or not, if available then check collection is empty or not ,if collection is empty then get specific assessor data from dataverse and store it into collection and save collection to cache
                             
-                             //   Concurrent(
+                              If(
+                                Connection.Connected,
+                             
                                 If(
                                     CountRows(
                                         Filter(
@@ -915,8 +917,7 @@ SectionScreen As screen:
                                             bankUnitId.Id = varBankUnitId && section_id.MasterSectionId = VarSectionId
                                         )
                                     ) >= 1,
-                                    If(
-                                Connection.Connected,
+                              
                                     Notify("Getting comments");
                              //getting specific unit assessment data from dataverse and store it into temporary collection 
                             ClearCollect(
@@ -1080,9 +1081,41 @@ SectionScreen As screen:
                                         );
                                     );
                                 ),
+                            
+                                  If(
+                                    CountRows(
+                                        Filter(
+                                            GcCheckpointAssessment,
+                                            bankUnitId.Id = varBankUnitId && sectionId.MasterSectionId = VarSectionId
+                                        )
+                                    ) >= 1 && CountRows(
+                                        Filter(
+                                            GC_checkpointItemAssessment,
+                                            bankUnitId.Id = varBankUnitId && section_Id.MasterSectionId = VarSectionId
+                                       )
+                                    ) >= 1 && CountRows(
+                                        Filter(
+                                            GC_checkpointItem_ActionItem,
+                                            bankUnitId.Id = varBankUnitId && section_id.MasterSectionId = VarSectionId
+                                        )
+                                    ) >= 1 && CountRows(
+                                        Filter(
+                                            GC_checkpointItem_Images,
+                                            bankUnitId.Id = varBankUnitId && section_id.MasterSectionId = VarSectionId
+                                        )
+                                    ) >= 1,
+                              
                                 
-                                    Notify("net required");
-                             
+                                   UpdateContext({locInfoExpanded: true});
+                                    Set(
+                                        varExpanded,
+                                        true
+                                    );
+                                    ,
+                                    Notify("Net Required to get current assessment data");
+                            
+                            
+                                  );
                             );
                         Visible: |-
                             =//ThisItem.IsSelected &&
