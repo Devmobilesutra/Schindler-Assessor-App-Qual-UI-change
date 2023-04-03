@@ -816,6 +816,7 @@ SectionScreen As screen:
                         Image: =accordianPlus
                         OnSelect: |
                             =//this code is executed when user clicks on + symbol for each section
+                            
                             //for safety check
                             If(
                                 DateDiff(
@@ -838,6 +839,7 @@ SectionScreen As screen:
                                 VarSectionId,
                                 ThisItem.sectionId
                             );
+                            
                             //UpdateContext({locInfoExpanded:true});
                             //Set(varExpanded,true);
                             //for collecting section assessment ID if record exist
@@ -889,39 +891,32 @@ SectionScreen As screen:
                                 
                             );
                             //Here we check if network is available or not, if available then check collection is empty or not ,if collection is empty then get specific assessor data from dataverse and store it into collection and save collection to cache
-                            If(
-                                Connection.Connected,
+                            
                              //   Concurrent(
                                 If(
                                     CountRows(
                                         Filter(
                                             GcCheckpointAssessment,
                                             bankUnitId.Id = varBankUnitId && sectionId.MasterSectionId = VarSectionId
-                                            //&& sectionId.sectionId.templateSections = ThisItem.templateSections
-                                            //sectionId.'sectionAssessment (quantum_sectionassessment)'=varSA
                                         )
                                     ) >= 1 && CountRows(
                                         Filter(
                                             GC_checkpointItemAssessment,
-                                            bankUnitId.Id = varBankUnitId
-                                            //&& section_Id.sectionId.sectionId = ThisItem.sectionId
-                                            //section_Id.'sectionAssessment (quantum_sectionassessment)' = varSA
-                                        )
+                                            bankUnitId.Id = varBankUnitId && section_Id.MasterSectionId = VarSectionId
+                                       )
                                     ) >= 1 && CountRows(
                                         Filter(
                                             GC_checkpointItem_ActionItem,
-                                            bankUnitId.Id = varBankUnitId
-                                             //&& section_id.sectionId.sectionId = ThisItem.sectionId
-                                            //section_id.'sectionAssessment (quantum_sectionassessment)'=varSA
+                                            bankUnitId.Id = varBankUnitId && section_id.MasterSectionId = VarSectionId
                                         )
                                     ) >= 1 && CountRows(
                                         Filter(
                                             GC_checkpointItem_Images,
-                                            bankUnitId.Id = varBankUnitId
-                                             //&& section_id.sectionId.sectionId = ThisItem.sectionId
-                                            //section_id.'sectionAssessment (quantum_sectionassessment)'=varSA
+                                            bankUnitId.Id = varBankUnitId && section_id.MasterSectionId = VarSectionId
                                         )
                                     ) >= 1,
+                                    If(
+                                Connection.Connected,
                                     Notify("Getting comments");
                              //getting specific unit assessment data from dataverse and store it into temporary collection 
                             ClearCollect(
@@ -1003,9 +998,6 @@ SectionScreen As screen:
                                                 Filter(
                                                     checkpointAssessment,
                                                     bankUnitId.Id = varBankUnitId && sectionId.MasterSectionId = VarSectionId
-                                                    //&&  sectionId.sectionId.templateSections = ThisItem.templateSections
-                                                    //&& secId = ThisItem.sectionId
-                                                     // sectionId.'sectionAssessment (quantum_sectionassessment)'=varSA
                                                 )
                                             );
                                             //Adding column for status maintain
@@ -1023,9 +1015,7 @@ SectionScreen As screen:
                                                 Filter(
                                                     checkpointItemAssessment,
                                                     bankUnitId.Id = varBankUnitId && section_Id.MasterSectionId = VarSectionId
-                                                    // && section_Id.sectionId.sectionId = ThisItem.sectionId
-                                                    //section_Id.'sectionAssessment (quantum_sectionassessment)'=varSA
-                                                )
+                                                 )
                                             );
                                             ClearCollect(
                                                 GC_checkpointItemAssessment,
@@ -1041,8 +1031,6 @@ SectionScreen As screen:
                                                 Filter(
                                                     checkpointItem_ActionItem,
                                                     bankUnitId.Id = varBankUnitId && section_id.MasterSectionId = VarSectionId
-                                                     //&&  section_id.sectionId.sectionId = ThisItem.sectionId
-                                                   // section_id.'sectionAssessment (quantum_sectionassessment)'=varSA
                                                 )
                                             );
                                             ClearCollect(
@@ -1059,8 +1047,6 @@ SectionScreen As screen:
                                                 Filter(
                                                     checkpointItem_Images,
                                                     bankUnitId.Id = varBankUnitId && section_id.MasterSectionId = VarSectionId
-                                                     //&& section_id.sectionId.sectionId = ThisItem.sectionId
-                                                   // section_id.'sectionAssessment (quantum_sectionassessment)'=varSA
                                                 )
                                             );
                                             ClearCollect(
@@ -1076,14 +1062,14 @@ SectionScreen As screen:
                                             VarGetAssessmentData,
                                             false
                                         );
-                                        //Navigate(SectionScreen);
+                                     
                             UpdateContext({locInfoExpanded: true});
                                         Set(
                                             varExpanded,
                                             true
                                         );
                                         ,
-                                      //  Notify("Please submit finding of unit " & First(GcSectionAssessment).bankUnitId.unitNumber & " saved in your device .");
+                                      
                                         Set(
                                             VarPopupLocalDataText,
                                             "Please submit finding of section " & First(GcCheckpointAssessment).sectionId.sectionName & " saved in your device . "
@@ -1093,8 +1079,10 @@ SectionScreen As screen:
                                             true
                                         );
                                     );
-                                );
-                             // );
+                                ),
+                                
+                                    Notify("net required");
+                             
                             );
                         Visible: |-
                             =//ThisItem.IsSelected &&
