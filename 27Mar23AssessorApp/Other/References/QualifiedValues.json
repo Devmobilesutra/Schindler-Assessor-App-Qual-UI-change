@@ -202,6 +202,13 @@
       }
     },
     {
+      "Kind": "default.cds_shlaf_collectioncount_forms",
+      "Namespace": "CollectionCounts (Forms)",
+      "Values": {
+        "Information": "97a2b8aa-d6e9-418c-9abc-fa1979f973f5"
+      }
+    },
+    {
       "Kind": "default.cds_quantum_client_forms",
       "Namespace": "Client (Forms)",
       "Values": {
@@ -352,13 +359,6 @@
       "Namespace": "Templates_1 (Forms)",
       "Values": {
         "Information": "39f81e84-581b-4f45-b75e-69def9cab56a"
-      }
-    },
-    {
-      "Kind": "default.cds_shlaf_collectioncount_forms",
-      "Namespace": "CollectionCounts (Forms)",
-      "Values": {
-        "Information": "97a2b8aa-d6e9-418c-9abc-fa1979f973f5"
       }
     }
   ]
