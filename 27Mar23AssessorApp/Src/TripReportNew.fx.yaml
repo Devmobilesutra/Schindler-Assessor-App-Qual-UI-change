@@ -1,4 +1,4 @@
-Screen1 As screen:
+TripReportNew As screen:
     OnVisible: |
         =Set(
             varReportPopup,
@@ -1576,7 +1576,7 @@ Screen1 As screen:
                 =
                 Reset(txtSectionCommentTRS_1);
                 Set(varComment, false);
-                Navigate(Screen1);
+                Navigate(TripReportNew);
                   
             PressedColor: =Self.Color
             PressedFill: =Self.Fill

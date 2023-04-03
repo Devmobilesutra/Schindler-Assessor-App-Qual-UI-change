@@ -244,7 +244,7 @@ BankScreen As screen:
                                     "Trip report Updated successfully."
                                 )
                             );
-                            Navigate(Screen1);
+                            Navigate(TripReportNew);
                             
                             
                             
