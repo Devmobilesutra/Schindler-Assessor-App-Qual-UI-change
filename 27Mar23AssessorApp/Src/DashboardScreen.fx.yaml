@@ -433,6 +433,12 @@ DashboardScreen As screen:
                                 assignmentId.Id = i.Id
                             );
                         );
+                    
+                          RemoveIf(
+                                gcProjectAssignment,
+                                isCompleted = "Completed"
+                            );
+                            
                     //save data to localcache
                         SaveData(
                                 gcProjectAssignment,
