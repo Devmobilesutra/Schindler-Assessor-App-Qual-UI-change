@@ -1427,13 +1427,7 @@ AssessmentScreen As screen:
                             =///ColorFade(RGBA(56, 96, 178, 1), -20%)
                             Self.Fill
                         OnSelect: |
-                            =/*//for reset ideal timer
-                            Reset(tmr_logout);
-                            Set(
-                                UserLastNavigated,
-                                Now()
-                            );*/
-                            
+                            =
                             //for safety check
                             If(
                                 DateDiff(
@@ -1538,40 +1532,41 @@ AssessmentScreen As screen:
                                 checkpoint_id.checkpointAssessment_id = GuidId && CIIstatusUpdate = 0,
                                 {CIIstatusUpdate: 1}
                             ););
-                            Concurrent(
+                            
+                            
                             //saving data to local cache
                             SaveData(
                                 gcProjectAssignment,
                                 "localprojectassignment"
-                            );,
+                            );
                             SaveData(
                                 GC_bankAssessment,
                                 "localbankassessment"
-                            );,
+                            );
                             SaveData(
                                 GC_unitAssessment,
                                 "localunitassessment"
-                            );,
+                            );
                             SaveData(
                                 GcSectionAssessment,
                                 "localsectionassessment"
-                            );,
+                            );
                             SaveData(
                                 GcCheckpointAssessment,
                                 "localcheckpointassessment"
-                            );,
+                            );
                             SaveData(
                                 GC_checkpointItemAssessment,
                                 "localcheckpointitemassessment"
-                            );,
+                            );
                             SaveData(
                                 GC_checkpointItem_ActionItem,
                                 "localcheckpointitemactionitem"
-                            );,
+                            );
                             SaveData(
                                 GC_checkpointItem_Images,
                                 "localcheckpointitemimage"
-                            ););
+                            );
                             //here we check new records are available(checkpointItemAssessment ,checkpointAction And checkpointImages) for patch or not .If not available then set message "No new assessment records found for submission." 
                             //otherwise we check status 2 record is  available in unit ,section and checkpoint table if available then update status 2 to status 1 (for show green and gray tick)
                             If(
@@ -1824,28 +1819,28 @@ AssessmentScreen As screen:
                                         );
                                         
                             //saving data to local cache
-                            Concurrent(
+                            
                             SaveData(
                                             GcSectionAssessment,
                                             "localsectionassessment"
-                                        );,
+                                        );
                                         SaveData(
                                             GcCheckpointAssessment,
                                             "localcheckpointassessment"
-                                        );,
+                                        );
                                         SaveData(
                                             GC_checkpointItemAssessment,
                                             "localcheckpointitemassessment"
-                                        );,
+                                        );
                                         SaveData(
                                             GC_checkpointItem_ActionItem,
                                             "localcheckpointitemactionitem"
-                                        );,
+                                        );
                                         SaveData(
                                             GC_checkpointItem_Images,
                                             "localcheckpointitemimage"
                                         );
-                             );
+                             
                                     );
                                     //if
                             If(
@@ -1941,23 +1936,23 @@ AssessmentScreen As screen:
                                         );
                                         
                             //saving data to local cache
-                            Concurrent(
+                            
                                 SaveData(
                                             GcCheckpointAssessment,
                                             "localcheckpointassessment"
-                                        );,
+                                        );
                                         SaveData(
                                             GC_checkpointItemAssessment,
                                             "localcheckpointitemassessment"
-                                        );,
+                                        );
                                         SaveData(
                                             GC_checkpointItem_ActionItem,
                                             "localcheckpointitemactionitem"
-                                        );,
+                                        );
                                         SaveData(
                                             GC_checkpointItem_Images,
                                             "localcheckpointitemimage"
-                                        ););
+                                        );
                                     );
                                     If(
                                         CountRows(
@@ -2042,21 +2037,21 @@ AssessmentScreen As screen:
                                             );
                                         );
                                 //saving data to local cache
-                                Concurrent(
+                                
                             SaveData(
                                             GC_checkpointItemAssessment,
                                             "localcheckpointitemassessment"
-                                        );,
+                                        );
                                         SaveData(
                                             GC_checkpointItem_ActionItem,
                                             "localcheckpointitemactionitem"
-                                        );,
+                                        );
                                         SaveData(
                                             GC_checkpointItem_Images,
                                             "localcheckpointitemimage"
                                         );
                                 );
-                                    );
+                                    
                             
                                     Concurrent(
                                     If(
