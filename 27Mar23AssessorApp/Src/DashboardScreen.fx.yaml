@@ -1167,7 +1167,13 @@ DashboardScreen As screen:
                             AssignmentSavedCount:CountRows(Filter(gcProjectAssignment,AstatusUpdate = 0 || AstatusUpdate = 1 )),
                             BankCount:CountRows(GC_bankAssessment),
                             BankSavedCount:CountRows(Filter(GC_bankAssessment,BstatusUpdate =0 || BstatusUpdate = 1)),
-                            MasterTemplateCheckpointItemCount:CountRows(GC_templateCheckpointsItem)
+                            UnitCount:CountRows(GC_unitAssessment),
+                            UnitSavedCount:CountRows(Filter(GC_unitAssessment,UstatusUpdate =0 ,UstatusUpdate= 1)),
+                            CheckpointItemAssessmentCount:CountRows(GC_checkpointItemAssessment),
+                            CheckpointItemActionItemCount:CountRows(GC_checkpointItem_ActionItem),
+                            CheckpointItemImagesCount:CountRows(GC_checkpointItem_Images),
+                            MasterTemplateCheckpointItemCount:CountRows(GC_templateCheckpointsItem),
+                            MasterTemplateActionItemCount:CountRows(GC_actionItems)
                           
                         }
                     );
