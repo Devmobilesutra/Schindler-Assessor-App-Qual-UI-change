@@ -1614,7 +1614,9 @@ AssessmentScreen As screen:
                                     GcCheckpointAssessment,
                                     checkpointAssessment_id = GuidId && CstatusUpdate = 2,
                                     {CstatusUpdate: 1}
-                                ););
+                                );
+                                Set(Varpatchlabel,"Update status 2 to 1");
+                                );
                                 
                             //if network available then patch 1 status data to dataverse
                             If(
@@ -1718,7 +1720,9 @@ AssessmentScreen As screen:
                             SaveData(
                                         GC_unitAssessment,
                                         "localunitassessment"
-                                    ););
+                                    );
+                                    Set(Varpatchlabel,"Action delete ,Image delete and update assignment, bankassessment, unitassessment table to dataverse");
+                                    );
                                     If(
                                         CountRows(
                                             Filter(
@@ -1750,7 +1754,7 @@ AssessmentScreen As screen:
                                                 "shlaf_mastersectionid"
                                             )
                                         );
-                                        
+                                        Set(Varpatchlabel,"clear collect data of section assessment");
                             //getting specific section assessment data from dataverse and store it into temporary collection beacause we need unique indetifier from dataverse
                             ClearCollect(
                                             TempSectionAssessment,
@@ -1823,7 +1827,7 @@ AssessmentScreen As screen:
                                         );
                                         
                             //saving data to local cache
-                            
+                            Set(Varpatchlabel,"section assessment save data start");
                             SaveData(
                                             GcSectionAssessment,
                                             "localsectionassessment"
@@ -1846,6 +1850,7 @@ AssessmentScreen As screen:
                                         );
                              
                                     );
+                                    Set(Varpatchlabel,"section assessment save data end");
                                     //if
                             If(
                                         CountRows(
@@ -1880,6 +1885,7 @@ AssessmentScreen As screen:
                                             )
                                         );
                                 //getting specific checkpoint data from dataverse and store it into temporary collection beacause we need unique indetifier from dataverse
+                                Set(Varpatchlabel,"clearcollect of checkpoint assessment");
                             ClearCollect(
                                             TempCheckpointAssessment,
                                             Filter(
@@ -1940,7 +1946,7 @@ AssessmentScreen As screen:
                                         );
                                         
                             //saving data to local cache
-                            
+                            Set(Varpatchlabel,"checkpoint assessment save data start");
                                 SaveData(
                                             GcCheckpointAssessment,
                                             "localcheckpointassessment"
@@ -1958,6 +1964,7 @@ AssessmentScreen As screen:
                                             "localcheckpointitemimage"
                                         );
                                     );
+                                    Set(Varpatchlabel,"checkpoint assessment save data end");
                                     If(
                                         CountRows(
                                             Filter(
@@ -1993,7 +2000,8 @@ AssessmentScreen As screen:
                                                 "shlaf_checkpointitemsortsequence"
                                             )
                                         );
-                             //getting specific checkpoint data from dataverse and store it into temporary collection beacause we need unique indetifier from dataverse       
+                             //getting specific checkpoint data from dataverse and store it into temporary collection beacause we need unique indetifier from dataverse
+                             Set(Varpatchlabel,"clear collect checkpoint item assessment");       
                             ClearCollect(
                                             TempCheckpointItemAssessment,
                                             Filter(
@@ -2041,7 +2049,7 @@ AssessmentScreen As screen:
                                             );
                                         );
                                 //saving data to local cache
-                                
+                                Set(Varpatchlabel,"checkpointitem assessment savedata start ");
                             SaveData(
                                             GC_checkpointItemAssessment,
                                             "localcheckpointitemassessment"
@@ -2055,7 +2063,7 @@ AssessmentScreen As screen:
                                             "localcheckpointitemimage"
                                         );
                                 );
-                                    
+                                    Set(Varpatchlabel,"checkpointitem assessment savedata end ");
                             
                                     Concurrent(
                                     If(
@@ -2098,6 +2106,7 @@ AssessmentScreen As screen:
                                         );
                                         
                             //getting specific unit wise checkpoint Action item data from dataverse to collection beacause we need unique indetifier from dataverse
+                            Set(Varpatchlabel,"clearcollect checkpoint actionitem ");
                             ClearCollect(
                                             TempcheckpointItem_ActionItem,
                                             Filter(checkpointItem_ActionItem
