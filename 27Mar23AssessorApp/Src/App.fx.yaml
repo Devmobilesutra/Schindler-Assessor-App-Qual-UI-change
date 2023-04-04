@@ -408,7 +408,12 @@ App As appinfo:
                     "localunitassessment"
                 );
             );//conccurent
-            );//0/1 If
+            ,
+            Notify("Assignment count : " & CountRows(Filter(gcProjectAssignment,AstatusUpdate = 0 || AstatusUpdate = 1)) &
+                   "BankAssessment count : " & CountRows(Filter(GC_bankAssessment,BstatusUpdate = 0 || BstatusUpdate = 1)) &
+                   "UnitAssessment count : " & CountRows(Filter(GC_unitAssessment,UstatusUpdate = 0 || UstatusUpdate = 1)),NotificationType.Information);
+        
+             );//0/1 If
         );
         
         //update Inprogress1 status to Inprogress to fix dashboard update issue
