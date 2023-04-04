@@ -1490,6 +1490,8 @@ AssessmentScreen As screen:
                                 "Network is not available , please try after sometime ."
                             );,
                             
+                            Set(Varpatchlabel,"Update 0 to 1 start");
+                            
                             //updating bank assessment status from 0 to 1 first time for detecting unpatched data
                             UpdateIf(
                                 GC_bankAssessment,
@@ -1533,7 +1535,7 @@ AssessmentScreen As screen:
                                 {CIIstatusUpdate: 1}
                             ););
                             
-                            
+                            Set(Varpatchlabel,"Save data start of 0 to 1 update");
                             //saving data to local cache
                             SaveData(
                                 gcProjectAssignment,
@@ -1569,6 +1571,8 @@ AssessmentScreen As screen:
                             );
                             //here we check new records are available(checkpointItemAssessment ,checkpointAction And checkpointImages) for patch or not .If not available then set message "No new assessment records found for submission." 
                             //otherwise we check status 2 record is  available in unit ,section and checkpoint table if available then update status 2 to status 1 (for show green and gray tick)
+                            Set(Varpatchlabel,"save data end of 0 to 1 update");
+                            
                             If(
                                 CountRows(
                                     Filter(
