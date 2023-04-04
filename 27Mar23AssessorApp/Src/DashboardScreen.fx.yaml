@@ -1143,7 +1143,7 @@ DashboardScreen As screen:
                         VarReportGuid,
                         Text(GUID())
                     );
-                    Patch(
+                    /*Patch(
                         CollectionCounts,
                         Defaults(CollectionCounts),
                         {
@@ -1154,7 +1154,7 @@ DashboardScreen As screen:
                             CheckpointItemImages:CountRows(GC_checkpointItem_Images),
                             submittedBy:username
                         }
-                    );
+                    );*/
                     Patch(
                         ReportIssueMasters,
                         Defaults(ReportIssueMasters),
