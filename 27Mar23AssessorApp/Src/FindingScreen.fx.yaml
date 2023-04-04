@@ -2598,9 +2598,9 @@ FindingScreen As screen:
                                     If(
                                         CountRows(GlryImagesFS.AllItems) < 4,
                                         
-                                        If(CountRows( GC_checkpointItem_Images)>100,
+                                        If(CountRows( GC_checkpointItem_Images)>10,
                                                     //Notify("Your locally save images are more than 100 this may cause your app unstable.");
-                                                    Set(VarSaveAssessmenttext,"Please keep number of images to 100 for the section "& First(GcSectionAssessment).sectionName &". Large number of images may restrict working memory for the app.");
+                                                    Set(VarSaveAssessmenttext,"Please keep number of images to 100 for the section "& First(GcCheckpointAssessment).sectionId.sectionName &". Large number of images may restrict working memory for the app.");
                                                     Set(VarImagesNav,true);
                                                     Set(popupsuccess1,true);
                                                     );
@@ -2944,7 +2944,7 @@ FindingScreen As screen:
             Y: =Label2_14.Y+ Label2_14.Height+20
             ZIndex: =7
 
-    grPopupSuccessSave As group:
+    grPopupSuccessSaveAndImageLimit As group:
         Height: =5
         Width: =5
         X: =40
@@ -2981,57 +2981,58 @@ FindingScreen As screen:
             Color: =RGBA(14, 161, 26, 1)
             Font: =AllScreensCSS.RFont
             FontWeight: =FontWeight.Bold
-            PaddingBottom: =0
             Size: =18
             Text: =If(VarImagesNav = true ,"Info","Success")
             Visible: =popupsuccess1 = true
             Width: =324
             X: =(Parent.Width-Self.Width)/2
-            Y: =Image2_21.Y+Self.Height+10
+            Y: =Image2_21.Y+Image2_21.Height
             ZIndex: =11
 
         Label2_11 As label:
             Align: =Align.Center
             Font: =AllScreensCSS.RFont
             FontWeight: =FontWeight.Bold
-            Height: =100
-            Size: =15
+            Height: =120
+            PaddingTop: =0
+            Size: =14
             Text: |
                 =VarSaveAssessmenttext
             Visible: =popupsuccess1 = true
             Width: =350
             X: =(Parent.Width-Self.Width)/2
-            Y: =Label1_21.Y+ Label1_21.Height
+            Y: =Label1_21.Y+ Label1_21.Height -10
             ZIndex: =12
 
         btnSuccess_4 As button:
             Fill: =RGBA(54, 176, 75, 1)
             Font: =AllScreensCSS.RFont
             HoverFill: =RGBA(75, 125, 6, 1)
-            OnSelect: |+
-                =
-                If( VarImagesNav = false,
-                
-                Set(
-                    popupsuccess1,
-                    false
+            OnSelect: |
+                =If(
+                    VarImagesNav = false,
+                    Navigate(AssessmentScreen);
+                    Set(
+                        popupsuccess1,
+                        false
+                    );
+                    ,
+                    Set(
+                        popupsuccess1,
+                        false
+                    );
+                    Set(
+                        VarImagesNav,
+                        false
+                    )
                 );
-                Navigate(AssessmentScreen);,
-                
-                Set(
-                    popupsuccess1,
-                    false
-                );
-                Set(VarImagesNav,false));
-                
-                
             PressedBorderColor: =RGBA(1, 43, 1, 0)
             PressedFill: =Self.Fill
             Text: ="Ok"
             Visible: =popupsuccess1 = true
             Width: =120
             X: =(Parent.Width-Self.Width)/2
-            Y: =Label2_11.Y+ Label2_11.Height+10
+            Y: =Label2_11.Y+ Label2_11.Height
             ZIndex: =13
 
     grImagePopup As group:
