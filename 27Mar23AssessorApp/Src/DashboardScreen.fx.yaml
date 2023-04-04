@@ -1155,14 +1155,20 @@ DashboardScreen As screen:
                             submittedBy:username
                         }
                     );*/
-                    Patch(
+                Patch(
                         ReportIssueMasters,
                         Defaults(ReportIssueMasters),
                         {
                             Id: VarReportGuid,
                             ReportedBy: VarUserEmail,
                             ReportDescription: TextInput1.Text,
-                            Sender: "Assessor"
+                            Sender: "Assessor",
+                            AssignmentCount:CountRows(gcProjectAssignment),
+                            AssignmentSavedCount:CountRows(Filter(gcProjectAssignment,AstatusUpdate = 0 || AstatusUpdate = 1 )),
+                            BankCount:CountRows(GC_bankAssessment),
+                            BankSavedCount:CountRows(Filter(GC_bankAssessment,BstatusUpdate =0 || BstatusUpdate = 1)),
+                            MasterTemplateCheckpointItemCount:CountRows(GC_templateCheckpointsItem)
+                          
                         }
                     );
                     Refresh(ReportIssueMasters);
