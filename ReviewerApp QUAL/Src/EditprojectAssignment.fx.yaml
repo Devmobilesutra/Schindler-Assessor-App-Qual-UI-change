@@ -604,30 +604,25 @@ EditprojectAssignment As screen:
                             Fill: =referenceCSS.RActiveColor
                             Height: =50
                             HoverFill: =referenceCSS.RActiveColor
-                            OnSelect: |+
+                            OnSelect: |
                                 =If(
                                     Connection.Connected = false,
-                                    Notify("Network is not Available",NotificationType.Error),
-                                
+                                    Notify(
+                                        "Network is not Available",
+                                        NotificationType.Error
+                                    ),
                                     If(
                                         IsBlank(cboxGonumberEditA.Selected.goNumber),
                                         Notify(
                                             "Please Select Bank.",
                                             NotificationType.Error
                                         ),
-                                
-                                    /*    ShowErrorMsgBAssignEdit = true,
-                                        Notify(
-                                            "Bank already assigned.",
-                                            NotificationType.Error
-                                        ), */
-                                
                                         IsBlank(cboxAssessmntTypeEditA.Selected.type),
                                         Notify(
                                             "Please Select Assessment Type.",
                                             NotificationType.Error
                                         ),
-                                         IsBlank(cboxAssessornameEditA.Selected.displayName),
+                                        IsBlank(cboxAssessornameEditA.Selected.displayName),
                                         Notify(
                                             "Please Select Assessor.",
                                             NotificationType.Error
@@ -637,104 +632,98 @@ EditprojectAssignment As screen:
                                             "Please Select Reviewer.",
                                             NotificationType.Error
                                         ),
-                                          
                                         IsBlank(DatePickerDueDateEditA.SelectedDate),
-                                        Notify("Please Select Due Date",NotificationType.Error),
-                                         
+                                        Notify(
+                                            "Please Select Due Date",
+                                            NotificationType.Error
+                                        ),
                                         DateDiff(
                                             DatePickerStartDateEditA,
                                             DatePickerDueDateEditA
                                         ) <= 0,
                                         Notify("The Due date can not be before Assessment start date"),
-                                
-                                        Set(
-                                            patchresult,
-                                            Patch(
+                                        Patch(
+                                            assignments,
+                                            LookUp(
                                                 assignments,
-                                                LookUp(
-                                                    assignments,
-                                                    Id = nprojectassignment
+                                                Id = nprojectassignment
+                                            ),
+                                            {
+                                               
+                                                assessmentType: cboxAssessmntTypeEditA.Selected.type,
+                                                assessorId: LookUp(
+                                                    AssessorAD,
+                                                    displayName = cboxAssessornameEditA.Selected.displayName,
+                                                    id
                                                 ),
-                                                {
-                                                    // 'projectAssignment (quantum_projectassignment)': "upass11",
-                                                   // clientId: LookUp(
-                                                   //     Client,
-                                                    //    client_name = ComboBox1_2.Selected.client_name
-                                                   // ),
-                                                    bankId: LookUp(
-                                                        schindlerBanks,
-                                                        goNumber = cboxGonumberEditA.Selected.goNumber
-                                                         // ThisRecord.Go_Number
-                                                    ),
-                                                    assessmentType: cboxAssessmntTypeEditA.Selected.type,
-                                                    assessorId: LookUp(
-                                                        AssessorAD,
-                                                        displayName = cboxAssessornameEditA.Selected.displayName,
-                                                        id
-                                                    ),
-                                                    reviewerId: LookUp(
-                                                        ReviewerAD,
-                                                        displayName = cboxReviewerEditA.Selected.displayName,
-                                                        id
-                                                    ),
-                                                    startDate: DatePickerStartDateEditA.SelectedDate,
-                                                    dueDate: DatePickerDueDateEditA.SelectedDate,
-                                                    assignedDate: DatePickerAssignDateEditA.SelectedDate,
-                                                    //isCompleted: "Inprogress",
-                                                    assessorEmail: LookUp(
-                                                        AssessorAD,
-                                                        displayName = cboxAssessornameEditA.Selected.displayName,
-                                                        mail
-                                                    ),
-                                                    reviewerEmail: LookUp(
-                                                        ReviewerAD,
-                                                        displayName = cboxReviewerEditA.Selected.displayName,
-                                                        mail
-                                                    ),
-                                                    assessorName: LookUp(
-                                                        AssessorAD,
-                                                        displayName = cboxAssessornameEditA.Selected.displayName,
-                                                        displayName
-                                                    ),
-                                                    reviewerName: cboxReviewerEditA.Selected.displayName
-                                                     
-                                                }
-                                            )
+                                                reviewerId: LookUp(
+                                                    ReviewerAD,
+                                                    displayName = cboxReviewerEditA.Selected.displayName,
+                                                    id
+                                                ),
+                                                startDate: DatePickerStartDateEditA.SelectedDate,
+                                                dueDate: DatePickerDueDateEditA.SelectedDate,
+                                                assignedDate: DatePickerAssignDateEditA.SelectedDate,
+                                                assessorEmail: LookUp(
+                                                    AssessorAD,
+                                                    displayName = cboxAssessornameEditA.Selected.displayName,
+                                                    mail
+                                                ),
+                                                reviewerEmail: LookUp(
+                                                    ReviewerAD,
+                                                    displayName = cboxReviewerEditA.Selected.displayName,
+                                                    mail
+                                                ),
+                                                assessorName: LookUp(
+                                                    AssessorAD,
+                                                    displayName = cboxAssessornameEditA.Selected.displayName,
+                                                    displayName
+                                                ),
+                                                reviewerName: cboxReviewerEditA.Selected.displayName
+                                            }
                                         );
-                                
-                                          UpdateIf(BankTripReport,assignmentId.Id=nprojectassignment,
-                                      {
-                                          reviewer_email:LookUp(
-                                                        ReviewerAD,
-                                                        displayName = cboxReviewerEditA.Selected.displayName,
-                                                        mail),
-                                          reviewer_name:cboxReviewerEditA.Selected.displayName ,
-                                          reviewer_id:LookUp(
-                                                        ReviewerAD,
-                                                        displayName = cboxReviewerEditA.Selected.displayName,
-                                                        id)    
-                                      }
-                                          );
-                                
-                                     If(!IsBlank(patchresult),
-                                     //Notify("Success");
-                                       Set(updatePopup,true);
-                                        Reset(cboxClientEditA);
-                                        Reset(cboxGonumberEditA);
-                                        Reset(cboxAssessmntTypeEditA);
-                                        Reset(cboxAssessornameEditA);
-                                        Reset(cboxReviewerEditA);
-                                        Reset(DatePickerStartDateEditA);
-                                        Reset(DatePickerDueDateEditA);
-                                        Reset(DatePickerAssignDateEditA);
-                                       
-                                   ,Notify("Error patch function "));
-                                
-                                  
-                                    );  
-                                      
+                                        UpdateIf(
+                                            BankTripReport,
+                                            assignmentId.Id = nprojectassignment,
+                                            {
+                                                reviewer_email: LookUp(
+                                                    ReviewerAD,
+                                                    displayName = cboxReviewerEditA.Selected.displayName,
+                                                    mail
+                                                ),
+                                                reviewer_name: cboxReviewerEditA.Selected.displayName,
+                                                reviewer_id: LookUp(
+                                                    ReviewerAD,
+                                                    displayName = cboxReviewerEditA.Selected.displayName,
+                                                    id
+                                                )
+                                            }
+                                        );
+                                        If(
+                                            !IsEmpty(Errors(assignments)),
+                                            Notify(
+                                                "Patch function Error " & Concat(
+                                                    Errors(assignments),
+                                                    Column & ": " & Message
+                                                ),
+                                                NotificationType.Error
+                                            ),
+                                            Set(
+                                                updatePopup,
+                                                true
+                                            );
+                                            Reset(cboxClientEditA);
+                                            Reset(cboxGonumberEditA);
+                                            Reset(cboxAssessmntTypeEditA);
+                                            Reset(cboxAssessornameEditA);
+                                            Reset(cboxReviewerEditA);
+                                            Reset(DatePickerStartDateEditA);
+                                            Reset(DatePickerDueDateEditA);
+                                            Reset(DatePickerAssignDateEditA);
+                                        );
+                                    );
+                                    
                                 );
-                                
                             PaddingLeft: =15
                             PressedColor: =Self.Color
                             PressedFill: =referenceCSS.RActiveColor

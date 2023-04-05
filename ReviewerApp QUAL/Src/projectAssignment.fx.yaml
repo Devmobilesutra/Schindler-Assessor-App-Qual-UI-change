@@ -827,9 +827,8 @@ projectAssignment As screen:
                                     =
                                     referenceCSS.RActiveColor
                                     //ColorFade(RGBA(56, 96, 178, 1), -20%)
-                                OnSelect: |+
-                                    =//Clear(checkboxunit);
-                                    If(
+                                OnSelect: |-
+                                    =If(
                                         Connection.Connected = false,
                                         Notify("Network is not Available"),
                                         If(
@@ -843,177 +842,192 @@ projectAssignment As screen:
                                                 "Please Select Bank.",
                                                 NotificationType.Error
                                             ),
-                                    
-                                           /* ShowErrorMsgBAssign = true,
+                                            IsEmpty(selectedUnit) && CountRows(selectedUnit) < 1,
                                             Notify(
-                                                "Bank already assigned.",
-                                                NotificationType.Error
-                                            ), */
-                                    
-                                             IsEmpty(selectedUnit) && CountRows(selectedUnit)<1
-                                             ,
-                                              Notify(
                                                 "please Select Unit.",
                                                 NotificationType.Error
-                                             ),
-                                    
-                                            
-                                            /*CountRows(Filter(selectedUnit,IsBlank(selectedUnit.unitNumber)))<-1,
-                                             Notify("please Select Unit details .",NotificationType.Error);
-                                             Clear(selectedUnit),*/
-                                            
-                                    
+                                            ),
                                             IsBlank(cboxAssessmentTypeNA.Selected.type),
                                             Notify(
                                                 "Please Select Assessment Type.",
                                                 NotificationType.Error
                                             ),
-                                             IsBlank(cboxAssessorNA.Selected.displayName),
+                                            IsBlank(cboxAssessorNA.Selected.displayName),
                                             Notify(
                                                 "Please Select Assessor.",
                                                 NotificationType.Error
                                             ),
-                                             IsBlank(cboxReviewerNA.Selected.displayName),
+                                            IsBlank(cboxReviewerNA.Selected.displayName),
                                             Notify(
                                                 "Please Select Reviewer.",
                                                 NotificationType.Error
                                             ),
-                                             IsBlank(DatePickerDueDateNA.SelectedDate),
-                                            Notify("Please Select Due Date",NotificationType.Error),
-                                              DateDiff(
+                                            IsBlank(DatePickerDueDateNA.SelectedDate),
+                                            Notify(
+                                                "Please Select Due Date",
+                                                NotificationType.Error
+                                            ),
+                                            DateDiff(
                                                 DatePickerStartDateNA,
                                                 DatePickerDueDateNA
                                             ) <= 0,
-                                            Notify("The Due date can not be before Assessment start date ",NotificationType.Error),
-                                    
-                                          //   Set popupsuccess, true);
-                                    
-                                           Set(idvariable,GUID());
-                                           // Set(patchResultAss,          
-                                              Patch(
-                                                    assignments,
-                                                    Defaults(assignments),
-                                                    {
-                                                        Id:Text(idvariable),
-                                                        clientId: LookUp(
-                                                            schindlerClients,
-                                                            name = cboxClientNA.Selected.name
-                                                        ),
-                                                        bankId: LookUp(
-                                                            schindlerBanks,
-                                                           goNumber= cboxGONumberNA.Selected.goNumber
-                                                           //ThisRecord.Go_Number
-                                                        ),
-                                                        assessorId: LookUp(
-                                                            AssessorAD,
-                                                            displayName = cboxAssessorNA.Selected.displayName,
-                                                            id
-                                                        ),
-                                                        reviewerId: LookUp(
-                                                            ReviewerAD,
-                                                            displayName = cboxReviewerNA.Selected.displayName,
-                                                            id
-                                                        ),
-                                                        assessmentType: cboxAssessmentTypeNA.Selected.type,
-                                                        startDate: DatePickerStartDateNA.SelectedDate,
-                                                        dueDate: DatePickerDueDateNA.SelectedDate,
-                                                        //completionDate:
-                                                        assignedDate: DatePickerAssignDateNA.SelectedDate,
-                                                        isCompleted: "Upcomming",
-                                                        assessorEmail: LookUp(
-                                                            AssessorAD,
-                                                            displayName = cboxAssessorNA.Selected.displayName,
-                                                            mail
-                                                        ),
-                                                        reviewerEmail: LookUp(
-                                                            ReviewerAD,
-                                                            displayName = cboxReviewerNA.Selected.displayName,
-                                                            mail
-                                                        ),
-                                                        assessorName: LookUp(
-                                                            AssessorAD,
-                                                            displayName = cboxAssessorNA.Selected.displayName,
-                                                            displayName
-                                                        ),
-                                                        reviewerName: cboxReviewerNA.Selected.displayName,
-                                                        GONumber: cboxGONumberNA.Selected.goNumber
-                                                          //LookUp(ReviewerAD,
-                                                         //   displayName = ComboBox5.Selected.displayName,
-                                                         //   displayName
-                                                       // )
-                                                    }
-                                                
-                                          );
-                                        
-                                    
+                                            Notify(
+                                                "The Due date can not be before Assessment start date ",
+                                                NotificationType.Error
+                                            ),
+                                            Set(
+                                                idvariable,
+                                                GUID()
+                                            );
+                                            Patch(
+                                                assignments,
+                                                Defaults(assignments),
+                                                {
+                                                    Id: Text(idvariable),
+                                                    clientId: LookUp(
+                                                        schindlerClients,
+                                                        name = cboxClientNA.Selected.name
+                                                    ),
+                                                    bankId: LookUp(
+                                                        schindlerBanks,
+                                                        goNumber = cboxGONumberNA.Selected.goNumber
+                                                    ),
+                                                    assessorId: LookUp(
+                                                        AssessorAD,
+                                                        displayName = cboxAssessorNA.Selected.displayName,
+                                                        id
+                                                    ),
+                                                    reviewerId: LookUp(
+                                                        ReviewerAD,
+                                                        displayName = cboxReviewerNA.Selected.displayName,
+                                                        id
+                                                    ),
+                                                    assessmentType: cboxAssessmentTypeNA.Selected.type,
+                                                    startDate: DatePickerStartDateNA.SelectedDate,
+                                                    dueDate: DatePickerDueDateNA.SelectedDate,
+                                                    //completionDate:
+                                                    assignedDate: DatePickerAssignDateNA.SelectedDate,
+                                                    isCompleted: "Upcomming",
+                                                    assessorEmail: LookUp(
+                                                        AssessorAD,
+                                                        displayName = cboxAssessorNA.Selected.displayName,
+                                                        mail
+                                                    ),
+                                                    reviewerEmail: LookUp(
+                                                        ReviewerAD,
+                                                        displayName = cboxReviewerNA.Selected.displayName,
+                                                        mail
+                                                    ),
+                                                    assessorName: LookUp(
+                                                        AssessorAD,
+                                                        displayName = cboxAssessorNA.Selected.displayName,
+                                                        displayName
+                                                    ),
+                                                    reviewerName: cboxReviewerNA.Selected.displayName,
+                                                    GONumber: cboxGONumberNA.Selected.goNumber
+                                                }
+                                            );
                                             Refresh(assignments);
                                             Refresh(assignmentUnits);
-                                     ForAll(
+                                            ForAll(
                                                 selectedUnit.Id As p,
-                                                Patch(assignmentUnits,
-                                                Defaults(assignmentUnits),
-                                                {
-                                                    Id:GUID(),
-                                                    bankUnitId:LookUp(bankUnits,Id=p.Id),
-                                                    assignmentId:LookUp(assignments,Id=Text(idvariable)),
-                                                    productModel:LookUp(schindlerBanks,goNumber=cboxGONumberNA.Selected.goNumber,productId.product_Model)
-                                                   // productId:LookUp(product,'product (quantum_product)'=LookUp(bankUnits,Id=p.Id,Id))
-                                                   // productid:lookup(product,pro)
-                                    
-                                                
-                                                    //bankId.goNumber=ComboBox2.Selected.goNumber
-                                                
-                                                                    
-                                    
-                                                }
-                                             )       
-                                     );
-                                    
-                                     
-                                           Patch(bankAssessment,
+                                                Patch(
+                                                    assignmentUnits,
+                                                    Defaults(assignmentUnits),
+                                                    {
+                                                        Id: GUID(),
+                                                        bankUnitId: LookUp(
+                                                            bankUnits,
+                                                            Id = p.Id
+                                                        ),
+                                                        assignmentId: LookUp(
+                                                            assignments,
+                                                            Id = Text(idvariable)
+                                                        ),
+                                                        productModel: LookUp(
+                                                            schindlerBanks,
+                                                            goNumber = cboxGONumberNA.Selected.goNumber,
+                                                            productId.product_Model
+                                                        )
+                                                    }
+                                                )
+                                            );
+                                            Patch(
+                                                bankAssessment,
                                                 Defaults(bankAssessment),
                                                 {
-                                                  'bankAssessment (quantum_bankassessment)':GUID(),
-                                                  assignmentId:LookUp(assignments,Id=Text(idvariable)),
-                                                  bankId : LookUp(schindlerBanks,goNumber= cboxGONumberNA.Selected.goNumber),
-                                                  Assessment_Status:"Upcomming"
+                                                    'bankAssessment (quantum_bankassessment)': GUID(),
+                                                    assignmentId: LookUp(
+                                                        assignments,
+                                                        Id = Text(idvariable)
+                                                    ),
+                                                    bankId: LookUp(
+                                                        schindlerBanks,
+                                                        goNumber = cboxGONumberNA.Selected.goNumber
+                                                    ),
+                                                    Assessment_Status: "Upcomming"
                                                 }
-                                             ) ;   
-                                    
-                                             ForAll(
+                                            );
+                                            ForAll(
                                                 selectedUnit.Id As p,
-                                                Patch(unitAssessment,
-                                                Defaults(unitAssessment),
-                                                {
-                                                    'unitAssessment (quantum_unitassessment)':GUID(),
-                                                     bankUnitId:LookUp(bankUnits,Id=p.Id),
-                                                     assignmentId:LookUp(assignments,Id=Text(idvariable)),
-                                                     Assessment_status:"Upcomming",
-                                                     product_id:LookUp(schindlerBanks,goNumber=cboxGONumberNA.Selected.goNumber,productId),
-                                                     Reviewer_Comments:""
-                                    
-                                                }
-                                             )       
-                                     );
-                                    
-                                    
-                                          If(IsEmpty(Errors(assignments)) && IsEmpty(Errors(assignmentUnits)) && IsEmpty(Errors(bankAssessment)) && IsEmpty(Errors(unitAssessment)),
-                                           Set(popupsuccess,true);
-                                            Reset(cboxClientNA);
-                                            Reset(cboxGONumberNA);
-                                            Clear(selectedUnit);
-                                            Reset(cboxAssessmentTypeNA);
-                                            Reset(cboxAssessorNA);
-                                            Reset(cboxReviewerNA);
-                                            Reset(DatePickerDueDateNA);
-                                            Reset(DatePickerAssignDateNA);
-                                            Reset(DatePickerStartDateNA);
-                                    
-                                      ,Notify("Error patch function"))
-                                        
-                                    )   
+                                                Patch(
+                                                    unitAssessment,
+                                                    Defaults(unitAssessment),
+                                                    {
+                                                        'unitAssessment (quantum_unitassessment)': GUID(),
+                                                        bankUnitId: LookUp(
+                                                            bankUnits,
+                                                            Id = p.Id
+                                                        ),
+                                                        assignmentId: LookUp(
+                                                            assignments,
+                                                            Id = Text(idvariable)
+                                                        ),
+                                                        Assessment_status: "Upcomming",
+                                                        product_id: LookUp(
+                                                            schindlerBanks,
+                                                            goNumber = cboxGONumberNA.Selected.goNumber,
+                                                            productId
+                                                        ),
+                                                        Reviewer_Comments: ""
+                                                    }
+                                                )
+                                            );
+                                            If(
+                                                (!IsEmpty(Errors(assignments)) && !IsEmpty(Errors(assignmentUnits)) && !IsEmpty(Errors(bankAssessment)) && !IsEmpty(Errors(unitAssessment))),
+                                                Notify(
+                                                    "Patch function Error " & Concat(
+                                                        Errors(assignments),
+                                                        Column & ": " & Message
+                                                    )& Concat(
+                                                        Errors(assignmentUnits),
+                                                        Column & ": " & Message
+                                                    ) & Concat(
+                                                        Errors(bankAssessment),
+                                                        Column & ": " & Message
+                                                    ) & Concat(
+                                                        Errors(unitAssessment),
+                                                        Column & ": " & Message
+                                                    ) ,
+                                                    NotificationType.Error
+                                                );
+                                                ,
+                                                Set(
+                                                    popupsuccess,
+                                                    true
+                                                );
+                                                Reset(cboxClientNA);
+                                                Reset(cboxGONumberNA);
+                                                Clear(selectedUnit);
+                                                Reset(cboxAssessmentTypeNA);
+                                                Reset(cboxAssessorNA);
+                                                Reset(cboxReviewerNA);
+                                                Reset(DatePickerDueDateNA);
+                                                Reset(DatePickerAssignDateNA);
+                                                Reset(DatePickerStartDateNA);
+                                            )
+                                        )
                                     )
-                                    
                                 PressedBorderColor: =referenceCSS.RActiveColor//Self.Fill
                                 PressedColor: =Self.Color
                                 PressedFill: =Self.Fill
