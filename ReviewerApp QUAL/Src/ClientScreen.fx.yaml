@@ -1393,21 +1393,7 @@ ClientScreen As screen:
                                             //) ,*/
                                             Set(
                                                 PatchresultClient,
-                                                /*Patch(
-                                                    Client,
-                                                    Defaults(Client),
-                                                    {
-                                                        client: GUID(),
-                                                        client_name: txtClientName.Text,
-                                                        address1: txtAddress1.Text,
-                                                        address2: txtAddress2.Text,
-                                                        city: CCity.Text,
-                                                        zip: CZip.Text,
-                                                        state: CState.Text,
-                                                        contact_name: txtContactName.Text,
-                                                        contact_number: CContact1_2.Text
-                                                    }
-                                                )*/
+                                            
                                                 Patch(schindlerClients,
                                                    Defaults(schindlerClients),
                                                    {

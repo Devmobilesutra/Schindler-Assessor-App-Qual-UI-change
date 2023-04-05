@@ -608,7 +608,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btnBackPA",
-      "ParentIndex": 0,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -2827,7 +2827,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btnOkSuccessPA",
-      "ParentIndex": 5,
+      "ParentIndex": 11,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -4373,7 +4373,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "cboxClientNA",
-      "ParentIndex": 1,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -4796,7 +4796,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "cboxGONumberNA",
-      "ParentIndex": 3,
+      "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -5941,7 +5941,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Container1_1",
-      "ParentIndex": 1,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -11634,7 +11634,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "iconInnerRectangleRemovePA",
-      "ParentIndex": 2,
+      "ParentIndex": 5,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -11793,7 +11793,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "iconInnerRectangleSuccessPA",
-      "ParentIndex": 4,
+      "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -12335,7 +12335,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "iconOuterRectangleSuccessPA",
-      "ParentIndex": 3,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -13323,7 +13323,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "imgSuccessPA",
-      "ParentIndex": 7,
+      "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -16044,7 +16044,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblAssignSuccessPA",
-      "ParentIndex": 11,
+      "ParentIndex": 8,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -16677,7 +16677,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblbankexistNA",
-      "ParentIndex": 4,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -17346,7 +17346,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblClientNA",
-      "ParentIndex": 0,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -19466,7 +19466,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblGONumberNA",
-      "ParentIndex": 2,
+      "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -21905,7 +21905,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblSuccessPA",
-      "ParentIndex": 8,
+      "ParentIndex": 7,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {

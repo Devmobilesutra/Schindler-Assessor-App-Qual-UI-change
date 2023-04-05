@@ -827,7 +827,7 @@ projectAssignment As screen:
                                     =
                                     referenceCSS.RActiveColor
                                     //ColorFade(RGBA(56, 96, 178, 1), -20%)
-                                OnSelect: |
+                                OnSelect: |+
                                     =//Clear(checkboxunit);
                                     If(
                                         Connection.Connected = false,
@@ -944,8 +944,6 @@ projectAssignment As screen:
                                                     }
                                                 
                                           );
-                                         
-                                         // Refresh(assignments);
                                         
                                     
                                             Refresh(assignments);
@@ -982,22 +980,6 @@ projectAssignment As screen:
                                                 }
                                              ) ;   
                                     
-                                    
-                                      /*   If(
-                                            CountRows(Filter(
-                                                bankAssessment,bankId.goNumber=ComboBox2.Selected.goNumber
-                                            ))<1,
-                                             Patch(bankAssessment,
-                                                Defaults(bankAssessment),
-                                                {
-                                                  'bankAssessment (quantum_bankassessment)':GUID(),
-                                                  assignmentId:LookUp(assignments,Id=Text(idvariable)),
-                                                  bankId : LookUp(schindlerBanks,goNumber= ComboBox2.Selected.goNumber),
-                                                  Assessment_Status:""
-                                                }
-                                            ) ;  
-                                        );*/
-                                    
                                              ForAll(
                                                 selectedUnit.Id As p,
                                                 Patch(unitAssessment,
@@ -1015,8 +997,7 @@ projectAssignment As screen:
                                      );
                                     
                                     
-                                          If(IsEmpty(Errors(assignments)) && IsEmpty(Errors(assignmentUnits)),
-                                           //Notify("Success");
+                                          If(IsEmpty(Errors(assignments)) && IsEmpty(Errors(assignmentUnits)) && IsEmpty(Errors(bankAssessment)) && IsEmpty(Errors(unitAssessment)),
                                            Set(popupsuccess,true);
                                             Reset(cboxClientNA);
                                             Reset(cboxGONumberNA);
@@ -1033,52 +1014,6 @@ projectAssignment As screen:
                                     )   
                                     )
                                     
-                                    
-                                    
-                                    
-                                       /* If(
-                                            !IsBlank(ComboBox1.Selected.client_name) && !IsBlank(ComboBox2.Selected.Go_Number) && !IsBlank(ComboBox3.Selected.type) && !IsBlank(ComboBox4.Selected.displayName) && !IsBlank(ComboBox5.Selected.displayName) && DateDiff(
-                                                DatePicker2,
-                                                DatePicker1
-                                            ) >= 1,
-                                           
-                                            )
-                                    
-                                      //Reset(ComboBox1,ComboBox2,ComboBox3)
-                                            Reset(ComboBox1);
-                                            Reset(ComboBox2);
-                                            Reset(ComboBox3);
-                                            Reset(ComboBox4);
-                                            Reset(ComboBox5);
-                                            Reset(DatePicker1);
-                                            Reset(DatePicker1_2);
-                                            Reset(DatePicker2);
-                                            Set(
-                                                popupsuccess,
-                                                false
-                                            );
-                                        );*/
-                                    
-                                    //Clear(assign);
-                                    //ForAll(ComboBox2.SelectedItems,Collect(assign,{ProjectId:LookUp(ClientCollection,client_name=ComboBox1.Selected.client_name,client),ClientId:LookUp(ClientCollection,client_name=ComboBox1.Selected.client_name,client),
-                                            //ComboBox1.Selected.client_name, 
-                                            //for specific bank
-                                            // ClientBankId: ComboBox2.Selected.clientBankId,
-                                            //each client id 
-                                            //clientBankId:ThisRecord.Go_Number,
-                                            //assessor from collection from AAD
-                                            //AssessorId:LookUp(AssessorAD,displayName=ComboBox4.Selected.displayName,id),
-                                            //Reviewer from collection from dataverse
-                                            //ReviewerId: LookUp(schindlerAssessorCollection,name = ComboBox5.Selected.displayName,assessorId),ReviewerId:LookUp(ReviewerAD,displayName=ComboBox5.Selected.displayName,id),AssessmentType:ComboBox3.Selected.Value,ProjectStartDate:Text(DatePicker2.SelectedDate,"mm-dd-yyyy"),ProjectDueDate:Text(DatePicker1.SelectedDate,"mm-dd-yyyy"),ProjectCompletionDate:"",AssignedDate:Text(DatePicker1_2.SelectedDate,"mm-dd-yyyy"),Is_completed:"Upcomming",AssessorEmail:LookUp(AssessorAD,displayName=ComboBox4.Selected.displayName,mail),ReviewerEmail:LookUp(ReviewerAD,displayName=ComboBox5.Selected.displayName,mail)}));
-                                    //If(Connection.Connected,
-                                    //ForAll(assign,Patch(projectAssignment_1,Defaults(projectAssignment_1),  {
-                                    //    'projectAssignment (quantum_projectassignment)':ThisRecord.ProjectId,
-                                     //    clientId: LookUp(Client,client=ThisRecord.ClientId)
-                                      // projectAssignment: ThisRecord.ProjectId
-                                       // clientId: LookUp(Client,client= ThisRecord.ClientId,client),
-                                      // bankId:LookUp(banksCollection,Go_Number=ThisRecord.clientBankId,bank),
-                                    //})))
-                                    //ForAll(ComboBox2.SelectedItems,Collect(bank,{bankname:ThisRecord.clientBankId}))
                                 PressedBorderColor: =referenceCSS.RActiveColor//Self.Fill
                                 PressedColor: =Self.Color
                                 PressedFill: =Self.Fill
