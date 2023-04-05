@@ -988,16 +988,20 @@ AddBanks As screen:
                             HoverFill: |-
                                 =Self.Fill
                                 //ColorFade(RGBA(56, 96, 178, 1), -20%)
-                            OnSelect: |+
-                                =  
-                                  ForAll(glryunitNB.AllItems.txtunitnumberNB,
-                                        Collect(LCunit,{unitno:ThisRecord.txtunitnumberNB}));
+                            OnSelect: |-
+                                =//to check unit data is enter or not
+                                ForAll(
+                                    glryunitNB.AllItems.txtunitnumberNB,
+                                    Collect(
+                                        LCunit,
+                                        {unitno: ThisRecord.txtunitnumberNB}
+                                    )
+                                );
                                 
                                 If(
                                     Connection.Connected = false,
                                     Notify("Network is not Available"),
-                                
-                                   If(
+                                    If(
                                         IsBlank(cboxClientNameNB.Selected.name),
                                         Notify(
                                             "Please Enter Client Name .",
@@ -1008,149 +1012,98 @@ AddBanks As screen:
                                             "Please Enter GO Number.",
                                             NotificationType.Error
                                         ),
-                                          
                                         ShowErrorMsgBank = true,
                                         Notify(
                                             "Go number already exist.",
                                             NotificationType.Error
-                                        ), 
-                                
+                                        ),
                                         IsBlank(cboxProductTypeNB.Selected.product_Model),
-                                        
                                         Notify(
                                             "Please Select Product type .",
                                             NotificationType.Error
                                         ),
-                                       /* ForAll(Gallery19_1.AllItems.BProduct_Input_8,
-                                        If(IsBlank(ThisRecord.BProduct_Input_8.Text),
-                                            Notify("Please enter units details .",NotificationType.Error);
-                                            Set(s,0);
-                                        );*/
+                                        CountRows(
+                                            Filter(
+                                                LCunit,
+                                                IsBlank(unitno.Text)
+                                            )
+                                        ) > 0,
+                                        Notify(
+                                            "Please enter units details .",
+                                            NotificationType.Error
+                                        );
+                                        Clear(LCunit),
                                 
-                                        CountRows(Filter(LCunit,IsBlank(unitno.Text)))>0,
-                                         Notify("Please enter units details .",NotificationType.Error);
-                                         Clear(LCunit),
-                                      
-                                        
                                         Patch(
                                             schindlerBanks,
                                             Defaults(schindlerBanks),
                                             {
-                                              Id:GUID(),
-                                              clientId:LookUp(schindlerClients,name=cboxClientNameNB.Selected.name),
-                                              goNumber:txtgONumberNB.Text,
-                                              location:txtLocationNB.Text,
-                                              productId:LookUp(product,product_Model=cboxProductTypeNB.Selected.product_Model)
-                                             
+                                                Id: GUID(),
+                                                clientId: LookUp(
+                                                    schindlerClients,
+                                                    name = cboxClientNameNB.Selected.name
+                                                ),
+                                                goNumber: txtgONumberNB.Text,
+                                                location: txtLocationNB.Text,
+                                                productId: LookUp(
+                                                    product,
+                                                    product_Model = cboxProductTypeNB.Selected.product_Model
+                                                )
+                                            }
+                                        );
                                 
-                                        });
-                                
-                                
-                                        ForAll(glryunitNB.AllItems.txtunitnumberNB As i,
-                                        Patch(
-                                            bankUnits,
-                                            Defaults(bankUnits),
-                                            {
-                                                Id:GUID(),
-                                                bankId:LookUp(schindlerBanks,goNumber =txtgONumberNB.Text),
-                                                location:txtLocationNB.Text,
-                                                productId:LookUp(product,product_Model=cboxProductTypeNB.Selected.product_Model),
-                                                unitNumber:i.txtunitnumberNB.Text//,
-                                                //unitAssignmentStatus:"false"
-                                            }));
+                                        ForAll(
+                                            glryunitNB.AllItems.txtunitnumberNB As i,
+                                            Patch(
+                                                bankUnits,
+                                                Defaults(bankUnits),
+                                                {
+                                                    Id: GUID(),
+                                                    bankId: LookUp(
+                                                        schindlerBanks,
+                                                        goNumber = txtgONumberNB.Text
+                                                    ),
+                                                    location: txtLocationNB.Text,
+                                                    productId: LookUp(
+                                                        product,
+                                                        product_Model = cboxProductTypeNB.Selected.product_Model
+                                                    ),
+                                                    unitNumber: i.txtunitnumberNB.Text
+                                               
+                                                }
+                                            )
+                                        );
                                 
                                         If(
-                                        (IsEmpty(Errors( schindlerBanks)) && IsEmpty( Errors( bankUnits))),
-                                        Set(popupsuccess,true);
-                                        Reset(cboxClientNameNB);
-                                        Reset(txtgONumberNB);
-                                        Reset(txtLocationNB);
-                                        Reset(cboxProductTypeNB);
-                                        ClearCollect(rows1,{id:GUID(),lineno1:1}); ,
-                                
-                                        Notify("Error Patch")
-                                   
+                                            (!IsEmpty(Errors(schindlerBanks)) && !IsEmpty(Errors(bankUnits))),
+                                            Notify(
+                                                "Patch function Error " & Concat(
+                                                    Errors(schindlerBanks),
+                                                    Column & ": " & Message
+                                                ) & Concat(
+                                                    Errors(bankUnits),
+                                                    Column & ": " & Message
+                                                ),
+                                                NotificationType.Error
+                                            ),
+                                            Set(
+                                                popupsuccess,
+                                                true
+                                            );
+                                            Reset(cboxClientNameNB);
+                                            Reset(txtgONumberNB);
+                                            Reset(txtLocationNB);
+                                            Reset(cboxProductTypeNB);
+                                            ClearCollect(
+                                                rows1,
+                                                {
+                                                    id: GUID(),
+                                                    lineno1: 1
+                                                }
+                                            );
+                                        );
                                     )
-                                
-                                   )
-                                   )
-                                
-                                   
-                                
-                                /*
-                                ForAll( BProducttype_Combobox_3.SelectedItems.installationId As _item,
-                                  
-                                    Patch(
-                                        bank,
-                                        Defaults(bank),
-                                        {
-                                            'bank (quantum_bank)':GUID(),
-                                             clientId:LookUp(Client,client_name=BCilent_Combobox_3.Selected.client_name),
-                                             Go_Number:BProduct_Input_3.Text,
-                                             clientInstallationId:LookUp(clientInstallation, installationId = _item.installationId)
-                                             //unit_Number=ThisRecord.unit_Number &&  'client id' .client  = ThisRecord.'client id'.client
-                                                                                                         
-                                             
-                                           // product_Id: LookUp()
-                                          
-                                        }
-                                    ) 
-                                
-                                    );
-                                
-                                    
-                                ForAll( BProducttype_Combobox_3.SelectedItems.installationId As _item,
-                                  
-                                    Patch(
-                                        clientInstallation,
-                                         LookUp(clientInstallation, installationId = _item.installationId),
-                                        {
-                                           bankStatus:"true" 
-                                        }
-                                    ) 
-                                
-                                    );
-                                
-                                
-                                   If(
-                                    (IsEmpty(Errors( bank))),
-                                        Set(popupsuccess,true);
-                                        Reset(BCilent_Combobox_3);
-                                        Reset(BProduct_Input_3);
-                                        Reset(BProducttype_Combobox_4) ,
-                                
-                                        Notify("Error Patch")
-                                   
-                                    )
-                                */
-                                      
-                                
-                                
-                                /*
-                                
-                                 If(
-                                    Not(IsEmpty(Errors( bank))),
-                                      Set(popupsuccess,true);
-                                        Reset(BCilent_Combobox_3);
-                                        Reset(BProduct_Input_3);
-                                        Reset(BProducttype_Combobox_3);
-                                   
-                                    );
-                                   */
-                                   //   If(!IsBlank(patchresultbank),
-                                       // Notify("Success");
-                                      
-                                      
-                                  //,Notify("Error patch function"));
-                                   
-                                   
-                                   
-                                  
-                                 // )
-                                
-                                      
-                                    
-                                
+                                )
                             PressedBorderColor: =referenceCSS.RActiveColor//Self.Fill
                             PressedColor: =Self.Color
                             PressedFill: =Self.Fill

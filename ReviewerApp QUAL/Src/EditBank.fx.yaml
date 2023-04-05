@@ -575,93 +575,112 @@ EditBank As screen:
                             Fill: =referenceCSS.RActiveColor
                             Height: =50
                             HoverFill: =referenceCSS.RActiveColor
-                            OnSelect: |+
+                            OnSelect: |-
                                 =Refresh(schindlerBanks);
                                 Refresh(bankUnits);
-                                
-                                
-                                  ForAll(glryUnitEditBank.AllItems.txtUnitEditBank,
-                                        Collect(LCunitedit,{unitno:ThisRecord.txtUnitEditBank}));
-                                
+                                ForAll(
+                                    glryUnitEditBank.AllItems.txtUnitEditBank,
+                                    Collect(
+                                        LCunitedit,
+                                        {unitno: ThisRecord.txtUnitEditBank}
+                                    )
+                                );
                                 If(
                                     Connection.Connected = false,
                                     Notify("Network is not Available"),
-                                
-                                   If(
-                                       /* IsBlank(BCilent_Combobox_4.Selected.name),
-                                        Notify(
-                                            "Please Enter Client Name .",
-                                            NotificationType.Error
-                                        ),
-                                        */
+                                    If(
                                         IsBlank(TxtGonumberEditBank.Text),
                                         Notify(
                                             "Please Enter GO Number.",
                                             NotificationType.Error
                                         ),
-                                          
                                         ShowErrorMsgBank = true,
                                         Notify(
                                             "Go number already exist.",
                                             NotificationType.Error
-                                        ), 
-                                
+                                        ),
                                         IsBlank(cboxProductTypeEditBank.Selected.product_Model),
-                                        
                                         Notify(
                                             "Please Select Product type .",
                                             NotificationType.Error
                                         ),
-                                     
-                                
-                                        CountRows(Filter(LCunitedit,IsBlank(unitno.Text)))>0,
-                                         Notify("Please enter units details .",NotificationType.Error);
-                                         Clear(LCunitedit),
-                                
-                                       RemoveIf(bankUnits,bankId.Id=nbank);
-                                        
+                                        CountRows(
+                                            Filter(
+                                                LCunitedit,
+                                                IsBlank(unitno.Text)
+                                            )
+                                        ) > 0,
+                                        Notify(
+                                            "Please enter units details .",
+                                            NotificationType.Error
+                                        );
+                                        Clear(LCunitedit),
+                                        RemoveIf(
+                                            bankUnits,
+                                            bankId.Id = nbank
+                                        );
                                         Patch(
                                             schindlerBanks,
-                                            LookUp(schindlerBanks,Id=nbank),
+                                            LookUp(
+                                                schindlerBanks,
+                                                Id = nbank
+                                            ),
                                             {
-                                              //Id:GUID(),
-                                             // clientId:LookUp(schindlerClients,name=BCilent_Combobox_4.Selected.name),
-                                              goNumber:TxtGonumberEditBank.Text,
-                                              location:txtLocationEditBank.Text,
-                                              productId:LookUp(product,product_Model=cboxProductTypeEditBank.Selected.product_Model)
-                                             
-                                
-                                        });
-                                
-                                
-                                        ForAll(glryUnitEditBank.AllItems.txtUnitEditBank As i,
-                                        Patch(
-                                            bankUnits,
-                                            Defaults(bankUnits),
-                                            {
-                                                Id:GUID(),
-                                                bankId:LookUp(schindlerBanks,goNumber =TxtGonumberEditBank.Text),
-                                                location:txtLocationEditBank.Text,
-                                                productId:LookUp(product,product_Model=cboxProductTypeEditBank.Selected.product_Model),
-                                                unitNumber:i.txtUnitEditBank.Text
-                                            }));
-                                
+                                                goNumber: TxtGonumberEditBank.Text,
+                                                location: txtLocationEditBank.Text,
+                                                productId: LookUp(
+                                                    product,
+                                                    product_Model = cboxProductTypeEditBank.Selected.product_Model
+                                                )
+                                            }
+                                        );
+                                        ForAll(
+                                            glryUnitEditBank.AllItems.txtUnitEditBank As i,
+                                            Patch(
+                                                bankUnits,
+                                                Defaults(bankUnits),
+                                                {
+                                                    Id: GUID(),
+                                                    bankId: LookUp(
+                                                        schindlerBanks,
+                                                        goNumber = TxtGonumberEditBank.Text
+                                                    ),
+                                                    location: txtLocationEditBank.Text,
+                                                    productId: LookUp(
+                                                        product,
+                                                        product_Model = cboxProductTypeEditBank.Selected.product_Model
+                                                    ),
+                                                    unitNumber: i.txtUnitEditBank.Text
+                                                }
+                                            )
+                                        );
                                         If(
-                                        (IsEmpty(Errors( schindlerBanks)) && IsEmpty( Errors( bankUnits))),
-                                        Set(popupsuccess,true);
-                                        Reset(cboxClientEditBank);
-                                        Reset(TxtGonumberEditBank);
-                                        Reset(txtLocationEditBank);
-                                        Reset(cboxProductTypeEditBank);
-                                        ClearCollect(existingUnits,{}); ,
-                                
-                                        Notify("Error Patch")
-                                   
+                                            (IsEmpty(Errors(schindlerBanks)) && IsEmpty(Errors(bankUnits))),
+                                            Notify(
+                                                "Patch function Error " & Concat(
+                                                    Errors(schindlerBanks),
+                                                    Column & ": " & Message
+                                                ) & Concat(
+                                                    Errors(bankUnits),
+                                                    Column & ": " & Message
+                                                ),
+                                                NotificationType.Error
+                                            ),
+                                            Set(
+                                                popupsuccess,
+                                                true
+                                            );
+                                            Reset(cboxClientEditBank);
+                                            Reset(TxtGonumberEditBank);
+                                            Reset(txtLocationEditBank);
+                                            Reset(cboxProductTypeEditBank);
+                                            ClearCollect(
+                                                existingUnits,
+                                                {}
+                                            );
+                                        );
                                     )
-                                
-                                   )
-                                   )
-                                
+                                )
                             PaddingLeft: =15
                             PressedColor: =Self.Color
                             PressedFill: =referenceCSS.RActiveColor
