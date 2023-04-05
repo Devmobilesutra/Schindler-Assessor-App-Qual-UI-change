@@ -309,7 +309,7 @@ ClientScreen As screen:
                             Height: |-
                                 =//Parent.Height
                                 CountRows(glryExistingClients.AllItems)*glryExistingClients.TemplateHeight
-                            Items: =Sort(schindlerClients,name,SortOrder.Ascending)
+                            Items: =Sort(schindlerClients,'Modified On',SortOrder.Descending)
                             Layout: =Layout.Vertical
                             LayoutMinHeight: =287
                             LayoutMinWidth: =320

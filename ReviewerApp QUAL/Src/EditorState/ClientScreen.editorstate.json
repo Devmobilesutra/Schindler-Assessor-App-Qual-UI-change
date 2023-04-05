@@ -9648,7 +9648,14 @@
     "glryExistingClients": {
       "AllowAccessToGlobals": true,
       "ControlPropertyState": [
-        "Items",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "Sort(schindlerClients,name,SortOrder.Ascending)",
+          "InvariantPropertyName": "Items",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         "Default",
         "WrapCount",
         "Selectable",
