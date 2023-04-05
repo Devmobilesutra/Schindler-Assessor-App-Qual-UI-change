@@ -655,7 +655,7 @@ EditBank As screen:
                                             )
                                         );
                                         If(
-                                            (IsEmpty(Errors(schindlerBanks)) && IsEmpty(Errors(bankUnits))),
+                                            (!IsEmpty(Errors(schindlerBanks)) && !IsEmpty(Errors(bankUnits))),
                                             Notify(
                                                 "Patch function Error " & Concat(
                                                     Errors(schindlerBanks),

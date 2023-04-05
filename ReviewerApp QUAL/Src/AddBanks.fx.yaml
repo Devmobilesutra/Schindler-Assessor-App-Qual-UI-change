@@ -310,25 +310,9 @@ AddBanks As screen:
                         Height: |-
                             =//Parent.Height
                             CountRows(glryExistingBanks.AllItems)*(glryExistingBanks.TemplateHeight + glryExistingBanks.TemplatePadding +100)
-                        Items: |-
-                            =Sort(schindlerBanks,goNumber,SortOrder.Ascending)
+                        Items: |+
+                            =Sort(schindlerBanks,'Modified On',SortOrder.Descending)
                             
-                            /*GroupBy(
-                                AddColumns(bank,
-                                     
-                                    "clientData", clientId.client_name,
-                                    "cname",Go_Number
-                                
-                                ),
-                                "clientData","cname",
-                                "data"
-                            )*/
-                            
-                            /*GroupBy(bank,
-                                
-                                  "quantum_go_number",
-                                  "data"
-                            )*/
                         Layout: =Layout.Vertical
                         LayoutMinHeight: =287
                         LayoutMinWidth: =320

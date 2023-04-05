@@ -410,6 +410,9 @@ projectAssignment As screen:
                             InputTextPlaceholder: =
                             IsSearchable: =false
                             Items: =Sort(schindlerClients,name,SortOrder.Ascending)
+                            OnSelect: |-
+                                =Clear(selectedUnit);
+                                Reset(cboxGONumberNA)
                             PaddingBottom: =0
                             PaddingTop: =0
                             PressedFill: =RGBA(0, 0, 0, 0)
@@ -464,6 +467,7 @@ projectAssignment As screen:
                                    Set(ShowErrorMsgBAssign, false),
                                    Set(ShowErrorMsgBAssign, true)
                                 )*/
+                            OnSelect: =Clear(selectedUnit);
                             PaddingBottom: =0
                             PaddingTop: =0
                             Reset: =true
@@ -884,14 +888,14 @@ projectAssignment As screen:
                                                 Defaults(assignments),
                                                 {
                                                     Id: Text(idvariable),
-                                                    clientId: LookUp(
+                                                    /*clientId: LookUp(
                                                         schindlerClients,
                                                         name = cboxClientNA.Selected.name
                                                     ),
                                                     bankId: LookUp(
                                                         schindlerBanks,
                                                         goNumber = cboxGONumberNA.Selected.goNumber
-                                                    ),
+                                                    ),*/
                                                     assessorId: LookUp(
                                                         AssessorAD,
                                                         displayName = cboxAssessorNA.Selected.displayName,
@@ -1432,10 +1436,18 @@ projectAssignment As screen:
                                 Height: =30
                                 OnSelect: =Select(Parent)
                                 Size: =referenceCSS.RLabelFontSize
-                                Text: |+
-                                    =Concat(Sort(Filter(assignmentUnits,assignmentId.assignments=ThisItem.assignments),bankUnitId.unitNumber),bankUnitId.unitNumber,"   ")
-                                    
-                                    
+                                Text: |-
+                                    =Concat(
+                                        Sort(
+                                            Filter(
+                                                assignmentUnits,
+                                                assignmentId.assignments = ThisItem.assignments
+                                            ),
+                                            bankUnitId.unitNumber
+                                        ),
+                                        bankUnitId.unitNumber,
+                                        "   "
+                                    )
                                 Width: =Parent.Width-lblUnitEA.Width-40
                                 X: =lblC_nameEA.X+lblC_nameEA.Width+10
                                 Y: =lblGOnumberEA.Y+lblGOnumberEA.Height+10
