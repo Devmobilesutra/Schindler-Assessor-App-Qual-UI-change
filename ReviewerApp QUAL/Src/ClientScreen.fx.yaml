@@ -702,38 +702,8 @@ ClientScreen As screen:
                                     HoverBorderColor: =//ColorFade(Self.BorderColor, 20%)
                                     HoverColor: =RGBA(0, 0, 0, 1)
                                     HoverFill: =RGBA(0, 0, 0, 0)
-                                    OnSelect: |
-                                        =/*If(
-                                            IsBlank(txtClientName_1.Text),
-                                            Notify(
-                                                "Enter Client Name",
-                                                NotificationType.Error
-                                            );
-                                            IsBlank(txtAddress1_1.Text),
-                                            Notify("Enter Address1",NotificationType.Error);
-                                            IsBlank(CCity_1.Text),Notify("Enter City",NotificationType.Error);
-                                            IsBlank(CZip_1.Text),Notify("Enter ZipCode",NotificationType.Error);
-                                            IsBlank(CState_1.Text),Notify("Enter State",NotificationType.Error);
-                                            IsBlank(CContact1_3.Text) && Not(IsMatch(CContact1_3.Text,"\d{10}")),Notify("Enter Contact Number",NotificationType.Error);*/
-                                        
-                                        
-                                            
-                                            /*Patch(
-                                                Client,
-                                                ThisItem,
-                                                {
-                                                    client_name: txtClientName_1.Text,
-                                                    address1: txtAddress1_1.Text,
-                                                    address2: txtAddress2_1.Text,
-                                                    city: CCity_1.Text,
-                                                    zip: CZip_1.Text,
-                                                    state: CState_1.Text,
-                                                    contact_name: txtContactName_1.Text,
-                                                    contact_number: CContact1_3.Text
-                                                }
-                                            );*/
-                                           
-                                           If(
+                                    OnSelect: |-
+                                        =If(
                                             Connection.Connected = false,
                                             Notify("Network is not Available"),
                                             If(
@@ -742,51 +712,50 @@ ClientScreen As screen:
                                                     "Please Enter Client Name",
                                                     NotificationType.Error
                                                 ),
-                                            
-                                                ShowErrorMsgClient= true && varEditMode=ThisItem.Id,
+                                                ShowErrorMsgClient = true && varEditMode = ThisItem.Id,
                                                 Notify(
                                                     "Client name already exist.",
                                                     NotificationType.Error
                                                 ),
-                                               Set(PatchresultClientEdit,
-                                               Patch(
-                                               schindlerClients,
-                                               ThisItem,
-                                               {
-                                                    name: txtClientNameEC.Text,
-                                                    address1: txtAddress1EC.Text,
-                                                    address2: txtAddress2EC.Text,
-                                                    city: txtCityEC.Text,
-                                                    zip: txtZipEC.Text,
-                                                    state: txtStateEC.Text,
-                                                    contactName: txtContactNameEC.Text,
-                                                    contactNumber: txtContactNumberEC.Text
-                                               });
-                                            );
-                                               
-                                            If(
-                                                !IsBlank(PatchresultClientEdit),
-                                                 UpdateContext({popupsuccess: true});
-                                                 Set(
-                                                    F,
-                                                    false
-                                                   );
-                                                     Reset( txtClientNameEC);
-                                                     Reset( txtAddress1EC);
-                                                     Reset( txtAddress2EC);
-                                                     Reset( txtCityEC);
-                                                     Reset(  txtZipEC);
-                                                     Reset( txtStateEC);
-                                                     Reset( txtContactNameEC);
-                                                     Reset( txtContactNumberEC);
-                                                    ,
+                                                Patch(
+                                                    schindlerClients,
+                                                    ThisItem,
+                                                    {
+                                                        name: txtClientNameEC.Text,
+                                                        address1: txtAddress1EC.Text,
+                                                        address2: txtAddress2EC.Text,
+                                                        city: txtCityEC.Text,
+                                                        zip: txtZipEC.Text,
+                                                        state: txtStateEC.Text,
+                                                        contactName: txtContactNameEC.Text,
+                                                        contactNumber: txtContactNumberEC.Text
+                                                    }
+                                                );
+                                                If(
+                                                    !IsEmpty(Errors(schindlerClients)),
                                                     Notify(
-                                                        "Error patch function",
+                                                        "Patch function Error " & Concat(
+                                                            Errors(schindlerClients),
+                                                            Column & ": " & Message
+                                                        ),
                                                         NotificationType.Error
-                                                    )
-                                                 )
-                                               )
+                                                    ),
+                                                    UpdateContext({popupsuccess: true});
+                                                    Set(
+                                                        F,
+                                                        false
+                                                    );
+                                                    Reset(txtClientNameEC);
+                                                    Reset(txtAddress1EC);
+                                                    Reset(txtAddress2EC);
+                                                    Reset(txtCityEC);
+                                                    Reset(txtZipEC);
+                                                    Reset(txtStateEC);
+                                                    Reset(txtContactNameEC);
+                                                    Reset(txtContactNumberEC);
+                                                );
                                             )
+                                        )
                                     PaddingBottom: =30
                                     PaddingLeft: =25
                                     PressedBorderColor: =//Self.Fill
@@ -1345,7 +1314,7 @@ ClientScreen As screen:
                                 HoverFill: |-
                                     =Self.Fill
                                     //ColorFade(RGBA(56, 96, 178, 1), -20%)
-                                OnSelect: |+
+                                OnSelect: |-
                                     =If(
                                         Connection.Connected = false,
                                         Notify("Network is not Available"),
@@ -1355,66 +1324,36 @@ ClientScreen As screen:
                                                 "Please Enter Client Name",
                                                 NotificationType.Error
                                             ),
-                                            
                                             ShowErrorMsgClient = true,
                                             Notify(
                                                 "Client name already exist .",
                                                 NotificationType.Error
                                             ),
-                                           /* IsBlank(txtAddress1.Text),
-                                            Notify(
-                                                "Please Enter Address 1",
-                                                NotificationType.Error
-                                            ),
-                                            IsBlank(CCity.Text),
-                                            Notify(
-                                                "Please Enter City",
-                                                NotificationType.Error
-                                            ),
-                                            IsBlank(CState.Text),
-                                            Notify(
-                                                "Please Enter State",
-                                                NotificationType.Error
-                                            ),
-                                            IsBlank(CContact1_2.Text),
-                                            Notify(
-                                                "Please Enter Contact Number",
-                                                NotificationType.Error
-                                            ),
-                                            //IsBlank(CZip.Text),
-                                            //Notify(
-                                                //"Please Enter Zipcode",
-                                               // NotificationType.Error
-                                            //),
-                                            //IsBlank(txtContactName.Text),
-                                            //Notify(
-                                             //   "Please Enter Contact Name",
-                                             //   NotificationType.Error
-                                            //) ,*/
-                                            Set(
-                                                PatchresultClient,
-                                            
-                                                Patch(schindlerClients,
-                                                   Defaults(schindlerClients),
-                                                   {
-                                                    Id:GUID(),
+                                            Patch(
+                                                schindlerClients,
+                                                Defaults(schindlerClients),
+                                                {
+                                                    Id: GUID(),
                                                     name: txtClientName.Text,
-                                                    address1:txtAddress1.Text,
+                                                    address1: txtAddress1.Text,
                                                     address2: txtAddress2.Text,
-                                                    city:CCity.Text,
+                                                    city: CCity.Text,
                                                     zip: CZip.Text,
-                                                    state:CState.Text,
-                                                    contactName:txtContactName.Text,
-                                                    contactNumber:lblCNumber.Text
-                                                    
-                                                })
-                                            
-                                        );
+                                                    state: CState.Text,
+                                                    contactName: txtContactName.Text,
+                                                    contactNumber: lblCNumber.Text
+                                                }
+                                            );
                                             If(
-                                                !IsBlank(PatchresultClient),
+                                                !IsEmpty(Errors(schindlerClients)),
+                                                Notify(
+                                                    "Patch function Error " & Concat(
+                                                        Errors(schindlerClients),
+                                                        Column & ": " & Message
+                                                    ),
+                                                    NotificationType.Error
+                                                ),
                                                 UpdateContext({popupAddsuccess: true});
-                                                
-                                    
                                                 Reset(txtClientName);
                                                 Reset(txtAddress1);
                                                 Reset(txtAddress2);
@@ -1423,15 +1362,9 @@ ClientScreen As screen:
                                                 Reset(CState);
                                                 Reset(txtContactName);
                                                 Reset(txtContactNumber);
-                                                ,
-                                                Notify(
-                                                    "Error patch function",
-                                                    NotificationType.Error
-                                                )
-                                            )
+                                            );
                                         )
-                                     )
-                                    
+                                    )
                                 PressedBorderColor: =referenceCSS.RActiveColor//Self.Fill
                                 PressedColor: =Self.Color
                                 PressedFill: =Self.Fill
