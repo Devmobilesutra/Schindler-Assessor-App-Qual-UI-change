@@ -883,19 +883,20 @@ projectAssignment As screen:
                                                 idvariable,
                                                 GUID()
                                             );
+                                            Refresh(assignments);
                                             Patch(
                                                 assignments,
                                                 Defaults(assignments),
                                                 {
                                                     Id: Text(idvariable),
-                                                    /*clientId: LookUp(
+                                                    clientId: LookUp(
                                                         schindlerClients,
                                                         name = cboxClientNA.Selected.name
                                                     ),
                                                     bankId: LookUp(
                                                         schindlerBanks,
                                                         goNumber = cboxGONumberNA.Selected.goNumber
-                                                    ),*/
+                                                    ),
                                                     assessorId: LookUp(
                                                         AssessorAD,
                                                         displayName = cboxAssessorNA.Selected.displayName,
@@ -998,7 +999,7 @@ projectAssignment As screen:
                                                 )
                                             );
                                             If(
-                                                (!IsEmpty(Errors(assignments)) && !IsEmpty(Errors(assignmentUnits)) && !IsEmpty(Errors(bankAssessment)) && !IsEmpty(Errors(unitAssessment))),
+                                                (!IsEmpty(Errors(assignments)) || !IsEmpty(Errors(assignmentUnits)) || !IsEmpty(Errors(bankAssessment)) || !IsEmpty(Errors(unitAssessment))),
                                                 Notify(
                                                     "Patch function Error " & Concat(
                                                         Errors(assignments),
