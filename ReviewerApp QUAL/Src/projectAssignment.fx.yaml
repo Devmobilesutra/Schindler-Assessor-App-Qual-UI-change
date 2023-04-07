@@ -880,16 +880,15 @@ projectAssignment As screen:
                                                 NotificationType.Error
                                             ),
                                             Set(
-                                                idvariable,
-                                                GUID()
+                                            idvariable,
+                                            Text( GUID())
                                             );
                                             Refresh(assignments);
-                                            IfError(
                                             Patch(
                                                 assignments,
                                                 Defaults(assignments),
                                                 {
-                                                    Id: Text(idvariable),
+                                                    Id: idvariable,
                                                     clientId: LookUp(
                                                         schindlerClients,
                                                         name = cboxClientNA.Selected.name
@@ -913,26 +912,7 @@ projectAssignment As screen:
                                                     dueDate: DatePickerDueDateNA.SelectedDate,
                                                     //completionDate:
                                                     assignedDate: DatePickerAssignDateNA.SelectedDate,
-                                                    isCompleted: "Upcommingpppppppppppppppppppppppppppppppppooooooooooooooooooooooooooooo
-                                                    lllllllllllll
-                                                    kkkkkkkkkkkkkkkkkkkkkk
-                                                    jjjjjjjjjjjjjjjjjjjjjjj
-                                                    jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj
-                                                    kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
-                                                    kkkkkkkkkkkkkkkkkkkkkkkkkkkk
-                                                    kkkkkkkkkkkkkkkkkkkkkk
-                                                    iiiiiiiiiiiiiiiiiiiiiiiiiiiii
-                                                    kkkkkkkkkkkkkkkkkkkkkkkk
-                                                    ggggggggggggggggggggggggyyyyyyyyyyyy
-                                                    hhhhhhhhhhhhhhhhhhhhhhhhhhh
-                                                    uuuuuuuuuuuuuuuuuuuuuuuuuuuuu
-                                                    ggggggggggggggggggg
-                                                    ggggggggggggggggggggggggggggggggg
-                                                    uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
-                                                    yyyyyyyyyyyyyyyyyyyyyyyy
-                                                    awwwwwwwwwwwwwwwwwwwwwwwwwwwwww
-                                                    drrrrrrrrrrrrrrrrrrrrrrrrrrrrllllllllllllllllllllllllllllllllllllllll
-                                                    kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk",
+                                                    isCompleted: "Upcomming",
                                                     assessorEmail: LookUp(
                                                         AssessorAD,
                                                         displayName = cboxAssessorNA.Selected.displayName,
@@ -951,16 +931,8 @@ projectAssignment As screen:
                                                     reviewerName: cboxReviewerNA.Selected.displayName,
                                                     GONumber: cboxGONumberNA.Selected.goNumber
                                                 }
-                                            ),
-                                           Notify(
-                                                  
-                                                  "Patch function Error" & FirstError.Message,NotificationType.Error );
-                                                false,
-                                              true
-                                                );
-                                    
-                                    
-                                           /*  If(
+                                            );
+                                            If(
                                                 (!IsEmpty(Errors(assignments))),
                                                 Notify(
                                                     "Patch function Error " & Concat(
@@ -970,82 +942,97 @@ projectAssignment As screen:
                                                     NotificationType.Error
                                                 );
                                                 ,
-                                               Notify(" Patch function successss ");
-                                               
-                                            );*/
-                                         /*   Refresh(assignments);
-                                            Refresh(assignmentUnits);
-                                            ForAll(
-                                                selectedUnit.Id As p,
+                                               // Notify(" Patch function successss ");
+                                                Refresh(assignments);
+                                                Refresh(assignmentUnits);
+                                                ForAll(
+                                                    selectedUnit.Id As p,
+                                                    Patch(
+                                                        assignmentUnits,
+                                                        Defaults(assignmentUnits),
+                                                        {
+                                                            Id: GUID(),
+                                                            bankUnitId: LookUp(
+                                                                bankUnits,
+                                                                Id = p.Id
+                                                            ),
+                                                            assignmentId: LookUp(
+                                                                assignments,
+                                                                Id = idvariable
+                                                            ),
+                                                            productModel: LookUp(
+                                                                schindlerBanks,
+                                                                goNumber = cboxGONumberNA.Selected.goNumber,
+                                                                productId.product_Model
+                                                            )
+                                                        }
+                                                    )
+                                                );
                                                 Patch(
-                                                    assignmentUnits,
-                                                    Defaults(assignmentUnits),
+                                                    bankAssessment,
+                                                    Defaults(bankAssessment),
                                                     {
-                                                        Id: GUID(),
-                                                        bankUnitId: LookUp(
-                                                            bankUnits,
-                                                            Id = p.Id
-                                                        ),
+                                                        'bankAssessment (quantum_bankassessment)': GUID(),
                                                         assignmentId: LookUp(
                                                             assignments,
-                                                            Id = Text(idvariable)
+                                                            Id = idvariable
                                                         ),
-                                                        productModel: LookUp(
+                                                        bankId: LookUp(
                                                             schindlerBanks,
-                                                            goNumber = cboxGONumberNA.Selected.goNumber,
-                                                            productId.product_Model
-                                                        )
+                                                            goNumber = cboxGONumberNA.Selected.goNumber
+                                                        ),
+                                                        Assessment_Status: "Upcommingpppppppppppppppppppppppppppppppppooooooooooooooooooooooooooooo
+                                                    lllllllllllll
+                                                    kkkkkkkkkkkkkkkkkkkkkk
+                                                    jjjjjjjjjjjjjjjjjjjjjjj
+                                                    jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj
+                                                    kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+                                                    kkkkkkkkkkkkkkkkkkkkkkkkkkkk
+                                                    kkkkkkkkkkkkkkkkkkkkkk
+                                                    iiiiiiiiiiiiiiiiiiiiiiiiiiiii
+                                                    kkkkkkkkkkkkkkkkkkkkkkkk
+                                                    ggggggggggggggggggggggggyyyyyyyyyyyy
+                                                    hhhhhhhhhhhhhhhhhhhhhhhhhhh
+                                                    uuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+                                                    ggggggggggggggggggg
+                                                    ggggggggggggggggggggggggggggggggg
+                                                    uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+                                                    yyyyyyyyyyyyyyyyyyyyyyyy
+                                                    awwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+                                                    drrrrrrrrrrrrrrrrrrrrrrrrrrrrllllllllllllllllllllllllllllllllllllllll
+                                                    kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"
                                                     }
-                                                )
-                                            );
-                                            Patch(
-                                                bankAssessment,
-                                                Defaults(bankAssessment),
-                                                {
-                                                    'bankAssessment (quantum_bankassessment)': GUID(),
-                                                    assignmentId: LookUp(
-                                                        assignments,
-                                                        Id = Text(idvariable)
-                                                    ),
-                                                    bankId: LookUp(
-                                                        schindlerBanks,
-                                                        goNumber = cboxGONumberNA.Selected.goNumber
-                                                    ),
-                                                    Assessment_Status: "Upcomming"
-                                                }
-                                            );
-                                            ForAll(
-                                                selectedUnit.Id As p,
-                                                Patch(
-                                                    unitAssessment,
-                                                    Defaults(unitAssessment),
-                                                    {
-                                                        'unitAssessment (quantum_unitassessment)': GUID(),
-                                                        bankUnitId: LookUp(
-                                                            bankUnits,
-                                                            Id = p.Id
-                                                        ),
-                                                        assignmentId: LookUp(
-                                                            assignments,
-                                                            Id = Text(idvariable)
-                                                        ),
-                                                        Assessment_status: "Upcomming",
-                                                        product_id: LookUp(
-                                                            schindlerBanks,
-                                                            goNumber = cboxGONumberNA.Selected.goNumber,
-                                                            productId
-                                                        ),
-                                                        Reviewer_Comments: ""
-                                                    }
-                                                )
-                                            );
-                                            If(
-                                                (!IsEmpty(Errors(assignments)) || !IsEmpty(Errors(assignmentUnits)) || !IsEmpty(Errors(bankAssessment)) || !IsEmpty(Errors(unitAssessment))),
+                                                );
+                                                ForAll(
+                                                    selectedUnit.Id As p,
+                                                    Patch(
+                                                        unitAssessment,
+                                                        Defaults(unitAssessment),
+                                                        {
+                                                            'unitAssessment (quantum_unitassessment)': GUID(),
+                                                            bankUnitId: LookUp(
+                                                                bankUnits,
+                                                                Id = p.Id
+                                                            ),
+                                                            assignmentId: LookUp(
+                                                                assignments,
+                                                                Id = Text(idvariable)
+                                                            ),
+                                                            Assessment_status: "Upcomming",
+                                                            product_id: LookUp(
+                                                                schindlerBanks,
+                                                                goNumber = cboxGONumberNA.Selected.goNumber,
+                                                                productId
+                                                            ),
+                                                            Reviewer_Comments: ""
+                                                        }
+                                                    )
+                                                );
+                                            
+                                                  If(
+                                                ( !IsEmpty(Errors(assignmentUnits)) || !IsEmpty(Errors(bankAssessment)) || !IsEmpty(Errors(unitAssessment))),
                                                 Notify(
-                                                    "Patch function Error " & Concat(
-                                                        Errors(assignments),
-                                                        Column & ": " & Message
-                                                    )& Concat(
+                                                     Concat(
                                                         Errors(assignmentUnits),
                                                         Column & ": " & Message
                                                     ) & Concat(
@@ -1054,9 +1041,11 @@ projectAssignment As screen:
                                                     ) & Concat(
                                                         Errors(unitAssessment),
                                                         Column & ": " & Message
-                                                    ) ,
+                                                    ),
                                                     NotificationType.Error
                                                 );
+                                                RemoveIf(assignments,Id = va
+                                                
                                                 ,
                                                 Set(
                                                     popupsuccess,
@@ -1071,7 +1060,8 @@ projectAssignment As screen:
                                                 Reset(DatePickerDueDateNA);
                                                 Reset(DatePickerAssignDateNA);
                                                 Reset(DatePickerStartDateNA);
-                                            )*/
+                                            )
+                                            );
                                         )
                                     )
                                 PressedBorderColor: =referenceCSS.RActiveColor//Self.Fill
