@@ -509,33 +509,13 @@ projectAssignment As screen:
                             FillPortions: =0
                             Height: =CountRows(glryUnitNA.AllItems)*(glryUnitNA.TemplateHeight)+20
                             Items: |-
-                                =
-                                Sort(Filter(bankUnits,bankId.goNumber=cboxGONumberNA.Selected.goNumber),unitNumber)
-                                
-                                //Filter(bankUnits,bankId.goNumber=ComboBox2.Selected.goNumber && unitAssignmentStatus="false").unitNumber
-                                
-                                
-                                
-                                //Filter( 
-                                   // assignmentUnits;Not(unitNumber in Filter(bankUnits;ComboBox2.Selected.goNumber exactin bankId.goNumber).unitNumber)) ?
-                                
-                                
-                                //Filter(QuestionTable;Not(Title in Filter(AnswerTable; var_company.Text exactin rlzf).Title)) ?
-                                
-                                //Filter(assignmentUnits,Not(bankUnitId in Filter(bankUnits ,ComboBox2.Selected.goNumber exactin bankId.goNumber).Id))
-                                
-                                
-                                
-                                /*
-                                
-                                 ForAll(
-                                      
-                                        Filter(bankUnits,bankId.goNumber=ComboBox2.Selected.goNumber).unitNumber As _items,
-                                        Filter(assignmentUnits,
-                                            bankUnitId.unitNumber <> _items.unitNumber
-                                        )
-                                    )
-                                */ 
+                                =Sort(
+                                    Filter(
+                                        bankUnits,
+                                        bankId.goNumber = cboxGONumberNA.Selected.goNumber
+                                    ),
+                                    unitNumber
+                                )
                             Layout: =Layout.Vertical
                             LayoutMinHeight: =287
                             LayoutMinWidth: =320
@@ -548,28 +528,25 @@ projectAssignment As screen:
                                 BorderColor: =//RGBA(0, 18, 107, 1)
                                 CheckboxBorderColor: =RGBA(0, 0, 0, 1)
                                 Default: |-
-                                    =//false
-                                    /*If(
-                                        IsBlank(
-                                            LookUp(
-                                                assignmentUnits,
-                                                bankUnitId.Id = ThisItem.Id,
-                                                bankUnits.Id
-                                            )
-                                        ),
-                                        false,
-                                        true
-                                    )*/
-                                    If(
+                                    =If(
                                         IsBlank(
                                             LookUp(
                                                 unitAssessment,
-                                                
-                                                 ( bankUnitId.Id = ThisItem.Id && Assessment_status = "Inprogress") ||   (bankUnitId.Id = ThisItem.Id && Assessment_status= "Upcomming" ) ,
-                                                bankUnits.Id
+                                                (bankUnitId.Id = ThisItem.Id && Assessment_status = "Inprogress") || (bankUnitId.Id = ThisItem.Id && Assessment_status = "Upcomming"),
+                                                bankUnitId.Id
                                             )
                                         ),
-                                        false,
+                                        If(
+                                            IsBlank(
+                                                LookUp(
+                                                    selectedUnit,
+                                                    bankUnits = ThisItem.bankUnits,
+                                                    bankUnits
+                                                )
+                                            ),
+                                            false,
+                                            true
+                                        ),
                                         true
                                     )
                                 DisabledBorderColor: =//RGBA(0, 0, 0, 0)
@@ -601,14 +578,11 @@ projectAssignment As screen:
                                 FocusedBorderThickness: =//2
                                 Height: =47
                                 HoverColor: =RGBA(0, 0, 0, 1)
-                                OnCheck: |-
-                                    =//latest
-                                    Collect(selectedUnit,ThisItem);
-                                    
-                                    //Filter(assignmentUnits,bankUnitId.unitNumber = ThisItem.unitNumber)
-                                    //Collect(selectedUnit,LookUp(bankUnits,unitNumber=ThisItem.unitNumber));
-                                    
-                                    //ClearCollect(checkboxunit1,ThisItem.unitNumber)
+                                OnCheck: |
+                                    =Collect(
+                                        selectedUnit,
+                                        ThisItem
+                                    );
                                 OnSelect: =Select(Parent)
                                 OnUncheck: |
                                     = 
@@ -881,7 +855,7 @@ projectAssignment As screen:
                                             ),
                                             Set(
                                             idvariable,
-                                            Text( GUID())
+                                            Text(GUID())
                                             );
                                             Refresh(assignments);
                                             Patch(
@@ -951,7 +925,7 @@ projectAssignment As screen:
                                                         assignmentUnits,
                                                         Defaults(assignmentUnits),
                                                         {
-                                                            Id: GUID(),
+                                                            Id: Text(GUID()),
                                                             bankUnitId: LookUp(
                                                                 bankUnits,
                                                                 Id = p.Id
@@ -1009,14 +983,14 @@ projectAssignment As screen:
                                                         unitAssessment,
                                                         Defaults(unitAssessment),
                                                         {
-                                                            'unitAssessment (quantum_unitassessment)': GUID(),
+                                                            'unitAssessment (quantum_unitassessment)':Text(GUID()),
                                                             bankUnitId: LookUp(
                                                                 bankUnits,
                                                                 Id = p.Id
                                                             ),
                                                             assignmentId: LookUp(
                                                                 assignments,
-                                                                Id = Text(idvariable)
+                                                                Id = idvariable
                                                             ),
                                                             Assessment_status: "Upcomming",
                                                             product_id: LookUp(
@@ -1044,8 +1018,12 @@ projectAssignment As screen:
                                                     ),
                                                     NotificationType.Error
                                                 );
-                                                RemoveIf(assignments,Id = va
-                                                
+                                               
+                                                RemoveIf(assignmentUnits,assignmentId.Id= idvariable);
+                                                RemoveIf(bankAssessment,assignmentId.Id = idvariable);
+                                                RemoveIf(unitAssessment,assignmentId.Id = idvariable);
+                                               
+                                                RemoveIf(assignments,Id = idvariable);
                                                 ,
                                                 Set(
                                                     popupsuccess,
