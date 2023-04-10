@@ -1,45 +1,48 @@
 projectAssignment As screen:
-    OnVisible: |+
-        =       //UpdateContext({VarSearchBank:""});
-               Reset(TextInput2_4);
-                Reset(cboxClientNA);
-                Reset(cboxGONumberNA);
-                Clear(selectedUnit);
-                Reset(cboxAssessmentTypeNA);
-                Reset(cboxAssessorNA);
-                Reset(cboxReviewerNA);
-                Reset(DatePickerDueDateNA);
-                Reset(DatePickerAssignDateNA);
-                Reset(DatePickerStartDateNA);
-        
-        If(IsEdit =false,
-        Set(
-            P,
-            true
+    OnVisible: |
+        =Reset(TextInput2_4);
+        Reset(cboxClientNA);
+        Reset(cboxGONumberNA);
+        Clear(selectedUnit);
+        Reset(cboxAssessmentTypeNA);
+        Reset(cboxAssessorNA);
+        Reset(cboxReviewerNA);
+        Reset(DatePickerDueDateNA);
+        Reset(DatePickerAssignDateNA);
+        Reset(DatePickerStartDateNA);
+        If(
+            IsEdit = false,
+            Set(
+                P,
+                true
+            );
+            Set(
+                A,
+                false
+            );
+            ,
+            Set(
+                P,
+                false
+            );
+            Set(
+                A,
+                true
+            );
+            
         );
         Set(
-            A,
+            popupsuccess,
             false
-        );,
-        Set(
-            P,
-            false
         );
-        Set(
-            A,
-            true
-        );
-        );
-        
-        
-        Set(popupsuccess,false);
-        UpdateContext({IsRemove:false});
-        
+        UpdateContext({IsRemove: false});
         //for assessment type
-        ClearCollect(LC_assessmentType,{type:"EI Turnover"},{type:"6/12 Month Wellness"},{type:"Special Request"});
-        
-        
-        
+        ClearCollect(
+            LC_assessmentType,
+            {type: "EI Turnover"},
+            {type: "6/12 Month Wellness"},
+            {type: "Special Request"}
+        );
 
     ctnProjectAssignment As groupContainer.verticalAutoLayoutContainer:
         ContentLanguage: =
@@ -91,8 +94,7 @@ projectAssignment As screen:
                 Height: =Parent.Height
                 Size: =Header.HeaderUserFontSize
                 Text: |-
-                    =//"SCHD0023"
-                    //LookUp(ReviewerAD,mail=User().Email,displayName)
+                    =
                     userdata.userdisplayName
                 Width: =ctnHeaderPA.Width/8
                 X: =imgUserProfilePA.X+ imgUserProfilePA.Height
@@ -115,7 +117,7 @@ projectAssignment As screen:
             Fill: =RGBA(255, 255, 255, 1)
             FillPortions: =0
             Height: |-
-                =//(Parent.Height-90)
+                =
                 Parent.Height
             LayoutAlignItems: =LayoutAlignItems.Stretch
             LayoutDirection: =LayoutDirection.Vertical
@@ -146,9 +148,9 @@ projectAssignment As screen:
                     Fill: =referenceCSS.RColorWhite
                     Height: =Parent.Height/1.5
                     HoverColor: =Self.Color
-                    HoverFill: =Self.Fill  //ColorFade(RGBA(56, 96, 178, 1), -20%)
+                    HoverFill: =Self.Fill 
                     OnSelect: |-
-                        =//Back();
+                        =
                         Set(IsEdit,false);
                         Navigate(ReferanceData);
                     PaddingLeft: =0
@@ -185,10 +187,10 @@ projectAssignment As screen:
                         FocusedBorderThickness: =2
                         FontWeight: =FontWeight.Semibold
                         HintText: ="Search on G.O. Number"
-                        HoverBorderColor: =//Self.Color
+                        HoverBorderColor: =
                         HoverFill: =RGBA(0, 0, 0, 0)
                         OnChange: |
-                            =//UpdateContext({VarSearchBank:TextInput2_4.Text});
+                            =
                         RadiusBottomLeft: =0
                         RadiusBottomRight: =0
                         RadiusTopLeft: =0
@@ -206,7 +208,7 @@ projectAssignment As screen:
                         Height: =40
                         Icon: =Icon.Search
                         OnSelect: |
-                            =//UpdateContext({VarSearchBank:TextInput2_4.Text});
+                            =
                         PaddingBottom: =8
                         PaddingTop: =8
                         Width: =40
@@ -246,15 +248,15 @@ projectAssignment As screen:
                             )
                         DisabledColor: =RGBA(255, 0, 0, 1)
                         Fill: =RGBA(255, 255, 255, 1)
-                        FocusedBorderColor: =//Self.BorderColor
-                        FocusedBorderThickness: =//4
+                        FocusedBorderColor: =
+                        FocusedBorderThickness: =
                         Font: =referenceCSS.RFont
                         Height: =Parent.Height/1.5
-                        HoverBorderColor: =//ColorFade(Self.BorderColor, 20%)
+                        HoverBorderColor: =
                         HoverColor: =If(P,RGBA(255, 0, 0, 1),RGBA(0,0,0,1))
                         HoverFill: =RGBA(0, 0, 0, 0)
                         OnSelect: |-
-                            =//If(P,Set(P,true);Set(A,false))
+                            =
                             Set(P,true);
                             Set(A,false);
                                     Reset(cboxClientNA);
@@ -266,10 +268,10 @@ projectAssignment As screen:
                                     Reset(DatePickerDueDateNA);
                                     Reset(DatePickerAssignDateNA);
                                     Reset(DatePickerStartDateNA);
-                        PressedBorderColor: =//Self.Fill
-                        PressedFill: =//Self.Color
+                        PressedBorderColor: =
+                        PressedFill: =
                         Size: |-
-                            =//20
+                            =
                             referenceCSS.RFontSize
                         Text: ="New Assignment"
                         Width: =Parent.Width
@@ -291,9 +293,8 @@ projectAssignment As screen:
                     LayoutMinHeight: =100
                     LayoutMinWidth: =250
                     LayoutMode: =LayoutMode.Auto
-                    Width: |-
+                    Width: |
                         =If(Parent.Width>900, Parent.Width/2.5,Parent.Width/2)
-                        // Parent.Width/2.5
                     ZIndex: =2
 
                     btnExistingAssignmentPA As button:
@@ -301,23 +302,22 @@ projectAssignment As screen:
                         Color: =If(A,referenceCSS.RActiveColor,referenceCSS.RInActiveColor)
                         DisabledColor: =RGBA(204, 204, 204, 1)
                         Fill: =RGBA(255, 255, 255, 1)
-                        FocusedBorderColor: =//Self.BorderColor
+                        FocusedBorderColor: =
                         FocusedBorderThickness: =0
                         Font: =referenceCSS.RFont
                         Height: =Parent.Height/1.5
-                        HoverBorderColor: =//ColorFade(Self.BorderColor, 20%)
+                        HoverBorderColor: =
                         HoverColor: =If(A,RGBA(255, 0, 0, 1),RGBA(0,0,0,1))
-                        HoverFill: =//ColorFade(RGBA(56, 96, 178, 1), -20%)
+                        HoverFill: =
                         OnSelect: |
-                            =//If(A,Set(P,false);Set(A,true))
-                            
+                            =
                             Set(A,true);
                             Set(P,false);
-                        PressedBorderColor: =//Self.Fill
-                        PressedColor: =//Self.Fill
-                        PressedFill: =//Self.Color
+                        PressedBorderColor: =
+                        PressedColor: =
+                        PressedFill: =
                         Size: |-
-                            =//20
+                            =
                             referenceCSS.RFontSize
                         Text: ="Existing Assignments"
                         Width: =Parent.Width
@@ -329,7 +329,7 @@ projectAssignment As screen:
                         Color: |
                             =RGBA(0, 0, 0, 0)
                         Fill: |-
-                            =//RGBA(255, 0, 0, 1)
+                            =
                             referenceCSS.RActiveColor
                         Height: =5
                         Icon: =Icon.HorizontalLine
@@ -353,22 +353,19 @@ projectAssignment As screen:
                 AlignInContainer: =AlignInContainer.SetByContainer
                 FillPortions: =0
                 Height: |-
-                    =/*If(App.Height<=600, Parent .Height-Container20_3.Height-Container6.Height-Container7.Height-Container20.Height-FooterContainer1_1.Height+780,App.Height>600 && App.Height<=950, Parent .Height-Container20_3.Height-Container6.Height-Container7.Height-Container20.Height-FooterContainer1_1.Height+600,App.Height>800&&App.Height<=1025, Parent .Height/4,
-                        //Parent.Height - Container20_3.Height - Container6.Height - Container7.Height - Container20.Height - FooterContainer1_1.Height + 700,
-                    Parent .Height-Container20_3.Height-Container6.Height-Container7.Height-Container20.Height-FooterContainer1_1.Height)
-                    */
-                    //Gallery3.Height
-                    //Parent.Height
-                    If(P,1100+glryUnitNA.Height,GalleryExistingAssignment.Height+80)
+                    =If(
+                        P,
+                        1100 + glryUnitNA.Height,
+                        GalleryExistingAssignment.Height + 80
+                    )
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
                 Y: =ctnLineProjectAssignmentPA.Height+ctnLineProjectAssignmentPA.Y
                 ZIndex: =4
 
                 ctnMainPA As groupContainer.manualLayoutContainer:
-                    Height: |-
+                    Height: |
                         =Parent.Height
-                        //Gallery3.Height
                     Width: =Parent.Width
                     ZIndex: =1
 
@@ -400,7 +397,7 @@ projectAssignment As screen:
                             BorderColor: =RGBA(0, 0, 0, 1)
                             ChevronBackground: =RGBA(0, 0, 0, 0)
                             ChevronFill: =RGBA(0, 0, 0, 1)
-                            ChevronHoverBackground: =RGBA(0,0,0,0)//ColorFade(RGBA(56, 96, 178, 1), -20%)
+                            ChevronHoverBackground: =RGBA(0,0,0,0)
                             ChevronHoverFill: =RGBA(0, 0, 0, 1)
                             DisplayFields: =["shlaf_name"]
                             FocusedBorderThickness: =1
@@ -441,7 +438,7 @@ projectAssignment As screen:
                             BorderColor: =RGBA(0, 0, 0, 1)
                             ChevronBackground: =RGBA(0, 0, 0, 0)
                             ChevronFill: =RGBA(0, 0, 0, 1)
-                            ChevronHoverBackground: =RGBA(0,0,0,0)//ColorFade(RGBA(56, 96, 178, 1), -20%)
+                            ChevronHoverBackground: =RGBA(0,0,0,0)
                             ChevronHoverFill: =RGBA(0, 0, 0, 1)
                             DisplayFields: =["shlaf_gonumber"]
                             FocusedBorderThickness: =1
@@ -451,16 +448,10 @@ projectAssignment As screen:
                             InputTextPlaceholder: =
                             IsSearchable: =false
                             Items: |-
-                                =//Distinct(Filter(banks,clientId.client_name=ComboBox1.Selected.client_name),Go_Number)
-                                
-                                
-                                //       Filter(bank,clientId.client_name=ComboBox1.Selected.client_name).Go_Number
-                                
-                                //Filter(banksCollection,clientId.client_name=ComboBox1.Selected.client_name).Go_Number, Go_Number = ComboBox1.Selected.client_name)
-                                
-                                //Sort(Distinct(Filter(schindlerBanks,clientId.name=ComboBox1.Selected.name),Go_Number),Result,Ascending) 
-                                
-                                Filter(schindlerBanks,clientId.name=cboxClientNA.Selected.name).goNumber
+                                =Filter(
+                                    schindlerBanks,
+                                    clientId.name = cboxClientNA.Selected.name
+                                ).goNumber
                             OnChange: |-
                                 =/*If(
                                    IsBlank(LookUp(projectAssignment_1, bankId.Go_Number= ComboBox2.Selected.Result)),
@@ -525,7 +516,7 @@ projectAssignment As screen:
                             ZIndex: =7
 
                             CboxUnitNA As checkbox:
-                                BorderColor: =//RGBA(0, 18, 107, 1)
+                                BorderColor: =
                                 CheckboxBorderColor: =RGBA(0, 0, 0, 1)
                                 Default: |-
                                     =If(
@@ -549,20 +540,9 @@ projectAssignment As screen:
                                         ),
                                         true
                                     )
-                                DisabledBorderColor: =//RGBA(0, 0, 0, 0)
+                                DisabledBorderColor: =
                                 DisplayMode: |-
-                                    =//DisplayMode.Edit
-                                    /*If(
-                                        IsBlank(
-                                            LookUp(
-                                                assignmentUnits,
-                                                bankUnitId.Id = ThisItem.Id,
-                                                bankUnits.Id
-                                            )
-                                        ),
-                                        DisplayMode.Edit,
-                                        DisplayMode.Disabled
-                                    )*/
+                                    =
                                     
                                     If(
                                         IsBlank(
@@ -575,7 +555,7 @@ projectAssignment As screen:
                                         DisplayMode.Edit,
                                         DisplayMode.Disabled
                                     )
-                                FocusedBorderThickness: =//2
+                                FocusedBorderThickness: =
                                 Height: =47
                                 HoverColor: =RGBA(0, 0, 0, 1)
                                 OnCheck: |
@@ -584,13 +564,12 @@ projectAssignment As screen:
                                         ThisItem
                                     );
                                 OnSelect: =Select(Parent)
-                                OnUncheck: |
-                                    = 
-                                     Remove(selectedUnit,ThisItem)
-                                     // RemoveIf(assignmentUnits,bankUnitId.Id=ThisItem.Id)
-                                    //RemoveIf(selectedUnit,unitNumber=ThisItem.unitNumber)
-                                    //RemoveIf(checkboxunit1,Value=ThisItem.unitNumber)
-                                PressedBorderColor: =//ColorFade(Self.BorderColor, -30%)
+                                OnUncheck: |-
+                                    =Remove(
+                                        selectedUnit,
+                                        ThisItem
+                                    )
+                                PressedBorderColor: =
                                 Text: =ThisItem.unitNumber
                                 Width: =1262
                                 Y: =10
@@ -611,7 +590,7 @@ projectAssignment As screen:
                             BorderColor: =RGBA(0, 0, 0, 1)
                             ChevronBackground: =RGBA(0, 0, 0, 0)
                             ChevronFill: =RGBA(0, 0, 0, 1)
-                            ChevronHoverBackground: =RGBA(0,0,0,0)//ColorFade(RGBA(56, 96, 178, 1), -20%)
+                            ChevronHoverBackground: =RGBA(0,0,0,0)
                             ChevronHoverFill: =RGBA(0, 0, 0, 1)
                             DisplayFields: =["type"]
                             FocusedBorderThickness: =1
@@ -648,7 +627,7 @@ projectAssignment As screen:
                             BorderColor: =RGBA(0, 0, 0, 1)
                             ChevronBackground: =RGBA(0, 0, 0, 0)
                             ChevronFill: =RGBA(0, 0, 0, 1)
-                            ChevronHoverBackground: =RGBA(0,0,0,0)//ColorFade(RGBA(56, 96, 178, 1), -20%)
+                            ChevronHoverBackground: =RGBA(0,0,0,0)
                             ChevronHoverFill: =RGBA(0, 0, 0, 1)
                             DisplayFields: =["displayName"]
                             FocusedBorderThickness: =1
@@ -684,7 +663,7 @@ projectAssignment As screen:
                             BorderColor: =RGBA(0, 0, 0, 1)
                             ChevronBackground: =RGBA(0, 0, 0, 0)
                             ChevronFill: =RGBA(0, 0, 0, 1)
-                            ChevronHoverBackground: =RGBA(0,0,0,0)//ColorFade(RGBA(56, 96, 178, 1), -20%)
+                            ChevronHoverBackground: =RGBA(0,0,0,0)
                             ChevronHoverFill: =RGBA(0, 0, 0, 1)
                             DisplayFields: =["displayName"]
                             FocusedBorderThickness: =1
@@ -800,11 +779,10 @@ projectAssignment As screen:
                                 Font: =referenceCSS.RFont
                                 FontWeight: =FontWeight.Bold
                                 Height: =50
-                                HoverBorderColor: =referenceCSS.RActiveColor //ColorFade(Self.BorderColor, 20%)
-                                HoverFill: |-
+                                HoverBorderColor: =referenceCSS.RActiveColor 
+                                HoverFill: |
                                     =
                                     referenceCSS.RActiveColor
-                                    //ColorFade(RGBA(56, 96, 178, 1), -20%)
                                 OnSelect: |-
                                     =If(
                                         Connection.Connected = false,
@@ -916,7 +894,7 @@ projectAssignment As screen:
                                                     NotificationType.Error
                                                 );
                                                 ,
-                                               // Notify(" Patch function successss ");
+                                              
                                                 Refresh(assignments);
                                                 Refresh(assignmentUnits);
                                                 ForAll(
@@ -1023,7 +1001,7 @@ projectAssignment As screen:
                                             );
                                         )
                                     )
-                                PressedBorderColor: =referenceCSS.RActiveColor//Self.Fill
+                                PressedBorderColor: =referenceCSS.RActiveColor
                                 PressedColor: =Self.Color
                                 PressedFill: =Self.Fill
                                 Size: =referenceCSS.RLabelFontSize
@@ -1032,9 +1010,8 @@ projectAssignment As screen:
                                 ZIndex: =2
 
                     ctnExistingAssignment As groupContainer.verticalAutoLayoutContainer:
-                        Height: |-
+                        Height: |
                             =Parent.Height
-                            //Gallery3.Height
                         LayoutAlignItems: =LayoutAlignItems.Stretch
                         LayoutDirection: =LayoutDirection.Vertical
                         LayoutMode: =LayoutMode.Auto
@@ -1045,9 +1022,9 @@ projectAssignment As screen:
 
                         "GalleryExistingAssignment As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver4.0'":
                             FillPortions: =0
-                            Height: |
+                            Height: |+
                                 =CountRows(GalleryExistingAssignment.AllItems)*(GalleryExistingAssignment.TemplateHeight)
-                                //Parent.Height
+                                
                             Items: |-
                                 =If(TextInput2_4.Text<>Blank(),
                                 Search(
@@ -1109,9 +1086,8 @@ projectAssignment As screen:
                                 VerticalAlign: =VerticalAlign.Top
                                 Width: =200
                                 X: =10
-                                Y: |-
+                                Y: |
                                     =lblUnitnumberEA.Y+lblUnitnumberEA.Height+10
-                                    //Gallery18.Height+Gallery18.Y
                                 ZIndex: =3
 
                             iconSeparatorEA As rectangle:
@@ -1127,9 +1103,7 @@ projectAssignment As screen:
                                 OnSelect: =Select(Parent)
                                 Size: =referenceCSS.RLabelFontSize
                                 Text: |-
-                                    =//LookUp(schindlerAssessorCollection,assessorId = ThisItem.assessorId,name);
-                                    //LookUp(schindlerAssessorCollection,assessorId=ThisItem.assessorId.assessorId,name)
-                                     // LookUp(ClientCollection,client= ThisItem.clientId.client,client_name)
+                                    =
                                     LookUp(
                                         schindlerClients,
                                         Id = ThisItem.clientId.Id,
@@ -1151,9 +1125,8 @@ projectAssignment As screen:
                                 Text: =ThisItem.assessmentType
                                 Width: =350
                                 X: ='lblA-typeEA'.X+'lblA-typeEA'.Width+10
-                                Y: |-
+                                Y: |
                                     =lblUnitnumberEA.Y+lblUnitnumberEA.Height+10
-                                    //Gallery18.Height+Gallery18.Y
                                 ZIndex: =6
 
                             lblGOnumberEA As label:
@@ -1161,10 +1134,7 @@ projectAssignment As screen:
                                 OnSelect: =Select(Parent)
                                 Size: =referenceCSS.RLabelFontSize
                                 Text: |
-                                    =//LookUp(schindlerClientCollection,clientName=ThisItem.clientId,completedProjects)
-                                    //ThisItem.Project
-                                    //LookUp(banksCollection,'bank (quantum_bank)'=ThisItem.bankId.'bank (quantum_bank)',Go_Number)
-                                    LookUp(schindlerBanks,Id = ThisItem.bankId.Id,goNumber)
+                                    =LookUp(schindlerBanks,Id = ThisItem.bankId.Id,goNumber)
                                 Width: =350
                                 X: =lblGo_NumberEA.X+lblGo_NumberEA.Width+10
                                 Y: =lblClientnameEA.Y+lblClientnameEA.Height+10
@@ -1191,7 +1161,7 @@ projectAssignment As screen:
                                 OnSelect: =Select(Parent)
                                 Size: =referenceCSS.RLabelFontSize
                                 Text: |-
-                                    =//LookUp(ReviewerAD,id=ThisItem.reviewer_id,displayName)
+                                    =
                                     ThisItem.reviewerName
                                 Width: =350
                                 X: =lblReviewerEA.X+lblReviewerEA.Width+10
@@ -1219,8 +1189,7 @@ projectAssignment As screen:
                                 OnSelect: =Select(Parent)
                                 Size: =referenceCSS.RLabelFontSize
                                 Text: |-
-                                    =//LookUp(AssessorAD,id=ThisItem.assessor_id,displayName)
-                                    //ThisItem.assessor_id
+                                    =
                                     ThisItem.assessorName
                                 Width: =350
                                 X: =lblAssessorEA.X+lblAssessorEA.Width+10
@@ -1318,19 +1287,17 @@ projectAssignment As screen:
                                         )
                                     Fill: =RGBA(0, 0, 0, 0)
                                     Height: =50
-                                    HoverBorderColor: =//ColorFade(Self.BorderColor, 20%)
+                                    HoverBorderColor: =
                                     HoverColor: =referenceCSS.RColorBlack
                                     HoverFill: =RGBA(0, 0, 0, 0)
                                     OnSelect: |
                                         =UpdateContext({IsRemove:true});
-                                    PressedBorderColor: =//Self.Fill
+                                    PressedBorderColor: =
                                     PressedColor: =referenceCSS.RColorBlack
                                     PressedFill: =RGBA(0, 0, 0, 0)
                                     Text: ="Remove"
                                     Width: =150
-                                    X: |-
-                                        =//Parent.Width-180
-                                        Parent.Width - Self.Width	
+                                    X: =Parent.Width - Self.Width
                                     Y: =btnEditEA.Y
                                     ZIndex: =19
 
@@ -1372,52 +1339,45 @@ projectAssignment As screen:
                                         )*/
                                     Fill: =RGBA(0, 0, 0, 0)
                                     Height: =50
-                                    HoverBorderColor: =//ColorFade(Self.BorderColor, 20%)
+                                    HoverBorderColor: =
                                     HoverColor: =referenceCSS.RColorBlack
                                     HoverFill: =RGBA(0, 0, 0, 0)
                                     OnSelect: |
-                                        =// Navigate(Screen6)
-                                        
-                                        Set(IsEdit,false);
-                                        
+                                        =Set(
+                                            IsEdit,
+                                            false
+                                        );
                                         Navigate(
                                             EditprojectAssignment,
                                             ScreenTransition.None,
-                                            {   nprojectassignment:ThisItem.Id,
+                                            {
+                                                nprojectassignment: ThisItem.Id,
                                                 nclientid: ThisItem.clientId,
                                                 nbankid: ThisItem.bankId,
                                                 nassessmenttype: ThisItem.assessmentType,
                                                 nassessorid: ThisItem.assessorId,
                                                 nreviewerid: ThisItem.reviewerId,
-                                                nstartdate:ThisItem.startDate,
-                                                nduedate:ThisItem.dueDate,
-                                                nassigndate:ThisItem.assignedDate,
-                                                niscompleted:ThisItem.isCompleted
+                                                nstartdate: ThisItem.startDate,
+                                                nduedate: ThisItem.dueDate,
+                                                nassigndate: ThisItem.assignedDate,
+                                                niscompleted: ThisItem.isCompleted
                                             }
                                         );
                                     PaddingLeft: =30
-                                    PressedBorderColor: =//Self.Fill
+                                    PressedBorderColor: =
                                     PressedColor: =referenceCSS.RColorBlack
                                     PressedFill: =RGBA(0, 0, 0, 0)
                                     Text: ="Edit"
                                     Width: =120
-                                    X: |-
-                                        =//Parent.Width-360
-                                        Parent.Width-Self.Width-btnRemoveEA.Width-10
+                                    X: =Parent.Width - Self.Width - btnRemoveEA.Width - 10
                                     Y: =GalleryExistingAssignment.TemplateHeight/1.2
                                     ZIndex: =21
 
                                 imgEditEA As image:
                                     BorderColor: =RGBA(0, 0, 0, 1)
                                     Height: =30
-                                    Image: |-
+                                    Image: |
                                         ='writing-black'
-                                        //If assignment is assign to assessor then we can't delete bank
-                                        /*If(
-                                            ThisItem.isCompleted = "Upcomming",
-                                            'writing-black',
-                                             writingGray
-                                        )*/
                                     Width: =20
                                     X: =btnEditEA.X+3
                                     Y: =btnEditEA.Y+(btnEditEA.Height/5)
@@ -1471,10 +1431,7 @@ projectAssignment As screen:
             Align: =Align.Center
             Height: =80
             Size: =14
-            Text: |-
-                ="Do you want to remove assignment of bank " & GalleryExistingAssignment.Selected.bankId.goNumber// &" to "& Gallery3.Selected.assessor_name
-                 & 
-                " ?"
+            Text: ="Do you want to remove assignment of bank " & GalleryExistingAssignment.Selected.bankId.goNumber & " ?"
             Visible: =IsRemove =true
             Width: =iconInnerRectangleRemovePA.Width
             X: =iconInnerRectangleRemovePA.X

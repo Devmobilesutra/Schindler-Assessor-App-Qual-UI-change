@@ -53,8 +53,7 @@ EditprojectAssignment As screen:
                 Height: =Parent.Height
                 Size: =Header.HeaderUserFontSize
                 Text: |-
-                    =//"SCHD0023"
-                    //LookUp(ReviewerAD,mail=User().Email,displayName)
+                    =
                     userdata.userdisplayName
                 Width: =ctnHeaderEditAssignment.Width/6
                 X: =imgUserProfileEA.X+ imgUserProfileEA.Height
@@ -173,7 +172,7 @@ EditprojectAssignment As screen:
                         ChevronBackground: =RGBA(0, 0, 0, 0)
                         ChevronDisabledBackground: =RGBA(0, 0, 0, 0)
                         ChevronFill: =RGBA(0, 0, 0, 1)
-                        ChevronHoverBackground: =RGBA(0,0,0,0)//ColorFade(RGBA(56, 96, 178, 1), -20%)
+                        ChevronHoverBackground: =RGBA(0,0,0,0)
                         ChevronHoverFill: =RGBA(0, 0, 0, 1)
                         DefaultSelectedItems: |
                             =//Filter(Client,client_name = "Raj") for default valuee
@@ -191,7 +190,7 @@ EditprojectAssignment As screen:
                         InputTextPlaceholder: ="Select Client"
                         IsSearchable: =false
                         Items: =schindlerClients
-                        OnChange: =false //Set(IsEdit,true);
+                        OnChange: =false 
                         PaddingBottom: =0
                         PaddingTop: =0
                         PressedFill: =RGBA(0, 0, 0, 0)

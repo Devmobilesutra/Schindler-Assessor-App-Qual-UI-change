@@ -2,8 +2,7 @@ EditBank As screen:
     OnVisible: |+
         = Set(unitTimerEdit,false);
            
-        //ClearCollect(existingUnits,Filter(bankUnits,bankId.Id=nbank));
-        //ClearCollect(lcUnitedit,Filter(bankUnits,bankId.Id=nbank));
+        
         Clear(lcUnitedit);
         ForAll(Filter(bankUnits,bankId.Id=nbank) As i,
         Collect(lcUnitedit,{unit: i.unitNumber,id:i.Id,status:false})
@@ -82,8 +81,7 @@ EditBank As screen:
                 Height: =Parent.Height
                 Size: =Header.HeaderUserFontSize
                 Text: |-
-                    =//"SCHD0023"
-                    //LookUp(ReviewerAD,mail=User().Email,displayName)
+                    =
                     userdata.userdisplayName
                 Width: =ctcHeaderEditBank.Width/6
                 X: =imguserprofileEB.X+ imguserprofileEB.Height
@@ -104,7 +102,7 @@ EditBank As screen:
         ctnMainEditBank As groupContainer.verticalAutoLayoutContainer:
             Fill: =RGBA(255, 255, 255, 1)
             Height: |-
-                =//(Parent.Height-(Parent.Height/8))
+                =
                 Parent.Height
             LayoutAlignItems: =LayoutAlignItems.Stretch
             LayoutDirection: =LayoutDirection.Vertical
@@ -135,7 +133,7 @@ EditBank As screen:
                     Fill: =referenceCSS.RColorWhite
                     Height: =Parent.Height/1.5
                     HoverColor: =Self.Color
-                    HoverFill: =Self.Fill //ColorFade(RGBA(56, 96, 178, 1), -20%)
+                    HoverFill: =Self.Fill 
                     OnSelect: |-
                         =Set(IsEdit,true);
                         Navigate(AddBanks)
@@ -208,14 +206,10 @@ EditBank As screen:
                         ChevronBackground: =RGBA(0, 0, 0, 0)
                         ChevronDisabledBackground: =RGBA(0, 0, 0, 0)
                         ChevronFill: =RGBA(0, 0, 0, 1)
-                        ChevronHoverBackground: =RGBA(0,0,0,0)//ColorFade(RGBA(56, 96, 178, 1), -20%)
+                        ChevronHoverBackground: =RGBA(0,0,0,0)
                         ChevronHoverFill: =RGBA(0, 0, 0, 1)
                         DefaultSelectedItems: |-
-                            =//Filter(Client,client_name = "Raj") for default valuee
-                            //First(Filter(Client,client = Gallery3.Selected.clientId.client ))  using gallery.selected item
-                            //First(Filter(Client,client = nclientid.client ))
-                            
-                            //First(Filter(schindlerClients,Id=nclient.Id))
+                            =
                             LookUp(schindlerClients,Id =nclient.Id)
                         DisabledBorderColor: =RGBA(0, 0, 0, 1)
                         DisabledColor: =RGBA(0, 0, 0, 1)
@@ -228,7 +222,7 @@ EditBank As screen:
                         InputTextPlaceholder: ="Select Client"
                         IsSearchable: =false
                         Items: =Sort(schindlerClients,name,SortOrder.Ascending)
-                        OnChange: =false //Set(IsEdit,true);
+                        OnChange: =false 
                         PaddingBottom: =0
                         PaddingTop: =0
                         PressedFill: =RGBA(0, 0, 0, 0)
@@ -255,13 +249,13 @@ EditBank As screen:
                         Default: |
                             =LookUp(schindlerBanks,Id = nbank,goNumber)
                         Font: =referenceCSS.RFont
-                        Height: =50 //(Parent.Height+Parent.Width)/36.735
+                        Height: =50 
                         HintText: ="Enter Go/Commission no "
                         HoverBorderColor: =referenceCSS.RColorBlack
                         HoverColor: =referenceCSS.RColorBlack
                         HoverFill: =RGBA(0, 0, 0, 0)
                         OnChange: |-
-                            =//clientId.client_name =BCilent_Combobox_3.Selected.name
+                            =
                             Set(lcgono,LookUp(schindlerBanks,Id=nbank,goNumber));
                             
                             If(
@@ -314,7 +308,7 @@ EditBank As screen:
                         BorderColor: =RGBA(0, 0, 0, 1)
                         Default: =nlocation
                         Font: =referenceCSS.RFont
-                        Height: =50 //(Parent.Height+Parent.Width)/36.735
+                        Height: =50
                         HintText: ="Unit location"
                         HoverFill: =RGBA(0, 0, 0, 0)
                         PaddingBottom: =0
@@ -351,12 +345,12 @@ EditBank As screen:
                         DisplayFields: =["quantum_product_name"]
                         FocusedBorderThickness: =1
                         Font: =referenceCSS.RFont
-                        Height: =50 //(Parent.Height+Parent.Width)/36.735
+                        Height: =50 
                         HoverFill: =RGBA(0, 0, 0, 0)
                         InputTextPlaceholder: ="Product Type"
                         IsSearchable: =false
                         Items: |-
-                            =//Sort(product,product_Name,Ascending)
+                            =
                             Sort(
                                 Filter(
                                     product,
@@ -407,9 +401,7 @@ EditBank As screen:
                             Height: =30
                             HoverFill: =referenceCSS.RActiveColor
                             OnSelect: |-
-                                =//Set(total1,total+1);
-                                //Collect(rows1,{id:GUID(),lineno1:total1})
-                                //ollect(existingUnits,{status:false});
+                                =
                                 Collect(lcUnitedit,{id:GUID(),unit:"",status:false})
                             PressedColor: =Self.Color
                             PressedFill: =Self.Fill
@@ -442,8 +434,7 @@ EditBank As screen:
                         FillPortions: =0
                         Height: =CountRows(glryUnitEditBank.AllItems)*(glryUnitEditBank.TemplateHeight+ glryUnitEditBank.TemplatePadding)/1.7
                         Items: |-
-                            =//Filter(bankUnits,bankId.Id=nbank)
-                            //existingUnits
+                            =
                             Sort(lcUnitedit,unit)
                         Layout: =Layout.Vertical
                         LayoutMinHeight: =287
@@ -451,31 +442,19 @@ EditBank As screen:
                         ShowScrollbar: =false
                         TemplateSize: =100
                         X: =60
-                        Y: =//Label2_2.Y +Label2_2.Height
+                        Y: =
                         ZIndex: =11
 
                         iconCancelEditBank As icon.Cancel:
-                            DisplayMode: |-
+                            DisplayMode: |
                                 =DisplayMode.Edit
-                                //If unit assessment is start then unit can't delete
-                                /*If(
-                                    CountRows(
-                                        Filter(
-                                         
-                                           assignments,
-                                           bankId.Id = ThisItem.Id
-                                        )
-                                    ) < 1,
-                                    DisplayMode.Edit,
-                                    Disabled
-                                )*/
                             Height: =20
                             Icon: =Icon.Cancel
                             OnSelect: |-
-                                =
-                                
-                                //Remove(existingUnits,ThisItem);
-                                RemoveIf(lcUnitedit,id = ThisItem.id)
+                                =RemoveIf(
+                                    lcUnitedit,
+                                    id = ThisItem.id
+                                )
                             Width: =20
                             X: =txtUnitEditBank.X +txtUnitEditBank.Width+20
                             Y: =(txtUnitEditBank.Height - Self.Height)/2 +5
@@ -490,33 +469,49 @@ EditBank As screen:
                             HoverColor: =referenceCSS.RColorBlack
                             HoverFill: =RGBA(0, 0, 0, 0)
                             OnChange: |
-                                =//false;
-                                
-                                //ForAll(lcUnitedit As ii,
-                                
-                                If(!IsBlank(LookUp(lcUnitedit,id = ThisItem.id)),
-                                UpdateIf(lcUnitedit,id = ThisItem.id ,{unit:txtUnitEditBank.Text}),
-                                
-                                Collect(lcUnitedit,{id:GUID(),unit:txtUnitEditBank.Text})
+                                =If(
+                                    !IsBlank(
+                                        LookUp(
+                                            lcUnitedit,
+                                            id = ThisItem.id
+                                        )
+                                    ),
+                                    UpdateIf(
+                                        lcUnitedit,
+                                        id = ThisItem.id,
+                                        {unit: txtUnitEditBank.Text}
+                                    ),
+                                    Collect(
+                                        lcUnitedit,
+                                        {
+                                            id: GUID(),
+                                            unit: txtUnitEditBank.Text
+                                        }
+                                    )
                                 );
-                                
-                                
                                 If(
                                     CountRows(
                                         Filter(
                                             lcUnitedit,
-                                            unit= txtUnitEditBank.Text
+                                            unit = txtUnitEditBank.Text
                                         )
                                     ) > 1,
-                                  
-                                  
-                                UpdateIf(
+                                    UpdateIf(
                                         lcUnitedit,
                                         id = ThisItem.id,
-                                        {unit:txtUnitEditBank.Text,status: true}
+                                        {
+                                            unit: txtUnitEditBank.Text,
+                                            status: true
+                                        }
                                     );
-                                    Set(varUnitIdEdit,ThisItem.id);
-                                    Set(unitTimerEdit,true);
+                                    Set(
+                                        varUnitIdEdit,
+                                        ThisItem.id
+                                    );
+                                    Set(
+                                        unitTimerEdit,
+                                        true
+                                    );
                                     
                                 );
                             PaddingBottom: =0
@@ -567,11 +562,10 @@ EditBank As screen:
                         btnSaveEditBank As button:
                             Color: =referenceCSS.RColorWhite
                             DisabledBorderColor: |-
-                                =//referenceCSS.RActiveColor
+                                =
                                 RGBA(207, 207, 207, 1)
                             DisabledColor: =referenceCSS.RColorWhite
                             DisabledFill: =RGBA(207, 207, 207, 1)
-                            DisplayMode: =DisplayMode.Edit //If(IsEdit= true,DisplayMode.Edit,DisplayMode.Disabled)
                             Fill: =referenceCSS.RActiveColor
                             Height: =50
                             HoverFill: =referenceCSS.RActiveColor
@@ -705,13 +699,13 @@ EditBank As screen:
                             BorderColor: =referenceCSS.RActiveColor
                             Color: =referenceCSS.RActiveColor
                             DisabledBorderColor: |-
-                                =//referenceCSS.RActiveColor
+                                =
                                 RGBA(207, 207, 207, 1)
                             DisabledColor: =referenceCSS.RColorWhite
                             DisabledFill: |-
-                                =//referenceCSS.RColorWhite
+                                =
                                 RGBA(207, 207, 207, 1)
-                            DisplayMode: =DisplayMode.Edit //If(IsEdit= true,DisplayMode.Edit,DisplayMode.Disabled)
+                            DisplayMode: =DisplayMode.Edit 
                             Fill: =referenceCSS.RColorWhite
                             Height: =50
                             HoverBorderColor: =Self.Color

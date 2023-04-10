@@ -132,10 +132,9 @@ AddBanks As screen:
                     Fill: =referenceCSS.RColorWhite
                     Height: =Parent.Height/1.5
                     HoverColor: =Self.Color
-                    HoverFill: =Self.Fill //ColorFade(RGBA(56, 96, 178, 1), -20%)
+                    HoverFill: =Self.Fill 
                     OnSelect: |-
                         =Set(IsEdit,false);
-                        //Back()
                         Navigate(ReferanceData);
                     PaddingLeft: =0
                     PressedBorderColor: =Self.BorderColor
@@ -183,15 +182,15 @@ AddBanks As screen:
                             )
                         DisabledColor: =RGBA(255, 0, 0, 1)
                         Fill: =RGBA(255, 255, 255, 1)
-                        FocusedBorderColor: =//Self.BorderColor
-                        FocusedBorderThickness: =//4
+                        FocusedBorderColor: =
+                        FocusedBorderThickness: =
                         Font: =referenceCSS.RFont
                         Height: =Parent.Height/1.5
-                        HoverBorderColor: =//ColorFade(Self.BorderColor, 20%)
+                        HoverBorderColor: =
                         HoverColor: =If(P,RGBA(255, 0, 0, 1),RGBA(0,0,0,1))
                         HoverFill: =RGBA(0, 0, 0, 0)
                         OnSelect: |-
-                            =//If(P,Set(P,true);Set(A,false))
+                            =
                             Clear(uniqueUnits);
                             Set(P,true);
                             Set(A,false);
@@ -201,10 +200,10 @@ AddBanks As screen:
                                     Reset(txtLocationNB);
                                     Reset(cboxProductTypeNB);
                                     ClearCollect(rows1,{id:GUID(),lineno1:1});
-                        PressedBorderColor: =//Self.Fill
-                        PressedFill: =//Self.Color
+                        PressedBorderColor: =
+                        PressedFill: =
                         Size: |-
-                            =//20
+                            =
                             referenceCSS.RFontSize
                         Text: ="New Bank"
                         Width: =Parent.Width
@@ -234,25 +233,27 @@ AddBanks As screen:
                         Color: =If(A,referenceCSS.RActiveColor,referenceCSS.RInActiveColor)
                         DisabledColor: =RGBA(204, 204, 204, 1)
                         Fill: =RGBA(255, 255, 255, 1)
-                        FocusedBorderColor: =//Self.BorderColor
+                        FocusedBorderColor: =
                         FocusedBorderThickness: =0
                         Font: =referenceCSS.RFont
                         Height: =Parent.Height/1.5
-                        HoverBorderColor: =//ColorFade(Self.BorderColor, 20%)
+                        HoverBorderColor: =
                         HoverColor: =If(A,RGBA(255, 0, 0, 1),RGBA(0,0,0,1))
-                        HoverFill: =//ColorFade(RGBA(56, 96, 178, 1), -20%)
+                        HoverFill: =
                         LayoutMinWidth: =300
                         OnSelect: |
-                            =//If(A,Set(P,false);Set(A,true))
-                            
-                            Set(A,true);
-                            Set(P,false);
-                        PressedBorderColor: =//Self.Fill
-                        PressedColor: =//Self.Fill
-                        PressedFill: =//Self.Color
-                        Size: |-
-                            =//20
-                            referenceCSS.RFontSize
+                            =Set(
+                                A,
+                                true
+                            );
+                            Set(
+                                P,
+                                false
+                            );
+                        PressedBorderColor: =
+                        PressedColor: =
+                        PressedFill: =
+                        Size: =referenceCSS.RFontSize
                         Text: ="Existing Banks"
                         Width: =Parent.Width
                         ZIndex: =1
@@ -262,7 +263,7 @@ AddBanks As screen:
                         Color: |
                             =RGBA(0, 0, 0, 0)
                         Fill: |-
-                            =//RGBA(255, 0, 0, 1)
+                            =
                             referenceCSS.RActiveColor
                         Height: =5
                         Icon: =Icon.HorizontalLine
@@ -357,10 +358,9 @@ AddBanks As screen:
                                 Font: =referenceCSS.RFont
                                 OnSelect: =Select(Parent)
                                 Size: =referenceCSS.RInputFontSize
-                                Text: |-
+                                Text: |+
                                     ="Unit            " & ThisItem.unitNumber
                                     
-                                    //ThisItem.clientInstallationId.unit_Number
                                 Width: =Parent.Width/2
                                 X: =Parent.Width/8
                                 Y: =glryExstingUnit.Y
