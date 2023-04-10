@@ -634,13 +634,22 @@ EditBank As screen:
                                                 )
                                             }
                                         );
-                                        ForAll(
+                                         If(
+                                            !IsEmpty(Errors(schindlerBanks)) ,
+                                            Notify(
+                                                "Patch function Error " & Concat(
+                                                    Errors(schindlerBanks),
+                                                    Column & ": " & Message
+                                                ),
+                                                NotificationType.Error
+                                            ),
+                                             ForAll(
                                             glryUnitEditBank.AllItems.txtUnitEditBank As i,
                                             Patch(
                                                 bankUnits,
                                                 Defaults(bankUnits),
                                                 {
-                                                    Id: GUID(),
+                                                    Id: Text(GUID()),
                                                     bankId: LookUp(
                                                         schindlerBanks,
                                                         goNumber = TxtGonumberEditBank.Text
@@ -654,13 +663,11 @@ EditBank As screen:
                                                 }
                                             )
                                         );
+                                
                                         If(
-                                            (!IsEmpty(Errors(schindlerBanks)) && !IsEmpty(Errors(bankUnits))),
+                                             !IsEmpty(Errors(bankUnits)),
                                             Notify(
                                                 "Patch function Error " & Concat(
-                                                    Errors(schindlerBanks),
-                                                    Column & ": " & Message
-                                                ) & Concat(
                                                     Errors(bankUnits),
                                                     Column & ": " & Message
                                                 ),
@@ -679,6 +686,10 @@ EditBank As screen:
                                                 {}
                                             );
                                         );
+                                           
+                                        );
+                                       
+                                        
                                     )
                                 )
                             PaddingLeft: =15
@@ -705,18 +716,26 @@ EditBank As screen:
                             HoverBorderColor: =Self.Color
                             HoverColor: =Self.Color
                             HoverFill: =Self.Fill
-                            OnSelect: |-
-                                =    
-                                    //Reset the all recent changes go back to existing assignment page
-                                        Reset(cboxClientEditBank);
-                                        Reset(TxtGonumberEditBank);
-                                        Reset(txtLocationEditBank);
-                                        Reset(cboxProductTypeEditBank);
-                                        ClearCollect(existingUnits,{});
-                                       
-                                      Set(IsEdit,true);
-                                      Navigate(AddBanks,ScreenTransition.None);
-                                        
+                            OnSelect: |
+                                =//Reset the all recent changes go back to existing assignment page
+                                Reset(cboxClientEditBank);
+                                Reset(TxtGonumberEditBank);
+                                Reset(txtLocationEditBank);
+                                Reset(cboxProductTypeEditBank);
+                                
+                                ClearCollect(
+                                    existingUnits,
+                                    {}
+                                );
+                                
+                                Set(
+                                    IsEdit,
+                                    true
+                                );
+                                Navigate(
+                                    AddBanks,
+                                    ScreenTransition.None
+                                );
                             PressedBorderColor: =Self.Color
                             PressedColor: =Self.Color
                             PressedFill: =Self.Fill

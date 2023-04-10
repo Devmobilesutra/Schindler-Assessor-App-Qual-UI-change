@@ -981,7 +981,6 @@ AddBanks As screen:
                                         {unitno: ThisRecord.txtunitnumberNB}
                                     )
                                 );
-                                
                                 If(
                                     Connection.Connected = false,
                                     Notify("Network is not Available"),
@@ -1017,12 +1016,12 @@ AddBanks As screen:
                                             NotificationType.Error
                                         );
                                         Clear(LCunit),
-                                
+                                        Set(VarBankId,Text( GUID()));
                                         Patch(
                                             schindlerBanks,
                                             Defaults(schindlerBanks),
                                             {
-                                                Id: GUID(),
+                                                Id:VarBankId,
                                                 clientId: LookUp(
                                                     schindlerClients,
                                                     name = cboxClientNameNB.Selected.name
@@ -1035,55 +1034,62 @@ AddBanks As screen:
                                                 )
                                             }
                                         );
-                                
-                                        ForAll(
-                                            glryunitNB.AllItems.txtunitnumberNB As i,
-                                            Patch(
-                                                bankUnits,
-                                                Defaults(bankUnits),
-                                                {
-                                                    Id: GUID(),
-                                                    bankId: LookUp(
-                                                        schindlerBanks,
-                                                        goNumber = txtgONumberNB.Text
-                                                    ),
-                                                    location: txtLocationNB.Text,
-                                                    productId: LookUp(
-                                                        product,
-                                                        product_Model = cboxProductTypeNB.Selected.product_Model
-                                                    ),
-                                                    unitNumber: i.txtunitnumberNB.Text
-                                               
-                                                }
-                                            )
-                                        );
-                                
                                         If(
-                                            (!IsEmpty(Errors(schindlerBanks)) && !IsEmpty(Errors(bankUnits))),
+                                            !IsEmpty(Errors(schindlerBanks)),
                                             Notify(
                                                 "Patch function Error " & Concat(
                                                     Errors(schindlerBanks),
                                                     Column & ": " & Message
-                                                ) & Concat(
-                                                    Errors(bankUnits),
-                                                    Column & ": " & Message
                                                 ),
                                                 NotificationType.Error
                                             ),
-                                            Set(
-                                                popupsuccess,
-                                                true
+                                            ForAll(
+                                                glryunitNB.AllItems.txtunitnumberNB As i,
+                                                Patch(
+                                                    bankUnits,
+                                                    Defaults(bankUnits),
+                                                    {
+                                                        Id: Text(GUID()),
+                                                        bankId: LookUp(
+                                                            schindlerBanks,
+                                                            //goNumber = txtgONumberNB.Text
+                                                            Id=VarBankId
+                                                        ),
+                                                        location: txtLocationNB.Text,
+                                                        productId: LookUp(
+                                                            product,
+                                                            product_Model = cboxProductTypeNB.Selected.product_Model
+                                                        ),
+                                                        unitNumber: i.txtunitnumberNB.Text
+                                                    }
+                                                )
                                             );
-                                            Reset(cboxClientNameNB);
-                                            Reset(txtgONumberNB);
-                                            Reset(txtLocationNB);
-                                            Reset(cboxProductTypeNB);
-                                            ClearCollect(
-                                                rows1,
-                                                {
-                                                    id: GUID(),
-                                                    lineno1: 1
-                                                }
+                                            If(
+                                                !IsEmpty(Errors(bankUnits)),
+                                                Notify(
+                                                    "Patch function Error " & Concat(
+                                                        Errors(bankUnits),
+                                                        Column & ": " & Message
+                                                    ),
+                                                    NotificationType.Error
+                                                );
+                                                RemoveIf(schindlerBanks,Id =VarBankId);
+                                                ,
+                                                Set(
+                                                    popupsuccess,
+                                                    true
+                                                );
+                                                Reset(cboxClientNameNB);
+                                                Reset(txtgONumberNB);
+                                                Reset(txtLocationNB);
+                                                Reset(cboxProductTypeNB);
+                                                ClearCollect(
+                                                    rows1,
+                                                    {
+                                                        id: GUID(),
+                                                        lineno1: 1
+                                                    }
+                                                );
                                             );
                                         );
                                     )
