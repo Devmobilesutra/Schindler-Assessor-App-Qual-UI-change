@@ -1,6 +1,6 @@
 AllProject As screen:
     OnVisible: |-
-        =//UpdateContext({VarSearchBank:""});
+        =
         Reset(TextInput2_3);
 
     ctnMainPS As groupContainer.verticalAutoLayoutContainer:
@@ -52,8 +52,7 @@ AllProject As screen:
                 Height: =Parent.Height
                 Size: =Header.HeaderUserFontSize
                 Text: |-
-                    =//"SCHD0023"
-                    //LookUp(ReviewerAD,mail=userdata.userEmail,displayName)
+                    =
                     userdata.userdisplayName
                 Width: =ctnHeaderAllProject.Width/8
                 X: =imgUserprofileAllProject.X+ imgUserprofileAllProject.Height
@@ -72,9 +71,7 @@ AllProject As screen:
                 ZIndex: =8
 
         ctnMiddlePS As groupContainer.verticalAutoLayoutContainer:
-            Height: |-
-                =//Parent.Height
-                glryProject.Height
+            Height: =glryProject.Height
             LayoutDirection: =LayoutDirection.Vertical
             LayoutMinHeight: =100
             LayoutMinWidth: =250
@@ -94,7 +91,6 @@ AllProject As screen:
                 LayoutMode: =LayoutMode.Auto
                 LayoutWrap: =true
                 PaddingLeft: =40
-                Visible: =true//RoughWork3.Size>2
                 Width: =Parent.Width/2
                 Y: =ctnHeaderAllProject.Y+ctnHeaderAllProject.Height
                 ZIndex: =1
@@ -106,7 +102,7 @@ AllProject As screen:
                     Fill: =RGBA(255, 255, 255, 1)
                     Height: =Parent.Height/1.5
                     HoverColor: =Self.Color
-                    HoverFill: =Self.Fill //ColorFade(RGBA(56, 96, 178, 1), -20%)
+                    HoverFill: =Self.Fill 
                     OnSelect: =Navigate(DashboardScreen)
                     PaddingLeft: =0
                     PressedBorderColor: =Self.BorderColor
@@ -139,15 +135,15 @@ AllProject As screen:
                         FocusedBorderThickness: =2
                         FontWeight: =FontWeight.Semibold
                         HintText: ="Search on G.O. Number"
-                        HoverBorderColor: =//Self.Color
-                        HoverColor: =//RGBA(0, 0, 0, 1)
+                        HoverBorderColor: =
+                        HoverColor: =
                         HoverFill: =RGBA(0, 0, 0, 0)
                         OnChange: |-
                             =//UpdateContext({VarSearchBank:TextInput2_3.Text});
                         OnSelect: |-
                             =//UpdateContext({VarSearchBank:TextInput2_3.Text});
-                        PressedBorderColor: =//Self.HoverBorderColor
-                        PressedColor: =//Self.Color
+                        PressedBorderColor: =
+                        PressedColor: =
                         RadiusBottomLeft: =0
                         RadiusBottomRight: =0
                         RadiusTopLeft: =0
@@ -167,7 +163,7 @@ AllProject As screen:
                         Height: =40
                         Icon: =Icon.Search
                         OnSelect: |
-                            =//UpdateContext({VarSearchBank:TextInput2_3.Text});
+                            =
                         PaddingBottom: =8
                         PaddingTop: =8
                         Width: =40
@@ -175,7 +171,7 @@ AllProject As screen:
 
             "glryProject As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver4.0'":
                 Height: |-
-                    =//ctnMiddlePS.Height
+                    =
                     CountRows(glryProject.AllItems)*glryProject.TemplateHeight
                 Items: |
                     =If(
@@ -257,13 +253,19 @@ AllProject As screen:
                     OnSelect: =Select(Parent)
                     Size: =referenceCSS.RLabelFontSize
                     Text: |-
-                        =LookUp(schindlerClients,Id=ThisItem.clientId.Id,contactNumber)
-                        //ThisItem.Result.Contact
+                        =LookUp(
+                            schindlerClients,
+                            Id = ThisItem.clientId.Id,
+                            contactNumber
+                        )
                     Width: =300
                     X: =lblAddress.Width+lblAddress.X
-                    Y: |
-                        =//lblAddressdetails.Height+lblAddressdetails.Y
-                        If(lblAddressdetails.Height<40,lblAddress.Height+lblAddress.Y,lblAddressdetails.Height+lblAddressdetails.Y)
+                    Y: |-
+                        =If(
+                            lblAddressdetails.Height < 40,
+                            lblAddress.Height + lblAddress.Y,
+                            lblAddressdetails.Height + lblAddressdetails.Y
+                        )
                     ZIndex: =3
 
                 SepGlryProject As rectangle:
@@ -388,8 +390,11 @@ AllProject As screen:
                     Width: =210
                     X: =Parent.Width/13
                     Y: |-
-                        =If(lblAddressdetails.Height<40,lblAddress.Height+lblAddress.Y,lblAddressdetails.Height+lblAddressdetails.Y)
-                        //(lblAddressdetails.Height+lblAddressdetails.Y)
+                        =If(
+                            lblAddressdetails.Height < 40,
+                            lblAddress.Height + lblAddress.Y,
+                            lblAddressdetails.Height + lblAddressdetails.Y
+                        )
                     ZIndex: =20
 
                 lblDDate As label:
@@ -424,8 +429,11 @@ AllProject As screen:
                     Text: =ThisItem.assessmentType
                     Width: =260
                     X: |-
-                        =//lblADate.Width+lblADate.X
-                        If(AllProject.Width<850,Parent.Width-Self.Width*1.28,Parent.Width-Self.Width*2)
+                        =If(
+                            AllProject.Width < 850,
+                            Parent.Width - Self.Width*1.28,
+                            Parent.Width - Self.Width*2
+                        )
                     Y: =lblBank.Y
                     ZIndex: =23
 
@@ -442,9 +450,8 @@ AllProject As screen:
                     Height: =lblAddress.Height
                     OnSelect: =Select(Parent)
                     Size: =referenceCSS.RLabelFontSize
-                    Text: |-
+                    Text: |
                         =LookUp(schindlerClients,Id=ThisItem.clientId.Id,address1)
-                        //ThisItem.Result.address1
                     Width: =300
                     X: =lblAddress.Width+lblAddress.X
                     Y: =lblProjectName.Y+lblProjectName.Height
@@ -545,7 +552,7 @@ AllProject As screen:
                     OnSelect: =Select(Parent)
                     Width: =20
                     X: |-
-                        =//lblProjectName.X
+                        =
                         glryProject.Width/20
                     Y: |
                         =(lblProjectName.Y+lblProjectName.Height)+10
@@ -557,10 +564,10 @@ AllProject As screen:
                     OnSelect: =Select(Parent)
                     Width: =20
                     X: =glryProject.Width/20
-                    Y: |
-                        =//lblAddressdetails.Y+lblAddressdetails.Height
+                    Y: |+
+                        =
                         lblContact.Y+10
-                        //If(lblAddressdetails.Height<40,lblContact.Y+10,lblAddressdetails.Height+lblAddressdetails.Y)
+                        
                     ZIndex: =32
 
                 lblBankName As label:

@@ -103,7 +103,7 @@ EditprojectAssignment As screen:
                     Fill: =referenceCSS.RColorWhite
                     Height: =Parent.Height/1.5
                     HoverColor: =Self.Color
-                    HoverFill: =Self.Fill //ColorFade(RGBA(56, 96, 178, 1), -20%)
+                    HoverFill: =Self.Fill 
                     OnSelect: |-
                         =Set(IsEdit,true);
                         Navigate(projectAssignment)
@@ -174,11 +174,13 @@ EditprojectAssignment As screen:
                         ChevronFill: =RGBA(0, 0, 0, 1)
                         ChevronHoverBackground: =RGBA(0,0,0,0)
                         ChevronHoverFill: =RGBA(0, 0, 0, 1)
-                        DefaultSelectedItems: |
-                            =//Filter(Client,client_name = "Raj") for default valuee
-                            //First(Filter(Client,client = Gallery3.Selected.clientId.client ))  using gallery.selected item
-                            
-                            First(Filter(schindlerClients,Id = nclientid.Id))
+                        DefaultSelectedItems: |-
+                            =First(
+                                Filter(
+                                    schindlerClients,
+                                    Id = nclientid.Id
+                                )
+                            )
                         DisabledBorderColor: =RGBA(0, 0, 0, 1)
                         DisabledColor: =RGBA(0, 0, 0, 1)
                         DisplayFields: =["shlaf_name"]
@@ -218,7 +220,7 @@ EditprojectAssignment As screen:
                         ChevronBackground: =RGBA(0, 0, 0, 0)
                         ChevronDisabledBackground: =RGBA(0, 0, 0, 0)
                         ChevronFill: =RGBA(0, 0, 0, 1)
-                        ChevronHoverBackground: =RGBA(0,0,0,0)//ColorFade(RGBA(56, 96, 178, 1), -20%)
+                        ChevronHoverBackground: =RGBA(0,0,0,0)
                         ChevronHoverFill: =RGBA(0, 0, 0, 1)
                         DefaultSelectedItems: =First(Filter(schindlerBanks,Id = nbankid.Id ))
                         DisabledBorderColor: =RGBA(0, 0, 0, 1)
@@ -232,7 +234,7 @@ EditprojectAssignment As screen:
                         InputTextPlaceholder: ="Select Client"
                         IsSearchable: =false
                         Items: =Filter(schindlerBanks,clientId.name=cboxClientEditA.Selected.name).goNumber
-                        OnChange: =false //Set(IsEdit,true);
+                        OnChange: =false 
                         PaddingBottom: =0
                         PaddingTop: =0
                         PressedFill: =RGBA(0, 0, 0, 0)
@@ -260,34 +262,13 @@ EditprojectAssignment As screen:
                         FillPortions: =0
                         Height: =CountRows(glryUnitEditA.AllItems)*(glryUnitEditA.TemplateHeight)+20
                         Items: |-
-                            =
-                            Sort(Filter(bankUnits,bankId.goNumber=cboxGonumberEditA.Selected.goNumber),unitNumber)
-                            //Filter(assignmentUnits,assignmentId.Id=nprojectassignment)
-                            
-                            //Filter(bankUnits,bankId.goNumber=ComboBox2.Selected.goNumber && unitAssignmentStatus="false").unitNumber
-                            
-                            
-                            
-                            //Filter( 
-                               // assignmentUnits;Not(unitNumber in Filter(bankUnits;ComboBox2.Selected.goNumber exactin bankId.goNumber).unitNumber)) ?
-                            
-                            
-                            //Filter(QuestionTable;Not(Title in Filter(AnswerTable; var_company.Text exactin rlzf).Title)) ?
-                            
-                            //Filter(assignmentUnits,Not(bankUnitId in Filter(bankUnits ,ComboBox2.Selected.goNumber exactin bankId.goNumber).Id))
-                            
-                            
-                            
-                            /*
-                            
-                             ForAll(
-                                  
-                                    Filter(bankUnits,bankId.goNumber=ComboBox2.Selected.goNumber).unitNumber As _items,
-                                    Filter(assignmentUnits,
-                                        bankUnitId.unitNumber <> _items.unitNumber
-                                    )
-                                )
-                            */ 
+                            =Sort(
+                                Filter(
+                                    bankUnits,
+                                    bankId.goNumber = cboxGonumberEditA.Selected.goNumber
+                                ),
+                                unitNumber
+                            )
                         Layout: =Layout.Vertical
                         LayoutMinHeight: =287
                         LayoutMinWidth: =320
@@ -297,10 +278,10 @@ EditprojectAssignment As screen:
                         ZIndex: =6
 
                         cboxunitEditA As checkbox:
-                            BorderColor: =//RGBA(0, 18, 107, 1)
+                            BorderColor: =
                             CheckboxBorderColor: =RGBA(0, 0, 0, 1)
                             Default: |-
-                                =//false
+                                =
                                 If(
                                     IsBlank(
                                         LookUp(
@@ -313,7 +294,7 @@ EditprojectAssignment As screen:
                                     false,
                                     true
                                 )
-                            DisabledBorderColor: =//RGBA(0, 0, 0, 0)
+                            DisabledBorderColor: =
                             DisplayMode: |
                                 = DisplayMode.Disabled
                                 
@@ -328,25 +309,19 @@ EditprojectAssignment As screen:
                                     DisplayMode.Edit,
                                     DisplayMode.Disabled
                                 )*/
-                            FocusedBorderThickness: =//2
+                            FocusedBorderThickness: =
                             Height: =47
                             HoverColor: =RGBA(0, 0, 0, 1)
-                            OnCheck: |-
+                            OnCheck: |+
                                 =
                                 Collect(selectedUnit,ThisItem);
                                 
-                                //Filter(assignmentUnits,bankUnitId.unitNumber = ThisItem.unitNumber)
-                                //Collect(selectedUnit,LookUp(bankUnits,unitNumber=ThisItem.unitNumber));
-                                
-                                //ClearCollect(checkboxunit1,ThisItem.unitNumber)
                             OnSelect: =Select(Parent)
-                            OnUncheck: |
+                            OnUncheck: |+
                                 = 
                                  Remove(selectedUnit,ThisItem)
-                                 // RemoveIf(assignmentUnits,bankUnitId.Id=ThisItem.Id)
-                                //RemoveIf(selectedUnit,unitNumber=ThisItem.unitNumber)
-                                //RemoveIf(checkboxunit1,Value=ThisItem.unitNumber)
-                            PressedBorderColor: =//ColorFade(Self.BorderColor, -30%)
+                                
+                            PressedBorderColor: =
                             Text: =ThisItem.unitNumber
                             Width: =632
                             Y: =10
@@ -381,7 +356,7 @@ EditprojectAssignment As screen:
                         BorderColor: =RGBA(0, 0, 0, 1)
                         ChevronBackground: =RGBA(0, 0, 0, 0)
                         ChevronFill: =RGBA(0, 0, 0, 1)
-                        ChevronHoverBackground: =RGBA(0,0,0,0)//ColorFade(RGBA(56, 96, 178, 1), -20%)
+                        ChevronHoverBackground: =RGBA(0,0,0,0)
                         ChevronHoverFill: =RGBA(0, 0, 0, 1)
                         DefaultSelectedItems: =Filter(LC_assessmentType,type = nassessmenttype )
                         DisplayFields: =["type"]
@@ -399,7 +374,7 @@ EditprojectAssignment As screen:
                         InputTextPlaceholder: ="Select Assessment Type"
                         IsSearchable: =false
                         Items: =LC_assessmentType
-                        OnChange: =false //Set(IsEdit,true);
+                        OnChange: =false 
                         PaddingBottom: =10
                         PaddingTop: =0
                         PressedFill: =RGBA(0, 0, 0, 0)
@@ -426,7 +401,7 @@ EditprojectAssignment As screen:
                         BorderColor: =RGBA(0, 0, 0, 1)
                         ChevronBackground: =RGBA(0, 0, 0, 0)
                         ChevronFill: =RGBA(0, 0, 0, 1)
-                        ChevronHoverBackground: =RGBA(0,0,0,0)//ColorFade(RGBA(56, 96, 178, 1), -20%)
+                        ChevronHoverBackground: =RGBA(0,0,0,0)
                         ChevronHoverFill: =RGBA(0, 0, 0, 1)
                         DefaultSelectedItems: |
                             =First(Filter(AssessorAD,id = nassessorid ))
@@ -444,7 +419,7 @@ EditprojectAssignment As screen:
                         HoverFill: =RGBA(0,0,0,0)
                         InputTextPlaceholder: ="Select Assessor"
                         Items: =AssessorAD.displayName
-                        OnChange: =false //Set(IsEdit,true);
+                        OnChange: =false 
                         PaddingBottom: =10
                         PaddingTop: =0
                         Reset: =true
@@ -470,7 +445,7 @@ EditprojectAssignment As screen:
                         BorderColor: =RGBA(0, 0, 0, 1)
                         ChevronBackground: =RGBA(0, 0, 0, 0)
                         ChevronFill: =RGBA(0, 0, 0, 1)
-                        ChevronHoverBackground: =RGBA(0,0,0,0)//ColorFade(RGBA(56, 96, 178, 1), -20%)
+                        ChevronHoverBackground: =RGBA(0,0,0,0)
                         ChevronHoverFill: =RGBA(0, 0, 0, 1)
                         DefaultSelectedItems: |
                             =First(Filter(ReviewerAD,id = nreviewerid ))
@@ -481,7 +456,7 @@ EditprojectAssignment As screen:
                         HoverFill: =RGBA(0,0,0,0)
                         InputTextPlaceholder: ="Select Reviewer"
                         Items: =ReviewerAD.displayName
-                        OnChange: =false //Set(IsEdit,true);
+                        OnChange: =false 
                         PaddingBottom: =10
                         PaddingTop: =0
                         Reset: =true
@@ -515,7 +490,7 @@ EditprojectAssignment As screen:
                             )
                         Font: =referenceCSS.RFont
                         Height: =50
-                        OnChange: =false //Set(IsEdit,true);
+                        OnChange: =false 
                         PaddingBottom: =10
                         Width: =Parent.Width/3
                         ZIndex: =15
@@ -543,7 +518,6 @@ EditprojectAssignment As screen:
                             )
                         Font: =referenceCSS.RFont
                         Height: =50
-                        OnChange: =false //Set(IsEdit,true);
                         PaddingBottom: =20
                         Width: =Parent.Width/3
                         ZIndex: =17
@@ -571,7 +545,7 @@ EditprojectAssignment As screen:
                             )
                         Font: =referenceCSS.RFont
                         Height: =50
-                        OnChange: =false //Set(IsEdit,true);
+                        OnChange: =false 
                         PaddingBottom: =10
                         Width: =Parent.Width/3
                         ZIndex: =19
@@ -595,11 +569,11 @@ EditprojectAssignment As screen:
                         btnSaveEditA As button:
                             Color: =referenceCSS.RColorWhite
                             DisabledBorderColor: |-
-                                =//referenceCSS.RActiveColor
+                                =
                                 RGBA(207, 207, 207, 1)
                             DisabledColor: =referenceCSS.RColorWhite
                             DisabledFill: =RGBA(207, 207, 207, 1)
-                            DisplayMode: =DisplayMode.Edit //If(IsEdit= true,DisplayMode.Edit,DisplayMode.Disabled)
+                            DisplayMode: =DisplayMode.Edit 
                             Fill: =referenceCSS.RActiveColor
                             Height: =50
                             HoverFill: =referenceCSS.RActiveColor
@@ -734,14 +708,13 @@ EditprojectAssignment As screen:
                         btnCancelEditA As button:
                             BorderColor: =referenceCSS.RActiveColor
                             Color: =referenceCSS.RActiveColor
-                            DisabledBorderColor: |-
-                                =//referenceCSS.RActiveColor
-                                RGBA(207, 207, 207, 1)
+                            DisabledBorderColor: =RGBA(207, 207, 207, 1)
                             DisabledColor: =referenceCSS.RColorWhite
                             DisabledFill: |-
-                                =//referenceCSS.RColorWhite
+                                =
                                 RGBA(207, 207, 207, 1)
-                            DisplayMode: =DisplayMode.Edit //If(IsEdit= true,DisplayMode.Edit,DisplayMode.Disabled)
+                            DisplayMode: |
+                                =DisplayMode.Edit 
                             Fill: =referenceCSS.RColorWhite
                             Height: =50
                             HoverBorderColor: =Self.Color
