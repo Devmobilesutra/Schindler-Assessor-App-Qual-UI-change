@@ -70,13 +70,8 @@ ClientScreen As screen:
                 Font: =Header.HeaderFont
                 FontWeight: =Header.FontWeight
                 Height: =Parent.Height
-                Size: |-
-                    =//Header.HeaderUserFontSize
-                    Parent.Width/88
-                Text: |-
-                    =//"SCHD0023"
-                    //LookUp(ReviewerAD,mail=User().Email,displayName)
-                    userdata.userdisplayName
+                Size: =Parent.Width/88
+                Text: =userdata.userdisplayName
                 Width: =ctnHeaderClient.Width/7.5
                 X: =imgUserProfileCS.X+ imgUserProfileCS.Height
                 ZIndex: =6
@@ -126,7 +121,8 @@ ClientScreen As screen:
                     Fill: =referenceCSS.RColorWhite
                     Height: =Parent.Height/1.5
                     HoverColor: =Self.Color
-                    HoverFill: =Self.Fill //ColorFade(RGBA(56, 96, 178, 1), -20%)
+                    HoverFill: |
+                        =Self.Fill 
                     OnSelect: =Navigate(ReferanceData)
                     PaddingLeft: =0
                     PressedBorderColor: =Self.BorderColor
@@ -174,30 +170,33 @@ ClientScreen As screen:
                             )
                         DisabledColor: =RGBA(255, 0, 0, 1)
                         Fill: =RGBA(255, 255, 255, 1)
-                        FocusedBorderColor: =//Self.BorderColor
-                        FocusedBorderThickness: =//4
+                        FocusedBorderColor: =
+                        FocusedBorderThickness: =
                         Font: =referenceCSS.RFont
                         Height: =Parent.Height/1.5
-                        HoverBorderColor: =//ColorFade(Self.BorderColor, 20%)
+                        HoverBorderColor: =
                         HoverColor: =If(P,RGBA(255, 0, 0, 1),RGBA(0,0,0,1))
                         HoverFill: =RGBA(0, 0, 0, 0)
-                        OnSelect: |-
-                            =//If(P,Set(P,true);Set(A,false))
-                            Set(P,true);
-                            Set(A,false);
-                                        Reset(txtClientName);
-                                        Reset(txtAddress1);
-                                        Reset(txtAddress2);
-                                        Reset(CCity);
-                                        Reset(CZip);
-                                        Reset(CState);
-                                        Reset(txtContactName);
-                                        Reset(txtContactNumber);
-                        PressedBorderColor: =//Self.Fill
-                        PressedFill: =//Self.Color
-                        Size: |-
-                            =//20
-                            referenceCSS.RFontSize
+                        OnSelect: |
+                            =Set(
+                                P,
+                                true
+                            );
+                            Set(
+                                A,
+                                false
+                            );
+                            Reset(txtClientName);
+                            Reset(txtAddress1);
+                            Reset(txtAddress2);
+                            Reset(CCity);
+                            Reset(CZip);
+                            Reset(CState);
+                            Reset(txtContactName);
+                            Reset(txtContactNumber);
+                        PressedBorderColor: =
+                        PressedFill: =
+                        Size: =referenceCSS.RFontSize
                         Text: ="New Client"
                         Width: =Parent.Width
                         ZIndex: =1
@@ -226,25 +225,27 @@ ClientScreen As screen:
                         Color: =If(A,referenceCSS.RActiveColor,referenceCSS.RInActiveColor)
                         DisabledColor: =RGBA(204, 204, 204, 1)
                         Fill: =RGBA(255, 255, 255, 1)
-                        FocusedBorderColor: =//Self.BorderColor
+                        FocusedBorderColor: =
                         FocusedBorderThickness: =0
                         Font: =referenceCSS.RFont
                         Height: =Parent.Height/1.5
-                        HoverBorderColor: =//ColorFade(Self.BorderColor, 20%)
+                        HoverBorderColor: =
                         HoverColor: =If(A,RGBA(255, 0, 0, 1),RGBA(0,0,0,1))
-                        HoverFill: =//ColorFade(RGBA(56, 96, 178, 1), -20%)
+                        HoverFill: =
                         LayoutMinWidth: =300
                         OnSelect: |
-                            =//If(A,Set(P,false);Set(A,true))
-                            
-                            Set(A,true);
-                            Set(P,false);
-                        PressedBorderColor: =//Self.Fill
-                        PressedColor: =//Self.Fill
-                        PressedFill: =//Self.Color
-                        Size: |-
-                            =//20
-                            referenceCSS.RFontSize
+                            =Set(
+                                A,
+                                true
+                            );
+                            Set(
+                                P,
+                                false
+                            );
+                        PressedBorderColor: =
+                        PressedColor: =
+                        PressedFill: =
+                        Size: =referenceCSS.RFontSize
                         Text: ="Existing clients"
                         Width: =Parent.Width
                         ZIndex: =1
@@ -253,9 +254,7 @@ ClientScreen As screen:
                         AutoDisableOnSelect: =false
                         Color: |
                             =RGBA(0, 0, 0, 0)
-                        Fill: |-
-                            =//RGBA(255, 0, 0, 1)
-                            referenceCSS.RActiveColor
+                        Fill: =referenceCSS.RActiveColor
                         Height: =5
                         Icon: =Icon.HorizontalLine
                         Visible: =A
@@ -277,10 +276,7 @@ ClientScreen As screen:
             ctnMainCS As groupContainer.manualLayoutContainer:
                 FillPortions: =0
                 Height: |-
-                    =/*If(App.Height<=600,Parent.Height-Container20_10.Height-Container6_4.Height-Container7_5.Height+800,
-                    App.Height >600 && App.Height<=950,Parent.Height-Container20_10.Height-Container6_4.Height-Container7_5.Height+650,App.Height > 500 && App.Height<=1057,Parent.Height/4,Parent.Height-Container20_10.Height-Container6_4.Height-Container7_5.Height+80) */
-                    
-                    //Gallery9_2.Height
+                    =
                     If(P,1000,glryExistingClients.Height)
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
@@ -294,9 +290,8 @@ ClientScreen As screen:
                     ZIndex: =1
 
                     ctnEexistingClientScreen As groupContainer.verticalAutoLayoutContainer:
-                        Height: |-
+                        Height: |
                             =Parent.Height
-                            //Gallery9_2.Height
                         LayoutDirection: =LayoutDirection.Vertical
                         LayoutMode: =LayoutMode.Auto
                         Visible: =A
@@ -306,9 +301,7 @@ ClientScreen As screen:
                         "glryExistingClients As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver4.0'":
                             AlignInContainer: =AlignInContainer.SetByContainer
                             FillPortions: =0
-                            Height: |-
-                                =//Parent.Height
-                                CountRows(glryExistingClients.AllItems)*glryExistingClients.TemplateHeight
+                            Height: =CountRows(glryExistingClients.AllItems) * glryExistingClients.TemplateHeight
                             Items: =Sort(schindlerClients,'Modified On',SortOrder.Descending)
                             Layout: =Layout.Vertical
                             LayoutMinHeight: =287
@@ -493,9 +486,8 @@ ClientScreen As screen:
                                 Size: =referenceCSS.RLabelFontSize
                                 Text: ="ZipCode"
                                 Width: =100
-                                X: |-
+                                X: |
                                     =txtStateEC.X+txtContactNumberEC.Width
-                                    //Parent.Width-Self.Width-CZip_1.Width-215
                                 Y: =5+(txtAddress2EC.Y+txtAddress2EC.Height)
                                 ZIndex: =14
 
@@ -525,9 +517,8 @@ ClientScreen As screen:
                                 RadiusTopRight: =1
                                 Size: =referenceCSS.RInputFontSize
                                 Width: =Parent.Width/14
-                                X: |-
+                                X: |
                                     =lblZipEC.X+lblZipEC.Width
-                                    //Parent.Width-Self.Width-215
                                 Y: =5+(txtAddress2EC.Y+txtAddress2EC.Height)
                                 ZIndex: =15
 
@@ -538,11 +529,10 @@ ClientScreen As screen:
                                 Size: =referenceCSS.RLabelFontSize
                                 Text: ="State"
                                 Width: |-
-                                    =//Parent.Width/16
+                                    =
                                     70
-                                X: |-
+                                X: |
                                     =lblcontactnumberEC.X
-                                    //Parent.Width-Self.Width-CZip_1.Width-lbZip_1.Width-CState_1.Width-260
                                 Y: =(lblCityEC.Y)
                                 ZIndex: =16
 
@@ -570,9 +560,8 @@ ClientScreen As screen:
                                 RadiusTopRight: =1
                                 Size: =referenceCSS.RInputFontSize
                                 Width: =Parent.Width/8
-                                X: |-
+                                X: |
                                     =lblStateEC.X+lblStateEC.Width
-                                    //Parent.Width-Self.Width-CZip_1.Width-lbZip_1.Width-272
                                 Y: =(txtCityEC.Y)
                                 ZIndex: =17
 
@@ -699,7 +688,7 @@ ClientScreen As screen:
                                     DisabledFill: =RGBA(0, 0, 0, 0)
                                     Fill: =RGBA(0, 0, 0, 0)
                                     Height: =50
-                                    HoverBorderColor: =//ColorFade(Self.BorderColor, 20%)
+                                    HoverBorderColor: =
                                     HoverColor: =RGBA(0, 0, 0, 1)
                                     HoverFill: =RGBA(0, 0, 0, 0)
                                     OnSelect: |-
@@ -758,15 +747,13 @@ ClientScreen As screen:
                                         )
                                     PaddingBottom: =30
                                     PaddingLeft: =25
-                                    PressedBorderColor: =//Self.Fill
+                                    PressedBorderColor: =
                                     PressedColor: =RGBA(0, 0, 0, 1)
                                     PressedFill: =RGBA(0, 0, 0, 0)
                                     Text: ="Save"
                                     Visible: =If(varEditMode=ThisItem.Id && F=true,true,false)
                                     Width: =100
-                                    X: |-
-                                        =//Parent.Width/1.39
-                                        Parent.Width-Self.Width-btnEditCS.Width-btnRemoveCS.Width-40
+                                    X: =Parent.Width - Self.Width - btnEditCS.Width - btnRemoveCS.Width - 40
                                     Y: =glryExistingClients.TemplateHeight/1.3
                                     ZIndex: =25
 
@@ -776,40 +763,10 @@ ClientScreen As screen:
                                     DisabledColor: =RGBA(0, 0, 0, 1)
                                     FocusedBorderThickness: =0
                                     Height: =30
-                                    HoverBorderColor: =//ColorFade(Self.BorderColor, 20%)
+                                    HoverBorderColor: =
                                     Icon: =Icon.Save
                                     OnSelect: |-
-                                        =/*If(
-                                            IsBlank(txtClientName_1.Text),
-                                            Notify(
-                                                "Enter Client Name",
-                                                NotificationType.Error
-                                            );
-                                            IsBlank(txtAddress1_1.Text),
-                                            Notify("Enter Address1",NotificationType.Error);
-                                            IsBlank(CCity_1.Text),Notify("Enter City",NotificationType.Error);
-                                            IsBlank(CZip_1.Text),Notify("Enter ZipCode",NotificationType.Error);
-                                            IsBlank(CState_1.Text),Notify("Enter State",NotificationType.Error);
-                                            IsBlank(CContact1_3.Text) && Not(IsMatch(CContact1_3.Text,"\d{10}")),Notify("Enter Contact Number",NotificationType.Error);*/
-                                        
-                                            
-                                            /*Patch(
-                                                Client,
-                                                ThisItem,
-                                                {
-                                                    client_name: txtClientName_1.Text,
-                                                    address1: txtAddress1_1.Text,
-                                                    address2: txtAddress2_1.Text,
-                                                    city: CCity_1.Text,
-                                                    zip: CZip_1.Text,
-                                                    state: CState_1.Text,
-                                                    contact_name: txtContactName_1.Text,
-                                                    contact_number: CContact1_3.Text
-                                                }
-                                            );*/
-                                           
-                                        //);
-                                        UpdateContext({popupsuccess: true});
+                                        =UpdateContext({popupsuccess: true});
                                         Set(
                                             F,
                                             false
@@ -834,23 +791,20 @@ ClientScreen As screen:
                                     DisabledFill: =RGBA(0, 0, 0, 0)
                                     Fill: =RGBA(0, 0, 0, 0)
                                     Height: =50
-                                    HoverBorderColor: =//ColorFade(Self.BorderColor, 20%)
+                                    HoverBorderColor: =
                                     HoverColor: =RGBA(0, 0, 0, 1)
                                     HoverFill: =RGBA(0, 0, 0, 0)
-                                    OnSelect: |-
+                                    OnSelect: |
                                         =Set(varEditMode,ThisItem.Id);Set(F,true);
                                         Set(ShowErrorMsgClient,false)
-                                        //Set(A,true)
                                     PaddingBottom: =30
                                     PaddingRight: =10
-                                    PressedBorderColor: =//Self.Fill
+                                    PressedBorderColor: =
                                     PressedColor: =RGBA(0, 0, 0, 1)
                                     PressedFill: =RGBA(0, 0, 0, 0)
                                     Text: ="Edit"
                                     Width: =80
-                                    X: |-
-                                        =//Parent.Width/1.24
-                                        Parent.Width-Self.Width-btnRemoveCS.Width-20
+                                    X: =Parent.Width-Self.Width-btnRemoveCS.Width-20
                                     Y: =glryExistingClients.TemplateHeight/1.3
                                     ZIndex: =23
 
@@ -906,7 +860,7 @@ ClientScreen As screen:
                                         )
                                     Fill: =RGBA(0, 0, 0, 0)
                                     Height: =50
-                                    HoverBorderColor: =//ColorFade(Self.BorderColor, 20%)
+                                    HoverBorderColor: =
                                     HoverColor: =RGBA(0, 0, 0, 1)
                                     HoverFill: =RGBA(0, 0, 0, 0)
                                     OnSelect: |-
@@ -915,14 +869,12 @@ ClientScreen As screen:
                                     PaddingBottom: =30
                                     PaddingLeft: =30
                                     PaddingRight: =10
-                                    PressedBorderColor: =//Self.Fill
+                                    PressedBorderColor: =
                                     PressedColor: =RGBA(0, 0, 0, 1)
                                     PressedFill: =RGBA(0, 0, 0, 0)
                                     Text: ="Remove"
                                     Width: =120
-                                    X: |-
-                                        =//Parent.Width/1.15
-                                        Parent.Width-Self.Width-20
+                                    X: =Parent.Width-Self.Width-20
                                     Y: =glryExistingClients.TemplateHeight/1.3
                                     ZIndex: =24
 
@@ -1309,11 +1261,10 @@ ClientScreen As screen:
                                 Font: =referenceCSS.RFont
                                 FontWeight: =FontWeight.Bold
                                 Height: =50
-                                HoverBorderColor: =referenceCSS.RActiveColor //ColorFade(Self.BorderColor, 20%)
+                                HoverBorderColor: =referenceCSS.RActiveColor 
                                 HoverColor: =Self.Color
-                                HoverFill: |-
+                                HoverFill: |
                                     =Self.Fill
-                                    //ColorFade(RGBA(56, 96, 178, 1), -20%)
                                 OnSelect: |-
                                     =If(
                                         Connection.Connected = false,
@@ -1365,7 +1316,8 @@ ClientScreen As screen:
                                             );
                                         )
                                     )
-                                PressedBorderColor: =referenceCSS.RActiveColor//Self.Fill
+                                PressedBorderColor: |
+                                    =referenceCSS.RActiveColor
                                 PressedColor: =Self.Color
                                 PressedFill: =Self.Fill
                                 Size: =referenceCSS.RLabelFontSize
