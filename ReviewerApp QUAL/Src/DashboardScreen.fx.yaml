@@ -35,7 +35,7 @@ DashboardScreen As screen:
                 BorderColor: =RGBA(230, 230, 230, 1)
                 BorderThickness: =5
                 Height: |-
-                    =//If(App.Width<1000,Parent.Height/3.5,App.Width>1000 && App.Width<1200,Parent.Height/2,Parent.Height/1.02)
+                    =
                     If(App.Height<700,Parent.Height/1.02,App.Height<900 && App.Width<1200,Parent.Height/1.6, App.Width<1200,Parent.Height/1.9,Parent.Height/1.02)
                 LayoutMinHeight: =100
                 LayoutMinWidth: =50
@@ -47,10 +47,10 @@ DashboardScreen As screen:
                     Color: =RGBA(255, 0, 0, 1)
                     FontWeight: =FontWeight.Bold
                     Size: |-
-                        =//(Parent.Height+Parent.Width)/40
+                        =
                         Dashboard.DCountSize
                     Text: |-
-                        =//LookUp(projectAggregation,Reviewer_id=loginReviewer,completed_Projects)
+                        =
                         CountRows(
                             Filter(
                                 assignments,
@@ -68,7 +68,7 @@ DashboardScreen As screen:
                     FontWeight: =FontWeight.Bold
                     Height: =77
                     Size: |-
-                        =//(Parent.Height+Parent.Width)/40
+                        =
                         Dashboard.DFontSize
                     Text: ="Completed"
                     Width: =Parent.Width
@@ -95,7 +95,7 @@ DashboardScreen As screen:
                     BorderThickness: =0
                     Fill: =RGBA(0, 0, 0, 0)
                     Height: =376
-                    HoverFill: =RGBA(0, 0, 0, 0)//ColorFade(RGBA(56, 96, 178, 1), -20%)
+                    HoverFill: =RGBA(0, 0, 0, 0)
                     OnSelect: |-
                         =Navigate(AllProject);
                         Set(comp,true);
@@ -114,8 +114,7 @@ DashboardScreen As screen:
                 BorderColor: =RGBA(230, 230, 230, 1)
                 BorderThickness: =5
                 Height: |-
-                    =//If(App.Width<1000,Parent.Height/2,App.Width>1000 && App.Width<1200,Parent.Height/2,Parent.Height/1.02)
-                    //If(App.Height<700,Parent.Height/1.02,App.Width<1200,Parent.Height/1.9,Parent.Height/1.02)
+                    =
                     
                     If(App.Height<700,Parent.Height/1.02,App.Height<900 && App.Width<1200,Parent.Height/1.6, App.Width<1200,Parent.Height/1.9,Parent.Height/1.02)
                 LayoutMinHeight: =100
@@ -128,9 +127,7 @@ DashboardScreen As screen:
                     Font: =Dashboard.DFont
                     FontWeight: =FontWeight.Bold
                     Height: =77
-                    Size: |-
-                        =//(Parent.Height+Parent.Width)/40
-                        Dashboard.DFontSize
+                    Size: =Dashboard.DFontSize
                     Text: ="In Progress"
                     Width: =Parent.Width
                     Y: =Parent.Height/8
@@ -140,10 +137,8 @@ DashboardScreen As screen:
                     Align: =Align.Center
                     Color: =RGBA(255, 0, 0, 1)
                     FontWeight: =FontWeight.Bold
-                    Size: |-
-                        =//(Parent.Height+Parent.Width)/40
-                        Dashboard.DCountSize
-                    Text: |
+                    Size: =Dashboard.DCountSize
+                    Text: |+
                         =//LookUp(projectAggregations,assessorId.email =User().Email,inProgressProjects)
                         CountRows(
                             Filter(
@@ -152,8 +147,7 @@ DashboardScreen As screen:
                                 isCompleted = "Inprogress"
                             )
                         )
-                        //LookUp(projectAggregation,Reviewer_id = loginReviewer ,inProgress_Projects)
-                        //CountRows(Filter(assignments,reviewerId=loginReviewer))
+                        
                     Width: =Parent.Width
                     Y: =lblInprogressDS.Y+lblInprogressDS.Height+2
                     ZIndex: =3
@@ -170,7 +164,7 @@ DashboardScreen As screen:
                     BorderThickness: =0
                     Fill: =RGBA(0, 0, 0, 0)
                     Height: =376
-                    HoverFill: =RGBA(0, 0, 0, 0)//ColorFade(RGBA(56, 96, 178, 1), -20%)
+                    HoverFill: =RGBA(0, 0, 0, 0)
                     OnSelect: |-
                         =Refresh(assignments);
                         Navigate(AllProject);
@@ -189,9 +183,7 @@ DashboardScreen As screen:
                 AlignInContainer: =AlignInContainer.SetByContainer
                 BorderColor: =RGBA(230, 230, 230, 1)
                 BorderThickness: =5
-                Height: |-
-                    =//If(App.Height<700,Parent.Height/1.02,App.Width<1200,Parent.Height/1.9,Parent.Height/1.02)
-                    If(App.Height<700,Parent.Height/1.02,App.Height<900 && App.Width<1200,Parent.Height/1.6, App.Width<1200,Parent.Height/1.9,Parent.Height/1.02)
+                Height: =If(App.Height<700,Parent.Height/1.02,App.Height<900 && App.Width<1200,Parent.Height/1.6, App.Width<1200,Parent.Height/1.9,Parent.Height/1.02)
                 LayoutMinHeight: =100
                 LayoutMinWidth: =50
                 Width: =Parent.Width/2.1
@@ -203,7 +195,7 @@ DashboardScreen As screen:
                     FontWeight: =FontWeight.Bold
                     Height: =50
                     Size: |-
-                        =//(Parent.Height+Parent.Width)/40
+                        =
                         Dashboard.DFontSize
                     Text: ="Reference"
                     Width: =Parent.Width
@@ -215,9 +207,7 @@ DashboardScreen As screen:
                     Font: =Dashboard.DFont
                     FontWeight: =FontWeight.Bold
                     Height: =35
-                    Size: |-
-                        =//(Parent.Height+Parent.Width)/40
-                        Dashboard.DFontSize
+                    Size: =Dashboard.DFontSize
                     Text: ="Data"
                     Width: =Parent.Width
                     Y: =lblReferenceDS.Y+lblReferenceDS.Height
@@ -241,7 +231,7 @@ DashboardScreen As screen:
                     BorderThickness: =0
                     Fill: =RGBA(0, 0, 0, 0)
                     Height: =Parent.Height
-                    HoverFill: =RGBA(0, 0, 0, 0)//ColorFade(RGBA(56, 96, 178, 1), -20%)
+                    HoverFill: =RGBA(0, 0, 0, 0)
                     OnSelect: =Navigate(ReferanceData)
                     PaddingBottom: =0
                     PaddingLeft: =0
@@ -271,7 +261,7 @@ DashboardScreen As screen:
                 DisabledFill: =RGBA(237, 237, 237, 1)
                 Fill: =referenceCSS.RActiveColor
                 FocusedBorderThickness: =
-                HoverFill: =//ColorFade(RGBA(56, 96, 178, 1), -20%)
+                HoverFill: =
                 OnSelect: =Set(VarReportIssue,true);
                 PressedColor: =Self.Color
                 PressedFill: =Self.Fill
@@ -342,10 +332,7 @@ DashboardScreen As screen:
             FontWeight: =Header.FontWeight
             Height: =Parent.Height
             Size: =Header.HeaderUserFontSize
-            Text: |-
-                =//"SCHD0023"
-                //LookUp(ReviewerAD,mail=userdata.userEmail,displayName)
-                userdata.userdisplayName
+            Text: =userdata.userdisplayName
             Width: =ctnHeaderDashboardScreen.Width/8
             X: =imguserDS.X+ imguserDS.Height
             ZIndex: =2
