@@ -1561,7 +1561,14 @@
     "btnEditEB": {
       "AllowAccessToGlobals": true,
       "ControlPropertyState": [
-        "OnSelect",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "\r\n//Set(IsEdit,false);\r\n//Navigate(Screen6);\r\n//Set(IsEdit,false);\r\nNavigate(\r\n    EditBank,\r\n    ScreenTransition.None,\r\n    {   nbank:ThisItem.Id,\r\n        nclient: ThisItem.clientId,\r\n        nlocation: ThisItem.location,\r\n        nproduct:ThisItem.productId,\r\n        nunits :ThisItem.bankUnits\r\n      \r\n    }\r\n);\r\n",
+          "InvariantPropertyName": "OnSelect",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         "AutoDisableOnSelect",
         "Text",
         "Tooltip",
@@ -3327,7 +3334,14 @@
     "btnRemoveEB": {
       "AllowAccessToGlobals": true,
       "ControlPropertyState": [
-        "OnSelect",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "UpdateContext({IsRemoveBank:true});\r\n\r\n//Remove(clientInstallation,ThisItem);\r\nSet(removeBankUnit,ThisItem);\r\n\r\n",
+          "InvariantPropertyName": "OnSelect",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         "AutoDisableOnSelect",
         "Text",
         "Tooltip",
@@ -3338,8 +3352,22 @@
         "RadiusBottomLeft",
         "RadiusBottomRight",
         "DisabledBorderColor",
-        "PressedBorderColor",
-        "HoverBorderColor",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "//Self.Fill",
+          "InvariantPropertyName": "PressedBorderColor",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "//ColorFade(Self.BorderColor, 20%)",
+          "InvariantPropertyName": "HoverBorderColor",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         "BorderStyle",
         "BorderThickness",
         "FocusedBorderColor",
@@ -3355,7 +3383,14 @@
           "NameMapSourceSchema": "?"
         },
         "HoverColor",
-        "DisplayMode",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "//If Assessor and reviewer  are assign to bank then bank can't delete\r\nIf(\r\n    CountRows(\r\n        Filter(\r\n           // projectAssignment_1,\r\n           // bankId.Go_Number=ThisItem.cname\r\n           assignments,\r\n           bankId.Id = ThisItem.Id\r\n        )\r\n    ) < 1,\r\n    DisplayMode.Edit,\r\n    DisplayMode.Disabled\r\n)",
+          "InvariantPropertyName": "DisplayMode",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         "Fill",
         "DisabledFill",
         "PressedFill",
@@ -9455,7 +9490,14 @@
         "HoverFill",
         "X",
         "Y",
-        "Width",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "1336",
+          "InvariantPropertyName": "Width",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         "Height",
         "Visible",
         "TabIndex",
@@ -12873,7 +12915,14 @@
     "imgRemoveEB": {
       "AllowAccessToGlobals": true,
       "ControlPropertyState": [
-        "Image",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "//If Assessor and reviewer  are assign to bank then bank can't delete\r\nIf(\r\n    CountRows(\r\n        Filter(\r\n         //   projectAssignment_1,\r\n            //bankId.Go_Number=ThisItem.cname\r\n\r\n            assignments,\r\n           bankId.Id = ThisItem.Id\r\n        )\r\n    ) < 1,\r\n  'trash-black',\r\n    trashGray\r\n)",
+          "InvariantPropertyName": "Image",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         "Transparency",
         "ImagePosition",
         "CalculateOriginalDimensions",
@@ -18905,7 +18954,14 @@
         "VerticalAlign",
         "X",
         "Y",
-        "Width",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "Parent.Width/2//5",
+          "InvariantPropertyName": "Width",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         "Height",
         "Visible",
         "DisplayMode",

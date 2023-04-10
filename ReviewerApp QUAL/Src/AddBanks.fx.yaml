@@ -337,11 +337,14 @@ AddBanks As screen:
                         glryExstingUnit As gallery.variableTemplateHeightGallery:
                             Height: =CountRows(glryExstingUnit.AllItems)*(glryExstingUnit.TemplateHeight+glryExstingUnit.TemplatePadding)*0.99
                             Items: |-
-                                =Sort(Filter(bankUnits,bankId.goNumber = ThisItem.goNumber),unitNumber,SortOrder.Ascending)
-                                
-                                //ThisItem.data
-                                
-                                //Filter(bank,clientId.client_name= Label24.Text)
+                                =Sort(
+                                    Filter(
+                                        bankUnits,
+                                        bankId.goNumber = ThisItem.goNumber
+                                    ),
+                                    unitNumber,
+                                    SortOrder.Ascending
+                                )
                             Layout: =Layout.Vertical
                             ShowScrollbar: =false
                             TemplatePadding: =-95
@@ -358,7 +361,7 @@ AddBanks As screen:
                                     ="Unit            " & ThisItem.unitNumber
                                     
                                     //ThisItem.clientInstallationId.unit_Number
-                                Width: =Parent.Width/2//5
+                                Width: =Parent.Width/2
                                 X: =Parent.Width/8
                                 Y: =glryExstingUnit.Y
                                 ZIndex: =1
@@ -389,14 +392,11 @@ AddBanks As screen:
                                     If(
                                         CountRows(
                                             Filter(
-                                             //   projectAssignment_1,
-                                                //bankId.Go_Number=ThisItem.cname
-                                    
                                                 assignments,
-                                               bankId.Id = ThisItem.Id
+                                                bankId.Id = ThisItem.Id
                                             )
                                         ) < 1,
-                                      'trash-black',
+                                        'trash-black',
                                         trashGray
                                     )
                                 Width: =20
@@ -414,8 +414,7 @@ AddBanks As screen:
                                     If(
                                         CountRows(
                                             Filter(
-                                               // projectAssignment_1,
-                                               // bankId.Go_Number=ThisItem.cname
+                                               
                                                assignments,
                                                bankId.Id = ThisItem.Id
                                             )
@@ -426,16 +425,16 @@ AddBanks As screen:
                                 Fill: =RGBA(0, 0, 0, 0)
                                 Font: =referenceCSS.RFont
                                 Height: =50
-                                HoverBorderColor: =//ColorFade(Self.BorderColor, 20%)
+                                HoverBorderColor: =
                                 HoverColor: =referenceCSS.RColorBlack
                                 HoverFill: =RGBA(0, 0, 0, 0)
                                 OnSelect: |+
                                     =UpdateContext({IsRemoveBank:true});
                                     
-                                    //Remove(clientInstallation,ThisItem);
+                                    
                                     Set(removeBankUnit,ThisItem);
                                     
-                                PressedBorderColor: =//Self.Fill
+                                PressedBorderColor: =
                                 PressedColor: =RGBA(0,0,0,1)
                                 PressedFill: =RGBA(0, 0, 0, 0)
                                 Size: =referenceCSS.RLabelFontSize
@@ -474,8 +473,7 @@ AddBanks As screen:
                                     =If(
                                         CountRows(
                                             Filter(
-                                             //   projectAssignment_1,
-                                                //bankId.Go_Number=ThisItem.cname
+                                            
                                     
                                                 assignments,
                                                bankId.Id = ThisItem.Id
@@ -497,8 +495,7 @@ AddBanks As screen:
                                     =If(
                                         CountRows(
                                             Filter(
-                                               // projectAssignment_1,
-                                               // bankId.Go_Number=ThisItem.cname
+                                            
                                                assignments,
                                                bankId.Id = ThisItem.Id
                                             )
@@ -512,8 +509,7 @@ AddBanks As screen:
                                     =If(
                                         CountRows(
                                             Filter(
-                                               // projectAssignment_1,
-                                               // bankId.Go_Number=ThisItem.cname
+                                         
                                                assignments,
                                                bankId.Id = ThisItem.Id
                                             )
@@ -528,9 +524,7 @@ AddBanks As screen:
                                 HoverFill: =RGBA(0, 0, 0, 0)
                                 OnSelect: |
                                     =
-                                    //Set(IsEdit,false);
-                                    //Navigate(Screen6);
-                                    //Set(IsEdit,false);
+                                    
                                     Navigate(
                                         EditBank,
                                         ScreenTransition.None,
@@ -542,7 +536,7 @@ AddBanks As screen:
                                           
                                         }
                                     );
-                                PressedBorderColor: =//Self.Fill
+                                PressedBorderColor: =
                                 PressedColor: =RGBA(0,0,0,1)
                                 PressedFill: =RGBA(0, 0, 0, 0)
                                 Size: =referenceCSS.RLabelFontSize
