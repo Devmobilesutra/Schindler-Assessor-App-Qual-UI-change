@@ -652,7 +652,8 @@ EditBank As screen:
                                                     Id: Text(GUID()),
                                                     bankId: LookUp(
                                                         schindlerBanks,
-                                                        goNumber = TxtGonumberEditBank.Text
+                                                        //goNumber = TxtGonumberEditBank.Text
+                                                          Id = nbank
                                                     ),
                                                     location: txtLocationEditBank.Text,
                                                     productId: LookUp(
