@@ -2311,7 +2311,7 @@ FindingScreen As screen:
                                     );
                                     
                                     Select(Parent)
-                                Visible: =If(UP,false)
+                                Visible: =If(UP,true)
                                 Width: =Image14_2.Width
                                 X: =Parent.TemplateWidth/7
                                 Y: =16
