@@ -447,6 +447,14 @@ FindingScreen As screen:
                                 glryItmesAS.Selected.cboxItemsAS.Value = true;
                                 
                             );
+                               UpdateIf(
+                                                    GC_checkpointItem_Images,
+                                                    assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpoint_id.checkpointAssessment_id = GuidId  && checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = varCItemA && CIIstatusUpdate = 2,
+                                                    {
+                                                  
+                                                      Image:'submitted-cloud'
+                                                    }
+                                                );
                             Navigate(AssessmentScreen);
                         PaddingBottom: =10
                         PaddingLeft: =20
@@ -2111,7 +2119,7 @@ FindingScreen As screen:
                             TemplatePadding: =0
                             TemplateSize: =350
                             Visible: =Q
-                            Width: =Parent.Width/1.2
+                            Width: =Parent.Width-40 //1.2
                             WrapCount: =2
                             ZIndex: =5
 
@@ -2175,7 +2183,6 @@ FindingScreen As screen:
                                     =/*//for reset ideal timer
                                     Reset(tmr_logout);
                                     Set(UserLastNavigated, Now());*/
-                                    
                                     //for safety check
                                     If(
                                         DateDiff(
@@ -2194,8 +2201,12 @@ FindingScreen As screen:
                                         );
                                         
                                     );
-                                    
-                                    //UpdateIf(GC_checkpointItem_Images,checkpointItemImagesId=ThisItem.checkpointItemImagesId,{image_annotation:TextInput6_2.Text});
+                                    UpdateIf(
+                                        GC_checkpointItem_Images,
+                                        checkpointItemImagesId = ThisItem.checkpointItemImagesId,
+                                        {image_annotation: TextInput6_2.Text,
+                                        CIIstatusUpdate:0}
+                                    );
                                 OnSelect: |-
                                     =/*//for reset ideal timer
                                     Reset(tmr_logout);
@@ -2326,14 +2337,15 @@ FindingScreen As screen:
                                     Height: =40
                                     OnChange: |-
                                         =Set(UP,true);
-                                        /*UpdateIf(
+                                        UpdateIf(
                                                                 GC_checkpointItem_Images,
                                                                 checkpointItemImagesId = ThisItem.checkpointItemImagesId,
                                                                 {
-                                                                    Image: Image14_2.Image
+                                                                    Image: Image14_2.Image,
+                                                                    CIIstatusUpdate:0
                                                                     //image_annotation: TextInput6_2.Text
                                                                 }
-                                                            );*/
+                                                            );
                                                             If(App.Width>App.Height,App.ActiveScreen.Orientation="Landscape",App.ActiveScreen.Orientation="Landscape")
                                     OnSelect: |-
                                         =/*//for reset ideal timer
@@ -2454,6 +2466,65 @@ FindingScreen As screen:
                                 X: =AddMediaButton1_2.Width+30
                                 Y: =Image14_2.Y
                                 ZIndex: =6
+
+                            Button5_23 As button:
+                                BorderColor: =AllScreensCSS.RActiveColor
+                                DisplayMode: |-
+                                    =If(
+                                        Connection.Connected && ThisItem.CIIstatusUpdate = 2,
+                                        DisplayMode.Edit,
+                                        DisplayMode.Disabled
+                                    )
+                                Fill: =AllScreensCSS.RActiveColor
+                                Font: =AllScreensCSS.ButtonFont
+                                HoverFill: =AllScreensCSS.RActiveColor
+                                Italic: =true
+                                OnSelect: |
+                                    =
+                                    //for safety check
+                                    If(
+                                        DateDiff(
+                                            UserLastNavigatedTime,
+                                            Now(),
+                                            TimeUnit.Seconds
+                                        ) > SafetyCheckTime,
+                                        Set(
+                                            safetyPopup,
+                                            true
+                                        );
+                                        ,
+                                        Set(
+                                            UserLastNavigatedTime,
+                                            Now()
+                                        );
+                                        
+                                    );
+                                    Set(
+                                        VarGetImage,
+                                        LookUp(
+                                            checkpointItem_Images,
+                                            checkpointItemImagesId = ThisItem.checkpointItemImagesId,
+                                            Image
+                                        )
+                                    );
+                                    UpdateIf(
+                                        GC_checkpointItem_Images,
+                                        checkpointItemImagesId = ThisItem.checkpointItemImagesId,
+                                        {
+                                            Image: VarGetImage,
+                                            CIIstatusUpdate: 2
+                                        }
+                                    );
+                                RadiusBottomLeft: =1
+                                RadiusBottomRight: =1
+                                RadiusTopLeft: =1
+                                RadiusTopRight: =1
+                                Size: =10
+                                Text: ="Download  Image"
+                                Width: =80
+                                X: =AddMediaButton1_2.Width+30
+                                Y: =Image14_2.Y+ 50
+                                ZIndex: =7
 
                         ctnAddImageFS As groupContainer.horizontalAutoLayoutContainer:
                             FillPortions: =0
@@ -2748,7 +2819,7 @@ FindingScreen As screen:
                                             );
                                      // Notify("update images"& CountRows(GC_checkpointItem_Images));      
                                 //for checkpoint image 
-                                ForAll(
+                                /*ForAll(
                                                 GlryImagesFS.AllItems As i,
                                                     UpdateIf(
                                                         GC_checkpointItem_Images,
@@ -2761,6 +2832,9 @@ FindingScreen As screen:
                                                         }
                                                     )
                                             );
+                                            */
+                                
+                                             
                                             Set(
                                                 popupsuccess1,
                                                 true
@@ -2941,6 +3015,11 @@ FindingScreen As screen:
                     false
                 );
                 Navigate(AssessmentScreen);
+                UpdateIf(
+                    GC_checkpointItem_Images,
+                    assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpoint_id.checkpointAssessment_id = GuidId && checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = varCItemA && CIIstatusUpdate = 2,
+                    {Image: 'submitted-cloud'}
+                );
             PressedBorderColor: =RGBA(1, 43, 1, 0)
             PressedFill: =Self.Fill
             Text: ="Ok"

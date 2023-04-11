@@ -708,7 +708,7 @@ BankScreen As screen:
                             
                                         UpdateIf(GC_checkpointItem_Images,bankUnitId.Id=ThisItem.bankUnitId.Id,
                                         {
-                                            Image:Blank()
+                                            Image:'submitted-cloud'
                                         });   
                                                     ,
                                         If(
@@ -739,7 +739,7 @@ BankScreen As screen:
                                                         checkpoint_id: i.checkpoint_id,
                                                         checkpointItem_Id: i.checkpointItem_Id,
                                                         product_id: i.product_id,
-                                                        //Image:i.Image,
+                                                        Image:'submitted-cloud',
                                                         image_annotation: i.image_annotation,
                                                         CIIstatusUpdate: 2
                                                     }

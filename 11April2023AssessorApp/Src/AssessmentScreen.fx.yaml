@@ -2234,10 +2234,13 @@ AssessmentScreen As screen:
                                                     GC_checkpointItem_Images,
                                                     assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpoint_id.checkpointAssessment_id = GuidId && CIIstatusUpdate = 1,
                                                     {
-                                                      CIIstatusUpdate: 2,
-                                                      Image:Blank()
+                                                      CIIstatusUpdate: 2
+                                                       Image:'submitted-cloud'
+                                                      //,
+                                                     // Image:info
                                                     }
                                                 );
+                                               
                                             );
                                       //saving data to local cache
                                        SaveData(
@@ -2245,6 +2248,14 @@ AssessmentScreen As screen:
                                                 "localcheckpointitemimage"
                                             );
                                         );
+                                     /*     UpdateIf(
+                                                    GC_checkpointItem_Images,
+                                                    assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpoint_id.checkpointAssessment_id = GuidId && CIIstatusUpdate = 2,
+                                                    {
+                                                     // CIIstatusUpdate: 2,
+                                                      Image:'submitted-cloud'
+                                                    }
+                                                );*/
                                     );
                                 );
                                 //net connected if loop
