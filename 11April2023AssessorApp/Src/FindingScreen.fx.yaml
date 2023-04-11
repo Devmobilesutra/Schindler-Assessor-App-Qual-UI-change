@@ -2805,7 +2805,7 @@ FindingScreen As screen:
                                             );
                                      // Notify("update images"& CountRows(GC_checkpointItem_Images));      
                                 //for checkpoint image 
-                                ForAll(
+                                /*ForAll(
                                                 GlryImagesFS.AllItems As i,
                                                     UpdateIf(
                                                         GC_checkpointItem_Images,
@@ -2818,6 +2818,7 @@ FindingScreen As screen:
                                                         }
                                                     )
                                             );
+                                            */
                                             Set(
                                                 popupsuccess1,
                                                 true
