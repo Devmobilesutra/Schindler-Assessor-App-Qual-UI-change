@@ -3248,7 +3248,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ctnlpdimg",
-      "ParentIndex": 4,
+      "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -3528,7 +3528,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ctnlpdname",
-      "ParentIndex": 2,
+      "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -3975,7 +3975,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ctnMiddleDS",
-      "ParentIndex": 3,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -5551,7 +5551,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "iconInnerRectsngleDS",
-      "ParentIndex": 8,
+      "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -5950,7 +5950,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "iconUpcomingprojectindicator",
-      "ParentIndex": 2,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -7628,7 +7628,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "imgInfoDS",
-      "ParentIndex": 9,
+      "ParentIndex": 7,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -12600,7 +12600,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblUpcomingProjects",
-      "ParentIndex": 1,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -13279,7 +13279,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Rectangle1",
-      "ParentIndex": 3,
+      "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -13831,7 +13831,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "TextInput1",
-      "ParentIndex": 7,
+      "ParentIndex": 9,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -14118,7 +14118,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "tmr_logout",
-      "ParentIndex": 4,
+      "ParentIndex": 8,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
