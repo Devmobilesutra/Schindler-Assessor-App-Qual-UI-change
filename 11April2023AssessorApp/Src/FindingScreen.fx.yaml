@@ -432,7 +432,7 @@ FindingScreen As screen:
                                 GC_checkpointItem_Images,
                                 assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = varCItemA 
                              //&& (Image14_2.Image) = Blank()
-                            && IsBlank(Image)
+                            && IsBlank(Image) && CIIstatusUpdate =Blank()
                             );
                             If(
                                 glryItmesAS.Selected.checkpointItemImage &&
@@ -2639,7 +2639,7 @@ FindingScreen As screen:
                                 );
                                 If(
                                     !IsBlank(LookUp( GlryImagesFS.AllItems,
-                                            (Image14_2.Image) = Blank())),
+                                            (Image14_2.Image) = Blank() && CIIstatusUpdate=Blank())),
                                     Set(
                                         VarBlankrow2,
                                         true
