@@ -2225,7 +2225,7 @@ AssessmentScreen As screen:
                                                 !IsEmpty(Errors(checkpointItem_Images)),
                                                 Notify(
                                                     "Patch function error - Images " & Concat(
-                                                        Errors(checkpointItem_ActionItem),
+                                                        Errors(checkpointItem_Images),
                                                         Column & ": " & Message
                                                     ),
                                                     NotificationType.Error
