@@ -704,7 +704,13 @@ BankScreen As screen:
                                                 "CIIstatusUpdate",
                                                 2
                                             )
-                                        );,
+                                        );
+                            
+                                        UpdateIf(GC_checkpointItem_Images,bankUnitId.Id=ThisItem.bankUnitId.Id,
+                                        {
+                                            Image:Blank()
+                                        });   
+                                                    ,
                                         If(
                                             CountRows(
                                                 Filter(
@@ -733,8 +739,7 @@ BankScreen As screen:
                                                         checkpoint_id: i.checkpoint_id,
                                                         checkpointItem_Id: i.checkpointItem_Id,
                                                         product_id: i.product_id,
-                                                       // Image:Image14_2.Image,
-                                                        Image:i.Image,
+                                                        //Image:i.Image,
                                                         image_annotation: i.image_annotation,
                                                         CIIstatusUpdate: 2
                                                     }
@@ -744,6 +749,32 @@ BankScreen As screen:
                                     );
                                 );
                               );
+                               //save collection to local cache
+                                            SaveData(
+                                                GcSectionAssessment,
+                                                "localsectionassessment"
+                                            );
+                                            
+                                            SaveData(
+                                                GcCheckpointAssessment,
+                                                "localcheckpointassessment"
+                                            );
+                                            
+                                            SaveData(
+                                                GC_checkpointItemAssessment,
+                                                "localcheckpointitemassessment"
+                                            );
+                                            
+                                            SaveData(
+                                                GC_checkpointItem_ActionItem,
+                                                "localcheckpointitemactionitem"
+                                            );
+                                            
+                                            SaveData(
+                                                GC_checkpointItem_Images,
+                                                "localcheckpointitemimage"
+                                            );
+                            
                             If(
                                 comp = true,
                                 Navigate(ViewAssessmentScreen),
