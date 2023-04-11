@@ -79,6 +79,20 @@
       }
     },
     {
+      "Kind": "default.cds_environmentvariabledefinition_forms",
+      "Namespace": "Environment Variable Definitions (Forms)",
+      "Values": {
+        "Information": "3853733b-a351-455d-b686-d2d05027ba4d"
+      }
+    },
+    {
+      "Kind": "default.cds_environmentvariablevalue_forms",
+      "Namespace": "Environment Variable Values (Forms)",
+      "Values": {
+        "Information": "f574a3ab-1060-43ee-a95f-9aa922b497db"
+      }
+    },
+    {
       "Kind": "default.cds_fileattachment_forms",
       "Namespace": "FileAttachments (Forms)",
       "Values": {}
@@ -164,20 +178,6 @@
         "User": "c2cd9e55-d4b4-4b55-9951-16ead79643e5",
         "User form – Business": "c2413504-7eb2-4c59-a087-95d819866114",
         "User Hierarchy Tile Form": "c68d6c09-d7a7-4959-8d0f-44b8cff9b452"
-      }
-    },
-    {
-      "Kind": "default.cds_environmentvariabledefinition_forms",
-      "Namespace": "Environment Variable Definitions (Forms)",
-      "Values": {
-        "Information": "3853733b-a351-455d-b686-d2d05027ba4d"
-      }
-    },
-    {
-      "Kind": "default.cds_environmentvariablevalue_forms",
-      "Namespace": "Environment Variable Values (Forms)",
-      "Values": {
-        "Information": "f574a3ab-1060-43ee-a95f-9aa922b497db"
       }
     },
     {
