@@ -2279,7 +2279,9 @@ FindingScreen As screen:
                                 Height: =Min(Self.Width, Parent.TemplateHeight - 115)
                                 Image: |-
                                     =If(
-                                        IsBlank(ThisItem.Image),
+                                        IsBlank(ThisItem.Image) && ThisItem.CIIstatusUpdate = 2,
+                                        info,
+                                        IsBlank(ThisItem.Image) && IsBlank(ThisItem.CIIstatusUpdate),
                                         'Sample Image',
                                         ThisItem.Image
                                     )
@@ -2474,10 +2476,17 @@ FindingScreen As screen:
                                     );
                                     If(
                                         (varIsImage = true && varIsImage1 = false) || (varIsImage1 = true && varIsImage = false),
-                                        Remove(
+                                        /*Remove(
                                             GC_checkpointItem_Images,
                                             ThisItem
-                                        );
+                                        );*/
+                                        UpdateIf(GC_checkpointItem_Images,checkpointItemImagesId=ThisItem.checkpointItemImagesId,
+                                        {
+                                    Image:Blank(),
+                                    CIIstatusUpdate:2
+                                    
+                                        });
+                                        
                                         SaveData(
                                             GC_checkpointItem_Images,
                                             "localcheckpointitemimage"
@@ -2531,6 +2540,34 @@ FindingScreen As screen:
                                 X: =AddMediaButton1_2.Width+30
                                 Y: =Image14_2.Y
                                 ZIndex: =6
+
+                            Button5_23 As button:
+                                BorderColor: =AllScreensCSS.RActiveColor
+                                Fill: =AllScreensCSS.RActiveColor
+                                Font: =AllScreensCSS.ButtonFont
+                                HoverFill: =AllScreensCSS.RActiveColor
+                                Italic: =true
+                                OnSelect: |+
+                                    =Set(temp123,LookUp(checkpointItem_Images,checkpointItemImagesId=ThisItem.checkpointItemImagesId,Image));
+                                    UpdateIf(
+                                        GC_checkpointItem_Images,
+                                        checkpointItemImagesId = ThisItem.checkpointItemImagesId,
+                                        {
+                                            Image: temp123,
+                                            CIIstatusUpdate:2
+                                        }
+                                    );
+                                    
+                                RadiusBottomLeft: =1
+                                RadiusBottomRight: =1
+                                RadiusTopLeft: =1
+                                RadiusTopRight: =1
+                                Size: =12
+                                Text: ="Get"
+                                Width: =90
+                                X: =AddMediaButton1_2.Width+30
+                                Y: =Image14_2.Y+60
+                                ZIndex: =7
 
                         ctnAddImageFS As groupContainer.horizontalAutoLayoutContainer:
                             FillPortions: =0
