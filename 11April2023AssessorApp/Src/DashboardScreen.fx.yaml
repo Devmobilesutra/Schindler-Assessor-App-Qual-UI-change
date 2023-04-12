@@ -3,6 +3,7 @@ DashboardScreen As screen:
         =
         //Set(LogOutTimer, -1800);
         Set(varPatchTimer,false);
+        Set(VarReportIssue,false);
         UpdateIf(
                 gcProjectAssignment,
                  isCompleted = "Inprogress1",
