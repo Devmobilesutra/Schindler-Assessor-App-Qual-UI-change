@@ -2602,10 +2602,10 @@ FindingScreen As screen:
                                         ) >= 50,
                                         Set(
                                             VarImagesExceedPopupText,
-                                            "You have reached limit of 50 images.You can not add Images."
+                                            "You have reached limit of 50 images. Please submit the findings before continuing the assessment."
                                         );
                                         Notify(
-                                            "You have reached limit of 50 images.You can not add Images.",
+                                            "You have reached limit of 50 images.You can not add Images. Please submit the findings before continuing the assessment.",
                                             NotificationType.Error
                                         );
                                         Set(
