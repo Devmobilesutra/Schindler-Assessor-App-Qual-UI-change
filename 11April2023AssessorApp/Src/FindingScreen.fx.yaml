@@ -2663,7 +2663,7 @@ FindingScreen As screen:
                             Label4 As label:
                                 FontWeight: =FontWeight.Bold
                                 Text: |-
-                                    ="  Images : " & CountRows(GC_checkpointItem_Images)
+                                    =If(CountRows(Filter(GC_checkpointItem_Images,CIIstatusUpdate=0))>0,"  Images : " &  CountRows(Filter(GC_checkpointItem_Images,CIIstatusUpdate=0)),"")
                                 ZIndex: =4
 
                         btnSaveFS As button:

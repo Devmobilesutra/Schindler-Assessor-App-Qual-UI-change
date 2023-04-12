@@ -390,7 +390,17 @@ BankScreen As screen:
                         OnSelect: =Select(Parent)
                         Size: =16
                         Text: |-
-                            ="Unit  " & ThisItem.bankUnitId.unitNumber  & "  Images : " & CountRows(Filter(GC_checkpointItem_Images,bankUnitId.Id = ThisItem.bankUnitId.Id))
+                            ="Unit  " & ThisItem.bankUnitId.unitNumber & 
+                            If(CountRows(
+                                Filter(
+                                    GC_checkpointItem_Images,
+                                    bankUnitId.Id = ThisItem.bankUnitId.Id && CIIstatusUpdate = 0
+                                ))>0, "  Images : " & CountRows(
+                                Filter(
+                                    GC_checkpointItem_Images,
+                                    bankUnitId.Id = ThisItem.bankUnitId.Id && CIIstatusUpdate = 0
+                                )
+                            ),"")
                         Width: =265
                         X: =22
                         Y: =27

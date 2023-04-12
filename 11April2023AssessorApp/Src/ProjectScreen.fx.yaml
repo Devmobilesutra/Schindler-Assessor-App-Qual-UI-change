@@ -884,8 +884,14 @@ ProjectScreen As screen:
                     PaddingTop: =0
                     Size: =AllScreensCSS.RLabelFontSize
                     Text: |-
-                        ="Images : " & CountRows(Filter(GC_checkpointItem_Images,assignmentId.Id= ThisItem.Id))
+                        ="Images : " & CountRows(Filter(GC_checkpointItem_Images,assignmentId.Id= ThisItem.Id && CIIstatusUpdate=0))
                     VerticalAlign: =VerticalAlign.Top
+                    Visible: |-
+                        =If(CountRows(
+                            Filter(
+                                GC_checkpointItem_Images,
+                                assignmentId.Id=ThisItem.Id && CIIstatusUpdate = 0
+                            ))>0,true,"")
                     Width: =If(App.Width<770,200,260)
                     X: |-
                         =If(
