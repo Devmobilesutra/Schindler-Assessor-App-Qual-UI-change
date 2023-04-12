@@ -2587,12 +2587,12 @@ FindingScreen As screen:
                                         
                                     );
                                     
-                                    If( CountRows(GC_checkpointItem_Images) >= 50,
+                                    If( CountRows(Filter(GC_checkpointItem_Images,CIIstatusUpdate=0)) >= 50,
                                       Set(VarImagesExceedPopupText,"You have reached limit of 50 images.You can not add Images.");
                                       Notify("You have reached limit of 50 images.You can not add Images.",NotificationType.Error);
                                       Set(VarImagesExceedPopup,true);
                                       ,
-                                      If(  CountRows(GC_checkpointItem_Images) > 40,
+                                      If(  CountRows(Filter(GC_checkpointItem_Images,CIIstatusUpdate=0)) > 40,
                                       Set(VarImagesExceedPopupText, CountRows(GC_checkpointItem_Images) & " Images are already stored. 50 is a limit.");
                                       Notify(CountRows(GC_checkpointItem_Images) & " Images are already stored. 50 is a limit.",NotificationType.Error);
                                        Set(VarImagesExceedPopup,true);
