@@ -2122,30 +2122,7 @@ AssessmentScreen As screen:
                                                     "shlaf_actionsortsequence"
                                                 )
                                             );
-                                            
-                                     
-                            //getting specific unit wise checkpoint Action item data from dataverse to collection beacause we need unique indetifier from dataverse
-                            ClearCollect(
-                                            TempcheckpointItem_ActionItem,
-                                            Filter(checkpointItem_ActionItem
-                                             ,
-                                                assignmentId.assessorId = varLoggedAssessor && assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpoint_id.checkpointAssessment_id = GuidId
-                                            )
-                                        );
-                             //updating unique identifire ,assessment status and patch status to Checkpoint action collection from temporary collection  
-                            ForAll(
-                                            TempcheckpointItem_ActionItem As i,
-                                            UpdateIf( 
-                                                GC_checkpointItem_ActionItem,
-                                                checkpointItemActionItemsId = i.checkpointItemActionItemsId && CIAstatusUpdate = 1,
-                                                {
-                                                    checkpointItem_ActionItems: i.checkpointItem_ActionItems,//unique key
-                                                    Action_status: i.Action_status,
-                                                    CIAstatusUpdate: 2
-                                                }
-                                            )
-                                        );
-                            If(
+                                            If(
                                                 !IsEmpty(Errors(checkpointItem_ActionItem)),
                                                 Notify(
                                                     "Patch function error - Actions " & Concat(
@@ -2154,14 +2131,35 @@ AssessmentScreen As screen:
                                                     ),
                                                     NotificationType.Error
                                                 ),
-                                                UpdateIf(
+                                               /* UpdateIf(
                                                     GC_checkpointItem_ActionItem,
                                                     assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpoint_id.checkpointAssessment_id = GuidId && CIAstatusUpdate = 1,
                                                     {CIAstatusUpdate: 2}
+                                                );*/
+                                                //getting specific unit wise checkpoint Action item data from dataverse to collection beacause we need unique indetifier from dataverse
+                                                ClearCollect(
+                                                    TempcheckpointItem_ActionItem,
+                                                    Filter(
+                                                        checkpointItem_ActionItem,
+                                                        assignmentId.assessorId = varLoggedAssessor && assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpoint_id.checkpointAssessment_id = GuidId
+                                                    )
+                                                );
+                             //updating unique identifire ,assessment status and patch status to Checkpoint action collection from temporary collection  
+                            ForAll(
+                                                    TempcheckpointItem_ActionItem As i,
+                                                    UpdateIf(
+                                                        GC_checkpointItem_ActionItem,
+                                                        checkpointItemActionItemsId = i.checkpointItemActionItemsId && CIAstatusUpdate = 1,
+                                                        {
+                                                            checkpointItem_ActionItems: i.checkpointItem_ActionItems, //unique key
+                                                            Action_status: i.Action_status,
+                                                            CIAstatusUpdate: 2
+                                                        }
+                                                    )
                                                 );
                                             );
                                        //saving data to local cache
-                                        SaveData(
+                            SaveData(
                                                 GC_checkpointItem_ActionItem,
                                                 "localcheckpointitemactionitem"
                                             );
@@ -2198,30 +2196,6 @@ AssessmentScreen As screen:
                                                     "shlaf_imagesortsequence"
                                                 )
                                             );
-                                           
-                            //getting specific checkpoint wise checkpoint images  data from dataverse to collection beacause we need unique indetifier from dataverse
-                            ClearCollect(
-                                                TempCheckpointItem_Images,
-                                                Filter(
-                                                    checkpointItem_Images
-                                              ,
-                                                    assignmentId.assessorId = varLoggedAssessor && assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpoint_id.checkpointAssessment_id = GuidId
-                                                )
-                                            );
-                                 //updating unique identifire ,comment ,assignment status and patch status to checkpoint images collection from temporary collection  
-                            ForAll(
-                                                TempCheckpointItem_Images As i,
-                                                UpdateIf(
-                                                    GC_checkpointItem_Images,
-                                                    checkpointItemImagesId = i.checkpointItemImagesId && CIIstatusUpdate = 1,
-                                                    {
-                                                        checkpointItem_Images: i.checkpointItem_Images,
-                                                        //unique key
-                                                        CIIstatusUpdate: 2
-                                                    }
-                                                )
-                                            );
-                                            
                                             If(
                                                 !IsEmpty(Errors(checkpointItem_Images)),
                                                 Notify(
@@ -2231,7 +2205,7 @@ AssessmentScreen As screen:
                                                     ),
                                                     NotificationType.Error
                                                 ),
-                                                UpdateIf(
+                                               /* UpdateIf(
                                                     GC_checkpointItem_Images,
                                                     assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpoint_id.checkpointAssessment_id = GuidId && CIIstatusUpdate = 1,
                                                     {
@@ -2240,11 +2214,32 @@ AssessmentScreen As screen:
                                                       //,
                                                      // Image:info
                                                     }
+                                                );*/
+                                                //getting specific checkpoint wise checkpoint images  data from dataverse to collection beacause we need unique indetifier from dataverse
+                                                ClearCollect(
+                                                    TempCheckpointItem_Images,
+                                                    Filter(
+                                                        checkpointItem_Images,
+                                                        assignmentId.assessorId = varLoggedAssessor && assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpoint_id.checkpointAssessment_id = GuidId
+                                                    )
                                                 );
-                                               
+                                 //updating unique identifire ,comment ,assignment status and patch status to checkpoint images collection from temporary collection  
+                            ForAll(
+                                                    TempCheckpointItem_Images As i,
+                                                    UpdateIf(
+                                                        GC_checkpointItem_Images,
+                                                        checkpointItemImagesId = i.checkpointItemImagesId && CIIstatusUpdate = 1,
+                                                        {
+                                                            checkpointItem_Images: i.checkpointItem_Images,
+                                                            //unique key
+                                                            Image: 'submitted-cloud',
+                                                            CIIstatusUpdate: 2
+                                                        }
+                                                    )
+                                                );
                                             );
                                       //saving data to local cache
-                                       SaveData(
+                            SaveData(
                                                 GC_checkpointItem_Images,
                                                 "localcheckpointitemimage"
                                             );
@@ -2270,6 +2265,11 @@ AssessmentScreen As screen:
                                 popupsuccess,
                                 true
                             );
+                            Clear(TempSectionAssessment);
+                            Clear(TempCheckpointAssessment);
+                            Clear(TempCheckpointItemAssessment);
+                            Clear(TempcheckpointItem_ActionItem);
+                            Clear(TempCheckpointItem_Images);
                             Set(
                                 varSpinner,
                                 false
