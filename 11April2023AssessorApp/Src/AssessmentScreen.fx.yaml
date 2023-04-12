@@ -2123,7 +2123,7 @@ AssessmentScreen As screen:
                                                 )
                                             );
                                             
-                            /*          
+                                     
                             //getting specific unit wise checkpoint Action item data from dataverse to collection beacause we need unique indetifier from dataverse
                             ClearCollect(
                                             TempcheckpointItem_ActionItem,
@@ -2131,9 +2131,9 @@ AssessmentScreen As screen:
                                              ,
                                                 assignmentId.assessorId = varLoggedAssessor && assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpoint_id.checkpointAssessment_id = GuidId
                                             )
-                                        );*/
+                                        );
                              //updating unique identifire ,assessment status and patch status to Checkpoint action collection from temporary collection  
-                            /*ForAll(
+                            ForAll(
                                             TempcheckpointItem_ActionItem As i,
                                             UpdateIf( 
                                                 GC_checkpointItem_ActionItem,
@@ -2144,7 +2144,7 @@ AssessmentScreen As screen:
                                                     CIAstatusUpdate: 2
                                                 }
                                             )
-                                        );*/
+                                        );
                             If(
                                                 !IsEmpty(Errors(checkpointItem_ActionItem)),
                                                 Notify(
@@ -2198,7 +2198,7 @@ AssessmentScreen As screen:
                                                     "shlaf_imagesortsequence"
                                                 )
                                             );
-                             /*               
+                                           
                             //getting specific checkpoint wise checkpoint images  data from dataverse to collection beacause we need unique indetifier from dataverse
                             ClearCollect(
                                                 TempCheckpointItem_Images,
@@ -2220,7 +2220,8 @@ AssessmentScreen As screen:
                                                         CIIstatusUpdate: 2
                                                     }
                                                 )
-                                            );*/
+                                            );
+                                            
                                             If(
                                                 !IsEmpty(Errors(checkpointItem_Images)),
                                                 Notify(
