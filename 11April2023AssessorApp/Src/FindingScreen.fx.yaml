@@ -406,7 +406,7 @@ FindingScreen As screen:
                     LayoutMinWidth: =250
                     LayoutMode: =LayoutMode.Auto
                     LayoutWrap: =true
-                    PaddingLeft: =40
+                    PaddingLeft: =20
                     Width: =Parent.Width
                     Y: =ctnHeaderFS.Y+ctnHeaderFS.Height
                     ZIndex: =1
@@ -432,7 +432,7 @@ FindingScreen As screen:
                                 GC_checkpointItem_Images,
                                 assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = varCItemA 
                              //&& (Image14_2.Image) = Blank()
-                            && IsBlank(Image) && CIIstatusUpdate =Blank()
+                            && IsBlank(Image) && CIIstatusUpdate = Blank()
                             );
                             If(
                                 glryItmesAS.Selected.checkpointItemImage &&
@@ -447,17 +447,14 @@ FindingScreen As screen:
                                 glryItmesAS.Selected.cboxItemsAS.Value = true;
                                 
                             );
-                               UpdateIf(
-                                                    GC_checkpointItem_Images,
-                                                    assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpoint_id.checkpointAssessment_id = GuidId  && checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = varCItemA && CIIstatusUpdate = 2,
-                                                    {
-                                                  
-                                                      Image:'submitted-cloud'
-                                                    }
-                                                );
+                            UpdateIf(
+                                GC_checkpointItem_Images,
+                                assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpoint_id.checkpointAssessment_id = GuidId && checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = varCItemA && CIIstatusUpdate = 2,
+                                {Image: 'submitted-cloud'}
+                            );
                             Navigate(AssessmentScreen);
                         PaddingBottom: =10
-                        PaddingLeft: =20
+                        PaddingLeft: =0
                         PaddingRight: =10
                         PaddingTop: =10
                         PressedBorderColor: =Self.BorderColor
@@ -2239,7 +2236,7 @@ FindingScreen As screen:
                                 RadiusTopLeft: =1
                                 RadiusTopRight: =1
                                 Size: =AllScreensCSS.RLabelFontSize-4
-                                Width: =Parent.Width/3.5
+                                Width: =Parent.Width/3.6
                                 X: |-
                                     =//AddMediaButton1_2.X
                                     Image14_2.X
@@ -2333,8 +2330,13 @@ FindingScreen As screen:
                                     ZIndex: =3
 
                                 AddMediaButton1_2 As addMedia:
-                                    ChangePictureText: ="      Add Picture/Change Picture      "
-                                    Fill: =RGBA(153, 160, 196, 1)
+                                    ChangePictureText: =" Click to Add Picture or Change Picture      "
+                                    Color: |-
+                                        =//RGBA(0, 0, 0, 1)
+                                        AllScreensCSS.RColorWhite
+                                    Fill: |-
+                                        =//RGBA(153, 160, 196, 1)
+                                        AllScreensCSS.RActiveColor
                                     FocusedBorderThickness: =
                                     Font: =AllScreensCSS.ButtonFont
                                     Height: =40
@@ -2377,13 +2379,13 @@ FindingScreen As screen:
                                         Set(UP,true);
                                         //UpdateIf(GC_checkpointItem_Images,checkpointItemImagesId=ThisItem.checkpointItemImagesId,{Image:UploadedImage1_2});
                                         If(App.Width>App.Height,App.ActiveScreen.Orientation="Landscape",App.ActiveScreen.Orientation="Landscape")
-                                    Size: =AllScreensCSS.RLabelFontSize-2
+                                    Size: =AllScreensCSS.RLabelFontSize-4
                                     Text: |-
                                         =//"Tap or click to add a picture"
-                                        "   Add Picture/Change Picture     "
+                                        " Click to Add Picture or Change Picture     "
                                     Width: =Parent.Width/3
-                                    X: =(Parent.TemplateWidth-Self.Width)/3.5
-                                    Y: =Image14_2.Height+Image14_2.Y
+                                    X: =(Parent.TemplateWidth-Self.Width)/3.8
+                                    Y: =Image14_2.Height+Image14_2.Y+1
                                     ZIndex: =4
 
                             Button5_22 As button:
@@ -2573,7 +2575,6 @@ FindingScreen As screen:
                                     =/*//for reset ideal timer
                                     Reset(tmr_logout);
                                     Set(UserLastNavigated, Now());*/
-                                    
                                     //for safety check
                                     If(
                                         DateDiff(
@@ -2592,70 +2593,131 @@ FindingScreen As screen:
                                         );
                                         
                                     );
-                                    
-                                    If( CountRows(Filter(GC_checkpointItem_Images,CIIstatusUpdate=0)) >= 50,
-                                      Set(VarImagesExceedPopupText,"You have reached limit of 50 images.You can not add Images.");
-                                      Notify("You have reached limit of 50 images.You can not add Images.",NotificationType.Error);
-                                      Set(VarImagesExceedPopup,true);
-                                      ,
-                                      If(  CountRows(Filter(GC_checkpointItem_Images,CIIstatusUpdate=0)) > 40,
-                                      Set(VarImagesExceedPopupText, CountRows(GC_checkpointItem_Images) & " Images are already stored. 50 is a limit.");
-                                      Notify(CountRows(GC_checkpointItem_Images) & " Images are already stored. 50 is a limit.",NotificationType.Error);
-                                       Set(VarImagesExceedPopup,true);
-                                      );
-                                    
-                                    
-                                      
-                                    Set(UP,false);
                                     If(
-                                        CountRows(GlryImagesFS.AllItems) < 4,
-                                        Collect(
-                                          GC_checkpointItem_Images,
-                                                  {
-                                               // checkpointItemImagesId:GUID(),
-                                                checkpointItemImagesId:varBankUnitId & "cii" & Text( Now(), "mmddyyyyhhmmss" ) &"-" & Rand(),
-                                                 assignmentId: LookUp(DropColumns(
-                                                         gcProjectAssignment,"AstatusUpdate"),
-                                                         Id = varAssignmentId
-                                                     ),
-                                                 //  bankId:LookUp(gcBank,Id=VarBankId),
-                                                     bankUnitId: LookUp(
-                                                      gcBankunit,
-                                                        Id = varBankUnitId),
-                                                     section_id: LookUp(DropColumns( GcSectionAssessment,"SstatusUpdate"),'sectionAssessment (quantum_sectionassessment)'=varSA),
-                                                    checkpoint_id: LookUp(DropColumns(
-                                                       GcCheckpointAssessment,"CstatusUpdate"), 
-                                                        checkpointAssessment_id=GuidId
-                                                    ),
-                                                    checkpointItem_Id:LookUp(DropColumns(
-                                                         GC_checkpointItemAssessment,"CIstatusUpdate"),'checkpointItemAssessment (quantum_checkpointitemassessment)'=Text(varCItemA)
-                                                    ),
-                                                     product_id: LookUp(GC_product,product_Model=glryUnitBS.Selected.productModel
-                                                    ),
-                                                    
-                                                    
-                                                    image_annotation: "",
-                                                    ImageSortSequence: LookUp(GC_templateSections,sectionId=VarSectionId,sectionSequence) & LookUp(GC_templateCheckpoints,checkpointId= ChId,checkpointSequence) & LookUp(GC_templateCheckpointsItem,checkpointItemId = varCheckpointitemID,checkpointItemSequence)
-                                            }
+                                        CountRows(
+                                            Filter(
+                                                GC_checkpointItem_Images,
+                                                CIIstatusUpdate = 0
+                                            )
+                                        ) >= 50,
+                                        Set(
+                                            VarImagesExceedPopupText,
+                                            "You have reached limit of 50 images.You can not add Images."
                                         );
-                                    If(
-                                        CountRows(GlryImagesFS.AllItems) >=4,
-                                        Notify("You can capture 4 images only."),
-                                        NotificationType.Warning
-                                    ));
-                                    Set(varImage,true);
-                                    
-                                    
+                                        Notify(
+                                            "You have reached limit of 50 images.You can not add Images.",
+                                            NotificationType.Error
+                                        );
+                                        Set(
+                                            VarImagesExceedPopup,
+                                            true
+                                        );
+                                        ,
+                                        If(
+                                            CountRows(
+                                                Filter(
+                                                    GC_checkpointItem_Images,
+                                                    CIIstatusUpdate = 0
+                                                )
+                                            ) > 40,
+                                            Set(
+                                                VarImagesExceedPopupText,
+                                                CountRows( Filter(
+                                                    GC_checkpointItem_Images,
+                                                    CIIstatusUpdate = 0
+                                                )) & " Images are already stored. 50 is a limit."
+                                            );
+                                            Notify(
+                                                CountRows( Filter(
+                                                    GC_checkpointItem_Images,
+                                                    CIIstatusUpdate = 0
+                                                )) & " Images are already stored. 50 is a limit.",
+                                                NotificationType.Error
+                                            );
+                                            Set(
+                                                VarImagesExceedPopup,
+                                                true
+                                            );
+                                        );
+                                        Set(
+                                            UP,
+                                            false
+                                        );
+                                        If(
+                                            CountRows(GlryImagesFS.AllItems) < 4,
+                                            Collect(
+                                                GC_checkpointItem_Images,
+                                                {
+                                                    // checkpointItemImagesId:GUID(),
+                                                    checkpointItemImagesId: varBankUnitId & "cii" & Text(
+                                                        Now(),
+                                                        "mmddyyyyhhmmss"
+                                                    ) & "-" & Rand(),
+                                                    assignmentId: LookUp(
+                                                        DropColumns(
+                                                            gcProjectAssignment,
+                                                            "AstatusUpdate"
+                                                        ),
+                                                        Id = varAssignmentId
+                                                    ),
+                                                    //  bankId:LookUp(gcBank,Id=VarBankId),
+                                                    bankUnitId: LookUp(
+                                                        gcBankunit,
+                                                        Id = varBankUnitId
+                                                    ),
+                                                    section_id: LookUp(
+                                                        DropColumns(
+                                                            GcSectionAssessment,
+                                                            "SstatusUpdate"
+                                                        ),
+                                                        'sectionAssessment (quantum_sectionassessment)' = varSA
+                                                    ),
+                                                    checkpoint_id: LookUp(
+                                                        DropColumns(
+                                                            GcCheckpointAssessment,
+                                                            "CstatusUpdate"
+                                                        ),
+                                                        checkpointAssessment_id = GuidId
+                                                    ),
+                                                    checkpointItem_Id: LookUp(
+                                                        DropColumns(
+                                                            GC_checkpointItemAssessment,
+                                                            "CIstatusUpdate"
+                                                        ),
+                                                        'checkpointItemAssessment (quantum_checkpointitemassessment)' = Text(varCItemA)
+                                                    ),
+                                                    product_id: LookUp(
+                                                        GC_product,
+                                                        product_Model = glryUnitBS.Selected.productModel
+                                                    ),
+                                                    image_annotation: "",
+                                                    ImageSortSequence: LookUp(
+                                                        GC_templateSections,
+                                                        sectionId = VarSectionId,
+                                                        sectionSequence
+                                                    ) & LookUp(
+                                                        GC_templateCheckpoints,
+                                                        checkpointId = ChId,
+                                                        checkpointSequence
+                                                    ) & LookUp(
+                                                        GC_templateCheckpointsItem,
+                                                        checkpointItemId = varCheckpointitemID,
+                                                        checkpointItemSequence
+                                                    )
+                                                }
+                                            );
+                                            If(
+                                                CountRows(GlryImagesFS.AllItems) >= 4,
+                                                Notify("You can capture 4 images only."),
+                                                NotificationType.Warning
+                                            )
+                                        );
+                                        Set(
+                                            varImage,
+                                            true
+                                        );
                                         
-                                    
                                     );
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                        
                                 PressedFill: =AllScreensCSS.RActiveColor
                                 RadiusBottomLeft: =1
                                 RadiusBottomRight: =1
