@@ -15453,17 +15453,137 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "App.timerX"
+                  "fullyQualifiedName": "DashboardScreen.Container2.Icon1.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "App.timerX",
+                  "fullyQualifiedName": "DashboardScreen.Container2.Icon1.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
-                "member": "timerX",
+                "member": "AccessibleLabel",
+                "module": "DashboardScreen",
+                "type": "DashboardScreen.Container2.Icon1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "DashboardScreen.Container2.Icon1.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "DashboardScreen.Container2.Icon1.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "DashboardScreen",
+                "type": "DashboardScreen.Container2.Icon1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "DashboardScreen.TextInput1.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "DashboardScreen.TextInput1.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "DashboardScreen",
+                "type": "DashboardScreen.TextInput1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "DashboardScreen.Button3.FocusedBorderThickness"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "DashboardScreen.Button3.FocusedBorderThickness",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "FocusedBorderThickness",
+                "module": "DashboardScreen",
+                "type": "DashboardScreen.Button3"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-FocusBorderShouldBeVisible",
+          "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "App.timerStart"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "App.timerStart",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "timerStart",
                 "module": "App",
                 "type": "App"
               }
@@ -15483,17 +15603,17 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "App.timerStart"
+                  "fullyQualifiedName": "App.timerX"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "App.timerStart",
+                  "fullyQualifiedName": "App.timerX",
                   "relativeAddress": 0
                 }
               },
               "properties": {
-                "member": "timerStart",
+                "member": "timerX",
                 "module": "App",
                 "type": "App"
               }

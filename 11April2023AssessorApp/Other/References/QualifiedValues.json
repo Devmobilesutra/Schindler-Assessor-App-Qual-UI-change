@@ -339,6 +339,20 @@
       "Values": {
         "Information": "39f81e84-581b-4f45-b75e-69def9cab56a"
       }
+    },
+    {
+      "Kind": "default.cds_shlaf_reportissueassessment_forms",
+      "Namespace": "ReportIssueAssessments (Forms)",
+      "Values": {
+        "Information": "2c42656c-f865-4989-a817-fe34e9838733"
+      }
+    },
+    {
+      "Kind": "default.cds_shlaf_reportissuemaster_forms",
+      "Namespace": "ReportIssueMasters (Forms)",
+      "Values": {
+        "Information": "f758cc73-1746-4146-bcd4-f063079a9f51"
+      }
     }
   ]
 }
