@@ -2234,7 +2234,7 @@ AssessmentScreen As screen:
                                                     GC_checkpointItem_Images,
                                                     assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpoint_id.checkpointAssessment_id = GuidId && CIIstatusUpdate = 1,
                                                     {
-                                                      CIIstatusUpdate: 2
+                                                      CIIstatusUpdate: 2,
                                                        Image:'submitted-cloud'
                                                       //,
                                                      // Image:info
