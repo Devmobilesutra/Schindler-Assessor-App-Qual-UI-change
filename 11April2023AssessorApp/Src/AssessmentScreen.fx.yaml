@@ -1619,6 +1619,10 @@ AssessmentScreen As screen:
                                             "Assessment records submitted successfully."
                                         );
                                         ,
+                                         Set(
+                                                Varpatchlabel,
+                                                "Deleting Action and images."
+                                            );
                                 //to delete deleted actions from dataverse
                                         Clear(gcActionItemDelete1);
                                 // Notify("Action delete start");
@@ -1669,6 +1673,7 @@ AssessmentScreen As screen:
                                             "localgcImageDelete"
                                         );
                                         ,
+                                        
                                     //update dataverse table instead using patch
                                     //updating isCompleted status of assignment into assigment table only for the first time when submit button is clicked
                                         UpdateIf(
