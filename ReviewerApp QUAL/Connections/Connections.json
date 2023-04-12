@@ -1,6 +1,5 @@
 {
   "28aafd65-a009-455e-be63-04c5881f60b0": {
-    "connectionParameters": {},
     "connectionRef": {
       "apiTier": "Standard",
       "displayName": "Logic flows",
@@ -58,10 +57,6 @@
     "id": "28aafd65-a009-455e-be63-04c5881f60b0"
   },
   "2a3066fb-ddd0-4d90-a512-eb37c43ad294": {
-    "connectionParameters": {
-      "sku": "Enterprise",
-      "token:grantType": "code"
-    },
     "connectionRef": {
       "apiTier": "Premium",
       "bypassConsent": true,
@@ -83,10 +78,6 @@
     "id": "2a3066fb-ddd0-4d90-a512-eb37c43ad294"
   },
   "2a590f89-83e7-459f-9007-27febc80caa9": {
-    "connectionParameters": {
-      "sku": "Enterprise",
-      "token:grantType": "code"
-    },
     "connectionRef": {
       "apiTier": "Premium",
       "bypassConsent": true,
@@ -105,10 +96,6 @@
     "id": "2a590f89-83e7-459f-9007-27febc80caa9"
   },
   "2e64dbd6-4a7f-4be8-a2c4-610ab16bc546": {
-    "connectionParameters": {
-      "applicationId": "cbb9784c-b551-456d-9672-c090e3a9a943",
-      "sku": "Enterprise"
-    },
     "connectionRef": {
       "apiTier": "Standard",
       "displayName": "Power Apps Notification",
@@ -130,10 +117,6 @@
     "id": "2e64dbd6-4a7f-4be8-a2c4-610ab16bc546"
   },
   "5a1b9cad-b3c3-4dd8-843a-8c611589fb1e": {
-    "connectionParameters": {
-      "sku": "Enterprise",
-      "token:grantType": "code"
-    },
     "connectionRef": {
       "apiTier": "Premium",
       "bypassConsent": true,
@@ -152,7 +135,6 @@
     "id": "5a1b9cad-b3c3-4dd8-843a-8c611589fb1e"
   },
   "6e57afcb-8b7c-4f8d-870e-d2da9df6eae6": {
-    "connectionParameters": {},
     "connectionRef": {
       "apiTier": "Standard",
       "displayName": "Logic flows",
@@ -192,7 +174,6 @@
     "id": "6e57afcb-8b7c-4f8d-870e-d2da9df6eae6"
   },
   "78fa53f2-c3ab-4972-ac90-1d37b2fa99ac": {
-    "connectionParameters": {},
     "connectionRef": {
       "apiTier": "Standard",
       "displayName": "Logic flows",
@@ -232,7 +213,6 @@
     "id": "78fa53f2-c3ab-4972-ac90-1d37b2fa99ac"
   },
   "8c0b1405-f919-4e3f-94e7-c6b91f0b08e4": {
-    "connectionParameters": {},
     "connectionRef": {
       "apiTier": "Standard",
       "displayName": "Logic flows",
@@ -286,7 +266,6 @@
     "id": "8c0b1405-f919-4e3f-94e7-c6b91f0b08e4"
   },
   "92a72b27-f88d-451e-b147-9db5c29e8e3e": {
-    "connectionParameters": {},
     "connectionRef": {
       "apiTier": "Standard",
       "displayName": "Logic flows",
@@ -326,7 +305,6 @@
     "id": "92a72b27-f88d-451e-b147-9db5c29e8e3e"
   },
   "ac2dac18-4677-4d61-8d77-5a4e3812d485": {
-    "connectionParameters": {},
     "connectionRef": {
       "apiTier": "Standard",
       "displayName": "Logic flows",
@@ -380,7 +358,6 @@
     "id": "ac2dac18-4677-4d61-8d77-5a4e3812d485"
   },
   "be9c0de5-1b0e-4911-936f-5beefa3d1219": {
-    "connectionParameters": {},
     "connectionRef": {
       "apiTier": "Standard",
       "displayName": "Logic flows",
@@ -427,9 +404,6 @@
     "id": "be9c0de5-1b0e-4911-936f-5beefa3d1219"
   },
   "c45365a4-ec6b-4ad8-9d25-f14c759e56da": {
-    "connectionParameters": {
-      "sku": "Enterprise"
-    },
     "connectionRef": {
       "apiTier": "Standard",
       "displayName": "Office 365 Groups",
@@ -447,13 +421,6 @@
     "id": "c45365a4-ec6b-4ad8-9d25-f14c759e56da"
   },
   "d6851de6-64cd-46bb-aab6-4ed446c89be8": {
-    "connectionParameters": {
-      "workFlowCallbackUri": "https://prod-39.westus.logic.azure.com:443/workflows/8b79c97882294801b69ffb91d0463b0e/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=udX_ljH1z46_jiF2LXw933MQ83bZrVQKSMStZvbpf3w",
-      "workflowEndpoint": "/subscriptions/2e6e5a0a-b35f-4167-82de-61b3afa7d1ec/resourceGroups/125c265eb1f0494da8a1bbce16d90b90-7c3abeda63c240e3a91ff97eb9ce26b9-env/providers/Microsoft.Logic/workflows/79b62ec0-4edd-7c30-65d9-9815387fe20e",
-      "workflowEntityId": "ca4ed269-d3b8-ed11-83fe-000d3a5655ba",
-      "workflowName": "79b62ec0-4edd-7c30-65d9-9815387fe20e",
-      "workflowPath": "/subscriptions/2e6e5a0a-b35f-4167-82de-61b3afa7d1ec/resourceGroups/125c265eb1f0494da8a1bbce16d90b90-7c3abeda63c240e3a91ff97eb9ce26b9-env/providers/Microsoft.Logic/workflows/79b62ec0-4edd-7c30-65d9-9815387fe20e"
-    },
     "connectionRef": {
       "displayName": "Logic flows",
       "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1615/1.0.1615.3163/logicflows/icon.png",
@@ -506,9 +473,6 @@
     "id": "d6851de6-64cd-46bb-aab6-4ed446c89be8"
   },
   "dc341652-360e-41fe-8b26-9156972b1174": {
-    "connectionParameters": {
-      "sku": "Enterprise"
-    },
     "connectionRef": {
       "apiTier": "Standard",
       "displayName": "OneDrive for Business",
@@ -527,9 +491,6 @@
     "id": "dc341652-360e-41fe-8b26-9156972b1174"
   },
   "e0d6a5be-13d0-4578-a01b-88b6be172fff": {
-    "connectionParameters": {
-      "sku": "Enterprise"
-    },
     "connectionRef": {
       "apiTier": "Standard",
       "displayName": "Office 365 Outlook",
@@ -549,9 +510,6 @@
     "id": "e0d6a5be-13d0-4578-a01b-88b6be172fff"
   },
   "f553fec8-dea2-4705-ba4e-cffd86422634": {
-    "connectionParameters": {
-      "sku": "Enterprise"
-    },
     "connectionRef": {
       "apiTier": "Standard",
       "displayName": "OneDrive for Business",
@@ -570,7 +528,6 @@
     "id": "f553fec8-dea2-4705-ba4e-cffd86422634"
   },
   "f58feedf-b36f-4d58-abee-f58470539c64": {
-    "connectionParameters": {},
     "connectionRef": {
       "apiTier": "Standard",
       "displayName": "Logic flows",
@@ -624,9 +581,6 @@
     "id": "f58feedf-b36f-4d58-abee-f58470539c64"
   },
   "f629176c-1487-4631-867f-d73d11e12771": {
-    "connectionParameters": {
-      "sku": "Enterprise"
-    },
     "connectionRef": {
       "apiTier": "Standard",
       "displayName": "OneDrive for Business",
@@ -644,9 +598,6 @@
     "id": "f629176c-1487-4631-867f-d73d11e12771"
   },
   "fc97fef1-7368-454f-a822-c0b58f84b148": {
-    "connectionParameters": {
-      "sku": "Enterprise"
-    },
     "connectionRef": {
       "apiTier": "Standard",
       "displayName": "Office 365 Outlook",
