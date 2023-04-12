@@ -1393,8 +1393,12 @@ AssessmentScreen As screen:
                         Color: |
                             =RGBA(255, 255, 255, 1)
                         DisplayMode: |-
-                            =//If(Connection.Connected=true,DisplayMode.Edit,DisplayMode.Disabled)
-                            DisplayMode.Edit
+                            =If(
+                                Connection.Connected = true,
+                                DisplayMode.Edit,
+                                DisplayMode.Disabled
+                            )
+                            //DisplayMode.Edit
                         Fill: =AllScreensCSS.RActiveColor
                         Height: =50
                         HoverFill: |-
