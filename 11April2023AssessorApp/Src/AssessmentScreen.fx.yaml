@@ -1119,6 +1119,10 @@ AssessmentScreen As screen:
                                     GC_unitAssessment,
                                     "localunitassessment"
                                 );
+                                  SaveData(
+                                    gcProjectAssignment,
+                                    "localprojectassignment"
+                                );
                                 SaveData(
                                     GC_bankAssessment,
                                     "localbankassessment"
