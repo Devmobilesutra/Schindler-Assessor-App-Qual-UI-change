@@ -1363,6 +1363,10 @@ TripReportScreen As screen:
                         isCompleted = "Inprogress1",
                         {isCompleted: "Inprogress"}
                     );
+                      SaveData(
+                            gcProjectAssignment,
+                            "localprojectassignment"
+                        );
                 Visible: =false
                 Width: =40
                 ZIndex: =3

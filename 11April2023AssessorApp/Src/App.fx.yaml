@@ -416,7 +416,11 @@ App As appinfo:
                 isCompleted = "Inprogress1",
                 {isCompleted: "Inprogress"}
             );
-            
+        
+          SaveData(
+                gcProjectAssignment,
+                "localprojectassignment"
+            );
                 
         //Extra collection for add column
         Clear(gcProjectAssignmentAdd);
