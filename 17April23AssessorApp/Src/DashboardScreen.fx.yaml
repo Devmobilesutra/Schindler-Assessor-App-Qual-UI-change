@@ -1,0 +1,985 @@
+DashboardScreen As screen:
+    OnVisible: |-
+        =Set(VarPopUpExitApp,false);
+        Set(varloader,false);
+        //Set(LogOutTimer, -1800);
+        Set(varPatchTimer,false);
+        UpdateIf(
+                gcProjectAssignment,
+                 isCompleted = "Inprogress1",
+                {
+                    isCompleted: "Inprogress"
+                }
+            );
+           SaveData(
+                    gcProjectAssignment,
+                    "localprojectassignment"
+           );
+
+    ctnMainDS As groupContainer.verticalAutoLayoutContainer:
+        Height: =Parent.Height
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutMode: =LayoutMode.Auto
+        LayoutOverflowY: =LayoutOverflow.Scroll
+        Width: =Parent.Width
+        ZIndex: =3
+
+        ctnHeaderDS As groupContainer.manualLayoutContainer:
+            Fill: =Header.HeaderFill
+            FillPortions: =0
+            Height: =81
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            PaddingRight: =10
+            Width: =Parent.Width
+            ZIndex: =2
+
+            Rectangle1_16 As rectangle:
+                BorderColor: =RGBA(230, 230, 230, 1)
+                BorderThickness: =1
+                Fill: =RGBA(230, 230, 230, 1)
+                Height: =1
+                Width: =Parent.Width
+                Y: =80
+                ZIndex: =10
+
+            Image2_33 As image:
+                Height: =40
+                Image: =If(Connection.Connected,'internet green icon-1x','internet-1x')
+                Width: =30
+                X: =lblAssessmentPS_1.X+lblAssessmentPS_1.Width+20
+                Y: =25
+                ZIndex: =11
+
+            Image2_34 As image:
+                Height: =40
+                Image: ='refresh-1x'
+                OnSelect: |-
+                    =//get new assignment and completed assignment updates
+                    If(
+                        //here we check network is available or not
+                        Connection.Connected,
+                        If(
+                            //here we check assignment,bankassessment,unitassessment collection have any unsend data or not,if yes then gives message "Assessement records saved in your device has not yet submitted to server .Please submit and try again." otherwise get new assignment related data
+                    
+                            IsBlank(LookUp(gcProjectAssignment,AstatusUpdate = 0 || AstatusUpdate = 1))            &&
+                            IsBlank(LookUp(GC_bankAssessment,BstatusUpdate = 0 || BstatusUpdate = 1))              &&
+                            IsBlank(LookUp(GC_unitAssessment,UstatusUpdate = 0 || UstatusUpdate = 1)) ,
+                       
+                         
+                         Set(popupDashSyncText,"Getting new assignment assigned to you. ");
+                         Set(popupDashSyncSuccess,true);
+                        Concurrent(
+                    //client master data
+                            ClearCollect(
+                                gcClient,
+                                schindlerClients
+                            );
+                            SaveData(
+                                gcClient,
+                                "localclient"
+                        );
+                            ,
+                       //Banks master data
+                            ClearCollect(
+                                gcBank,
+                                schindlerBanks
+                            );
+                            SaveData(
+                                gcBank,
+                                "localbank"
+                            );
+                            ,
+                        //master units data
+                            ClearCollect(
+                                gcBankunit,
+                                bankUnits
+                            );
+                            SaveData(
+                                gcBankunit,
+                                "localgcbankunit"
+                            );
+                            ,
+                        //assignment data 
+                            
+                            ClearCollect(
+                                    gcProjectAssignmentAdd,
+                                    Filter(
+                                        assignments,
+                                        assessorId = varLoggedAssessor
+                                    )
+                                );
+                                ClearCollect(
+                                    gcProjectAssignment,
+                                    AddColumns(
+                                        gcProjectAssignmentAdd,
+                                        "AstatusUpdate",
+                                        2
+                                    )
+                                );
+                                ,
+                            
+                            //assignment unit
+                            ClearCollect(
+                                gcAssignmentunit,
+                                Filter(
+                                    assignmentUnits,
+                                    assignmentId.assessorId = varLoggedAssessor
+                                )
+                            );
+                            SaveData(
+                                gcAssignmentunit,
+                                "localassignmentunits"
+                            );
+                            ,
+                            //bank Assessment
+                            ClearCollect(
+                                    GC_bankAssessmentAdd,
+                                    Filter(
+                                        bankAssessment,
+                                        assignmentId.assessorId = varLoggedAssessor
+                                    )
+                                );
+                                ClearCollect(
+                                    GC_bankAssessment,
+                                    AddColumns(
+                                        GC_bankAssessmentAdd,
+                                        "BstatusUpdate",
+                                        2
+                                    )
+                                );
+                            ,
+                            //unit assessment
+                            ClearCollect(
+                                    GC_unitAssessmentAdd,
+                                    Filter(
+                                        unitAssessment,
+                                        assignmentId.assessorId = varLoggedAssessor
+                                    )
+                                );
+                                ClearCollect(
+                                    GC_unitAssessment,
+                                    AddColumns(
+                                        GC_unitAssessmentAdd,
+                                        "UstatusUpdate",
+                                        2
+                                    )
+                                );
+                            );//concurrent close
+                        
+                    //delete completed assignment data from localcache 
+                    ForAll(
+                            Filter(
+                                gcProjectAssignment,
+                                isCompleted = "Completed"
+                            ) As i,
+                            RemoveIf(
+                                GC_bankAssessment,
+                                assignmentId.Id = i.Id
+                            );
+                            RemoveIf(
+                                GC_unitAssessment,
+                                assignmentId.Id = i.Id
+                            );
+                            RemoveIf(
+                                GcSectionAssessment,
+                                assignmentId.Id = i.Id
+                            );
+                            RemoveIf(
+                                GcCheckpointAssessment,
+                                assignmentId.Id = i.Id
+                            );
+                            RemoveIf(
+                                GC_checkpointItemAssessment,
+                                assignmentId.Id = i.Id
+                            );
+                            RemoveIf(
+                                GC_checkpointItem_ActionItem,
+                                assignmentId.Id = i.Id
+                            );
+                            RemoveIf(
+                                GC_checkpointItem_Images,
+                                assignmentId.Id = i.Id
+                            );
+                        );
+                    //save data to localcache
+                        SaveData(
+                                gcProjectAssignment,
+                                "localprojectassignment"
+                            );
+                        SaveData(
+                                GC_bankAssessment,
+                                "localbankassessment"
+                            );
+                        SaveData(
+                                GC_unitAssessment,
+                                "localunitassessment"
+                            );
+                        SaveData(
+                            GcSectionAssessment,
+                            "localsectionassessment"
+                        );
+                        SaveData(
+                            GcCheckpointAssessment,
+                            "localcheckpointassessment"
+                        );
+                        SaveData(
+                            GC_checkpointItemAssessment,
+                            "localcheckpointitemassessment"
+                        );
+                        SaveData(
+                            GC_checkpointItem_ActionItem,
+                            "localcheckpointitemactionitem"
+                        );
+                        SaveData(
+                            GC_checkpointItem_Images,
+                            "localcheckpointitemimage"
+                        );
+                    
+                        Trace(First(gcAssignmentunit).bankUnitId.unitNumber,TraceSeverity.Information);
+                        ,
+                         
+                         Set(popupDashSyncText,"Assessement records saved in your device has not yet submitted to server .Please submit and try again.");
+                         Set(popupDashSyncSuccess,true);    
+                        );  
+                        ,
+                       
+                         Set(popupDashSyncText,"Network not available,Please check your network connection.");
+                           Set(popupDashSyncSuccess,true);
+                    );
+                    //update Inprogress1 status to Inprogress to fix dashboard update issue
+                    UpdateIf(
+                        gcProjectAssignment,
+                        isCompleted = "Inprogress1",
+                        {isCompleted: "Inprogress"}
+                    );
+                    SaveData(
+                                gcProjectAssignment,
+                                "localprojectassignment"
+                            );
+                Visible: =Connection.Connected=true
+                Width: =40
+                X: =Image2_33.X+Image2_33.Width+20
+                Y: =27
+                ZIndex: =12
+
+            imgLogoPS_1 As image:
+                DisplayMode: =DisplayMode.View
+                Fill: =RGBA(255, 255, 255, 1)
+                Height: =80
+                Image: ='schindler-logo'
+                PaddingBottom: =5
+                PaddingLeft: =2
+                PaddingRight: =1
+                PaddingTop: =5
+                Width: =ctnHeaderDS.Width/12
+                ZIndex: =13
+
+            lblAssessmentPS_1 As label:
+                Align: =Align.Center
+                Color: =Header.HeaderColor
+                Font: =Header.HeaderFont
+                FontWeight: =FontWeight.Bold
+                Height: =81
+                Size: =Header.HeaderFontSize
+                Text: |-
+                    =//"Assignments"
+                    LookUp(
+                     'Environment Variable Values',
+                     'Environment Variable Definition'.'Schema Name' = "shlaf_AssessorAppName",
+                     Value
+                    )
+                Width: =If(Parent.Width>821,Parent.Width/1.95,Parent.Width/2)
+                X: =imgLogoPS_1.Width
+                ZIndex: =14
+
+            imgUserHeaderPS_1 As image:
+                Height: =50
+                Image: =userImg
+                ImagePosition: =ImagePosition.Fill
+                RadiusBottomLeft: =ctnHeaderPS.Height/0.10
+                RadiusBottomRight: =ctnHeaderPS.Height/0.10
+                RadiusTopLeft: =ctnHeaderPS.Height/0.10
+                RadiusTopRight: =ctnHeaderPS.Height/0.10
+                Width: =50
+                X: =Image2_34.X+Image2_34.Width+20
+                Y: =18
+                ZIndex: =15
+
+            lblUsernameHeaderPS_1 As label:
+                Font: =Header.HeaderFont
+                FontWeight: =FontWeight.Bold
+                Height: =80
+                PaddingLeft: =20
+                Size: =Header.HeaderUserFontSize-2
+                Text: =username
+                Width: =ctnHeaderDS.Width/5.08
+                X: =imgUserHeaderPS_1.X+imgUserHeaderPS_1.Width
+                ZIndex: =16
+
+        ctnMiddleDS As groupContainer.horizontalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            FillPortions: =0
+            Height: =Parent.Height/3
+            LayoutGap: =10
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            PaddingBottom: =20
+            PaddingLeft: =20
+            PaddingRight: =20
+            PaddingTop: =20
+            Width: =Parent.Width
+            Y: =ctnHeaderDS.Height
+            ZIndex: =3
+
+            ctnCompletedProjects As groupContainer.manualLayoutContainer:
+                AlignInContainer: =AlignInContainer.SetByContainer
+                BorderColor: =RGBA(230,230,230,1)
+                BorderThickness: =3
+                FillPortions: =0
+                Height: |-
+                    =If(
+                        App.Width < 1000,
+                        Parent.Height / 3,
+                        App.Width > 1000 && App.Width < 1200,
+                        Parent.Height / 2.3,
+                        Parent.Height / 1.6
+                    )
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                Visible: =false
+                Width: =Parent.Width/3.15
+                Y: =ctnHeaderDS.Height
+                ZIndex: =1
+
+                lblCompletedproject As label:
+                    Font: =Dashboard.DFont
+                    FontWeight: =FontWeight.Bold
+                    Height: =70
+                    Size: =Dashboard.DFontSize
+                    Text: |-
+                        ="Completed
+                        Assignments"
+                    Width: =300
+                    X: =Parent.Width/21
+                    Y: =Parent.Height/8
+                    ZIndex: =1
+
+                lblCountCompletedproject As label:
+                    Color: =RGBA(255, 0, 0, 1)
+                    Font: =Dashboard.DFont
+                    FontWeight: =FontWeight.Bold
+                    Height: =88
+                    Size: =If(App.Height<800,Dashboard.DCountSize,30)
+                    Text: |-
+                        =//To display Completed assignment count of Specific assessor 
+                        CountRows(
+                            (Filter(
+                                gcProjectAssignment,
+                                assessorId = varLoggedAssessor && isCompleted = "Completed"
+                            ))
+                        )
+                    X: =Parent.Width/21
+                    Y: =lblCompletedproject.Y+lblCompletedproject.Height+10
+                    ZIndex: =2
+
+                btnCompletedproject As button:
+                    BorderColor: |
+                        =
+                    BorderThickness: =
+                    Color: |+
+                        =RGBA(0,0,0,0)
+                        
+                    DisabledBorderColor: =RGBA(0,0,0,0)
+                    DisabledColor: =RGBA(0,0,0,0)
+                    DisabledFill: =RGBA(0,0,0,0)
+                    Fill: =RGBA(0, 0, 0, 0)
+                    FocusedBorderColor: =RGBA(0,0,0,0)
+                    FocusedBorderThickness: =
+                    Height: =ctnCompletedProjects.Height
+                    HoverBorderColor: =RGBA(0,0,0,0)
+                    HoverColor: =RGBA(0,0,0,0)
+                    HoverFill: =ColorFade(RGBA(0,0,0,0),-20%)
+                    OnSelect: |-
+                        =Set(upcomp,false);
+                        Set(inpro,false);
+                        Set(comp,true);
+                        Navigate(ProjectScreen);
+                    PressedBorderColor: =RGBA(0,0,0,0)
+                    PressedColor: =RGBA(0,0,0,0)
+                    PressedFill: =RGBA(0,0,0,0)
+                    Text: =
+                    Width: =ctnCompletedProjects.Width
+                    ZIndex: =4
+
+                imgCompletedprojects As image:
+                    Height: =Parent.Height/3
+                    Image: =completed
+                    Width: =Parent.Width/5
+                    X: =Parent.Width/1.3
+                    Y: =lblCompletedproject.Y+lblCompletedproject.Height+10
+                    ZIndex: =5
+
+            ctnProgressProjects As groupContainer.manualLayoutContainer:
+                AlignInContainer: =AlignInContainer.SetByContainer
+                BorderColor: =AllScreensCSS.RActiveColor
+                BorderThickness: =3
+                Fill: =AllScreensCSS.RActiveColor
+                FillPortions: =0
+                Height: |-
+                    =If(
+                        App.Width < 1000,
+                        Parent.Height / 1.8,
+                        App.Width > 1000 && App.Width < 1200,
+                        Parent.Height / 1.2,
+                        Parent.Height / 1.2
+                    )
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                Width: =Parent.Width/2.15
+                Y: =ctnHeaderDS.Height
+                ZIndex: =2
+
+                lblProgressProjects As label:
+                    AutoHeight: =true
+                    Color: =AllScreensCSS.RColorWhite
+                    Font: =Dashboard.DFont
+                    FontWeight: =FontWeight.Bold
+                    Height: =Parent.Height/3
+                    Size: |-
+                        =//Dashboard.DFontSize
+                        If(
+                            App.Width < 1000,
+                            20, 
+                            App.Width > 1000 && App.Width < 1200,
+                           24,
+                             26
+                        )
+                    Text: ="In-progress Assignments"
+                    Width: =Parent.Width/1.09
+                    X: =Parent.Width/21
+                    Y: =Parent.Height/8
+                    ZIndex: =1
+
+                lblCountProgressProjects As label:
+                    Color: =AllScreensCSS.RColorWhite
+                    Font: =Dashboard.DFont
+                    FontWeight: =FontWeight.Bold
+                    Height: =Parent.Height/3
+                    Size: |
+                        =If(App.Height<800,
+                        //Dashboard.DCountSize,
+                        18,30)
+                    Text: |-
+                        =//To display Inprogress assignment count of Specific assessor 
+                        CountRows(
+                            (Filter(
+                                gcProjectAssignment,
+                                assessorId = varLoggedAssessor && isCompleted = "Inprogress"
+                            ))
+                        )
+                    Width: =Parent.Width/2
+                    X: =Parent.Width/21
+                    Y: =lblProgressProjects.Y+lblProgressProjects.Height+10
+                    ZIndex: =2
+
+                imgProgressprojects As image:
+                    Height: =Parent.Height/3
+                    Image: =Vector
+                    Width: =Parent.Width/5
+                    X: =Parent.Width/1.3
+                    Y: =lblProgressProjects.Y+lblProgressProjects.Height+10
+                    ZIndex: =3
+
+                btnInprogressproject As button:
+                    BorderColor: =
+                    BorderThickness: =
+                    Color: |+
+                        =RGBA(0,0,0,0)
+                        
+                    DisabledBorderColor: =RGBA(0,0,0,0)
+                    DisabledColor: =RGBA(0,0,0,0)
+                    DisabledFill: =RGBA(0,0,0,0)
+                    Fill: =RGBA(0, 0, 0, 0)
+                    FocusedBorderColor: =RGBA(0,0,0,0)
+                    FocusedBorderThickness: =
+                    Height: =ctnProgressProjects.Height
+                    HoverBorderColor: =RGBA(0,0,0,0)
+                    HoverColor: =RGBA(0,0,0,0)
+                    HoverFill: =ColorFade(RGBA(0,0,0,0),-20%)
+                    OnSelect: |-
+                        =Set(comp,false);
+                        Set(upcomp,false);
+                        Set(inpro,true);
+                        Navigate(ProjectScreen);
+                    PressedBorderColor: =RGBA(0,0,0,0)
+                    PressedColor: =RGBA(0,0,0,0)
+                    PressedFill: =RGBA(0,0,0,0)
+                    Text: =
+                    Width: =ctnProgressProjects.Width
+                    X: =0.34920634920632665
+                    ZIndex: =4
+
+            ctnUpcomingProjects As groupContainer.manualLayoutContainer:
+                AlignInContainer: =AlignInContainer.SetByContainer
+                BorderColor: =AllScreensCSS.RActiveColor
+                BorderThickness: =3
+                Fill: =AllScreensCSS.RActiveColor
+                FillPortions: =0
+                Height: |-
+                    =If(
+                        App.Width < 1000,
+                        Parent.Height / 1.8,
+                        App.Width > 1000 && App.Width < 1200,
+                        Parent.Height / 1.2,
+                        Parent.Height / 1.2
+                    )
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                Width: =Parent.Width/2.15
+                Y: =ctnHeaderDS.Height
+                ZIndex: =3
+
+                lblUpcomingProjects As label:
+                    AutoHeight: =true
+                    Color: =AllScreensCSS.RColorWhite
+                    Font: =Dashboard.DFont
+                    FontWeight: =FontWeight.Bold
+                    Height: =Parent.Height/3
+                    Size: |-
+                        =If(
+                            App.Width < 1000,
+                            20, 
+                            App.Width > 1000 && App.Width < 1200,
+                           24,
+                             26
+                        )
+                    Text: ="Upcoming Assignments"
+                    Width: =Parent.Width/1.09
+                    X: =Parent.Width/21
+                    Y: =Parent.Height/8
+                    ZIndex: =1
+
+                lblCountUpcomingProjects As label:
+                    Color: =AllScreensCSS.RColorWhite
+                    Font: =Dashboard.DFont
+                    FontWeight: =FontWeight.Bold
+                    Height: =Parent.Height/3
+                    Size: |
+                        =If(App.Height<800,
+                        //Dashboard.DCountSize,
+                        18,30)
+                    Text: |-
+                        =//To display Upcomming assignment count of Specific assessor 
+                        CountRows(
+                            (Filter(
+                                gcProjectAssignment,
+                                assessorId = varLoggedAssessor && isCompleted = "Upcomming" || isCompleted = "Inprogress1"
+                            ))
+                        )
+                    Width: =Parent.Width/2
+                    X: =Parent.Width/21
+                    Y: =lblUpcomingProjects.Y+lblUpcomingProjects.Height+10
+                    ZIndex: =2
+
+                imgUpcomingProjects As image:
+                    Height: =Parent.Height/3
+                    Image: =Vector22
+                    Width: =Parent.Width/5
+                    X: =Parent.Width/1.3
+                    Y: =lblUpcomingProjects.Y+lblUpcomingProjects.Height+10
+                    ZIndex: =3
+
+                iconUpcomingprojectindicator As circle:
+                    Fill: =RGBA(255, 191, 0, 1)
+                    Height: =20
+                    Visible: |
+                        =If(CountRows((Filter(gcProjectAssignment,assessorId=varLoggedAssessor && isCompleted="Upcomming")))>0,true,false)
+                    Width: =20
+                    X: =Parent.Width-40
+                    Y: =20
+                    ZIndex: =4
+
+                btnUpcomingProjects As button:
+                    BorderColor: |
+                        =
+                    BorderThickness: =
+                    Color: |+
+                        =RGBA(0,0,0,0)
+                        
+                    DisabledBorderColor: =RGBA(0,0,0,0)
+                    DisabledColor: =RGBA(0,0,0,0)
+                    DisabledFill: =RGBA(0,0,0,0)
+                    Fill: =RGBA(0, 0, 0, 0)
+                    FocusedBorderColor: =RGBA(0,0,0,0)
+                    FocusedBorderThickness: =
+                    Height: =ctnUpcomingProjects.Height
+                    HoverBorderColor: =RGBA(0,0,0,0)
+                    HoverColor: =RGBA(0,0,0,0)
+                    HoverFill: =ColorFade(RGBA(0,0,0,0),-20%)
+                    OnSelect: |-
+                        =Set(comp,false);
+                        Set(inpro,false);
+                        Set(upcomp,true);
+                        Navigate(ProjectScreen);
+                    PressedBorderColor: =RGBA(0,0,0,0)
+                    PressedColor: =RGBA(0,0,0,0)
+                    PressedFill: =RGBA(0,0,0,0)
+                    Text: =
+                    Width: =ctnUpcomingProjects.Width
+                    X: =0.34920634920632665
+                    ZIndex: =5
+
+        ctnlpdimg As groupContainer.horizontalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.Center
+            FillPortions: =0
+            Height: |-
+                =If(
+                    App.Height < 768,
+                    Parent.Height/2,
+                    500
+                )
+            LayoutAlignItems: =LayoutAlignItems.Center
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutGap: =10
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            PaddingBottom: =200
+            PaddingLeft: =5
+            PaddingTop: =5
+            Width: =Parent.Width-80
+            ZIndex: =4
+
+            Button2 As button:
+                AlignInContainer: =AlignInContainer.Start
+                BorderThickness: =0
+                Fill: =AllScreensCSS.RActiveColor
+                FocusedBorderThickness: =0
+                Height: =50
+                HoverFill: |-
+                    =Self.Fill
+                    //ColorFade(RGBA(56, 96, 178, 1), -20%)
+                OnSelect: |-
+                    =
+                    Set(VarPopUpExitApp,true);
+                PaddingLeft: =0
+                PressedColor: =Self.Color
+                PressedFill: =Self.Fill
+                Text: ="Exit App"
+                Width: =190
+                ZIndex: =1
+
+            Label2 As label:
+                Align: =Align.Center
+                FontWeight: =FontWeight.Bold
+                Size: =14
+                Text: ="This app will allow only 100 images across all assignments. "& CountRows(GC_checkpointItem_Images) &  " images are already stored. "
+                Width: =Parent.Width-40
+                ZIndex: =2
+
+            imgGraphicDS As image:
+                Height: =Parent.Height
+                Image: ='lift image-1x'
+                Width: =Parent.Width-500
+                ZIndex: =3
+
+        ctnlpdname As groupContainer.verticalAutoLayoutContainer:
+            Height: =250
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            Visible: =false
+            Width: =Parent.Width
+            ZIndex: =5
+
+            imgLPD As image:
+                AlignInContainer: =AlignInContainer.Center
+                Height: =Parent.Height
+                Image: ='lpd red'
+                ImagePosition: =ImagePosition.Center
+                Width: =Parent.Width
+                ZIndex: =1
+
+    imgloaderDS As image:
+        Fill: =RGBA(0, 0, 0, 0.29)
+        Height: =Parent.Height
+        Image: ='ajax-loader 2'
+        ImagePosition: =ImagePosition.Center
+        Visible: =//varloader = true
+        Width: =Parent.Width
+        X: =(Parent.Width-Self.Width)/2
+        Y: =(Parent.Height-Self.Height)/2
+        ZIndex: =5
+
+    tmr_logout As timer:
+        AutoStart: =//true
+        Duration: =//30000
+        OnTimerEnd: =
+        OnTimerStart: =true
+        Visible: =false
+        X: =20
+        Y: =20
+        ZIndex: =14
+
+    grPatchSuccessDS As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =14
+
+        iconOuterRectangleDS As rectangle:
+            Fill: =RGBA(0, 0, 0, 0.29)
+            Height: =Parent.Height
+            Visible: =popupDashSyncSuccess =true
+            Width: =Parent.Width
+            ZIndex: =8
+
+        iconInnerRectsngleDS As rectangle:
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =270
+            Visible: =popupDashSyncSuccess =true
+            Width: =400
+            X: =(Parent.Width-Self.Width)/2
+            Y: =Parent.Height/3
+            ZIndex: =9
+
+        imgInfoDS As image:
+            Height: =52
+            Image: =info
+            Visible: =popupDashSyncSuccess =true
+            Width: =52
+            X: =(Parent.Width-Self.Width)/2
+            Y: =iconInnerRectsngleDS.Y+20
+            ZIndex: =10
+
+        LblTextDS As label:
+            Align: =Align.Center
+            Font: =AllScreensCSS.RFont
+            FontWeight: =FontWeight.Semibold
+            Height: =100
+            Size: =15
+            Text: =popupDashSyncText
+            Visible: =popupDashSyncSuccess =true
+            Width: =350
+            X: =(Parent.Width-Self.Width)/2
+            Y: =imgInfoDS.Y+imgInfoDS.Height
+            ZIndex: =12
+
+        btnSuccessDS As button:
+            Fill: =RGBA(54, 176, 75, 1)
+            Font: =AllScreensCSS.RFont
+            HoverFill: =RGBA(75, 125, 6, 1)
+            OnSelect: |+
+                =Set(
+                    popupDashSyncSuccess,
+                    false
+                );
+                
+            PressedBorderColor: =RGBA(1, 43, 1, 0)
+            PressedFill: =Self.Fill
+            Text: ="Ok"
+            Visible: =popupDashSyncSuccess =true
+            Width: =120
+            X: =(Parent.Width-Self.Width)/2
+            Y: =LblTextDS.Y+ LblTextDS.Height+5
+            ZIndex: =13
+
+    GroupHeaderPS_1 As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =18
+
+    Grp_exit As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =23
+
+        Rectangle1_18 As rectangle:
+            Fill: =RGBA(0, 0, 0, 0.29)
+            Height: =Parent.Height
+            Visible: =VarPopUpExitApp
+            Width: =Parent.Width
+            ZIndex: =17
+
+        Rectangle2_15 As rectangle:
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =280
+            Visible: =VarPopUpExitApp
+            Width: =400
+            X: =(Parent.Width-Self.Width)/2
+            Y: =Parent.Height/3
+            ZIndex: =18
+
+        Image2_25 As image:
+            Height: =52
+            Image: =info
+            Visible: =VarPopUpExitApp
+            Width: =52
+            X: =(Parent.Width-Self.Width)/2
+            Y: =Rectangle2_15.Y+20
+            ZIndex: =19
+
+        Label2_17 As label:
+            Align: =Align.Center
+            Font: =AllScreensCSS.RFont
+            FontWeight: =FontWeight.Bold
+            Height: =100
+            Size: =15
+            Text: ="Are you sure you want to exit ?"
+            Visible: =VarPopUpExitApp
+            Width: =350
+            X: =(Parent.Width-Self.Width)/2
+            Y: =Image2_25.Y+ Image2_25.Height+2
+            ZIndex: =20
+
+        btnExitOk As button:
+            Fill: =RGBA(54, 176, 75, 1)
+            Font: =AllScreensCSS.RFont
+            HoverFill: =RGBA(75, 125, 6, 1)
+            OnSelect: |-
+                =Set(
+                    VarPopUpExitApp,
+                    false
+                );
+                Set(
+                    varloader,
+                    true
+                );
+                SaveData(
+                    gcProjectAssignment,
+                    "localprojectassignment"
+                );
+                SaveData(
+                    GC_bankAssessment,
+                    "localbankassessment"
+                );
+                SaveData(
+                    GC_unitAssessment,
+                    "localunitassessment"
+                );
+                SaveData(
+                    GcSectionAssessment,
+                    "localsectionassessment"
+                );
+                SaveData(
+                    GcCheckpointAssessment,
+                    "localcheckpointassessment"
+                );
+                SaveData(
+                    GC_checkpointItemAssessment,
+                    "localcheckpointitemassessment"
+                );
+                SaveData(
+                    GC_checkpointItem_ActionItem,
+                    "localcheckpointitemactionitem"
+                );
+                SaveData(
+                    GC_checkpointItem_Images,
+                    "localcheckpointitemimage"
+                );
+                SaveData(
+                    gcActionItemDelete,
+                    "localgcActionItemDelete"
+                );
+                SaveData(
+                    gcImageDelete,
+                    "localgcImageDelete"
+                );
+                Set(
+                    varloader,
+                    false
+                );
+                Exit()
+            PressedBorderColor: =RGBA(1, 43, 1, 0)
+            PressedFill: =Self.Fill
+            Text: ="Ok"
+            Visible: =VarPopUpExitApp
+            Width: =120
+            X: =(Parent.Width-Self.Width)/2.3
+            Y: =Label2_17.Y+ Label2_17.Height+10
+            ZIndex: =21
+
+        btnSuccess_12 As button:
+            BorderColor: =RGBA(75, 125, 6, 1)
+            Fill: =RGBA(54, 176, 75, 1)
+            Font: =AllScreensCSS.RFont
+            HoverBorderColor: =RGBA(75, 125, 6, 1)
+            HoverFill: =RGBA(75, 125, 6, 1)
+            OnSelect: =Set(VarPopUpExitApp,false);
+            PressedBorderColor: =RGBA(1, 43, 1, 0)
+            PressedFill: =Self.Fill
+            Text: ="Cancel"
+            Visible: =VarPopUpExitApp
+            Width: =120
+            X: =btnExitOk.X+btnExitOk.Width+20
+            Y: =Label2_17.Y+ Label2_17.Height+10
+            ZIndex: =22
+
+    grExitAppLoadder As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =28
+
+        iconOuterRectangleBS_2 As rectangle:
+            Fill: =RGBA(0, 0, 0, 0.29)
+            Height: =Parent.Height
+            Visible: =varloader
+            Width: =Parent.Width
+            ZIndex: =23
+
+        iconInnerRectangleBS_2 As rectangle:
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =270
+            Visible: =varloader
+            Width: =400
+            X: =(Parent.Width-Self.Width)/2
+            Y: =Parent.Height/3
+            ZIndex: =24
+
+        imgloaderBS_2 As image:
+            Height: =52
+            Image: ='ajax-loader 2'
+            Visible: =varloader
+            Width: =52
+            X: =(Parent.Width-Self.Width)/2
+            Y: =iconInnerRectangleBS_2.Y+20
+            ZIndex: =25
+
+        lblSyncSuccessPatchBS_2 As label:
+            Align: =Align.Center
+            Color: =RGBA(14, 161, 26, 1)
+            Font: =AllScreensCSS.RFont
+            FontWeight: =FontWeight.Bold
+            PaddingBottom: =0
+            Size: =18
+            Text: ="Saving..."
+            Visible: =varloader
+            Width: =350
+            X: =(Parent.Width-Self.Width)/2
+            Y: =imgloaderBS_2.Y+imgloaderBS_2.Height+10
+            ZIndex: =26
+
+        lblsyncSuccessBS_2 As label:
+            Align: =Align.Center
+            Font: =AllScreensCSS.RFont
+            FontWeight: =FontWeight.Semibold
+            Height: =140
+            Size: =15
+            Text: ="Saving data to your device cache. Please do not kill the App."
+            VerticalAlign: =VerticalAlign.Top
+            Visible: =varloader
+            Width: =350
+            X: =(Parent.Width-Self.Width)/2
+            Y: =lblSyncSuccessPatchBS_2.Y+lblSyncSuccessPatchBS_2.Height+10
+            ZIndex: =27
+
