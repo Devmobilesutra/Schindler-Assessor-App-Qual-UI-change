@@ -415,45 +415,60 @@ BankScreen As screen:
                         HoverFill: =Self.Fill
                         OnSelect: |-
                             =//for safety check to show default selected
-                            
-                            
-                            
-                            
-                                     
                             If(
                                 IsEmpty(GcSectionAssessmentCache) && IsEmpty(GcCheckpointAssessmentCache) && IsEmpty(GC_checkpointItemAssessmentCache) && IsEmpty(GC_checkpointItem_ActionItemCache) && IsEmpty(GC_checkpointItem_ImagesCache),
-                               Concurrent(
-                                   
-                             LoadData(
+                                Concurrent(
+                                    LoadData(
                                         GcSectionAssessmentCache,
-                                        "localsectionassessment",true);
-                                     ClearCollect(GcSectionAssessmentCache1,GcSectionAssessmentCache);
-                                   ,
+                                        "localsectionassessment",
+                                        true
+                                    );
+                                    ClearCollect(
+                                        GcSectionAssessmentCache1,
+                                        GcSectionAssessmentCache
+                                    );
+                                    ,
                                     LoadData(
                                         GcCheckpointAssessmentCache,
-                                        "localcheckpointassessment",true
+                                        "localcheckpointassessment",
+                                        true
                                     );
-                                        ClearCollect(GcCheckpointAssessmentCache1,GcCheckpointAssessmentCache);
+                                    ClearCollect(
+                                        GcCheckpointAssessmentCache1,
+                                        GcCheckpointAssessmentCache
+                                    );
                                     ,
                                     LoadData(
                                         GC_checkpointItemAssessmentCache,
-                                        "localcheckpointitemassessment",true
+                                        "localcheckpointitemassessment",
+                                        true
                                     );
-                                        ClearCollect(GC_checkpointItemAssessmentCache1,GC_checkpointItemAssessmentCache);
+                                    ClearCollect(
+                                        GC_checkpointItemAssessmentCache1,
+                                        GC_checkpointItemAssessmentCache
+                                    );
                                     ,
                                     LoadData(
                                         GC_checkpointItem_ActionItemCache,
-                                        "localcheckpointitemactionitem",true
+                                        "localcheckpointitemactionitem",
+                                        true
                                     );
-                                        ClearCollect(GC_checkpointItem_ActionItemCache1,GC_checkpointItem_ActionItemCache);
+                                    ClearCollect(
+                                        GC_checkpointItem_ActionItemCache1,
+                                        GC_checkpointItem_ActionItemCache
+                                    );
                                     ,
                                     LoadData(
                                         GC_checkpointItem_ImagesCache,
-                                        "localcheckpointitemimage",true
+                                        "localcheckpointitemimage",
+                                        true
                                     );
-                                        ClearCollect(GC_checkpointItem_ImagesCache1,GC_checkpointItem_ImagesCache);
+                                    ClearCollect(
+                                        GC_checkpointItem_ImagesCache1,
+                                        GC_checkpointItem_ImagesCache
+                                    );
+                                );
                                 
-                            );
                             );
                             //Here we check if network is available or not, if available then check collection is empty or not ,if collection is empty then get specific assessor data from dataverse and store it into collection and save collection to cache
                             If(
@@ -480,19 +495,48 @@ BankScreen As screen:
                                             )
                                         );
                                         //updateeee
-                            
-                                        Patch(GcSectionAssessment,Filter(GcSectionAssessmentCache1, bankUnitId.Id = ThisItem.bankUnitId.Id));
-                                        RemoveIf(GcSectionAssessmentCache1,bankUnitId.Id = ThisItem.bankUnitId.Id);
+                                      //  Patch(GcSectionAssessment,Filter(GcSectionAssessmentCache1, bankUnitId.Id = ThisItem.bankUnitId.Id));
+                            ForAll(
+                                            GcSectionAssessmentCache1 As i,
+                                              If(
+                                                    CountRows(
+                                                        LookUp(
+                                                            GcSectionAssessment,
+                                                            'sectionAssessment (quantum_sectionassessment)' = i.'sectionAssessment (quantum_sectionassessment)')
+                                                    )<1,
+                                            Patch(
+                                                GcSectionAssessment,
+                                              
+                                                    Defaults(GcSectionAssessment),
+                                                {
+                                                       'sectionAssessment (quantum_sectionassessmentid)': i.'sectionAssessment (quantum_sectionassessmentid)',
+                                                    'sectionAssessment (quantum_sectionassessment)': i.'sectionAssessment (quantum_sectionassessment)',
+                                                    assignmentId: i.assignmentId,
+                                                    bankUnitId: i.bankUnitId,
+                                                    product_id: i.product_id,
+                                                    sectionId: i.sectionId,
+                                                    sectionName: i.sectionName,
+                                                    AssessmentStatus: i.AssessmentStatus,
+                                                    SstatusUpdate: 2,
+                                                    sectionSequence: i.sectionSequence,
+                                                    sectionComment: i.sectionComment
+                                                }
+                                            )
+                                        );
+                            );
+                                        RemoveIf(
+                                            GcSectionAssessmentCache1,
+                                            bankUnitId.Id = ThisItem.bankUnitId.Id
+                                        );
                                         ,
                                         //Notify("section data  from dataverse",NotificationType.Information);
-                                             
                                         If(
                                             CountRows(
                                                 Filter(
                                                     GcSectionAssessment,
                                                     bankUnitId.Id = ThisItem.bankUnitId.Id
                                                 )
-                                            )<1,
+                                            ) < 1,
                                             ClearCollect(
                                                 GcSectionAssessmentTemp,
                                                 Filter(
@@ -502,7 +546,7 @@ BankScreen As screen:
                                                 )
                                             );
                                         //    Notify("Unit data of section inserted from dataverse",NotificationType.Information);
-                                            ForAll(
+                            ForAll(
                                                 GcSectionAssessmentTemp As i,
                                                 Patch(
                                                     GcSectionAssessment,
@@ -522,10 +566,18 @@ BankScreen As screen:
                                                     }
                                                 )
                                             );
-                                             
-                                        Patch(GcSectionAssessment,Filter(GcSectionAssessmentCache1, bankUnitId.Id = ThisItem.bankUnitId.Id));
-                                        RemoveIf(GcSectionAssessmentCache1,bankUnitId.Id = ThisItem.bankUnitId.Id);
-                                           );
+                                            Patch(
+                                                GcSectionAssessment,
+                                                Filter(
+                                                    GcSectionAssessmentCache1,
+                                                    bankUnitId.Id = ThisItem.bankUnitId.Id
+                                                )
+                                            );
+                                            RemoveIf(
+                                                GcSectionAssessmentCache1,
+                                                bankUnitId.Id = ThisItem.bankUnitId.Id
+                                            );
+                                        );
                                     );
                                     ,
                                     //Checkpoint assessment transaction data
@@ -547,17 +599,25 @@ BankScreen As screen:
                                                 2
                                             )
                                         );
-                                        
-                                        
-                                        Patch(GcCheckpointAssessment,Filter(GcCheckpointAssessmentCache1,bankUnitId.Id = ThisItem.bankUnitId.Id));
-                                        RemoveIf(GcCheckpointAssessmentCache1,  bankUnitId.Id = ThisItem.bankUnitId.Id);,
+                                        Patch(
+                                            GcCheckpointAssessment,
+                                            Filter(
+                                                GcCheckpointAssessmentCache1,
+                                                bankUnitId.Id = ThisItem.bankUnitId.Id
+                                            )
+                                        );
+                                        RemoveIf(
+                                            GcCheckpointAssessmentCache1,
+                                            bankUnitId.Id = ThisItem.bankUnitId.Id
+                                        );
+                                        ,
                                         If(
                                             CountRows(
-                                                 Filter(
+                                                Filter(
                                                     GcCheckpointAssessment,
                                                     bankUnitId.Id = ThisItem.bankUnitId.Id
                                                 )
-                                            )<1,
+                                            ) < 1,
                                             ClearCollect(
                                                 GcCheckpointAssessmentTemp,
                                                 Filter(
@@ -586,8 +646,17 @@ BankScreen As screen:
                                                     }
                                                 );
                                             );
-                                         Patch(GcCheckpointAssessment,Filter(GcCheckpointAssessmentCache1,bankUnitId.Id = ThisItem.bankUnitId.Id));
-                                        RemoveIf(GcCheckpointAssessmentCache1,  bankUnitId.Id = ThisItem.bankUnitId.Id);
+                                            Patch(
+                                                GcCheckpointAssessment,
+                                                Filter(
+                                                    GcCheckpointAssessmentCache1,
+                                                    bankUnitId.Id = ThisItem.bankUnitId.Id
+                                                )
+                                            );
+                                            RemoveIf(
+                                                GcCheckpointAssessmentCache1,
+                                                bankUnitId.Id = ThisItem.bankUnitId.Id
+                                            );
                                         );
                                     );
                                     ,
@@ -609,15 +678,25 @@ BankScreen As screen:
                                                 2
                                             )
                                         );
-                                        Patch(GC_checkpointItemAssessment,Filter(GC_checkpointItemAssessmentCache1, bankUnitId.Id = ThisItem.bankUnitId.Id));
-                                        RemoveIf(GC_checkpointItemAssessmentCache1,  bankUnitId.Id = ThisItem.bankUnitId.Id);,
+                                        Patch(
+                                            GC_checkpointItemAssessment,
+                                            Filter(
+                                                GC_checkpointItemAssessmentCache1,
+                                                bankUnitId.Id = ThisItem.bankUnitId.Id
+                                            )
+                                        );
+                                        RemoveIf(
+                                            GC_checkpointItemAssessmentCache1,
+                                            bankUnitId.Id = ThisItem.bankUnitId.Id
+                                        );
+                                        ,
                                         If(
                                             CountRows(
                                                 Filter(
                                                     GC_checkpointItemAssessment,
-                                                      bankUnitId.Id = ThisItem.bankUnitId.Id
+                                                    bankUnitId.Id = ThisItem.bankUnitId.Id
                                                 )
-                                            )<1,
+                                            ) < 1,
                                             ClearCollect(
                                                 GC_checkpointItemAssessmentTemp,
                                                 Filter(
@@ -631,7 +710,7 @@ BankScreen As screen:
                                                     GC_checkpointItemAssessment,
                                                     Defaults(GC_checkpointItemAssessment),
                                                     {
-                                                          'checkpointItemAssessment (quantum_checkpointitemassessmentid)':i.'checkpointItemAssessment (quantum_checkpointitemassessmentid)',
+                                                        'checkpointItemAssessment (quantum_checkpointitemassessmentid)': i.'checkpointItemAssessment (quantum_checkpointitemassessmentid)',
                                                         'checkpointItemAssessment (quantum_checkpointitemassessment)': i.'checkpointItemAssessment (quantum_checkpointitemassessment)',
                                                         checkpointAssessment_Id: i.checkpointAssessment_Id,
                                                         assignmentId: i.assignmentId,
@@ -645,13 +724,20 @@ BankScreen As screen:
                                                         CIstatusUpdate: 2,
                                                         checkpointitemSequence: i.checkpointitemSequence,
                                                         checkpointItemComment: i.checkpointItemComment
-                                                     
-                                                       
-                                                           }
+                                                    }
                                                 )
                                             );
-                                             Patch(GC_checkpointItemAssessment,Filter(GC_checkpointItemAssessmentCache1, bankUnitId.Id = ThisItem.bankUnitId.Id));
-                                        RemoveIf(GC_checkpointItemAssessmentCache1,  bankUnitId.Id = ThisItem.bankUnitId.Id);
+                                            Patch(
+                                                GC_checkpointItemAssessment,
+                                                Filter(
+                                                    GC_checkpointItemAssessmentCache1,
+                                                    bankUnitId.Id = ThisItem.bankUnitId.Id
+                                                )
+                                            );
+                                            RemoveIf(
+                                                GC_checkpointItemAssessmentCache1,
+                                                bankUnitId.Id = ThisItem.bankUnitId.Id
+                                            );
                                         );
                                     );
                                     ,
@@ -673,15 +759,25 @@ BankScreen As screen:
                                                 2
                                             )
                                         );
-                                         Patch(GC_checkpointItem_ActionItem,Filter(GC_checkpointItem_ActionItemCache1, bankUnitId.Id = ThisItem.bankUnitId.Id));
-                                        RemoveIf(GC_checkpointItem_ActionItemCache1,  bankUnitId.Id = ThisItem.bankUnitId.Id);,
+                                        Patch(
+                                            GC_checkpointItem_ActionItem,
+                                            Filter(
+                                                GC_checkpointItem_ActionItemCache1,
+                                                bankUnitId.Id = ThisItem.bankUnitId.Id
+                                            )
+                                        );
+                                        RemoveIf(
+                                            GC_checkpointItem_ActionItemCache1,
+                                            bankUnitId.Id = ThisItem.bankUnitId.Id
+                                        );
+                                        ,
                                         If(
                                             CountRows(
                                                 Filter(
                                                     GC_checkpointItem_ActionItem,
                                                     bankUnitId.Id = ThisItem.bankUnitId.Id
                                                 )
-                                            )<1,
+                                            ) < 1,
                                             ClearCollect(
                                                 GC_checkpointItem_ActionItemTemp,
                                                 Filter(
@@ -710,12 +806,21 @@ BankScreen As screen:
                                                         TimeEstimate: i.TimeEstimate,
                                                         MaterialEstimate: i.MaterialEstimate,
                                                         CIAstatusUpdate: 2,
-                                                        Action_status:i.Action_status
+                                                        Action_status: i.Action_status
                                                     }
                                                 );
                                             );
-                                                  Patch(GC_checkpointItem_ActionItem,Filter(GC_checkpointItem_ActionItemCache1, bankUnitId.Id = ThisItem.bankUnitId.Id));
-                                        RemoveIf(GC_checkpointItem_ActionItemCache1,  bankUnitId.Id = ThisItem.bankUnitId.Id);
+                                            Patch(
+                                                GC_checkpointItem_ActionItem,
+                                                Filter(
+                                                    GC_checkpointItem_ActionItemCache1,
+                                                    bankUnitId.Id = ThisItem.bankUnitId.Id
+                                                )
+                                            );
+                                            RemoveIf(
+                                                GC_checkpointItem_ActionItemCache1,
+                                                bankUnitId.Id = ThisItem.bankUnitId.Id
+                                            );
                                         );
                                     );
                                     ,
@@ -737,15 +842,25 @@ BankScreen As screen:
                                                 2
                                             )
                                         );
-                                              Patch(GC_checkpointItem_Images,Filter(GC_checkpointItem_ImagesCache1, bankUnitId.Id = ThisItem.bankUnitId.Id));
-                                        RemoveIf(GC_checkpointItem_ImagesCache1,  bankUnitId.Id = ThisItem.bankUnitId.Id);,
+                                        Patch(
+                                            GC_checkpointItem_Images,
+                                            Filter(
+                                                GC_checkpointItem_ImagesCache1,
+                                                bankUnitId.Id = ThisItem.bankUnitId.Id
+                                            )
+                                        );
+                                        RemoveIf(
+                                            GC_checkpointItem_ImagesCache1,
+                                            bankUnitId.Id = ThisItem.bankUnitId.Id
+                                        );
+                                        ,
                                         If(
                                             CountRows(
                                                 Filter(
                                                     GC_checkpointItem_Images,
                                                     bankUnitId.Id = ThisItem.bankUnitId.Id
                                                 )
-                                            )<1,
+                                            ) < 1,
                                             ClearCollect(
                                                 GC_checkpointItem_ImagesTemp,
                                                 Filter(
@@ -767,19 +882,29 @@ BankScreen As screen:
                                                         checkpoint_id: i.checkpoint_id,
                                                         checkpointItem_Id: i.checkpointItem_Id,
                                                         product_id: i.product_id,
-                                                       // Image:Image14_2.Image,
-                                                        Image:i.Image,
+                                                        // Image:Image14_2.Image,
+                                                        Image: i.Image,
                                                         image_annotation: i.image_annotation,
                                                         CIIstatusUpdate: 2
                                                     }
                                                 );
                                             );
-                                                Patch(GC_checkpointItem_Images,Filter(GC_checkpointItem_ImagesCache1, bankUnitId.Id = ThisItem.bankUnitId.Id));
-                                        RemoveIf(GC_checkpointItem_ImagesCache1,  bankUnitId.Id = ThisItem.bankUnitId.Id);
+                                            Patch(
+                                                GC_checkpointItem_Images,
+                                                Filter(
+                                                    GC_checkpointItem_ImagesCache1,
+                                                    bankUnitId.Id = ThisItem.bankUnitId.Id
+                                                )
+                                            );
+                                            RemoveIf(
+                                                GC_checkpointItem_ImagesCache1,
+                                                bankUnitId.Id = ThisItem.bankUnitId.Id
+                                            );
                                         );
                                     );
                                 );
-                              );
+                                
+                            );
                             If(
                                 comp = true,
                                 Navigate(ViewAssessmentScreen),
@@ -799,17 +924,9 @@ BankScreen As screen:
                                     varBankUnitId,
                                     ThisItem.bankUnitId.Id
                                 );
-                                
-                                      
-                            Navigate(SectionScreen);
+                                Navigate(SectionScreen);
                                 
                             );
-                            
-                            
-                            
-                            
-                            
-                            
                             /*
                             If(
                                 IsEmpty(GcSectionAssessment) && IsEmpty(GcCheckpointAssessment) && IsEmpty(GC_checkpointItemAssessment) && IsEmpty(GC_checkpointItem_ActionItem) && IsEmpty(GC_checkpointItem_Images),
