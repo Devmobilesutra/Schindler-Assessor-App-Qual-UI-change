@@ -756,7 +756,6 @@ AssessmentScreen As screen:
                                 UserLastNavigated,
                                 Now()
                             );*/
-                            
                             //for safety check
                             If(
                                 DateDiff(
@@ -775,7 +774,6 @@ AssessmentScreen As screen:
                                 );
                                 
                             );
-                            
                             //set the Id of selected checkpointitemId
                             Set(
                                 varCheckpointitemID,
@@ -801,15 +799,15 @@ AssessmentScreen As screen:
                               && IsBlank(LookUp(GC_checkpointItem_Images,
                                     assignmentId.Id=varAssignmentId && bankUnitId.Id=varBankUnitId && 
                                     checkpointItem_Id.checkpointItemId.checkpointItemId=varCheckpointitemID))) ||*/
-                                (glryItmesAS.Selected.checkpointItemImage ='checkpointItemImage (templateCheckpointsItems)'.Yes &&
+                                (glryItmesAS.Selected.checkpointItemImage = 'checkpointItemImage (templateCheckpointsItems)'.Yes &&
                                // glryItmesAS.Selected.checkItemIsApplicable='checkItemIsApplicable (templateCheckpointsItems)'.No) ||      ////(glryItmesAS.Selected.checkpointItemImage ='checkpointItemImage (templateCheckpointsItems)'.Yes &&//glryItmesAS.Selected.checkItemIsApplicable='checkItemIsApplicable (templateCheckpointsItems)'.Yes)
-                                Not("NA option" in glryItmesAS.Selected.checkpointItemName) 
+                             Not("NA option" in glryItmesAS.Selected.checkpointItemName) 
                               // || Not("NA option" in chglryCheckpointsSS_2.Selected.checkpointName)
                             && IsBlank(
                                     LookUp(
                                         GC_checkpointItem_Images,
-                                        assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && //checkpointItem_Id.checkpointItemId.checkpointItemId = varCheckpointitemID
-                                        checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)'=varCItemA
+                                        assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId &&//checkpointItem_Id.checkpointItemId.checkpointItemId = varCheckpointitemID
+                             checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = varCItemA
                                     )
                                 )),
                                 Notify(
@@ -858,17 +856,14 @@ AssessmentScreen As screen:
                                             UstatusUpdate: 0
                                         }
                                     );
-                            
+                                    
                             // unit assessment status update 0  for save status update
-                                UpdateIf(
-                                    GC_unitAssessment,
-                                    assignmentId.Id=varAssignmentId && bankUnitId.Id=varBankUnitId,
+                            UpdateIf(
+                                        GC_unitAssessment,
+                                        assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId,
                                     //&& Assessment_status ="Inprogress",
-                                    {
-                                        UstatusUpdate:0
-                                    }
-                                );
-                            
+                                        {UstatusUpdate: 0}
+                                    );
                                     
                             //here, If there is no row for VarSectionId in GectionAssessment, then set new GUID in Variable varSA and collect row for varSectionId .If a row  is already exist  for VarsectionId then set it's primary column key in variable.
                             If(
@@ -933,16 +928,12 @@ AssessmentScreen As screen:
                                                 'sectionAssessment (quantum_sectionassessment)'
                                             )
                                         );
-                                       
                               //section assessment status update 0 for save status update
-                                UpdateIf(
-                                    GcSectionAssessment,
-                                    'sectionAssessment (quantum_sectionassessment)'= varSA ,
-                                    {
-                                      SstatusUpdate:0
-                                    }
-                                );
-                                
+                            UpdateIf(
+                                            GcSectionAssessment,
+                                            'sectionAssessment (quantum_sectionassessment)' = varSA,
+                                            {SstatusUpdate: 0}
+                                        );
                                     );
                                     
                             // a row present for checkpoint Assessment. If there is no row for ChId in GcCheckpointAssessment, then set new GUID in Variable GuidId and collect row for ChId.If a row  is already exist  for ChId then set it's primary column key in variable.
@@ -1092,13 +1083,24 @@ AssessmentScreen As screen:
                                                 checkpointItemName: glryItmesAS.Selected.cboxItemsAS.Text,
                                                 assessmentStatus: "Check",
                                                 CIstatusUpdate: 0,
-                                                checkpointitemSequence: 
-                                                LookUp(
+                                                checkpointitemSequence: LookUp(
                                                     GC_templateCheckpointsItem,
                                                     checkpointItemId = glryItmesAS.Selected.checkpointItemId,
                                                     checkpointItemSequence
                                                 ),
-                                                CheckpointItemSortSequence: LookUp(GC_templateSections,sectionId=VarSectionId,sectionSequence) & LookUp(GC_templateCheckpoints,checkpointId= ChId,checkpointSequence) & LookUp(GC_templateCheckpointsItem,checkpointItemId = varCheckpointitemID,checkpointItemSequence)
+                                                CheckpointItemSortSequence: LookUp(
+                                                    GC_templateSections,
+                                                    sectionId = VarSectionId,
+                                                    sectionSequence
+                                                ) & LookUp(
+                                                    GC_templateCheckpoints,
+                                                    checkpointId = ChId,
+                                                    checkpointSequence
+                                                ) & LookUp(
+                                                    GC_templateCheckpointsItem,
+                                                    checkpointItemId = varCheckpointitemID,
+                                                    checkpointItemSequence
+                                                )
                                             }
                                         ),
                                         UpdateIf(
@@ -1114,32 +1116,41 @@ AssessmentScreen As screen:
                                 
                             //Notify("oncheck end",NotificationType.Information);
                             /*************************************/
-                            /*//Save data from collections to local cache
+                            ///Save data from collections to local cache
                             SaveData(
-                                    GC_checkpointItemAssessment,
-                                    "localcheckpointitemassessment"
-                                );
-                                SaveData(
-                                        gcProjectAssignment,
-                                        "localprojectassignment"
-                                    );
-                                SaveData(
-                                    GC_unitAssessment,
-                                    "localunitassessment"
+                                    gcProjectAssignment,
+                                    "localprojectassignment"
                                 );
                                 SaveData(
                                     GC_bankAssessment,
                                     "localbankassessment"
                                 );
                                 SaveData(
-                                    GcSectionAssessment,
+                                    GC_unitAssessment,
+                                    "localunitassessment"
+                                );
+                            
+                                ClearCollect(GcSectionAssessmentCache,Filter(GcSectionAssessment,SstatusUpdate = 0 || SstatusUpdate = 1));
+                             /*   ForAll(
+                                    GcSectionAssessment As i,
+                                    Collect(GcSectionAssessmentCache,i);
+                            
+                                );*/
+                            
+                                Patch(GcSectionAssessmentCache,GcSectionAssessment);
+                                SaveData(
+                                    GcSectionAssessmentCache,
                                     "localsectionassessment"
                                 );
                                 SaveData(
                                     GcCheckpointAssessment,
                                     "localcheckpointassessment"
                                 );
-                                */
+                                SaveData(
+                                    GC_checkpointItemAssessment,
+                                    "localcheckpointitemassessment"
+                                );
+                                
                             )
                         OnSelect: |
                             =//Set(locItemExpanded,false

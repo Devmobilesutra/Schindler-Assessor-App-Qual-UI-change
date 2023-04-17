@@ -215,7 +215,7 @@ DashboardScreen As screen:
                                 GC_unitAssessment,
                                 "localunitassessment"
                             );
-                        SaveData(
+                       /* SaveData(
                             GcSectionAssessment,
                             "localsectionassessment"
                         );
@@ -234,7 +234,7 @@ DashboardScreen As screen:
                         SaveData(
                             GC_checkpointItem_Images,
                             "localcheckpointitemimage"
-                        );
+                        );*/
                     
                         Trace(First(gcAssignmentunit).bankUnitId.unitNumber,TraceSeverity.Information);
                         ,
