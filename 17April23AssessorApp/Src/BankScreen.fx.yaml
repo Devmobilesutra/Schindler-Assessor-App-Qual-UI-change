@@ -499,11 +499,11 @@ BankScreen As screen:
                             ForAll(
                                             GcSectionAssessmentCache1 As i,
                                               If(
-                                                    CountRows(
+                                                    IsBlank(
                                                         LookUp(
                                                             GcSectionAssessment,
-                                                            'sectionAssessment (quantum_sectionassessment)' = i.'sectionAssessment (quantum_sectionassessment)')
-                                                    )<1,
+                                                            'sectionAssessment (quantum_sectionassessment)' = i.'sectionAssessment (quantum_sectionassessment)','sectionAssessment (quantum_sectionassessment)')
+                                                    ),
                                             Patch(
                                                 GcSectionAssessment,
                                               
