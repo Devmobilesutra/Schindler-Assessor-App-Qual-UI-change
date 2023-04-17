@@ -1130,22 +1130,28 @@ AssessmentScreen As screen:
                                     "localunitassessment"
                                 );
                             
-                                ClearCollect(GcSectionAssessmentCache,Filter(GcSectionAssessment,SstatusUpdate = 0 || SstatusUpdate = 1));
+                             
                              /*   ForAll(
                                     GcSectionAssessment As i,
                                     Collect(GcSectionAssessmentCache,i);
                             
                                 );*/
-                            
-                                Patch(GcSectionAssessmentCache,GcSectionAssessment);
+                                ClearCollect(GcSectionAssessmentCache,Filter(GcSectionAssessment,SstatusUpdate = 0 || SstatusUpdate = 1));
+                                Patch(GcSectionAssessmentCache,GcSectionAssessmentCache1);
                                 SaveData(
                                     GcSectionAssessmentCache,
                                     "localsectionassessment"
                                 );
+                            
+                                ClearCollect(GcCheckpointAssessmentCache,Filter(GcCheckpointAssessment,CstatusUpdate = 0 || CstatusUpdate = 1));
+                                Patch(GcCheckpointAssessmentCache,GcCheckpointAssessmentCache1);
                                 SaveData(
-                                    GcCheckpointAssessment,
+                                    GcCheckpointAssessmentCache,
                                     "localcheckpointassessment"
                                 );
+                            
+                                ClearCollect(GC_checkpointItemAssessmentCache,Filter(GC_checkpointItemAssessment,CIstatusUpdate = 0 || CIstatusUpdate = 1));
+                                Patch(GC_checkpointItemAssessmentCache,GC_checkpointItemAssessmentCache1);
                                 SaveData(
                                     GC_checkpointItemAssessment,
                                     "localcheckpointitemassessment"
