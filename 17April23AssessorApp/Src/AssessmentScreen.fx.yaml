@@ -1582,7 +1582,6 @@ AssessmentScreen As screen:
                                 GC_checkpointItem_Images,
                                 "localcheckpointitemimage"
                             ););
-                            
                             */
                             //here we check new records are available(checkpointItemAssessment ,checkpointAction And checkpointImages) for patch or not .If not available then set message "No new assessment records found for submission." 
                             //otherwise we check status 2 record is  available in unit ,section and checkpoint table if available then update status 2 to status 1 (for show green and gray tick)
@@ -2157,7 +2156,7 @@ AssessmentScreen As screen:
                                                     {
                                                         checkpointItem_ActionItems: i.checkpointItem_ActionItems,
                                                         //unique key
-                            Action_status: i.Action_status,
+                                                        Action_status: i.Action_status,
                                                         CIAstatusUpdate: 2
                                                     }
                                                 )
@@ -2219,7 +2218,7 @@ AssessmentScreen As screen:
                                                     {
                                                         checkpointItem_Images: i.checkpointItem_Images,
                                                         //unique key
-                            CIIstatusUpdate: 2
+                                                        CIIstatusUpdate: 2
                                                     }
                                                 )
                                             );
@@ -2242,6 +2241,7 @@ AssessmentScreen As screen:
                                         GC_unitAssessment,
                                         "localunitassessment"
                                     );
+                            
                                     ClearCollect(
                                         GcSectionAssessmentCache,
                                         Filter(
@@ -2257,6 +2257,7 @@ AssessmentScreen As screen:
                                         GcSectionAssessmentCache,
                                         "localsectionassessment"
                                     );
+                                    
                                     ClearCollect(
                                         GcCheckpointAssessmentCache,
                                         Filter(
