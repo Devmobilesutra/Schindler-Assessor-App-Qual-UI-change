@@ -2594,7 +2594,7 @@ FindingScreen As screen:
                                         
                                     //Notify("saving data to local cache");
                                     //************************************
-                                    /*// savedata from collections to local cache .
+                                    // savedata from collections to local cache .
                                     SaveData(
                                             gcProjectAssignment,
                                             "localprojectassignment"
@@ -2607,26 +2607,46 @@ FindingScreen As screen:
                                             GC_unitAssessment,
                                             "localunitassessment"
                                         );
+                                    
+                                    
+                                          ClearCollect(GcSectionAssessmentCache,Filter(GcSectionAssessment,SstatusUpdate = 0 || SstatusUpdate = 1));
+                                        Patch(GcSectionAssessmentCache,GcSectionAssessmentCache1);
                                         SaveData(
-                                            GC_checkpointItemAssessment,
-                                            "localcheckpointitemassessment"
-                                        );
-                                        SaveData(
-                                            GC_checkpointItem_ActionItem,
-                                            "localcheckpointitemactionitem"
-                                        );
-                                        SaveData(
-                                            GC_checkpointItem_Images,
-                                            "localcheckpointitemimage"
-                                        );
-                                        SaveData(
-                                            GcSectionAssessment,
+                                            GcSectionAssessmentCache,
                                             "localsectionassessment"
                                         );
+                                    
+                                        ClearCollect(GcCheckpointAssessmentCache,Filter(GcCheckpointAssessment,CstatusUpdate = 0 || CstatusUpdate = 1));
+                                        Patch(GcCheckpointAssessmentCache,GcCheckpointAssessmentCache1);
                                         SaveData(
-                                            GcCheckpointAssessment,
+                                            GcCheckpointAssessmentCache,
                                             "localcheckpointassessment"
-                                        )*/
+                                        );
+                                    
+                                        ClearCollect(GC_checkpointItemAssessmentCache,Filter(GC_checkpointItemAssessment,CIstatusUpdate = 0 || CIstatusUpdate = 1));
+                                        Patch(GC_checkpointItemAssessmentCache,GC_checkpointItemAssessmentCache1);
+                                        SaveData(
+                                            GC_checkpointItemAssessmentCache,
+                                            "localcheckpointitemassessment"
+                                        );
+                                    
+                                    
+                                       
+                                        ClearCollect(GC_checkpointItem_ActionItemCache,Filter(GC_checkpointItem_ActionItem,CIAstatusUpdate = 0 || CIAstatusUpdate = 1));
+                                        Patch(GC_checkpointItem_ActionItemCache,GC_checkpointItem_ActionItemCache1);
+                                        SaveData(
+                                            GC_checkpointItem_ActionItemCache,
+                                            "localcheckpointitemactionitem"
+                                        );
+                                    
+                                        
+                                        ClearCollect(GC_checkpointItem_ImagesCache,Filter(GC_checkpointItem_Images,CIIstatusUpdate = 0 || CIIstatusUpdate = 1));
+                                        Patch(GC_checkpointItem_ImagesCache,GC_checkpointItem_ImagesCache1);
+                                        SaveData(
+                                            GC_checkpointItem_ImagesCache,
+                                            "localcheckpointitemimage"
+                                        );
+                                      
                                     );
                                     //Notify("save end");
                                 PressedFill: =AllScreensCSS.RActiveColor

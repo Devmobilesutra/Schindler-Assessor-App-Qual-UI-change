@@ -924,7 +924,7 @@
   },
   "FunctionParamsInvariantScripts": {},
   "FunctionParamsInvariantScriptsOnInstances": {},
-  "HeaderLastSavedDateTimeUTC": "04/17/2023 12:19:23",
+  "HeaderLastSavedDateTimeUTC": "04/17/2023 12:27:28",
   "IsLegacyComponentAllowGlobalScopeCase": false,
   "LocalConnectionIDReferences": {
     "5e019120-94fe-476b-9587-65ed73e4618b": "\"/providers/microsoft.powerapps/apis/shared_logicflows/connections/b1f1b6d1-5517-40a8-995d-44f68b39fe6a\"",
@@ -1172,10 +1172,12 @@
     "GC_bankAssessmentAdd": 161,
     "GC_checkpointItem_ActionItem": 165,
     "GC_checkpointItem_ActionItemAdd": 156,
+    "GC_checkpointItem_ActionItemCache": 195,
     "GC_checkpointItem_ActionItemCache1": 191,
     "GC_checkpointItem_ActionItemTemp": 151,
     "GC_checkpointItem_Images": 168,
     "GC_checkpointItem_ImagesAdd": 150,
+    "GC_checkpointItem_ImagesCache": 196,
     "GC_checkpointItem_ImagesCache1": 192,
     "GC_checkpointItem_ImagesTemp": 149,
     "GC_checkpointItemAssessment": 158,
@@ -3495,7 +3497,7 @@
       "timer": 9
     },
     "DeserializationLoadTime": 10.7918127,
-    "ErrorCount": 762
+    "ErrorCount": 766
   },
   "WasLocalDatabaseReferencesEmpty": false
 }

@@ -1153,7 +1153,7 @@ AssessmentScreen As screen:
                                 ClearCollect(GC_checkpointItemAssessmentCache,Filter(GC_checkpointItemAssessment,CIstatusUpdate = 0 || CIstatusUpdate = 1));
                                 Patch(GC_checkpointItemAssessmentCache,GC_checkpointItemAssessmentCache1);
                                 SaveData(
-                                    GC_checkpointItemAssessment,
+                                    GC_checkpointItemAssessmentCache,
                                     "localcheckpointitemassessment"
                                 );
                                 
