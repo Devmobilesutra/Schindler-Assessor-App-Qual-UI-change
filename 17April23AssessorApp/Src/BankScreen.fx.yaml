@@ -509,7 +509,7 @@ BankScreen As screen:
                                               
                                                     Defaults(GcSectionAssessment),
                                                 {
-                                                       'sectionAssessment (quantum_sectionassessmentid)': i.'sectionAssessment (quantum_sectionassessmentid)',
+                                                    //   'sectionAssessment (quantum_sectionassessmentid)': i.'sectionAssessment (quantum_sectionassessmentid)',
                                                     'sectionAssessment (quantum_sectionassessment)': i.'sectionAssessment (quantum_sectionassessment)',
                                                     assignmentId: i.assignmentId,
                                                     bankUnitId: i.bankUnitId,
@@ -521,8 +521,24 @@ BankScreen As screen:
                                                     sectionSequence: i.sectionSequence,
                                                     sectionComment: i.sectionComment
                                                 }
-                                            )
+                                            );,
+                            
+                                            UpdateIf(GcSectionAssessment,'sectionAssessment (quantum_sectionassessment)' = i.'sectionAssessment (quantum_sectionassessment)',
+                                            {
+                                                    //   'sectionAssessment (quantum_sectionassessmentid)': i.'sectionAssessment (quantum_sectionassessmentid)',
+                                                    'sectionAssessment (quantum_sectionassessment)': i.'sectionAssessment (quantum_sectionassessment)',
+                                                    assignmentId: i.assignmentId,
+                                                    bankUnitId: i.bankUnitId,
+                                                    product_id: i.product_id,
+                                                    sectionId: i.sectionId,
+                                                    sectionName: i.sectionName,
+                                                    AssessmentStatus: i.AssessmentStatus,
+                                                    SstatusUpdate: 2,
+                                                    sectionSequence: i.sectionSequence,
+                                                    sectionComment: i.sectionComment
+                                                }
                                         );
+                                     );
                             );
                                         RemoveIf(
                                             GcSectionAssessmentCache1,
