@@ -497,7 +497,10 @@ BankScreen As screen:
                                         //updateeee
                                       //  Patch(GcSectionAssessment,Filter(GcSectionAssessmentCache1, bankUnitId.Id = ThisItem.bankUnitId.Id));
                             ForAll(
-                                            GcSectionAssessmentCache1 As i,
+                                            Filter(
+                                                GcSectionAssessmentCache1,
+                                                bankUnitId.Id = ThisItem.bankUnitId.Id
+                                            ) As i,
                                             If(
                                                 IsBlank(
                                                     LookUp(
@@ -509,7 +512,7 @@ BankScreen As screen:
                                                     GcSectionAssessment,
                                                     Defaults(GcSectionAssessment),
                                                     {
-                                                           'sectionAssessment (quantum_sectionassessmentid)': i.'sectionAssessment (quantum_sectionassessmentid)',
+                                                        'sectionAssessment (quantum_sectionassessmentid)': i.'sectionAssessment (quantum_sectionassessmentid)',
                                                         'sectionAssessment (quantum_sectionassessment)': i.'sectionAssessment (quantum_sectionassessment)',
                                                         assignmentId: i.assignmentId,
                                                         bankUnitId: i.bankUnitId,
@@ -530,7 +533,7 @@ BankScreen As screen:
                                                         'sectionAssessment (quantum_sectionassessment)' = i.'sectionAssessment (quantum_sectionassessment)'
                                                     ),
                                                     {
-                                                          'sectionAssessment (quantum_sectionassessmentid)': i.'sectionAssessment (quantum_sectionassessmentid)',
+                                                        'sectionAssessment (quantum_sectionassessmentid)': i.'sectionAssessment (quantum_sectionassessmentid)',
                                                         'sectionAssessment (quantum_sectionassessment)': i.'sectionAssessment (quantum_sectionassessment)',
                                                         assignmentId: i.assignmentId,
                                                         bankUnitId: i.bankUnitId,
@@ -543,9 +546,11 @@ BankScreen As screen:
                                                         sectionComment: i.sectionComment
                                                     }
                                                 );
-                                            );//if
-                                        );//forall
-                                        RemoveIf(
+                                            );
+                                            //if
+                                        );
+                                        //forall
+                            RemoveIf(
                                             GcSectionAssessmentCache1,
                                             bankUnitId.Id = ThisItem.bankUnitId.Id
                                         );
@@ -587,61 +592,62 @@ BankScreen As screen:
                                                     }
                                                 )
                                             );
-                            
                                      /// update local data
-                                            ForAll(
-                                            GcSectionAssessmentCache1 As i,
-                                            If(
-                                                IsBlank(
-                                                    LookUp(
-                                                        GcSectionAssessment,
-                                                        'sectionAssessment (quantum_sectionassessment)' = i.'sectionAssessment (quantum_sectionassessment)'
-                                                    )
-                                                ),
-                                                Patch(
-                                                    GcSectionAssessment,
-                                                    Defaults(GcSectionAssessment),
-                                                    {
-                                                           'sectionAssessment (quantum_sectionassessmentid)': i.'sectionAssessment (quantum_sectionassessmentid)',
-                                                        'sectionAssessment (quantum_sectionassessment)': i.'sectionAssessment (quantum_sectionassessment)',
-                                                        assignmentId: i.assignmentId,
-                                                        bankUnitId: i.bankUnitId,
-                                                        product_id: i.product_id,
-                                                        sectionId: i.sectionId,
-                                                        sectionName: i.sectionName,
-                                                        AssessmentStatus: i.AssessmentStatus,
-                                                        SstatusUpdate: i.SstatusUpdate,
-                                                        sectionSequence: i.sectionSequence,
-                                                        sectionComment: i.sectionComment
-                                                    }
-                                                );
-                                                ,
-                                                Patch(
-                                                    GcSectionAssessment,
-                                                    LookUp(
-                                                        GcSectionAssessment,
-                                                        'sectionAssessment (quantum_sectionassessment)' = i.'sectionAssessment (quantum_sectionassessment)'
+                            ForAll(
+                                                Filter(
+                                                GcSectionAssessmentCache1,
+                                                bankUnitId.Id = ThisItem.bankUnitId.Id
+                                            )  As i,
+                                                If(
+                                                    IsBlank(
+                                                        LookUp(
+                                                            GcSectionAssessment,
+                                                            'sectionAssessment (quantum_sectionassessment)' = i.'sectionAssessment (quantum_sectionassessment)'
+                                                        )
                                                     ),
-                                                    {
-                                                           'sectionAssessment (quantum_sectionassessmentid)': i.'sectionAssessment (quantum_sectionassessmentid)',
-                                                        'sectionAssessment (quantum_sectionassessment)': i.'sectionAssessment (quantum_sectionassessment)',
-                                                        assignmentId: i.assignmentId,
-                                                        bankUnitId: i.bankUnitId,
-                                                        product_id: i.product_id,
-                                                        sectionId: i.sectionId,
-                                                        sectionName: i.sectionName,
-                                                        AssessmentStatus: i.AssessmentStatus,
-                                                        SstatusUpdate: i.SstatusUpdate,
-                                                        sectionSequence: i.sectionSequence,
-                                                        sectionComment: i.sectionComment
-                                                    }
+                                                    Patch(
+                                                        GcSectionAssessment,
+                                                        Defaults(GcSectionAssessment),
+                                                        {
+                                                            'sectionAssessment (quantum_sectionassessmentid)': i.'sectionAssessment (quantum_sectionassessmentid)',
+                                                            'sectionAssessment (quantum_sectionassessment)': i.'sectionAssessment (quantum_sectionassessment)',
+                                                            assignmentId: i.assignmentId,
+                                                            bankUnitId: i.bankUnitId,
+                                                            product_id: i.product_id,
+                                                            sectionId: i.sectionId,
+                                                            sectionName: i.sectionName,
+                                                            AssessmentStatus: i.AssessmentStatus,
+                                                            SstatusUpdate: i.SstatusUpdate,
+                                                            sectionSequence: i.sectionSequence,
+                                                            sectionComment: i.sectionComment
+                                                        }
+                                                    );
+                                                    ,
+                                                    Patch(
+                                                        GcSectionAssessment,
+                                                        LookUp(
+                                                            GcSectionAssessment,
+                                                            'sectionAssessment (quantum_sectionassessment)' = i.'sectionAssessment (quantum_sectionassessment)'
+                                                        ),
+                                                        {
+                                                            'sectionAssessment (quantum_sectionassessmentid)': i.'sectionAssessment (quantum_sectionassessmentid)',
+                                                            'sectionAssessment (quantum_sectionassessment)': i.'sectionAssessment (quantum_sectionassessment)',
+                                                            assignmentId: i.assignmentId,
+                                                            bankUnitId: i.bankUnitId,
+                                                            product_id: i.product_id,
+                                                            sectionId: i.sectionId,
+                                                            sectionName: i.sectionName,
+                                                            AssessmentStatus: i.AssessmentStatus,
+                                                            SstatusUpdate: i.SstatusUpdate,
+                                                            sectionSequence: i.sectionSequence,
+                                                            sectionComment: i.sectionComment
+                                                        }
+                                                    );
                                                 );
-                                            );//if
-                                        );//forall
-                            
-                            
-                            
-                                            RemoveIf(
+                                                //if
+                                            );
+                                            //forall
+                            RemoveIf(
                                                 GcSectionAssessmentCache1,
                                                 bankUnitId.Id = ThisItem.bankUnitId.Id
                                             );
@@ -668,13 +674,16 @@ BankScreen As screen:
                                             )
                                         );
                                        //update local data
-                                       ForAll(
-                                            GcCheckpointAssessmentCache1 As i,
+                            ForAll(
+                                             Filter(
+                                                GcCheckpointAssessmentCache1,
+                                                bankUnitId.Id = ThisItem.bankUnitId.Id
+                                            ) As i,
                                             If(
                                                 IsBlank(
                                                     LookUp(
                                                         GcCheckpointAssessment,
-                                                         checkpointAssessment_id = i.checkpointAssessment_id
+                                                        checkpointAssessment_id = i.checkpointAssessment_id
                                                     )
                                                 ),
                                                 Patch(
@@ -700,10 +709,10 @@ BankScreen As screen:
                                                     GcCheckpointAssessment,
                                                     LookUp(
                                                         GcCheckpointAssessment,
-                                                        checkpointAssessment_id= i.checkpointAssessment_id
+                                                        checkpointAssessment_id = i.checkpointAssessment_id
                                                     ),
                                                     {
-                                                       checkpointAssessment: i.checkpointAssessment,
+                                                        checkpointAssessment: i.checkpointAssessment,
                                                         checkpointAssessment_id: i.checkpointAssessment_id,
                                                         assignmentId: i.assignmentId,
                                                         bankUnitId: i.bankUnitId,
@@ -717,9 +726,11 @@ BankScreen As screen:
                                                         checkpointComment: i.checkpointComment
                                                     }
                                                 );
-                                            );//if
-                                        );//forall
-                                        RemoveIf(
+                                            );
+                                            //if
+                                        );
+                                        //forall
+                            RemoveIf(
                                             GcCheckpointAssessmentCache1,
                                             bankUnitId.Id = ThisItem.bankUnitId.Id
                                         );
@@ -759,60 +770,64 @@ BankScreen As screen:
                                                     }
                                                 );
                                             );
-                            
                                             //update local data
-                                            ForAll(
-                                            GcCheckpointAssessmentCache1 As i,
-                                            If(
-                                                IsBlank(
-                                                    LookUp(
-                                                        GcCheckpointAssessment,
-                                                         checkpointAssessment_id = i.checkpointAssessment_id
-                                                    )
-                                                ),
-                                                Patch(
-                                                    GcCheckpointAssessment,
-                                                    Defaults(GcCheckpointAssessment),
-                                                    {
-                                                        checkpointAssessment: i.checkpointAssessment,
-                                                        checkpointAssessment_id: i.checkpointAssessment_id,
-                                                        assignmentId: i.assignmentId,
-                                                        bankUnitId: i.bankUnitId,
-                                                        product_id: i.product_id,
-                                                        sectionId: i.sectionId,
-                                                        checkpointId: i.checkpointId,
-                                                        checkpointName: i.checkpointName,
-                                                        AssessmentStatus: i.AssessmentStatus,
-                                                        CstatusUpdate: i.CstatusUpdate,
-                                                        CheckpointSequence: i.CheckpointSequence,
-                                                        checkpointComment: i.checkpointComment
-                                                    }
-                                                );
-                                                ,
-                                                Patch(
-                                                    GcCheckpointAssessment,
-                                                    LookUp(
-                                                        GcCheckpointAssessment,
-                                                        checkpointAssessment_id= i.checkpointAssessment_id
+                            ForAll(
+                                                 Filter(
+                                                GcCheckpointAssessmentCache1,
+                                                bankUnitId.Id = ThisItem.bankUnitId.Id
+                                            ) As i,
+                                                If(
+                                                    IsBlank(
+                                                        LookUp(
+                                                            GcCheckpointAssessment,
+                                                            checkpointAssessment_id = i.checkpointAssessment_id
+                                                        )
                                                     ),
-                                                    {
-                                                       checkpointAssessment: i.checkpointAssessment,
-                                                        checkpointAssessment_id: i.checkpointAssessment_id,
-                                                        assignmentId: i.assignmentId,
-                                                        bankUnitId: i.bankUnitId,
-                                                        product_id: i.product_id,
-                                                        sectionId: i.sectionId,
-                                                        checkpointId: i.checkpointId,
-                                                        checkpointName: i.checkpointName,
-                                                        AssessmentStatus: i.AssessmentStatus,
-                                                        CstatusUpdate: i.CstatusUpdate,
-                                                        CheckpointSequence: i.CheckpointSequence,
-                                                        checkpointComment: i.checkpointComment
-                                                    }
+                                                    Patch(
+                                                        GcCheckpointAssessment,
+                                                        Defaults(GcCheckpointAssessment),
+                                                        {
+                                                            checkpointAssessment: i.checkpointAssessment,
+                                                            checkpointAssessment_id: i.checkpointAssessment_id,
+                                                            assignmentId: i.assignmentId,
+                                                            bankUnitId: i.bankUnitId,
+                                                            product_id: i.product_id,
+                                                            sectionId: i.sectionId,
+                                                            checkpointId: i.checkpointId,
+                                                            checkpointName: i.checkpointName,
+                                                            AssessmentStatus: i.AssessmentStatus,
+                                                            CstatusUpdate: i.CstatusUpdate,
+                                                            CheckpointSequence: i.CheckpointSequence,
+                                                            checkpointComment: i.checkpointComment
+                                                        }
+                                                    );
+                                                    ,
+                                                    Patch(
+                                                        GcCheckpointAssessment,
+                                                        LookUp(
+                                                            GcCheckpointAssessment,
+                                                            checkpointAssessment_id = i.checkpointAssessment_id
+                                                        ),
+                                                        {
+                                                            checkpointAssessment: i.checkpointAssessment,
+                                                            checkpointAssessment_id: i.checkpointAssessment_id,
+                                                            assignmentId: i.assignmentId,
+                                                            bankUnitId: i.bankUnitId,
+                                                            product_id: i.product_id,
+                                                            sectionId: i.sectionId,
+                                                            checkpointId: i.checkpointId,
+                                                            checkpointName: i.checkpointName,
+                                                            AssessmentStatus: i.AssessmentStatus,
+                                                            CstatusUpdate: i.CstatusUpdate,
+                                                            CheckpointSequence: i.CheckpointSequence,
+                                                            checkpointComment: i.checkpointComment
+                                                        }
+                                                    );
                                                 );
-                                            );//if
-                                        );//forall
-                                            RemoveIf(
+                                                //if
+                                            );
+                                            //forall
+                            RemoveIf(
                                                 GcCheckpointAssessmentCache1,
                                                 bankUnitId.Id = ThisItem.bankUnitId.Id
                                             );
@@ -838,21 +853,23 @@ BankScreen As screen:
                                             )
                                         );
                                         //update local data
-                            
-                                        ForAll(
-                                            GC_checkpointItemAssessmentCache1 As i,
+                            ForAll(
+                                             Filter(
+                                                GC_checkpointItemAssessmentCache1,
+                                                bankUnitId.Id = ThisItem.bankUnitId.Id
+                                            ) As i,
                                             If(
                                                 IsBlank(
                                                     LookUp(
                                                         GC_checkpointItemAssessment,
-                                                         'checkpointItemAssessment (quantum_checkpointitemassessment)' = i.'checkpointItemAssessment (quantum_checkpointitemassessment)'
+                                                        'checkpointItemAssessment (quantum_checkpointitemassessment)' = i.'checkpointItemAssessment (quantum_checkpointitemassessment)'
                                                     )
                                                 ),
                                                 Patch(
                                                     GC_checkpointItemAssessment,
                                                     Defaults(GC_checkpointItemAssessment),
                                                     {
-                                                       'checkpointItemAssessment (quantum_checkpointitemassessmentid)': i.'checkpointItemAssessment (quantum_checkpointitemassessmentid)',
+                                                        'checkpointItemAssessment (quantum_checkpointitemassessmentid)': i.'checkpointItemAssessment (quantum_checkpointitemassessmentid)',
                                                         'checkpointItemAssessment (quantum_checkpointitemassessment)': i.'checkpointItemAssessment (quantum_checkpointitemassessment)',
                                                         checkpointAssessment_Id: i.checkpointAssessment_Id,
                                                         assignmentId: i.assignmentId,
@@ -868,15 +885,15 @@ BankScreen As screen:
                                                         checkpointItemComment: i.checkpointItemComment
                                                     }
                                                 );
-                                               ,
+                                                ,
                                                 Patch(
                                                     GC_checkpointItemAssessment,
                                                     LookUp(
                                                         GC_checkpointItemAssessment,
-                                                        'checkpointItemAssessment (quantum_checkpointitemassessment)'= i.'checkpointItemAssessment (quantum_checkpointitemassessment)'
+                                                        'checkpointItemAssessment (quantum_checkpointitemassessment)' = i.'checkpointItemAssessment (quantum_checkpointitemassessment)'
                                                     ),
                                                     {
-                                                       'checkpointItemAssessment (quantum_checkpointitemassessmentid)': i.'checkpointItemAssessment (quantum_checkpointitemassessmentid)',
+                                                        'checkpointItemAssessment (quantum_checkpointitemassessmentid)': i.'checkpointItemAssessment (quantum_checkpointitemassessmentid)',
                                                         'checkpointItemAssessment (quantum_checkpointitemassessment)': i.'checkpointItemAssessment (quantum_checkpointitemassessment)',
                                                         checkpointAssessment_Id: i.checkpointAssessment_Id,
                                                         assignmentId: i.assignmentId,
@@ -892,10 +909,11 @@ BankScreen As screen:
                                                         checkpointItemComment: i.checkpointItemComment
                                                     }
                                                 );
-                                            );//if
-                                        );//forall
-                            
-                                        RemoveIf(
+                                            );
+                                            //if
+                                        );
+                                        //forall
+                            RemoveIf(
                                             GC_checkpointItemAssessmentCache1,
                                             bankUnitId.Id = ThisItem.bankUnitId.Id
                                         );
@@ -938,63 +956,67 @@ BankScreen As screen:
                                                 )
                                             );
                                              //update local data
-                            
-                                        ForAll(
-                                            GC_checkpointItemAssessmentCache1 As i,
-                                            If(
-                                                IsBlank(
-                                                    LookUp(
-                                                        GC_checkpointItemAssessment,
-                                                         'checkpointItemAssessment (quantum_checkpointitemassessment)' = i.'checkpointItemAssessment (quantum_checkpointitemassessment)'
-                                                    )
-                                                ),
-                                                Patch(
-                                                    GC_checkpointItemAssessment,
-                                                    Defaults(GC_checkpointItemAssessment),
-                                                    {
-                                                       'checkpointItemAssessment (quantum_checkpointitemassessmentid)': i.'checkpointItemAssessment (quantum_checkpointitemassessmentid)',
-                                                        'checkpointItemAssessment (quantum_checkpointitemassessment)': i.'checkpointItemAssessment (quantum_checkpointitemassessment)',
-                                                        checkpointAssessment_Id: i.checkpointAssessment_Id,
-                                                        assignmentId: i.assignmentId,
-                                                        bankUnitId: i.bankUnitId,
-                                                        product_id: i.product_id,
-                                                        section_Id: i.section_Id,
-                                                        checkpointItem_annotation: i.checkpointItem_annotation,
-                                                        checkpointItemId: i.checkpointItemId,
-                                                        checkpointItemName: i.checkpointItemName,
-                                                        assessmentStatus: i.assessmentStatus,
-                                                        CIstatusUpdate: i.CIstatusUpdate,
-                                                        checkpointitemSequence: i.checkpointitemSequence,
-                                                        checkpointItemComment: i.checkpointItemComment
-                                                    }
-                                                );
-                                               ,
-                                                Patch(
-                                                    GC_checkpointItemAssessment,
-                                                    LookUp(
-                                                        GC_checkpointItemAssessment,
-                                                        'checkpointItemAssessment (quantum_checkpointitemassessment)'= i.'checkpointItemAssessment (quantum_checkpointitemassessment)'
+                            ForAll(
+                                                 Filter(
+                                                GC_checkpointItemAssessmentCache1,
+                                                bankUnitId.Id = ThisItem.bankUnitId.Id
+                                            ) As i,
+                                                If(
+                                                    IsBlank(
+                                                        LookUp(
+                                                            GC_checkpointItemAssessment,
+                                                            'checkpointItemAssessment (quantum_checkpointitemassessment)' = i.'checkpointItemAssessment (quantum_checkpointitemassessment)'
+                                                        )
                                                     ),
-                                                    {
-                                                       'checkpointItemAssessment (quantum_checkpointitemassessmentid)': i.'checkpointItemAssessment (quantum_checkpointitemassessmentid)',
-                                                        'checkpointItemAssessment (quantum_checkpointitemassessment)': i.'checkpointItemAssessment (quantum_checkpointitemassessment)',
-                                                        checkpointAssessment_Id: i.checkpointAssessment_Id,
-                                                        assignmentId: i.assignmentId,
-                                                        bankUnitId: i.bankUnitId,
-                                                        product_id: i.product_id,
-                                                        section_Id: i.section_Id,
-                                                        checkpointItem_annotation: i.checkpointItem_annotation,
-                                                        checkpointItemId: i.checkpointItemId,
-                                                        checkpointItemName: i.checkpointItemName,
-                                                        assessmentStatus: i.assessmentStatus,
-                                                        CIstatusUpdate: i.CIstatusUpdate,
-                                                        checkpointitemSequence: i.checkpointitemSequence,
-                                                        checkpointItemComment: i.checkpointItemComment
-                                                    }
+                                                    Patch(
+                                                        GC_checkpointItemAssessment,
+                                                        Defaults(GC_checkpointItemAssessment),
+                                                        {
+                                                            'checkpointItemAssessment (quantum_checkpointitemassessmentid)': i.'checkpointItemAssessment (quantum_checkpointitemassessmentid)',
+                                                            'checkpointItemAssessment (quantum_checkpointitemassessment)': i.'checkpointItemAssessment (quantum_checkpointitemassessment)',
+                                                            checkpointAssessment_Id: i.checkpointAssessment_Id,
+                                                            assignmentId: i.assignmentId,
+                                                            bankUnitId: i.bankUnitId,
+                                                            product_id: i.product_id,
+                                                            section_Id: i.section_Id,
+                                                            checkpointItem_annotation: i.checkpointItem_annotation,
+                                                            checkpointItemId: i.checkpointItemId,
+                                                            checkpointItemName: i.checkpointItemName,
+                                                            assessmentStatus: i.assessmentStatus,
+                                                            CIstatusUpdate: i.CIstatusUpdate,
+                                                            checkpointitemSequence: i.checkpointitemSequence,
+                                                            checkpointItemComment: i.checkpointItemComment
+                                                        }
+                                                    );
+                                                    ,
+                                                    Patch(
+                                                        GC_checkpointItemAssessment,
+                                                        LookUp(
+                                                            GC_checkpointItemAssessment,
+                                                            'checkpointItemAssessment (quantum_checkpointitemassessment)' = i.'checkpointItemAssessment (quantum_checkpointitemassessment)'
+                                                        ),
+                                                        {
+                                                            'checkpointItemAssessment (quantum_checkpointitemassessmentid)': i.'checkpointItemAssessment (quantum_checkpointitemassessmentid)',
+                                                            'checkpointItemAssessment (quantum_checkpointitemassessment)': i.'checkpointItemAssessment (quantum_checkpointitemassessment)',
+                                                            checkpointAssessment_Id: i.checkpointAssessment_Id,
+                                                            assignmentId: i.assignmentId,
+                                                            bankUnitId: i.bankUnitId,
+                                                            product_id: i.product_id,
+                                                            section_Id: i.section_Id,
+                                                            checkpointItem_annotation: i.checkpointItem_annotation,
+                                                            checkpointItemId: i.checkpointItemId,
+                                                            checkpointItemName: i.checkpointItemName,
+                                                            assessmentStatus: i.assessmentStatus,
+                                                            CIstatusUpdate: i.CIstatusUpdate,
+                                                            checkpointitemSequence: i.checkpointitemSequence,
+                                                            checkpointItemComment: i.checkpointItemComment
+                                                        }
+                                                    );
                                                 );
-                                            );//if
-                                        );//forall
-                                            RemoveIf(
+                                                //if
+                                            );
+                                            //forall
+                            RemoveIf(
                                                 GC_checkpointItemAssessmentCache1,
                                                 bankUnitId.Id = ThisItem.bankUnitId.Id
                                             );
@@ -1020,21 +1042,23 @@ BankScreen As screen:
                                             )
                                         );
                                          //update local data
-                            
-                                        ForAll(
-                                            GC_checkpointItem_ActionItemCache1 As i,
+                            ForAll(
+                                             Filter(
+                                                GC_checkpointItem_ActionItemCache1,
+                                                bankUnitId.Id = ThisItem.bankUnitId.Id
+                                            ) As i,
                                             If(
                                                 IsBlank(
                                                     LookUp(
                                                         GC_checkpointItem_ActionItem,
-                                                          checkpointItemActionItemsId = i.checkpointItemActionItemsId
+                                                        checkpointItemActionItemsId = i.checkpointItemActionItemsId
                                                     )
                                                 ),
                                                 Patch(
                                                     GC_checkpointItem_ActionItem,
                                                     Defaults(GC_checkpointItem_ActionItem),
                                                     {
-                                                       checkpointItem_ActionItems: i.checkpointItem_ActionItems,
+                                                        checkpointItem_ActionItems: i.checkpointItem_ActionItems,
                                                         checkpointItemActionItemsId: i.checkpointItemActionItemsId,
                                                         ActionItem_Name: i.ActionItem_Name,
                                                         assignmentId: i.assignmentId,
@@ -1050,18 +1074,17 @@ BankScreen As screen:
                                                         MaterialEstimate: i.MaterialEstimate,
                                                         CIAstatusUpdate: i.CIAstatusUpdate,
                                                         Action_status: i.Action_status
-                            
                                                     }
                                                 );
-                                               ,
+                                                ,
                                                 Patch(
                                                     GC_checkpointItem_ActionItem,
                                                     LookUp(
                                                         GC_checkpointItem_ActionItem,
-                                                         checkpointItemActionItemsId = i.checkpointItemActionItemsId
+                                                        checkpointItemActionItemsId = i.checkpointItemActionItemsId
                                                     ),
                                                     {
-                                                       checkpointItem_ActionItems: i.checkpointItem_ActionItems,
+                                                        checkpointItem_ActionItems: i.checkpointItem_ActionItems,
                                                         checkpointItemActionItemsId: i.checkpointItemActionItemsId,
                                                         ActionItem_Name: i.ActionItem_Name,
                                                         assignmentId: i.assignmentId,
@@ -1077,12 +1100,13 @@ BankScreen As screen:
                                                         MaterialEstimate: i.MaterialEstimate,
                                                         CIAstatusUpdate: i.CIAstatusUpdate,
                                                         Action_status: i.Action_status
-                            
                                                     }
                                                 );
-                                            );//if
-                                        );//forall
-                                        RemoveIf(
+                                            );
+                                            //if
+                                        );
+                                        //forall
+                            RemoveIf(
                                             GC_checkpointItem_ActionItemCache1,
                                             bankUnitId.Id = ThisItem.bankUnitId.Id
                                         );
@@ -1126,68 +1150,71 @@ BankScreen As screen:
                                                     }
                                                 );
                                             );
-                                           ForAll(
-                                            GC_checkpointItem_ActionItemCache1 As i,
-                                            If(
-                                                IsBlank(
-                                                    LookUp(
-                                                        GC_checkpointItem_ActionItem,
-                                                          checkpointItemActionItemsId = i.checkpointItemActionItemsId
-                                                    )
-                                                ),
-                                                Patch(
-                                                    GC_checkpointItem_ActionItem,
-                                                    Defaults(GC_checkpointItem_ActionItem),
-                                                    {
-                                                       checkpointItem_ActionItems: i.checkpointItem_ActionItems,
-                                                        checkpointItemActionItemsId: i.checkpointItemActionItemsId,
-                                                        ActionItem_Name: i.ActionItem_Name,
-                                                        assignmentId: i.assignmentId,
-                                                        bankId: i.bankId,
-                                                        bankUnitId: i.bankUnitId,
-                                                        section_id: i.section_id,
-                                                        checkpoint_id: i.checkpoint_id,
-                                                        checkpointItem_Id: i.checkpointItem_Id,
-                                                        product_id: i.product_id,
-                                                        priority: i.priority,
-                                                        OwnerId: i.OwnerId,
-                                                        TimeEstimate: i.TimeEstimate,
-                                                        MaterialEstimate: i.MaterialEstimate,
-                                                        CIAstatusUpdate: i.CIAstatusUpdate,
-                                                        Action_status: i.Action_status
-                            
-                                                    }
-                                                );
-                                               ,
-                                                Patch(
-                                                    GC_checkpointItem_ActionItem,
-                                                    LookUp(
-                                                        GC_checkpointItem_ActionItem,
-                                                         checkpointItemActionItemsId = i.checkpointItemActionItemsId
+                                            ForAll(
+                                                Filter(
+                                                GC_checkpointItem_ActionItemCache1,
+                                                bankUnitId.Id = ThisItem.bankUnitId.Id
+                                            ) As i,
+                                                If(
+                                                    IsBlank(
+                                                        LookUp(
+                                                            GC_checkpointItem_ActionItem,
+                                                            checkpointItemActionItemsId = i.checkpointItemActionItemsId
+                                                        )
                                                     ),
-                                                    {
-                                                       checkpointItem_ActionItems: i.checkpointItem_ActionItems,
-                                                        checkpointItemActionItemsId: i.checkpointItemActionItemsId,
-                                                        ActionItem_Name: i.ActionItem_Name,
-                                                        assignmentId: i.assignmentId,
-                                                        bankId: i.bankId,
-                                                        bankUnitId: i.bankUnitId,
-                                                        section_id: i.section_id,
-                                                        checkpoint_id: i.checkpoint_id,
-                                                        checkpointItem_Id: i.checkpointItem_Id,
-                                                        product_id: i.product_id,
-                                                        priority: i.priority,
-                                                        OwnerId: i.OwnerId,
-                                                        TimeEstimate: i.TimeEstimate,
-                                                        MaterialEstimate: i.MaterialEstimate,
-                                                        CIAstatusUpdate: i.CIAstatusUpdate,
-                                                        Action_status: i.Action_status
-                            
-                                                    }
+                                                    Patch(
+                                                        GC_checkpointItem_ActionItem,
+                                                        Defaults(GC_checkpointItem_ActionItem),
+                                                        {
+                                                            checkpointItem_ActionItems: i.checkpointItem_ActionItems,
+                                                            checkpointItemActionItemsId: i.checkpointItemActionItemsId,
+                                                            ActionItem_Name: i.ActionItem_Name,
+                                                            assignmentId: i.assignmentId,
+                                                            bankId: i.bankId,
+                                                            bankUnitId: i.bankUnitId,
+                                                            section_id: i.section_id,
+                                                            checkpoint_id: i.checkpoint_id,
+                                                            checkpointItem_Id: i.checkpointItem_Id,
+                                                            product_id: i.product_id,
+                                                            priority: i.priority,
+                                                            OwnerId: i.OwnerId,
+                                                            TimeEstimate: i.TimeEstimate,
+                                                            MaterialEstimate: i.MaterialEstimate,
+                                                            CIAstatusUpdate: i.CIAstatusUpdate,
+                                                            Action_status: i.Action_status
+                                                        }
+                                                    );
+                                                    ,
+                                                    Patch(
+                                                        GC_checkpointItem_ActionItem,
+                                                        LookUp(
+                                                            GC_checkpointItem_ActionItem,
+                                                            checkpointItemActionItemsId = i.checkpointItemActionItemsId
+                                                        ),
+                                                        {
+                                                            checkpointItem_ActionItems: i.checkpointItem_ActionItems,
+                                                            checkpointItemActionItemsId: i.checkpointItemActionItemsId,
+                                                            ActionItem_Name: i.ActionItem_Name,
+                                                            assignmentId: i.assignmentId,
+                                                            bankId: i.bankId,
+                                                            bankUnitId: i.bankUnitId,
+                                                            section_id: i.section_id,
+                                                            checkpoint_id: i.checkpoint_id,
+                                                            checkpointItem_Id: i.checkpointItem_Id,
+                                                            product_id: i.product_id,
+                                                            priority: i.priority,
+                                                            OwnerId: i.OwnerId,
+                                                            TimeEstimate: i.TimeEstimate,
+                                                            MaterialEstimate: i.MaterialEstimate,
+                                                            CIAstatusUpdate: i.CIAstatusUpdate,
+                                                            Action_status: i.Action_status
+                                                        }
+                                                    );
                                                 );
-                                            );//if
-                                        );//forall
-                                            RemoveIf(
+                                                //if
+                                            );
+                                            //forall
+                            RemoveIf(
                                                 GC_checkpointItem_ActionItemCache1,
                                                 bankUnitId.Id = ThisItem.bankUnitId.Id
                                             );
@@ -1212,13 +1239,16 @@ BankScreen As screen:
                                                 2
                                             )
                                         );
-                                       ForAll(
-                                            GC_checkpointItem_ImagesCache1 As i,
+                                        ForAll(
+                                            Filter(
+                                                GC_checkpointItem_ImagesCache1,
+                                                bankUnitId.Id = ThisItem.bankUnitId.Id
+                                            ) As i,
                                             If(
                                                 IsBlank(
                                                     LookUp(
                                                         GC_checkpointItem_Images,
-                                                         checkpointItemImagesId= i.checkpointItemImagesId
+                                                        checkpointItemImagesId = i.checkpointItemImagesId
                                                     )
                                                 ),
                                                 Patch(
@@ -1239,12 +1269,12 @@ BankScreen As screen:
                                                         CIIstatusUpdate: i.CIIstatusUpdate
                                                     }
                                                 );
-                                               ,
+                                                ,
                                                 Patch(
                                                     GC_checkpointItem_Images,
                                                     LookUp(
                                                         GC_checkpointItem_Images,
-                                                         checkpointItemImagesId= i.checkpointItemImagesId
+                                                        checkpointItemImagesId = i.checkpointItemImagesId
                                                     ),
                                                     {
                                                         checkpointItem_Images: i.checkpointItem_Images,
@@ -1258,12 +1288,14 @@ BankScreen As screen:
                                                         // Image:Image14_2.Image,
                                                         Image: i.Image,
                                                         image_annotation: i.image_annotation,
-                                                        CIIstatusUpdate:i.CIIstatusUpdate
+                                                        CIIstatusUpdate: i.CIIstatusUpdate
                                                     }
                                                 );
-                                            );//if
-                                        );//forall
-                                        RemoveIf(
+                                            );
+                                            //if
+                                        );
+                                        //forall
+                            RemoveIf(
                                             GC_checkpointItem_ImagesCache1,
                                             bankUnitId.Id = ThisItem.bankUnitId.Id
                                         );
@@ -1303,58 +1335,63 @@ BankScreen As screen:
                                                     }
                                                 );
                                             );
-                                           ForAll(
-                                            GC_checkpointItem_ImagesCache1 As i,
-                                            If(
-                                                IsBlank(
-                                                    LookUp(
-                                                        GC_checkpointItem_Images,
-                                                         checkpointItemImagesId= i.checkpointItemImagesId
-                                                    )
-                                                ),
-                                                Patch(
-                                                    GC_checkpointItem_Images,
-                                                    Defaults(GC_checkpointItem_Images),
-                                                    {
-                                                        checkpointItem_Images: i.checkpointItem_Images,
-                                                        checkpointItemImagesId: i.checkpointItemImagesId,
-                                                        assignmentId: i.assignmentId,
-                                                        bankUnitId: i.bankUnitId,
-                                                        section_id: i.section_id,
-                                                        checkpoint_id: i.checkpoint_id,
-                                                        checkpointItem_Id: i.checkpointItem_Id,
-                                                        product_id: i.product_id,
-                                                        // Image:Image14_2.Image,
-                                                        Image: i.Image,
-                                                        image_annotation: i.image_annotation,
-                                                        CIIstatusUpdate: i.CIIstatusUpdate
-                                                    }
-                                                );
-                                               ,
-                                                Patch(
-                                                    GC_checkpointItem_Images,
-                                                    LookUp(
-                                                        GC_checkpointItem_Images,
-                                                         checkpointItemImagesId= i.checkpointItemImagesId
+                                            ForAll(
+                                                Filter(
+                                                GC_checkpointItem_ImagesCache1,
+                                                bankUnitId.Id = ThisItem.bankUnitId.Id
+                                            ) As i,
+                                                If(
+                                                    IsBlank(
+                                                        LookUp(
+                                                            GC_checkpointItem_Images,
+                                                            checkpointItemImagesId = i.checkpointItemImagesId
+                                                        )
                                                     ),
-                                                    {
-                                                        checkpointItem_Images: i.checkpointItem_Images,
-                                                        checkpointItemImagesId: i.checkpointItemImagesId,
-                                                        assignmentId: i.assignmentId,
-                                                        bankUnitId: i.bankUnitId,
-                                                        section_id: i.section_id,
-                                                        checkpoint_id: i.checkpoint_id,
-                                                        checkpointItem_Id: i.checkpointItem_Id,
-                                                        product_id: i.product_id,
-                                                        // Image:Image14_2.Image,
-                                                        Image: i.Image,
-                                                        image_annotation: i.image_annotation,
-                                                        CIIstatusUpdate: i.CIIstatusUpdate
-                                                    }
+                                                    Patch(
+                                                        GC_checkpointItem_Images,
+                                                        Defaults(GC_checkpointItem_Images),
+                                                        {
+                                                            checkpointItem_Images: i.checkpointItem_Images,
+                                                            checkpointItemImagesId: i.checkpointItemImagesId,
+                                                            assignmentId: i.assignmentId,
+                                                            bankUnitId: i.bankUnitId,
+                                                            section_id: i.section_id,
+                                                            checkpoint_id: i.checkpoint_id,
+                                                            checkpointItem_Id: i.checkpointItem_Id,
+                                                            product_id: i.product_id,
+                                                            // Image:Image14_2.Image,
+                                                            Image: i.Image,
+                                                            image_annotation: i.image_annotation,
+                                                            CIIstatusUpdate: i.CIIstatusUpdate
+                                                        }
+                                                    );
+                                                    ,
+                                                    Patch(
+                                                        GC_checkpointItem_Images,
+                                                        LookUp(
+                                                            GC_checkpointItem_Images,
+                                                            checkpointItemImagesId = i.checkpointItemImagesId
+                                                        ),
+                                                        {
+                                                            checkpointItem_Images: i.checkpointItem_Images,
+                                                            checkpointItemImagesId: i.checkpointItemImagesId,
+                                                            assignmentId: i.assignmentId,
+                                                            bankUnitId: i.bankUnitId,
+                                                            section_id: i.section_id,
+                                                            checkpoint_id: i.checkpoint_id,
+                                                            checkpointItem_Id: i.checkpointItem_Id,
+                                                            product_id: i.product_id,
+                                                            // Image:Image14_2.Image,
+                                                            Image: i.Image,
+                                                            image_annotation: i.image_annotation,
+                                                            CIIstatusUpdate: i.CIIstatusUpdate
+                                                        }
+                                                    );
                                                 );
-                                            );//if
-                                        );//forall
-                                            RemoveIf(
+                                                //if
+                                            );
+                                            //forall
+                            RemoveIf(
                                                 GC_checkpointItem_ImagesCache1,
                                                 bankUnitId.Id = ThisItem.bankUnitId.Id
                                             );
