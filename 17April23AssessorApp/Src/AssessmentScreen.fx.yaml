@@ -2441,10 +2441,67 @@ AssessmentScreen As screen:
                                             CIAstatusUpdate = 0 || CIAstatusUpdate = 1
                                         )
                                     );
-                                    Patch(
-                                        GC_checkpointItem_ActionItemCache,
-                                        GC_checkpointItem_ActionItemCache1
-                                    );
+                                    ForAll(
+                                            GC_checkpointItem_ActionItemCache1 As i,
+                                            If(
+                                                IsBlank(
+                                                    LookUp(
+                                                        GC_checkpointItem_ActionItemCache,
+                                                          checkpointItemActionItemsId = i.checkpointItemActionItemsId
+                                                    )
+                                                ),
+                                                Patch(
+                                                    GC_checkpointItem_ActionItemCache,
+                                                    Defaults(GC_checkpointItem_ActionItemCache),
+                                                    {
+                                                       checkpointItem_ActionItems: i.checkpointItem_ActionItems,
+                                                        checkpointItemActionItemsId: i.checkpointItemActionItemsId,
+                                                        ActionItem_Name: i.ActionItem_Name,
+                                                        assignmentId: i.assignmentId,
+                                                        bankId: i.bankId,
+                                                        bankUnitId: i.bankUnitId,
+                                                        section_id: i.section_id,
+                                                        checkpoint_id: i.checkpoint_id,
+                                                        checkpointItem_Id: i.checkpointItem_Id,
+                                                        product_id: i.product_id,
+                                                        priority: i.priority,
+                                                        OwnerId: i.OwnerId,
+                                                        TimeEstimate: i.TimeEstimate,
+                                                        MaterialEstimate: i.MaterialEstimate,
+                                                        CIAstatusUpdate: 2,
+                                                        Action_status: i.Action_status
+                            
+                                                    }
+                                                );
+                                               ,
+                                                Patch(
+                                                    GC_checkpointItem_ActionItemCache,
+                                                    LookUp(
+                                                        GC_checkpointItem_ActionItemCache,
+                                                         checkpointItemActionItemsId = i.checkpointItemActionItemsId
+                                                    ),
+                                                    {
+                                                       checkpointItem_ActionItems: i.checkpointItem_ActionItems,
+                                                        checkpointItemActionItemsId: i.checkpointItemActionItemsId,
+                                                        ActionItem_Name: i.ActionItem_Name,
+                                                        assignmentId: i.assignmentId,
+                                                        bankId: i.bankId,
+                                                        bankUnitId: i.bankUnitId,
+                                                        section_id: i.section_id,
+                                                        checkpoint_id: i.checkpoint_id,
+                                                        checkpointItem_Id: i.checkpointItem_Id,
+                                                        product_id: i.product_id,
+                                                        priority: i.priority,
+                                                        OwnerId: i.OwnerId,
+                                                        TimeEstimate: i.TimeEstimate,
+                                                        MaterialEstimate: i.MaterialEstimate,
+                                                        CIAstatusUpdate: 2,
+                                                        Action_status: i.Action_status
+                            
+                                                    }
+                                                );
+                                            );//if
+                                        );//forall
                                     SaveData(
                                         GC_checkpointItem_ActionItemCache,
                                         "localcheckpointitemactionitem"
@@ -2456,10 +2513,57 @@ AssessmentScreen As screen:
                                             CIIstatusUpdate = 0 || CIIstatusUpdate = 1
                                         )
                                     );
-                                    Patch(
-                                        GC_checkpointItem_ImagesCache,
-                                        GC_checkpointItem_ImagesCache1
-                                    );
+                                    ForAll(
+                                            GC_checkpointItem_ImagesCache1 As i,
+                                            If(
+                                                IsBlank(
+                                                    LookUp(
+                                                        GC_checkpointItem_ImagesCache,
+                                                         checkpointItemImagesId= i.checkpointItemImagesId
+                                                    )
+                                                ),
+                                                Patch(
+                                                    GC_checkpointItem_ImagesCache,
+                                                    Defaults(GC_checkpointItem_ImagesCache),
+                                                    {
+                                                        checkpointItem_Images: i.checkpointItem_Images,
+                                                        checkpointItemImagesId: i.checkpointItemImagesId,
+                                                        assignmentId: i.assignmentId,
+                                                        bankUnitId: i.bankUnitId,
+                                                        section_id: i.section_id,
+                                                        checkpoint_id: i.checkpoint_id,
+                                                        checkpointItem_Id: i.checkpointItem_Id,
+                                                        product_id: i.product_id,
+                                                        // Image:Image14_2.Image,
+                                                        Image: i.Image,
+                                                        image_annotation: i.image_annotation,
+                                                        CIIstatusUpdate: 2
+                                                    }
+                                                );
+                                               ,
+                                                Patch(
+                                                    GC_checkpointItem_ImagesCache,
+                                                    LookUp(
+                                                        GC_checkpointItem_ImagesCache,
+                                                         checkpointItemImagesId= i.checkpointItemImagesId
+                                                    ),
+                                                    {
+                                                        checkpointItem_Images: i.checkpointItem_Images,
+                                                        checkpointItemImagesId: i.checkpointItemImagesId,
+                                                        assignmentId: i.assignmentId,
+                                                        bankUnitId: i.bankUnitId,
+                                                        section_id: i.section_id,
+                                                        checkpoint_id: i.checkpoint_id,
+                                                        checkpointItem_Id: i.checkpointItem_Id,
+                                                        product_id: i.product_id,
+                                                        // Image:Image14_2.Image,
+                                                        Image: i.Image,
+                                                        image_annotation: i.image_annotation,
+                                                        CIIstatusUpdate: 2
+                                                    }
+                                                );
+                                            );//if
+                                        );//forall
                                     SaveData(
                                         GC_checkpointItem_ImagesCache,
                                         "localcheckpointitemimage"
