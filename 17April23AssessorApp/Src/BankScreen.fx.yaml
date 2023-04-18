@@ -588,7 +588,7 @@ BankScreen As screen:
                                                 )
                                             );
                             
-                                     ///to update local data
+                                     /// update local data
                                             ForAll(
                                             GcSectionAssessmentCache1 As i,
                                             If(
