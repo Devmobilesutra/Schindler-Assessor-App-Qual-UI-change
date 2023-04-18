@@ -498,16 +498,10 @@ BankScreen As screen:
                                       //  Patch(GcSectionAssessment,Filter(GcSectionAssessmentCache1, bankUnitId.Id = ThisItem.bankUnitId.Id));
                             ForAll(
                                             GcSectionAssessmentCache1 As i,
-                                              If(
-                                                    IsBlank(
-                                                        LookUp(
-                                                            GcSectionAssessment,
-                                                            'sectionAssessment (quantum_sectionassessment)' = i.'sectionAssessment (quantum_sectionassessment)','sectionAssessment (quantum_sectionassessment)')
-                                                    ),
+                                            
                                             Patch(
                                                 GcSectionAssessment,
-                                              
-                                                    Defaults(GcSectionAssessment),
+                                                LookUp(GcSectionAssessment,'sectionAssessment (quantum_sectionassessment)'= i.'sectionAssessment (quantum_sectionassessment)'),
                                                 {
                                                     //   'sectionAssessment (quantum_sectionassessmentid)': i.'sectionAssessment (quantum_sectionassessmentid)',
                                                     'sectionAssessment (quantum_sectionassessment)': i.'sectionAssessment (quantum_sectionassessment)',
@@ -521,7 +515,9 @@ BankScreen As screen:
                                                     sectionSequence: i.sectionSequence,
                                                     sectionComment: i.sectionComment
                                                 }
-                                            );,
+                                            ) 
+                                            );
+                                            /*,
                             
                                             UpdateIf(GcSectionAssessment,'sectionAssessment (quantum_sectionassessment)' = i.'sectionAssessment (quantum_sectionassessment)',
                                             {
@@ -537,9 +533,9 @@ BankScreen As screen:
                                                     sectionSequence: i.sectionSequence,
                                                     sectionComment: i.sectionComment
                                                 }
-                                        );
-                                     );
-                            );
+                                        );*/
+                            
+                            
                                         RemoveIf(
                                             GcSectionAssessmentCache1,
                                             bankUnitId.Id = ThisItem.bankUnitId.Id
