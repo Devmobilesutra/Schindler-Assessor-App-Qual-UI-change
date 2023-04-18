@@ -501,7 +501,7 @@ BankScreen As screen:
                                             
                                             Patch(
                                                 GcSectionAssessment,
-                                                LookUp(GcSectionAssessment,'sectionAssessment (quantum_sectionassessment)'= i.'sectionAssessment (quantum_sectionassessment)'),
+                                               If(IsBlank( LookUp(GcSectionAssessment,'sectionAssessment (quantum_sectionassessment)'= i.'sectionAssessment (quantum_sectionassessment)')),Defaults(GcSectionAssessment),LookUp(GcSectionAssessment,'sectionAssessment (quantum_sectionassessment)'= i.'sectionAssessment (quantum_sectionassessment)'),
                                                 {
                                                     //   'sectionAssessment (quantum_sectionassessmentid)': i.'sectionAssessment (quantum_sectionassessmentid)',
                                                     'sectionAssessment (quantum_sectionassessment)': i.'sectionAssessment (quantum_sectionassessment)',
