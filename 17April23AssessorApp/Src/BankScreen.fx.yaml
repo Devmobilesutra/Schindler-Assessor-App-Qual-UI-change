@@ -509,7 +509,7 @@ BankScreen As screen:
                                                     GcSectionAssessment,
                                                     Defaults(GcSectionAssessment),
                                                     {
-                                                        //   'sectionAssessment (quantum_sectionassessmentid)': i.'sectionAssessment (quantum_sectionassessmentid)',
+                                                           'sectionAssessment (quantum_sectionassessmentid)': i.'sectionAssessment (quantum_sectionassessmentid)',
                                                         'sectionAssessment (quantum_sectionassessment)': i.'sectionAssessment (quantum_sectionassessment)',
                                                         assignmentId: i.assignmentId,
                                                         bankUnitId: i.bankUnitId,
