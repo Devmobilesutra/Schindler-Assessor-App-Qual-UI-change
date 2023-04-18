@@ -1,4 +1,4 @@
-TripReportScreen As screen:
+TripReportScreenUnUsed As screen:
     OnVisible: |
         =Set(
             varReportPopup,
@@ -1303,7 +1303,7 @@ TripReportScreen As screen:
                 =
                 Reset(txtSectionCommentTRS);
                 Set(varComment, false);
-                Navigate(TripReportScreen);
+                Navigate(TripReportScreenUnUsed);
                   
             PressedColor: =Self.Color
             PressedFill: =Self.Fill
