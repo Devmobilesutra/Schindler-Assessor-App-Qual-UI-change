@@ -668,6 +668,7 @@ DashboardScreen As screen:
                 PressedColor: =Self.Color
                 PressedFill: =Self.Fill
                 Text: ="Exit App"
+                Visible: =false
                 Width: =190
                 ZIndex: =1
 
