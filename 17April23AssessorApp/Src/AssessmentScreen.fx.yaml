@@ -1159,7 +1159,7 @@ AssessmentScreen As screen:
                                                         sectionId: i.sectionId,
                                                         sectionName: i.sectionName,
                                                         AssessmentStatus: i.AssessmentStatus,
-                                                        SstatusUpdate: 2,
+                                                        SstatusUpdate: i.SstatusUpdate,
                                                         sectionSequence: i.sectionSequence,
                                                         sectionComment: i.sectionComment
                                                     }
@@ -1180,7 +1180,7 @@ AssessmentScreen As screen:
                                                         sectionId: i.sectionId,
                                                         sectionName: i.sectionName,
                                                         AssessmentStatus: i.AssessmentStatus,
-                                                        SstatusUpdate: 2,
+                                                        SstatusUpdate:i.SstatusUpdate ,
                                                         sectionSequence: i.sectionSequence,
                                                         sectionComment: i.sectionComment
                                                     }
@@ -1216,7 +1216,7 @@ AssessmentScreen As screen:
                                                         checkpointId: i.checkpointId,
                                                         checkpointName: i.checkpointName,
                                                         AssessmentStatus: i.AssessmentStatus,
-                                                        CstatusUpdate: 2,
+                                                        CstatusUpdate: i.CstatusUpdate,
                                                         CheckpointSequence: i.CheckpointSequence,
                                                         checkpointComment: i.checkpointComment
                                                     }
@@ -1238,7 +1238,7 @@ AssessmentScreen As screen:
                                                         checkpointId: i.checkpointId,
                                                         checkpointName: i.checkpointName,
                                                         AssessmentStatus: i.AssessmentStatus,
-                                                        CstatusUpdate: 2,
+                                                        CstatusUpdate: i.CstatusUpdate,
                                                         CheckpointSequence: i.CheckpointSequence,
                                                         checkpointComment: i.checkpointComment
                                                     }
@@ -1276,7 +1276,7 @@ AssessmentScreen As screen:
                                                         checkpointItemId: i.checkpointItemId,
                                                         checkpointItemName: i.checkpointItemName,
                                                         assessmentStatus: i.assessmentStatus,
-                                                        CIstatusUpdate: 2,
+                                                        CIstatusUpdate: i.CIstatusUpdate,
                                                         checkpointitemSequence: i.checkpointitemSequence,
                                                         checkpointItemComment: i.checkpointItemComment
                                                     }
@@ -1300,7 +1300,7 @@ AssessmentScreen As screen:
                                                         checkpointItemId: i.checkpointItemId,
                                                         checkpointItemName: i.checkpointItemName,
                                                         assessmentStatus: i.assessmentStatus,
-                                                        CIstatusUpdate: 2,
+                                                        CIstatusUpdate: i.CIstatusUpdate,
                                                         checkpointitemSequence: i.checkpointitemSequence,
                                                         checkpointItemComment: i.checkpointItemComment
                                                     }
@@ -2426,7 +2426,7 @@ AssessmentScreen As screen:
                                                         sectionId: i.sectionId,
                                                         sectionName: i.sectionName,
                                                         AssessmentStatus: i.AssessmentStatus,
-                                                        SstatusUpdate: 2,
+                                                        SstatusUpdate: i.SstatusUpdate,
                                                         sectionSequence: i.sectionSequence,
                                                         sectionComment: i.sectionComment
                                                     }
@@ -2447,7 +2447,7 @@ AssessmentScreen As screen:
                                                         sectionId: i.sectionId,
                                                         sectionName: i.sectionName,
                                                         AssessmentStatus: i.AssessmentStatus,
-                                                        SstatusUpdate: 2,
+                                                        SstatusUpdate: i.SstatusUpdate,
                                                         sectionSequence: i.sectionSequence,
                                                         sectionComment: i.sectionComment
                                                     }
@@ -2489,7 +2489,7 @@ AssessmentScreen As screen:
                                                         checkpointId: i.checkpointId,
                                                         checkpointName: i.checkpointName,
                                                         AssessmentStatus: i.AssessmentStatus,
-                                                        CstatusUpdate: 2,
+                                                        CstatusUpdate: i.CstatusUpdate,
                                                         CheckpointSequence: i.CheckpointSequence,
                                                         checkpointComment: i.checkpointComment
                                                     }
@@ -2511,7 +2511,7 @@ AssessmentScreen As screen:
                                                         checkpointId: i.checkpointId,
                                                         checkpointName: i.checkpointName,
                                                         AssessmentStatus: i.AssessmentStatus,
-                                                        CstatusUpdate: 2,
+                                                        CstatusUpdate: i.CstatusUpdate,
                                                         CheckpointSequence: i.CheckpointSequence,
                                                         checkpointComment: i.checkpointComment
                                                     }
@@ -2554,7 +2554,7 @@ AssessmentScreen As screen:
                                                         checkpointItemId: i.checkpointItemId,
                                                         checkpointItemName: i.checkpointItemName,
                                                         assessmentStatus: i.assessmentStatus,
-                                                        CIstatusUpdate: 2,
+                                                        CIstatusUpdate: i.CIstatusUpdate,
                                                         checkpointitemSequence: i.checkpointitemSequence,
                                                         checkpointItemComment: i.checkpointItemComment
                                                     }
@@ -2578,7 +2578,7 @@ AssessmentScreen As screen:
                                                         checkpointItemId: i.checkpointItemId,
                                                         checkpointItemName: i.checkpointItemName,
                                                         assessmentStatus: i.assessmentStatus,
-                                                        CIstatusUpdate: 2,
+                                                        CIstatusUpdate: i.CIstatusUpdate,
                                                         checkpointitemSequence: i.checkpointitemSequence,
                                                         checkpointItemComment: i.checkpointItemComment
                                                     }
@@ -2623,7 +2623,7 @@ AssessmentScreen As screen:
                                                         OwnerId: i.OwnerId,
                                                         TimeEstimate: i.TimeEstimate,
                                                         MaterialEstimate: i.MaterialEstimate,
-                                                        CIAstatusUpdate: 2,
+                                                        CIAstatusUpdate: i.CIAstatusUpdate,
                                                         Action_status: i.Action_status
                             
                                                     }
@@ -2650,7 +2650,7 @@ AssessmentScreen As screen:
                                                         OwnerId: i.OwnerId,
                                                         TimeEstimate: i.TimeEstimate,
                                                         MaterialEstimate: i.MaterialEstimate,
-                                                        CIAstatusUpdate: 2,
+                                                        CIAstatusUpdate: i.CIAstatusUpdate,
                                                         Action_status: i.Action_status
                             
                                                     }
@@ -2692,7 +2692,7 @@ AssessmentScreen As screen:
                                                         // Image:Image14_2.Image,
                                                         Image: i.Image,
                                                         image_annotation: i.image_annotation,
-                                                        CIIstatusUpdate: 2
+                                                        CIIstatusUpdate: i.CIIstatusUpdate
                                                     }
                                                 );
                                                ,
@@ -2714,7 +2714,7 @@ AssessmentScreen As screen:
                                                         // Image:Image14_2.Image,
                                                         Image: i.Image,
                                                         image_annotation: i.image_annotation,
-                                                        CIIstatusUpdate: 2
+                                                        CIIstatusUpdate: i.CIIstatusUpdate
                                                     }
                                                 );
                                             );//if
