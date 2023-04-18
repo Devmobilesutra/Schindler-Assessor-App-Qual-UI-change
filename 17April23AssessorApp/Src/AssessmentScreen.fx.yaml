@@ -1572,8 +1572,12 @@ AssessmentScreen As screen:
                         Color: |
                             =RGBA(255, 255, 255, 1)
                         DisplayMode: |-
-                            =//If(Connection.Connected=true,DisplayMode.Edit,DisplayMode.Disabled)
-                            DisplayMode.Edit
+                            =If(
+                                Connection.Connected = true,
+                                DisplayMode.Edit,
+                                DisplayMode.Disabled
+                            )
+                            //DisplayMode.Edit
                         Fill: =AllScreensCSS.RActiveColor
                         Height: =50
                         HoverFill: |-
@@ -1805,6 +1809,10 @@ AssessmentScreen As screen:
                                                 checkpointItem_ActionItem,
                                                 checkpointItemActionItemsId = i.id
                                             );
+                                            RemoveIf(  
+                                                 GC_checkpointItem_ActionItem,
+                                                 checkpointItemActionItemsId = i.id
+                                                );
                                             If(
                                                 !IsBlank(
                                                     LookUp(
@@ -1826,25 +1834,50 @@ AssessmentScreen As screen:
                                             gcActionItemDelete,
                                             gcActionItemDelete1
                                         );
-                                    // Notify("Action delete end");
-                                  /*  SaveData(
+                                   
+                                    SaveData(
                                         gcActionItemDelete,
                                         "localgcActionItemDelete"
-                                    );*/
+                                    );
                             ,
                                     //to delete deleted images from dataverse
+                                     Clear(gcImageDelete1);
                                         ForAll(
                                             gcImageDelete As i,
                                             RemoveIf(
                                                 checkpointItem_Images,
                                                 checkpointItemImagesId = i.id
-                                            )
+                                            );
+                                             RemoveIf(
+                                                GC_checkpointItem_Images,
+                                                checkpointItemImagesId = i.id
+                                            );
+                                               If(
+                                                !IsBlank(
+                                                    LookUp(
+                                                        checkpointItem_Images,
+                                                        checkpointItemImagesId = i.id
+                                                    )
+                                                ),
+                                                Collect(
+                                                    gcImageDelete1,
+                                                    {id: i.id}
+                                                );
+                                            );
                                         );
-                                        Clear(gcImageDelete);
-                                   /* SaveData(
+                                        If(
+                                            !IsEmpty(gcImageDelete1),
+                                            Notify("All locally deleted images are not removed from server.")
+                                        );
+                                        ClearCollect(
+                                            gcImageDelete,
+                                            gcImageDelete1
+                                        );
+                                    
+                                    SaveData(
                                         gcImageDelete,
                                         "localgcImageDelete"
-                                    );*/
+                                    );
                             ,
                                     //update dataverse table instead using patch
                                     //updating isCompleted status of assignment into assigment table only for the first time when submit button is clicked
@@ -2742,6 +2775,7 @@ AssessmentScreen As screen:
                         PaddingTop: =2
                         PressedFill: =Self.Fill
                         Text: ="Submit"
+                        Visible: =
                         Width: =335
                         X: =525
                         Y: =25

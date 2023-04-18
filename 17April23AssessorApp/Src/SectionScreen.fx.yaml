@@ -519,7 +519,8 @@ SectionScreen As screen:
                         OnSelect: =Select(Parent)
                         Size: =16
                         Text: |-
-                            =ThisItem.sectionname &" Images : " & CountRows(Filter(GC_checkpointItem_Images, bankUnitId.Id= varBankUnitId &&  section_id.sectionName = ThisItem.sectionname))
+                            =ThisItem.sectionname 
+                            //&" Images : " & CountRows(Filter(GC_checkpointItem_Images, bankUnitId.Id= varBankUnitId &&  section_id.sectionName = ThisItem.sectionname))
                         Width: =If(Parent.Width<1024,glrySectionSS.Width/1.7,glrySectionSS.Width/1.5)
                         X: =Parent.Width/35
                         Y: =iconRectanglebroderSS.Height/3.5

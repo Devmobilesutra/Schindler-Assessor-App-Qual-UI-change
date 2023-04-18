@@ -95,7 +95,23 @@ BankScreen As screen:
                         ZIndex: =2
 
                 Label5 As label:
-                    Text: ="Text"
+                    FontWeight: =FontWeight.Bold
+                    Text: |-
+                        ="Unsubmitted Images : " & CountRows(Filter(GC_checkpointItem_Images,CIIstatusUpdate = 0 || CIIstatusUpdate = 1)) 
+                    Visible: |-
+                        =If(
+                            CountRows(
+                                Filter(
+                                    GC_checkpointItem_Images,
+                                    CIIstatusUpdate = 0 || CIIstatusUpdate = 1
+                                )
+                            ) > 0,
+                            true,
+                            false
+                        )
+                    Width: |-
+                        =300
+                        //Parent.Width/2.5
                     ZIndex: =2
 
             ctnClintNameBS As groupContainer.horizontalAutoLayoutContainer:
