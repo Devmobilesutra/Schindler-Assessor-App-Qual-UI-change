@@ -676,7 +676,13 @@ DashboardScreen As screen:
                 Align: =Align.Center
                 FontWeight: =FontWeight.Bold
                 Size: =14
-                Text: ="This app will allow only 100 images across all assignments. "& CountRows(GC_checkpointItem_Images) &  " images are already stored. "
+                Text: |-
+                    ="This app will allow only 50 unsubmitted images across all assignments. " & CountRows(
+                        Filter(
+                            GC_checkpointItem_Images,
+                            CIIstatusUpdate = 0 || CIIstatusUpdate = 1
+                        )
+                    ) & " unsubmitted images are already stored. "
                 Width: =Parent.Width-40
                 ZIndex: =2
 

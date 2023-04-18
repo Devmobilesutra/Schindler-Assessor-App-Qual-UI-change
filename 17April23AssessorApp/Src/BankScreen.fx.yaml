@@ -31,19 +31,22 @@ BankScreen As screen:
             ZIndex: =1
 
             ctnBackBS As groupContainer.verticalAutoLayoutContainer:
-                AlignInContainer: =AlignInContainer.SetByContainer
+                AlignInContainer: =AlignInContainer.Start
                 FillPortions: =0
                 Height: =80
+                LayoutAlignItems: =LayoutAlignItems.Center
+                LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
                 PaddingBottom: =5
-                Width: =Parent.Width
+                Width: =Parent.Width-40
                 Y: =ctnHeaderBS.Height+ctnHeaderBS.Y
                 ZIndex: =1
 
                 ctnBackButtonBS As groupContainer.verticalAutoLayoutContainer:
                     AlignInContainer: =AlignInContainer.SetByContainer
+                    FillPortions: =0
                     Height: =80
                     LayoutDirection: =LayoutDirection.Vertical
                     LayoutGap: =10
@@ -53,7 +56,7 @@ BankScreen As screen:
                     LayoutMode: =LayoutMode.Auto
                     LayoutWrap: =true
                     PaddingLeft: =40
-                    Width: =Parent.Width
+                    Width: =300 //Parent.Width/1.5
                     Y: =ctnHeaderPS.Y+ctnHeaderPS.Height
                     ZIndex: =1
 
@@ -81,7 +84,7 @@ BankScreen As screen:
                         RadiusTopRight: =5
                         Size: =AllScreensCSS.RLabelFontSize-2
                         Text: ="Back"
-                        Width: =ctnBackButtonBS.Width/6
+                        Width: =200
                         ZIndex: =1
 
                     TimerglryUnitBS As timer:
@@ -91,10 +94,14 @@ BankScreen As screen:
                         Visible: =false
                         ZIndex: =2
 
+                Label5 As label:
+                    Text: ="Text"
+                    ZIndex: =2
+
             ctnClintNameBS As groupContainer.horizontalAutoLayoutContainer:
                 AlignInContainer: =AlignInContainer.SetByContainer
                 FillPortions: =0
-                Height: =Parent.Height/5
+                Height: =Parent.Height/4
                 LayoutDirection: =LayoutDirection.Vertical
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
@@ -123,7 +130,7 @@ BankScreen As screen:
                         Size: =AllScreensCSS.RLabelFontSize
                         Text: |-
                             ="G.O./Commission number :   " & lblBankName.Text
-                        Width: =Parent.Width/2
+                        Width: =Parent.Width-60
                         X: |
                             =lblAssessmentBS_2.X+lblAssessmentBS_2.Width
                         ZIndex: =1
@@ -390,7 +397,8 @@ BankScreen As screen:
                         OnSelect: =Select(Parent)
                         Size: =16
                         Text: |-
-                            ="Unit  " & ThisItem.bankUnitId.unitNumber  & "  Images : " & CountRows(Filter(GC_checkpointItem_Images,bankUnitId.Id = ThisItem.bankUnitId.Id))
+                            ="Unit  " & ThisItem.bankUnitId.unitNumber  
+                            //& "  Images : " & CountRows(Filter(GC_checkpointItem_Images,bankUnitId.Id = ThisItem.bankUnitId.Id))
                         Width: =265
                         X: =22
                         Y: =27

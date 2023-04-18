@@ -844,7 +844,14 @@
         "VerticalAlign",
         "X",
         "Y",
-        "Width",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "ctnBackPFS_3.Width/6",
+          "InvariantPropertyName": "Width",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         "Height",
         "TabIndex",
         "maximumHeight",

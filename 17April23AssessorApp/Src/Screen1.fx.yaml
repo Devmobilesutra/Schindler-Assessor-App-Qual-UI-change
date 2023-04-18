@@ -79,9 +79,9 @@ Screen1 As screen:
                         Size: =AllScreensCSS.RLabelFontSize-2
                         Text: ="Back"
                         Width: |-
-                            =//ctnBackTRS_1.Width/6
-                            //200
-                            ctnBackButtonBS.Width/6
+                            =
+                            200
+                            //ctnBackButtonBS.Width/6
                         ZIndex: =1
 
             ctnCheckpointTRS_1 As groupContainer.verticalAutoLayoutContainer:

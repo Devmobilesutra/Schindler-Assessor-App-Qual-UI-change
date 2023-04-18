@@ -74,7 +74,7 @@ TripReportScreen As screen:
                         RadiusTopRight: =0
                         Size: =AllScreensCSS.RLabelFontSize-2
                         Text: ="Back"
-                        Width: =ctnBackTRS.Width/6
+                        Width: =200//ctnBackTRS.Width/6
                         ZIndex: =1
 
             ctnCheckpointTRS As groupContainer.verticalAutoLayoutContainer:

@@ -84,7 +84,7 @@ SafetyHeaderScreen As screen:
                         RadiusTopRight: =5
                         Size: =AllScreensCSS.RLabelFontSize-2
                         Text: ="Back"
-                        Width: =ctnBackButtonSH.Width/6
+                        Width: =200 //ctnBackButtonSH.Width/6
                         ZIndex: =1
 
             ctnSafetyAdvice As groupContainer.verticalAutoLayoutContainer:

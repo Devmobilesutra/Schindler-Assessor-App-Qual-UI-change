@@ -18332,36 +18332,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "Screen1.ctnMainTRS_1.ctnMiddleTRS_1.'ctnBack&onlinestatusTRS_1'.ctnBackTRS_1.btnBackTRS_1.Width"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "Screen1.ctnMainTRS_1.ctnMiddleTRS_1.'ctnBack&onlinestatusTRS_1'.ctnBackTRS_1.btnBackTRS_1.Width",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "Width",
-                "module": "Screen1",
-                "type": "Screen1.ctnMainTRS_1.ctnMiddleTRS_1.'ctnBack&onlinestatusTRS_1'.ctnBackTRS_1.btnBackTRS_1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-InefficientDelayLoading",
-          "ruleIndex": 9
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "Screen1.ctnMainTRS_1.ctnMiddleTRS_1.'ctnBack&onlinestatusTRS_1'.ctnBackTRS_1.btnBackTRS_1.Height"
                 }
               ],

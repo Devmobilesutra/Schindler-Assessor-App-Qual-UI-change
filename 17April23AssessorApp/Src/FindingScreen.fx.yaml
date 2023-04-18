@@ -233,7 +233,7 @@ FindingScreen As screen:
                         RadiusTopRight: =5
                         Size: =AllScreensCSS.RLabelFontSize-2
                         Text: ="Back"
-                        Width: =ctnBackPFS_3.Width/6
+                        Width: =200 //ctnBackPFS_3.Width/6
                         ZIndex: =1
 
                     TimerglryProject_1 As timer:

@@ -182,7 +182,7 @@ SectionScreen As screen:
                         RadiusTopRight: =5
                         Size: =AllScreensCSS.RLabelFontSize-2
                         Text: ="Back"
-                        Width: =ctnBackSS.Width/6
+                        Width: =200 //ctnBackSS.Width/6
                         ZIndex: =1
 
             ctnAssessmentdetailsSS As groupContainer.verticalAutoLayoutContainer:

@@ -168,7 +168,7 @@ ProjectScreen As screen:
                         RadiusTopRight: =5
                         Size: =AllScreensCSS.RLabelFontSize-2
                         Text: ="Back"
-                        Width: =ctnBackPS.Width/6
+                        Width: =200//ctnBackPS.Width/6
                         ZIndex: =1
 
                     TimerglryProject As timer:
@@ -655,6 +655,7 @@ ProjectScreen As screen:
                     Text: |-
                         ="Images : " & CountRows(Filter(GC_checkpointItem_Images,assignmentId.Id= ThisItem.Id))
                     VerticalAlign: =VerticalAlign.Top
+                    Visible: =false
                     Width: =If(App.Width<770,200,260)
                     X: |-
                         =If(

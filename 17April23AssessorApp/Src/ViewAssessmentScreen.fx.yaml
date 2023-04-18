@@ -928,7 +928,7 @@ ViewAssessmentScreen As screen:
                     RadiusTopLeft: =0
                     RadiusTopRight: =0
                     Text: = "back"
-                    Width: =ctnBackVS.Width/6
+                    Width: =200 //ctnBackVS.Width/6
                     ZIndex: =2
 
         ctnHeaderViewAssessment As groupContainer.manualLayoutContainer:

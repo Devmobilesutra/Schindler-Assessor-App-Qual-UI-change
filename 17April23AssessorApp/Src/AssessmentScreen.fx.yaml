@@ -101,7 +101,7 @@ AssessmentScreen As screen:
                         RadiusTopRight: =5
                         Size: =AllScreensCSS.RLabelFontSize-2
                         Text: ="Back"
-                        Width: =ctnBack.Width/6
+                        Width: =200 //ctnBack.Width/6
                         ZIndex: =1
 
             Container3_2 As groupContainer.verticalAutoLayoutContainer:
