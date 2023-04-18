@@ -4430,7 +4430,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ctnCommentHeaderSS",
-      "ParentIndex": 5,
+      "ParentIndex": 6,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -5549,7 +5549,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ctnSafetyCheckSS",
-      "ParentIndex": 1,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -6364,7 +6364,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "glrySectionSS",
-      "ParentIndex": 0,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -6721,7 +6721,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "iconBackgorundRectangleSS",
-      "ParentIndex": 3,
+      "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -7683,7 +7683,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "iconRectanglecmntboxSS",
-      "ParentIndex": 4,
+      "ParentIndex": 5,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -7856,7 +7856,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "iconRectangleCommentSS",
-      "ParentIndex": 6,
+      "ParentIndex": 8,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -8004,7 +8004,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "iconRectangleSafetyPopup",
-      "ParentIndex": 8,
+      "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -10142,7 +10142,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "imgSafetySS",
-      "ParentIndex": 9,
+      "ParentIndex": 7,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -11241,7 +11241,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "imgUserHeaderBS_4",
-      "ParentIndex": 3,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -18055,7 +18055,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblUsernameHeaderBS_4",
-      "ParentIndex": 2,
+      "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -19160,7 +19160,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "txtSectionCommentSS",
-      "ParentIndex": 7,
+      "ParentIndex": 9,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
