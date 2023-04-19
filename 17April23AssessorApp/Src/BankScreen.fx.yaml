@@ -619,9 +619,9 @@ BankScreen As screen:
                                      /// update local data
                             ForAll(
                                                 Filter(
-                                                GcSectionAssessmentCache1,
-                                                bankUnitId.Id = ThisItem.bankUnitId.Id
-                                            )  As i,
+                                                    GcSectionAssessmentCache1,
+                                                    bankUnitId.Id = ThisItem.bankUnitId.Id
+                                                ) As i,
                                                 If(
                                                     IsBlank(
                                                         LookUp(
@@ -699,7 +699,7 @@ BankScreen As screen:
                                         );
                                        //update local data
                             ForAll(
-                                             Filter(
+                                            Filter(
                                                 GcCheckpointAssessmentCache1,
                                                 bankUnitId.Id = ThisItem.bankUnitId.Id
                                             ) As i,
@@ -796,10 +796,10 @@ BankScreen As screen:
                                             );
                                             //update local data
                             ForAll(
-                                                 Filter(
-                                                GcCheckpointAssessmentCache1,
-                                                bankUnitId.Id = ThisItem.bankUnitId.Id
-                                            ) As i,
+                                                Filter(
+                                                    GcCheckpointAssessmentCache1,
+                                                    bankUnitId.Id = ThisItem.bankUnitId.Id
+                                                ) As i,
                                                 If(
                                                     IsBlank(
                                                         LookUp(
@@ -878,7 +878,7 @@ BankScreen As screen:
                                         );
                                         //update local data
                             ForAll(
-                                             Filter(
+                                            Filter(
                                                 GC_checkpointItemAssessmentCache1,
                                                 bankUnitId.Id = ThisItem.bankUnitId.Id
                                             ) As i,
@@ -981,10 +981,10 @@ BankScreen As screen:
                                             );
                                              //update local data
                             ForAll(
-                                                 Filter(
-                                                GC_checkpointItemAssessmentCache1,
-                                                bankUnitId.Id = ThisItem.bankUnitId.Id
-                                            ) As i,
+                                                Filter(
+                                                    GC_checkpointItemAssessmentCache1,
+                                                    bankUnitId.Id = ThisItem.bankUnitId.Id
+                                                ) As i,
                                                 If(
                                                     IsBlank(
                                                         LookUp(
@@ -1067,7 +1067,7 @@ BankScreen As screen:
                                         );
                                          //update local data
                             ForAll(
-                                             Filter(
+                                            Filter(
                                                 GC_checkpointItem_ActionItemCache1,
                                                 bankUnitId.Id = ThisItem.bankUnitId.Id
                                             ) As i,
@@ -1176,9 +1176,9 @@ BankScreen As screen:
                                             );
                                             ForAll(
                                                 Filter(
-                                                GC_checkpointItem_ActionItemCache1,
-                                                bankUnitId.Id = ThisItem.bankUnitId.Id
-                                            ) As i,
+                                                    GC_checkpointItem_ActionItemCache1,
+                                                    bankUnitId.Id = ThisItem.bankUnitId.Id
+                                                ) As i,
                                                 If(
                                                     IsBlank(
                                                         LookUp(
@@ -1361,9 +1361,9 @@ BankScreen As screen:
                                             );
                                             ForAll(
                                                 Filter(
-                                                GC_checkpointItem_ImagesCache1,
-                                                bankUnitId.Id = ThisItem.bankUnitId.Id
-                                            ) As i,
+                                                    GC_checkpointItem_ImagesCache1,
+                                                    bankUnitId.Id = ThisItem.bankUnitId.Id
+                                                ) As i,
                                                 If(
                                                     IsBlank(
                                                         LookUp(
@@ -1422,8 +1422,7 @@ BankScreen As screen:
                                         );
                                     );
                                 );
-                            
-                                  Set(
+                                Set(
                                     varSafety,
                                     false
                                 );
@@ -1439,33 +1438,33 @@ BankScreen As screen:
                                     varBankUnitId,
                                     ThisItem.bankUnitId.Id
                                 );
-                                  Navigate(SectionScreen);
-                                , //net not connected
+                                Navigate(SectionScreen);
                             
-                                If(!IsBlank(
-                                             LookUp(
-                                                            GC_unitAssessment,
-                                                            assignmentId.Id = varAssignmentId && bankUnitId.Id = ThisItem.bankUnitId.Id && Assessment_status = "Upcomming"
-                                                        )
-                                                    ),
-                                                      Navigate(SectionScreen);,
-                                                  If(   CountRows(
-                                                Filter(
-                                                    GcSectionAssessment,
-                                                    bankUnitId.Id = ThisItem.bankUnitId.Id
-                                                )
-                                            ) < 1,
-                                  Notify("net not connected ..");)
-                                  ;
-                            );
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
+                                ,//net not connected
+                                If(
+                                    !IsBlank(
+                                        LookUp(
+                                            GC_unitAssessment,
+                                            assignmentId.Id = varAssignmentId && bankUnitId.Id = ThisItem.bankUnitId.Id && Assessment_status = "Upcomming"
+                                        )
+                                    ),
+                                    Navigate(SectionScreen);
+                                    ,
+                                    If(
+                                        CountRows(
+                                            Filter(
+                                                GcSectionAssessment,
+                                                assignmentId.Id = varAssignmentId && bankUnitId.Id = ThisItem.bankUnitId.Id
+                                            )
+                                        ) < 1,
+                                        Notify("net not connected and unit data not available ..");,
+                                       
+                                        Notify("net not connected and unit data  available ..");
+                                        Navigate(SectionScreen);
+                                    );
+                                );
+                                
+                            );//net connected
                             /*
                             If(
                                 IsEmpty(GcSectionAssessment) && IsEmpty(GcCheckpointAssessment) && IsEmpty(GC_checkpointItemAssessment) && IsEmpty(GC_checkpointItem_ActionItem) && IsEmpty(GC_checkpointItem_Images),
@@ -1522,7 +1521,6 @@ BankScreen As screen:
                                             )
                                         );,
                                         //Notify("section data  from dataverse",NotificationType.Information);
-                                             
                                         If(
                                             CountRows(
                                                 Filter(
@@ -1671,7 +1669,6 @@ BankScreen As screen:
                                                         CIstatusUpdate: 2,
                                                         checkpointitemSequence: i.checkpointitemSequence,
                                                         checkpointItemComment: i.checkpointItemComment
-                                                     
                                                        
                                                            }
                                                 )
@@ -1815,7 +1812,6 @@ BankScreen As screen:
                                     varBankUnitId,
                                     ThisItem.bankUnitId.Id
                                 );
-                                
                                       
                             Navigate(SectionScreen);
                                 
