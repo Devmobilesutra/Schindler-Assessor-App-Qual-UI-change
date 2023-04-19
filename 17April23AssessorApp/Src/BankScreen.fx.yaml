@@ -1422,12 +1422,8 @@ BankScreen As screen:
                                         );
                                     );
                                 );
-                                
-                            );
-                            If(
-                                comp = true,
-                                Navigate(ViewAssessmentScreen),
-                                Set(
+                            
+                                  Set(
                                     varSafety,
                                     false
                                 );
@@ -1443,9 +1439,33 @@ BankScreen As screen:
                                     varBankUnitId,
                                     ThisItem.bankUnitId.Id
                                 );
-                                Navigate(SectionScreen);
-                                
+                                  Navigate(SectionScreen);
+                                , //net not connected
+                            
+                                If(!IsBlank(
+                                             LookUp(
+                                                            GC_unitAssessment,
+                                                            assignmentId.Id = varAssignmentId && bankUnitId.Id = ThisItem.bankUnitId.Id && Assessment_status = "Upcomming"
+                                                        )
+                                                    ),
+                                                      Navigate(SectionScreen);,
+                                                  If(   CountRows(
+                                                Filter(
+                                                    GcSectionAssessment,
+                                                    bankUnitId.Id = ThisItem.bankUnitId.Id
+                                                )
+                                            ) < 1,
+                                  Notify("net not connected ..");)
+                                  ;
                             );
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
                             /*
                             If(
                                 IsEmpty(GcSectionAssessment) && IsEmpty(GcCheckpointAssessment) && IsEmpty(GC_checkpointItemAssessment) && IsEmpty(GC_checkpointItem_ActionItem) && IsEmpty(GC_checkpointItem_Images),
