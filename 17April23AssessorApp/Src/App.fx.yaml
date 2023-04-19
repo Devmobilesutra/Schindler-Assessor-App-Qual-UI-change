@@ -333,7 +333,7 @@ App As appinfo:
                         gcProjectAssignmentAdd,
                         Filter(
                             assignments,
-                            assessorId = varLoggedAssessor
+                            assessorId = varLoggedAssessor &&  isCompleted <> "Completed"
                         )
                     );
                     ClearCollect(
@@ -367,7 +367,7 @@ App As appinfo:
                     GC_bankAssessmentAdd,
                         Filter(
                             bankAssessment,
-                            assignmentId.assessorId = varLoggedAssessor
+                            assignmentId.assessorId = varLoggedAssessor &&  Assessment_Status <> "Completed"
                         )
                 );
                 ClearCollect(
@@ -388,7 +388,7 @@ App As appinfo:
                     GC_unitAssessmentAdd,
                         Filter(
                             unitAssessment,
-                            assignmentId.assessorId = varLoggedAssessor
+                            assignmentId.assessorId = varLoggedAssessor &&  Assessment_status <> "Completed"
                         )
                 );
                 ClearCollect(
