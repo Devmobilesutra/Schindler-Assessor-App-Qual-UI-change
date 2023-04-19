@@ -1795,11 +1795,10 @@ FindingScreen As screen:
                                 Fill: =AllScreensCSS.RActiveColor
                                 Font: =AllScreensCSS.ButtonFont
                                 HoverFill: =AllScreensCSS.RActiveColor
-                                OnSelect: |+
+                                OnSelect: |
                                     =/*//for reset ideal timer
                                     Reset(tmr_logout);
                                     Set(UserLastNavigated, Now());*/
-                                    
                                     //for safety check
                                     If(
                                         DateDiff(
@@ -1818,39 +1817,75 @@ FindingScreen As screen:
                                         );
                                         
                                     );
-                                    
-                                    Collect(GC_checkpointItem_ActionItem,{
+                                    Collect(
+                                        GC_checkpointItem_ActionItem,
+                                        {
                                             // checkpointItemActionItemsId: GUID(),
-                                             checkpointItemActionItemsId: varBankUnitId & "ca" & Text( Now(), "mmddyyyyhhmmss" ) &"-" & Rand(),
-                                                    ActionItem_Name:"",
-                                                    assignmentId: LookUp(DropColumns(
-                                                         gcProjectAssignment,"AstatusUpdate"),
-                                                         Id =varAssignmentId
-                                                     ),
-                                                     bankId:LookUp(gcBank,Id=VarBankId),
-                                                     bankUnitId: LookUp(
-                                                      gcBankunit,
-                                                        Id = varBankUnitId),
-                                                        
-                                                    section_id: LookUp( DropColumns(GcSectionAssessment,"SstatusUpdate"),'sectionAssessment (quantum_sectionassessment)'=varSA),
-                                                    checkpoint_id:LookUp(DropColumns(GcCheckpointAssessment,"CstatusUpdate"), checkpointAssessment_id=GuidId ),
-                                                    checkpointItem_Id: LookUp(DropColumns(
-                                                         GC_checkpointItemAssessment,"CIstatusUpdate"),
-                                                        'checkpointItemAssessment (quantum_checkpointitemassessment)' = varCItemA 
-                                                    ),
-                                                    product_id:LookUp(GC_product,product_Model=glryUnitBS.Selected.productModel),
-                                                    priority:"",
-                                                    OwnerId:"",
-                                                    TimeEstimate:"",
-                                                    MaterialEstimate:"",
-                                                    ActionSortSequence: LookUp(GC_templateSections,sectionId=VarSectionId,sectionSequence) & LookUp(GC_templateCheckpoints,checkpointId= ChId,checkpointSequence) & LookUp(GC_templateCheckpointsItem,checkpointItemId = varCheckpointitemID,checkpointItemSequence)
-                                    
-                                            }
-                                            );
-                                       
-                                    
-                                    
-                                    
+                                            checkpointItemActionItemsId: varBankUnitId & "ca" & Text(
+                                                Now(),
+                                                "mmddyyyyhhmmss"
+                                            ) & "-" & Rand(),
+                                            ActionItem_Name: "",
+                                            assignmentId: LookUp(
+                                                DropColumns(
+                                                    gcProjectAssignment,
+                                                    "AstatusUpdate"
+                                                ),
+                                                Id = varAssignmentId
+                                            ),
+                                            bankId: LookUp(
+                                                gcBank,
+                                                Id = VarBankId
+                                            ),
+                                            bankUnitId: LookUp(
+                                                gcBankunit,
+                                                Id = varBankUnitId
+                                            ),
+                                            section_id: LookUp(
+                                                DropColumns(
+                                                    GcSectionAssessment,
+                                                    "SstatusUpdate"
+                                                ),
+                                                'sectionAssessment (quantum_sectionassessment)' = varSA
+                                            ),
+                                            checkpoint_id: LookUp(
+                                                DropColumns(
+                                                    GcCheckpointAssessment,
+                                                    "CstatusUpdate"
+                                                ),
+                                                checkpointAssessment_id = GuidId
+                                            ),
+                                            checkpointItem_Id: LookUp(
+                                                DropColumns(
+                                                    GC_checkpointItemAssessment,
+                                                    "CIstatusUpdate"
+                                                ),
+                                                'checkpointItemAssessment (quantum_checkpointitemassessment)' = varCItemA
+                                            ),
+                                            product_id: LookUp(
+                                                GC_product,
+                                                product_Model = glryUnitBS.Selected.productModel
+                                            ),
+                                            priority: "",
+                                            OwnerId: "",
+                                            TimeEstimate: "",
+                                            MaterialEstimate: "",
+                                            ActionSortSequence: LookUp(
+                                                GC_templateSections,
+                                                sectionId = VarSectionId,
+                                                sectionSequence
+                                            ) & LookUp(
+                                                GC_templateCheckpoints,
+                                                checkpointId = ChId,
+                                                checkpointSequence
+                                            ) & LookUp(
+                                                GC_templateCheckpointsItem,
+                                                checkpointItemId = varCheckpointitemID,
+                                                checkpointItemSequence
+                                            ),
+                                              CIAstatusUpdate : Blank()
+                                        }
+                                    );
                                 PressedFill: =AllScreensCSS.RActiveColor
                                 RadiusBottomLeft: =1
                                 RadiusBottomRight: =1
@@ -2287,7 +2322,7 @@ FindingScreen As screen:
                                         CountRows(
                                             Filter(
                                                 GC_checkpointItem_Images,
-                                                CIIstatusUpdate = 0 || CIIstatusUpdate = 1
+                                                CIIstatusUpdate = 0 || CIIstatusUpdate = 1 || CIIstatusUpdate = Blank()
                                             )
                                         ) >= 50,
                                         Set(
@@ -2301,10 +2336,25 @@ FindingScreen As screen:
                                         );
                                         ,
                                         If(
-                                            CountRows(Filter(GC_checkpointItem_Images,CIIstatusUpdate = 0 || CIIstatusUpdate = 1)) > 40,
+                                            CountRows(
+                                                Filter(
+                                                    GC_checkpointItem_Images,
+                                                    CIIstatusUpdate = 0 || CIIstatusUpdate = 1 || CIIstatusUpdate = Blank()
+                                                )
+                                            ) > 40,
                                             Set(
                                                 VarImagesExceedPopupText,
-                                               CountRows(Filter(GC_checkpointItem_Images,CIIstatusUpdate = 0 || CIIstatusUpdate = 1)) & " Unsubmitted Images are already stored. Now you can add only " & 50 - CountRows(Filter(GC_checkpointItem_Images,CIIstatusUpdate = 0 || CIIstatusUpdate = 1)) & " images more."
+                                                CountRows(
+                                                    Filter(
+                                                        GC_checkpointItem_Images,
+                                                        CIIstatusUpdate = 0 || CIIstatusUpdate = 1 || CIIstatusUpdate = Blank()
+                                                    )
+                                                ) & " Unsubmitted Images are already stored. Now you can add only " & 50 - CountRows(
+                                                    Filter(
+                                                        GC_checkpointItem_Images,
+                                                        CIIstatusUpdate = 0 || CIIstatusUpdate = 1 || CIIstatusUpdate = Blank()
+                                                    )
+                                                ) & " images more."
                                             );
                                       //Notify(CountRows(GC_checkpointItem_Images) & " Images are already stored. 75 is a limit.",NotificationType.Error);
                                     Set(
@@ -2376,7 +2426,8 @@ FindingScreen As screen:
                                                         GC_templateCheckpointsItem,
                                                         checkpointItemId = varCheckpointitemID,
                                                         checkpointItemSequence
-                                                    )
+                                                    ),
+                                                    CIIstatusUpdate: Blank()
                                                 }
                                             );
                                             If(
@@ -3312,14 +3363,14 @@ FindingScreen As screen:
         Rectangle1_17 As rectangle:
             Fill: =RGBA(0, 0, 0, 0.29)
             Height: =Parent.Height
-            Visible: =VarImagesExceedPopup
+            Visible: =VarImagesExceedPopup = false
             Width: =Parent.Width
             ZIndex: =31
 
         Rectangle2_13 As rectangle:
             Fill: =RGBA(255, 255, 255, 1)
             Height: =280
-            Visible: =VarImagesExceedPopup
+            Visible: =VarImagesExceedPopup = false
             Width: =400
             X: =(Parent.Width-Self.Width)/2
             Y: =Parent.Height/3
@@ -3328,7 +3379,7 @@ FindingScreen As screen:
         Image2_30 As image:
             Height: =52
             Image: =info
-            Visible: =VarImagesExceedPopup
+            Visible: =VarImagesExceedPopup = false
             Width: =52
             X: =(Parent.Width-Self.Width)/2
             Y: =Rectangle2_13.Y+20
@@ -3341,7 +3392,7 @@ FindingScreen As screen:
             FontWeight: =FontWeight.Bold
             Size: =18
             Text: ="Info"
-            Visible: =VarImagesExceedPopup
+            Visible: =VarImagesExceedPopup = false
             Width: =324
             X: =(Parent.Width-Self.Width)/2
             Y: =Image2_30.Y+Image2_30.Height
@@ -3351,10 +3402,10 @@ FindingScreen As screen:
             Align: =Align.Center
             Font: =AllScreensCSS.RFont
             FontWeight: =FontWeight.Bold
-            Height: =80
+            Height: =100
             Size: =15
             Text: =VarImagesExceedPopupText
-            Visible: =VarImagesExceedPopup
+            Visible: =VarImagesExceedPopup = false
             Width: =350
             X: =(Parent.Width-Self.Width)/2
             Y: =Label1_22.Y+ Label1_22.Height
@@ -3372,7 +3423,7 @@ FindingScreen As screen:
             PressedBorderColor: =RGBA(1, 43, 1, 0)
             PressedFill: =Self.Fill
             Text: ="Ok"
-            Visible: =VarImagesExceedPopup
+            Visible: =VarImagesExceedPopup = false
             Width: =120
             X: =(Parent.Width-Self.Width)/2
             Y: =Label2_15.Y+ Label2_15.Height+10

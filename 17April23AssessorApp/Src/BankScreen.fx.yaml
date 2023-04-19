@@ -15,7 +15,7 @@ BankScreen As screen:
     ctnMainBankBS As groupContainer.manualLayoutContainer:
         Height: =Parent.Height
         Width: =Parent.Width
-        ZIndex: =2
+        ZIndex: =1
 
         ctnMiddleBS As groupContainer.verticalAutoLayoutContainer:
             Height: =Parent.Height
@@ -1459,12 +1459,12 @@ BankScreen As screen:
                                                 assignmentId.Id = varAssignmentId && bankUnitId.Id = ThisItem.bankUnitId.Id
                                             )
                                         ) < 1,
-                                        Notify("net not connected and unit data not available ..");
+                                       // Notify("net not connected and unit data not available ..");
                                         Set(VarUnitDataText,"Network not available, Unable to get submitted data from cloud.");
                                         Set(VarUnitDataTextPopUp,true);           
                                         ,
                                        
-                                        Notify("net not connected and unit data  available ..");
+                                      //  Notify("net not connected and unit data  available ..");
                                         Navigate(SectionScreen);
                                     );
                                 );
@@ -3245,7 +3245,7 @@ BankScreen As screen:
             Height: =Parent.Height
             Visible: =popupSyncSuccess =true
             Width: =Parent.Width
-            ZIndex: =3
+            ZIndex: =2
 
         iconInnerRectangleBS As rectangle:
             Fill: =RGBA(255, 255, 255, 1)
@@ -3254,7 +3254,7 @@ BankScreen As screen:
             Width: =400
             X: =(Parent.Width-Self.Width)/2
             Y: =Parent.Height/3
-            ZIndex: =4
+            ZIndex: =3
 
         imgloaderBS As image:
             Height: =52
@@ -3263,7 +3263,7 @@ BankScreen As screen:
             Width: =52
             X: =(Parent.Width-Self.Width)/2
             Y: =iconInnerRectangleBS.Y+20
-            ZIndex: =5
+            ZIndex: =4
 
         lblSyncSuccessPatchBS As label:
             Align: =Align.Center
@@ -3278,7 +3278,7 @@ BankScreen As screen:
             Width: =350
             X: =(Parent.Width-Self.Width)/2
             Y: =imgloaderBS.Y+imgloaderBS.Height
-            ZIndex: =6
+            ZIndex: =5
 
         lblsyncSuccessBS As label:
             Align: =Align.Center
@@ -3291,7 +3291,7 @@ BankScreen As screen:
             Width: =350
             X: =(Parent.Width-Self.Width)/2
             Y: =lblSyncSuccessPatchBS.Y+lblSyncSuccessPatchBS.Height+20
-            ZIndex: =7
+            ZIndex: =6
 
         btnSuccessBS As button:
             Fill: =RGBA(54, 176, 75, 1)
@@ -3307,7 +3307,7 @@ BankScreen As screen:
             Width: =120
             X: =(Parent.Width-Self.Width)/2
             Y: =lblsyncSuccessBS.Y+ lblsyncSuccessBS.Height+5
-            ZIndex: =8
+            ZIndex: =7
 
     grpTripReportBS As group:
         Height: =5
@@ -3321,7 +3321,7 @@ BankScreen As screen:
             Height: =Parent.Height
             Visible: =popupTripReportSuccess
             Width: =Parent.Width
-            ZIndex: =9
+            ZIndex: =8
 
         iconInnerRectangleTripReportBS As rectangle:
             Fill: =RGBA(255, 255, 255, 1)
@@ -3330,7 +3330,7 @@ BankScreen As screen:
             Width: =400
             X: =(Parent.Width-Self.Width)/2
             Y: =Parent.Height/3
-            ZIndex: =10
+            ZIndex: =9
 
         imgInfoBS As image:
             Height: =52
@@ -3339,7 +3339,7 @@ BankScreen As screen:
             Width: =52
             X: =(Parent.Width-Self.Width)/2
             Y: =iconInnerRectangleTripReportBS.Y+20
-            ZIndex: =11
+            ZIndex: =10
 
         lblSuccesspopupBS As label:
             Align: =Align.Center
@@ -3354,7 +3354,7 @@ BankScreen As screen:
             Width: =350
             X: =(Parent.Width-Self.Width)/2
             Y: =imgInfoBS.Y+imgInfoBS.Height
-            ZIndex: =12
+            ZIndex: =11
 
         lblTripReportSuccessBS As label:
             Align: =Align.Center
@@ -3367,7 +3367,7 @@ BankScreen As screen:
             Width: =350
             X: =(Parent.Width-Self.Width)/2
             Y: =lblSuccesspopupBS.Y+lblSuccesspopupBS.Height+20
-            ZIndex: =13
+            ZIndex: =12
 
         btnPopupTripReportBS As button:
             Fill: =RGBA(54, 176, 75, 1)
@@ -3382,7 +3382,7 @@ BankScreen As screen:
             Width: =120
             X: =(Parent.Width-Self.Width)/2
             Y: =lblTripReportSuccessBS.Y+ lblTripReportSuccessBS.Height+5
-            ZIndex: =14
+            ZIndex: =13
 
     grpExportPDF As group:
         Height: =5
@@ -3396,7 +3396,7 @@ BankScreen As screen:
             Height: =Parent.Height
             Visible: =VarExportPDF
             Width: =Parent.Width
-            ZIndex: =15
+            ZIndex: =14
 
         iconInnerRectangleTripReportBS_1 As rectangle:
             Fill: =RGBA(255, 255, 255, 1)
@@ -3405,7 +3405,7 @@ BankScreen As screen:
             Width: =400
             X: =(Parent.Width-Self.Width)/2
             Y: =Parent.Height/3
-            ZIndex: =16
+            ZIndex: =15
 
         imgInfoBS_1 As image:
             Height: =52
@@ -3414,7 +3414,7 @@ BankScreen As screen:
             Width: =52
             X: =(Parent.Width-Self.Width)/2
             Y: =iconInnerRectangleTripReportBS_1.Y+20
-            ZIndex: =17
+            ZIndex: =16
 
         lblSuccesspopupBS_1 As label:
             Align: =Align.Center
@@ -3429,7 +3429,7 @@ BankScreen As screen:
             Width: =350
             X: =(Parent.Width-Self.Width)/2
             Y: =imgInfoBS_1.Y+imgInfoBS_1.Height
-            ZIndex: =18
+            ZIndex: =17
 
         lblTripReportSuccessBS_1 As label:
             Align: =Align.Center
@@ -3442,7 +3442,7 @@ BankScreen As screen:
             Width: =350
             X: =(Parent.Width-Self.Width)/2
             Y: =lblSuccesspopupBS_1.Y+lblSuccesspopupBS_1.Height
-            ZIndex: =19
+            ZIndex: =18
 
         btnPopupTripReportBS_1 As button:
             Fill: =RGBA(54, 176, 75, 1)
@@ -3457,18 +3457,18 @@ BankScreen As screen:
             Width: =120
             X: =(Parent.Width-Self.Width)/2
             Y: =lblTripReportSuccessBS_1.Y+ lblTripReportSuccessBS_1.Height+5
-            ZIndex: =20
+            ZIndex: =19
 
     imgSpinnerResume As image:
         Fill: =RGBA(0, 0, 0, 0.29)
         Height: =Parent.Height
         Image: ='ajax-loader 2'
         ImagePosition: =ImagePosition.Center
-        Visible: =//varloader = true
+        Visible: =varSpinner
         Width: =Parent.Width
         X: =(Parent.Width-Self.Width)/2
         Y: =(Parent.Height-Self.Height)/2
-        ZIndex: =27
+        ZIndex: =26
 
     grResumeNetwork As group:
         Height: =5
@@ -3482,7 +3482,7 @@ BankScreen As screen:
             Height: =Parent.Height
             Visible: =VarUnitDataTextPopUp
             Width: =Parent.Width
-            ZIndex: =21
+            ZIndex: =20
 
         iconInnerRectangleBS_5 As rectangle:
             Fill: =RGBA(255, 255, 255, 1)
@@ -3491,7 +3491,7 @@ BankScreen As screen:
             Width: =400
             X: =(Parent.Width-Self.Width)/2
             Y: =Parent.Height/3
-            ZIndex: =22
+            ZIndex: =21
 
         imgloaderBS_5 As image:
             Height: =52
@@ -3500,7 +3500,7 @@ BankScreen As screen:
             Width: =52
             X: =(Parent.Width-Self.Width)/2
             Y: =iconInnerRectangleBS_5.Y+20
-            ZIndex: =23
+            ZIndex: =22
 
         lblSyncSuccessPatchBS_5 As label:
             Align: =Align.Center
@@ -3515,7 +3515,7 @@ BankScreen As screen:
             Width: =350
             X: =(Parent.Width-Self.Width)/2
             Y: =imgloaderBS_5.Y+imgloaderBS_5.Height
-            ZIndex: =24
+            ZIndex: =23
 
         lblsyncSuccessBS_5 As label:
             Align: =Align.Center
@@ -3528,7 +3528,7 @@ BankScreen As screen:
             Width: =350
             X: =(Parent.Width-Self.Width)/2
             Y: =lblSyncSuccessPatchBS_5.Y+lblSyncSuccessPatchBS_5.Height+20
-            ZIndex: =25
+            ZIndex: =24
 
         btnSuccessBS_1 As button:
             Fill: =RGBA(54, 176, 75, 1)
@@ -3544,5 +3544,5 @@ BankScreen As screen:
             Width: =120
             X: =(Parent.Width-Self.Width)/2
             Y: =lblsyncSuccessBS_5.Y+ lblsyncSuccessBS_5.Height+5
-            ZIndex: =26
+            ZIndex: =25
 
