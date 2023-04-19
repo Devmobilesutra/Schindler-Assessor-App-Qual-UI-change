@@ -55,7 +55,7 @@ BankScreen As screen:
                     LayoutMinWidth: =250
                     LayoutMode: =LayoutMode.Auto
                     LayoutWrap: =true
-                    PaddingLeft: =40
+                    PaddingLeft: =20
                     Width: =300 //Parent.Width/1.5
                     Y: =ctnHeaderPS.Y+ctnHeaderPS.Height
                     ZIndex: =1
@@ -72,7 +72,7 @@ BankScreen As screen:
                         HoverFill: =
                         OnSelect: =Navigate(ProjectScreen)
                         PaddingBottom: =10
-                        PaddingLeft: =20
+                        PaddingLeft: =0
                         PaddingRight: =10
                         PaddingTop: =10
                         PressedBorderColor: =Self.BorderColor
