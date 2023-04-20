@@ -326,7 +326,7 @@ BankScreen As screen:
                                 ),
                                 Ascending
                             ););*/
-                                Navigate(Screen1);
+                                Navigate(TripReportNewScreen);
                                 ,
                                 Set(VarPopupSyncText,"Assessment records are not found in your local device . please click each unit to get assessment records from server .");
                                 Set(popupTripReportSuccess,true);
