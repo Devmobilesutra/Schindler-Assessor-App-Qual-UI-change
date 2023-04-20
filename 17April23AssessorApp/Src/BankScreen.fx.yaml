@@ -3480,14 +3480,14 @@ BankScreen As screen:
         iconOuterRectangleBS_5 As rectangle:
             Fill: =RGBA(0, 0, 0, 0.29)
             Height: =Parent.Height
-            Visible: =VarUnitDataTextPopUp  = false
+            Visible: =VarUnitDataTextPopUp
             Width: =Parent.Width
             ZIndex: =20
 
         iconInnerRectangleBS_5 As rectangle:
             Fill: =RGBA(255, 255, 255, 1)
             Height: =270
-            Visible: =VarUnitDataTextPopUp  = false
+            Visible: =VarUnitDataTextPopUp
             Width: =400
             X: =(Parent.Width-Self.Width)/2
             Y: =Parent.Height/3
@@ -3496,7 +3496,7 @@ BankScreen As screen:
         imgloaderBS_5 As image:
             Height: =52
             Image: =info
-            Visible: =VarUnitDataTextPopUp  = false
+            Visible: =VarUnitDataTextPopUp
             Width: =52
             X: =(Parent.Width-Self.Width)/2
             Y: =iconInnerRectangleBS_5.Y+20
@@ -3507,10 +3507,11 @@ BankScreen As screen:
             Color: =RGBA(14, 161, 26, 1)
             Font: =AllScreensCSS.RFont
             FontWeight: =FontWeight.Bold
+            Height: =30
             PaddingBottom: =0
             Size: =18
             Text: ="Info"
-            Visible: =VarUnitDataTextPopUp  = false
+            Visible: =VarUnitDataTextPopUp
             Width: =350
             X: =(Parent.Width-Self.Width)/2
             Y: =imgloaderBS_5.Y+imgloaderBS_5.Height
@@ -3520,13 +3521,13 @@ BankScreen As screen:
             Align: =Align.Center
             Font: =AllScreensCSS.RFont
             FontWeight: =FontWeight.Semibold
-            Height: =100
+            Height: =95
             Size: =15
             Text: =VarUnitDataText
-            Visible: =VarUnitDataTextPopUp  = false
+            Visible: =VarUnitDataTextPopUp
             Width: =350
             X: =(Parent.Width-Self.Width)/2
-            Y: =lblSyncSuccessPatchBS_5.Y+lblSyncSuccessPatchBS_5.Height+20
+            Y: =lblSyncSuccessPatchBS_5.Y+lblSyncSuccessPatchBS_5.Height+10
             ZIndex: =24
 
         btnSuccessBS_1 As button:
@@ -3539,7 +3540,7 @@ BankScreen As screen:
             PressedBorderColor: =RGBA(1, 43, 1, 0)
             PressedFill: =Self.Fill
             Text: ="Ok"
-            Visible: =VarUnitDataTextPopUp  = false
+            Visible: =VarUnitDataTextPopUp
             Width: =120
             X: =(Parent.Width-Self.Width)/2
             Y: =lblsyncSuccessBS_5.Y+ lblsyncSuccessBS_5.Height+5
