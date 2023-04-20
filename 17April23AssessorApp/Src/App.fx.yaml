@@ -5,14 +5,12 @@ App As appinfo:
         =//safety timer
         Set(SafetyCheckTime,1800);
         
-        Set(
-            timerX,
-            0
-        );
+        
         Set(
             timerStart,
             false
         );
+        
         //Set(varload,true);
         
         // Global CSS

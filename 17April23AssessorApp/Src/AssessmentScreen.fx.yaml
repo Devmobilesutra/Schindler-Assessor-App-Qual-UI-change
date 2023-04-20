@@ -2935,7 +2935,6 @@ AssessmentScreen As screen:
                         PaddingTop: =2
                         PressedFill: =Self.Fill
                         Text: ="Submit"
-                        Visible: =
                         Width: =335
                         X: =525
                         Y: =25
