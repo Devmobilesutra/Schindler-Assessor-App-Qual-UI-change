@@ -283,6 +283,7 @@ BankScreen As screen:
                                         VarTripReportNotification,
                                         "Trip report saved successfully."
                                     ),
+                                    Clear(localBanktripReport);
                                     ClearCollect(localBanktripReport, LookUp(
                                             BankTripReport,
                                             assignmentId.Id = glryProject.Selected.Id 
@@ -343,14 +344,24 @@ BankScreen As screen:
                         RadiusTopRight: =18
                         Size: =AllScreensCSS.RfontsizeInput
                         Text: |-
-                            =If(Connection.Connected,
-                            If(comp=true,
-                            "View Report",
-                            If(IsBlank(LookUp(
-                                BankTripReport,
-                                assignmentId.Id = glryProject.Selected.Id && bankId.Id = glryProject.Selected.bankId.Id
-                            )),"Generate Report","Edit Report")),
-                            "Trip Report")
+                            =If(
+                                Connection.Connected,
+                                If(
+                                    comp = true,
+                                    "View Report",
+                                    If(
+                                        IsBlank(
+                                            LookUp(
+                                                BankTripReport,
+                                                assignmentId.Id = glryProject.Selected.Id && bankId.Id = glryProject.Selected.bankId.Id
+                                            )
+                                        ),
+                                        "Generate Report",
+                                        "Edit Report"
+                                    )
+                                ),
+                                "Trip Report"
+                            )
                         Width: =Parent.Width/6.5
                         ZIndex: =6
 

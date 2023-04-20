@@ -398,7 +398,11 @@ Screen1 As screen:
                     BorderColor: =RGBA(179, 179, 179, 1)
                     Default: |-
                         =//check summary is available for assignment if available then display summary
-                        If(IsBlank(First(localBanktripReport).Summary)," ",First(localBanktripReport).Summary)
+                        If(
+                            IsBlank(First(localBanktripReport).Summary),
+                            " ",
+                            First(localBanktripReport).Summary
+                        )
                     DisplayMode: =If(comp=true,DisplayMode.View,DisplayMode.Edit)
                     FillPortions: =1
                     HintText: ="Enter here"
@@ -425,7 +429,11 @@ Screen1 As screen:
                     BorderColor: =RGBA(179, 179, 179, 1)
                     Default: |-
                         =//check background is available for assignment if available then display background
-                        If(IsBlank(First(localBanktripReport).Background)," ",First(localBanktripReport).Background)
+                        If(
+                            IsBlank(First(localBanktripReport).Background),
+                            " ",
+                            First(localBanktripReport).Background
+                        )
                     DisplayMode: =If(comp=true,DisplayMode.View,DisplayMode.Edit)
                     FillPortions: =1
                     HintText: ="Enter here"
