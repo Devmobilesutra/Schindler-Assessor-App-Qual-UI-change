@@ -103,8 +103,6 @@ App As appinfo:
             ClearCollect(
                 LoggedAssessor,
                 LookUp(
-                    //AzureAD.GetGroupMembers("9ae78503-6ff0-4f1a-b15f-9e0b76c01b44").value,
-                    //Office365Groups.ListGroupMembers("af09913a-97da-4667-afdd-8f5df8f58ca2").value,
                     Office365Groups.ListGroupMembers(LookUp(
          'Environment Variable Values',
          'Environment Variable Definition'.'Schema Name' = "shlaf_AssessorGroup",

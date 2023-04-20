@@ -440,7 +440,10 @@ BankScreen As screen:
                         HoverFill: =Self.Fill
                         OnSelect: |-
                             =//for safety check to show default selected
-                            Set(varSpinner,true);
+                            Set(
+                                varSpinner,
+                                true
+                            );
                             If(
                                 IsEmpty(GcSectionAssessmentCache) && IsEmpty(GcCheckpointAssessmentCache) && IsEmpty(GC_checkpointItemAssessmentCache) && IsEmpty(GC_checkpointItem_ActionItemCache) && IsEmpty(GC_checkpointItem_ImagesCache),
                                 Concurrent(
@@ -507,7 +510,6 @@ BankScreen As screen:
                                             GcSectionAssessmentAdd,
                                             Filter(
                                                 sectionAssessment,
-                                                //assignmentId.assessorId = varLoggedAssessor
                                                 bankUnitId.Id = ThisItem.bankUnitId.Id
                                             )
                                         );
@@ -520,8 +522,7 @@ BankScreen As screen:
                                                 2
                                             )
                                         );
-                                        //updateeee
-                                      //  Patch(GcSectionAssessment,Filter(GcSectionAssessmentCache1, bankUnitId.Id = ThisItem.bankUnitId.Id));
+                                      //Update to local
                             ForAll(
                                             Filter(
                                                 GcSectionAssessmentCache1,
@@ -581,7 +582,6 @@ BankScreen As screen:
                                             bankUnitId.Id = ThisItem.bankUnitId.Id
                                         );
                                         ,
-                                        //Notify("section data  from dataverse",NotificationType.Information);
                                         If(
                                             CountRows(
                                                 Filter(
@@ -597,8 +597,7 @@ BankScreen As screen:
                                                     bankUnitId.Id = ThisItem.bankUnitId.Id
                                                 )
                                             );
-                                        //    Notify("Unit data of section inserted from dataverse",NotificationType.Information);
-                            ForAll(
+                                            ForAll(
                                                 GcSectionAssessmentTemp As i,
                                                 Patch(
                                                     GcSectionAssessment,
@@ -1289,7 +1288,6 @@ BankScreen As screen:
                                                         checkpoint_id: i.checkpoint_id,
                                                         checkpointItem_Id: i.checkpointItem_Id,
                                                         product_id: i.product_id,
-                                                        // Image:Image14_2.Image,
                                                         Image: i.Image,
                                                         image_annotation: i.image_annotation,
                                                         CIIstatusUpdate: i.CIIstatusUpdate
@@ -1311,7 +1309,6 @@ BankScreen As screen:
                                                         checkpoint_id: i.checkpoint_id,
                                                         checkpointItem_Id: i.checkpointItem_Id,
                                                         product_id: i.product_id,
-                                                        // Image:Image14_2.Image,
                                                         Image: i.Image,
                                                         image_annotation: i.image_annotation,
                                                         CIIstatusUpdate: i.CIIstatusUpdate
@@ -1354,7 +1351,6 @@ BankScreen As screen:
                                                         checkpoint_id: i.checkpoint_id,
                                                         checkpointItem_Id: i.checkpointItem_Id,
                                                         product_id: i.product_id,
-                                                        // Image:Image14_2.Image,
                                                         Image: i.Image,
                                                         image_annotation: i.image_annotation,
                                                         CIIstatusUpdate: 2
@@ -1385,7 +1381,6 @@ BankScreen As screen:
                                                             checkpoint_id: i.checkpoint_id,
                                                             checkpointItem_Id: i.checkpointItem_Id,
                                                             product_id: i.product_id,
-                                                            // Image:Image14_2.Image,
                                                             Image: i.Image,
                                                             image_annotation: i.image_annotation,
                                                             CIIstatusUpdate: i.CIIstatusUpdate
@@ -1407,7 +1402,6 @@ BankScreen As screen:
                                                             checkpoint_id: i.checkpoint_id,
                                                             checkpointItem_Id: i.checkpointItem_Id,
                                                             product_id: i.product_id,
-                                                            // Image:Image14_2.Image,
                                                             Image: i.Image,
                                                             image_annotation: i.image_annotation,
                                                             CIIstatusUpdate: i.CIIstatusUpdate
@@ -1441,7 +1435,6 @@ BankScreen As screen:
                                     ThisItem.bankUnitId.Id
                                 );
                                 Navigate(SectionScreen);
-                            
                                 ,//net not connected
                                 If(
                                     !IsBlank(
@@ -1459,18 +1452,27 @@ BankScreen As screen:
                                                 assignmentId.Id = varAssignmentId && bankUnitId.Id = ThisItem.bankUnitId.Id
                                             )
                                         ) < 1,
-                                       // Notify("net not connected and unit data not available ..");
-                                        Set(VarUnitDataText,"Network not available, Unable to get submitted data from cloud.");
-                                        Set(VarUnitDataTextPopUp,true);           
-                                        ,
                                        
-                                      //  Notify("net not connected and unit data  available ..");
+                                        Set(
+                                            VarUnitDataText,
+                                            "Network not available, Unable to get submitted data from cloud."
+                                        );
+                                        Set(
+                                            VarUnitDataTextPopUp,
+                                            true
+                                        );
+                                        ,
+                                      
                                         Navigate(SectionScreen);
                                     );
                                 );
                                 
                             );
-                            Set(varSpinner,false);//net connected
+                            Set(
+                                varSpinner,
+                                false
+                            );
+                            //net connected
                             /*
                             If(
                                 IsEmpty(GcSectionAssessment) && IsEmpty(GcCheckpointAssessment) && IsEmpty(GC_checkpointItemAssessment) && IsEmpty(GC_checkpointItem_ActionItem) && IsEmpty(GC_checkpointItem_Images),
