@@ -281,7 +281,7 @@ BankScreen As screen:
                                     ),
                                     Set(
                                         VarTripReportNotification,
-                                        "Trip report saved successfully."
+                                        "Trip report submmited successfully."
                                     ),
                                     Clear(localBanktripReport);
                                     ClearCollect(localBanktripReport, LookUp(
