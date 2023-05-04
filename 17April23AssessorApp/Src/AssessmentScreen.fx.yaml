@@ -355,7 +355,19 @@ AssessmentScreen As screen:
                     Height: |-
                         =//Parent.Height
                         (CountRows(glryItmesAS.AllItems)*glryItmesAS.TemplateHeight)+80
-                    Items: =Sort(Filter(GC_templateCheckpointsItem,checkpointId.checkpointId=LookUp(GC_templateCheckpoints,checkpointId=ChId,checkpointId),checkpointItemName),Value(checkpointItemSequence))
+                    Items: |-
+                        =Sort(
+                            Filter(
+                                GC_templateCheckpointsItem,
+                                checkpointId.checkpointId = LookUp(
+                                    GC_templateCheckpoints,
+                                    checkpointId = ChId,
+                                    checkpointId
+                                ),
+                                checkpointItemName
+                            ),
+                            Value(checkpointItemSequence)
+                        )
                     Layout: =Layout.Vertical
                     LayoutMinHeight: =400
                     LayoutMinWidth: =320
@@ -786,7 +798,7 @@ AssessmentScreen As screen:
                             //else 
                               // allow user to check this checkpoinitem as complete .
                               // update status of selected row in  collection GC_checkpointitemAssessment as Check.
-                            /*If(
+                            If(
                                 (glryItmesAS.Selected.checkpointItemImage = 'checkpointItemImage (templateCheckpointsItems)'.Yes && Not("NA option" in glryItmesAS.Selected.checkpointItemName) && IsBlank(
                                     LookUp(
                                         GC_checkpointItem_Images,
@@ -803,7 +815,7 @@ AssessmentScreen As screen:
                                     IsResetCboxItemsAS,
                                     false
                                 );
-                                ,*/
+                                ,
                             glryItmesAS.Selected.cboxItemsAS.Value = true;
                             Set(
                                 IsResetCboxItemsAS,
@@ -1286,7 +1298,7 @@ AssessmentScreen As screen:
                                 GC_checkpointItemAssessmentCache,
                                 "localcheckpointitemassessment"
                             );
-                            //)
+                            )
                         OnSelect: |
                             =//Set(locItemExpanded,false
                             
