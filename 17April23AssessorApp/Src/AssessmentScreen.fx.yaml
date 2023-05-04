@@ -2081,11 +2081,12 @@ AssessmentScreen As screen:
                             ,
                                 //update dataverse table instead using patch
                                 //updating Assessment_Status of assignment unit into unit Assessment table only for the first time when submit button is clicked
-                                        UpdateIf(
+                                      Set(VarUpdateunit,  UpdateIf(
                                             unitAssessment,
                                             assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && Assessment_status = "Upcomming",
                                             {Assessment_status: "Inprogress"}
                                         );
+                                      );
                                         
                             //updating patch status 2 to collection GC_unitAssessment
                             UpdateIf(
