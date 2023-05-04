@@ -455,6 +455,23 @@ BankScreen As screen:
                                 varSpinner,
                                 true
                             );
+                             Set(
+                                    varSafety,
+                                    false
+                                );
+                                
+                            //here set variable for selected product model.
+                            Set(
+                                    CId,
+                                    ThisItem.productModel
+                                );
+                                
+                            //set variable for selected bankunitId.
+                            Set(
+                                    varBankUnitId,
+                                    ThisItem.bankUnitId.Id
+                                );
+                                
                             If(
                                 IsEmpty(GcSectionAssessmentCache) && IsEmpty(GcCheckpointAssessmentCache) && IsEmpty(GC_checkpointItemAssessmentCache) && IsEmpty(GC_checkpointItem_ActionItemCache) && IsEmpty(GC_checkpointItem_ImagesCache),
                                 Concurrent(
@@ -1429,22 +1446,7 @@ BankScreen As screen:
                                         );
                                     );
                                 );
-                                Set(
-                                    varSafety,
-                                    false
-                                );
-                                
-                            //here set variable for selected product model.
-                            Set(
-                                    CId,
-                                    ThisItem.productModel
-                                );
-                                
-                            //set variable for selected bankunitId.
-                            Set(
-                                    varBankUnitId,
-                                    ThisItem.bankUnitId.Id
-                                );
+                               
                                 Navigate(SectionScreen);
                                 ,//net not connected
                                 If(
