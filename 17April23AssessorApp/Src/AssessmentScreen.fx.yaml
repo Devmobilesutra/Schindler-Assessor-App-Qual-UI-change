@@ -2351,7 +2351,7 @@ AssessmentScreen As screen:
                                             )
                                         ) > 0,
                                 // inside checkpoint item assessment collection => rows contain status 1 => patch that rows to dataverse
-                                        Patch(
+                                     Set(VarResultPatchItem,   Patch(
                                             checkpointItemAssessment,
                                             ShowColumns(
                                                 DropColumns(
@@ -2377,6 +2377,7 @@ AssessmentScreen As screen:
                                                 "shlaf_checkpointitemsortsequence"
                                             )
                                         );
+                                     );
                              //getting specific checkpoint data from dataverse and store it into temporary collection beacause we need unique indetifier from dataverse       
                             ClearCollect(
                                             TempCheckpointItemAssessment,
@@ -2390,7 +2391,7 @@ AssessmentScreen As screen:
                             ForAll(
                                             TempCheckpointItemAssessment As k,
                                             Concurrent(
-                                                UpdateIf(
+                                              UpdateIf(
                                                     GC_checkpointItemAssessment,
                                                     'checkpointItemAssessment (quantum_checkpointitemassessment)' = k.'checkpointItemAssessment (quantum_checkpointitemassessment)' && CIstatusUpdate = 1,
                                                     {
