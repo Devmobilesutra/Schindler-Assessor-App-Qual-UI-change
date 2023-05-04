@@ -2700,8 +2700,18 @@ BankScreen As screen:
                         HoverColor: =RGBA(0, 0, 0, 1)
                         HoverFill: =Self.Fill
                         OnSelect: |
-                            =Set(VarPDFLable,"Unit " & ThisItem.bankUnitId.unitNumber & " Assessment PDF will be sent to your Email Id");
-                            Set(VarExportPDF,ExportUnitPDF.Run(glryProject.Selected.assignments,ThisItem.bankUnitId.bankUnits,glryProject.Selected.assessorEmail));
+                            =Set(
+                                VarPDFLable,
+                                "Unit " & ThisItem.bankUnitId.unitNumber & " Assessment PDF will be sent to your Email Id"
+                            );
+                            Set(
+                                VarExportPDF,
+                                ExportUnitPDF.Run(
+                                    glryProject.Selected.assignments,
+                                    ThisItem.bankUnitId.bankUnits,
+                                    glryProject.Selected.assessorEmail
+                                )
+                            );
                         PressedBorderColor: =Self.Color
                         PressedColor: =Self.Color
                         PressedFill: =Self.Fill
