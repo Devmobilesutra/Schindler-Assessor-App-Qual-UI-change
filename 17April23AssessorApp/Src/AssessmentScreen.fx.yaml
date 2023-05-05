@@ -1676,7 +1676,7 @@ AssessmentScreen As screen:
                                         assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpointItemId.checkpointItemId = ThisItem.checkpointItemId && CIstatusUpdate = 1
                                     )
                                 ) > 0   ,
-                                "Submitted"
+                                "Unsubmitted"
                             ,
                                  CountRows(
                                     Filter(

@@ -558,7 +558,7 @@ SectionScreen As screen:
                             Size: =AllScreensCSS.RfontsizeInput
                             Text: |
                                 =ThisItem.checkpointName
-                            Width: =If(App.Width<1025,Parent.Width/2.3,Parent.Width/1.8)
+                            Width: =If(App.Width<1025,Parent.Width/2.3,Parent.Width/1.7)
                             X: =29
                             Y: |-
                                 =//chglryProduct_1.Height/5
@@ -783,8 +783,9 @@ SectionScreen As screen:
                                             GcCheckpointAssessment,
                                             assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpointId.checkpointId = ThisItem.checkpointId && CstatusUpdate = 1
                                         )
-                                    ) > 0 ,"Submitted",
-                                     CountRows(
+                                    ) > 0,
+                                    "Unsubmitted",
+                                    CountRows(
                                         Filter(
                                             GcCheckpointAssessment,
                                             assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpointId.checkpointId = ThisItem.checkpointId && CstatusUpdate = 0
@@ -792,7 +793,7 @@ SectionScreen As screen:
                                     ) > 0,
                                     "Saved"
                                 )
-                            Width: =80
+                            Width: =90
                             X: =imgCheckpointSS.X/1.04
                             Y: =imgsectionstatusSS.Height+20
                             ZIndex: =10
@@ -1005,7 +1006,7 @@ SectionScreen As screen:
                                         assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && sectionId.sectionId = ThisItem.sectionId && SstatusUpdate = 1
                                     )
                                 ) > 0 ,
-                                "Submitted",
+                                "Unsubmitted",
                                  CountRows(
                                     Filter(
                                         GcSectionAssessment,
