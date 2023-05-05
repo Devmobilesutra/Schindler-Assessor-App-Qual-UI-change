@@ -2519,7 +2519,8 @@ AssessmentScreen As screen:
                                             );//checkpoint countrows 
                                         ); //Section IfError
                                     ); //Section countrows
-                            
+                            );//Net connected 
+                            );
                                     //*****************************************************************************************************************************
                                     //saving data to local cashe
                             SaveData(
@@ -2867,9 +2868,7 @@ AssessmentScreen As screen:
                                         GC_checkpointItem_ImagesCache,
                                         "localcheckpointitemimage"
                                     );
-                                );
-                                //net connected if loop
-                            );
+                               
                             Set(
                                 Varpatchlabel,
                                 " "
