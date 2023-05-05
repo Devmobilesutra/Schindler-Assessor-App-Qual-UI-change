@@ -1756,7 +1756,8 @@ AssessmentScreen As screen:
                             =///ColorFade(RGBA(56, 96, 178, 1), -20%)
                             Self.Fill
                         OnSelect: |
-                            =//for safety check
+                            =Set(VarSubmitError,false);
+                            //for safety check
                             If(
                                 DateDiff(
                                     UserLastNavigatedTime,
@@ -2083,6 +2084,7 @@ AssessmentScreen As screen:
                                                 ),
                                                 NotificationType.Error
                                             );
+                                            Set(VarSubmitError,true);
                                             Set(
                                                 VarPopupText,
                                                 "Section Patch function Error " 
@@ -2213,6 +2215,7 @@ AssessmentScreen As screen:
                                                         ),
                                                         NotificationType.Error
                                                     );
+                                                     Set(VarSubmitError,true);
                                                     Set(
                                                         VarPopupText,
                                                         "Checkpoint Patch function Error " 
@@ -2333,6 +2336,7 @@ AssessmentScreen As screen:
                                                                 ),
                                                                 NotificationType.Error
                                                             );
+                                                             Set(VarSubmitError,true);
                                                             Set(
                                                                 VarPopupText,
                                                                 "CheckpointItem Patch function Error " 
@@ -2446,6 +2450,7 @@ AssessmentScreen As screen:
                                                                         ),
                                                                         NotificationType.Error
                                                                     );
+                                                                    Set(VarSubmitError,true);
                                                                     Set(
                                                                         VarPopupText,
                                                                         "CheckpointActionItem Patch function Error " & Concat(
@@ -2522,6 +2527,7 @@ AssessmentScreen As screen:
                                                                                 ),
                                                                                 NotificationType.Error
                                                                             );
+                                                                            Set(VarSubmitError,true);
                                                                             Set(
                                                                                 VarPopupText,
                                                                                 "CheckpointImages Patch function Error "
@@ -3309,7 +3315,12 @@ AssessmentScreen As screen:
 
         Image2_26 As image:
             Height: =52
-            Image: =Group
+            Image: |-
+                =If(
+                    VarSubmitError,
+                    info,
+                    Group
+                )
             Visible: =popupsuccess =true
             Width: =52
             X: =(Parent.Width-Self.Width)/2
@@ -3323,7 +3334,12 @@ AssessmentScreen As screen:
             FontWeight: =FontWeight.Bold
             PaddingBottom: =0
             Size: =18
-            Text: ="Success"
+            Text: |-
+                =If(
+                    VarSubmitError,
+                    "Error",
+                    "Success"
+                )
             Visible: =popupsuccess =true
             Width: =324
             X: =(Parent.Width-Self.Width)/2
