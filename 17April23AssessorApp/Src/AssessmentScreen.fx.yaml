@@ -1772,12 +1772,13 @@ AssessmentScreen As screen:
                                     UserLastNavigatedTime,
                                     Now()
                                 );
-                                
                             );
+                            
                             Set(
                                 varSpinner,
                                 true
                             );
+                            
                             Set(
                                 Varpatchlabel,
                                 "Uploading findings for " & LookUp(
@@ -1924,12 +1925,12 @@ AssessmentScreen As screen:
                             If(
                                     Connection.Connected,
                                     Concurrent(
-                                        //Data available to patch then set message    
+                                       /* //Data available to patch then set message    
                                         Set(
                                             VarPopupText,
                                             "Assessment records submitted successfully."
                                         );
-                                        ,
+                                        ,*/
                                        //to delete deleted actions from dataverse
                                         Clear(gcActionItemDelete1);
                                         ForAll(
@@ -2078,7 +2079,19 @@ AssessmentScreen As screen:
                                                 "cr28a_sectionsequence"
                                             )
                                         );
-                                        
+                            
+                                         If(
+                                        (!IsEmpty(Errors(sectionAssessment))),
+                                        Notify(
+                                            "Patch function Error " & Concat(
+                                                Errors(sectionAssessment),
+                                                Column & ": " & Message
+                                            ),
+                                            NotificationType.Error
+                                        );
+                                        ,
+                            
+                                                    
                             //getting specific section assessment data from dataverse and store it into temporary collection beacause we need unique indetifier from dataverse
                             ClearCollect(
                                             TempSectionAssessment,
@@ -2152,7 +2165,7 @@ AssessmentScreen As screen:
                                                 );
                                             );
                                         );
-                                    );
+                                  //  );
                                     //if
                                        //Checking checkpoint record is available or not for patch => if Available then patch and get specific section data and update lookup using for loop 
                             If(
@@ -2187,7 +2200,18 @@ AssessmentScreen As screen:
                                                 "cr28a_checkpointsequence"
                                             )
                                         );
-                                //getting specific checkpoint data from dataverse and store it into temporary collection beacause we need unique indetifier from dataverse
+                            
+                                          If(
+                                        (!IsEmpty(Errors(checkpointAssessment))),
+                                        Notify(
+                                            "Patch function Error " & Concat(
+                                                Errors(checkpointAssessment),
+                                                Column & ": " & Message
+                                            ),
+                                            NotificationType.Error
+                                        );
+                                        ,
+                                        //getting specific checkpoint data from dataverse and store it into temporary collection beacause we need unique indetifier from dataverse
                             ClearCollect(
                                             TempCheckpointAssessment,
                                             Filter(
@@ -2247,7 +2271,7 @@ AssessmentScreen As screen:
                                                 );
                                             );
                                         );
-                                    );
+                                   // );
                                //Checking checkpointItem record is available or not for patch => if Available then patch and get specific checkpoint data and update lookup using for loop 
                             If(
                                         CountRows(
@@ -2286,7 +2310,18 @@ AssessmentScreen As screen:
                                                 )
                                             );
                                         );
-                             //getting specific checkpoint data from dataverse and store it into temporary collection beacause we need unique indetifier from dataverse       
+                                        
+                                          If(
+                                        (!IsEmpty(Errors(checkpointItemAssessment))),
+                                        Notify(
+                                            "Patch function Error " & Concat(
+                                                Errors(checkpointItemAssessment),
+                                                Column & ": " & Message
+                                            ),
+                                            NotificationType.Error
+                                        );
+                                        ,
+                                        //getting specific checkpoint data from dataverse and store it into temporary collection beacause we need unique indetifier from dataverse       
                             ClearCollect(
                                             TempCheckpointItemAssessment,
                                             Filter(
@@ -2334,7 +2369,7 @@ AssessmentScreen As screen:
                                                 );
                                             );
                                         );
-                                    );
+                                  //  );
                                     Concurrent(
                                            //Checking checkpointActionItem record is available or not for patch => if Available then patch and get specific checkpointActionItem data 
                                         If(
@@ -2378,8 +2413,18 @@ AssessmentScreen As screen:
                                                     "shlaf_actionsortsequence"
                                                 )
                                             );
-                                            
-                            //getting specific unit wise checkpoint Action item data from dataverse to collection beacause we need unique indetifier from dataverse
+                            
+                                              If(
+                                        (!IsEmpty(Errors(checkpointItem_ActionItem))),
+                                        Notify(
+                                            "Patch function Error " & Concat(
+                                                Errors(checkpointItem_ActionItem),
+                                                Column & ": " & Message
+                                            ),
+                                            NotificationType.Error
+                                        );
+                                        ,
+                                        //getting specific unit wise checkpoint Action item data from dataverse to collection beacause we need unique indetifier from dataverse
                             ClearCollect(
                                                 TempcheckpointItem_ActionItem,
                                                 Filter(
@@ -2401,7 +2446,7 @@ AssessmentScreen As screen:
                                                     }
                                                 )
                                             );
-                                        );
+                                      //  );
                                         ,
                                            //Checking checkpointImages record is available or not for patch => if Available then patch and get specific checkpointImages data 
                                         If(
@@ -2435,7 +2480,18 @@ AssessmentScreen As screen:
                                                     "shlaf_imagesortsequence"
                                                 )
                                             );
-                                            
+                            
+                                                  If(
+                                        (!IsEmpty(Errors(checkpointItem_Images))),
+                                        Notify(
+                                            "Patch function Error " & Concat(
+                                                Errors(checkpointItem_Images),
+                                                Column & ": " & Message
+                                            ),
+                                            NotificationType.Error
+                                        );
+                                        ,
+                                                                
                             //getting specific checkpoint wise checkpoint images  data from dataverse to collection beacause we need unique indetifier from dataverse
                             ClearCollect(
                                                 TempCheckpointItem_Images,
@@ -2457,8 +2513,24 @@ AssessmentScreen As screen:
                                                     }
                                                 )
                                             );
+                                        ); //checkpointImages IfError
+                                          ); //checkpointImages countrows
+                            
+                                        );//checkpointActionItem countrows
+                                        ); //concurrent
+                                
+                            
+                                    ); 
+                                        );//checkpointItem IfError
+                            
+                            );//checkpointItem countrows 
+                             
+                                        );///
+                            );
                                         );
-                                    );
+                                
+                                        );
+                            
                                     //saving data to local cashe
                             SaveData(
                                         gcProjectAssignment,
