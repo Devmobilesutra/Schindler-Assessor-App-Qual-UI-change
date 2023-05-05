@@ -521,7 +521,7 @@ SectionScreen As screen:
                         Text: |-
                             =ThisItem.sectionname 
                             //&" Images : " & CountRows(Filter(GC_checkpointItem_Images, bankUnitId.Id= varBankUnitId &&  section_id.sectionName = ThisItem.sectionname))
-                        Width: =If(Parent.Width<1024,glrySectionSS.Width/1.7,glrySectionSS.Width/1.5)
+                        Width: =If(Parent.Width<1024,glrySectionSS.Width/1.9,glrySectionSS.Width/1.5)
                         X: =Parent.Width/35
                         Y: =iconRectanglebroderSS.Height/3.5
                         ZIndex: =1
@@ -558,7 +558,7 @@ SectionScreen As screen:
                             Size: =AllScreensCSS.RfontsizeInput
                             Text: |
                                 =ThisItem.checkpointName
-                            Width: =If(App.Width<1025,Parent.Width/2.3,Parent.Width/1.7)
+                            Width: =If(App.Width<1025,Parent.Width/2.25,Parent.Width/1.7)
                             X: =29
                             Y: |-
                                 =//chglryProduct_1.Height/5
@@ -653,7 +653,7 @@ SectionScreen As screen:
                                        )
                                 
                             Width: =chglryCheckpointSS.Width/6
-                            X: =(Parent.Width-Self.Width)-30
+                            X: =(Parent.Width-Self.Width)-20
                             Y: |-
                                 =//chglryProduct_1.Height/5
                                 20
@@ -687,7 +687,7 @@ SectionScreen As screen:
                             RadiusTopRight: =15
                             Size: =If(Parent.Width>821,12,10)
                             Text: ="View Comment"
-                            X: =Parent.Width-btnStartAssessmentSS.Width-1.3*Self.Width
+                            X: =Parent.Width-btnStartAssessmentSS.Width-1.2*Self.Width
                             Y: =20
                             ZIndex: =6
 
@@ -736,7 +736,7 @@ SectionScreen As screen:
                                     false
                                 )
                             Width: =20
-                            X: =lblCheckpointsSS.Width+lblCheckpointsSS.X+2
+                            X: =lblCheckpointsSS.Width+lblCheckpointsSS.X+20
                             Y: =25
                             ZIndex: =7
 
@@ -764,9 +764,9 @@ SectionScreen As screen:
                         lblSyncindicatorBS_2 As label:
                             Align: =Align.Center
                             AutoHeight: =true
-                            Color: =RGBA(116, 116, 116, 1)
+                            Color: =AllScreensCSS.RActiveColor
                             Font: =AllScreensCSS.RFont
-                            Height: =39
+                            Height: =23
                             OnSelect: =Select(Parent)
                             Size: =8
                             Text: |-
@@ -793,8 +793,10 @@ SectionScreen As screen:
                                     ) > 0,
                                     "Saved"
                                 )
-                            Width: =90
-                            X: =imgCheckpointSS.X/1.04
+                            Width: =80
+                            X: |-
+                                =lblCheckpointsSS.Width+lblCheckpointsSS.X-10
+                                //imgCheckpointSS.X/1.04
                             Y: =imgsectionstatusSS.Height+20
                             ZIndex: =10
 
@@ -986,7 +988,7 @@ SectionScreen As screen:
                     lblSyncindicatorBS_1 As label:
                         Align: =Align.Center
                         AutoHeight: =true
-                        Color: =RGBA(116, 116, 116, 1)
+                        Color: =AllScreensCSS.RActiveColor
                         Font: =AllScreensCSS.RFont
                         Height: =39
                         OnSelect: =Select(Parent)
@@ -1029,8 +1031,11 @@ SectionScreen As screen:
                                 true,
                                 false
                             )
-                        Width: =Parent.Width/13
-                        X: =imgsectionstatusSS.X/1.045
+                        Width: =80
+                        X: |-
+                            =
+                            lblSectionnameSS.Width+lblSectionnameSS.X-10
+                            //imgsectionstatusSS.X/1.045
                         Y: =imgsectionstatusSS.Height+20
                         ZIndex: =9
 

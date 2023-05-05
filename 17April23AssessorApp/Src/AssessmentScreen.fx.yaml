@@ -689,7 +689,7 @@ AssessmentScreen As screen:
                         PressedBorderColor: =Self.BorderColor
                         PressedColor: =Self.Color
                         PressedFill: =Self.Fill
-                        Size: =If(App.Width>1025,11,8)
+                        Size: =If(App.Width>1025,11,9)
                         Text: ="Findings"
                         Width: |-
                             =//If(App.Width<830,Parent.Width/5.8,App.Width<770,Parent.Width/5.8,Parent.Width/9.2)
@@ -1567,7 +1567,7 @@ AssessmentScreen As screen:
                             =//Parent.TemplateWidth - 104
                             //Parent.Width/1.4
                             //If(App.Width<830,Parent.Width/1.75,App.Width<770,Parent.Width/1.65,Parent.Width/1.45)
-                            Parent.Width-(Button18_2.Width+Image1_1.Width+Circle1.Width+imgTickactive.Width+300)
+                            Parent.Width-(Button18_2.Width+Image1_1.Width+Circle1.Width+imgTickactive.Width + Button7.Width+100)
                         Y: =2
                         ZIndex: =7
 
@@ -1592,7 +1592,7 @@ AssessmentScreen As screen:
                         Size: |-
                             =//AllScreensCSS.RfontsizeInput
                             //If(App.Width<830,AllScreensCSS.RLabelFontSize,App.Width<770,AllScreensCSS.RLabelFontSize,(AllScreensCSS.RfontsizeInput-2))
-                            If(App.Width>1025,11,8)
+                            If(App.Width>1025,11,9)
                         Text: ="View Comment"
                         Width: |-
                             =//If(App.Width<830,Parent.Width/5.6,App.Width<770,Parent.Width/6.4,Parent.Width/10)
@@ -1656,7 +1656,7 @@ AssessmentScreen As screen:
                     lblSyncindicatorBS_3 As label:
                         Align: =Align.Center
                         AutoHeight: =true
-                        Color: =RGBA(116, 116, 116, 1)
+                        Color: =AllScreensCSS.RActiveColor
                         Font: =AllScreensCSS.RFont
                         Height: =39
                         OnSelect: =Select(Parent)
@@ -1698,8 +1698,10 @@ AssessmentScreen As screen:
                                 true,
                                 false
                             )
-                        Width: =90
-                        X: =cboxItemsAS.Width/1.01
+                        Width: =80
+                        X: |-
+                            =//cboxItemsAS.Width/1.01
+                            cboxItemsAS.X+cboxItemsAS.Width
                         Y: =Image1_1.Height+Image1_1.Y
                         ZIndex: =10
 
