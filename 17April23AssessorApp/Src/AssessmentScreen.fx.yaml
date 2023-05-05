@@ -2082,7 +2082,7 @@ AssessmentScreen As screen:
                                         If(
                                             (!IsEmpty(Errors(sectionAssessment))),
                                             Notify(
-                                                "Patch function Error " & Concat(
+                                                "Section Patch function Error " & Concat(
                                                     Errors(sectionAssessment),
                                                     Column & ": " & Message
                                                 ),
@@ -2200,7 +2200,7 @@ AssessmentScreen As screen:
                                                 If(
                                                     (!IsEmpty(Errors(checkpointAssessment))),
                                                     Notify(
-                                                        "Patch function Error " & Concat(
+                                                        "Checkpoint Patch function Error " & Concat(
                                                             Errors(checkpointAssessment),
                                                             Column & ": " & Message
                                                         ),
@@ -2309,7 +2309,7 @@ AssessmentScreen As screen:
                                                         If(
                                                             (!IsEmpty(Errors(checkpointItemAssessment))),
                                                             Notify(
-                                                                "Patch function Error " & Concat(
+                                                                "CheckpointItem Patch function Error " & Concat(
                                                                     Errors(checkpointItemAssessment),
                                                                     Column & ": " & Message
                                                                 ),
@@ -2411,7 +2411,7 @@ AssessmentScreen As screen:
                                                                 If(
                                                                     (!IsEmpty(Errors(checkpointItem_ActionItem))),
                                                                     Notify(
-                                                                        "Patch function Error " & Concat(
+                                                                        "CheckpointActionItem Patch function Error " & Concat(
                                                                             Errors(checkpointItem_ActionItem),
                                                                             Column & ": " & Message
                                                                         ),
@@ -2476,7 +2476,7 @@ AssessmentScreen As screen:
                                                                         If(
                                                                             (!IsEmpty(Errors(checkpointItem_Images))),
                                                                             Notify(
-                                                                                "Patch function Error " & Concat(
+                                                                                "CheckpointImages Patch function Error " & Concat(
                                                                                     Errors(checkpointItem_Images),
                                                                                     Column & ": " & Message
                                                                                 ),
