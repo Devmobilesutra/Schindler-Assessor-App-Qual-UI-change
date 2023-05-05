@@ -2046,7 +2046,8 @@ AssessmentScreen As screen:
                                             assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId,
                                             {UstatusUpdate: 2}
                                         );
-                                    );
+                                    );//concurrent 
+                            
                                     //Checking section record is available or not for patch => if Available then patch and get specific section data and update lookup using for loop 
                             If(
                                         CountRows(
@@ -2161,7 +2162,7 @@ AssessmentScreen As screen:
                                                     );
                                                 );
                                             );
-                                  //  );
+                                
                                     //if
                                        //Checking checkpoint record is available or not for patch => if Available then patch and get specific section data and update lookup using for loop 
                             If(
@@ -2266,7 +2267,7 @@ AssessmentScreen As screen:
                                                             );
                                                         );
                                                     );
-                                   // );
+                                 
                                //Checking checkpointItem record is available or not for patch => if Available then patch and get specific checkpoint data and update lookup using for loop 
                             If(
                                                         CountRows(
@@ -2363,7 +2364,7 @@ AssessmentScreen As screen:
                                                                     );
                                                                 );
                                                             );
-                                  //  );
+                                 
                                   //  Concurrent(
                                            //Checking checkpointActionItem record is available or not for patch => if Available then patch and get specific checkpointActionItem data 
                             If(
@@ -2512,15 +2513,14 @@ AssessmentScreen As screen:
                                                             );
                                                             //checkpointActionItem countrows
                                   //  );//concurrent
-                                                        );
-                                                        //checkpointItem IfError
-                                                    );
-                                                    //checkpointItem countrows 
-                                                );
-                                                ///
-                                            );
-                                        );
-                                    );
+                                                        );//checkpointItem IfError
+                                                    );//checkpointItem countrows 
+                                                );//checkpoint IfError
+                                            );//checkpoint countrows 
+                                        ); //Section IfError
+                                    ); //Section countrows
+                            
+                                    //*****************************************************************************************************************************
                                     //saving data to local cashe
                             SaveData(
                                         gcProjectAssignment,
