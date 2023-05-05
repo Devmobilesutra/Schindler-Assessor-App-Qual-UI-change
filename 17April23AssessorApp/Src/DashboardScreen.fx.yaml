@@ -679,6 +679,7 @@ DashboardScreen As screen:
 
             Label2 As label:
                 Align: =Align.Center
+                AutoHeight: =true
                 FontWeight: =FontWeight.Bold
                 Size: =14
                 Text: |-

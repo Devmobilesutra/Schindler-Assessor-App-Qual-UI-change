@@ -118,12 +118,15 @@ BankScreen As screen:
             ctnClintNameBS As groupContainer.horizontalAutoLayoutContainer:
                 AlignInContainer: =AlignInContainer.SetByContainer
                 FillPortions: =0
-                Height: =Parent.Height/4
+                Height: |-
+                    =//Parent.Height/4
+                    
+                    140
                 LayoutDirection: =LayoutDirection.Vertical
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
-                Width: =Parent.Width
+                Width: =Parent.Width -50
                 Y: |
                     =ctnHeaderBS.Height
                 ZIndex: =2
@@ -155,7 +158,9 @@ BankScreen As screen:
                 ctnbankBS As groupContainer.horizontalAutoLayoutContainer:
                     AlignInContainer: =AlignInContainer.SetByContainer
                     FillPortions: =0
-                    Height: =Parent.Height/1.6
+                    Height: |-
+                        =//Parent.Height/1.6
+                        80
                     LayoutAlignItems: =LayoutAlignItems.Center
                     LayoutGap: =10
                     LayoutMinHeight: =100
@@ -180,7 +185,9 @@ BankScreen As screen:
                                     productId.product_Model
                                 ) & " series"
                             )
-                        Width: =If(Parent.Width>800,Parent.Width/1.9,Parent.Width/2.5)
+                        Width: |-
+                            =//If(Parent.Width>800,Parent.Width/1.9,Parent.Width/2.5)
+                            Parent.Width-(btnProjecttypeBS.Width+btnTripReportBS.Width+50)
                         ZIndex: =3
 
                     btnProjecttypeBS As button:
@@ -197,7 +204,7 @@ BankScreen As screen:
                         RadiusTopLeft: =18
                         RadiusTopRight: =18
                         Text: =btnprojecttype.Text
-                        Width: =260
+                        Width: =250
                         X: =
                         Y: =
                         ZIndex: =5
@@ -362,7 +369,9 @@ BankScreen As screen:
                                 ),
                                 "Trip Report"
                             )
-                        Width: =Parent.Width/6.5
+                        Width: |-
+                            =//Parent.Width/6.5
+                            200
                         ZIndex: =6
 
             ctnunitAssessmentBS As groupContainer.verticalAutoLayoutContainer:
@@ -374,7 +383,7 @@ BankScreen As screen:
                 LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
                 PaddingTop: =5
-                Width: =Parent.Width
+                Width: =Parent.Width-50
                 Y: =ctnClintNameBS.Height
                 ZIndex: =3
 
@@ -382,6 +391,7 @@ BankScreen As screen:
                     AlignInContainer: =AlignInContainer.SetByContainer
                     Fill: |
                         =RGBA(237, 237, 237, 1)
+                    FillPortions: =0
                     Height: =CountRows(glryUnitBS.AllItems)*glryUnitBS.TemplateHeight
                     Items: |-
                         =//check comp variable is true or false if true then dislay data from assignmentUnit Dataverse table else check inpro or upcomp variable is true if one of them is true then display data from gcAssignmentunit collection
@@ -414,7 +424,7 @@ BankScreen As screen:
                     ShowScrollbar: =false
                     TemplateSize: =600
                     Visible: =Q
-                    Width: =Parent.Width/1.05
+                    Width: =Parent.Width
                     Y: =ctnHeaderBS.Height+300
                     ZIndex: =1
 
@@ -1866,7 +1876,7 @@ BankScreen As screen:
                                 )
                             )
                         Width: =ctnunitAssessmentBS.Width/4.5
-                        X: =(Parent.Width-Self.Width)-50
+                        X: =(Parent.Width-Self.Width)-40
                         Y: =30
                         ZIndex: =3
 
@@ -2003,7 +2013,7 @@ BankScreen As screen:
                             =
                             If(comp= true , false , true )
                         Width: =Parent.Width/8.5
-                        X: =(Parent.Width-Self.Width-btnStartAssessmentBS.Width)-75
+                        X: =(Parent.Width-Self.Width-btnStartAssessmentBS.Width)-65
                         Y: =30
                         ZIndex: =4
 
@@ -2051,7 +2061,7 @@ BankScreen As screen:
                                 false
                             )
                         Width: =20
-                        X: =(Parent.Width-Self.Width-btnStartAssessmentBS.Width-btnCommentBS.Width-Button1.Width)-140
+                        X: =(Parent.Width-Self.Width-btnStartAssessmentBS.Width-btnCommentBS.Width-Button1.Width)-130
                         Y: =40
                         ZIndex: =5
 
@@ -2725,7 +2735,7 @@ BankScreen As screen:
                         Text: ="Export PDF"
                         Visible: =If(inpro=true,true,false)
                         Width: =Parent.Width/8.5
-                        X: =(Parent.Width-Self.Width-btnStartAssessmentBS.Width-btnCommentBS.Width)-100
+                        X: =(Parent.Width-Self.Width-btnStartAssessmentBS.Width-btnCommentBS.Width)-90
                         Y: =30
                         ZIndex: =8
 
@@ -2753,7 +2763,7 @@ BankScreen As screen:
                     lblSyncindicatorBS As label:
                         Align: =Align.Center
                         AutoHeight: =true
-                        Color: =RGBA(116, 116, 116, 1)
+                        Color: =AllScreensCSS.RActiveColor
                         Font: =AllScreensCSS.RFont
                         Height: =39
                         OnSelect: =Select(Parent)
@@ -2797,8 +2807,8 @@ BankScreen As screen:
                                 true,
                                 false
                             )
-                        Width: =100
-                        X: =(Parent.Width-Self.Width-btnStartAssessmentBS.Width-btnCommentBS.Width-Button1.Width)-102
+                        Width: =80
+                        X: =(Parent.Width-Self.Width-btnStartAssessmentBS.Width-btnCommentBS.Width-Button1.Width)-100
                         Y: =60
                         ZIndex: =11
 

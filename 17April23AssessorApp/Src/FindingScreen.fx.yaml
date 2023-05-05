@@ -178,7 +178,7 @@ FindingScreen As screen:
                     LayoutMinWidth: =250
                     LayoutMode: =LayoutMode.Auto
                     LayoutWrap: =true
-                    PaddingLeft: =40
+                    PaddingLeft: =20
                     Width: =Parent.Width
                     Y: =ctnHeaderFS.Y+ctnHeaderFS.Height
                     ZIndex: =1
@@ -221,7 +221,7 @@ FindingScreen As screen:
                             );
                             Navigate(AssessmentScreen);
                         PaddingBottom: =10
-                        PaddingLeft: =20
+                        PaddingLeft: =0
                         PaddingRight: =10
                         PaddingTop: =10
                         PressedBorderColor: =Self.BorderColor
