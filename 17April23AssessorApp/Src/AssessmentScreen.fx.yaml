@@ -2370,7 +2370,7 @@ AssessmentScreen As screen:
                                             );
                                         );
                                   //  );
-                                    Concurrent(
+                                  //  Concurrent(
                                            //Checking checkpointActionItem record is available or not for patch => if Available then patch and get specific checkpointActionItem data 
                                         If(
                                             CountRows(
@@ -2446,8 +2446,8 @@ AssessmentScreen As screen:
                                                     }
                                                 )
                                             );
-                                      //  );
-                                        ,
+                                    
+                                       // ,
                                            //Checking checkpointImages record is available or not for patch => if Available then patch and get specific checkpointImages data 
                                         If(
                                             CountRows(
@@ -2516,11 +2516,12 @@ AssessmentScreen As screen:
                                         ); //checkpointImages IfError
                                           ); //checkpointImages countrows
                             
-                                        );//checkpointActionItem countrows
-                                        ); //concurrent
+                                        );//checkpointActionItem IfError
+                                
+                                        ); //checkpointActionItem countrows
                                 
                             
-                                    ); 
+                                  //  );//concurrent
                                         );//checkpointItem IfError
                             
                             );//checkpointItem countrows 
