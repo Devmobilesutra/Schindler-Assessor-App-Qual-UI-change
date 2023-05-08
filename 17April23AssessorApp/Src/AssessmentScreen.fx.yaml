@@ -1787,7 +1787,10 @@ AssessmentScreen As screen:
                             =///ColorFade(RGBA(56, 96, 178, 1), -20%)
                             Self.Fill
                         OnSelect: |
-                            =Set(VarSubmitError,false);
+                            =Set(
+                                VarSubmitError,
+                                false
+                            );
                             //for safety check
                             If(
                                 DateDiff(
@@ -1956,7 +1959,6 @@ AssessmentScreen As screen:
                             If(
                                     Connection.Connected,
                                     Concurrent(
-                                      
                                        //to delete deleted actions from dataverse
                                         Clear(gcActionItemDelete1);
                                         ForAll(
@@ -2068,11 +2070,11 @@ AssessmentScreen As screen:
                                             );
                                         );
                                    //updating patch status 2 to collection GC_unitAssessment
-                            UpdateIf(
+                            /*UpdateIf(
                                             GC_unitAssessment,
                                             assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId,
                                             {UstatusUpdate: 2}
-                                        );
+                                        );*/
                                     );
                                     //concurrent 
                                     //Checking section record is available or not for patch => if Available then patch and get specific section data and update lookup using for loop 
@@ -2115,10 +2117,13 @@ AssessmentScreen As screen:
                                                 ),
                                                 NotificationType.Error
                                             );
-                                            Set(VarSubmitError,true);
+                                            Set(
+                                                VarSubmitError,
+                                                true
+                                            );
                                             Set(
                                                 VarPopupText,
-                                                "Section Patch function Error " 
+                                                "Section Patch function Error "
                                                 /*& Concat(
                                                     Errors(sectionAssessment),
                                                     Column & ": " & Message
@@ -2149,8 +2154,8 @@ AssessmentScreen As screen:
                                                         {
                                                             'sectionAssessment (quantum_sectionassessmentid)': i.'sectionAssessment (quantum_sectionassessmentid)',
                                                             sectionComment: i.sectionComment,
-                                                            AssessmentStatus: i.AssessmentStatus,
-                                                            SstatusUpdate: 2
+                                                            AssessmentStatus: i.AssessmentStatus//,
+                                                           // SstatusUpdate: 2
                                                         }
                                                     );
                                                     ,
@@ -2246,10 +2251,13 @@ AssessmentScreen As screen:
                                                         ),
                                                         NotificationType.Error
                                                     );
-                                                     Set(VarSubmitError,true);
+                                                    Set(
+                                                        VarSubmitError,
+                                                        true
+                                                    );
                                                     Set(
                                                         VarPopupText,
-                                                        "Checkpoint Patch function Error " 
+                                                        "Checkpoint Patch function Error "
                                                         /*& Concat(
                                                             Errors(checkpointAssessment),
                                                             Column & ": " & Message
@@ -2278,8 +2286,8 @@ AssessmentScreen As screen:
                                                                 {
                                                                     checkpointAssessment: j.checkpointAssessment,
                                                                     checkpointComment: j.checkpointComment,
-                                                                    AssessmentStatus: j.AssessmentStatus,
-                                                                    CstatusUpdate: 2
+                                                                    AssessmentStatus: j.AssessmentStatus//,
+                                                                   // CstatusUpdate: 2
                                                                 }
                                                             );
                                                             ,
@@ -2367,10 +2375,13 @@ AssessmentScreen As screen:
                                                                 ),
                                                                 NotificationType.Error
                                                             );
-                                                             Set(VarSubmitError,true);
+                                                            Set(
+                                                                VarSubmitError,
+                                                                true
+                                                            );
                                                             Set(
                                                                 VarPopupText,
-                                                                "CheckpointItem Patch function Error " 
+                                                                "CheckpointItem Patch function Error "
                                                                 /*& Concat(
                                                                     Errors(checkpointItemAssessment),
                                                                     Column & ": " & Message
@@ -2399,8 +2410,8 @@ AssessmentScreen As screen:
                                                                         {
                                                                             'checkpointItemAssessment (quantum_checkpointitemassessmentid)': k.'checkpointItemAssessment (quantum_checkpointitemassessmentid)',
                                                                             assessmentStatus: k.assessmentStatus,
-                                                                            checkpointItemComment: k.checkpointItemComment,
-                                                                            CIstatusUpdate: 2
+                                                                            checkpointItemComment: k.checkpointItemComment//,
+                                                                           // CIstatusUpdate: 2
                                                                         }
                                                                     );
                                                                     ,
@@ -2429,7 +2440,7 @@ AssessmentScreen As screen:
                                                                     );
                                                                 );
                                                             );
-                            
+                             //***************Action & Image                               
                             If(
                                                                 CountRows(
                                                                     Filter(
@@ -2437,22 +2448,15 @@ AssessmentScreen As screen:
                                                                         (assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && CIAstatusUpdate = 1) || (bankUnitId.Id = varBankUnitId && Action_status = "Close" && CIAstatusUpdate = 1)
                                                                     )
                                                                 ) > 0 || CountRows(
-                                                                            Filter(
-                                                                                GC_checkpointItem_Images,
-                                                                                assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && CIIstatusUpdate = 1
-                                                                            )
-                                                                        ) > 0,
-                                                                Notify("Action and Image available",NotificationType.Information);
-                                                                
-                                 //  Concurrent(
-                                           //Checking checkpointActionItem record is available or not for patch => if Available then patch and get specific checkpointActionItem data 
-                            If(
-                                                                CountRows(
                                                                     Filter(
-                                                                        GC_checkpointItem_ActionItem,
-                                                                        (assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && CIAstatusUpdate = 1) || (bankUnitId.Id = varBankUnitId && Action_status = "Close" && CIAstatusUpdate = 1)
+                                                                        GC_checkpointItem_Images,
+                                                                        assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && CIIstatusUpdate = 1
                                                                     )
                                                                 ) > 0,
+                                                                Notify(
+                                                                    "Action and Image available",
+                                                                    NotificationType.Information
+                                                                );
                                                                 Set(
                                                                     Varpatchlabel,
                                                                     "Uploading Actions, Images."
@@ -2487,56 +2491,89 @@ AssessmentScreen As screen:
                                                                         "shlaf_actionsortsequence"
                                                                     )
                                                                 );
+                                                                //patching status 1 checkpointImages assessment data to dataverse table
+                            Patch(
+                                                                    checkpointItem_Images,
+                                                                    ShowColumns(
+                                                                        DropColumns(
+                                                                            Filter(
+                                                                                GC_checkpointItem_Images,
+                                                                                assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && CIIstatusUpdate = 1
+                                                                            ),
+                                                                            "CIIstatusUpdate"
+                                                                        ),
+                                                                        "quantum_checkpointitem_imagesid",
+                                                                        "shlaf_assignmentId",
+                                                                        "shlaf_bankUnitId",
+                                                                        "shlaf_product_id",
+                                                                        "shlaf_section_id",
+                                                                        "shlaf_checkpoint_id",
+                                                                        "quantum_checkpointItem_Id",
+                                                                        "quantum_checkpointitemimagesid",
+                                                                        "shlaf_image_annotation",
+                                                                        "quantum_image",
+                                                                        "shlaf_imagesortsequence"
+                                                                    )
+                                                                );
                                                                 If(
-                                                                    (!IsEmpty(Errors(checkpointItem_ActionItem))),
+                                                                    (!IsEmpty(Errors(checkpointItem_ActionItem))) || (!IsEmpty(Errors(checkpointItem_Images))),
                                                                     Notify(
-                                                                        "CheckpointActionItem Patch function Error " & Concat(
+                                                                        "Checkpoint Action and Images Patch function Error " & Concat(
                                                                             Errors(checkpointItem_ActionItem),
+                                                                            Column & ": " & Message
+                                                                        ) & Concat(
+                                                                            Errors(checkpointItem_Images),
                                                                             Column & ": " & Message
                                                                         ),
                                                                         NotificationType.Error
                                                                     );
-                                                                    Set(VarSubmitError,true);
+                                                                    Set(
+                                                                        VarSubmitError,
+                                                                        true
+                                                                    );
                                                                     Set(
                                                                         VarPopupText,
-                                                                        "CheckpointActionItem Patch function Error " & Concat(
-                                                                            Errors(checkpointItem_ActionItem),
-                                                                            Column & ": " & Message
-                                                                        )
+                                                                        "CheckpointActionItem  and checkpointImages Patch function Error "
                                                                     );
                                                                     ,
                                                                     Set(
                                                                         VarPopupText,
                                                                         "Assessment records submitted successfully."
                                                                     );
+                                                                                   //Checking checkpointActionItem record is available or not for patch => if Available then patch and get specific checkpointActionItem data 
+                            If(
+                                                                        CountRows(
+                                                                            Filter(
+                                                                                GC_checkpointItem_ActionItem,
+                                                                                (assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && CIAstatusUpdate = 1) || (bankUnitId.Id = varBankUnitId && Action_status = "Close" && CIAstatusUpdate = 1)
+                                                                            )
+                                                                        ) > 0,
                                         //getting specific unit wise checkpoint Action item data from dataverse to collection beacause we need unique indetifier from dataverse
-                            ClearCollect(
-                                                                        TempcheckpointItem_ActionItem,
-                                                                        Filter(
-                                                                            checkpointItem_ActionItem,
-                                                                            assignmentId.assessorId = varLoggedAssessor && assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpoint_id.checkpointAssessment_id = GuidId
-                                                                        )
-                                                                    );
+                                                                        ClearCollect(
+                                                                            TempcheckpointItem_ActionItem,
+                                                                            Filter(
+                                                                                checkpointItem_ActionItem,
+                                                                                assignmentId.assessorId = varLoggedAssessor && assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpoint_id.checkpointAssessment_id = GuidId
+                                                                            )
+                                                                        );
                              //updating unique identifire and patch status to Checkpoint action collection from temporary collection  
                             ForAll(
-                                                                        TempcheckpointItem_ActionItem As i,
-                                                                        UpdateIf(
-                                                                            GC_checkpointItem_ActionItem,
-                                                                            checkpointItemActionItemsId = i.checkpointItemActionItemsId && CIAstatusUpdate = 1,
-                                                                            {
-                                                                                checkpointItem_ActionItems: i.checkpointItem_ActionItems,
-                                                                                //unique key
-                                                                                Action_status: i.Action_status,
-                                                                                CIAstatusUpdate: 2
-                                                                            }
-                                                                        )
+                                                                            TempcheckpointItem_ActionItem As i,
+                                                                            UpdateIf(
+                                                                                GC_checkpointItem_ActionItem,
+                                                                                checkpointItemActionItemsId = i.checkpointItemActionItemsId && CIAstatusUpdate = 1,
+                                                                                {
+                                                                                    checkpointItem_ActionItems: i.checkpointItem_ActionItems,
+                                                                                    //unique key
+                                                                                    Action_status: i.Action_status,
+                                                                                    CIAstatusUpdate: 2
+                                                                                }
+                                                                            )
+                                                                        );
                                                                     );
-                                                                      );
-                                                                //checkpointActionItem IfError
-                                                            );
                                                             //checkpointActionItem countrows
                                     //    ,
-                                           //Checking checkpointImages record is available or not for patch => if Available then patch and get specific checkpointImages data 
+                                    //Checking checkpointImages record is available or not for patch => if Available then patch and get specific checkpointImages data 
                             If(
                                                                         CountRows(
                                                                             Filter(
@@ -2544,117 +2581,97 @@ AssessmentScreen As screen:
                                                                                 assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && CIIstatusUpdate = 1
                                                                             )
                                                                         ) > 0,
-                              //patching status 1 checkpointImages assessment data to dataverse table
-                                                                        Patch(
-                                                                            checkpointItem_Images,
-                                                                            ShowColumns(
-                                                                                DropColumns(
-                                                                                    Filter(
-                                                                                        GC_checkpointItem_Images,
-                                                                                        assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && CIIstatusUpdate = 1
-                                                                                    ),
-                                                                                    "CIIstatusUpdate"
-                                                                                ),
-                                                                                "quantum_checkpointitem_imagesid",
-                                                                                "shlaf_assignmentId",
-                                                                                "shlaf_bankUnitId",
-                                                                                "shlaf_product_id",
-                                                                                "shlaf_section_id",
-                                                                                "shlaf_checkpoint_id",
-                                                                                "quantum_checkpointItem_Id",
-                                                                                "quantum_checkpointitemimagesid",
-                                                                                "shlaf_image_annotation",
-                                                                                "quantum_image",
-                                                                                "shlaf_imagesortsequence"
+                            //getting specific checkpoint wise checkpoint images  data from dataverse to collection beacause we need unique indetifier from dataverse
+                                                                        ClearCollect(
+                                                                            TempCheckpointItem_Images,
+                                                                            Filter(
+                                                                                checkpointItem_Images,
+                                                                                assignmentId.assessorId = varLoggedAssessor && assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpoint_id.checkpointAssessment_id = GuidId
                                                                             )
                                                                         );
-                                                                        If(
-                                                                            (!IsEmpty(Errors(checkpointItem_Images))),
-                                                                            Notify(
-                                                                                "CheckpointImages Patch function Error " & Concat(
-                                                                                    Errors(checkpointItem_Images),
-                                                                                    Column & ": " & Message
-                                                                                ),
-                                                                                NotificationType.Error
-                                                                            );
-                                                                            Set(VarSubmitError,true);
-                                                                            Set(
-                                                                                VarPopupText,
-                                                                                "CheckpointImages Patch function Error "
-                                                                                /* & Concat(
-                                                                                    Errors(checkpointItem_Images),
-                                                                                    Column & ": " & Message
-                                                                                )*/
-                                                                            );
-                                                                            ,
-                                                                            Set(
-                                                                                VarPopupText,
-                                                                                "Assessment records submitted successfully."
-                                                                            );
-                                                                            
-                            //getting specific checkpoint wise checkpoint images  data from dataverse to collection beacause we need unique indetifier from dataverse
-                            ClearCollect(
-                                                                                TempCheckpointItem_Images,
-                                                                                Filter(
-                                                                                    checkpointItem_Images,
-                                                                                    assignmentId.assessorId = varLoggedAssessor && assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpoint_id.checkpointAssessment_id = GuidId
-                                                                                )
-                                                                            );
                                  //updating unique identifire and patch status to checkpoint images collection from temporary collection  
                             ForAll(
-                                                                                TempCheckpointItem_Images As i,
-                                                                                UpdateIf(
-                                                                                    GC_checkpointItem_Images,
-                                                                                    checkpointItemImagesId = i.checkpointItemImagesId && CIIstatusUpdate = 1,
-                                                                                    {
-                                                                                        checkpointItem_Images: i.checkpointItem_Images,
-                                                                                        //unique key
-                                                                                        CIIstatusUpdate: 2
-                                                                                    }
-                                                                                )
-                                                                            );
+                                                                            TempCheckpointItem_Images As i,
+                                                                            UpdateIf(
+                                                                                GC_checkpointItem_Images,
+                                                                                checkpointItemImagesId = i.checkpointItemImagesId && CIIstatusUpdate = 1,
+                                                                                {
+                                                                                    checkpointItem_Images: i.checkpointItem_Images,
+                                                                                    //unique key
+                                                                                    CIIstatusUpdate: 2
+                                                                                }
+                                                                            )
                                                                         );
-                                                                        //checkpointImages IfError
                                                                     );
                                                                     //checkpointImages countrows
-                                                              
-                                  //  );//concurrent
-                                                                
-                                                                ,
-                                                                Notify("Action and Image not available",NotificationType.Information);
-                                //updating unit assessment status from 0 to 1 first time for detecting unpatched data and sync status update
-                                UpdateIf(
-                                    GC_unitAssessment,
-                                    assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && UstatusUpdate = 1,
-                                    {UstatusUpdate: 2}
-                                );
-                                
+                                                                    //updating unit assessment status from 0 to 1 first time for detecting unpatched data and sync status update
+                            Concurrent(
+                                                                        UpdateIf(
+                                                                            GC_unitAssessment,
+                                                                            assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && UstatusUpdate = 1,
+                                                                            {UstatusUpdate: 2}
+                                                                        );
+                                                                        ,
                             //updating Section assessment status from 0 to 1 for detecting unpatched data and sync status update
-                                UpdateIf(
-                                    GcSectionAssessment,
-                                    'sectionAssessment (quantum_sectionassessment)' = varSA && SstatusUpdate = 1,
-                                    {SstatusUpdate: 2}
-                                );
-                                
+                                                                        UpdateIf(
+                                                                            GcSectionAssessment,
+                                                                            'sectionAssessment (quantum_sectionassessment)' = varSA && SstatusUpdate = 1,
+                                                                            {SstatusUpdate: 2}
+                                                                        );
+                                                                        ,
                             //updating checkpoint assessment status from 0 to 1 for detecting unpatched data and sync status update
-                                UpdateIf(
-                                    GcCheckpointAssessment,
-                                    checkpointAssessment_id = GuidId && CstatusUpdate = 1,
-                                    {CstatusUpdate: 2}
-                                );
-                                
+                                                                        UpdateIf(
+                                                                            GcCheckpointAssessment,
+                                                                            checkpointAssessment_id = GuidId && CstatusUpdate = 1,
+                                                                            {CstatusUpdate: 2}
+                                                                        );
+                                                                        ,
                             //updating Checkpoint item assessment status from 0 to 1 for detecting unpatched data and sync status update
-                                UpdateIf(
-                                    GC_checkpointItemAssessment,
-                                    checkpointAssessment_Id.checkpointAssessment_id = GuidId && CIstatusUpdate = 1,
-                                    {CIstatusUpdate: 2}
-                                );
-                            
-                            );
-                            
-                            
-                            
-                            
+                                                                        UpdateIf(
+                                                                            GC_checkpointItemAssessment,
+                                                                            checkpointAssessment_Id.checkpointAssessment_id = GuidId && CIstatusUpdate = 1,
+                                                                            {CIstatusUpdate: 2}
+                                                                        );
+                                                                    );
+                                                                    //concurrent
+                                                                );
+                                                                //IfError
+                            ,
+                                                                Notify(
+                                                                    "Action and Image not available",
+                                                                    NotificationType.Information
+                                                                );
+                                //updating unit assessment status from 0 to 1 first time for detecting unpatched data and sync status update
+                            Concurrent(
+                                                                    UpdateIf(
+                                                                        GC_unitAssessment,
+                                                                        assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && UstatusUpdate = 1,
+                                                                        {UstatusUpdate: 2}
+                                                                    );
+                                                                    ,
+                            //updating Section assessment status from 0 to 1 for detecting unpatched data and sync status update
+                                                                    UpdateIf(
+                                                                        GcSectionAssessment,
+                                                                        'sectionAssessment (quantum_sectionassessment)' = varSA && SstatusUpdate = 1,
+                                                                        {SstatusUpdate: 2}
+                                                                    );
+                                                                    ,
+                            //updating checkpoint assessment status from 0 to 1 for detecting unpatched data and sync status update
+                                                                    UpdateIf(
+                                                                        GcCheckpointAssessment,
+                                                                        checkpointAssessment_id = GuidId && CstatusUpdate = 1,
+                                                                        {CstatusUpdate: 2}
+                                                                    );
+                                                                    ,
+                            //updating Checkpoint item assessment status from 0 to 1 for detecting unpatched data and sync status update
+                                                                    UpdateIf(
+                                                                        GC_checkpointItemAssessment,
+                                                                        checkpointAssessment_Id.checkpointAssessment_id = GuidId && CIstatusUpdate = 1,
+                                                                        {CIstatusUpdate: 2}
+                                                                    );
+                                                                );
+                                                                //concurrent
+                                                            );
                                                         );
                                                         //checkpointItem IfError
                                                     );
