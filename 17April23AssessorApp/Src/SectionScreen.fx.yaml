@@ -622,8 +622,9 @@ SectionScreen As screen:
                                             assignmentId.Id=varAssignmentId && 
                                             bankUnitId.Id = varBankUnitId  && 
                                             sectionId.'sectionAssessment (quantum_sectionassessment)'=varSA &&
-                                            checkpointId.checkpointId = ThisItem.checkpointId ,checkpointAssessment_id
+                                            checkpointId.checkpointId = ChId ,checkpointAssessment_id
                                         ))
+                                       
                                  
                                     );
                                      Navigate(AssessmentScreen);   
@@ -764,7 +765,20 @@ SectionScreen As screen:
                         lblSyncindicatorBS_2 As label:
                             Align: =Align.Center
                             AutoHeight: =true
-                            Color: =AllScreensCSS.RActiveColor
+                            Color: |-
+                                =If(
+                                    lblSyncindicatorBS_2.Text = "Saved",
+                                    AllScreensCSS.RColorBlack,
+                                    lblSyncindicatorBS_2.Text = "Submitted",
+                                    RGBA(
+                                        0,
+                                        100,
+                                        0,
+                                        1
+                                    ),
+                                    lblSyncindicatorBS_2.Text = "Unsubmitted",
+                                    AllScreensCSS.RActiveColor
+                                )
                             Font: =AllScreensCSS.RFont
                             Height: =23
                             OnSelect: =Select(Parent)
@@ -988,7 +1002,20 @@ SectionScreen As screen:
                     lblSyncindicatorBS_1 As label:
                         Align: =Align.Center
                         AutoHeight: =true
-                        Color: =AllScreensCSS.RActiveColor
+                        Color: |-
+                            =If(
+                                lblSyncindicatorBS_1.Text = "Saved",
+                                AllScreensCSS.RColorBlack,
+                                lblSyncindicatorBS_1.Text = "Submitted",
+                                RGBA(
+                                    0,
+                                    100,
+                                    0,
+                                    1
+                                ),
+                                lblSyncindicatorBS_1.Text = "Unsubmitted",
+                                AllScreensCSS.RActiveColor
+                            )
                         Font: =AllScreensCSS.RFont
                         Height: =39
                         OnSelect: =Select(Parent)

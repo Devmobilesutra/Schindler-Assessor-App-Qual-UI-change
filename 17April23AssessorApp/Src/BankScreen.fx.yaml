@@ -2763,7 +2763,20 @@ BankScreen As screen:
                     lblSyncindicatorBS As label:
                         Align: =Align.Center
                         AutoHeight: =true
-                        Color: =AllScreensCSS.RActiveColor
+                        Color: |-
+                            =If(
+                                lblSyncindicatorBS.Text = "Saved",
+                                AllScreensCSS.RColorBlack,
+                                lblSyncindicatorBS.Text = "Submitted",
+                                RGBA(
+                                    0,
+                                    100,
+                                    0,
+                                    1
+                                ),
+                                lblSyncindicatorBS.Text = "Unsubmitted",
+                                AllScreensCSS.RActiveColor
+                            )
                         Font: =AllScreensCSS.RFont
                         Height: =39
                         OnSelect: =Select(Parent)
@@ -2783,7 +2796,7 @@ BankScreen As screen:
                                         assignmentId.Id = varAssignmentId && bankUnitId.Id = ThisItem.bankUnitId.Id && UstatusUpdate = 1
                                     )
                                 ) > 0,
-                                "Submitted",
+                                "Unsubmitted",
                                 CountRows(
                                     Filter(
                                         GC_unitAssessment,

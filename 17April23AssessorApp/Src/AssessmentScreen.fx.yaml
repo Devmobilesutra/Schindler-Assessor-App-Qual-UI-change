@@ -1336,6 +1336,15 @@ AssessmentScreen As screen:
                             
                             Set(varCheckpointitemID,ThisItem.checkpointItemId);
                             //RemoveIf(GC_checkpointItemAssessment,checkpointItemId.checkpointItemId=ThisItem.checkpointItemId && bankUnitId.Id=varBankUnitId)
+                            
+                             Set(
+                                        GuidId,
+                                        LookUp(
+                                            GcCheckpointAssessment,
+                                            assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && sectionId.'sectionAssessment (quantum_sectionassessment)' = varSA && checkpointId.checkpointId = ChId,
+                                            checkpointAssessment_id
+                                        )
+                                    );
                               
                              // unit assessment status update 0 to 1 for green and grey status update
                                 UpdateIf(
@@ -1656,7 +1665,20 @@ AssessmentScreen As screen:
                     lblSyncindicatorBS_3 As label:
                         Align: =Align.Center
                         AutoHeight: =true
-                        Color: =AllScreensCSS.RActiveColor
+                        Color: |-
+                            =If(
+                                lblSyncindicatorBS_3.Text = "Saved",
+                                AllScreensCSS.RColorBlack,
+                                lblSyncindicatorBS_3.Text = "Submitted",
+                                RGBA(
+                                    0,
+                                    100,
+                                    0,
+                                    1
+                                ),
+                                lblSyncindicatorBS_3.Text = "Unsubmitted",
+                                AllScreensCSS.RActiveColor
+                            )
                         Font: =AllScreensCSS.RFont
                         Height: =39
                         OnSelect: =Select(Parent)
@@ -1675,16 +1697,16 @@ AssessmentScreen As screen:
                                         GC_checkpointItemAssessment,
                                         assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpointItemId.checkpointItemId = ThisItem.checkpointItemId && CIstatusUpdate = 1
                                     )
-                                ) > 0   ,
-                                "Unsubmitted"
-                            ,
-                                 CountRows(
+                                ) > 0,
+                                "Unsubmitted",
+                                CountRows(
                                     Filter(
                                         GC_checkpointItemAssessment,
                                         assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpointItemId.checkpointItemId = ThisItem.checkpointItemId && CIstatusUpdate = 0
                                     )
-                                ) > 0,"Saved")
-                              
+                                ) > 0,
+                                "Saved"
+                            )
                         Visible: |-
                             =If(
                                 CountRows(
