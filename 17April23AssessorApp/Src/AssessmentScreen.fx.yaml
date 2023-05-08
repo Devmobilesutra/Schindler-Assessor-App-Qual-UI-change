@@ -737,7 +737,7 @@ AssessmentScreen As screen:
                         ZIndex: =6
 
                     cboxItemsAS As checkbox:
-                        BorderColor: =RGBA(221, 79, 14, 1)
+                        BorderColor: =RGBA(0, 0, 0, 0)
                         CheckboxBackgroundFill: =RGBA(0, 0, 0, 0)
                         CheckboxBorderColor: =RGBA(0, 0, 0, 0)
                         CheckboxSize: =glryItmesAS.Width/12
