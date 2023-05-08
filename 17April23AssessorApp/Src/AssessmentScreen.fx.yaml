@@ -2429,6 +2429,21 @@ AssessmentScreen As screen:
                                                                     );
                                                                 );
                                                             );
+                            
+                            If(
+                                                                CountRows(
+                                                                    Filter(
+                                                                        GC_checkpointItem_ActionItem,
+                                                                        (assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && CIAstatusUpdate = 1) || (bankUnitId.Id = varBankUnitId && Action_status = "Close" && CIAstatusUpdate = 1)
+                                                                    )
+                                                                ) > 0 || CountRows(
+                                                                            Filter(
+                                                                                GC_checkpointItem_Images,
+                                                                                assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && CIIstatusUpdate = 1
+                                                                            )
+                                                                        ) > 0,
+                                                                Notify("Action and Image available",NotificationType.Information);
+                                                                
                                  //  Concurrent(
                                            //Checking checkpointActionItem record is available or not for patch => if Available then patch and get specific checkpointActionItem data 
                             If(
@@ -2604,6 +2619,42 @@ AssessmentScreen As screen:
                                                                     //checkpointImages countrows
                                                               
                                   //  );//concurrent
+                                                                
+                                                                ,
+                                                                Notify("Action and Image not available",NotificationType.Information);
+                                //updating unit assessment status from 0 to 1 first time for detecting unpatched data and sync status update
+                                UpdateIf(
+                                    GC_unitAssessment,
+                                    assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && UstatusUpdate = 1,
+                                    {UstatusUpdate: 2}
+                                );
+                                
+                            //updating Section assessment status from 0 to 1 for detecting unpatched data and sync status update
+                                UpdateIf(
+                                    GcSectionAssessment,
+                                    'sectionAssessment (quantum_sectionassessment)' = varSA && SstatusUpdate = 1,
+                                    {SstatusUpdate: 2}
+                                );
+                                
+                            //updating checkpoint assessment status from 0 to 1 for detecting unpatched data and sync status update
+                                UpdateIf(
+                                    GcCheckpointAssessment,
+                                    checkpointAssessment_id = GuidId && CstatusUpdate = 1,
+                                    {CstatusUpdate: 2}
+                                );
+                                
+                            //updating Checkpoint item assessment status from 0 to 1 for detecting unpatched data and sync status update
+                                UpdateIf(
+                                    GC_checkpointItemAssessment,
+                                    checkpointAssessment_Id.checkpointAssessment_id = GuidId && CIstatusUpdate = 1,
+                                    {CIstatusUpdate: 2}
+                                );
+                            
+                            );
+                            
+                            
+                            
+                            
                                                         );
                                                         //checkpointItem IfError
                                                     );
