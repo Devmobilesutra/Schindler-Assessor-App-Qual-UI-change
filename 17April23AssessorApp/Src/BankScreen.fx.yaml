@@ -2695,17 +2695,13 @@ BankScreen As screen:
                         Color: =AllScreensCSS.RColorBlack
                         DisplayMode: |-
                             =If(
-                                comp = true,
-                                "View Assessment",
-                                If(
-                                    (LookUp(
-                                        GC_unitAssessment,
-                                        assignmentId.Id = varAssignmentId && bankUnitId.Id = ThisItem.bankUnitId.Id && UstatusUpdate=2,
-                                        Assessment_status
-                                        ) = "Inprogress" 
-                                    ),
-                                    DisplayMode.Edit,DisplayMode.Disabled
-                                )
+                                Connection.Connected && (LookUp(
+                                    GC_unitAssessment,
+                                    assignmentId.Id = varAssignmentId && bankUnitId.Id = ThisItem.bankUnitId.Id && UstatusUpdate = 2,
+                                    Assessment_status
+                                ) = "Inprogress"),
+                                DisplayMode.Edit,
+                                DisplayMode.Disabled
                             )
                         Fill: =AllScreensCSS.RColorWhite
                         Font: =AllScreensCSS.ButtonFont
