@@ -3361,7 +3361,13 @@ AssessmentScreen As screen:
 
         Label1_23 As label:
             Align: =Align.Center
-            Color: =RGBA(14, 161, 26, 1)
+            Color: |+
+                =If(
+                    VarSubmitError,
+                   AllScreensCSS.RActiveColor,
+                    RGBA(54, 176, 75, 1)
+                )
+                
             Font: =AllScreensCSS.RFont
             FontWeight: =FontWeight.Bold
             PaddingBottom: =0
