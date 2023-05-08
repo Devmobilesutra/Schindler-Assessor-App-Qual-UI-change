@@ -343,6 +343,7 @@ AssessmentScreen As screen:
                     =//Parent.Height
                     glryItmesAS.Height+ctnFooterAS.Height+130
                 LayoutDirection: =LayoutDirection.Vertical
+                LayoutGap: =20
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
@@ -375,7 +376,7 @@ AssessmentScreen As screen:
                     LayoutMinWidth: =320
                     ShowScrollbar: =false
                     TemplatePadding: =0
-                    TemplateSize: =120
+                    TemplateSize: =125
                     Width: =ctnitemsAS.Width
                     X: |
                         =8
