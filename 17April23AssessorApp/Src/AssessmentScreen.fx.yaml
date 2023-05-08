@@ -388,9 +388,9 @@ AssessmentScreen As screen:
                         Fill: =RGBA(0, 0, 0, 0)
                         Height: |-
                             =//glryItmesAS.TemplateHeight
-                            cboxItemsAS.Height
+                            cboxItemsAS.Height +5
                         Width: =Parent.TemplateWidth
-                        Y: =8
+                        Y: =6
                         ZIndex: =1
 
                     imgTickactive As image:
@@ -427,8 +427,8 @@ AssessmentScreen As screen:
                         Width: |-
                             =//Parent.Width/40
                             25
-                        X: =If(App.Width>1025,Parent.X+20,Parent.X/1.7)
-                        Y: =45
+                        X: =If(App.Width>1025,Parent.X+10,Parent.X/1.6)
+                        Y: =50
                         ZIndex: =3
 
                     imgTickinactive As image:
@@ -458,8 +458,8 @@ AssessmentScreen As screen:
                         Width: |-
                             =//Parent.Width/40
                             25
-                        X: =If(App.Width>1025,Parent.X+20,Parent.X/1.7)
-                        Y: =45
+                        X: =If(App.Width>1025,Parent.X+10,Parent.X/1.6)
+                        Y: =50
                         ZIndex: =4
 
                     Button7 As button:
@@ -737,7 +737,7 @@ AssessmentScreen As screen:
                         ZIndex: =6
 
                     cboxItemsAS As checkbox:
-                        BorderColor: =RGBA(0, 0, 0, 0)
+                        BorderColor: =RGBA(221, 79, 14, 1)
                         CheckboxBackgroundFill: =RGBA(0, 0, 0, 0)
                         CheckboxBorderColor: =RGBA(0, 0, 0, 0)
                         CheckboxSize: =glryItmesAS.Width/12
@@ -760,7 +760,7 @@ AssessmentScreen As screen:
                             )
                         DisabledBorderColor: =RGBA(0, 0, 0, 1)
                         Font: =AllScreensCSS.RFont
-                        Height: =110
+                        Height: =115
                         HoverColor: =RGBA(0, 0, 0, 1)
                         OnCheck: |-
                             =
@@ -1572,7 +1572,12 @@ AssessmentScreen As screen:
                         PaddingLeft: =3
                         PaddingRight: =3
                         Reset: =IsResetCboxItemsAS=true
-                        Size: =If(App.Width>830,AllScreensCSS.RfontsizeInput,App.Width>770,10)
+                        Size: |-
+                            =If(
+                                App.Width > 830,
+                                AllScreensCSS.RfontsizeInput,
+                                9
+                            )//App.Width>770,
                         Text: =ThisItem.checkpointItemName
                         Width: |-
                             =//Parent.TemplateWidth - 104
