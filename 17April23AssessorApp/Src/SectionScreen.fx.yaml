@@ -175,6 +175,8 @@ SectionScreen As screen:
                         PaddingLeft: =20
                         PaddingRight: =10
                         PaddingTop: =10
+                        PressedBorderColor: =Self.BorderColor
+                        PressedColor: =Self.Color
                         PressedFill: =
                         RadiusBottomLeft: =5
                         RadiusBottomRight: =5
