@@ -2086,6 +2086,32 @@ AssessmentScreen As screen:
                                                 assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && SstatusUpdate = 1
                                             )
                                         ) > 0,
+                            
+                                        //getting specific section assessment data from dataverse and store it into temporary collection beacause we need unique indetifier from dataverse
+                            ClearCollect(
+                                                TempSectionAssessment,
+                                                Filter(
+                                                    sectionAssessment,
+                                                    assignmentId.assessorId = varLoggedAssessor && assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && 'sectionAssessment (quantum_sectionassessment)' = varSA
+                                                )
+                                            );
+                                            
+                            //updating unique identifier ,comment ,assignment status and patch status to section collection from temporary collection 
+                            ForAll(
+                                                TempSectionAssessment As i,
+                                                
+                                                    UpdateIf(
+                                                        GcSectionAssessment,
+                                                        'sectionAssessment (quantum_sectionassessment)' = i.'sectionAssessment (quantum_sectionassessment)' && SstatusUpdate = 1,
+                                                        {
+                                                            'sectionAssessment (quantum_sectionassessmentid)': i.'sectionAssessment (quantum_sectionassessmentid)',
+                                                            sectionComment: i.sectionComment,
+                                                            AssessmentStatus: i.AssessmentStatus//,
+                                                           // SstatusUpdate: 2
+                                                        }
+                                                    );
+                            );
+                            
                                     //patching status 1 section assessment data to dataverse table
                                         Patch(
                                             sectionAssessment,
@@ -2218,6 +2244,31 @@ AssessmentScreen As screen:
                                                         assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && CstatusUpdate = 1
                                                     )
                                                 ) > 0,
+                            
+                                                //getting specific checkpoint data from dataverse and store it into temporary collection beacause we need unique indetifier from dataverse
+                            ClearCollect(
+                                                        TempCheckpointAssessment,
+                                                        Filter(
+                                                            checkpointAssessment,
+                                                            assignmentId.assessorId = varLoggedAssessor && assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpointAssessment_id = GuidId
+                                                        )
+                                                    );
+                                 //updating unique identifire ,comment ,assignment status and patch status to checkpoint collection from temporary collection  
+                            ForAll(
+                                                        TempCheckpointAssessment As j,
+                                                      
+                                                            UpdateIf(
+                                                                GcCheckpointAssessment,
+                                                                checkpointAssessment_id = j.checkpointAssessment_id && CstatusUpdate = 1,
+                                                                {
+                                                                    checkpointAssessment: j.checkpointAssessment,
+                                                                    checkpointComment: j.checkpointComment,
+                                                                    AssessmentStatus: j.AssessmentStatus//,
+                                                                   // CstatusUpdate: 2
+                                                                }
+                                                            );
+                            );
+                            
                                         //patching status 1 checkpoint assessment data to dataverse table
                                                 Patch(
                                                     checkpointAssessment,
@@ -2337,6 +2388,33 @@ AssessmentScreen As screen:
                                                                 assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && CIstatusUpdate = 1
                                                             )
                                                         ) > 0,
+                                                         //getting specific checkpoint data from dataverse and store it into temporary collection beacause we need unique indetifier from dataverse       
+                            ClearCollect(
+                                                                TempCheckpointItemAssessment,
+                                                                Filter(
+                                                                    checkpointItemAssessment,
+                                                                    assignmentId.assessorId = varLoggedAssessor && assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpointAssessment_Id.checkpointAssessment_id = GuidId
+                                                                )
+                                                            );
+                                 //updating unique identifire ,comment ,assignment status and patch status to checkpoint item collection from temporary collection  
+                            ForAll(
+                                                                TempCheckpointItemAssessment As k,
+                                                                
+                                                                    UpdateIf(
+                                                                        GC_checkpointItemAssessment,
+                                                                        'checkpointItemAssessment (quantum_checkpointitemassessment)' = k.'checkpointItemAssessment (quantum_checkpointitemassessment)' && CIstatusUpdate = 1,
+                                                                        {
+                                                                            'checkpointItemAssessment (quantum_checkpointitemassessmentid)': k.'checkpointItemAssessment (quantum_checkpointitemassessmentid)',
+                                                                            assessmentStatus: k.assessmentStatus,
+                                                                            checkpointItemComment: k.checkpointItemComment//,
+                                                                           // CIstatusUpdate: 2
+                                                                        }
+                                                                    );
+                            );
+                            
+                            
+                            
+                            
                                  //patching status 1 checkpointItem assessment data to dataverse table
                                                         Set(
                                                             VarResultPatchItem,
@@ -2462,6 +2540,29 @@ AssessmentScreen As screen:
                                                                     Varpatchlabel,
                                                                     "Uploading Actions, Images."
                                                                 );
+                            
+                                                                  ClearCollect(
+                                                                            TempcheckpointItem_ActionItem,
+                                                                            Filter(
+                                                                                checkpointItem_ActionItem,
+                                                                                assignmentId.assessorId = varLoggedAssessor && assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpoint_id.checkpointAssessment_id = GuidId
+                                                                            )
+                                                                        );
+                             //updating unique identifire and patch status to Checkpoint action collection from temporary collection  
+                            ForAll(
+                                                                            TempcheckpointItem_ActionItem As i,
+                                                                            UpdateIf(
+                                                                                GC_checkpointItem_ActionItem,
+                                                                                checkpointItemActionItemsId = i.checkpointItemActionItemsId && CIAstatusUpdate = 1,
+                                                                                {
+                                                                                    checkpointItem_ActionItems: i.checkpointItem_ActionItems,
+                                                                                    //unique key
+                                                                                    Action_status: i.Action_status//,
+                                                                                  //  CIAstatusUpdate: 2
+                                                                                }
+                                                                            )
+                                                                        );
+                                                                    
                                          //patching status 1 checkpointActionItem assessment data to dataverse table
                             Patch(
                                                                     checkpointItem_ActionItem,
@@ -2492,6 +2593,29 @@ AssessmentScreen As screen:
                                                                         "shlaf_actionsortsequence"
                                                                     )
                                                                 );
+                            
+                                                                //getting specific checkpoint wise checkpoint images  data from dataverse to collection beacause we need unique indetifier from dataverse
+                                                                        ClearCollect(
+                                                                            TempCheckpointItem_Images,
+                                                                            Filter(
+                                                                                checkpointItem_Images,
+                                                                                assignmentId.assessorId = varLoggedAssessor && assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpoint_id.checkpointAssessment_id = GuidId
+                                                                            )
+                                                                        );
+                                 //updating unique identifire and patch status to checkpoint images collection from temporary collection  
+                            ForAll(
+                                                                            TempCheckpointItem_Images As i,
+                                                                            UpdateIf(
+                                                                                GC_checkpointItem_Images,
+                                                                                checkpointItemImagesId = i.checkpointItemImagesId && CIIstatusUpdate = 1,
+                                                                                {
+                                                                                    checkpointItem_Images: i.checkpointItem_Images//,
+                                                                                    //unique key
+                                                                                   // CIIstatusUpdate: 2
+                                                                                }
+                                                                            )
+                                                                        );
+                                                 
                                                                 //patching status 1 checkpointImages assessment data to dataverse table
                             Patch(
                                                                     checkpointItem_Images,
