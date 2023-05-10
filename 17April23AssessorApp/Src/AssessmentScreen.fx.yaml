@@ -1998,7 +1998,7 @@ AssessmentScreen As screen:
                                                     checkpointItemActionItemsId = i.id
                                                 );
                                                 If(
-                                                    !IsBlank(
+                                                    IsBlank(
                                                         LookUp(
                                                             checkpointItem_ActionItem,
                                                             checkpointItemActionItemsId = i.id
@@ -2038,7 +2038,7 @@ AssessmentScreen As screen:
                                                     checkpointItemImagesId = i.id
                                                 );
                                                 If(
-                                                    !IsBlank(
+                                                    IsBlank(
                                                         LookUp(
                                                             checkpointItem_Images,
                                                             checkpointItemImagesId = i.id
