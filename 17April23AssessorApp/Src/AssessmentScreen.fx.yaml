@@ -1981,7 +1981,10 @@ AssessmentScreen As screen:
                                     Connection.Connected,
                                     Concurrent(
                                        //to delete deleted actions from dataverse
-                                        Clear(gcActionItemDelete1);
+                                        ClearCollect(
+                                            gcActionItemDelete1,
+                                            gcActionItemDelete
+                                        );
                                         ForAll(
                                             gcActionItemDelete As i,
                                             If(
@@ -2001,18 +2004,14 @@ AssessmentScreen As screen:
                                                             checkpointItemActionItemsId = i.id
                                                         )
                                                     ),
-                                                    Collect(
+                                                    RemoveIf(
                                                         gcActionItemDelete1,
-                                                        {id: i.id}
+                                                        id = i.id
                                                     );
                                                 );
                                             );
                                         );
-                                       /* If(
-                                            !IsEmpty(gcActionItemDelete1),
-                                            Notify("All locally deleted action are not removed from server.")
-                                        );*/
-                            ClearCollect(
+                                        ClearCollect(
                                             gcActionItemDelete,
                                             gcActionItemDelete1
                                         );
@@ -2021,8 +2020,11 @@ AssessmentScreen As screen:
                                             "localgcActionItemDelete"
                                         );
                                         ,
-                                       //to delete deleted images from dataverse
-                                        Clear(gcImageDelete1);
+                                       //******to delete deleted images from dataverse
+                                        ClearCollect(
+                                            gcImageDelete1,
+                                            gcImageDelete
+                                        );
                                         ForAll(
                                             gcImageDelete As i,
                                             If(
@@ -2042,19 +2044,15 @@ AssessmentScreen As screen:
                                                             checkpointItemImagesId = i.id
                                                         )
                                                     ),
-                                                    Collect(
+                                                    RemoveIf(
                                                         gcImageDelete1,
-                                                        {id: i.id}
+                                                        id = i.id
                                                     );
                                                 );
                                             );
                                             //net connected
                                         );
-                                      /*  If(
-                                            !IsEmpty(gcImageDelete1),
-                                            Notify("All locally deleted images are not removed from server.")
-                                        );*/
-                            ClearCollect(
+                                        ClearCollect(
                                             gcImageDelete,
                                             gcImageDelete1
                                         );
@@ -2865,7 +2863,8 @@ AssessmentScreen As screen:
                                     );
                                 );
                                 //Net connected 
-                            );///data availabel
+                            );
+                            ///data availabel
                                     //*****************************************************************************************************************************
                                     //saving data to local cashe
                             SaveData(
