@@ -27984,66 +27984,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "App.VarResultPatchItem"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "App.VarResultPatchItem",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "VarResultPatchItem",
-                "module": "App",
-                "type": "App"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-UnusedVariables",
-          "ruleIndex": 4
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "App.VarUpdateunit"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "App.VarUpdateunit",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "VarUpdateunit",
-                "module": "App",
-                "type": "App"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-UnusedVariables",
-          "ruleIndex": 4
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "App.varCheckpoinitemComment"
                 }
               ],
