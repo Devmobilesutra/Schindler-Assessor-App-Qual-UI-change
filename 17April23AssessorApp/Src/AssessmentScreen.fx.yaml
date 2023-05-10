@@ -1851,6 +1851,7 @@ AssessmentScreen As screen:
                                 );
                                 
                             );
+                            
                             Concurrent(
                                //network not available to patch then set message
                                 Set(
@@ -1926,7 +1927,7 @@ AssessmentScreen As screen:
                                         GC_checkpointItem_Images,
                                         assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && CIIstatusUpdate = 1
                                     )
-                                ) < 1,
+                                ) < 1 && CountRows(gcActionItemDelete) < 1 && CountRows(gcImageDelete) < 1,
                                  //Data not available to patch then set message
                                 Set(
                                     VarPopupText,
