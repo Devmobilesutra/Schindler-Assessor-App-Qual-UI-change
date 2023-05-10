@@ -2865,7 +2865,7 @@ AssessmentScreen As screen:
                                     );
                                 );
                                 //Net connected 
-                            );
+                            );///data availabel
                                     //*****************************************************************************************************************************
                                     //saving data to local cashe
                             SaveData(
