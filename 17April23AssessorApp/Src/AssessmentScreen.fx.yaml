@@ -2611,6 +2611,7 @@ AssessmentScreen As screen:
                                                                             "shlaf_actionsortsequence"
                                                                         )
                                                                     );
+                                                                    
                                                                     If(
                                                                         Connection.Connected,
                                                                 //getting specific checkpoint wise checkpoint images  data from dataverse to collection beacause we need unique indetifier from dataverse
@@ -2740,7 +2741,7 @@ AssessmentScreen As screen:
                                                                             );
                                  //updating unique identifire and patch status to checkpoint images collection from temporary collection  
                             ForAll(
-                                                                                TempCheckpointItem_Images As i,
+                                                                               Filter( TempCheckpointItem_Images ,Image.Value <> Blank()) As i,
                                                                                 UpdateIf(
                                                                                     GC_checkpointItem_Images,
                                                                                     checkpointItemImagesId = i.checkpointItemImagesId && CIIstatusUpdate = 1,
@@ -2795,6 +2796,14 @@ AssessmentScreen As screen:
                                                                                 );
                                                                             );
                                                                     //concurrent
+                                                                    ,   Set(
+                                                                            VarSubmitError,
+                                                                            true
+                                                                        );
+                                                                        Set(
+                                                                            VarPopupText,
+                                                                            "Something went wrong, Please try again ."
+                                                                        );
                                                                         );
                                                                     //countrow all action image submit
                                                                     );
