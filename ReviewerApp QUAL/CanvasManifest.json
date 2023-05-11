@@ -13,6 +13,7 @@
       "allowmultiplescreensincanvaspages": false,
       "appinsightserrortracing": false,
       "appinstrumentationcorrelationtracing": false,
+      "asyncnodedelegation": false,
       "autocreateenvironmentvariables": false,
       "backfromhostaction": false,
       "behaviorpropertyui": false,
@@ -62,8 +63,10 @@
       "herocontrols": false,
       "improvedmediacapture": false,
       "improvedtabstopbehavior": true,
+      "impurenodedelegation": false,
       "keeprecentscreensloaded": false,
       "longlivingcache": false,
+      "mobilenativerendering": false,
       "namedformulas": false,
       "nativecdsexperimental": true,
       "onegrid": false,
@@ -71,6 +74,7 @@
       "packagemodernruntime": false,
       "parallelcodegen": false,
       "pdffunction": false,
+      "powerfxdecimal": false,
       "projectionmapping": true,
       "reactformulabar": false,
       "reliableconcurrent": true,
@@ -90,6 +94,7 @@
       "zeroalltabindexes": false
     },
     "Author": "",
+    "BindingErrorCount": 0,
     "ContainsThirdPartyPcfControls": false,
     "DefaultConnectedDataSourceMaxGetRowsCount": 500,
     "DocumentAppType": "DesktopOrTablet",
@@ -104,8 +109,10 @@
     "FileID": "d8e123f6-7ca3-417f-b88d-d1ca4ef725ac",
     "Id": "d592be94-de9c-4682-adf8-1286413d3866",
     "InstrumentationKey": "",
+    "ManualOfflineProfileId": "",
     "Name": "Quantum Reviewer App",
-    "OriginatingVersion": "1.320"
+    "OriginatingVersion": "1.320",
+    "ParserErrorCount": 0
   },
   "PublishInfo": {
     "AppName": "Quantum Reviewer App",
