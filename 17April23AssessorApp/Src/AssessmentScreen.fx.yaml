@@ -2063,47 +2063,50 @@ AssessmentScreen As screen:
                                     );
                                     If(
                                         CountRows(gcActionItemDelete) < 1 && CountRows(gcImageDelete) < 1,
-                                        Concurrent(
+                                        If(
+                                            Connection.Connected,
+                                            Concurrent(
                                     //updating isCompleted status of assignment into assigment table only for the first time when submit button is clicked
-                                            UpdateIf(
-                                                assignments,
-                                                Id = varAssignmentId && isCompleted = "Upcomming",
-                                                {isCompleted: "Inprogress"}
-                                            );
+                                                UpdateIf(
+                                                    assignments,
+                                                    Id = varAssignmentId && isCompleted = "Upcomming",
+                                                    {isCompleted: "Inprogress"}
+                                                );
                                     //updating patch status 2 to collection gcProjectAssignment
                             UpdateIf(
-                                                gcProjectAssignment,
-                                                Id = varAssignmentId,
-                                                {AstatusUpdate: 2}
-                                            );
-                                            ,
+                                                    gcProjectAssignment,
+                                                    Id = varAssignmentId,
+                                                    {AstatusUpdate: 2}
+                                                );
+                                                ,
                                     //updating Assessment_Status of  bank into bank Assessment table only for the first time when submit button is clicked
-                                            UpdateIf(
-                                                bankAssessment,
-                                                assignmentId.Id = varAssignmentId && bankId.Id = VarBankId && Assessment_Status = "Upcomming",
-                                                {Assessment_Status: "Inprogress"}
-                                            );
+                                                UpdateIf(
+                                                    bankAssessment,
+                                                    assignmentId.Id = varAssignmentId && bankId.Id = VarBankId && Assessment_Status = "Upcomming",
+                                                    {Assessment_Status: "Inprogress"}
+                                                );
                                    //updating patch status 2 to collection GC_bankAssessment
                             UpdateIf(
-                                                GC_bankAssessment,
-                                                assignmentId.Id = varAssignmentId,
-                                                {BstatusUpdate: 2}
-                                            );
-                                            ,
+                                                    GC_bankAssessment,
+                                                    assignmentId.Id = varAssignmentId,
+                                                    {BstatusUpdate: 2}
+                                                );
+                                                ,
                                    //updating Assessment_Status of  unit into unit Assessment table only for the first time when submit button is clicked
-                                            UpdateIf(
-                                                unitAssessment,
-                                                assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && Assessment_status = "Upcomming",
-                                                {Assessment_status: "Inprogress"}
-                                            );
+                                                UpdateIf(
+                                                    unitAssessment,
+                                                    assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && Assessment_status = "Upcomming",
+                                                    {Assessment_status: "Inprogress"}
+                                                );
                                    //updating patch status 2 to collection GC_unitAssessment
                             /*UpdateIf(
                                             GC_unitAssessment,
                                             assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId,
                                             {UstatusUpdate: 2}
                                         );*/
-                                        );
+                                            );
                                     //concurrent 
+                                        );
                                     //Checking section record is available or not for patch => if Available then patch and get specific section data and update lookup using for loop 
                             If(
                                             CountRows(
@@ -2163,13 +2166,13 @@ AssessmentScreen As screen:
                                             );
                                             If(
                                                 (!IsEmpty(Errors(sectionAssessment))),
-                                                Notify(
+                                                /*Notify(
                                                     "Section Patch function Error -- " & Concat(
                                                         Errors(sectionAssessment),
                                                         Column & ": " & Message
                                                     ),
                                                     NotificationType.Error
-                                                );
+                                                );*/
                                                 Set(
                                                     VarSubmitError,
                                                     true
@@ -2320,13 +2323,13 @@ AssessmentScreen As screen:
                                                     );
                                                     If(
                                                         (!IsEmpty(Errors(checkpointAssessment))),
-                                                        Notify(
+                                                        /*Notify(
                                                             "Checkpoint Patch function Error -- " & Concat(
                                                                 Errors(checkpointAssessment),
                                                                 Column & ": " & Message
                                                             ),
                                                             NotificationType.Error
-                                                        );
+                                                        );*/
                                                         Set(
                                                             VarSubmitError,
                                                             true
@@ -2465,13 +2468,13 @@ AssessmentScreen As screen:
                                                             );
                                                             If(
                                                                 (!IsEmpty(Errors(checkpointItemAssessment))),
-                                                                Notify(
+                                                                /*Notify(
                                                                     "CheckpointItem Patch function Error -- " & Concat(
                                                                         Errors(checkpointItemAssessment),
                                                                         Column & ": " & Message
                                                                     ),
                                                                     NotificationType.Error
-                                                                );
+                                                                );*/
                                                                 Set(
                                                                     VarSubmitError,
                                                                     true
@@ -2549,10 +2552,10 @@ AssessmentScreen As screen:
                                                                             assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && CIIstatusUpdate = 1
                                                                         )
                                                                     ) > 0,
-                                                                    Notify(
+                                                                   /* Notify(
                                                                         "Action and Image available",
                                                                         NotificationType.Information
-                                                                    );
+                                                                    );*/
                                                                     Set(
                                                                         Varpatchlabel,
                                                                         "Uploading Actions, Images."
@@ -2611,7 +2614,6 @@ AssessmentScreen As screen:
                                                                             "shlaf_actionsortsequence"
                                                                         )
                                                                     );
-                                                                    
                                                                     If(
                                                                         Connection.Connected,
                                                                 //getting specific checkpoint wise checkpoint images  data from dataverse to collection beacause we need unique indetifier from dataverse
@@ -2661,7 +2663,7 @@ AssessmentScreen As screen:
                                                                     );
                                                                     If(
                                                                         (!IsEmpty(Errors(checkpointItem_ActionItem))) || (!IsEmpty(Errors(checkpointItem_Images))),
-                                                                        Notify(
+                                                                        /*Notify(
                                                                             "Checkpoint Action and Images Patch function Error -- " & Concat(
                                                                                 Errors(checkpointItem_ActionItem),
                                                                                 Column & ": " & Message
@@ -2670,7 +2672,7 @@ AssessmentScreen As screen:
                                                                                 Column & ": " & Message
                                                                             ),
                                                                             NotificationType.Error
-                                                                        );
+                                                                        );*/
                                                                         Set(
                                                                             VarSubmitError,
                                                                             true
@@ -2741,7 +2743,10 @@ AssessmentScreen As screen:
                                                                             );
                                  //updating unique identifire and patch status to checkpoint images collection from temporary collection  
                             ForAll(
-                                                                               Filter( TempCheckpointItem_Images ,Image.Value <> Blank()) As i,
+                                                                                Filter(
+                                                                                    TempCheckpointItem_Images,
+                                                                                    Image.Value <> Blank()
+                                                                                ) As i,
                                                                                 UpdateIf(
                                                                                     GC_checkpointItem_Images,
                                                                                     checkpointItemImagesId = i.checkpointItemImagesId && CIIstatusUpdate = 1,
@@ -2796,23 +2801,24 @@ AssessmentScreen As screen:
                                                                                 );
                                                                             );
                                                                     //concurrent
-                                                                    ,   Set(
-                                                                            VarSubmitError,
-                                                                            true
-                                                                        );
-                                                                        Set(
-                                                                            VarPopupText,
-                                                                            "Something went wrong, Please try again ."
-                                                                        );
+                            ,
+                                                                            Set(
+                                                                                VarSubmitError,
+                                                                                true
+                                                                            );
+                                                                            Set(
+                                                                                VarPopupText,
+                                                                                "Something went wrong, Please try again ."
+                                                                            );
                                                                         );
                                                                     //countrow all action image submit
                                                                     );
                                                                 //IfError
                             ,
-                                                                    Notify(
+                                                                   /* Notify(
                                                                         "Action and Image not available",
                                                                         NotificationType.Information
-                                                                    );
+                                                                    );*/
                                 //updating unit assessment status from 0 to 1 first time for detecting unpatched data and sync status update
                             Concurrent(
                                                                         UpdateIf(
@@ -2861,10 +2867,10 @@ AssessmentScreen As screen:
                                             VarSubmitError,
                                             true
                                         );
-                                        Notify(
+                                       /* Notify(
                                             "Action and Images delete Error .",
                                             NotificationType.Information
-                                        );
+                                        );*/
                                         Set(
                                             VarPopupText,
                                             "Something went wrong, Please try again ."
