@@ -6,6 +6,7 @@ DashboardScreen As screen:
         );
         //Set(  varloader,  false);
         //Set(LogOutTimer, -1800);
+        Set(VarPopupReportIssue,false);
         Set(
             VarLoaderReportIssue,
             false
@@ -703,6 +704,7 @@ DashboardScreen As screen:
             Button2_3 As button:
                 AlignInContainer: =AlignInContainer.Start
                 BorderThickness: =0
+                DisplayMode: =If(Connection.Connected, DisplayMode.Edit,DisplayMode.Disabled)
                 Fill: =AllScreensCSS.RActiveColor
                 FocusedBorderThickness: =//4
                 HoverBorderColor: =Self.Fill
@@ -1138,6 +1140,7 @@ DashboardScreen As screen:
 
         Button3 As button:
             BorderThickness: =0
+            DisplayMode: =If(Connection.Connected,DisplayMode.Edit,DisplayMode.Disabled)
             Fill: =AllScreensCSS.RActiveColor
             FocusedBorderColor: =//Self.BorderColor
             FocusedBorderThickness: =0
@@ -1330,6 +1333,7 @@ DashboardScreen As screen:
                                 VarLoaderReportIssue,
                                 false
                             );
+                            Set(VarPopupReportIssue,true);
                         );
                         //IfError Report assessment
                     );
@@ -1423,4 +1427,68 @@ DashboardScreen As screen:
             X: =(Parent.Width-Self.Width)/2
             Y: =Icon2.Y+20
             ZIndex: =33
+
+    GrpPopupReportIssue As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =40
+
+        iconOuterRectangleDS_1 As rectangle:
+            Fill: =RGBA(0, 0, 0, 0.29)
+            Height: =Parent.Height
+            Visible: =VarPopupReportIssue =true
+            Width: =Parent.Width
+            ZIndex: =35
+
+        iconInnerRectsngleDS_1 As rectangle:
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =270
+            Visible: =VarPopupReportIssue =true
+            Width: =400
+            X: =(Parent.Width-Self.Width)/2
+            Y: =Parent.Height/3
+            ZIndex: =36
+
+        imgInfoDS_1 As image:
+            Height: =52
+            Image: =Group
+            Visible: =VarPopupReportIssue =true
+            Width: =52
+            X: =(Parent.Width-Self.Width)/2
+            Y: =iconInnerRectsngleDS_1.Y+20
+            ZIndex: =37
+
+        LblTextDS_1 As label:
+            Align: =Align.Center
+            Font: =AllScreensCSS.RFont
+            FontWeight: =FontWeight.Semibold
+            Height: =100
+            Size: =15
+            Text: ="Report issue submitted successfully."
+            Visible: =VarPopupReportIssue =true
+            Width: =350
+            X: =(Parent.Width-Self.Width)/2
+            Y: =imgInfoDS_1.Y+imgInfoDS_1.Height
+            ZIndex: =38
+
+        btnSuccessDS_1 As button:
+            Fill: =RGBA(54, 176, 75, 1)
+            Font: =AllScreensCSS.RFont
+            HoverFill: =RGBA(75, 125, 6, 1)
+            OnSelect: |+
+                =Set(
+                    VarPopupReportIssue,
+                    false
+                );
+                
+            PressedBorderColor: =RGBA(1, 43, 1, 0)
+            PressedFill: =Self.Fill
+            Text: ="Ok"
+            Visible: =VarPopupReportIssue =true
+            Width: =120
+            X: =(Parent.Width-Self.Width)/2
+            Y: =LblTextDS_1.Y+ LblTextDS_1.Height+5
+            ZIndex: =39
 
