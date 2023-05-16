@@ -156,7 +156,7 @@ AddBanks As screen:
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
-                Width: =Parent.Width
+                Width: =Parent.Width -20
                 Y: =ctnbackAddBanks.Height
                 ZIndex: =2
 
@@ -272,6 +272,7 @@ AddBanks As screen:
                         ZIndex: =2
 
             ctnlineAddBanks As groupContainer.verticalAutoLayoutContainer:
+                AlignInContainer: =AlignInContainer.Start
                 Fill: =RGBA(204, 204, 204, 1)
                 FillPortions: =0
                 Height: =3
@@ -279,6 +280,7 @@ AddBanks As screen:
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
+                Width: =Parent.Width-40
                 Y: =ctnbuttonsAddBanks.Y
                 ZIndex: =3
 
@@ -595,7 +597,7 @@ AddBanks As screen:
                     PaddingRight: =20
                     PaddingTop: =20
                     Visible: =P
-                    Width: =Parent.Width
+                    Width: =Parent.Width-20
                     ZIndex: =3
 
                     lblClientNewClientNB As label:
@@ -1006,12 +1008,15 @@ AddBanks As screen:
                                             NotificationType.Error
                                         );
                                         Clear(LCunit),
-                                        Set(VarBankId,Text( GUID()));
+                                        Set(
+                                            VarBankId,
+                                            Text(GUID())
+                                        );
                                         Patch(
                                             schindlerBanks,
                                             Defaults(schindlerBanks),
                                             {
-                                                Id:VarBankId,
+                                                Id: VarBankId,
                                                 clientId: LookUp(
                                                     schindlerClients,
                                                     name = cboxClientNameNB.Selected.name
@@ -1043,7 +1048,7 @@ AddBanks As screen:
                                                         bankId: LookUp(
                                                             schindlerBanks,
                                                             //goNumber = txtgONumberNB.Text
-                                                            Id=VarBankId
+                                                            Id = VarBankId
                                                         ),
                                                         location: txtLocationNB.Text,
                                                         productId: LookUp(
@@ -1063,7 +1068,10 @@ AddBanks As screen:
                                                     ),
                                                     NotificationType.Error
                                                 );
-                                                RemoveIf(schindlerBanks,Id =VarBankId);
+                                                RemoveIf(
+                                                    schindlerBanks,
+                                                    Id = VarBankId
+                                                );
                                                 ,
                                                 Set(
                                                     popupsuccess,

@@ -622,7 +622,6 @@ EditprojectAssignment As screen:
                                                 Id = nprojectassignment
                                             ),
                                             {
-                                               
                                                 assessmentType: cboxAssessmntTypeEditA.Selected.type,
                                                 assessorId: LookUp(
                                                     AssessorAD,

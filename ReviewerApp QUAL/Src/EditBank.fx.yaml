@@ -628,8 +628,8 @@ EditBank As screen:
                                                 )
                                             }
                                         );
-                                         If(
-                                            !IsEmpty(Errors(schindlerBanks)) ,
+                                        If(
+                                            !IsEmpty(Errors(schindlerBanks)),
                                             Notify(
                                                 "Patch function Error " & Concat(
                                                     Errors(schindlerBanks),
@@ -637,54 +637,50 @@ EditBank As screen:
                                                 ),
                                                 NotificationType.Error
                                             ),
-                                             ForAll(
-                                            glryUnitEditBank.AllItems.txtUnitEditBank As i,
-                                            Patch(
-                                                bankUnits,
-                                                Defaults(bankUnits),
-                                                {
-                                                    Id: Text(GUID()),
-                                                    bankId: LookUp(
-                                                        schindlerBanks,
+                                            ForAll(
+                                                glryUnitEditBank.AllItems.txtUnitEditBank As i,
+                                                Patch(
+                                                    bankUnits,
+                                                    Defaults(bankUnits),
+                                                    {
+                                                        Id: Text(GUID()),
+                                                        bankId: LookUp(
+                                                            schindlerBanks,
                                                         //goNumber = TxtGonumberEditBank.Text
-                                                          Id = nbank
+                                                            Id = nbank
+                                                        ),
+                                                        location: txtLocationEditBank.Text,
+                                                        productId: LookUp(
+                                                            product,
+                                                            product_Model = cboxProductTypeEditBank.Selected.product_Model
+                                                        ),
+                                                        unitNumber: i.txtUnitEditBank.Text
+                                                    }
+                                                )
+                                            );
+                                            If(
+                                                !IsEmpty(Errors(bankUnits)),
+                                                Notify(
+                                                    "Patch function Error " & Concat(
+                                                        Errors(bankUnits),
+                                                        Column & ": " & Message
                                                     ),
-                                                    location: txtLocationEditBank.Text,
-                                                    productId: LookUp(
-                                                        product,
-                                                        product_Model = cboxProductTypeEditBank.Selected.product_Model
-                                                    ),
-                                                    unitNumber: i.txtUnitEditBank.Text
-                                                }
-                                            )
-                                        );
-                                
-                                        If(
-                                             !IsEmpty(Errors(bankUnits)),
-                                            Notify(
-                                                "Patch function Error " & Concat(
-                                                    Errors(bankUnits),
-                                                    Column & ": " & Message
+                                                    NotificationType.Error
                                                 ),
-                                                NotificationType.Error
-                                            ),
-                                            Set(
-                                                popupsuccess,
-                                                true
-                                            );
-                                            Reset(cboxClientEditBank);
-                                            Reset(TxtGonumberEditBank);
-                                            Reset(txtLocationEditBank);
-                                            Reset(cboxProductTypeEditBank);
-                                            ClearCollect(
-                                                existingUnits,
-                                                {}
+                                                Set(
+                                                    popupsuccess,
+                                                    true
+                                                );
+                                                Reset(cboxClientEditBank);
+                                                Reset(TxtGonumberEditBank);
+                                                Reset(txtLocationEditBank);
+                                                Reset(cboxProductTypeEditBank);
+                                                ClearCollect(
+                                                    existingUnits,
+                                                    {}
+                                                );
                                             );
                                         );
-                                           
-                                        );
-                                       
-                                        
                                     )
                                 )
                             PaddingLeft: =15

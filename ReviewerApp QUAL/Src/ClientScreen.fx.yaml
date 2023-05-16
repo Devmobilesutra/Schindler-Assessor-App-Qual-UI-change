@@ -270,7 +270,7 @@ ClientScreen As screen:
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
-                Width: =Parent.Width
+                Width: =Parent.Width-40
                 ZIndex: =3
 
             ctnMainCS As groupContainer.manualLayoutContainer:
@@ -905,7 +905,7 @@ ClientScreen As screen:
                         PaddingTop: =20
                         Visible: |
                             =P 
-                        Width: =Parent.Width
+                        Width: =Parent.Width-20
                         Y: =Parent.Y
                         ZIndex: =3
 

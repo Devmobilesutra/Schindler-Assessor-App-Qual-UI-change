@@ -608,7 +608,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btnBackPA",
-      "ParentIndex": 1,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -1325,7 +1325,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btnEditEA",
-      "ParentIndex": 17,
+      "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -3195,7 +3195,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btnRemoveEA",
-      "ParentIndex": 18,
+      "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -5996,7 +5996,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Container1_1",
-      "ParentIndex": 0,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -7760,7 +7760,14 @@
         },
         "X",
         "Y",
-        "Width",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "500",
+          "InvariantPropertyName": "Width",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
@@ -7826,7 +7833,14 @@
           "PropertyName": "FillPortions"
         },
         {
-          "ControlPropertyState": "AlignInContainer",
+          "ControlPropertyState": {
+            "AFDDataSourceName": "",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "",
+            "InvariantPropertyName": "AlignInContainer",
+            "IsLockable": false,
+            "NameMapSourceSchema": "?"
+          },
           "Property": {
             "Category": "Design",
             "PropertyName": "AlignInContainer",
@@ -12616,7 +12630,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "%TemplateBrowseGallerySeparator1.ID%",
       "Name": "iconSeparatorEA",
-      "ParentIndex": 21,
+      "ParentIndex": 9,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -12783,7 +12797,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "imgEditEA",
-      "ParentIndex": 19,
+      "ParentIndex": 5,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -13243,7 +13257,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "imgRemoveEA",
-      "ParentIndex": 20,
+      "ParentIndex": 6,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -14020,7 +14034,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblAssessmentTypeEA",
-      "ParentIndex": 8,
+      "ParentIndex": 13,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -14645,7 +14659,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblAssessorEA",
-      "ParentIndex": 9,
+      "ParentIndex": 14,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -15239,7 +15253,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblAssessornameEA",
-      "ParentIndex": 10,
+      "ParentIndex": 15,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -16499,7 +16513,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "%TemplateBrowseGalleryBody.ID%",
       "Name": "lblA-typeEA",
-      "ParentIndex": 7,
+      "ParentIndex": 12,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -18099,7 +18113,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblD_dateEA",
-      "ParentIndex": 15,
+      "ParentIndex": 20,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -18372,7 +18386,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblDuedateEA",
-      "ParentIndex": 16,
+      "ParentIndex": 21,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -19004,7 +19018,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "%TemplateBrowseGallerySubtitle.ID%",
       "Name": "lblGo_NumberEA",
-      "ParentIndex": 3,
+      "ParentIndex": 7,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -19277,7 +19291,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblGOnumberEA",
-      "ParentIndex": 4,
+      "ParentIndex": 8,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -20233,7 +20247,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblReviewerEA",
-      "ParentIndex": 11,
+      "ParentIndex": 16,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -20827,7 +20841,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblReviewvernameEA",
-      "ParentIndex": 12,
+      "ParentIndex": 17,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -21131,7 +21145,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblS_dateEA",
-      "ParentIndex": 13,
+      "ParentIndex": 18,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -21404,7 +21418,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblStartDateEA",
-      "ParentIndex": 14,
+      "ParentIndex": 19,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -22360,7 +22374,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblUnitEA",
-      "ParentIndex": 5,
+      "ParentIndex": 10,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -22961,7 +22975,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblUnitnumberEA",
-      "ParentIndex": 6,
+      "ParentIndex": 11,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {

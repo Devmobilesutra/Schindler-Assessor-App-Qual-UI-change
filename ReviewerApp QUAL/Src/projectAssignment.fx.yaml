@@ -339,7 +339,7 @@ projectAssignment As screen:
                         ZIndex: =2
 
             ctnLineProjectAssignmentPA As groupContainer.verticalAutoLayoutContainer:
-                AlignInContainer: =AlignInContainer.SetByContainer
+                AlignInContainer: =AlignInContainer.Start
                 Fill: =RGBA(204, 204, 204, 1)
                 FillPortions: =0
                 Height: =3
@@ -347,6 +347,7 @@ projectAssignment As screen:
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
+                Width: =Parent.Width - 40
                 ZIndex: =3
 
             ctnMiddleProjectAssignmentPA As groupContainer.manualLayoutContainer:
@@ -378,7 +379,7 @@ projectAssignment As screen:
                         PaddingTop: =40
                         Visible: |
                             =P = true
-                        Width: =Parent.Width
+                        Width: =Parent.Width -20
                         ZIndex: =1
 
                         lblClientNA As label:
@@ -832,8 +833,8 @@ projectAssignment As screen:
                                                 NotificationType.Error
                                             ),
                                             Set(
-                                            idvariable,
-                                            Text(GUID())
+                                                idvariable,
+                                                Text(GUID())
                                             );
                                             Refresh(assignments);
                                             Patch(
@@ -894,7 +895,6 @@ projectAssignment As screen:
                                                     NotificationType.Error
                                                 );
                                                 ,
-                                              
                                                 Refresh(assignments);
                                                 Refresh(assignmentUnits);
                                                 ForAll(
@@ -942,7 +942,7 @@ projectAssignment As screen:
                                                         unitAssessment,
                                                         Defaults(unitAssessment),
                                                         {
-                                                            'unitAssessment (quantum_unitassessment)':Text(GUID()),
+                                                            'unitAssessment (quantum_unitassessment)': Text(GUID()),
                                                             bankUnitId: LookUp(
                                                                 bankUnits,
                                                                 Id = p.Id
@@ -961,43 +961,52 @@ projectAssignment As screen:
                                                         }
                                                     )
                                                 );
-                                            
-                                                  If(
-                                                ( !IsEmpty(Errors(assignmentUnits)) || !IsEmpty(Errors(bankAssessment)) || !IsEmpty(Errors(unitAssessment))),
-                                                Notify(
-                                                     Concat(
-                                                        Errors(assignmentUnits),
-                                                        Column & ": " & Message
-                                                    ) & Concat(
-                                                        Errors(bankAssessment),
-                                                        Column & ": " & Message
-                                                    ) & Concat(
-                                                        Errors(unitAssessment),
-                                                        Column & ": " & Message
-                                                    ),
-                                                    NotificationType.Error
-                                                );
-                                               
-                                                RemoveIf(assignmentUnits,assignmentId.Id= idvariable);
-                                                RemoveIf(bankAssessment,assignmentId.Id = idvariable);
-                                                RemoveIf(unitAssessment,assignmentId.Id = idvariable);
-                                               
-                                                RemoveIf(assignments,Id = idvariable);
-                                                ,
-                                                Set(
-                                                    popupsuccess,
-                                                    true
-                                                );
-                                                Reset(cboxClientNA);
-                                                Reset(cboxGONumberNA);
-                                                Clear(selectedUnit);
-                                                Reset(cboxAssessmentTypeNA);
-                                                Reset(cboxAssessorNA);
-                                                Reset(cboxReviewerNA);
-                                                Reset(DatePickerDueDateNA);
-                                                Reset(DatePickerAssignDateNA);
-                                                Reset(DatePickerStartDateNA);
-                                            )
+                                                If(
+                                                    (!IsEmpty(Errors(assignmentUnits)) || !IsEmpty(Errors(bankAssessment)) || !IsEmpty(Errors(unitAssessment))),
+                                                    Notify(
+                                                        Concat(
+                                                            Errors(assignmentUnits),
+                                                            Column & ": " & Message
+                                                        ) & Concat(
+                                                            Errors(bankAssessment),
+                                                            Column & ": " & Message
+                                                        ) & Concat(
+                                                            Errors(unitAssessment),
+                                                            Column & ": " & Message
+                                                        ),
+                                                        NotificationType.Error
+                                                    );
+                                                    RemoveIf(
+                                                        assignmentUnits,
+                                                        assignmentId.Id = idvariable
+                                                    );
+                                                    RemoveIf(
+                                                        bankAssessment,
+                                                        assignmentId.Id = idvariable
+                                                    );
+                                                    RemoveIf(
+                                                        unitAssessment,
+                                                        assignmentId.Id = idvariable
+                                                    );
+                                                    RemoveIf(
+                                                        assignments,
+                                                        Id = idvariable
+                                                    );
+                                                    ,
+                                                    Set(
+                                                        popupsuccess,
+                                                        true
+                                                    );
+                                                    Reset(cboxClientNA);
+                                                    Reset(cboxGONumberNA);
+                                                    Clear(selectedUnit);
+                                                    Reset(cboxAssessmentTypeNA);
+                                                    Reset(cboxAssessorNA);
+                                                    Reset(cboxReviewerNA);
+                                                    Reset(DatePickerDueDateNA);
+                                                    Reset(DatePickerAssignDateNA);
+                                                    Reset(DatePickerStartDateNA);
+                                                )
                                             );
                                         )
                                     )
