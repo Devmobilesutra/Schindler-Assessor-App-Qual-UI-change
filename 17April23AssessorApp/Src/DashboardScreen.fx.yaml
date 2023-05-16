@@ -771,7 +771,7 @@ DashboardScreen As screen:
                 Width: =Parent.Width
                 ZIndex: =1
 
-    imgloaderDS As image:
+    imgloaderDSExit As image:
         Fill: =RGBA(0, 0, 0, 0.29)
         Height: =Parent.Height
         Image: ='ajax-loader 2'
@@ -792,7 +792,7 @@ DashboardScreen As screen:
         Y: =20
         ZIndex: =14
 
-    grPatchSuccessDS As group:
+    grSyncSuccessDS As group:
         Height: =5
         Width: =5
         X: =40
@@ -855,13 +855,6 @@ DashboardScreen As screen:
             X: =(Parent.Width-Self.Width)/2
             Y: =LblTextDS.Y+ LblTextDS.Height+5
             ZIndex: =13
-
-    GroupHeaderPS_1 As group:
-        Height: =5
-        Width: =5
-        X: =40
-        Y: =40
-        ZIndex: =18
 
     Grp_exit As group:
         Height: =5
