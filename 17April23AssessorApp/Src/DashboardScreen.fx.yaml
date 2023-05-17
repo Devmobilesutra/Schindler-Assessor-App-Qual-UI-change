@@ -1181,8 +1181,7 @@ DashboardScreen As screen:
                             UnitSavedCount: CountRows(
                                 Filter(
                                     GC_unitAssessment,
-                                    UstatusUpdate = 0,
-                                    UstatusUpdate = 1
+                                    UstatusUpdate = 0 || UstatusUpdate = 1
                                 )
                             ),
                             CheckpointItemAssessmentCount: CountRows(GC_checkpointItemAssessment),
@@ -1326,7 +1325,10 @@ DashboardScreen As screen:
                                 VarLoaderReportIssue,
                                 false
                             );
-                            Set(VarPopupReportIssue,true);
+                            Set(
+                                VarPopupReportIssue,
+                                true
+                            );
                         );
                         //IfError Report assessment
                     );
