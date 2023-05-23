@@ -1325,7 +1325,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btnEditEA",
-      "ParentIndex": 3,
+      "ParentIndex": 17,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -2827,7 +2827,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btnOkSuccessPA",
-      "ParentIndex": 11,
+      "ParentIndex": 5,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -3195,7 +3195,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btnRemoveEA",
-      "ParentIndex": 4,
+      "ParentIndex": 18,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -4402,7 +4402,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "cboxClientNA",
-      "ParentIndex": 2,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -4845,7 +4845,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "cboxGONumberNA",
-      "ParentIndex": 4,
+      "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -11799,7 +11799,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "iconInnerRectangleRemovePA",
-      "ParentIndex": 5,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -11958,7 +11958,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "iconInnerRectangleSuccessPA",
-      "ParentIndex": 3,
+      "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -12500,7 +12500,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "iconOuterRectangleSuccessPA",
-      "ParentIndex": 2,
+      "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -12630,7 +12630,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "%TemplateBrowseGallerySeparator1.ID%",
       "Name": "iconSeparatorEA",
-      "ParentIndex": 9,
+      "ParentIndex": 21,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -12797,7 +12797,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "imgEditEA",
-      "ParentIndex": 5,
+      "ParentIndex": 19,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -13257,7 +13257,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "imgRemoveEA",
-      "ParentIndex": 6,
+      "ParentIndex": 20,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -13488,7 +13488,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "imgSuccessPA",
-      "ParentIndex": 4,
+      "ParentIndex": 7,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -14034,7 +14034,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblAssessmentTypeEA",
-      "ParentIndex": 13,
+      "ParentIndex": 8,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -14659,7 +14659,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblAssessorEA",
-      "ParentIndex": 14,
+      "ParentIndex": 9,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -15253,7 +15253,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblAssessornameEA",
-      "ParentIndex": 15,
+      "ParentIndex": 10,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -16209,7 +16209,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblAssignSuccessPA",
-      "ParentIndex": 8,
+      "ParentIndex": 11,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -16513,7 +16513,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "%TemplateBrowseGalleryBody.ID%",
       "Name": "lblA-typeEA",
-      "ParentIndex": 12,
+      "ParentIndex": 7,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -16842,7 +16842,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblbankexistNA",
-      "ParentIndex": 0,
+      "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -17511,7 +17511,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblClientNA",
-      "ParentIndex": 1,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -18113,7 +18113,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblD_dateEA",
-      "ParentIndex": 20,
+      "ParentIndex": 15,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -18386,7 +18386,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblDuedateEA",
-      "ParentIndex": 21,
+      "ParentIndex": 16,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -19018,7 +19018,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "%TemplateBrowseGallerySubtitle.ID%",
       "Name": "lblGo_NumberEA",
-      "ParentIndex": 7,
+      "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -19291,7 +19291,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblGOnumberEA",
-      "ParentIndex": 8,
+      "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -19631,7 +19631,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblGONumberNA",
-      "ParentIndex": 3,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -20247,7 +20247,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblReviewerEA",
-      "ParentIndex": 16,
+      "ParentIndex": 11,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -20841,7 +20841,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblReviewvernameEA",
-      "ParentIndex": 17,
+      "ParentIndex": 12,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -21145,7 +21145,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblS_dateEA",
-      "ParentIndex": 18,
+      "ParentIndex": 13,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -21418,7 +21418,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblStartDateEA",
-      "ParentIndex": 19,
+      "ParentIndex": 14,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -22070,7 +22070,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblSuccessPA",
-      "ParentIndex": 7,
+      "ParentIndex": 8,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -22374,7 +22374,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblUnitEA",
-      "ParentIndex": 10,
+      "ParentIndex": 5,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -22975,7 +22975,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblUnitnumberEA",
-      "ParentIndex": 11,
+      "ParentIndex": 6,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {

@@ -1656,7 +1656,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btnEditEB",
-      "ParentIndex": 5,
+      "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -3527,7 +3527,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btnRemoveEB",
-      "ParentIndex": 6,
+      "ParentIndex": 5,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -3914,7 +3914,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btnSuccessAB",
-      "ParentIndex": 17,
+      "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -4611,7 +4611,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "cboxClientNameNB",
-      "ParentIndex": 2,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -10874,7 +10874,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "iconInneRectangleAB",
-      "ParentIndex": 5,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -11026,7 +11026,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "iconinnerRectangleBank",
-      "ParentIndex": 8,
+      "ParentIndex": 7,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -11178,7 +11178,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "iconInnerRectangleUnit",
-      "ParentIndex": 7,
+      "ParentIndex": 5,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -12362,7 +12362,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "iconOuterRectangleBank",
-      "ParentIndex": 3,
+      "ParentIndex": 6,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -12507,7 +12507,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "iconOuterRectangleUnit",
-      "ParentIndex": 2,
+      "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -13499,7 +13499,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "imgSuccessAB",
-      "ParentIndex": 6,
+      "ParentIndex": 8,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -14379,7 +14379,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblbankSuccessAB",
-      "ParentIndex": 12,
+      "ParentIndex": 17,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -15044,7 +15044,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblClientNewClientNB",
-      "ParentIndex": 1,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -15430,7 +15430,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblGoNumberNB",
-      "ParentIndex": 3,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -15778,7 +15778,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblGoUnitNumberEB",
-      "ParentIndex": 3,
+      "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -17153,7 +17153,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblnotificationexistNB",
-      "ParentIndex": 0,
+      "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -17494,7 +17494,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblProducttypeEB",
-      "ParentIndex": 4,
+      "ParentIndex": 6,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -18914,7 +18914,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblSuccessAB",
-      "ParentIndex": 11,
+      "ParentIndex": 12,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -20970,7 +20970,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "timerUnitAB",
-      "ParentIndex": 4,
+      "ParentIndex": 11,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -21284,7 +21284,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "txtgONumberNB",
-      "ParentIndex": 4,
+      "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
