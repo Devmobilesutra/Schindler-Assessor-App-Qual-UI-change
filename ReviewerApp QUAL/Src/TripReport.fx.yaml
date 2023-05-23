@@ -1159,7 +1159,7 @@ TripReport As screen:
                             =//ColorFade(RGBA(56, 96, 178, 1), -20%)
                             Self.Fill
                         OnSelect: |
-                            =Approve_Report.Run(glryProject.Selected.assessorEmail,glryProject.Selected.bankId.goNumber,glryProject.Selected.reviewerName);
+                            =ApproveReport.Run(glryProject.Selected.assessorEmail,glryProject.Selected.bankId.goNumber,glryProject.Selected.reviewerName);
                             //UpdateIf(BankTripReport,'BankTripReport (quantum_banktripreport)'=LookUp(BankTripReport,assignmentId.Id=glryProject.Selected.Id,'BankTripReport (quantum_banktripreport)'),{General_Recommendation:TextInput3.Text});
                             UpdateIf(
                                 assignments,
