@@ -504,6 +504,8 @@ ProjectScreen As screen:
                         =//for updating status of selected bank
                         Set(VarBankId,ThisItem.bankId.Id);
                         
+                        Set(VarCurrentAssignmentData,ThisItem);
+                        
                         // set variable for selected assignmentId
                         Set(varAssignmentId,ThisItem.Id);
                         

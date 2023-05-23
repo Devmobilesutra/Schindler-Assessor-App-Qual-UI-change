@@ -1188,7 +1188,17 @@ DashboardScreen As screen:
                             CheckpointItemActionItemCount: CountRows(GC_checkpointItem_ActionItem),
                             CheckpointItemImagesCount: CountRows(GC_checkpointItem_Images),
                             MasterTemplateCheckpointItemCount: CountRows(GC_templateCheckpointsItem),
-                            MasterTemplateActionItemCount: CountRows(GC_actionItems)
+                            MasterTemplateActionItemCount: CountRows(GC_actionItems),
+                
+                            CurrentClientName:VarCurrentAssignmentData.clientId.name,
+                            CurrentGONumber:VarCurrentAssignmentData.GONumber,
+                            CurrentUnitNumber: VarCurrentUnitNumber,
+                
+                            CurrentAssignmentID: VarCurrentAssignmentData.Id,
+                            CurrentBankID: VarCurrentAssignmentData.bankId.Id,
+                            CurrentBankUnitID:varBankUnitId,
+                            
+                            CurrentAppVersion:lblappVersion.Text
                         }
                     );
                     If(

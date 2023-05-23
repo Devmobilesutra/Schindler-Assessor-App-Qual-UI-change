@@ -481,6 +481,9 @@ BankScreen As screen:
                                     varBankUnitId,
                                     ThisItem.bankUnitId.Id
                                 );
+                            
+                            //set variable for selected unit number.
+                            Set(VarCurrentUnitNumber,ThisItem.bankUnitId.unitNumber);
                                 
                             If(
                                 IsEmpty(GcSectionAssessmentCache) && IsEmpty(GcCheckpointAssessmentCache) && IsEmpty(GC_checkpointItemAssessmentCache) && IsEmpty(GC_checkpointItem_ActionItemCache) && IsEmpty(GC_checkpointItem_ImagesCache),
