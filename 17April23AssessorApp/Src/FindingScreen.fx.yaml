@@ -1905,8 +1905,9 @@ FindingScreen As screen:
                                 
                                 //CountRows(Gallery13.AllItems)*(Gallery13.TemplateHeight)/2
                             Items: |-
-                                =Filter(GC_checkpointItem_Images, assignmentId.Id=varAssignmentId && bankUnitId.Id=varBankUnitId && checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)'=varCItemA 
-                                || bankUnitId.Id=varBankUnitId && assignmentId.Id=varAssignmentId && checkpointItem_Id.checkpointItemId.checkpointItemId=varCheckpointitemID
+                                =Filter(
+                                    GC_checkpointItem_Images,
+                                    assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = varCItemA || assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId &&  checkpointItem_Id.checkpointItemId.checkpointItemId = varCheckpointitemID
                                 )
                             Layout: =Layout.Vertical
                             LayoutMinHeight: =287
