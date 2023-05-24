@@ -1092,6 +1092,8 @@ AssessmentScreen As screen:
                                     );
                                 )
                             );
+                            );
+                            
                             /*************************************/
                             ///Save data from collections to local cache
                             SaveData(
@@ -1301,7 +1303,6 @@ AssessmentScreen As screen:
                                 GC_checkpointItemAssessmentCache,
                                 "localcheckpointitemassessment"
                             );
-                            )
                         OnSelect: |
                             =//Set(locItemExpanded,false
                             
