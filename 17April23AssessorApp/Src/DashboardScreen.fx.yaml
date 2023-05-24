@@ -1090,7 +1090,7 @@ DashboardScreen As screen:
             Label2_1 As label:
                 FontWeight: =FontWeight.Semibold
                 PaddingLeft: =20
-                Text: ="Add Issue description"
+                Text: ="Add Issue description along with GO Number and Unit number"
                 Width: =Parent.Width-70
                 ZIndex: =1
 
@@ -1109,7 +1109,7 @@ DashboardScreen As screen:
             Default: =""
             FocusedBorderThickness: =2
             Height: =250
-            HintText: ="Enter.."
+            HintText: ="Enter issue description along with GO Number and Unit number"
             HoverBorderColor: =Self.BorderColor
             HoverFill: =//RGBA(186, 202, 226, 1)
             Mode: =TextMode.MultiLine
