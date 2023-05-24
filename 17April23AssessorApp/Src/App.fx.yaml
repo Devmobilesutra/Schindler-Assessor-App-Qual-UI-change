@@ -293,8 +293,8 @@ App As appinfo:
         If(
             Connection.Connected,
              If(
-                IsBlank(LookUp(gcProjectAssignment,AstatusUpdate = 0 || AstatusUpdate = 1))            &&
-                IsBlank(LookUp(GC_bankAssessment,BstatusUpdate = 0 || BstatusUpdate = 1))              &&
+                IsBlank(LookUp(gcProjectAssignment,AstatusUpdate = 0 || AstatusUpdate = 1))            ||
+                IsBlank(LookUp(GC_bankAssessment,BstatusUpdate = 0 || BstatusUpdate = 1))              ||
                 IsBlank(LookUp(GC_unitAssessment,UstatusUpdate = 0 || UstatusUpdate = 1)) ,
             
             Concurrent(

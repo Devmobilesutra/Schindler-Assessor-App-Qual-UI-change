@@ -2128,7 +2128,7 @@ BankScreen As screen:
                         OnSelect: |
                             =//if network available then patch 1 status data to dataverse
                             //Notify("111111111111111111",NotificationType.Information);
-                            Set(
+                            /*Set(
                                     varBankUnitId,
                                     ThisItem.bankUnitId.Id
                                 );
@@ -2252,13 +2252,7 @@ BankScreen As screen:
                                 );
                             
                             //checking status 1 data is available in section Assessment collection if available then patch
-                            /* If(
-                                        CountRows(
-                                            Filter(
-                                                GcSectionAssessment,
-                                                assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && SstatusUpdate = 1
-                                            )
-                                        ) > 0,*/
+                            
                                     //patching status 1 section assessment data to dataverse table
                                         Patch(
                                             sectionAssessment,
@@ -2381,13 +2375,7 @@ BankScreen As screen:
                                 //    );
                                     //if
                             //checking status 1 data is available in checkpoint Assessment collection if available then patch
-                            /*If(
-                                        CountRows(
-                                            Filter(
-                                                GcCheckpointAssessment,
-                                                assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && CstatusUpdate = 1
-                                            )
-                                        ) > 0,*/
+                            
                                     //patching status 1 checkpoint assessment data to dataverse table
                                         Patch(
                                             checkpointAssessment,
@@ -2493,13 +2481,7 @@ BankScreen As screen:
                                         ););
                                    // );
                                     //checking status 1 data is available in Checkpoint Item Assessment collection if available then patch
-                             /*If(
-                                        CountRows(
-                                            Filter(
-                                                GC_checkpointItemAssessment,
-                                                assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && CIstatusUpdate = 1
-                                            )
-                                        ) > 0,*/
+                             
                                     //patching status 1 checkpointItemAssessment data to dataverse table
                                         Patch(
                                             checkpointItemAssessment,
@@ -2592,13 +2574,7 @@ BankScreen As screen:
                             
                                 Concurrent(
                                 //checking status 1 data is available in checkpoint Assessment collection if available then patch
-                                 /*   If(
-                                        CountRows(
-                                            Filter(
-                                                GC_checkpointItem_ActionItem,
-                                                (assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && CIAstatusUpdate = 1) || (bankUnitId.Id = varBankUnitId && Action_status = "Close" && CIAstatusUpdate = 1)
-                                            )
-                                        ) > 0,*/
+                               
                               //patching status 1 checkpointActionItemAssessment data to dataverse table
                                          Patch(
                                             checkpointItem_ActionItem,
@@ -2658,13 +2634,7 @@ BankScreen As screen:
                                       //  );
                                     );,
                                     //checking status 1 data is available in checkpoint images collection if available then patch
-                                  /*  If(
-                                        CountRows(
-                                            Filter(
-                                                GC_checkpointItem_Images,
-                                                assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && CIIstatusUpdate = 1
-                                            )
-                                        ) > 0,*/
+                                  
                                      //patching status 1 checkpointItem Images data to dataverse table
                                         Patch(
                                             checkpointItem_Images,
@@ -2730,6 +2700,7 @@ BankScreen As screen:
                                 );
                                  Set(popupSyncSuccess,false);
                             );
+                            */
                         PressedFill: =AllScreensCSS.RActiveColor
                         RadiusBottomLeft: =95
                         RadiusBottomRight: =95
