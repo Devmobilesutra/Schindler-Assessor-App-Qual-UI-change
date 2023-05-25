@@ -142,7 +142,7 @@ FindingScreen As screen:
                 FontWeight: =FontWeight.Bold
                 Height: =Parent.Height
                 PaddingLeft: =20
-                Size: =ctnHeaderFS.Width/85
+                Size: =Header.HeaderUserFontSize-2
                 Text: =username
                 Width: =ctnHeaderFS.Width/5.8
                 X: =imgUserHeaderPFS_3.Width+imgUserHeaderPFS_3.X
@@ -1214,7 +1214,14 @@ FindingScreen As screen:
                         FillPortions: =0
                         Height: |-
                             =//Parent.Height
-                            lblAnnotationFS.Height+txtAnnotationFS.Height+ctnAddImageFS.Height+btnSaveFS.Height+ctnAddActionFS.Height+(CountRows(GlryActionItemFS.AllItems)*(GlryActionItemFS.TemplateHeight)/1.1)+If(CountRows(GlryImagesFS.AllItems)=1,380,CountRows(GlryImagesFS.AllItems)*(GlryImagesFS.TemplateHeight)/2)+240
+                            lblAnnotationFS.Height + txtAnnotationFS.Height + ctnAddImageFS.Height + btnSaveFS.Height + ctnAddActionFS.Height + (CountRows(GlryActionItemFS.AllItems) * (GlryActionItemFS.TemplateHeight) / 1.1) + If(
+                                CountRows(GlryImagesFS.AllItems) = 1,
+                                320,
+                                CountRows(GlryImagesFS.AllItems) * (GlryImagesFS.TemplateHeight) / 2
+                            ) + 180
+                            
+                            
+                            //380 240
                         LayoutAlignItems: =LayoutAlignItems.Stretch
                         LayoutDirection: =LayoutDirection.Vertical
                         LayoutGap: =20
@@ -2507,6 +2514,7 @@ FindingScreen As screen:
 
                             btnSaveFS As button:
                                 BorderColor: =AllScreensCSS.RActiveColor
+                                BorderThickness: =0
                                 DisplayMode: =If(IsBlank(txtAnnotationFS) && CountRows(GlryActionItemFS.AllItems)=0 && CountRows(GlryImagesFS.AllItems)=0,DisplayMode.Disabled,DisplayMode.Edit)
                                 Fill: =AllScreensCSS.RActiveColor
                                 Font: =AllScreensCSS.ButtonFont
