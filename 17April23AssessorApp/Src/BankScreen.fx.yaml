@@ -2853,55 +2853,6 @@ BankScreen As screen:
             Y: =//Container4_2.Height
             ZIndex: =2
 
-            imgLogo_1 As image:
-                DisplayMode: =DisplayMode.View
-                Fill: =RGBA(255, 255, 255, 1)
-                Height: =80
-                Image: ='schindler-logo'
-                PaddingBottom: =5
-                PaddingLeft: =2
-                PaddingRight: =1
-                PaddingTop: =5
-                Width: =ctnHeaderBS.Width/12
-                ZIndex: =1
-
-            lblAssessmentBS_2 As label:
-                Align: =Align.Center
-                Color: =Header.HeaderColor
-                Font: =Header.HeaderFont
-                FontWeight: =FontWeight.Bold
-                Height: =80
-                Size: =Header.HeaderFontSize
-                Text: |
-                    =lblProjectName.Text
-                Width: =If(Parent.Width>821,Parent.Width/1.8,Parent.Width/2.2)
-                X: =imgLogo_1.Width
-                ZIndex: =2
-
-            imgUserHeaderBS_2 As image:
-                Height: =50
-                Image: =userImg
-                ImagePosition: =ImagePosition.Fill
-                RadiusBottomLeft: =ctnHeaderBS.Height/0.10
-                RadiusBottomRight: =ctnHeaderBS.Height/0.10
-                RadiusTopLeft: =ctnHeaderBS.Height/0.10
-                RadiusTopRight: =ctnHeaderBS.Height/0.10
-                Width: =50
-                X: =Image2_35.X+Image2_35.Width+20
-                Y: =(ctnHeaderBS.Height-Self.Height)/2
-                ZIndex: =4
-
-            lblUsernameHeaderBS_2 As label:
-                Font: =Header.HeaderFont
-                FontWeight: =FontWeight.Bold
-                Height: =80
-                PaddingLeft: =20
-                Size: =Header.HeaderUserFontSize-2
-                Text: =username
-                Width: =ctnHeaderBS.Width/5.8
-                X: =imgUserHeaderBS_2.Width+imgUserHeaderBS_2.X
-                ZIndex: =5
-
             Rectangle1_4 As rectangle:
                 BorderColor: =RGBA(230, 230, 230, 1)
                 BorderThickness: =1

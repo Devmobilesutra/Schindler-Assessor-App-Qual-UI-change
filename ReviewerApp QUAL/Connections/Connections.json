@@ -1,4 +1,42 @@
 {
+  "03abfc3d-3e5b-471b-bf7d-6cb9df6d20a5": {
+    "connectionRef": {
+      "displayName": "Logic flows",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1615/1.0.1615.3163/logicflows/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
+      "parameterHints": {
+        "2e64dbd6-4a7f-4be8-a2c4-610ab16bc546": {
+          "value": "shared_powerappsnotification"
+        },
+        "workflowEntityId": {
+          "value": "9b732604-61f1-ec11-bb3d-000d3a1c674f"
+        },
+        "workflowName": {
+          "value": "00ef01db-dd4f-3bc3-f9a7-0b3d7a795c79"
+        }
+      },
+      "parameterHintsV2": {
+        "shared_powerappsnotification": {
+          "value": "2e64dbd6-4a7f-4be8-a2c4-610ab16bc546"
+        },
+        "workflowEntityId": {
+          "value": "9b732604-61f1-ec11-bb3d-000d3a1c674f"
+        },
+        "workflowName": {
+          "value": "00ef01db-dd4f-3bc3-f9a7-0b3d7a795c79"
+        }
+      }
+    },
+    "datasets": {},
+    "dataSources": [
+      "ApproveReport"
+    ],
+    "dependencies": {
+      "shared_powerappsnotification": "2e64dbd6-4a7f-4be8-a2c4-610ab16bc546"
+    },
+    "dependents": [],
+    "id": "03abfc3d-3e5b-471b-bf7d-6cb9df6d20a5"
+  },
   "147e9879-b17a-46e5-9d9d-f57a54ec6149": {
     "connectionRef": {
       "displayName": "SharePoint",
@@ -126,7 +164,7 @@
     "dependents": [
       "6e57afcb-8b7c-4f8d-870e-d2da9df6eae6",
       "78fa53f2-c3ab-4972-ac90-1d37b2fa99ac",
-      "9f125977-03e8-40db-b3da-d27941cdb989"
+      "03abfc3d-3e5b-471b-bf7d-6cb9df6d20a5"
     ],
     "id": "2e64dbd6-4a7f-4be8-a2c4-610ab16bc546"
   },
@@ -337,38 +375,6 @@
     },
     "dependents": [],
     "id": "8c0b1405-f919-4e3f-94e7-c6b91f0b08e4"
-  },
-  "9f125977-03e8-40db-b3da-d27941cdb989": {
-    "connectionRef": {
-      "displayName": "Logic flows",
-      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1615/1.0.1615.3163/logicflows/icon.png",
-      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
-      "parameterHints": {
-        "workflowEntityId": {
-          "value": "9b732604-61f1-ec11-bb3d-000d3a1c674f"
-        },
-        "workflowName": {
-          "value": "00ef01db-dd4f-3bc3-f9a7-0b3d7a795c79"
-        }
-      },
-      "parameterHintsV2": {
-        "workflowEntityId": {
-          "value": "9b732604-61f1-ec11-bb3d-000d3a1c674f"
-        },
-        "workflowName": {
-          "value": "00ef01db-dd4f-3bc3-f9a7-0b3d7a795c79"
-        }
-      }
-    },
-    "datasets": {},
-    "dataSources": [
-      "ApproveReport"
-    ],
-    "dependencies": {
-      "shared_powerappsnotification": "2e64dbd6-4a7f-4be8-a2c4-610ab16bc546"
-    },
-    "dependents": [],
-    "id": "9f125977-03e8-40db-b3da-d27941cdb989"
   },
   "ac2dac18-4677-4d61-8d77-5a4e3812d485": {
     "connectionRef": {
