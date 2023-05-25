@@ -81,10 +81,12 @@ AssessmentScreen As screen:
                         Height: =ctnBack.Height/1.6
                         HoverColor: =RGBA(0, 0, 0, 1)
                         HoverFill: =
-                        OnSelect: |-
-                            =
-                            UpdateContext({locInfoExpanded:false});
-                            Set(varExpanded,false);
+                        OnSelect: |
+                            =UpdateContext({locInfoExpanded: false});
+                            Set(
+                                varExpanded,
+                                false
+                            );
                             Navigate(SectionScreen);
                         PaddingBottom: =10
                         PaddingLeft: =20

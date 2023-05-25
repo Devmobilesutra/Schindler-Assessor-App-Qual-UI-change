@@ -1,29 +1,33 @@
 FindingScreen As screen:
     OnVisible: |-
-        =/*//for reset ideal timer
-        Reset(tmr_logout);
-        Set(UserLastNavigated, Now());*/
-        
-        Set(varloader,false);
-        Set(VarPopUpExitApp,false);
-        
-        If(VarPrevNav=true,
-        Set(
-            C,
-            true
-        );
-        Set(
-            P,
-            false
-        );,
-        Set(
-            C,
+        =Set(
+            varloader,
             false
         );
         Set(
-            P,
-            true
-        ));
+            VarPopUpExitApp,
+            false
+        );
+        If(
+            VarPrevNav = true,
+            Set(
+                C,
+                true
+            );
+            Set(
+                P,
+                false
+            );
+            ,
+            Set(
+                C,
+                false
+            );
+            Set(
+                P,
+                true
+            )
+        );
         //for safety check
         If(
             DateDiff(
@@ -42,18 +46,41 @@ FindingScreen As screen:
             );
             
         );
-        
-        Set(popup1,false);
-        Set(varRequired,false);
-        Set(VarBlankrow1,false);
-        Set(VarBlankrow2,false);
-        
-        Set(varActionbutton,false);
-        Set(varImage,false);
+        //Set(popup1,false);
+        Set(
+            varRequired,
+            false
+        );
+        Set(
+            VarBlankrow1,
+            false
+        );
+        Set(
+            VarBlankrow2,
+            false
+        );
+        Set(
+            varActionbutton,
+            false
+        );
+        Set(
+            varImage,
+            false
+        );
         //Set(UP,false);
-        Set(popupsuccess1,false);
-         Set(VarImagesExceedPopup,false);
-        If(App.Width>App.Height,App.ActiveScreen.Orientation="Landscape",App.ActiveScreen.Orientation="Landscape")
+        Set(
+            popupsuccess1,
+            false
+        );
+        Set(
+            VarImagesExceedPopup,
+            false
+        );
+        If(
+            App.Width > App.Height,
+            App.ActiveScreen.Orientation = "Landscape",
+            App.ActiveScreen.Orientation = "Landscape"
+        )
 
     ctnMainFS As groupContainer.verticalAutoLayoutContainer:
         Height: =Parent.Height
@@ -118,12 +145,6 @@ FindingScreen As screen:
                 Width: =ctnHeaderFS.Width/6.5
                 X: =imgUserHeaderPFS_3.Width+imgUserHeaderPFS_3.X
                 ZIndex: =5
-
-            cn As Component2:
-                Visible: =false
-                X: =lblUsernameHeaderPFS_3.Width+lblUsernameHeaderPFS_3.X
-                Y: =(ctnHeaderDS.Height-Self.Height)/2
-                ZIndex: =9
 
             Rectangle1_8 As rectangle:
                 BorderColor: =RGBA(230, 230, 230, 1)
@@ -252,8 +273,7 @@ FindingScreen As screen:
                 LayoutMinHeight: =40
                 LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
-                PaddingRight: =40
-                Width: =ctnMiddlePFS_3.Width
+                Width: =Parent.Width - 40 //ctnMiddlePFS_3.Width
                 ZIndex: =8
 
                 ctnAssessorAS_5 As groupContainer.verticalAutoLayoutContainer:
@@ -263,7 +283,7 @@ FindingScreen As screen:
                     LayoutMinHeight: =30
                     LayoutMinWidth: =250
                     LayoutMode: =LayoutMode.Auto
-                    Width: =ctnMiddleAS.Width
+                    Width: =Parent.Width
                     X: =40
                     ZIndex: =1
 
@@ -297,7 +317,7 @@ FindingScreen As screen:
                     LayoutMinWidth: =250
                     LayoutMode: =LayoutMode.Auto
                     LayoutWrap: =true
-                    Width: =ctnMiddleAS.Width
+                    Width: =Parent.Width
                     ZIndex: =2
 
                     lblBankNumberAS_8 As label:
@@ -320,7 +340,7 @@ FindingScreen As screen:
                         ZIndex: =4
 
                 ctnPreviousAssementAS_3 As groupContainer.verticalAutoLayoutContainer:
-                    AlignInContainer: =AlignInContainer.SetByContainer
+                    AlignInContainer: =AlignInContainer.Start
                     FillPortions: =0
                     Height: =30
                     LayoutDirection: =LayoutDirection.Vertical
@@ -328,13 +348,13 @@ FindingScreen As screen:
                     LayoutMinWidth: =250
                     LayoutMode: =LayoutMode.Auto
                     LayoutWrap: =true
-                    Width: =ctnMiddleAS.Width
+                    Width: =Parent.Width 
                     ZIndex: =3
 
                     lblPreAssessmentAS_3 As label:
                         Font: =AllScreensCSS.RFont
                         Height: =ctnPreviousAssementAS_3.Height
-                        PaddingLeft: =40
+                        PaddingLeft: =20
                         Size: =AllScreensCSS.RLabelFontSize
                         Text: ="Unit"
                         Width: =350
@@ -359,7 +379,7 @@ FindingScreen As screen:
                     LayoutMinWidth: =250
                     LayoutMode: =LayoutMode.Auto
                     LayoutWrap: =true
-                    Width: =ctnMiddleAS.Width
+                    Width: =Parent.Width 
                     ZIndex: =4
 
                     lblAssessmentTypeAS_5 As label:
@@ -392,7 +412,7 @@ FindingScreen As screen:
                     LayoutMinWidth: =250
                     LayoutMode: =LayoutMode.Auto
                     LayoutWrap: =true
-                    Width: =ctnMiddleAS.Width
+                    Width: =Parent.Width
                     ZIndex: =5
 
                     lblAssessmentDateAS_5 As label:
@@ -424,7 +444,7 @@ FindingScreen As screen:
                 LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
                 LayoutWrap: =true
-                Width: =ctnMiddleAS.Width
+                Width: =Parent.Width - 40
                 ZIndex: =9
 
                 lblSectionname_4 As label:
@@ -441,6 +461,7 @@ FindingScreen As screen:
                     ZIndex: =2
 
             ctnCheckpointIAS_4 As groupContainer.verticalAutoLayoutContainer:
+                AlignInContainer: =AlignInContainer.Start
                 FillPortions: =0
                 Height: =lblCheckpointAS_5.Height
                 LayoutAlignItems: =LayoutAlignItems.Center
@@ -450,11 +471,11 @@ FindingScreen As screen:
                 LayoutMode: =LayoutMode.Auto
                 PaddingLeft: =20
                 PaddingRight: =40
-                Width: =ctnMiddleAS.Width
+                Width: =Parent.Width -40
                 ZIndex: =10
 
                 lblCheckpointAS_5 As label:
-                    AlignInContainer: =AlignInContainer.Stretch
+                    AlignInContainer: =AlignInContainer.Start
                     AutoHeight: =true
                     Font: =AllScreensCSS.RFont
                     Height: =35
@@ -463,7 +484,7 @@ FindingScreen As screen:
                     Text: |-
                         =
                         LookUp(GC_templateCheckpoints,checkpointId=ChId,checkpointName)
-                    Width: =ctnCheckpointIAS_4.Width/25
+                    Width: =Parent.Width
                     ZIndex: =1
 
             ctnCheckpointItemAS_3 As groupContainer.verticalAutoLayoutContainer:
@@ -653,26 +674,18 @@ FindingScreen As screen:
                             =//+Label22_5.Height+Label21_4.Height+Icon3_13.Height+Icon3_15.Height+ctnDatePFS_5.Height
                             /*CountRows(Gallery5_6.AllItems)*(Gallery5_6.TemplateHeight)+CountRows(Gallery14_2.AllItems)*(Gallery14_2.TemplateHeight)+CountRows(glryPreviousFS.AllItems)*(glryPreviousFS.TemplateHeight)*/
                             Parent.Height
-                        Items: |
-                            =//Filter(checkpointItem_ActionItem, 'checkpointItem_ActionItem (Views)'.previousFindings)
-                            //Filter(GC_checkpointItem_ActionItem,checkpointItem_Id.checkpointItemId.checkpointItemId=varCheckpointitemID)
-                            // && bankUnitId.Id=varBankUnitId &&assignmentId.startDate<>glryProject.Selected.startDate)
+                        Items: |-
+                            =
                             //assume that the checkpoint item ID in mastertable templatecheckpointIntems is stored in the variable "varCheckpointitemID" when user clicks finding button
                             //get all Annotation from gcCheckpointItemAssessment for this unit ,for this checkpoint item ID "varCheckpointitemID" and for completed assignment . 
                             //the previous action item should be shown after grouping with assessment type  (is it vreally required ?)  and should be shown in the order of assessment date(completed date)
                             Sort(
                                 Filter(
                                     GC_checkpointItemAssessment,
-                                    checkpointItemId.checkpointItemId = varCheckpointitemID && bankUnitId.Id = varBankUnitId && assignmentId.isCompleted = "Completed"
-                                 //&& assessmentStatus = "Check"
-                                 && !IsBlank(checkpointItem_annotation)
+                                    checkpointItemId.checkpointItemId = varCheckpointitemID && bankUnitId.Id = varBankUnitId && assignmentId.isCompleted = "Completed" && !IsBlank(checkpointItem_annotation)
                                 ),
                                 assignmentId.completionDate
                             )
-                            /*Filter(
-                                GC_checkpointItemAssessment,
-                                checkpointItemId.checkpointItemId = varCheckpointitemID && assessmentStatus="Check"
-                             )*/
                         Layout: =Layout.Vertical
                         LayoutMinHeight: =287
                         LayoutMinWidth: =320
@@ -689,12 +702,11 @@ FindingScreen As screen:
                             Height: =CountRows(Gallery14_2.AllItems)*(Gallery14_2.TemplateHeight)
                             Items: |-
                                 =
-                                
                                 //get all images for this stored templateCheckpointItem ID "varCheckpointitemID" from GC_checkpointItem_Images for selected bankUnit ID and whose assignment is completed .
                                 //And for parents findings . since there is no open and close status for images therefore all images for the selected findings will be shown.(to be discussed with client)
                                 Filter(
-                                    GC_checkpointItem_Images,bankUnitId.Id = varBankUnitId  &&
-                                    checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = ThisItem.'checkpointItemAssessment (quantum_checkpointitemassessment)'
+                                    GC_checkpointItem_Images,
+                                    bankUnitId.Id = varBankUnitId && checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = ThisItem.'checkpointItemAssessment (quantum_checkpointitemassessment)'
                                 )
                             Layout: =Layout.Vertical
                             ShowScrollbar: =false
@@ -919,8 +931,10 @@ FindingScreen As screen:
                                 PaddingTop: =0
                                 Size: =AllScreensCSS.RLabelFontSize-2
                                 Text: |-
-                                    =
-                                    Text(ThisItem.assignmentId.completionDate,"mm-dd-yyyy")
+                                    =Text(
+                                        ThisItem.assignmentId.completionDate,
+                                        "mm-dd-yyyy"
+                                    )
                                 Width: =Parent.Width
                                 ZIndex: =2
 
@@ -1147,10 +1161,15 @@ FindingScreen As screen:
                                 HoverFill: |-
                                     =//ColorFade(RGBA(56, 96, 178, 1), -20%)
                                     Self.Fill
-                                OnSelect: |+
-                                    =Set(PopupCloseAction,true);
-                                    Set(SelectedcheckpointItemActionItemsId,ThisItem.checkpointItemActionItemsId);
-                                    
+                                OnSelect: |
+                                    =Set(
+                                        PopupCloseAction,
+                                        true
+                                    );
+                                    Set(
+                                        SelectedcheckpointItemActionItemsId,
+                                        ThisItem.checkpointItemActionItemsId
+                                    );
                                 PressedFill: =Self.Fill
                                 Text: |-
                                     =//If(Btn,true,"closed Action","close Action")
@@ -1931,10 +1950,7 @@ FindingScreen As screen:
                                         UploadedImage1_2
                                     )
                                 OnSelect: |-
-                                    =/*//for reset ideal timer
-                                    Reset(tmr_logout);
-                                    Set(UserLastNavigated, Now());*/
-                                    
+                                    =
                                     //for safety check
                                     If(
                                         DateDiff(
@@ -1954,7 +1970,7 @@ FindingScreen As screen:
                                         
                                     );
                                     
-                                    Set(popup,true)
+                                    //Set(popup,true)
                                 Visible: =Q
                                 Width: =Parent.TemplateWidth/1.8
                                 X: =Parent.TemplateWidth/7
@@ -2296,9 +2312,7 @@ FindingScreen As screen:
                                 Font: =AllScreensCSS.ButtonFont
                                 HoverFill: =AllScreensCSS.RActiveColor
                                 OnSelect: |-
-                                    =/*//for reset ideal timer
-                                    Reset(tmr_logout);
-                                    Set(UserLastNavigated, Now());*/
+                                    =
                                     //for safety check
                                     If(
                                         DateDiff(
@@ -2506,10 +2520,7 @@ FindingScreen As screen:
                                         VarBlankrow2,
                                         false
                                     );
-                                    /*
-                                    //for reset ideal timer
-                                    Reset(tmr_logout);
-                                    Set(UserLastNavigated,Now());*/
+                                    
                                     //for safety check
                                     If(
                                         DateDiff(
@@ -3032,7 +3043,7 @@ FindingScreen As screen:
                                 Y: =btnAddImageFS.Height+btnAddImageFS.Y+50
                                 ZIndex: =1
 
-                            Button2_2 As button:
+                            btnExitSave As button:
                                 BorderThickness: =0
                                 Fill: =AllScreensCSS.RActiveColor
                                 FocusedBorderThickness: =0
@@ -3050,24 +3061,6 @@ FindingScreen As screen:
                                 Visible: =false
                                 Width: =180
                                 ZIndex: =2
-
-    TimerFS As timer:
-        AutoStart: =//If(varSafety=true,true,false)
-        Duration: =//1000
-        OnTimerEnd: |-
-            =/*If( P = false &&
-                UserLastNavigated < DateAdd(
-                    Now(),
-                    LogOutTimer,
-                    Seconds
-                ),
-                Set(safetyPopup,true);
-            )*/
-        Repeat: =true
-        Visible: =false
-        X: =20
-        Y: =20
-        ZIndex: =2
 
     grsafetyHeader As group:
         Height: =5
@@ -3211,65 +3204,7 @@ FindingScreen As screen:
             Y: =Label2_11.Y+ Label2_11.Height+10
             ZIndex: =13
 
-    grImagePopup As group:
-        Height: =5
-        Width: =5
-        X: =40
-        Y: =40
-        ZIndex: =21
-
-        iconRectanglePopup As rectangle:
-            Fill: =RGBA(0, 0, 0, 0.29)
-            Height: =Parent.Height
-            Visible: =false
-            Width: =Parent.Width
-            ZIndex: =14
-
-        "'Popup Image_4' As groupContainer.manualLayoutContainer":
-            BorderThickness: =2
-            Height: =If(App.Height>768,Container7_3.Height/2.5,App.Height<1289,Container7_3.Height/2.1,App.Height<1025,Container7_3.Height/2.5,Container7_3.Height/3)
-            Visible: =false
-            Width: =If(App.Height>768,Container7_3.Height/2.2,App.Height<1289,Container7_3.Height/2,Container7_3.Height/2.8)
-            X: |-
-                =//If(App.Width<769,Parent.Width/8,Parent.Width/3.5)
-                //If(App.Width<769,Parent.Width/8 ,App.Width>1289,Parent.Width/3,Parent.Width/4)
-                (Parent.Width-Self.Width)/2
-            Y: |-
-                =//If(App.Width<769,Parent.Height/9,App.Height<1289,Container7_3.Height/29,Parent.Height/8)
-                (Parent.Height-Self.Height)/2
-            ZIndex: =15
-
-            imgpopuppreviousfinding1 As image:
-                BorderColor: =RGBA(9, 33, 98, 1)
-                DisabledBorderColor: =RGBA(0, 0, 0, 1)
-                Fill: =RGBA(230, 230, 230, 1)
-                Height: ='Popup Image_4'.Height
-                Image: =Image16_2.Image 
-                OnSelect: =//Set(popup,false);
-                Visible: =//popup
-                Width: ='Popup Image_4'.Width
-                ZIndex: =1
-
-            imgpopuppreviousfinding As image:
-                BorderColor: =RGBA(9, 33, 98, 1)
-                DisabledBorderColor: =RGBA(0, 0, 0, 1)
-                Fill: =RGBA(255, 255, 255, 1)
-                Height: ='Popup Image_4'.Height
-                Image: =Gallery14_2.Selected.Image.Full
-                OnSelect: =//Set(popup,false);
-                Visible: =//popup1
-                Width: ='Popup Image_4'.Width
-                ZIndex: =2
-
-            iconCloseImagepopup As icon.Cancel:
-                Color: =RGBA(255, 255, 255, 1)
-                Fill: =RGBA(0, 16, 96, 1)
-                Icon: =Icon.Cancel
-                OnSelect: =Set(popup,false);Set(popup1,false)
-                X: =(imgpopuppreviousfinding.Width+imgpopuppreviousfinding.X)-Self.Width
-                ZIndex: =3
-
-    Group1 As group:
+    grCloseActionConfirmation As group:
         Height: =5
         Width: =5
         X: =40
@@ -3318,12 +3253,26 @@ FindingScreen As screen:
             Fill: =RGBA(54, 176, 75, 1)
             Font: =AllScreensCSS.RFont
             HoverFill: =RGBA(75, 125, 6, 1)
-            OnSelect: |-
+            OnSelect: |
                 =//Set(C, false );
                 //Set(P, true );
-                Set(VarPrevNav,false);
-                Set(PopupCloseAction, false );
-                UpdateIf(GC_checkpointItem_ActionItem,checkpointItemActionItemsId=SelectedcheckpointItemActionItemsId,{Action_status:"Close",CIAstatusUpdate:1});Navigate(FindingScreen);
+                Set(
+                    VarPrevNav,
+                    false
+                );
+                Set(
+                    PopupCloseAction,
+                    false
+                );
+                UpdateIf(
+                    GC_checkpointItem_ActionItem,
+                    checkpointItemActionItemsId = SelectedcheckpointItemActionItemsId,
+                    {
+                        Action_status: "Close",
+                        CIAstatusUpdate: 1
+                    }
+                );
+                Navigate(FindingScreen);
             PressedBorderColor: =RGBA(1, 43, 1, 0)
             PressedFill: =Self.Fill
             Text: ="Ok"
