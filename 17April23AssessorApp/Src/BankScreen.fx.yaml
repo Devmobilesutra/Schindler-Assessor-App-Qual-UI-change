@@ -163,7 +163,7 @@ BankScreen As screen:
                             ="G.O./Commission number :   " & lblBankName.Text
                         Width: =Parent.Width
                         X: |
-                            =lblAssessmentBS_2.X+lblAssessmentBS_2.Width
+                            =//lblAssessmentBS_2.X+lblAssessmentBS_2.Width
                         ZIndex: =1
 
                 ctnbankBS As groupContainer.horizontalAutoLayoutContainer:
@@ -2853,6 +2853,54 @@ BankScreen As screen:
             Y: =//Container4_2.Height
             ZIndex: =2
 
+            imgLogoPS_2 As image:
+                DisplayMode: =DisplayMode.View
+                Fill: =RGBA(255, 255, 255, 1)
+                Height: =80
+                Image: ='schindler-logo'
+                PaddingBottom: =5
+                PaddingLeft: =2
+                PaddingRight: =1
+                PaddingTop: =5
+                Width: =ctnHeaderDS.Width/12
+                ZIndex: =1
+
+            lblAssessmentPS_2 As label:
+                Align: =Align.Center
+                Color: =Header.HeaderColor
+                Font: =Header.HeaderFont
+                FontWeight: =FontWeight.Bold
+                Height: =81
+                Size: =Header.HeaderFontSize
+                Text: =glryProject.Selected.clientId.name
+                Width: =If(Parent.Width>821,Parent.Width/1.8,Parent.Width/2.2)
+                X: =imgLogoPS_2.Width
+                ZIndex: =2
+
+            imgUserHeaderPS_2 As image:
+                Height: =50
+                Image: =userImg
+                ImagePosition: =ImagePosition.Fill
+                RadiusBottomLeft: =ctnHeaderPS.Height/0.10
+                RadiusBottomRight: =ctnHeaderPS.Height/0.10
+                RadiusTopLeft: =ctnHeaderPS.Height/0.10
+                RadiusTopRight: =ctnHeaderPS.Height/0.10
+                Width: =50
+                X: =Image2_35.X+Image2_35.Width+20
+                Y: =18
+                ZIndex: =3
+
+            lblUsernameHeaderPS_2 As label:
+                Font: =Header.HeaderFont
+                FontWeight: =FontWeight.Bold
+                Height: =81
+                PaddingLeft: =20
+                Size: =Header.HeaderUserFontSize-2
+                Text: =username
+                Width: =ctnHeaderDS.Width/5.08
+                X: =imgUserHeaderPS_2.X+imgUserHeaderPS_2.Width
+                ZIndex: =4
+
             Rectangle1_4 As rectangle:
                 BorderColor: =RGBA(230, 230, 230, 1)
                 BorderThickness: =1
@@ -2860,15 +2908,15 @@ BankScreen As screen:
                 Height: =1
                 Width: =Parent.Width
                 Y: =80
-                ZIndex: =10
+                ZIndex: =5
 
             Image2_35 As image:
                 Height: =40
                 Image: =If(Connection.Connected,'internet green icon-1x','internet-1x')
                 Width: =30
-                X: =lblAssessmentBS_2.X+lblAssessmentBS_2.Width+20
+                X: =lblAssessmentPS_2.X+lblAssessmentPS_2.Width+20
                 Y: =21
-                ZIndex: =11
+                ZIndex: =6
 
         CommentPopupBS As group:
             Height: =5

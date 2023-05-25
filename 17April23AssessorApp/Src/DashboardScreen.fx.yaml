@@ -664,8 +664,11 @@ DashboardScreen As screen:
                 ZIndex: =4
 
         ctnlpdname As groupContainer.verticalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
             Height: =20
             LayoutDirection: =LayoutDirection.Vertical
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
             Width: =Parent.Width
             ZIndex: =5
