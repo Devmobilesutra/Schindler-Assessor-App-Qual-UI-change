@@ -348,14 +348,14 @@ SafetyHeaderScreen As screen:
                         FillPortions: =0
                         Height: =CountRows(glrySafetyCheck.AllItems)*glrySafetyCheck.TemplateHeight
                         Items: |-
-                            =["Notify all necessary parties you have arrived. (Local EI and Building Management)",
-                            "JHA Completed.",
-                            //"JHA Completed (Picture Required).",
-                            "Service Barricades Available.",
-                            "Door Wedge tools Available.",
-                            "LOTO Equipment Available.",
-                            //"It is understood that anytime you remove the cover from the TSU on a 5500,you must first LOTO. ",
-                            "Schindler high risk quick book available."]
+                            =[
+                                "Notify all necessary parties you have arrived. (Local EI and Building Management)",
+                                "JHA Completed.",
+                                "Service Barricades Available.",
+                                "Door Wedge tools Available.",
+                                "LOTO Equipment Available.",
+                                "Schindler high risk quick book available."
+                            ]
                         Layout: =Layout.Vertical
                         LayoutMinHeight: =287
                         LayoutMinWidth: =320
@@ -424,8 +424,7 @@ SafetyHeaderScreen As screen:
                         HoverBorderColor: =
                         HoverFill: =Self.Fill
                         OnSelect: |-
-                            =
-                            Clear(security);
+                            =Clear(security);
                             ForAll(
                                 glrySafetyCheck.AllItems,
                                 If(
@@ -448,11 +447,15 @@ SafetyHeaderScreen As screen:
                                     )
                                 ) < 1,
                                 //for safety check to show default selected
-                                Set(varSafety,true);
-                            
+                                Set(
+                                    varSafety,
+                                    true
+                                );
                                 //To store user last navigated time use for safety check without timer
-                                Set(UserLastNavigatedTime, Now());
-                            
+                            Set(
+                                    UserLastNavigatedTime,
+                                    Now()
+                                );
                                 Navigate(SectionScreen),
                                 Notify(
                                     "Check boxes required for each item and you cannot proceed without checking each box.",
@@ -472,6 +475,54 @@ SafetyHeaderScreen As screen:
             Y: =//Container4_3.Height
             ZIndex: =4
 
+            imgLogoSH As image:
+                DisplayMode: =DisplayMode.View
+                Fill: =RGBA(255, 255, 255, 1)
+                Height: =80
+                Image: ='schindler-logo'
+                PaddingBottom: =5
+                PaddingLeft: =2
+                PaddingRight: =1
+                PaddingTop: =5
+                Width: =ctnHeaderSafetyHeader.Width/12
+                ZIndex: =1
+
+            lblAssessmentSH As label:
+                Align: =Align.Center
+                Color: =Header.HeaderColor
+                Font: =Header.HeaderFont
+                FontWeight: =FontWeight.Bold
+                Height: =80
+                Size: =Header.HeaderFontSize
+                Text: ="Safety Header for wellness"
+                Width: =If(Parent.Width>821,Parent.Width/1.8,Parent.Width/2.2)
+                X: =imgLogoSH.Width
+                ZIndex: =2
+
+            imgUserHeaderSH As image:
+                Height: =50
+                Image: =userImg
+                ImagePosition: =ImagePosition.Fill
+                RadiusBottomLeft: =ctnHeaderSafetyHeader.Height/0.10
+                RadiusBottomRight: =ctnHeaderSafetyHeader.Height/0.10
+                RadiusTopLeft: =ctnHeaderSafetyHeader.Height/0.10
+                RadiusTopRight: =ctnHeaderSafetyHeader.Height/0.10
+                Width: =50
+                X: =Image2_37.Width+Image2_37.X+20
+                Y: =(ctnHeaderSafetyHeader.Height-Self.Height)/2
+                ZIndex: =4
+
+            lblUsernameHeaderSH As label:
+                Font: =Header.HeaderFont
+                FontWeight: =FontWeight.Bold
+                Height: =80
+                PaddingLeft: =20
+                Size: =Header.HeaderUserFontSize-2
+                Text: =username
+                Width: =ctnHeaderSafetyHeader.Width/5.8
+                X: =imgUserHeaderSH.Width+imgUserHeaderSH.X
+                ZIndex: =5
+
             Rectangle1_6 As rectangle:
                 BorderColor: =RGBA(230, 230, 230, 1)
                 BorderThickness: =1
@@ -480,67 +531,6 @@ SafetyHeaderScreen As screen:
                 Width: =Parent.Width
                 Y: =80
                 ZIndex: =10
-
-            GroupHeaderSafetyHeader As group:
-                Height: =5
-                Width: =5
-                X: =40
-                Y: =40
-                ZIndex: =10
-
-                imgLogoSH As image:
-                    DisplayMode: =DisplayMode.View
-                    Fill: =RGBA(255, 255, 255, 1)
-                    Height: =80
-                    Image: ='schindler-logo'
-                    PaddingBottom: =5
-                    PaddingLeft: =2
-                    PaddingRight: =1
-                    PaddingTop: =5
-                    Width: =ctnHeaderSafetyHeader.Width/12
-                    ZIndex: =1
-
-                lblAssessmentSH As label:
-                    Align: =Align.Center
-                    Color: =Header.HeaderColor
-                    Font: =Header.HeaderFont
-                    FontWeight: =FontWeight.Bold
-                    Height: =80
-                    Size: =Header.HeaderFontSize
-                    Text: ="Safety Header for wellness"
-                    Width: =If(Parent.Width>821,Parent.Width/1.8,Parent.Width/2.2)
-                    X: =imgLogoSH.Width
-                    ZIndex: =2
-
-                imgUserHeaderSH As image:
-                    Height: =50
-                    Image: =userImg
-                    ImagePosition: =ImagePosition.Fill
-                    RadiusBottomLeft: =ctnHeaderSafetyHeader.Height/0.10
-                    RadiusBottomRight: =ctnHeaderSafetyHeader.Height/0.10
-                    RadiusTopLeft: =ctnHeaderSafetyHeader.Height/0.10
-                    RadiusTopRight: =ctnHeaderSafetyHeader.Height/0.10
-                    Width: =50
-                    X: =Image2_37.Width+Image2_37.X+20
-                    Y: =(ctnHeaderSafetyHeader.Height-Self.Height)/2
-                    ZIndex: =4
-
-                lblUsernameHeaderSH As label:
-                    Font: =Header.HeaderFont
-                    FontWeight: =FontWeight.Bold
-                    Height: =80
-                    PaddingLeft: =20
-                    Size: =Header.HeaderUserFontSize-2
-                    Text: =username
-                    Width: =ctnHeaderSafetyHeader.Width/5.8
-                    X: =imgUserHeaderSH.Width+imgUserHeaderSH.X
-                    ZIndex: =5
-
-                NetworkIconSafetyHeader As Component2:
-                    Visible: =false
-                    X: =lblUsernameHeaderSH.Width+lblUsernameHeaderSH.X
-                    Y: =(ctnHeaderDS.Height-Self.Height)/2
-                    ZIndex: =9
 
             Image2_37 As image:
                 Height: =40
