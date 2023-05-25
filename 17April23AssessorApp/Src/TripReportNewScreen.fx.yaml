@@ -656,7 +656,7 @@ TripReportNewScreen As screen:
                         VerticalAlign: =VerticalAlign.Top
                         Visible: =false
                         Width: =120
-                        X: =txtTimeEstimateValueAR.X+txtTimeEstimateValueAR.Width+20
+                        X: =txtTimeEstimateValueAR_1.X+txtTimeEstimateValueAR_1.Width+20
                         Y: =LblMaterialEstimateAR_1.Y
                         ZIndex: =4
 
@@ -671,7 +671,7 @@ TripReportNewScreen As screen:
                         OnSelect: =Select(Parent)
                         Visible: =false
                         Width: =Parent.Width/8
-                        X: =lblDurationAR.X+lblDurationAR.Width
+                        X: =lblDurationAR_1.X+lblDurationAR_1.Width
                         Y: =lblDurationAR_1.Y
                         ZIndex: =5
 
@@ -707,7 +707,7 @@ TripReportNewScreen As screen:
                         Text: ="Owner"
                         VerticalAlign: =VerticalAlign.Top
                         Width: =Parent.Width/8
-                        X: =lblPriorityValueAR.Width+lblPriorityValueAR.X
+                        X: =lblPriorityValueAR_1.Width+lblPriorityValueAR_1.X
                         Y: =lblActionReqValueAR_1.Y +lblActionReqValueAR_1.Height
                         ZIndex: =7
 
@@ -741,7 +741,7 @@ TripReportNewScreen As screen:
                         Text: =ThisItem.priority
                         VerticalAlign: =VerticalAlign.Top
                         Width: =200
-                        X: =lblPriorityAR.X + lblPriorityAR.Width
+                        X: =lblPriorityAR_1.X + lblPriorityAR_1.Width
                         Y: =lblActionReqValueAR_1.Y +lblActionReqValueAR_1.Height
                         ZIndex: =9
 
@@ -774,7 +774,7 @@ TripReportNewScreen As screen:
                         Text: ="Time Estimate"
                         VerticalAlign: =VerticalAlign.Top
                         Width: =160
-                        X: =txtMaterialValueAR.Width+txtMaterialValueAR.X+40
+                        X: =txtMaterialValueAR_1.Width+txtMaterialValueAR_1.X+40
                         Y: =lblOwnerIdAR_1.Y + lblOwnerIdAR_1.Height
                         ZIndex: =12
 
@@ -792,7 +792,7 @@ TripReportNewScreen As screen:
                             LookUp(GcCheckpointAssessment,checkpointAssessment_id=ThisItem.checkpoint_id.checkpointAssessment_id,checkpointName)
                         VerticalAlign: =VerticalAlign.Top
                         Width: =Parent.Width -230
-                        X: =lblCheckpointAR.X+lblCheckpointAR.Width
+                        X: =lblCheckpointAR_1.X+lblCheckpointAR_1.Width
                         Y: =Label22_6.Height+Label22_6.Y
                         ZIndex: =14
 
@@ -810,7 +810,7 @@ TripReportNewScreen As screen:
                             LookUp(GC_checkpointItemAssessment,'checkpointItemAssessment (quantum_checkpointitemassessment)'=ThisItem.checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)',checkpointItemName)
                         VerticalAlign: =VerticalAlign.Top
                         Width: =Parent.Width -230
-                        X: =lblItemAR.X+lblItemAR.Width
+                        X: =lblItemAR_1.X+lblItemAR_1.Width
                         Y: |-
                             =If(lblItemAR_1.Height <10,
                             lblCheckpointAR_1.Y+ lblCheckpointAR_1.Height,
@@ -829,7 +829,7 @@ TripReportNewScreen As screen:
                         Text: =ThisItem.ActionItem_Name
                         VerticalAlign: =VerticalAlign.Top
                         Width: =Parent.Width - 230
-                        X: =lblActionReqAR.X + lblActionReqAR.Width
+                        X: =lblActionReqAR_1.X + lblActionReqAR_1.Width
                         Y: =lblItemValueAR_1.Y + lblItemValueAR_1.Height
                         ZIndex: =16
 
@@ -851,7 +851,7 @@ TripReportNewScreen As screen:
                         Size: =16
                         Text: =ThisItem.MaterialEstimate
                         Width: =140
-                        X: =LblMaterialEstimateAR.X+LblMaterialEstimateAR.Width
+                        X: =LblMaterialEstimateAR_1.X+LblMaterialEstimateAR_1.Width
                         Y: =lblOwnerIdValueAR_1.Y +lblOwnerIdValueAR_1.Height
                         ZIndex: =20
 
@@ -861,7 +861,7 @@ TripReportNewScreen As screen:
                         Size: =16
                         Text: =ThisItem.TimeEstimate
                         Width: =300
-                        X: =lblTimeestimateAR.X + lblTimeestimateAR.Width
+                        X: =lblTimeestimateAR_1.X + lblTimeestimateAR_1.Width
                         Y: =lblOwnerIdValueAR_1.Y +lblOwnerIdValueAR_1.Height
                         ZIndex: =21
 
