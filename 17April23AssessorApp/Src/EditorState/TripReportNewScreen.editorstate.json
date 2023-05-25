@@ -10655,7 +10655,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Label22_3",
-      "ParentIndex": 4,
+      "ParentIndex": 5,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -11664,14 +11664,7 @@
         "AutoHeight",
         "Wrap",
         "IsErrorMessage",
-        {
-          "AFDDataSourceName": "",
-          "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "ThisItem.Action_status",
-          "InvariantPropertyName": "Text",
-          "IsLockable": false,
-          "NameMapSourceSchema": "?"
-        },
+        "Text",
         "Tooltip",
         "Role",
         "ContentLanguage",
@@ -12012,14 +12005,7 @@
         "AutoHeight",
         "Wrap",
         "IsErrorMessage",
-        {
-          "AFDDataSourceName": "",
-          "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "ThisItem.ActionSortSequence",
-          "InvariantPropertyName": "Text",
-          "IsLockable": false,
-          "NameMapSourceSchema": "?"
-        },
+        "Text",
         "Tooltip",
         "Role",
         "ContentLanguage",
@@ -18625,7 +18611,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblCheckpointAR_1",
-      "ParentIndex": 5,
+      "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -19268,14 +19254,7 @@
         "AutoHeight",
         "Wrap",
         "IsErrorMessage",
-        {
-          "AFDDataSourceName": "",
-          "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "ThisItem.ActionSortSequence",
-          "InvariantPropertyName": "Text",
-          "IsLockable": false,
-          "NameMapSourceSchema": "?"
-        },
+        "Text",
         "Tooltip",
         "Role",
         "ContentLanguage",
@@ -20329,14 +20308,7 @@
         "AutoHeight",
         "Wrap",
         "IsErrorMessage",
-        {
-          "AFDDataSourceName": "",
-          "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "ThisItem.ActionSortSequence",
-          "InvariantPropertyName": "Text",
-          "IsLockable": false,
-          "NameMapSourceSchema": "?"
-        },
+        "Text",
         "Tooltip",
         "Role",
         "ContentLanguage",
@@ -20670,14 +20642,7 @@
         "AutoHeight",
         "Wrap",
         "IsErrorMessage",
-        {
-          "AFDDataSourceName": "",
-          "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "ThisItem.priority",
-          "InvariantPropertyName": "Text",
-          "IsLockable": false,
-          "NameMapSourceSchema": "?"
-        },
+        "Text",
         "Tooltip",
         "Role",
         "ContentLanguage",
@@ -21338,14 +21303,7 @@
         "AutoHeight",
         "Wrap",
         "IsErrorMessage",
-        {
-          "AFDDataSourceName": "",
-          "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "ThisItem.OwnerId",
-          "InvariantPropertyName": "Text",
-          "IsLockable": false,
-          "NameMapSourceSchema": "?"
-        },
+        "Text",
         "Tooltip",
         "Role",
         "ContentLanguage",
@@ -21686,14 +21644,7 @@
         "AutoHeight",
         "Wrap",
         "IsErrorMessage",
-        {
-          "AFDDataSourceName": "",
-          "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "ThisItem.ActionItem_Name",
-          "InvariantPropertyName": "Text",
-          "IsLockable": false,
-          "NameMapSourceSchema": "?"
-        },
+        "Text",
         "Tooltip",
         "Role",
         "ContentLanguage",
@@ -22027,14 +21978,7 @@
         "AutoHeight",
         "Wrap",
         "IsErrorMessage",
-        {
-          "AFDDataSourceName": "",
-          "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "ThisItem.MaterialEstimate",
-          "InvariantPropertyName": "Text",
-          "IsLockable": false,
-          "NameMapSourceSchema": "?"
-        },
+        "Text",
         "Tooltip",
         "Role",
         "ContentLanguage",
@@ -22368,14 +22312,7 @@
         "AutoHeight",
         "Wrap",
         "IsErrorMessage",
-        {
-          "AFDDataSourceName": "",
-          "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "ThisItem.TimeEstimate",
-          "InvariantPropertyName": "Text",
-          "IsLockable": false,
-          "NameMapSourceSchema": "?"
-        },
+        "Text",
         "Tooltip",
         "Role",
         "ContentLanguage",
@@ -24875,14 +24812,7 @@
         "AutoHeight",
         "Wrap",
         "IsErrorMessage",
-        {
-          "AFDDataSourceName": "",
-          "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "ThisItem.ActionSortSequence",
-          "InvariantPropertyName": "Text",
-          "IsLockable": false,
-          "NameMapSourceSchema": "?"
-        },
+        "Text",
         "Tooltip",
         "Role",
         "ContentLanguage",
@@ -25755,7 +25685,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Rectanglebroder_3",
-      "ParentIndex": 19,
+      "ParentIndex": 21,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -27235,14 +27165,7 @@
         "AutoHeight",
         "Wrap",
         "IsErrorMessage",
-        {
-          "AFDDataSourceName": "",
-          "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "ThisItem.ActionSortSequence",
-          "InvariantPropertyName": "Text",
-          "IsLockable": false,
-          "NameMapSourceSchema": "?"
-        },
+        "Text",
         "Tooltip",
         "Role",
         "ContentLanguage",
@@ -27951,14 +27874,7 @@
         "AutoHeight",
         "Wrap",
         "IsErrorMessage",
-        {
-          "AFDDataSourceName": "",
-          "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "ThisItem.ActionSortSequence",
-          "InvariantPropertyName": "Text",
-          "IsLockable": false,
-          "NameMapSourceSchema": "?"
-        },
+        "Text",
         "Tooltip",
         "Role",
         "ContentLanguage",
