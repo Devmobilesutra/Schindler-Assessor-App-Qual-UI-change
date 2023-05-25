@@ -8466,54 +8466,6 @@
               "message": {
                 "text": "Error occurred running rule app-InefficientDelayLoading."
               }
-            },
-            {
-              "associatedRule": {
-                "id": "app-InefficientDelayLoading",
-                "index": 10
-              },
-              "descriptor": {
-                "id": "app-InefficientDelayLoading"
-              },
-              "message": {
-                "text": "Error occurred running rule app-InefficientDelayLoading."
-              }
-            },
-            {
-              "associatedRule": {
-                "id": "app-InefficientDelayLoading",
-                "index": 10
-              },
-              "descriptor": {
-                "id": "app-InefficientDelayLoading"
-              },
-              "message": {
-                "text": "Error occurred running rule app-InefficientDelayLoading."
-              }
-            },
-            {
-              "associatedRule": {
-                "id": "app-InefficientDelayLoading",
-                "index": 10
-              },
-              "descriptor": {
-                "id": "app-InefficientDelayLoading"
-              },
-              "message": {
-                "text": "Error occurred running rule app-InefficientDelayLoading."
-              }
-            },
-            {
-              "associatedRule": {
-                "id": "app-InefficientDelayLoading",
-                "index": 10
-              },
-              "descriptor": {
-                "id": "app-InefficientDelayLoading"
-              },
-              "message": {
-                "text": "Error occurred running rule app-InefficientDelayLoading."
-              }
             }
           ]
         }
@@ -11744,19 +11696,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "AssessmentScreen.ctnMainAS.ctnMiddleAS.ctnitemsAS.ctnFooterAS.Button2_1.FocusedBorderThickness"
+                  "fullyQualifiedName": "AssessmentScreen.ctnMainAS.ctnMiddleAS.ctnitemsAS.ctnFooterAS.btnExitSubmit.FocusedBorderThickness"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "AssessmentScreen.ctnMainAS.ctnMiddleAS.ctnitemsAS.ctnFooterAS.Button2_1.FocusedBorderThickness",
+                  "fullyQualifiedName": "AssessmentScreen.ctnMainAS.ctnMiddleAS.ctnitemsAS.ctnFooterAS.btnExitSubmit.FocusedBorderThickness",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "FocusedBorderThickness",
                 "module": "AssessmentScreen",
-                "type": "AssessmentScreen.ctnMainAS.ctnMiddleAS.ctnitemsAS.ctnFooterAS.Button2_1"
+                "type": "AssessmentScreen.ctnMainAS.ctnMiddleAS.ctnitemsAS.ctnFooterAS.btnExitSubmit"
               }
             }
           ],

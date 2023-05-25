@@ -1,10 +1,7 @@
 SectionScreen As screen:
     Fill: =
-    OnVisible: |+
-        =/*//for reset ideal timer
-        Reset(tmr_logout);
-        Set(UserLastNavigated, Now());*/
-        
+    OnVisible: |-
+        =
         //for safety check popup
         If(
             DateDiff(
@@ -23,14 +20,19 @@ SectionScreen As screen:
             );
             
         );
-        
-        Set(varComment,false);
-        
-        Set(safetyPopup,false);
-        UpdateContext({locInfoExpanded:false});
-        Trace(First(GC_product).product_Name,TraceSeverity.Information)
-        
-        
+        Set(
+            varComment,
+            false
+        );
+        Set(
+            safetyPopup,
+            false
+        );
+        UpdateContext({locInfoExpanded: false});
+        Trace(
+            First(GC_product).product_Name,
+            TraceSeverity.Information
+        )
 
     ctnMainSection As groupContainer.manualLayoutContainer:
         Height: |-
