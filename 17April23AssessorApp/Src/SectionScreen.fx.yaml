@@ -95,12 +95,6 @@ SectionScreen As screen:
                 X: =imgUserHeaderBS_4.Width+imgUserHeaderBS_4.X
                 ZIndex: =4
 
-            NetworkIconBS_1 As Component2:
-                Visible: =false
-                X: =lblUsernameHeaderBS_4.Width+lblUsernameHeaderBS_4.X
-                Y: =(ctnHeaderDS.Height-Self.Height)/2
-                ZIndex: =5
-
             Rectangle1_5 As rectangle:
                 BorderColor: =RGBA(230, 230, 230, 1)
                 BorderThickness: =1
@@ -386,14 +380,11 @@ SectionScreen As screen:
                         PaddingTop: =0
                         Size: =AllScreensCSS.RFontSize-2
                         Text: |-
-                            =//"7000 Series Section List"
-                            //LookUp(LC_product,client.client_name=lblProjectName.Text,product_Name)
-                            //LookUp(LC_product,'product (quantum_productid)'=,product_Name)
-                            //*******************************LookUp(GC_product,product_Model=CId,product_Name)  &" series section list"
-                            LookUp(gcBank,Id=VarBankId,productId.product_Model)  &" series section list"
-                            //LookUp(GC_product,'product (quantum_product)'=CId.product_Id.'product (quantum_product)',product_Name)  &" Series Section List"
-                            //LookUp(GC_bank,Go_Number=lblBankName.Text,product_Id.product_Name) &" Series Section List"
-                            //LookUp(GC_bank,Go_Number=lblBankNumberAS_2.Text,product_Id.product_Name) & "series Section List"
+                            =LookUp(
+                                gcBank,
+                                Id = VarBankId,
+                                productId.product_Model
+                            ) & " series section list"
                         Width: =ctnproductSS.Width/1.4
                         X: =
                         Y: =
@@ -495,7 +486,16 @@ SectionScreen As screen:
                         =(CountRows(glrySectionSS.AllItems)*glrySectionSS.TemplateHeight)+70
                         //If(locInfoExpanded=false,500,(CountRows(glrySectionSS_2.AllItems)*glrySectionSS_2.TemplateHeight)+70)
                         //Parent.Height
-                    Items: =Sort(Filter(GC_templateSections,seriesName=CId,sectionname),Value(sectionSequence),SortOrder.Ascending)
+                    Items: |-
+                        =Sort(
+                            Filter(
+                                GC_templateSections,
+                                seriesName = CId,
+                                sectionname
+                            ),
+                            Value(sectionSequence),
+                            SortOrder.Ascending
+                        )
                     Layout: =Layout.Vertical
                     LayoutMinHeight: =287
                     LayoutMinWidth: =320
@@ -697,9 +697,7 @@ SectionScreen As screen:
                         imgCheckpointSS As image:
                             Height: =20
                             Image: |-
-                                =//'Unsentdata (2)'
-                                //If(CountRows(Filter(GcCheckpointAssessment,checkpointId.checkpointId=ThisItem.checkpointId && CstatusUpdate=2,checkpointAssessment_id))>0 && CountRows(Filter(GC_checkpointItemAssessment,checkpointAssessment_Id.checkpointId.checkpointId=ThisItem.checkpointId && CIstatusUpdate=2,'checkpointItemAssessment (quantum_checkpointitemassessment)'))>0 && CountRows(Filter(GC_checkpointItem_ActionItem,checkpoint_id.checkpointId.checkpointId=ThisItem.checkpointId && CIAstatusUpdate=2,checkpointItemActionItemsId))>0 && CountRows(Filter(GC_checkpointItem_Images,checkpoint_id.checkpointId.checkpointId=ThisItem.checkpointId && CIIstatusUpdate=2,checkpointItemImagesId))>0,sentdata,'Unsentdata (2)')
-                                If(
+                                =If(
                                     CountRows(
                                         Filter(
                                             GcCheckpointAssessment,
@@ -712,16 +710,15 @@ SectionScreen As screen:
                                             GcCheckpointAssessment,
                                             assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpointId.checkpointId = ThisItem.checkpointId && CstatusUpdate = 1
                                         )
-                                    ) > 0 ,
-                                     BlackUploadnew,
-                                      CountRows(
+                                    ) > 0,
+                                    BlackUploadnew,
+                                    CountRows(
                                         Filter(
                                             GcCheckpointAssessment,
                                             assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpointId.checkpointId = ThisItem.checkpointId && CstatusUpdate = 0
                                         )
                                     ) > 0,
                                     'wd9G0yiWsMtJXt7-Save-Button-PNG-Transparent-Photo'
-                                    
                                 )
                             OnSelect: =Select(Parent)
                             Visible: |-
@@ -752,17 +749,6 @@ SectionScreen As screen:
                             X: =btnCheckpointCommentSS.X
                             Y: =btncommentSS.Height/1.3
                             ZIndex: =8
-
-                        imgcmntSS_2 As image:
-                            Height: =If(Parent.Width>821,20,18)
-                            Image: =Comment
-                            OnSelect: =Select(Parent)
-                            PaddingLeft: =5
-                            Visible: =false
-                            Width: =If(Parent.Width>821,25,20)
-                            X: =btnStartAssessmentSS.X
-                            Y: =btncommentSS.Height/1.1
-                            ZIndex: =9
 
                         lblSyncindicatorBS_2 As label:
                             Align: =Align.Center
@@ -1077,30 +1063,6 @@ SectionScreen As screen:
                         Y: =btncommentSS.Height/1.4
                         ZIndex: =10
 
-    TimerSS As timer:
-        AutoStart: =//If(varSafety =true,true,false)
-        Duration: =//30000
-        OnTimerEnd: |-
-            =/*If(
-                UserLastNavigated < DateAdd(
-                    Now(),
-                    LogOutTimer,
-                    Seconds
-                ),
-                Set(safetyPopup,true);
-               
-            )*/
-        Repeat: =true
-        Visible: =false
-        ZIndex: =3
-
-    GroupHeaderBS_1 As group:
-        Height: =5
-        Width: =5
-        X: =40
-        Y: =40
-        ZIndex: =6
-
     groupSafetyPopupSS As group:
         Height: =5
         Width: =5
@@ -1153,8 +1115,11 @@ SectionScreen As screen:
             Fill: =RGBA(54, 176, 75, 1)
             Font: =AllScreensCSS.RFont
             HoverFill: =RGBA(75, 125, 6, 1)
-            OnSelect: |-
-                =Set(safetyPopup ,false);
+            OnSelect: |
+                =Set(
+                    safetyPopup,
+                    false
+                );
                 Navigate(ProjectScreen);
             PressedBorderColor: =RGBA(1, 43, 1, 0)
             PressedFill: =Self.Fill
