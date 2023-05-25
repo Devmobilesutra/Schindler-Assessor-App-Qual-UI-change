@@ -140,6 +140,7 @@ SafetyHeaderScreen As screen:
                     LayoutMode: =LayoutMode.Auto
                     PaddingBottom: =40
                     PaddingLeft: =20
+                    PaddingRight: =20
                     Width: =Parent.Width
                     Y: =ctnNotonemore.Y + ctnNotonemore.Height
                     ZIndex: =2

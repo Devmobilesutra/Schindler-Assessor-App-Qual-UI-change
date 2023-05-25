@@ -119,7 +119,9 @@ FindingScreen As screen:
                 Height: =Parent.Height
                 Size: =Header.HeaderFontSize
                 Text: =lblProjectName.Text
-                Width: =ctnHeaderFS.Width/1.75
+                Width: |-
+                    =//ctnHeaderFS.Width/1.75
+                    If(Parent.Width>821,Parent.Width/1.8,Parent.Width/2.2)
                 X: =113
                 ZIndex: =2
 
@@ -142,7 +144,7 @@ FindingScreen As screen:
                 PaddingLeft: =20
                 Size: =ctnHeaderFS.Width/85
                 Text: =username
-                Width: =ctnHeaderFS.Width/6.5
+                Width: =ctnHeaderFS.Width/5.8
                 X: =imgUserHeaderPFS_3.Width+imgUserHeaderPFS_3.X
                 ZIndex: =5
 
@@ -357,7 +359,7 @@ FindingScreen As screen:
                         PaddingLeft: =20
                         Size: =AllScreensCSS.RLabelFontSize
                         Text: ="Unit"
-                        Width: =350
+                        Width: =330
                         ZIndex: =1
 
                     lblPAssessmentAS_3 As label:
