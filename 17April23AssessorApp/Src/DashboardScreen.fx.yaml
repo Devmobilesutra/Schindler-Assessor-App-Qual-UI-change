@@ -1,9 +1,6 @@
 DashboardScreen As screen:
     OnVisible: |
-        =Set(
-            VarPopUpExitApp,
-            false
-        );
+        =//Set(VarPopUpExitApp,false);
         //Set(  varloader,  false);
         //Set(LogOutTimer, -1800);
         Set(VarPopupReportIssue,false);
@@ -347,94 +344,6 @@ DashboardScreen As screen:
             Y: =ctnHeaderDS.Height
             ZIndex: =3
 
-            ctnCompletedProjects As groupContainer.manualLayoutContainer:
-                AlignInContainer: =AlignInContainer.SetByContainer
-                BorderColor: =RGBA(230,230,230,1)
-                BorderThickness: =3
-                FillPortions: =0
-                Height: |-
-                    =If(
-                        App.Width < 1000,
-                        Parent.Height / 3,
-                        App.Width > 1000 && App.Width < 1200,
-                        Parent.Height / 2.3,
-                        Parent.Height / 1.6
-                    )
-                LayoutMinHeight: =100
-                LayoutMinWidth: =250
-                Visible: =false
-                Width: =Parent.Width/3.15
-                Y: =ctnHeaderDS.Height
-                ZIndex: =1
-
-                lblCompletedproject As label:
-                    Font: =Dashboard.DFont
-                    FontWeight: =FontWeight.Bold
-                    Height: =70
-                    Size: =Dashboard.DFontSize
-                    Text: |-
-                        ="Completed
-                        Assignments"
-                    Width: =300
-                    X: =Parent.Width/21
-                    Y: =Parent.Height/8
-                    ZIndex: =1
-
-                lblCountCompletedproject As label:
-                    Color: =RGBA(255, 0, 0, 1)
-                    Font: =Dashboard.DFont
-                    FontWeight: =FontWeight.Bold
-                    Height: =88
-                    Size: =If(App.Height<800,Dashboard.DCountSize,30)
-                    Text: |-
-                        =//To display Completed assignment count of Specific assessor 
-                        CountRows(
-                            (Filter(
-                                gcProjectAssignment,
-                                assessorId = varLoggedAssessor && isCompleted = "Completed"
-                            ))
-                        )
-                    X: =Parent.Width/21
-                    Y: =lblCompletedproject.Y+lblCompletedproject.Height+10
-                    ZIndex: =2
-
-                btnCompletedproject As button:
-                    BorderColor: |
-                        =
-                    BorderThickness: =
-                    Color: |+
-                        =RGBA(0,0,0,0)
-                        
-                    DisabledBorderColor: =RGBA(0,0,0,0)
-                    DisabledColor: =RGBA(0,0,0,0)
-                    DisabledFill: =RGBA(0,0,0,0)
-                    Fill: =RGBA(0, 0, 0, 0)
-                    FocusedBorderColor: =RGBA(0,0,0,0)
-                    FocusedBorderThickness: =
-                    Height: =ctnCompletedProjects.Height
-                    HoverBorderColor: =RGBA(0,0,0,0)
-                    HoverColor: =RGBA(0,0,0,0)
-                    HoverFill: =ColorFade(RGBA(0,0,0,0),-20%)
-                    OnSelect: |-
-                        =Set(upcomp,false);
-                        Set(inpro,false);
-                        Set(comp,true);
-                        Navigate(ProjectScreen);
-                    PressedBorderColor: =RGBA(0,0,0,0)
-                    PressedColor: =RGBA(0,0,0,0)
-                    PressedFill: =RGBA(0,0,0,0)
-                    Text: =
-                    Width: =ctnCompletedProjects.Width
-                    ZIndex: =4
-
-                imgCompletedprojects As image:
-                    Height: =Parent.Height/3
-                    Image: =completed
-                    Width: =Parent.Width/5
-                    X: =Parent.Width/1.3
-                    Y: =lblCompletedproject.Y+lblCompletedproject.Height+10
-                    ZIndex: =5
-
             ctnProgressProjects As groupContainer.manualLayoutContainer:
                 AlignInContainer: =AlignInContainer.SetByContainer
                 BorderColor: =AllScreensCSS.RActiveColor
@@ -648,11 +557,11 @@ DashboardScreen As screen:
         ctnlpdimg As groupContainer.horizontalAutoLayoutContainer:
             AlignInContainer: =AlignInContainer.Center
             FillPortions: =0
-            Height: |-
+            Height: |
                 =If(
-                    App.Height < 768,
-                    Parent.Height/2,
-                    500
+                    App.Height < 800,
+                    Parent.Height/1.5,
+                    Parent.Height/2
                 )
             LayoutAlignItems: =LayoutAlignItems.Center
             LayoutDirection: =LayoutDirection.Vertical
@@ -660,9 +569,9 @@ DashboardScreen As screen:
             LayoutMinHeight: =100
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
-            PaddingBottom: =200
-            PaddingLeft: =5
-            PaddingTop: =5
+            PaddingBottom: =10
+            PaddingLeft: =10
+            PaddingRight: =20
             Width: =Parent.Width-80
             ZIndex: =4
 
@@ -748,28 +657,18 @@ DashboardScreen As screen:
                 ZIndex: =3
 
             imgGraphicDS As image:
-                Height: =Parent.Height
+                AlignInContainer: =AlignInContainer.End
+                Height: =Parent.Height-100
                 Image: ='lift image-1x'
                 Width: =Parent.Width-500
                 ZIndex: =4
 
         ctnlpdname As groupContainer.verticalAutoLayoutContainer:
-            Height: =250
+            Height: =20
             LayoutDirection: =LayoutDirection.Vertical
-            LayoutMinHeight: =100
-            LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
-            Visible: =false
             Width: =Parent.Width
             ZIndex: =5
-
-            imgLPD As image:
-                AlignInContainer: =AlignInContainer.Center
-                Height: =Parent.Height
-                Image: ='lpd red'
-                ImagePosition: =ImagePosition.Center
-                Width: =Parent.Width
-                ZIndex: =1
 
     imgloaderDSExit As image:
         Fill: =RGBA(0, 0, 0, 0.29)
@@ -781,16 +680,6 @@ DashboardScreen As screen:
         X: =(Parent.Width-Self.Width)/2
         Y: =(Parent.Height-Self.Height)/2
         ZIndex: =5
-
-    tmr_logout As timer:
-        AutoStart: =//true
-        Duration: =//30000
-        OnTimerEnd: =
-        OnTimerStart: =true
-        Visible: =false
-        X: =20
-        Y: =20
-        ZIndex: =14
 
     grSyncSuccessDS As group:
         Height: =5
@@ -856,7 +745,7 @@ DashboardScreen As screen:
             Y: =LblTextDS.Y+ LblTextDS.Height+5
             ZIndex: =13
 
-    Grp_exit As group:
+    Grp_exit_Confirmation As group:
         Height: =5
         Width: =5
         X: =40
@@ -1433,7 +1322,7 @@ DashboardScreen As screen:
             Y: =Icon2.Y+20
             ZIndex: =33
 
-    GrpPopupReportIssue As group:
+    GrpPopupReportIssueSuccess As group:
         Height: =5
         Width: =5
         X: =40
