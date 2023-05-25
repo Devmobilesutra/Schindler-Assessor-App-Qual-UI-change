@@ -555,25 +555,23 @@ TripReportNewScreen As screen:
                         =//CountRows(ThisItem.data)*Gallery15.TemplateHeight
                         //CountRows(Gallery15_1.AllItems)*(Gallery15_1.TemplateHeight)
                         Parent.Height
-                    Items: |
-                        =//Sort(Sort(Sort(Filter(GC_checkpointItem_ActionItem,assignmentId.Id=glryProject.Selected.Id && CIAstatusUpdate = 2 && priority = "High"),checkpoint_id.CheckpointSequence),section_id.sectionSequence),bankUnitId.unitNumber)
-                        
-                        Sort(Sort(Sort(Sort(Filter(GC_checkpointItem_ActionItem,assignmentId.Id=glryProject.Selected.Id && CIAstatusUpdate = 2 && priority = "High"),checkpointItem_Id.checkpointitemSequence),checkpoint_id.CheckpointSequence),section_id.sectionSequence),bankUnitId.unitNumber)
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        //Sort(Sort(ThisItem.data,checkpointItem_Id.checkpointitemSequence),checkpoint_id.CheckpointSequence)
-                        //Filter(GC_checkpointItem_ActionItem,assignmentId.Id=glryProject.Selected.Id )
-                        //&& bankId.Id=glryProject.Selected.bankId.Id)
-                        //localCollectionAction
+                    Items: |-
+                        =Sort(
+                            Sort(
+                                Sort(
+                                    Sort(
+                                        Filter(
+                                            GC_checkpointItem_ActionItem,
+                                            assignmentId.Id = glryProject.Selected.Id && CIAstatusUpdate = 2 && priority = "High"
+                                        ),
+                                        checkpointItem_Id.checkpointitemSequence
+                                    ),
+                                    checkpoint_id.CheckpointSequence
+                                ),
+                                section_id.sectionSequence
+                            ),
+                            bankUnitId.unitNumber
+                        )
                     Layout: =Layout.Vertical
                     LayoutMinHeight: =287
                     LayoutMinWidth: =320
@@ -634,7 +632,7 @@ TripReportNewScreen As screen:
                         PaddingRight: =0
                         PaddingTop: =0
                         Size: =16
-                        Text: ="Action Required"
+                        Text: =ThisItem.Action_status
                         VerticalAlign: =VerticalAlign.Top
                         Width: =230
                         X: =1
@@ -652,7 +650,7 @@ TripReportNewScreen As screen:
                         PaddingRight: =0
                         PaddingTop: =0
                         Size: =16
-                        Text: =//ThisItem.MaterialEstimate
+                        Text: =ThisItem.checkpointItemActionItemsId
                         VerticalAlign: =VerticalAlign.Top
                         Visible: =false
                         Width: =120
@@ -685,7 +683,7 @@ TripReportNewScreen As screen:
                         PaddingRight: =0
                         PaddingTop: =0
                         Size: =16
-                        Text: ="Priority"
+                        Text: =ThisItem.MaterialEstimate
                         VerticalAlign: =VerticalAlign.Top
                         Width: =230
                         X: =1
@@ -704,7 +702,7 @@ TripReportNewScreen As screen:
                         PaddingRight: =0
                         PaddingTop: =0
                         Size: =16
-                        Text: ="Owner"
+                        Text: =ThisItem.OwnerId
                         VerticalAlign: =VerticalAlign.Top
                         Width: =Parent.Width/8
                         X: =lblPriorityValueAR_1.Width+lblPriorityValueAR_1.X
@@ -721,7 +719,7 @@ TripReportNewScreen As screen:
                         PaddingRight: =0
                         PaddingTop: =0
                         Size: =16
-                        Text: ="Material Estimate"
+                        Text: =ThisItem.priority
                         VerticalAlign: =VerticalAlign.Top
                         Width: =230
                         Y: |-
@@ -738,7 +736,7 @@ TripReportNewScreen As screen:
                         PaddingRight: =0
                         PaddingTop: =0
                         Size: =16
-                        Text: =ThisItem.priority
+                        Text: =ThisItem.TimeEstimate
                         VerticalAlign: =VerticalAlign.Top
                         Width: =200
                         X: =lblPriorityAR_1.X + lblPriorityAR_1.Width
@@ -754,7 +752,7 @@ TripReportNewScreen As screen:
                         PaddingRight: =0
                         PaddingTop: =0
                         Size: =16
-                        Text: =ThisItem.OwnerId
+                        Text: =ThisItem.ActionItem_Name
                         VerticalAlign: =VerticalAlign.Top
                         Width: =300
                         X: =lblOwnerIdAR_1.X+lblOwnerIdAR_1.Width
@@ -771,7 +769,7 @@ TripReportNewScreen As screen:
                         PaddingRight: =0
                         PaddingTop: =0
                         Size: =16
-                        Text: ="Time Estimate"
+                        Text: =ThisItem.ActionSortSequence
                         VerticalAlign: =VerticalAlign.Top
                         Width: =160
                         X: =txtMaterialValueAR_1.Width+txtMaterialValueAR_1.X+40
@@ -787,9 +785,7 @@ TripReportNewScreen As screen:
                         PaddingRight: =0
                         PaddingTop: =0
                         Size: =16
-                        Text: |-
-                            =//ThisItem.checkpoint_id.checkpointName
-                            LookUp(GcCheckpointAssessment,checkpointAssessment_id=ThisItem.checkpoint_id.checkpointAssessment_id,checkpointName)
+                        Text: =ThisItem.ActionSortSequence
                         VerticalAlign: =VerticalAlign.Top
                         Width: =Parent.Width -230
                         X: =lblCheckpointAR_1.X+lblCheckpointAR_1.Width
@@ -805,9 +801,7 @@ TripReportNewScreen As screen:
                         PaddingRight: =0
                         PaddingTop: =0
                         Size: =16
-                        Text: |-
-                            =//ThisItem.checkpointItem_Id.checkpointItemName
-                            LookUp(GC_checkpointItemAssessment,'checkpointItemAssessment (quantum_checkpointitemassessment)'=ThisItem.checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)',checkpointItemName)
+                        Text: =ThisItem.ActionSortSequence
                         VerticalAlign: =VerticalAlign.Top
                         Width: =Parent.Width -230
                         X: =lblItemAR_1.X+lblItemAR_1.Width
@@ -826,7 +820,7 @@ TripReportNewScreen As screen:
                         PaddingRight: =0
                         PaddingTop: =0
                         Size: =16
-                        Text: =ThisItem.ActionItem_Name
+                        Text: =ThisItem.ActionSortSequence
                         VerticalAlign: =VerticalAlign.Top
                         Width: =Parent.Width - 230
                         X: =lblActionReqAR_1.X + lblActionReqAR_1.Width
@@ -849,7 +843,7 @@ TripReportNewScreen As screen:
                         Height: =30
                         OnSelect: =Select(Parent)
                         Size: =16
-                        Text: =ThisItem.MaterialEstimate
+                        Text: =ThisItem.ActionSortSequence
                         Width: =140
                         X: =LblMaterialEstimateAR_1.X+LblMaterialEstimateAR_1.Width
                         Y: =lblOwnerIdValueAR_1.Y +lblOwnerIdValueAR_1.Height
@@ -859,7 +853,7 @@ TripReportNewScreen As screen:
                         Height: =30
                         OnSelect: =Select(Parent)
                         Size: =16
-                        Text: =ThisItem.TimeEstimate
+                        Text: =ThisItem.ActionSortSequence
                         Width: =300
                         X: =lblTimeestimateAR_1.X + lblTimeestimateAR_1.Width
                         Y: =lblOwnerIdValueAR_1.Y +lblOwnerIdValueAR_1.Height
@@ -894,11 +888,7 @@ TripReportNewScreen As screen:
                         Font: =AllScreensCSS.RFont
                         Height: =30
                         Size: =16
-                        Text: |
-                            =//ThisItem.ActionItem_Name
-                            //"Unit : "  &
-                             LookUp(gcBankunit,Id=ThisItem.bankUnitId.Id,unitNumber) 
-                            //&"                 " & "Section : " & ThisItem.section_id.sectionName
+                        Text: =ThisItem.bankUnitId.unitNumber
                         Width: =Parent.Width/2
                         X: =Label22_2.Width
                         Y: =10
@@ -910,11 +900,7 @@ TripReportNewScreen As screen:
                         Font: =AllScreensCSS.RFont
                         Height: =30
                         Size: =16
-                        Text: |
-                            =//ThisItem.ActionItem_Name
-                            //"Section : " & 
-                            //ThisItem.section_id.sectionName
-                            LookUp(GcSectionAssessment,'sectionAssessment (quantum_sectionassessment)'=ThisItem.section_id.'sectionAssessment (quantum_sectionassessment)',sectionName)
+                        Text: =ThisItem.section_id.sectionName
                         Width: =Parent.Width/2
                         X: =Label22_3.Width
                         Y: =Label22_3.Height
@@ -1169,12 +1155,6 @@ TripReportNewScreen As screen:
                 X: =imgUserHeaderTRS_1.Width+imgUserHeaderTRS_1.X
                 ZIndex: =5
 
-            cmtNetworkIcon_1 As Component2_8:
-                Visible: =false
-                X: =lblUsernameHeaderTRS_1.Width+lblUsernameHeaderTRS_1.X
-                Y: =(ctnHeaderDS.Height-Self.Height)/2
-                ZIndex: =9
-
             Rectangle1_14 As rectangle:
                 BorderColor: =RGBA(230, 230, 230, 1)
                 BorderThickness: =1
@@ -1255,8 +1235,11 @@ TripReportNewScreen As screen:
             Fill: =RGBA(54, 176, 75, 1)
             Font: =AllScreensCSS.RFont
             HoverFill: =RGBA(75, 125, 6, 1)
-            OnSelect: |-
-                =Set(popupsuccess,false);
+            OnSelect: |
+                =Set(
+                    popupsuccess,
+                    false
+                );
                 Navigate(BankScreen);
             PressedBorderColor: =RGBA(1, 43, 1, 0)
             PressedFill: =Self.Fill
@@ -1358,7 +1341,7 @@ TripReportNewScreen As screen:
                     varComment,
                     false
                 );
-                Navigate(TripReportNewScreen);
+                //Navigate(TripReportNewScreen);
             PressedColor: =Self.Color
             PressedFill: =Self.Fill
             Size: =AllScreensCSS.RLabelFontSize
