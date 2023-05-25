@@ -1,11 +1,22 @@
 BankScreen As screen:
     Fill: =
     OnVisible: |
-        =Set(varComment,false);
-        Set(popupSyncSuccess,false);
-        Set(VarExportPDF,false);
-        Set(VarUnitDataTextPopUp,false);   
-        
+        =Set(
+            varComment,
+            false
+        );
+        Set(
+            popupSyncSuccess,
+            false
+        );
+        Set(
+            VarExportPDF,
+            false
+        );
+        Set(
+            VarUnitDataTextPopUp,
+            false
+        );
         Refresh(unitAssessment);
         Trace(
             First(gcBank).productId.product_Model,
@@ -150,7 +161,7 @@ BankScreen As screen:
                         Size: =AllScreensCSS.RLabelFontSize
                         Text: |-
                             ="G.O./Commission number :   " & lblBankName.Text
-                        Width: =Parent.Width-60
+                        Width: =Parent.Width
                         X: |
                             =lblAssessmentBS_2.X+lblAssessmentBS_2.Width
                         ZIndex: =1
@@ -2113,7 +2124,7 @@ BankScreen As screen:
                                 false
                             )
                         Width: =20
-                        X: =(Parent.Width-Self.Width-btnStartAssessmentBS.Width-btnCommentBS.Width-Button1.Width)-130
+                        X: =(Parent.Width-Self.Width-btnStartAssessmentBS.Width-btnCommentBS.Width-btnExportPDF.Width)-130
                         Y: =40
                         ZIndex: =5
 
@@ -2709,11 +2720,11 @@ BankScreen As screen:
                         Text: =""
                         Visible: =false
                         Width: =35
-                        X: =(Parent.Width-Self.Width-btnStartAssessmentBS.Width-btnCommentBS.Width-Button1.Width)-80
+                        X: =(Parent.Width-Self.Width-btnStartAssessmentBS.Width-btnCommentBS.Width-btnExportPDF.Width)-80
                         Y: =30
                         ZIndex: =7
 
-                    Button1 As button:
+                    btnExportPDF As button:
                         BorderColor: =AllScreensCSS.RColorBlack
                         Color: =AllScreensCSS.RColorBlack
                         DisplayMode: |-
@@ -2758,7 +2769,7 @@ BankScreen As screen:
                         Y: =30
                         ZIndex: =8
 
-                    Image1_2 As image:
+                    iconComment As image:
                         Height: =If(Parent.Width>821,20,16)
                         Image: =Comment
                         OnSelect: =Select(Parent)
@@ -2768,16 +2779,6 @@ BankScreen As screen:
                         X: =btnCommentBS.X+5
                         Y: =btnCommentBS.Y+10
                         ZIndex: =9
-
-                    Image1 As image:
-                        Height: =If(Parent.Width>821,20,16)
-                        Image: =Comment
-                        OnSelect: =Select(Parent)
-                        Visible: =false
-                        Width: =If(Parent.Width>821,25,20)
-                        X: =btnStartAssessmentBS.X+10
-                        Y: =45
-                        ZIndex: =10
 
                     lblSyncindicatorBS As label:
                         Align: =Align.Center
@@ -2840,7 +2841,7 @@ BankScreen As screen:
                                 false
                             )
                         Width: =80
-                        X: =(Parent.Width-Self.Width-btnStartAssessmentBS.Width-btnCommentBS.Width-Button1.Width)-100
+                        X: =(Parent.Width-Self.Width-btnStartAssessmentBS.Width-btnCommentBS.Width-btnExportPDF.Width)-100
                         Y: =60
                         ZIndex: =11
 
@@ -2852,6 +2853,55 @@ BankScreen As screen:
             Y: =//Container4_2.Height
             ZIndex: =2
 
+            imgLogo_1 As image:
+                DisplayMode: =DisplayMode.View
+                Fill: =RGBA(255, 255, 255, 1)
+                Height: =80
+                Image: ='schindler-logo'
+                PaddingBottom: =5
+                PaddingLeft: =2
+                PaddingRight: =1
+                PaddingTop: =5
+                Width: =ctnHeaderBS.Width/12
+                ZIndex: =1
+
+            lblAssessmentBS_2 As label:
+                Align: =Align.Center
+                Color: =Header.HeaderColor
+                Font: =Header.HeaderFont
+                FontWeight: =FontWeight.Bold
+                Height: =80
+                Size: =Header.HeaderFontSize
+                Text: |
+                    =lblProjectName.Text
+                Width: =If(Parent.Width>821,Parent.Width/1.8,Parent.Width/2.2)
+                X: =imgLogo_1.Width
+                ZIndex: =2
+
+            imgUserHeaderBS_2 As image:
+                Height: =50
+                Image: =userImg
+                ImagePosition: =ImagePosition.Fill
+                RadiusBottomLeft: =ctnHeaderBS.Height/0.10
+                RadiusBottomRight: =ctnHeaderBS.Height/0.10
+                RadiusTopLeft: =ctnHeaderBS.Height/0.10
+                RadiusTopRight: =ctnHeaderBS.Height/0.10
+                Width: =50
+                X: =Image2_35.X+Image2_35.Width+20
+                Y: =(ctnHeaderBS.Height-Self.Height)/2
+                ZIndex: =4
+
+            lblUsernameHeaderBS_2 As label:
+                Font: =Header.HeaderFont
+                FontWeight: =FontWeight.Bold
+                Height: =80
+                PaddingLeft: =20
+                Size: =Header.HeaderUserFontSize-2
+                Text: =username
+                Width: =ctnHeaderBS.Width/5.8
+                X: =imgUserHeaderBS_2.Width+imgUserHeaderBS_2.X
+                ZIndex: =5
+
             Rectangle1_4 As rectangle:
                 BorderColor: =RGBA(230, 230, 230, 1)
                 BorderThickness: =1
@@ -2860,68 +2910,6 @@ BankScreen As screen:
                 Width: =Parent.Width
                 Y: =80
                 ZIndex: =10
-
-            GroupHeaderBS As group:
-                Height: =5
-                Width: =5
-                X: =40
-                Y: =40
-                ZIndex: =10
-
-                imgLogo_1 As image:
-                    DisplayMode: =DisplayMode.View
-                    Fill: =RGBA(255, 255, 255, 1)
-                    Height: =80
-                    Image: ='schindler-logo'
-                    PaddingBottom: =5
-                    PaddingLeft: =2
-                    PaddingRight: =1
-                    PaddingTop: =5
-                    Width: =ctnHeaderBS.Width/12
-                    ZIndex: =1
-
-                lblAssessmentBS_2 As label:
-                    Align: =Align.Center
-                    Color: =Header.HeaderColor
-                    Font: =Header.HeaderFont
-                    FontWeight: =FontWeight.Bold
-                    Height: =80
-                    Size: =Header.HeaderFontSize
-                    Text: |
-                        =lblProjectName.Text
-                    Width: =If(Parent.Width>821,Parent.Width/1.8,Parent.Width/2.2)
-                    X: =imgLogo_1.Width
-                    ZIndex: =2
-
-                imgUserHeaderBS_2 As image:
-                    Height: =50
-                    Image: =userImg
-                    ImagePosition: =ImagePosition.Fill
-                    RadiusBottomLeft: =ctnHeaderBS.Height/0.10
-                    RadiusBottomRight: =ctnHeaderBS.Height/0.10
-                    RadiusTopLeft: =ctnHeaderBS.Height/0.10
-                    RadiusTopRight: =ctnHeaderBS.Height/0.10
-                    Width: =50
-                    X: =Image2_35.X+Image2_35.Width+20
-                    Y: =(ctnHeaderBS.Height-Self.Height)/2
-                    ZIndex: =4
-
-                lblUsernameHeaderBS_2 As label:
-                    Font: =Header.HeaderFont
-                    FontWeight: =FontWeight.Bold
-                    Height: =80
-                    PaddingLeft: =20
-                    Size: =Header.HeaderUserFontSize-2
-                    Text: =username
-                    Width: =ctnHeaderBS.Width/5.8
-                    X: =imgUserHeaderBS_2.Width+imgUserHeaderBS_2.X
-                    ZIndex: =5
-
-                NetworkIconBS As Component2:
-                    Visible: =false
-                    X: =lblUsernameHeaderBS_2.Width+lblUsernameHeaderBS_2.X
-                    Y: =(ctnHeaderDS.Height-Self.Height)/2
-                    ZIndex: =9
 
             Image2_35 As image:
                 Height: =40
@@ -3045,27 +3033,26 @@ BankScreen As screen:
             txtPopupNoCommentsBS As text:
                 BorderThickness: =0
                 Default: |-
-                    =//"No Comments"
-                    //If(IsEmpty(glrySectioncomment) && IsEmpty(glryCheckpointcomment) && IsEmpty(glryCheckpointItemComment),"No Comments available","")
-                    If(CountRows(Filter(
-                        GcSectionAssessment,
-                        assignmentId.Id = varAssignmentId && 
-                        bankUnitId.Id = varUnitId.Id && 
-                        sectionComment <> Blank()
-                    ))<1 && 
-                        CountRows(Filter(
-                        GcCheckpointAssessment,
-                        assignmentId.Id = varAssignmentId && 
-                        bankUnitId.Id = varUnitId.Id && 
-                        checkpointComment <> Blank()
-                        ))<1
-                        &&
-                        CountRows(Filter(
-                        GC_checkpointItemAssessment,
-                        assignmentId.Id = varAssignmentId && 
-                        bankUnitId.Id = varUnitId.Id && 
-                        checkpointItemComment <> Blank()
-                    ))<1,"No comments",""
+                    =
+                    If(
+                        CountRows(
+                            Filter(
+                                GcSectionAssessment,
+                                assignmentId.Id = varAssignmentId && bankUnitId.Id = varUnitId.Id && sectionComment <> Blank()
+                            )
+                        ) < 1 && CountRows(
+                            Filter(
+                                GcCheckpointAssessment,
+                                assignmentId.Id = varAssignmentId && bankUnitId.Id = varUnitId.Id && checkpointComment <> Blank()
+                            )
+                        ) < 1 && CountRows(
+                            Filter(
+                                GC_checkpointItemAssessment,
+                                assignmentId.Id = varAssignmentId && bankUnitId.Id = varUnitId.Id && checkpointItemComment <> Blank()
+                            )
+                        ) < 1,
+                        "No comments",
+                        ""
                     )
                 DisplayMode: =DisplayMode.View
                 FocusedBorderColor: =RGBA(179, 179, 179, 1)

@@ -1352,12 +1352,13 @@ TripReportNewScreen As screen:
             FocusedBorderThickness: =
             Font: =AllScreensCSS.RFont
             HoverFill: =//ColorFade(RGBA(56, 96, 178, 1), -20%)
-            OnSelect: |-
-                =
-                Reset(txtSectionCommentTRS_1);
-                Set(varComment, false);
+            OnSelect: |
+                =Reset(txtSectionCommentTRS_1);
+                Set(
+                    varComment,
+                    false
+                );
                 Navigate(TripReportNewScreen);
-                  
             PressedColor: =Self.Color
             PressedFill: =Self.Fill
             Size: =AllScreensCSS.RLabelFontSize
