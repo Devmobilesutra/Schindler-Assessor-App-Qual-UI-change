@@ -317,29 +317,14 @@ ViewAssessment As screen:
                         =//(CountRows(glryCheckpointIiemVA.AllItems)*(glryCheckpointIiemVA.TemplateHeight+glryCheckpointIiemVA.TemplatePadding))+glryActionItemsVA.Height+glryCheckpointitemimagesVA.Height
                         Parent.Height
                     Items: |-
-                        =//Filter(checkpointItem_ActionItem, 'checkpointItem_ActionItem (Views)'.previousFindings)
-                        //Filter(GC_checkpointItem_ActionItem,checkpointItem_Id.checkpointItemId.checkpointItemId=varCheckpointitemID && bankUnitId.Id=varBankUnitId &&assignmentId.startDate<>glryProject.Selected.startDate)
-                        //[1,2]
-                        //Filter(checkpointItemAssessment,bankUnitId.Id=glryBankGo_1.Selected.bankUnitId.unitNumber)
-                        /*If(IsEmpty(Filter(checkpointItem_ActionItem,assignmentId.Id=glryBankGo_1.Selected.assignmentId.Id && bankUnitId.Id =glryBankGo_1.Selected.bankUnitId.Id && checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' =LookUp(checkpointItemAssessment,checkpointItemName =LblAssStatuscountBS_14.Text,'checkpointItemAssessment (quantum_checkpointitemassessment)'))),*/
-                        Sort(
-                            //Sort(
-                               // Sort(
-                                    Filter(
-                                        checkpointItemAssessment,
-                                        assignmentId.Id = glryAssignmentBS.Selected.assignmentId.Id && bankUnitId.unitNumber = glryAssignmentBS.Selected.bankUnitId.unitNumber && checkpointItem_annotation <> Blank()
-                                    ),
-                                   // checkpointitemSequence,
-                                   // Ascending
-                                //),
-                               CheckpointItemSortSequence,
-                                SortOrder.Ascending
-                            //),
-                            //section_Id.sectionSequence,
-                            //Ascending
+                        =Sort(
+                            Filter(
+                                checkpointItemAssessment,
+                                assignmentId.Id = glryAssignmentBS.Selected.assignmentId.Id && bankUnitId.unitNumber = glryAssignmentBS.Selected.bankUnitId.unitNumber && checkpointItem_annotation <> Blank()
+                            ),
+                            CheckpointItemSortSequence,
+                            SortOrder.Ascending
                         )
-                        //&&
-                         //CountRows(Filter(checkpointItem_ActionItem, checkpointItem_Id.quantum_checkpointitemassessment //=ThisRecord.'checkpointItemAssessment (quantum_checkpointitemassessment)')>0)
                     Layout: =Layout.Vertical
                     LayoutMinHeight: =100
                     LayoutMinWidth: =320
@@ -362,23 +347,12 @@ ViewAssessment As screen:
                             +glryCheckpointitemimagesVA.TemplatePadding
                             
                             //Parent.Height
-                        Items: |+
-                            =//checkpointItem_Images
-                            //Filter(GC_checkpointItem_ActionItem,checkpointItem_Id.checkpointItemId.checkpointItemId=ItemID && checkpointItem_Id.assessmentStatus="open")
-                            //Filter(GC_checkpointItem_Images,checkpointItem_Id.checkpointItemId.checkpointItemId=varCheckpointitemID && bankUnitId.Id=varBankUnitId &&assignmentId.startDate<>glryProject.Selected.startDate)
-                            //[1,2,3,4,5,6]
-                            
-                            Filter(GCCheckpointItemImages,
-                                    assignmentId.Id=glryAssignmentBS.Selected.assignmentId.Id  &&
-                                    bankUnitId.Id=glryAssignmentBS.Selected.bankUnitId.Id      && 
-                                     //checkpointItem_Id.checkpointItemName=lblItemnameVA.Text
-                                     checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)'=ThisItem.'checkpointItemAssessment (quantum_checkpointitemassessment)' 
-                                      && Image.Value <> Blank()
-                                      ) 
-                            
-                                  //  checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' =LookUp(checkpointItemAssessment,checkpointItemName =LblAssStatuscountBS_14.Text,'checkpointItemAssessment (quantum_checkpointitemassessment)')
-                                    
-                            
+                        Items: |-
+                            =Filter(
+                                GCCheckpointItemImages,
+                                assignmentId.Id = glryAssignmentBS.Selected.assignmentId.Id && bankUnitId.Id = glryAssignmentBS.Selected.bankUnitId.Id && checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = ThisItem.'checkpointItemAssessment (quantum_checkpointitemassessment)'
+                                     // && Image.Value <> Blank()
+                            )
                         Layout: =Layout.Vertical
                         ShowScrollbar: =false
                         TemplatePadding: =4
@@ -459,43 +433,10 @@ ViewAssessment As screen:
                             =(CountRows(glryActionItemsVA.AllItems)*(glryActionItemsVA.TemplateHeight))
                             //Parent.Height
                         Items: |-
-                            =//Filter(GC_checkpointItem_ActionItem,checkpointItem_Id.checkpointItemId.checkpointItemId=varCheckpointitemID)
-                            //&& checkpointItem_Id.assessmentStatus="open")
-                            
-                            ///Filter(GC_checkpointItem_ActionItem,checkpointItem_Id.checkpointItemId.checkpointItemId=varCheckpointitemID && bankUnitId.Id=varBankUnitId &&assignmentId.startDate<>glryProject.Selected.startDate)
-                            //[1,1]
-                            Filter(checkpointItem_ActionItem,
-                                 assignmentId.Id=glryAssignmentBS.Selected.assignmentId.Id && 
-                                 bankUnitId.Id =glryAssignmentBS.Selected.bankUnitId.Id    && 
-                                  checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)'=ThisItem.'checkpointItemAssessment (quantum_checkpointitemassessment)')
-                            
-                                // checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)'=LookUp(checkpointItemAssessment,checkpointItemName=lblItemnameVA.Text,'checkpointItemAssessment (quantum_checkpointitemassessment)')
-                                // checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' =LookUp(checkpointItemAssessment,checkpointItemName =LblAssStatuscountBS_14.Text,'checkpointItemAssessment (quantum_checkpointitemassessment)') 
-                                // )
-                            
-                            ////&& checkpointItem_Id 'checkpointItemAssessment (quantum_checkpointitemassessment)'=ThisItem.'checkpointItemAssessment (quantum_checkpointitemassessment)'
-                            
-                            
-                            //&& checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)'="977a7491-ab06-4654-a0a8-d3b5d260f48d"
-                            
-                            
-                            /*GroupBy( AddColumns(Filter(checkpointItem_ActionItem,assignmentId.Id=glryBankGo_1.Selected.assignmentId.Id && bankUnitId.Id=glryBankGo_1.Selected.bankUnitId.Id  ),
-                              
-                                    "_itemId", checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)'
-                                ),
-                                "_itemId",
-                                "dataRecords"
-                            )*/
-                            
-                            /*GroupBy( AddColumns(checkpointItem_ActionItem,
-                              
-                                    "_itemId", checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)'
-                                ),
-                            
-                                
-                                "_itemId",
-                                "dataRecords"
-                            )*/
+                            =Filter(
+                                checkpointItem_ActionItem,
+                                assignmentId.Id = glryAssignmentBS.Selected.assignmentId.Id && bankUnitId.Id = glryAssignmentBS.Selected.bankUnitId.Id && checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = ThisItem.'checkpointItemAssessment (quantum_checkpointitemassessment)'
+                            )
                         Layout: =Layout.Vertical
                         LoadingSpinner: =LoadingSpinner.Data
                         ShowScrollbar: =false
