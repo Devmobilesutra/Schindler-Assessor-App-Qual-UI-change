@@ -3,22 +3,21 @@ App As appinfo:
     ConfirmExitMessage: ="Are you sure you want to exit ?"
     OnStart: |
         =//safety timer
-        Set(SafetyCheckTime,1800);
-        
-        
+        Set(
+            SafetyCheckTime,
+            1800
+        );
         Set(
             timerStart,
             false
         );
-        
         //Set(varload,true);
-        
         // Global CSS
         Set(
         //for header
             Header,
             {
-                HeaderFont:"SF UI Display",
+                HeaderFont: "SF UI Display",
                 HeaderColor: RGBA(
                     0,
                     0,
@@ -86,14 +85,13 @@ App As appinfo:
                     1
                 ),
                 RFont: "SF UI Display",
-                ButtonFont :"Poppins",
+                ButtonFont: "Poppins",
                 RFontSize: "26",
                 RLabelFontSize: "16",
                 RFontWeight: "Bold",
                 RfontsizeInput: "14"
             }
         );
-        
         //**********************************************************************************************************
         //Get LoggedAssessor Details from assessor AzueAAD group and store it into collection
         //powerapp handles authentication of respective user and display apropriate message
@@ -103,11 +101,13 @@ App As appinfo:
             ClearCollect(
                 LoggedAssessor,
                 LookUp(
-                    Office365Groups.ListGroupMembers(LookUp(
-         'Environment Variable Values',
-         'Environment Variable Definition'.'Schema Name' = "shlaf_AssessorGroup",
-         Value
-        )).value,
+                    Office365Groups.ListGroupMembers(
+                        LookUp(
+                            'Environment Variable Values',
+                            'Environment Variable Definition'.'Schema Name' = "shlaf_AssessorGroup",
+                            Value
+                        )
+                    ).value,
                     userPrincipalName = User().Email
                 )
             );
@@ -130,12 +130,12 @@ App As appinfo:
                 User().Image
             );
             //store Logged user name to Variable
-            Set(
+        Set(
                 username,
                 User().FullName
             );
                 //Store Azure AssessorId to variable
-            Set(
+        Set(
                 varLoggedAssessor,
                 LookUp(
                     LoggedAssessor,
@@ -143,24 +143,22 @@ App As appinfo:
                     id
                 )
             );
-              Set(
+            Set(
                 VarUserEmail,
                 User().Email
             );
+            
         );
         //**********************************************************************************************************
-             
            //load  deleted action and image data  from local cache
-               LoadData(
-                    gcActionItemDelete,
-                    "localgcActionItemDelete"
-                );
-                 LoadData(
-                    gcImageDelete,
-                    "localgcImageDelete"
-                );
-        
-        
+        LoadData(
+            gcActionItemDelete,
+            "localgcActionItemDelete"
+        );
+        LoadData(
+            gcImageDelete,
+            "localgcImageDelete"
+        );
         //collections and offline collection
         Concurrent(
             //**********Here we load template master data from cache and store it into collection
@@ -248,9 +246,9 @@ App As appinfo:
                 );
                 ,
                 Notify("Internet connectivity must be available when you start app first time.");
-            );    
+            );
+            
         );
-        
         Concurrent(
         //Here we load reference data from cache and store it into collection
             LoadData(
@@ -287,53 +285,49 @@ App As appinfo:
                 GC_unitAssessment,
                 "localunitassessment"
             )
-            );
-                
+        );
             //check if any unsend findings are available in collection if so do not do anything else clear collect data of assignment related tables (except five transaction tables)
         If(
             Connection.Connected,
-             If(
-                IsBlank(LookUp(gcProjectAssignment,AstatusUpdate = 0 || AstatusUpdate = 1))            ||
-                IsBlank(LookUp(GC_bankAssessment,BstatusUpdate = 0 || BstatusUpdate = 1))              ||
-                IsBlank(LookUp(GC_unitAssessment,UstatusUpdate = 0 || UstatusUpdate = 1)) ,
-            
-            Concurrent(
+            If(
+                CountRows(gcProjectAssignment) < 1 || CountRows(GC_bankAssessment) < 1 || CountRows(GC_unitAssessment) < 1,
+                Concurrent(
                 //client master data
-                ClearCollect(
-                    gcClient,
-                    schindlerClients
-                );
-                SaveData(
-                    gcClient,
-                    "localclient"
-                );
-                ,
+                    ClearCollect(
+                        gcClient,
+                        schindlerClients
+                    );
+                    SaveData(
+                        gcClient,
+                        "localclient"
+                    );
+                    ,
                 //Banks master data
-                ClearCollect(
-                    gcBank,
-                    schindlerBanks
-                );
-                SaveData(
-                    gcBank,
-                    "localbank"
-                );
-                ,
+                    ClearCollect(
+                        gcBank,
+                        schindlerBanks
+                    );
+                    SaveData(
+                        gcBank,
+                        "localbank"
+                    );
+                    ,
                 //master units data
-                ClearCollect(
-                    gcBankunit,
-                    bankUnits
-                );
-                SaveData(
-                    gcBankunit,
-                    "localgcbankunit"
-                );
-                ,
+                    ClearCollect(
+                        gcBankunit,
+                        bankUnits
+                    );
+                    SaveData(
+                        gcBankunit,
+                        "localgcbankunit"
+                    );
+                    ,
                 //assignment Assignment 
-                 ClearCollect(
+                    ClearCollect(
                         gcProjectAssignmentAdd,
                         Filter(
                             assignments,
-                            assessorId = varLoggedAssessor &&  isCompleted <> "Completed"
+                            assessorId = varLoggedAssessor && isCompleted <> "Completed"
                         )
                     );
                     ClearCollect(
@@ -344,81 +338,214 @@ App As appinfo:
                             2
                         )
                     );
-                SaveData(
-                    gcProjectAssignment,
-                    "localprojectassignment"
-                );
-                ,
+                    SaveData(
+                        gcProjectAssignment,
+                        "localprojectassignment"
+                    );
+                    ,
                 //assignment unit
-                ClearCollect(
-                    gcAssignmentunit,
-                    Filter(
-                        assignmentUnits,
-                        assignmentId.assessorId = varLoggedAssessor
-                    )
-                );
-                SaveData(
-                    gcAssignmentunit,
-                    "localassignmentunits"
-                );
-                ,
+                    ClearCollect(
+                        gcAssignmentunit,
+                        Filter(
+                            assignmentUnits,
+                            assignmentId.assessorId = varLoggedAssessor
+                        )
+                    );
+                    SaveData(
+                        gcAssignmentunit,
+                        "localassignmentunits"
+                    );
+                    ,
                 //bank Assessment
-                ClearCollect(
-                    GC_bankAssessmentAdd,
+                    ClearCollect(
+                        GC_bankAssessmentAdd,
                         Filter(
                             bankAssessment,
-                            assignmentId.assessorId = varLoggedAssessor &&  Assessment_Status <> "Completed"
+                            assignmentId.assessorId = varLoggedAssessor && Assessment_Status <> "Completed"
                         )
-                );
-                ClearCollect(
-                    GC_bankAssessment,
+                    );
+                    ClearCollect(
+                        GC_bankAssessment,
                         AddColumns(
                             GC_bankAssessmentAdd,
                             "BstatusUpdate",
                             2
                         )
                     );
-                SaveData(
-                    GC_bankAssessment,
-                    "localbankassessment"
-                );
-                ,
+                    SaveData(
+                        GC_bankAssessment,
+                        "localbankassessment"
+                    );
+                    ,
                 //unit assessment
-                ClearCollect(
-                    GC_unitAssessmentAdd,
+                    ClearCollect(
+                        GC_unitAssessmentAdd,
                         Filter(
                             unitAssessment,
-                            assignmentId.assessorId = varLoggedAssessor &&  Assessment_status <> "Completed"
+                            assignmentId.assessorId = varLoggedAssessor && Assessment_status <> "Completed"
                         )
-                );
-                ClearCollect(
+                    );
+                    ClearCollect(
                         GC_unitAssessment,
                         AddColumns(
                             GC_unitAssessmentAdd,
                             "UstatusUpdate",
                             2
                         )
+                    );
+                    SaveData(
+                        GC_unitAssessment,
+                        "localunitassessment"
+                    );
                 );
-                SaveData(
-                    GC_unitAssessment,
-                    "localunitassessment"
+                //conccurent
+        ,
+                If(
+                    IsBlank(
+                        LookUp(
+                            gcProjectAssignment,
+                            AstatusUpdate = 0 || AstatusUpdate = 1
+                        )
+                    ) || IsBlank(
+                        LookUp(
+                            GC_bankAssessment,
+                            BstatusUpdate = 0 || BstatusUpdate = 1
+                        )
+                    ) || IsBlank(
+                        LookUp(
+                            GC_unitAssessment,
+                            UstatusUpdate = 0 || UstatusUpdate = 1
+                        )
+                    ),
+                    Concurrent(
+                //client master data
+                        ClearCollect(
+                            gcClient,
+                            schindlerClients
+                        );
+                        SaveData(
+                            gcClient,
+                            "localclient"
+                        );
+                        ,
+                //Banks master data
+                        ClearCollect(
+                            gcBank,
+                            schindlerBanks
+                        );
+                        SaveData(
+                            gcBank,
+                            "localbank"
+                        );
+                        ,
+                //master units data
+                        ClearCollect(
+                            gcBankunit,
+                            bankUnits
+                        );
+                        SaveData(
+                            gcBankunit,
+                            "localgcbankunit"
+                        );
+                        ,
+                //assignment Assignment 
+                        ClearCollect(
+                            gcProjectAssignmentAdd,
+                            Filter(
+                                assignments,
+                                assessorId = varLoggedAssessor && isCompleted <> "Completed"
+                            )
+                        );
+                        ClearCollect(
+                            gcProjectAssignment,
+                            AddColumns(
+                                gcProjectAssignmentAdd,
+                                "AstatusUpdate",
+                                2
+                            )
+                        );
+                        SaveData(
+                            gcProjectAssignment,
+                            "localprojectassignment"
+                        );
+                        ,
+                //assignment unit
+                        ClearCollect(
+                            gcAssignmentunit,
+                            Filter(
+                                assignmentUnits,
+                                assignmentId.assessorId = varLoggedAssessor
+                            )
+                        );
+                        SaveData(
+                            gcAssignmentunit,
+                            "localassignmentunits"
+                        );
+                        ,
+                //bank Assessment
+                        ClearCollect(
+                            GC_bankAssessmentAdd,
+                            Filter(
+                                bankAssessment,
+                                assignmentId.assessorId = varLoggedAssessor && Assessment_Status <> "Completed"
+                            )
+                        );
+                        ClearCollect(
+                            GC_bankAssessment,
+                            AddColumns(
+                                GC_bankAssessmentAdd,
+                                "BstatusUpdate",
+                                2
+                            )
+                        );
+                        SaveData(
+                            GC_bankAssessment,
+                            "localbankassessment"
+                        );
+                        ,
+                //unit assessment
+                        ClearCollect(
+                            GC_unitAssessmentAdd,
+                            Filter(
+                                unitAssessment,
+                                assignmentId.assessorId = varLoggedAssessor && Assessment_status <> "Completed"
+                            )
+                        );
+                        ClearCollect(
+                            GC_unitAssessment,
+                            AddColumns(
+                                GC_unitAssessmentAdd,
+                                "UstatusUpdate",
+                                2
+                            )
+                        );
+                        SaveData(
+                            GC_unitAssessment,
+                            "localunitassessment"
+                        );
+                    );
+                    //conccurent
                 );
-            );//conccurent
-            );//0/1 If
-        );
-        
-        //update Inprogress1 status to Inprogress to fix dashboard update issue
-          UpdateIf(
-                gcProjectAssignment,
-                isCompleted = "Inprogress1",
-                {isCompleted: "Inprogress"}
+                //0/1 If
             );
-            
-            SaveData(
-                    gcProjectAssignment,
-                    "localprojectassignment"
-                );
-                
+            //assignmentcount
+        ,
+            Notify(
+                "Network not available,Please check your network connection.",
+                NotificationType.Information
+            )
+        );
+        //net connected
+        //update Inprogress1 status to Inprogress to fix dashboard update issue
+        UpdateIf(
+            gcProjectAssignment,
+            isCompleted = "Inprogress1",
+            {isCompleted: "Inprogress"}
+        );
+        SaveData(
+            gcProjectAssignment,
+            "localprojectassignment"
+        );
         //Extra collection for add column
         Clear(gcProjectAssignmentAdd);
         Clear(GC_bankAssessmentAdd);
