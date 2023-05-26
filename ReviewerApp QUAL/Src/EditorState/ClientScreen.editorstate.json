@@ -1365,7 +1365,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btnCancelCS",
-      "ParentIndex": 15,
+      "ParentIndex": 9,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -2918,7 +2918,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btnOkEC",
-      "ParentIndex": 12,
+      "ParentIndex": 16,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -3259,7 +3259,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btnOkremoveCS",
-      "ParentIndex": 16,
+      "ParentIndex": 10,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -3579,7 +3579,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btnOkSaveCS",
-      "ParentIndex": 13,
+      "ParentIndex": 17,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -12336,7 +12336,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "imgSuccessCS",
-      "ParentIndex": 11,
+      "ParentIndex": 7,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -12572,7 +12572,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "imgSuccessEC",
-      "ParentIndex": 7,
+      "ParentIndex": 13,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -13218,7 +13218,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "innerRectangleEC",
-      "ParentIndex": 6,
+      "ParentIndex": 12,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -15473,7 +15473,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblclientAddedCS",
-      "ParentIndex": 17,
+      "ParentIndex": 11,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -18908,7 +18908,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblremoveCS",
-      "ParentIndex": 10,
+      "ParentIndex": 6,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -19850,7 +19850,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblSuccessCS",
-      "ParentIndex": 14,
+      "ParentIndex": 8,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -20167,7 +20167,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblSucessEC",
-      "ParentIndex": 8,
+      "ParentIndex": 14,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -20484,7 +20484,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblupdatesuccessEC",
-      "ParentIndex": 9,
+      "ParentIndex": 15,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
