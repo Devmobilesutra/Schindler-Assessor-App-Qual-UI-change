@@ -380,50 +380,20 @@ BankScreen As screen:
                         HoverFill: |-
                             =//RGBA(255, 0, 0, 1)
                             Self.Fill
-                        OnSelect: |+
+                        OnSelect: |
                             =
-                            //Navigate(TryScreen);
-                            ClearCollect(GCCheckpointItemImages,Filter(checkpointItem_Images,assignmentId.Id=ThisItem.assignmentId.Id && bankUnitId.Id=ThisItem.bankUnitId.Id));
-                            Navigate(ViewAssessment);
-                            
-                            //Set(CId,LookUp(product,product_Model=ThisItem.productModel,'product (quantum_product)'));
-                            //Set(PId,LookUp(product,product_Model=ThisItem.productModel,product_Name));
+                            ClearCollect(
+                                GCCheckpointItemImages,
+                                Filter(
+                                    checkpointItem_Images,
+                                    assignmentId.Id = ThisItem.assignmentId.Id && bankUnitId.Id = ThisItem.bankUnitId.Id && Image.Value <> Blank()
+                                )
+                            );
                             Set(
                                 CId,
                                 ThisItem.productModel
                             );
-                            //Set(kid,ThisItem.bankUnitId);
-                            //Set(lid,LookUp(product,'product (quantum_product)'=kid.productId.'product (quantum_product)'));
-                            //Set(CID,ThisItem.bankUnitId.productId.);
-                            //Set(PID,ThisItem.bankUnitId.productId.product_Name);
-                            
-                            
-                            
-                            //Navigate(ViewAssessment);
-                            
-                            
-                            
-                            
-                            //Clear(GC_checkpointAssessment)
-                            /*If(
-                                CountRows(
-                                    Filter(
-                                        GC_unitAssessment,
-                                        assignmentId.Id = glryProject.Selected.Id
-                                    )
-                                ) < 1,*/
-                                //ForAll(GC_unitAssessment,bankUnitId.Id=ThisItem.bankUnitId.Id,
-                               
-                               
-                               /* Set(varBankUnitId,ThisItem.bankUnitId.Id);
-                            
-                                Patch(
-                                    GC_unitAssessment,LookUp(GC_unitAssessment,bankUnitId.Id=varBankUnitId),
-                                    {Assessment_status: "start "}
-                                )*/
-                                
-                            
-                            
+                            Navigate(ViewAssessment);
                         PressedColor: |
                             =//RGBA(255, 255, 255, 1)
                             Self.Color

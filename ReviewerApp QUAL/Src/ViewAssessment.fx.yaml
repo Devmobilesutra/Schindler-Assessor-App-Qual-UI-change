@@ -373,7 +373,7 @@ ViewAssessment As screen:
                                     bankUnitId.Id=glryAssignmentBS.Selected.bankUnitId.Id      && 
                                      //checkpointItem_Id.checkpointItemName=lblItemnameVA.Text
                                      checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)'=ThisItem.'checkpointItemAssessment (quantum_checkpointitemassessment)' 
-                                      && Image.Value <> Blank()
+                                     // && Image.Value <> Blank()
                                       ) 
                             
                                   //  checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' =LookUp(checkpointItemAssessment,checkpointItemName =LblAssStatuscountBS_14.Text,'checkpointItemAssessment (quantum_checkpointitemassessment)')
