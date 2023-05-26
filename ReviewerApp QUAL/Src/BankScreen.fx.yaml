@@ -323,11 +323,13 @@ BankScreen As screen:
                     FillPortions: =0
                     Height: =CountRows(glryAssignmentBS.AllItems)*glryAssignmentBS.TemplateHeight
                     Items: |-
-                        =//clientInstallation
-                        //Filter(LC_clientInstallation,'client id'.client=glryProject.Selected.clientId.client,unit_Number)
-                        //Filter(GC_bank,Go_Number=lblBankName.Text,clientInstallationId.unit_Number)
-                        //Filter(gcBankunit,bankId.goNumber=lblBankName.Text,unitNumber)
-                        Sort(Filter(assignmentUnits,assignmentId.Id=glryProject.Selected.Id),bankUnitId.unitNumber)
+                        =Sort(
+                            Filter(
+                                assignmentUnits,
+                                assignmentId.Id = glryProject.Selected.Id
+                            ),
+                            bankUnitId.unitNumber
+                        )
                     Layout: =Layout.Vertical
                     LayoutMinHeight: =287
                     LayoutMinWidth: =320
@@ -386,7 +388,7 @@ BankScreen As screen:
                                 GCCheckpointItemImages,
                                 Filter(
                                     checkpointItem_Images,
-                                    assignmentId.Id = ThisItem.assignmentId.Id && bankUnitId.Id = ThisItem.bankUnitId.Id && Image.Value <> Blank()
+                                    assignmentId.Id = ThisItem.assignmentId.Id && bankUnitId.Id = ThisItem.bankUnitId.Id //&& Image.Value <> Blank()
                                 )
                             );
                             Set(
