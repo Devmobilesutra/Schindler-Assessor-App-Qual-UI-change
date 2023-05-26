@@ -369,10 +369,10 @@ ViewAssessment As screen:
                             //[1,2,3,4,5,6]
                             
                             Filter(checkpointItem_Images,
-                                    assignmentId.Id=glryAssignmentBS.Selected.assignmentId.Id  && 
-                                    bankUnitId.Id=glryAssignmentBS.Selected.bankUnitId.Id      && 
+                                    assignmentId.Id=glryAssignmentBS.Selected.assignmentId.Id  &
+                                    bankUnitId.Id=glryAssignmentBS.Selected.bankUnitId.Id      & 
                                      //checkpointItem_Id.checkpointItemName=lblItemnameVA.Text
-                                     checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)'=ThisItem.'checkpointItemAssessment (quantum_checkpointitemassessment)' &&
+                                     checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)'=ThisItem.'checkpointItemAssessment (quantum_checkpointitemassessment)' &
                                      Image.Value <> Blank()
                                       ) 
                             
