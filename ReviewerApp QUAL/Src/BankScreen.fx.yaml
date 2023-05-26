@@ -383,6 +383,7 @@ BankScreen As screen:
                         OnSelect: |+
                             =
                             //Navigate(TryScreen);
+                            ClearCollect(GCCheckpointItemImages,Filter(checkpointItem_Images,assignmentId.Id=ThisItem.assignmentId.Id && bankUnitId.Id=ThisItem.bankUnitId.Id));
                             Navigate(ViewAssessment);
                             
                             //Set(CId,LookUp(product,product_Model=ThisItem.productModel,'product (quantum_product)'));

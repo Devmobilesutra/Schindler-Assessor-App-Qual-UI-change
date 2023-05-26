@@ -368,7 +368,7 @@ ViewAssessment As screen:
                             //Filter(GC_checkpointItem_Images,checkpointItem_Id.checkpointItemId.checkpointItemId=varCheckpointitemID && bankUnitId.Id=varBankUnitId &&assignmentId.startDate<>glryProject.Selected.startDate)
                             //[1,2,3,4,5,6]
                             
-                            Filter(checkpointItem_Images,
+                            Filter(GCCheckpointItemImages,
                                     assignmentId.Id=glryAssignmentBS.Selected.assignmentId.Id  &&
                                     bankUnitId.Id=glryAssignmentBS.Selected.bankUnitId.Id      && 
                                      //checkpointItem_Id.checkpointItemName=lblItemnameVA.Text
