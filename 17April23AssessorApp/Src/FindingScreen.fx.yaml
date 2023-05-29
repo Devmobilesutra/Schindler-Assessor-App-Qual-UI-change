@@ -1216,9 +1216,9 @@ FindingScreen As screen:
                             =//Parent.Height
                             lblAnnotationFS.Height + txtAnnotationFS.Height + ctnAddImageFS.Height + btnSaveFS.Height + ctnAddActionFS.Height + (CountRows(GlryActionItemFS.AllItems) * (GlryActionItemFS.TemplateHeight) / 1.1) + If(
                                 CountRows(GlryImagesFS.AllItems) = 1,
-                                320,
+                                340,
                                 CountRows(GlryImagesFS.AllItems) * (GlryImagesFS.TemplateHeight) / 2
-                            ) + 180
+                            ) + 200
                             
                             
                             //380 240
@@ -1925,6 +1925,62 @@ FindingScreen As screen:
                                 Y: =Label20_8.Y
                                 ZIndex: =2
 
+                            Container1 As groupContainer.horizontalAutoLayoutContainer:
+                                LayoutAlignItems: =LayoutAlignItems.Center
+                                LayoutJustifyContent: =LayoutJustifyContent.End
+                                LayoutMinHeight: =100
+                                LayoutMinWidth: =250
+                                LayoutMode: =LayoutMode.Auto
+                                PaddingRight: =40
+                                ZIndex: =3
+
+                                Button1 As button:
+                                    BorderColor: =Self.Fill
+                                    DisplayMode: =If(Connection.Connected,DisplayMode.Edit,DisplayMode.Disabled)
+                                    Fill: =AllScreensCSS.RActiveColor
+                                    OnSelect: |
+                                        =
+                                        //for safety check
+                                        If(
+                                            DateDiff(
+                                                UserLastNavigatedTime,
+                                                Now(),
+                                                TimeUnit.Seconds
+                                            ) > SafetyCheckTime,
+                                            Set(
+                                                safetyPopup,
+                                                true
+                                            );
+                                            ,
+                                            Set(
+                                                UserLastNavigatedTime,
+                                                Now()
+                                            );
+                                            
+                                        );
+                                        //get specific item images form server
+                                        ClearCollect(
+                                            TempGetImages,
+                                            Filter(
+                                                checkpointItem_Images,
+                                                checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = varCItemA
+                                            )
+                                        );
+                                        //Update images to collection
+                                        ForAll(
+                                            TempGetImages As i,
+                                            UpdateIf(
+                                                GC_checkpointItem_Images,
+                                                checkpointItemImagesId = i.checkpointItemImagesId,
+                                                {Image: i.Image}
+                                            )
+                                        );
+                                        Clear(TempGetImages);
+                                    Size: =12
+                                    Text: ="Download Images"
+                                    Width: =200
+                                    ZIndex: =1
+
                         "GlryImagesFS As gallery.'BrowseLayout_Vertical_TwoTextOneImageTwoColumnVariant_ver4.0'":
                             AlignInContainer: =AlignInContainer.Start
                             FillPortions: =0
@@ -1956,7 +2012,7 @@ FindingScreen As screen:
                                     =If(
                                         IsBlank(UploadedImage1_2),
                                         If(
-                                            ThisItem.CIIstatusUpdate = 2,
+                                            ThisItem.CIIstatusUpdate = 2 || ThisItem.Image = Blank() ,
                                             'submitted-cloud',
                                             ThisItem.Image
                                         ),
