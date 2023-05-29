@@ -227,7 +227,7 @@ FindingScreen As screen:
                                 GC_checkpointItem_Images,
                                 assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = varCItemA 
                              //&& (Image14_2.Image) = Blank()
-                            && IsBlank(Image)
+                            && IsBlank(Image) && CIIstatusUpdate <> 2
                             );
                             If(
                                 glryItmesAS.Selected.checkpointItemImage &&
@@ -1259,7 +1259,7 @@ FindingScreen As screen:
                                     checkpointItemId.checkpointItemId = glryItmesAS.Selected.checkpointItemId
                                     && 'checkpointItemAssessment (quantum_checkpointitemassessment)' = varCItemA,    
                                     checkpointItem_annotation
-                                )
+                                )&"    "& CountRows(GC_checkpointItem_Images)
                             DisabledFill: =RGBA(0, 0, 0, 0)
                             Font: =AllScreensCSS.RFont
                             Height: =170
@@ -1977,11 +1977,11 @@ FindingScreen As screen:
                                             TempGetImages As i,
                                             UpdateIf(
                                                 GC_checkpointItem_Images,
-                                                checkpointItemImagesId = i.checkpointItemImagesId,
+                                                checkpointItemImagesId = i.checkpointItemImagesId && CIIstatusUpdate = 2,
                                                 {Image: i.Image}
                                             )
                                         );
-                                        Clear(TempGetImages);
+                                        //Clear(TempGetImages);
                                     Size: =12
                                     Text: ="Download Images"
                                     Width: =200
