@@ -2012,7 +2012,7 @@ FindingScreen As screen:
                                     =If(
                                         IsBlank(UploadedImage1_2),
                                         If(
-                                            ThisItem.CIIstatusUpdate = 2 || ThisItem.Image = Blank() ,
+                                            ThisItem.CIIstatusUpdate = 2 &&   IsBlank(ThisItem.Image) ,
                                             'submitted-cloud',
                                             ThisItem.Image
                                         ),
