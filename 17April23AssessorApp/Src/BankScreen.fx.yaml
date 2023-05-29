@@ -1316,6 +1316,10 @@ BankScreen As screen:
                                                 2
                                             )
                                         );
+                                         UpdateIf(GC_checkpointItem_Images,bankUnitId.Id=ThisItem.bankUnitId.Id,
+                                        {
+                                            Image:'submitted-cloud'
+                                        }); 
                                         ForAll(
                                             Filter(
                                                 GC_checkpointItem_ImagesCache1,
@@ -1403,7 +1407,7 @@ BankScreen As screen:
                                                         checkpoint_id: i.checkpoint_id,
                                                         checkpointItem_Id: i.checkpointItem_Id,
                                                         product_id: i.product_id,
-                                                        Image: i.Image,
+                                                        Image:'submitted-cloud',   // i.Image,
                                                         image_annotation: i.image_annotation,
                                                         CIIstatusUpdate: 2
                                                     }

@@ -2752,7 +2752,7 @@ AssessmentScreen As screen:
                                                                                     {
                                                                                         checkpointItem_Images: i.checkpointItem_Images,
                                                                                         //unique key
-                                                                                        CIIstatusUpdate: 2
+                                                                                        Image:Blank(),                                                                                                                 CIIstatusUpdate: 2
                                                                                     }
                                                                                 )
                                                                             );

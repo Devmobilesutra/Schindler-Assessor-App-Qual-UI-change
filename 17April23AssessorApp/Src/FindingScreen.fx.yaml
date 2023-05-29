@@ -1955,7 +1955,11 @@ FindingScreen As screen:
                                 Image: |-
                                     =If(
                                         IsBlank(UploadedImage1_2),
-                                        ThisItem.Image,
+                                        If(
+                                            ThisItem.CIIstatusUpdate = 2,
+                                            'submitted-cloud',
+                                            ThisItem.Image
+                                        ),
                                         UploadedImage1_2
                                     )
                                 OnSelect: |-
