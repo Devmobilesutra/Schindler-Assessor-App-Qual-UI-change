@@ -1,6 +1,24 @@
 FindingScreen As screen:
     OnVisible: |-
-        =Set(
+        =If(
+            CountRows(
+                Filter(
+                    GC_checkpointItem_Images,
+                    assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId &&
+         checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = varCItemA && CIIstatusUpdate =2
+                )
+            ) > 0,
+            Set(
+                VarImageIsDownloaded,
+                false
+            );
+            ,
+            Set(
+                VarImageIsDownloaded,
+                true
+            )
+        );
+        Set(
             varloader,
             false
         );
@@ -1259,7 +1277,7 @@ FindingScreen As screen:
                                     checkpointItemId.checkpointItemId = glryItmesAS.Selected.checkpointItemId
                                     && 'checkpointItemAssessment (quantum_checkpointitemassessment)' = varCItemA,    
                                     checkpointItem_annotation
-                                )&"    "& CountRows(GC_checkpointItem_Images)
+                                )
                             DisabledFill: =RGBA(0, 0, 0, 0)
                             Font: =AllScreensCSS.RFont
                             Height: =170
@@ -1941,7 +1959,21 @@ FindingScreen As screen:
 
                                 Button1 As button:
                                     BorderColor: =Self.Fill
-                                    DisplayMode: =If(Connection.Connected,DisplayMode.Edit,DisplayMode.Disabled)
+                                    DisplayMode: |-
+                                        =If(
+                                            Connection.Connected,
+                                            If(
+                                                CountRows(
+                                                    Filter(
+                                                        GC_checkpointItem_Images,
+                                                        assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = varCItemA && CIIstatusUpdate = 2 && IsBlank(Image)
+                                                    )
+                                                ) > 0,
+                                                DisplayMode.Edit,
+                                                DisplayMode.Disabled
+                                            ),
+                                            DisplayMode.Disabled
+                                        )
                                     Fill: =AllScreensCSS.RActiveColor
                                     OnSelect: |
                                         =
@@ -1981,9 +2013,23 @@ FindingScreen As screen:
                                                 {Image: i.Image}
                                             )
                                         );
+                                        Set(VarImageIsDownloaded,true);
                                         //Clear(TempGetImages);
+                                    PressedColor: =Self.Color
+                                    PressedFill: =Self.Fill
                                     Size: =12
                                     Text: ="Download Images"
+                                    Visible: |-
+                                        =If(
+                                            CountRows(
+                                                Filter(
+                                                    GC_checkpointItem_Images,
+                                                    assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = varCItemA
+                                                )
+                                            ) > 0,
+                                            true,
+                                            false
+                                        )
                                     Width: =200
                                     ZIndex: =1
 
@@ -2291,6 +2337,8 @@ FindingScreen As screen:
                                         
                                     );
                                     
+                                    If(VarImageIsDownloaded =true,
+                                    
                                     If(
                                         glryItmesAS.Selected.checkpointItemImage = 'checkpointItemImage (templateCheckpointsItems)'.Yes && CountRows(
                                             Filter(
@@ -2339,7 +2387,8 @@ FindingScreen As screen:
                                         );
                                         ,
                                         Notify("Here,Image is mandatory.So you can't delete it,change the image.")
-                                    )
+                                    ),
+                                    Notify("You have to load images first then you can delete it .",NotificationType.Information));
                                 RadiusBottomLeft: =1
                                 RadiusBottomRight: =1
                                 RadiusTopLeft: =1
@@ -2581,8 +2630,7 @@ FindingScreen As screen:
                             ZIndex: =9
 
                             btnSaveFS As button:
-                                BorderColor: =AllScreensCSS.RActiveColor
-                                BorderThickness: =0
+                                BorderColor: =Self.Fill
                                 DisplayMode: =If(IsBlank(txtAnnotationFS) && CountRows(GlryActionItemFS.AllItems)=0 && CountRows(GlryImagesFS.AllItems)=0,DisplayMode.Disabled,DisplayMode.Edit)
                                 Fill: =AllScreensCSS.RActiveColor
                                 Font: =AllScreensCSS.ButtonFont
