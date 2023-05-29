@@ -2131,8 +2131,10 @@ FindingScreen As screen:
                                 Height: =Min(Self.Width, Parent.TemplateHeight - 115)
                                 Image: |-
                                     =If(
-                                        IsBlank(ThisItem.Image),
-                                        'Sample Image',
+                                        IsBlank(ThisItem.Image) ,
+                                        If(ThisItem.CIIstatusUpdate = 2,
+                                        'submitted-cloud',
+                                        'Sample Image'),
                                         ThisItem.Image
                                     )
                                 ImagePosition: =ImagePosition.Fill
