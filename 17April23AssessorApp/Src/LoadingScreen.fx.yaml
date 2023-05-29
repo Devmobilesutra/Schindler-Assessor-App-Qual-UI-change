@@ -1,4 +1,5 @@
 LoadingScreen As screen:
+    Fill: =Color.White   
     OnVisible: |-
         =//CSS
         Set(
