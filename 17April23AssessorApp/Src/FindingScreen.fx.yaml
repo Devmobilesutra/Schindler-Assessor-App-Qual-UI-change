@@ -242,6 +242,11 @@ FindingScreen As screen:
                                 glryItmesAS.Selected.cboxItemsAS.Value = true;
                                 
                             );
+                            UpdateIf(
+                                GC_checkpointItem_Images,
+                                assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpoint_id.checkpointAssessment_id = GuidId && checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = varCItemA && CIIstatusUpdate = 2,
+                                {Image: Blank()}
+                            );
                             Navigate(AssessmentScreen);
                         PaddingBottom: =10
                         PaddingLeft: =0
