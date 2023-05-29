@@ -1963,6 +1963,7 @@ FindingScreen As screen:
                                             );
                                             
                                         );
+                                        Set(UP,true);
                                         //get specific item images form server
                                         ClearCollect(
                                             TempGetImages,
