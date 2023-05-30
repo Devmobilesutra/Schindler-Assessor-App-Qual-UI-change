@@ -19,6 +19,11 @@ FindingScreen As screen:
             )
         );
         Set(
+             VarDownloadImagesRestrict,
+            false
+        );
+        
+        Set(
             varloader,
             false
         );
