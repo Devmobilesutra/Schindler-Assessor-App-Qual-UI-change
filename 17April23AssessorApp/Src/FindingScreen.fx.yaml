@@ -1974,6 +1974,7 @@ FindingScreen As screen:
                                             DisplayMode.Disabled
                                         )
                                     Fill: =AllScreensCSS.RActiveColor
+                                    HoverFill: =Self.Fill
                                     OnSelect: |
                                         =
                                         //for safety check
@@ -2613,14 +2614,14 @@ FindingScreen As screen:
                                 ZIndex: =3
 
                             Label4 As label:
-                                FontWeight: =FontWeight.Bold
+                                Size: =12
                                 Text: |-
-                                    =" Unsubmitted Images : " & CountRows(
+                                    =" ( Unsubmitted image count is " & CountRows(
                                         Filter(
                                             GC_checkpointItem_Images,
                                             CIIstatusUpdate = 0 || CIIstatusUpdate = 1
                                         )
-                                    )
+                                    ) & " )"
                                 Visible: |-
                                     =If(
                                         CountRows(
