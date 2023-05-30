@@ -7,10 +7,7 @@ App As appinfo:
             SafetyCheckTime,
             1800
         );
-        Set(
-            timerStart,
-            false
-        );
+        //Set( timerStart,false);
         //Set(varload,true);
         // Global CSS
         Set(

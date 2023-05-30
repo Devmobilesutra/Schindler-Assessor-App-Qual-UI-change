@@ -82,7 +82,7 @@ AssessmentScreen As screen:
                         HoverColor: =RGBA(0, 0, 0, 1)
                         HoverFill: =
                         OnSelect: |
-                            =UpdateContext({locInfoExpanded: false});
+                            =//UpdateContext({locInfoExpanded: false});
                             Set(
                                 varExpanded,
                                 false

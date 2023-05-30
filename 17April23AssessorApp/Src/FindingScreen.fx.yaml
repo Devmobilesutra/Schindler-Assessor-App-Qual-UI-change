@@ -70,10 +70,7 @@ FindingScreen As screen:
             
         );
         //Set(popup1,false);
-        Set(
-            varRequired,
-            false
-        );
+        //Set( varRequired, false);
         Set(
             VarBlankrow1,
             false
@@ -82,10 +79,7 @@ FindingScreen As screen:
             VarBlankrow2,
             false
         );
-        Set(
-            varActionbutton,
-            false
-        );
+        //Set(varActionbutton, false);
         Set(
             varImage,
             false

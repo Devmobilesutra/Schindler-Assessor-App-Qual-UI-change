@@ -17,7 +17,7 @@ LoadingScreen As screen:
                 FontSize: 30
             }
         );
-        Set(
+        /*Set(
             Label,
             {
                 Font: "Roboto Regular",
@@ -33,7 +33,7 @@ LoadingScreen As screen:
                 Color: "DC0000",
                 FontSize: 20
             }
-        )
+        )*/
 
     ImgLS As image:
         Height: =Parent.Height
