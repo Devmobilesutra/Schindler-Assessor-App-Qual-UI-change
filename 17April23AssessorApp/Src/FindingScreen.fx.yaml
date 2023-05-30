@@ -3758,7 +3758,7 @@ FindingScreen As screen:
             FontWeight: =FontWeight.Bold
             Height: =100
             Size: =15
-            Text: ="You have to load images first then you can delete it ."
+            Text: ="You have to download images first, then you can Add/delete it ."
             Visible: =VarDownloadImagesRestrict
             Width: =350
             X: =(Parent.Width-Self.Width)/2
