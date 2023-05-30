@@ -129,7 +129,6 @@ AssessmentScreen As screen:
 
                     lblAssesorNameAS_3 As label:
                         Font: =AllScreensCSS.RFont
-                        FontWeight: =FontWeight.Semibold
                         Height: =ctnAssessorAS_3.Height
                         PaddingLeft: =40
                         Size: =AllScreensCSS.RLabelFontSize
@@ -163,7 +162,6 @@ AssessmentScreen As screen:
 
                     lblBankNumberAS_4 As label:
                         Font: =AllScreensCSS.RFont
-                        FontWeight: =FontWeight.Semibold
                         Height: =ctnBankAS_3.Height
                         PaddingLeft: =40
                         Size: =AllScreensCSS.RLabelFontSize
@@ -198,7 +196,6 @@ AssessmentScreen As screen:
 
                     lblBankNumberAS_5 As label:
                         Font: =AllScreensCSS.RFont
-                        FontWeight: =FontWeight.Semibold
                         Height: =ctnUnitAS_1.Height
                         PaddingLeft: =40
                         Size: =AllScreensCSS.RLabelFontSize
@@ -232,7 +229,6 @@ AssessmentScreen As screen:
 
                     lblAssessmentTypeAS_3 As label:
                         Font: =AllScreensCSS.RFont
-                        FontWeight: =FontWeight.Semibold
                         Height: =ctnAssessmntTypeAS_3.Height
                         PaddingLeft: =40
                         Size: =AllScreensCSS.RLabelFontSize
@@ -271,7 +267,6 @@ AssessmentScreen As screen:
 
                     lblAssessmentDateAS_3 As label:
                         Font: =AllScreensCSS.RFont
-                        FontWeight: =FontWeight.Semibold
                         Height: =ctnAssessmentDateAS_3.Height
                         PaddingLeft: =40
                         Size: =AllScreensCSS.RLabelFontSize
