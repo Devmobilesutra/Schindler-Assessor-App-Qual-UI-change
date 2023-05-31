@@ -1,7 +1,7 @@
 App As appinfo:
     BackEnabled: =false
     ConfirmExitMessage: ="Are you sure you want to exit ?"
-    OnStart: |
+    OnStart: |+
         =//safety timer
         Set(
             SafetyCheckTime,
@@ -547,11 +547,7 @@ App As appinfo:
         Clear(gcProjectAssignmentAdd);
         Clear(GC_bankAssessmentAdd);
         Clear(GC_unitAssessmentAdd);
-        Clear(GcSectionAssessmentAdd);
-        Clear(GcCheckpointAssessmentAdd);
-        Clear(GC_checkpointItemAssessmentAdd);
-        Clear(GC_checkpointItem_ActionItemAdd);
-        Clear(GC_checkpointItem_ImagesAdd);
+        
     SizeBreakpoints: =[600,700, 900, 1200,1500,1800]
 
     Host As hostControl.DefaultHostControlVariant:

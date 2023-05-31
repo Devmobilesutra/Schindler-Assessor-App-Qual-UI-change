@@ -1514,6 +1514,18 @@ BankScreen As screen:
                                 false
                             );
                             //net connected
+                            
+                            Clear(GcSectionAssessmentAdd);
+                            Clear(GcCheckpointAssessmentAdd);
+                            Clear(GC_checkpointItemAssessmentAdd);
+                            Clear(GC_checkpointItem_ActionItemAdd);
+                            Clear(GC_checkpointItem_ImagesAdd);
+                            
+                            Clear(GcSectionAssessmentAdd);
+                            Clear(GcCheckpointAssessmentAdd);
+                            Clear(GC_checkpointItemAssessmentAdd);
+                            Clear(GC_checkpointItem_ActionItemAdd);
+                            Clear(GC_checkpointItem_ImagesAdd);
                             /*
                             If(
                                 IsEmpty(GcSectionAssessment) && IsEmpty(GcCheckpointAssessment) && IsEmpty(GC_checkpointItemAssessment) && IsEmpty(GC_checkpointItem_ActionItem) && IsEmpty(GC_checkpointItem_Images),

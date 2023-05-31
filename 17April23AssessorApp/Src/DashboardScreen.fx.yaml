@@ -60,7 +60,7 @@ DashboardScreen As screen:
             Image2_34 As image:
                 Height: =40
                 Image: ='refresh-1x'
-                OnSelect: |
+                OnSelect: |+
                     =//get new assignment and completed assignment updates
                     
                     If(
@@ -406,6 +406,11 @@ DashboardScreen As screen:
                         gcProjectAssignment,
                         "localprojectassignment"
                     );
+                    
+                    Clear(gcProjectAssignmentAdd);
+                    Clear(GC_bankAssessmentAdd);
+                    Clear(GC_unitAssessmentAdd);
+                    
                 Visible: =Connection.Connected=true
                 Width: =40
                 X: =Image2_33.X+Image2_33.Width+20
