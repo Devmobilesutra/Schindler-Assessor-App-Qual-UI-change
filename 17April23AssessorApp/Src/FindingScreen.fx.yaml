@@ -1995,26 +1995,53 @@ FindingScreen As screen:
                                             );
                                             
                                         );
-                                        Set(UP,true);
+                                        If(
+                                            CountRows(
+                                                Filter(
+                                                    GC_checkpointItem_Images,
+                                                    CIIstatusUpdate = 0 || CIIstatusUpdate = 1 || CIIstatusUpdate = Blank()
+                                                )
+                                            ) >= 50,
+                                            Set(
+                                                VarImagesExceedPopupText,
+                                                "You have reached limit of 50 Unsubmitted images. Please submit before continuing the assessment."
+                                            );
+                                         // Notify("You have reached limit of 75 images.You can not add Images.",NotificationType.Error);
+                                        Set(
+                                                VarImagesExceedPopup,
+                                                true
+                                            );
+                                            ,
+                                            Set(
+                                                UP,
+                                                true
+                                            );
+                                            
                                         //get specific item images form server
                                         ClearCollect(
-                                            TempGetImages,
-                                            Filter(
-                                                checkpointItem_Images,
-                                                checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = varCItemA
-                                            )
-                                        );
+                                                TempGetImages,
+                                                Filter(
+                                                    checkpointItem_Images,
+                                                    checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = varCItemA
+                                                )
+                                            );
+                                            
                                         //Update images to collection
                                         ForAll(
-                                            TempGetImages As i,
-                                            UpdateIf(
-                                                GC_checkpointItem_Images,
-                                                checkpointItemImagesId = i.checkpointItemImagesId && CIIstatusUpdate = 2,
-                                                {Image: i.Image}
-                                            )
-                                        );
-                                        Set(VarImageIsDownloaded,true);
+                                                TempGetImages As i,
+                                                UpdateIf(
+                                                    GC_checkpointItem_Images,
+                                                    checkpointItemImagesId = i.checkpointItemImagesId && CIIstatusUpdate = 2,
+                                                    {Image: i.Image}
+                                                )
+                                            );
+                                            Set(
+                                                VarImageIsDownloaded,
+                                                true
+                                            );
+                                            
                                         //Clear(TempGetImages);
+                                        );
                                     PressedColor: =Self.Color
                                     PressedFill: =Self.Fill
                                     Size: =12
