@@ -2040,7 +2040,7 @@ FindingScreen As screen:
                                                 true
                                             );
                                             
-                                        //Clear(TempGetImages);
+                                        Clear(TempGetImages);
                                         );
                                     PressedColor: =Self.Color
                                     PressedFill: =Self.Fill

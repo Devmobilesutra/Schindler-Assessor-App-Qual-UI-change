@@ -1801,7 +1801,7 @@ AssessmentScreen As screen:
                         HoverFill: |-
                             =///ColorFade(RGBA(56, 96, 178, 1), -20%)
                             Self.Fill
-                        OnSelect: |
+                        OnSelect: |+
                             =Set(
                                 VarSubmitError,
                                 false
@@ -3221,6 +3221,12 @@ AssessmentScreen As screen:
                                 GC_checkpointItem_ImagesCache,
                                 "localcheckpointitemimage"
                             );
+                            
+                            Clear(TempSectionAssessment);
+                            Clear(TempCheckpointAssessment);
+                            Clear(TempCheckpointItemAssessment);
+                            Clear(TempcheckpointItem_ActionItem);
+                            Clear(TempCheckpointItem_Images);
                             Set(
                                 Varpatchlabel,
                                 " "
@@ -3233,6 +3239,8 @@ AssessmentScreen As screen:
                                 varSpinner,
                                 false
                             );
+                            
+                            
                         PaddingBottom: =2
                         PaddingTop: =2
                         PressedFill: =Self.Fill
