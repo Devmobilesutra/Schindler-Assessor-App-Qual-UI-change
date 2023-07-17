@@ -2408,9 +2408,10 @@ AssessmentScreen As screen:
                                                                     assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpointAssessment_Id.checkpointAssessment_id = GuidId && CIstatusUpdate = 1
                                                                 )
                                                             ) > 0,
-                                                            Refresh(  checkpointItemAssessment);
+                                                           
                                                             If(
                                                                 Connection.Connected,
+                                                                 Refresh(  checkpointItemAssessment);
                                                          //getting specific checkpoint data from dataverse and store it into temporary collection beacause we need unique indetifier from dataverse       
                                                                 ClearCollect(
                                                                     TempCheckpointItemAssessment,
