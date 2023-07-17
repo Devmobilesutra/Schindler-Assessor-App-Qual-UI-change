@@ -2462,20 +2462,20 @@ AssessmentScreen As screen:
                                                             );
                                                             If(
                                                                 (!IsEmpty(Errors(checkpointItemAssessment))),
-                                                                /*Notify(
+                                                                Notify(
                                                                     "CheckpointItem Patch function Error -- " & Concat(
                                                                         Errors(checkpointItemAssessment),
                                                                         Column & ": " & Message
                                                                     ),
                                                                     NotificationType.Error
-                                                                );*/
+                                                                );
                                                                 Set(
                                                                     VarSubmitError,
                                                                     true
                                                                 );
                                                                 Set(
                                                                     VarPopupText,
-                                                                    " Item Something went wrong, Please try again ."
+                                                                    " Item Something went wrong, Please try again . "
                                                                 );
                                                                 ,
                                                                 Set(
