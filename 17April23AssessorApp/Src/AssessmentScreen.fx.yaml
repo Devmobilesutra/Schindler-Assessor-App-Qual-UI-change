@@ -2173,12 +2173,12 @@ AssessmentScreen As screen:
                                                 );
                                                 Set(
                                                     VarPopupText,
-                                                    "Something went wrong, Please try again ."
+                                                    "section Something went wrong, Please try again ."
                                                 );
                                                 ,
                                                 Set(
                                                     VarPopupText,
-                                                    "Assessment records submitted successfully."
+                                                    "SAssessment records submitted successfully."
                                                 );
                                                 If(
                                                     Connection.Connected,
@@ -2330,12 +2330,12 @@ AssessmentScreen As screen:
                                                         );
                                                         Set(
                                                             VarPopupText,
-                                                            "Something went wrong, Please try again ."
+                                                            "checkpoint Something went wrong, Please try again ."
                                                         );
                                                         ,
                                                         Set(
                                                             VarPopupText,
-                                                            "Assessment records submitted successfully."
+                                                            "C Assessment records submitted successfully."
                                                         );
                                                         If(
                                                             Connection.Connected,
@@ -2475,12 +2475,12 @@ AssessmentScreen As screen:
                                                                 );
                                                                 Set(
                                                                     VarPopupText,
-                                                                    "Something went wrong, Please try again ."
+                                                                    " Item Something went wrong, Please try again ."
                                                                 );
                                                                 ,
                                                                 Set(
                                                                     VarPopupText,
-                                                                    "Assessment records submitted successfully."
+                                                                    "CI Assessment records submitted successfully."
                                                                 );
                                                                 If(
                                                                     Connection.Connected,
@@ -2673,12 +2673,12 @@ AssessmentScreen As screen:
                                                                         );
                                                                         Set(
                                                                             VarPopupText,
-                                                                            "Something went wrong, Please try again ."
+                                                                            "action & images Something went wrong, Please try again ."
                                                                         );
                                                                         ,
                                                                         Set(
                                                                             VarPopupText,
-                                                                            "Assessment records submitted successfully."
+                                                                            "CIA Assessment records submitted successfully."
                                                                         );
                                                                                    //Checking checkpointActionItem record is available or not for patch => if Available then patch and get specific checkpointActionItem data 
                             If(
@@ -2751,7 +2751,7 @@ AssessmentScreen As screen:
                                                                                     }
                                                                                 )
                                                                             );
-                                                                        );
+                                                                        );//@@@@@@@@@@@@@@@@@@@@
                                                                         If(
                                                                             CountRows(
                                                                                 Filter(
@@ -2802,7 +2802,7 @@ AssessmentScreen As screen:
                                                                             );
                                                                             Set(
                                                                                 VarPopupText,
-                                                                                "Something went wrong, Please try again ."
+                                                                                "no item data Something went wrong, Please try again ."
                                                                             );
                                                                         );
                                                                     //countrow all action image submit
@@ -2867,7 +2867,7 @@ AssessmentScreen As screen:
                                         );*/
                                         Set(
                                             VarPopupText,
-                                            "Something went wrong, Please try again ."
+                                            "Last Something went wrong, Please try again ."
                                         );
                                     );
                                 );
