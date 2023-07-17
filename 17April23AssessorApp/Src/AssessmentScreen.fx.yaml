@@ -2862,7 +2862,25 @@ AssessmentScreen As screen:
                                         //Section IfError
                                         );
                                     //Section countrows
-                            //updating Section assessment status from 0 to 1 for detecting unpatched data and sync status update
+                            
+                                        ,
+                                        Set(
+                                            VarSubmitError,
+                                            true
+                                        );
+                                       /* Notify(
+                                            "Action and Images delete Error .",
+                                            NotificationType.Information
+                                        );*/
+                            Set(
+                                            VarPopupText,
+                                            "Last Something went wrong, Please try again ."
+                                        );
+                                    );
+                                );
+                                //Net connected 
+                            
+                                //updating Section assessment status from 0 to 1 for detecting unpatched data and sync status update
                             UpdateIf(
                                             GcSectionAssessment,
                                             'sectionAssessment (quantum_sectionassessment)' = varSA && SstatusUpdate = 1,
@@ -2929,22 +2947,6 @@ AssessmentScreen As screen:
                                                 )
                                             }
                                         );
-                                        ,
-                                        Set(
-                                            VarSubmitError,
-                                            true
-                                        );
-                                       /* Notify(
-                                            "Action and Images delete Error .",
-                                            NotificationType.Information
-                                        );*/
-                            Set(
-                                            VarPopupText,
-                                            "Last Something went wrong, Please try again ."
-                                        );
-                                    );
-                                );
-                                //Net connected 
                             );
                             ///data availabel
                             //*****************************************************************************************************************************
