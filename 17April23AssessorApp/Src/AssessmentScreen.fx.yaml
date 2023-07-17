@@ -1801,7 +1801,7 @@ AssessmentScreen As screen:
                         HoverFill: |-
                             =///ColorFade(RGBA(56, 96, 178, 1), -20%)
                             Self.Fill
-                        OnSelect: |+
+                        OnSelect: |
                             =Set(
                                 VarSubmitError,
                                 false
@@ -1837,7 +1837,7 @@ AssessmentScreen As screen:
                                 ) & " . Please do not exit the app till upload is complete."
                             );
                                 //for changing (tabs) depending on  assessment status upcomming to inprogress for first time
-                                //if collection contain assessment status upcomming or inprogress1 then we set variable to navigate dashboard screen 
+                            //if collection contain assessment status upcomming or inprogress1 then we set variable to navigate dashboard screen 
                             If(
                                 IsBlank(
                                     LookUp(
@@ -2106,13 +2106,14 @@ AssessmentScreen As screen:
                                             CountRows(
                                                 Filter(
                                                     GcSectionAssessment,
-                                                    assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId  && 'sectionAssessment (quantum_sectionassessment)' = varSA && SstatusUpdate = 1
+                                                    assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && 'sectionAssessment (quantum_sectionassessment)' = varSA && SstatusUpdate = 1
                                                 )
                                             ) > 0,
                                             If(
                                                 Connection.Connected,
-                                        //getting specific section assessment data from dataverse and store it into temporary collection beacause we need unique indetifier from dataverse
-                                                ClearCollect(
+                                                Refresh(sectionAssessment);
+                                                 //getting specific section assessment data from dataverse and store it into temporary collection beacause we need unique indetifier from dataverse
+                            ClearCollect(
                                                     TempSectionAssessment,
                                                     Filter(
                                                         sectionAssessment,
@@ -2131,7 +2132,7 @@ AssessmentScreen As screen:
                                                         'sectionAssessment (quantum_sectionassessmentid)': i.'sectionAssessment (quantum_sectionassessmentid)',
                                                         sectionComment: i.sectionComment,
                                                         AssessmentStatus: i.AssessmentStatus//,
-                                                           // SstatusUpdate: 2
+                            // SstatusUpdate: 2
                                                     }
                                                 );
                                             );
@@ -2203,7 +2204,7 @@ AssessmentScreen As screen:
                                                                 'sectionAssessment (quantum_sectionassessmentid)': i.'sectionAssessment (quantum_sectionassessmentid)',
                                                                 sectionComment: i.sectionComment,
                                                                 AssessmentStatus: i.AssessmentStatus//,
-                                                           // SstatusUpdate: 2
+                            // SstatusUpdate: 2
                                                             }
                                                         );
                                                         ,
@@ -2257,7 +2258,7 @@ AssessmentScreen As screen:
                                                     );
                                                 );
                                     //if
-                                       //Checking checkpoint record is available or not for patch => if Available then patch and get specific section data and update lookup using for loop 
+                            //Checking checkpoint record is available or not for patch => if Available then patch and get specific section data and update lookup using for loop 
                             If(
                                                     CountRows(
                                                         Filter(
@@ -2267,8 +2268,9 @@ AssessmentScreen As screen:
                                                     ) > 0,
                                                     If(
                                                         Connection.Connected,
+                                                        Refresh(checkpointAssessment);
                                                 //getting specific checkpoint data from dataverse and store it into temporary collection beacause we need unique indetifier from dataverse
-                                                        ClearCollect(
+                            ClearCollect(
                                                             TempCheckpointAssessment,
                                                             Filter(
                                                                 checkpointAssessment,
@@ -2286,7 +2288,7 @@ AssessmentScreen As screen:
                                                                 checkpointAssessment: j.checkpointAssessment,
                                                                 checkpointComment: j.checkpointComment,
                                                                 AssessmentStatus: j.AssessmentStatus//,
-                                                                   // CstatusUpdate: 2
+                            // CstatusUpdate: 2
                                                             }
                                                         );
                                                     );
@@ -2359,7 +2361,7 @@ AssessmentScreen As screen:
                                                                         checkpointAssessment: j.checkpointAssessment,
                                                                         checkpointComment: j.checkpointComment,
                                                                         AssessmentStatus: j.AssessmentStatus//,
-                                                                   // CstatusUpdate: 2
+                            // CstatusUpdate: 2
                                                                     }
                                                                 );
                                                                 ,
@@ -2408,12 +2410,11 @@ AssessmentScreen As screen:
                                                                     assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpointAssessment_Id.checkpointAssessment_id = GuidId && CIstatusUpdate = 1
                                                                 )
                                                             ) > 0,
-                                                           
                                                             If(
                                                                 Connection.Connected,
-                                                                 Refresh(  checkpointItemAssessment);
+                                                                Refresh(checkpointItemAssessment);
                                                          //getting specific checkpoint data from dataverse and store it into temporary collection beacause we need unique indetifier from dataverse       
-                                                                ClearCollect(
+                            ClearCollect(
                                                                     TempCheckpointItemAssessment,
                                                                     Filter(
                                                                         checkpointItemAssessment,
@@ -2431,7 +2432,7 @@ AssessmentScreen As screen:
                                                                         'checkpointItemAssessment (quantum_checkpointitemassessmentid)': k.'checkpointItemAssessment (quantum_checkpointitemassessmentid)',
                                                                         assessmentStatus: k.assessmentStatus,
                                                                         checkpointItemComment: k.checkpointItemComment//,
-                                                                           // CIstatusUpdate: 2
+                            // CIstatusUpdate: 2
                                                                     }
                                                                 );
                                                             );
@@ -2506,7 +2507,7 @@ AssessmentScreen As screen:
                                                                                 'checkpointItemAssessment (quantum_checkpointitemassessmentid)': k.'checkpointItemAssessment (quantum_checkpointitemassessmentid)',
                                                                                 assessmentStatus: k.assessmentStatus,
                                                                                 checkpointItemComment: k.checkpointItemComment//,
-                                                                           // CIstatusUpdate: 2
+                            // CIstatusUpdate: 2
                                                                             }
                                                                         );
                                                                         ,
@@ -2558,6 +2559,7 @@ AssessmentScreen As screen:
                                                                     );
                                                                     If(
                                                                         Connection.Connected,
+                                                                        Refresh(checkpointItem_ActionItem);
                                                                         ClearCollect(
                                                                             TempcheckpointItem_ActionItem,
                                                                             Filter(
@@ -2576,7 +2578,7 @@ AssessmentScreen As screen:
                                                                                 checkpointItem_ActionItems: i.checkpointItem_ActionItems,
                                                                                 //unique key
                                                                                 Action_status: i.Action_status//,
-                                                                                  //  CIAstatusUpdate: 2
+                            //  CIAstatusUpdate: 2
                                                                             }
                                                                         )
                                                                     );
@@ -2612,8 +2614,9 @@ AssessmentScreen As screen:
                                                                     );
                                                                     If(
                                                                         Connection.Connected,
+                                                                        Refresh(checkpointItem_Images);
                                                                 //getting specific checkpoint wise checkpoint images  data from dataverse to collection beacause we need unique indetifier from dataverse
-                                                                        ClearCollect(
+                            ClearCollect(
                                                                             TempCheckpointItem_Images,
                                                                             Filter(
                                                                                 checkpointItem_Images,
@@ -2628,8 +2631,8 @@ AssessmentScreen As screen:
                                                                             GC_checkpointItem_Images,
                                                                             checkpointItemImagesId = i.checkpointItemImagesId && CIIstatusUpdate = 1,
                                                                             {checkpointItem_Images: i.checkpointItem_Images//,
-                                                                                    //unique key
-                                                                                   // CIIstatusUpdate: 2
+                            //unique key
+                            // CIIstatusUpdate: 2
                             }
                                                                         )
                                                                     );
@@ -2717,8 +2720,8 @@ AssessmentScreen As screen:
                                                                             );
                                                                         );
                                                             //checkpointActionItem countrows
-                                    //    ,
-                                    //Checking checkpointImages record is available or not for patch => if Available then patch and get specific checkpointImages data 
+                            //    ,
+                            //Checking checkpointImages record is available or not for patch => if Available then patch and get specific checkpointImages data 
                             If(
                                                                             CountRows(
                                                                                 Filter(
@@ -2749,12 +2752,14 @@ AssessmentScreen As screen:
                                                                                     {
                                                                                         checkpointItem_Images: i.checkpointItem_Images,
                                                                                         //unique key
-                                                                                        Image:Blank(),                                                                                                                 CIIstatusUpdate: 2
+                                                                                        Image: Blank(),
+                                                                                        CIIstatusUpdate: 2
                                                                                     }
                                                                                 )
                                                                             );
-                                                                        );//@@@@@@@@@@@@@@@@@@@@
-                                                                        If(
+                                                                        );
+                                                                        //@@@@@@@@@@@@@@@@@@@@
+                            If(
                                                                             CountRows(
                                                                                 Filter(
                                                                                     GC_checkpointItem_ActionItem,
@@ -2767,21 +2772,8 @@ AssessmentScreen As screen:
                                                                                 )
                                                                             ) < 1,
                                                                                                       //checkpointImages countrows
-                                                                    //updating unit assessment status from 0 to 1 first time for detecting unpatched data and sync status update
+                            //updating unit assessment status from 0 to 1 first time for detecting unpatched data and sync status update
                                                                             Concurrent(
-                                                                                UpdateIf(
-                                                                                    GC_unitAssessment,
-                                                                                    assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && UstatusUpdate = 1,
-                                                                                    {UstatusUpdate: 2}
-                                                                                );
-                                                                                ,
-                            //updating Section assessment status from 0 to 1 for detecting unpatched data and sync status update
-                                                                                UpdateIf(
-                                                                                    GcSectionAssessment,
-                                                                                    'sectionAssessment (quantum_sectionassessment)' = varSA && SstatusUpdate = 1,
-                                                                                    {SstatusUpdate: 2}
-                                                                                );
-                                                                                ,
                             //updating checkpoint assessment status from 0 to 1 for detecting unpatched data and sync status update
                                                                                 UpdateIf(
                                                                                     GcCheckpointAssessment,
@@ -2797,6 +2789,18 @@ AssessmentScreen As screen:
                                                                                 );
                                                                             );
                                                                     //concurrent
+                            /*    UpdateIf(
+                                                                                    GC_unitAssessment,
+                                                                                    assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && UstatusUpdate = 1,
+                                                                                    {UstatusUpdate: 2}
+                                                                                );
+                                                                                
+                            //updating Section assessment status from 0 to 1 for detecting unpatched data and sync status update
+                                                                                UpdateIf(
+                                                                                    GcSectionAssessment,
+                                                                                    'sectionAssessment (quantum_sectionassessment)' = varSA && SstatusUpdate = 1,
+                                                                                    {SstatusUpdate: 2}
+                                                                                );*/
                             ,
                                                                             Set(
                                                                                 VarSubmitError,
@@ -2815,9 +2819,9 @@ AssessmentScreen As screen:
                                                                         "Action and Image not available",
                                                                         NotificationType.Information
                                                                     );*/
-                                //updating unit assessment status from 0 to 1 first time for detecting unpatched data and sync status update
-                            Concurrent(
-                                                                        UpdateIf(
+                            //updating unit assessment status from 0 to 1 first time for detecting unpatched data and sync status update
+                                                                    Concurrent(
+                                                               /*         UpdateIf(
                                                                             GC_unitAssessment,
                                                                             assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && UstatusUpdate = 1,
                                                                             {UstatusUpdate: 2}
@@ -2829,7 +2833,7 @@ AssessmentScreen As screen:
                                                                             'sectionAssessment (quantum_sectionassessment)' = varSA && SstatusUpdate = 1,
                                                                             {SstatusUpdate: 2}
                                                                         );
-                                                                        ,
+                                                                        ,*/
                             //updating checkpoint assessment status from 0 to 1 for detecting unpatched data and sync status update
                                                                         UpdateIf(
                                                                             GcCheckpointAssessment,
@@ -2858,7 +2862,74 @@ AssessmentScreen As screen:
                                         //Section IfError
                                         );
                                     //Section countrows
-                            ,
+                            //updating Section assessment status from 0 to 1 for detecting unpatched data and sync status update
+                            UpdateIf(
+                                            GcSectionAssessment,
+                                            'sectionAssessment (quantum_sectionassessment)' = varSA && SstatusUpdate = 1,
+                                            {
+                                                SstatusUpdate: If(
+                                                    CountRows(
+                                                        Filter(
+                                                            GcCheckpointAssessment,
+                                                            assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && sectionId.'sectionAssessment (quantum_sectionassessment)' = varSA && CstatusUpdate = 0
+                                                        )
+                                                    ) > 0,
+                                                    0,
+                                                    If(
+                                                        CountRows(
+                                                            Filter(
+                                                                GcCheckpointAssessment,
+                                                                assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && sectionId.'sectionAssessment (quantum_sectionassessment)' = varSA && CstatusUpdate = 1
+                                                            )
+                                                        ) > 0,
+                                                        1
+                                                    ),
+                                                    If(
+                                                        CountRows(
+                                                            Filter(
+                                                                GcCheckpointAssessment,
+                                                                assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && sectionId.'sectionAssessment (quantum_sectionassessment)' = varSA && CstatusUpdate = 2
+                                                            )
+                                                        ) > 0,
+                                                        2
+                                                    )
+                                                )
+                                            }
+                                        );
+                                        UpdateIf(
+                                            GC_unitAssessment,
+                                            assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && UstatusUpdate = 1,
+                                            {
+                                                UstatusUpdate: If(
+                                                    CountRows(
+                                                        Filter(
+                                                            GcCheckpointAssessment,
+                                                            assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && CstatusUpdate = 0
+                                                        )
+                                                    ) > 0,
+                                                    0,
+                                                    If(
+                                                        CountRows(
+                                                            Filter(
+                                                                GcCheckpointAssessment,
+                                                                assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && CstatusUpdate = 1
+                                                            )
+                                                        ) > 0,
+                                                        1
+                                                    ),
+                                                    If(
+                                                        CountRows(
+                                                            Filter(
+                                                                GcCheckpointAssessment,
+                                                                assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && CstatusUpdate = 2
+                                                            )
+                                                        ) > 0,
+                                                        2
+                                                    )
+                                                )
+                                            }
+                                        );
+                                        ,
                                         Set(
                                             VarSubmitError,
                                             true
@@ -2867,7 +2938,7 @@ AssessmentScreen As screen:
                                             "Action and Images delete Error .",
                                             NotificationType.Information
                                         );*/
-                                        Set(
+                            Set(
                                             VarPopupText,
                                             "Last Something went wrong, Please try again ."
                                         );
@@ -2876,8 +2947,8 @@ AssessmentScreen As screen:
                                 //Net connected 
                             );
                             ///data availabel
-                                    //*****************************************************************************************************************************
-                                    //saving data to local cashe
+                            //*****************************************************************************************************************************
+                            //saving data to local cashe
                             SaveData(
                                 gcProjectAssignment,
                                 "localprojectassignment"
@@ -3223,7 +3294,6 @@ AssessmentScreen As screen:
                                 GC_checkpointItem_ImagesCache,
                                 "localcheckpointitemimage"
                             );
-                            
                             Clear(TempSectionAssessment);
                             Clear(TempCheckpointAssessment);
                             Clear(TempCheckpointItemAssessment);
@@ -3241,8 +3311,6 @@ AssessmentScreen As screen:
                                 varSpinner,
                                 false
                             );
-                            
-                            
                         PaddingBottom: =2
                         PaddingTop: =2
                         PressedFill: =Self.Fill
