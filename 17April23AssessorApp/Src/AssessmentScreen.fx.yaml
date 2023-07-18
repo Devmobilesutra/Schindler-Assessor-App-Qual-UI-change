@@ -2852,7 +2852,7 @@ AssessmentScreen As screen:
                                                             )
                                                         ) > 0,
                                                         1
-                                                    ),
+                                                    ,
                                                     If(
                                                         CountRows(
                                                             Filter(
@@ -2861,8 +2861,9 @@ AssessmentScreen As screen:
                                                             )
                                                         ) > 0,
                                                         2
-                                                    )
-                                                )
+                                                    )//If two
+                                                    )//If one
+                                                )//If zero
                                             }
                                         );
                             
@@ -2956,7 +2957,7 @@ AssessmentScreen As screen:
                                                             )
                                                         ) > 0,
                                                         1
-                                                    ),
+                                                    ,
                                                     If(
                                                         CountRows(
                                                             Filter(
@@ -2965,6 +2966,7 @@ AssessmentScreen As screen:
                                                             )
                                                         ) > 0,
                                                         2
+                                                    )
                                                     )
                                                 )
                                             }
