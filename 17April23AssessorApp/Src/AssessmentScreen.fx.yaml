@@ -2791,7 +2791,7 @@ AssessmentScreen As screen:
                                                                     //concurrent
                                                                        //updating Section assessment status from 0 to 1 for detecting unpatched data and sync status update
                             
-                                Notify("count1111111111111111 ------:", CountRows(
+                                Notify("count1111111111111111 ------:" & CountRows(
                                                         Filter(
                                                             GcCheckpointAssessment,
                                                             assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && sectionId.'sectionAssessment (quantum_sectionassessment)' = varSA && CstatusUpdate = 0
@@ -2928,7 +2928,7 @@ AssessmentScreen As screen:
                                                                 //concurrent
                                                                    //updating Section assessment status from 0 to 1 for detecting unpatched data and sync status update
                             
-                                Notify("count ------:", CountRows(
+                                Notify("count ------:" & CountRows(
                                                         Filter(
                                                             GcCheckpointAssessment,
                                                             assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && sectionId.'sectionAssessment (quantum_sectionassessment)' = varSA && CstatusUpdate = 0
