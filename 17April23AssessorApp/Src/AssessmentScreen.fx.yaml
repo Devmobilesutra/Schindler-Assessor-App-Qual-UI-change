@@ -2771,8 +2771,7 @@ AssessmentScreen As screen:
                                                                                     assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpoint_id.checkpointAssessment_id = GuidId && CIIstatusUpdate = 1
                                                                                 )
                                                                             ) < 1,
-                                                                                                      //checkpointImages countrows
-                            //updating unit assessment status from 0 to 1 first time for detecting unpatched data and sync status update
+                                                                                                     
                                                                             Concurrent(
                             //updating checkpoint assessment status from 0 to 1 for detecting unpatched data and sync status update
                                                                                 UpdateIf(
@@ -2789,96 +2788,6 @@ AssessmentScreen As screen:
                                                                                 );
                                                                             );
                                                                     //concurrent
-                                                   /*                    //updating Section assessment status from 0 to 1 for detecting unpatched data and sync status update
-                            
-                                Notify("count1111111111111111 ------:" & CountRows(
-                                                        Filter(
-                                                            GcCheckpointAssessment,
-                                                            assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && sectionId.'sectionAssessment (quantum_sectionassessment)' = varSA && CstatusUpdate = 0
-                                                        )
-                                                    )
-                                );
-                            
-                            UpdateIf(
-                                            GcSectionAssessment,
-                                            'sectionAssessment (quantum_sectionassessment)' = varSA && SstatusUpdate = 1,
-                                            {
-                                                SstatusUpdate: If(
-                                                    CountRows(
-                                                        Filter(
-                                                            GcCheckpointAssessment,
-                                                            assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && sectionId.'sectionAssessment (quantum_sectionassessment)' = varSA && CstatusUpdate = 0
-                                                        )
-                                                    ) > 0,
-                                                    0,
-                                                    If(
-                                                        CountRows(
-                                                            Filter(
-                                                                GcCheckpointAssessment,
-                                                                assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && sectionId.'sectionAssessment (quantum_sectionassessment)' = varSA && CstatusUpdate = 1
-                                                            )
-                                                        ) > 0,
-                                                        1
-                                                    ),
-                                                    If(
-                                                        CountRows(
-                                                            Filter(
-                                                                GcCheckpointAssessment,
-                                                                assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && sectionId.'sectionAssessment (quantum_sectionassessment)' = varSA && CstatusUpdate = 2
-                                                            )
-                                                        ) > 0,
-                                                        2
-                                                    )
-                                                )
-                                            }
-                                        );
-                                        UpdateIf(
-                                            GC_unitAssessment,
-                                            assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && UstatusUpdate = 1,
-                                            {
-                                                UstatusUpdate: If(
-                                                    CountRows(
-                                                        Filter(
-                                                            GcCheckpointAssessment,
-                                                            assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && CstatusUpdate = 0
-                                                        )
-                                                    ) > 0,
-                                                    0,
-                                                    If(
-                                                        CountRows(
-                                                            Filter(
-                                                                GcCheckpointAssessment,
-                                                                assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && CstatusUpdate = 1
-                                                            )
-                                                        ) > 0,
-                                                        1
-                                                    ,
-                                                    If(
-                                                        CountRows(
-                                                            Filter(
-                                                                GcCheckpointAssessment,
-                                                                assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && CstatusUpdate = 2
-                                                            )
-                                                        ) > 0,
-                                                        2
-                                                    )//If two
-                                                    )//If one
-                                                )//If zero
-                                            }
-                                        );*/
-                            
-                            /*    UpdateIf(
-                                                                                    GC_unitAssessment,
-                                                                                    assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && UstatusUpdate = 1,
-                                                                                    {UstatusUpdate: 2}
-                                                                                );
-                                                                                
-                            //updating Section assessment status from 0 to 1 for detecting unpatched data and sync status update
-                                                                                UpdateIf(
-                                                                                    GcSectionAssessment,
-                                                                                    'sectionAssessment (quantum_sectionassessment)' = varSA && SstatusUpdate = 1,
-                                                                                    {SstatusUpdate: 2}
-                                                                                );*/
                             ,
                                                                             Set(
                                                                                 VarSubmitError,
@@ -2889,7 +2798,7 @@ AssessmentScreen As screen:
                                                                                 "no item data Something went wrong, Please try again ."
                                                                             );
                                                                         );
-                                                                    //countrow all action image submit
+                                                                    //count row all action image submit
                                                                     );
                                                                 //IfError
                             ,
@@ -2897,21 +2806,7 @@ AssessmentScreen As screen:
                                                                         "Action and Image not available",
                                                                         NotificationType.Information
                                                                     );*/
-                            //updating unit assessment status from 0 to 1 first time for detecting unpatched data and sync status update
                                                                     Concurrent(
-                                                               /*         UpdateIf(
-                                                                            GC_unitAssessment,
-                                                                            assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && UstatusUpdate = 1,
-                                                                            {UstatusUpdate: 2}
-                                                                        );
-                                                                        ,
-                            //updating Section assessment status from 0 to 1 for detecting unpatched data and sync status update
-                                                                        UpdateIf(
-                                                                            GcSectionAssessment,
-                                                                            'sectionAssessment (quantum_sectionassessment)' = varSA && SstatusUpdate = 1,
-                                                                            {SstatusUpdate: 2}
-                                                                        );
-                                                                        ,*/
                             //updating checkpoint assessment status from 0 to 1 for detecting unpatched data and sync status update
                                                                         UpdateIf(
                                                                             GcCheckpointAssessment,
@@ -2927,85 +2822,6 @@ AssessmentScreen As screen:
                                                                         );
                                                                     );
                                                                 //concurrent
-                              /*                                     //updating Section assessment status from 0 to 1 for detecting unpatched data and sync status update
-                            
-                                Notify("count ------:" & CountRows(
-                                                        Filter(
-                                                            GcCheckpointAssessment,
-                                                            assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && sectionId.'sectionAssessment (quantum_sectionassessment)' = varSA && CstatusUpdate = 0
-                                                        )
-                                                    )
-                                );
-                            
-                            UpdateIf(
-                                            GcSectionAssessment,
-                                            'sectionAssessment (quantum_sectionassessment)' = varSA && SstatusUpdate = 1,
-                                            {
-                                                SstatusUpdate: If(
-                                                    CountRows(
-                                                        Filter(
-                                                            GcCheckpointAssessment,
-                                                            assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && sectionId.'sectionAssessment (quantum_sectionassessment)' = varSA && CstatusUpdate = 0
-                                                        )
-                                                    ) > 0,
-                                                    0,
-                                                    If(
-                                                        CountRows(
-                                                            Filter(
-                                                                GcCheckpointAssessment,
-                                                                assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && sectionId.'sectionAssessment (quantum_sectionassessment)' = varSA && CstatusUpdate = 1
-                                                            )
-                                                        ) > 0,
-                                                        1
-                                                    ,
-                                                    If(
-                                                        CountRows(
-                                                            Filter(
-                                                                GcCheckpointAssessment,
-                                                                assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && sectionId.'sectionAssessment (quantum_sectionassessment)' = varSA && CstatusUpdate = 2
-                                                            )
-                                                        ) > 0,
-                                                        2
-                                                    )
-                                                    )
-                                                )
-                                            }
-                                        );
-                                        UpdateIf(
-                                            GC_unitAssessment,
-                                            assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && UstatusUpdate = 1,
-                                            {
-                                                UstatusUpdate: If(
-                                                    CountRows(
-                                                        Filter(
-                                                            GcCheckpointAssessment,
-                                                            assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && CstatusUpdate = 0
-                                                        )
-                                                    ) > 0,
-                                                    0,
-                                                    If(
-                                                        CountRows(
-                                                            Filter(
-                                                                GcCheckpointAssessment,
-                                                                assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && CstatusUpdate = 1
-                                                            )
-                                                        ) > 0,
-                                                        1
-                                                    ,
-                                                    If(
-                                                        CountRows(
-                                                            Filter(
-                                                                GcCheckpointAssessment,
-                                                                assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && CstatusUpdate = 2
-                                                            )
-                                                        ) > 0,
-                                                        2
-                                                    )
-                                                    )
-                                                )
-                                            }
-                                        );
-                            */
                                                                 );
                                                             );
                                                         //checkpointItem IfError
@@ -3019,76 +2835,6 @@ AssessmentScreen As screen:
                                         //Section IfError
                                         );
                                     //Section countrows
-                            
-                                    
-                            UpdateIf(
-                                            GcSectionAssessment,
-                                            'sectionAssessment (quantum_sectionassessment)' = varSA && SstatusUpdate = 1,
-                                            {
-                                                SstatusUpdate: If(
-                                                    CountRows(
-                                                        Filter(
-                                                            GcCheckpointAssessment,
-                                                            assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && sectionId.'sectionAssessment (quantum_sectionassessment)' = varSA && CstatusUpdate = 0
-                                                        )
-                                                    ) > 0,
-                                                    0,
-                                                    If(
-                                                        CountRows(
-                                                            Filter(
-                                                                GcCheckpointAssessment,
-                                                                assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && sectionId.'sectionAssessment (quantum_sectionassessment)' = varSA && CstatusUpdate = 1
-                                                            )
-                                                        ) > 0,
-                                                        1
-                                                    ,
-                                                    If(
-                                                        CountRows(
-                                                            Filter(
-                                                                GcCheckpointAssessment,
-                                                                assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && sectionId.'sectionAssessment (quantum_sectionassessment)' = varSA && CstatusUpdate = 2
-                                                            )
-                                                        ) > 0,
-                                                        2
-                                                    )
-                                                    )
-                                                )
-                                            }
-                                        );
-                                        UpdateIf(
-                                            GC_unitAssessment,
-                                            assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && UstatusUpdate = 1,
-                                            {
-                                                UstatusUpdate: If(
-                                                    CountRows(
-                                                        Filter(
-                                                            GcCheckpointAssessment,
-                                                            assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && CstatusUpdate = 0
-                                                        )
-                                                    ) > 0,
-                                                    0,
-                                                    If(
-                                                        CountRows(
-                                                            Filter(
-                                                                GcCheckpointAssessment,
-                                                                assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && CstatusUpdate = 1
-                                                            )
-                                                        ) > 0,
-                                                        1
-                                                    ,
-                                                    If(
-                                                        CountRows(
-                                                            Filter(
-                                                                GcCheckpointAssessment,
-                                                                assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && CstatusUpdate = 2
-                                                            )
-                                                        ) > 0,
-                                                        2
-                                                    )
-                                                    )
-                                                )
-                                            }
-                                        );
                             
                                         ,
                                         Set(
@@ -3106,10 +2852,77 @@ AssessmentScreen As screen:
                                     );
                                 );
                                 //Net connected 
-                            
-                            
-                             );
+                            );
                             ///data availabel
+                            
+                            //updating Section assessment status from 0 to 1 for detecting unpatched data and sync status update    
+                            UpdateIf(
+                                            GcSectionAssessment,
+                                            'sectionAssessment (quantum_sectionassessment)' = varSA && SstatusUpdate = 1,
+                                            {
+                                                SstatusUpdate: If(
+                                                    CountRows(
+                                                        Filter(
+                                                            GcCheckpointAssessment,
+                                                            assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && sectionId.'sectionAssessment (quantum_sectionassessment)' = varSA && CstatusUpdate = 0
+                                                        )
+                                                    ) > 0,
+                                                    0,
+                                                    If(
+                                                        CountRows(
+                                                            Filter(
+                                                                GcCheckpointAssessment,
+                                                                assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && sectionId.'sectionAssessment (quantum_sectionassessment)' = varSA && CstatusUpdate = 1
+                                                            )
+                                                        ) > 0,
+                                                        1,
+                                                        If(
+                                                            CountRows(
+                                                                Filter(
+                                                                    GcCheckpointAssessment,
+                                                                    assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && sectionId.'sectionAssessment (quantum_sectionassessment)' = varSA && CstatusUpdate = 2
+                                                                )
+                                                            ) > 0,
+                                                            2
+                                                        )//If status 2
+                                                    )//If status 1
+                                                )//If status 0
+                                            }
+                                        );
+                                        //updating Section assessment status from 0 to 1 for detecting unpatched data and sync status update
+                            UpdateIf(
+                                            GC_unitAssessment,
+                                            assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && UstatusUpdate = 1,
+                                            {
+                                                UstatusUpdate: If(
+                                                    CountRows(
+                                                        Filter(
+                                                            GcCheckpointAssessment,
+                                                            assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && CstatusUpdate = 0
+                                                        )
+                                                    ) > 0,
+                                                    0,
+                                                    If(
+                                                        CountRows(
+                                                            Filter(
+                                                                GcCheckpointAssessment,
+                                                                assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && CstatusUpdate = 1
+                                                            )
+                                                        ) > 0,
+                                                        1,
+                                                        If(
+                                                            CountRows(
+                                                                Filter(
+                                                                    GcCheckpointAssessment,
+                                                                    assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && CstatusUpdate = 2
+                                                                )
+                                                            ) > 0,
+                                                            2
+                                                        )
+                                                    )
+                                                )
+                                            }
+                                        );
                             //*****************************************************************************************************************************
                             //saving data to local cashe
                             SaveData(
