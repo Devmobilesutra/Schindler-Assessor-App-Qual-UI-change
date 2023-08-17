@@ -17,5 +17,6 @@
     "TableName": "duplicaterecord",
     "Views": "{\"@odata.context\":\"https://org037b8467.crm.dynamics.com/api/data/v9.0/$metadata#savedqueries(savedqueryid,name,querytype)\",\"value\":[]}"
   },
+  "UnusedDataSources": {},
   "webApiVersion": "v9.0"
 }

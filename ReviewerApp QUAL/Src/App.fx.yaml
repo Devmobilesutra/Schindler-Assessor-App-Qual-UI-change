@@ -158,6 +158,7 @@ App As appinfo:
             lodder,
             false
         );
+    Theme: =PowerAppsTheme
 
     Host As hostControl.DefaultHostControlVariant:
         OnCancel: =false
