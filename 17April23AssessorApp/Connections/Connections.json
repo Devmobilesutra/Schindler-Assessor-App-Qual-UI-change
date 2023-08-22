@@ -1,4 +1,95 @@
 {
+  "361710be-27f3-49a9-a24e-9e93be759343": {
+    "connectionRef": {
+      "displayName": "Office 365 Outlook",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1649/1.0.1649.3368/office365/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_office365"
+    },
+    "datasets": {},
+    "dataSources": [],
+    "dependencies": {},
+    "dependents": [
+      "cbbde9c9-d162-4d96-ad45-c493707bbbc3"
+    ],
+    "id": "361710be-27f3-49a9-a24e-9e93be759343"
+  },
+  "8ffaa42d-743d-4509-9973-47572c706a68": {
+    "connectionRef": {
+      "displayName": "OneDrive for Business",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1647/1.0.1647.3361/onedriveforbusiness/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_onedriveforbusiness"
+    },
+    "datasets": {},
+    "dataSources": [],
+    "dependencies": {},
+    "dependents": [
+      "cbbde9c9-d162-4d96-ad45-c493707bbbc3"
+    ],
+    "id": "8ffaa42d-743d-4509-9973-47572c706a68"
+  },
+  "affc2824-8441-4c8b-9420-0d6f9e6490b4": {
+    "connectionRef": {
+      "displayName": "SharePoint",
+      "iconUri": "https://connectoricons-prod.azureedge.net/u/shgogna/globalperconnector-train1/1.0.1639.3312/sharepointonline/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_sharepointonline"
+    },
+    "datasets": {},
+    "dataSources": [],
+    "dependencies": {},
+    "dependents": [
+      "cbbde9c9-d162-4d96-ad45-c493707bbbc3"
+    ],
+    "id": "affc2824-8441-4c8b-9420-0d6f9e6490b4"
+  },
+  "c348e44f-da3d-4445-9ff7-ea4b4252ea1b": {
+    "connectionRef": {
+      "displayName": "Microsoft Dataverse",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1651/1.0.1651.3382/commondataserviceforapps/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_commondataserviceforapps"
+    },
+    "datasets": {},
+    "dataSources": [],
+    "dependencies": {},
+    "dependents": [
+      "cbbde9c9-d162-4d96-ad45-c493707bbbc3"
+    ],
+    "id": "c348e44f-da3d-4445-9ff7-ea4b4252ea1b"
+  },
+  "cbbde9c9-d162-4d96-ad45-c493707bbbc3": {
+    "connectionRef": {
+      "displayName": "Logic flows",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1645/1.0.1645.3345/logicflows/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
+      "parameterHints": {
+        "workflowEntityId": {
+          "value": "b64b78c7-45b7-ed11-83fe-000d3a565466"
+        },
+        "workflowName": {
+          "value": "06f450b7-2c80-f995-d1ef-035b23fa4a9d"
+        }
+      },
+      "parameterHintsV2": {
+        "workflowEntityId": {
+          "value": "b64b78c7-45b7-ed11-83fe-000d3a565466"
+        },
+        "workflowName": {
+          "value": "06f450b7-2c80-f995-d1ef-035b23fa4a9d"
+        }
+      }
+    },
+    "datasets": {},
+    "dataSources": [
+      "ExportUnitPDF"
+    ],
+    "dependencies": {
+      "shared_commondataserviceforapps": "c348e44f-da3d-4445-9ff7-ea4b4252ea1b",
+      "shared_office365": "361710be-27f3-49a9-a24e-9e93be759343",
+      "shared_onedriveforbusiness": "8ffaa42d-743d-4509-9973-47572c706a68",
+      "shared_sharepointonline": "affc2824-8441-4c8b-9420-0d6f9e6490b4"
+    },
+    "dependents": [],
+    "id": "cbbde9c9-d162-4d96-ad45-c493707bbbc3"
+  },
   "fc1672ff-a847-406d-b62f-8258a2b051f8": {
     "connectionRef": {
       "apiTier": "Standard",
