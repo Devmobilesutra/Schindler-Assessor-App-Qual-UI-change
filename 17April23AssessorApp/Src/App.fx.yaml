@@ -549,6 +549,7 @@ App As appinfo:
         Clear(GC_unitAssessmentAdd);
         
     SizeBreakpoints: =[600,700, 900, 1200,1500,1800]
+    Theme: =PowerAppsTheme
 
     Host As hostControl.DefaultHostControlVariant:
         OnCancel: =false

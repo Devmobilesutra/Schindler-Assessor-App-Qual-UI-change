@@ -17,5 +17,6 @@
     "TableName": "processsession",
     "Views": "{\"@odata.context\":\"https://orgffab10ba.crm.dynamics.com/api/data/v9.0/$metadata#savedqueries(savedqueryid,name,querytype)\",\"value\":[{\"@odata.etag\":\"W/\\\"874920\\\"\",\"savedqueryid\":\"8c003e75-ebce-4155-a920-3270dfdc5667\",\"name\":\"My Complete Process Sessions\",\"querytype\":0},{\"@odata.etag\":\"W/\\\"874921\\\"\",\"savedqueryid\":\"8c003e76-ebce-4155-a920-3270dfdc5667\",\"name\":\"My Process Sessions\",\"querytype\":0},{\"@odata.etag\":\"W/\\\"874922\\\"\",\"savedqueryid\":\"8c003e77-ebce-4155-a920-3270dfdc5667\",\"name\":\"All Complete Process Sessions\",\"querytype\":0},{\"@odata.etag\":\"W/\\\"874923\\\"\",\"savedqueryid\":\"8c003e78-ebce-4155-a920-3270dfdc5667\",\"name\":\"All Process Sessions\",\"querytype\":0},{\"@odata.etag\":\"W/\\\"874924\\\"\",\"savedqueryid\":\"8c003e79-ebce-4155-a920-3270dfdc5667\",\"name\":\"Process Session Associated View\",\"querytype\":2},{\"@odata.etag\":\"W/\\\"874925\\\"\",\"savedqueryid\":\"8c003e7a-ebce-4155-a920-3270dfdc5667\",\"name\":\"Process Session Lookup View\",\"querytype\":64},{\"@odata.etag\":\"W/\\\"875962\\\"\",\"savedqueryid\":\"a7c296a2-7f3c-49ef-92ec-ec7f14f47baa\",\"name\":\"Process Session Advanced Find View\",\"querytype\":1}]}"
   },
+  "UnusedDataSources": {},
   "webApiVersion": "v9.0"
 }
