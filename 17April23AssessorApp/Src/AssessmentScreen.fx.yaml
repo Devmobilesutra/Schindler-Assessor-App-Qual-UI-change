@@ -2690,7 +2690,8 @@ AssessmentScreen As screen:
                                                                             CountRows(
                                                                                 Filter(
                                                                                     GC_checkpointItem_ActionItem,
-                                                                                    (assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpoint_id.checkpointAssessment_id = GuidId && CIAstatusUpdate = 1) || (bankUnitId.Id = varBankUnitId && Action_status = "Close" && CIAstatusUpdate = 1)
+                                                                                    (assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpoint_id.checkpointAssessment_id = GuidId && CIAstatusUpdate = 1)
+                                                                                     || (bankUnitId.Id = varBankUnitId && Action_status = "Close" && CIAstatusUpdate = 1)
                                                                                 )
                                                                             ) > 0,
                                                                             If(
@@ -2718,6 +2719,15 @@ AssessmentScreen As screen:
                                                                                     }
                                                                                 )
                                                                             );
+                                                                            
+                                                                             UpdateIf(
+                                                                                    GC_checkpointItem_ActionItem,
+                                                                                   bankUnitId.Id = varBankUnitId && Action_status = "Close" && CIAstatusUpdate = 1,
+                                                                                    {
+                                                                                        CIAstatusUpdate: 2
+                                                                                    }
+                                                                                )
+                            
                                                                         );
                                                             //checkpointActionItem countrows
                             //    ,
@@ -2763,7 +2773,8 @@ AssessmentScreen As screen:
                                                                             CountRows(
                                                                                 Filter(
                                                                                     GC_checkpointItem_ActionItem,
-                                                                                    (assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpoint_id.checkpointAssessment_id = GuidId && CIAstatusUpdate = 1) || (bankUnitId.Id = varBankUnitId && Action_status = "Close" && CIAstatusUpdate = 1)
+                                                                                    (assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpoint_id.checkpointAssessment_id = GuidId && CIAstatusUpdate = 1) 
+                                                                                    || (bankUnitId.Id = varBankUnitId && Action_status = "Close" && CIAstatusUpdate = 1)
                                                                                 )
                                                                             ) < 1 && CountRows(
                                                                                 Filter(
