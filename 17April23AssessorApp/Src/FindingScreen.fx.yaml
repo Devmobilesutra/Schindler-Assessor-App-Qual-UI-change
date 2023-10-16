@@ -1240,7 +1240,7 @@ FindingScreen As screen:
                                 FontWeight: =FontWeight.Bold
                                 OnSelect: =
                                 Size: =AllScreensCSS.RLabelFontSize
-                                Text: ="Image"
+                                Text: ="Image" 
                                 X: =20
                                 Y: =20
                                 ZIndex: =1
@@ -1333,7 +1333,7 @@ FindingScreen As screen:
                                             true
                                         );
                                         
-                                    //Clear(TempGetImages);
+                                    Clear(TempGetImages);
                                     );
                                 PressedColor: =Self.Color
                                 PressedFill: =Self.Fill
