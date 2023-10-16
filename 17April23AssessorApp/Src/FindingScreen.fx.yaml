@@ -261,7 +261,11 @@ FindingScreen As screen:
                             );
                             UpdateIf(
                                 GC_checkpointItem_Images,
-                                assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpoint_id.checkpointAssessment_id = GuidId && checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = varCItemA && CIIstatusUpdate = 2,
+                               // assignmentId.Id = varAssignmentId && 
+                                bankUnitId.Id = varBankUnitId && 
+                                //checkpoint_id.checkpointAssessment_id = GuidId && 
+                                //checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = varCItemA &&
+                                 CIIstatusUpdate = 2,
                                 {Image: Blank()}
                             );
                             Navigate(AssessmentScreen);
@@ -748,7 +752,13 @@ FindingScreen As screen:
                                 BorderColor: =RGBA(0, 0, 0, 1)
                                 BorderThickness: =2
                                 Height: =Min(Self.Width, Parent.TemplateHeight - 115)
-                                Image: =ThisItem.Image
+                                Image: |-
+                                    =If(
+                                        IsBlank(ThisItem.Image) ,
+                                        If(ThisItem.CIIstatusUpdate = 2,
+                                        'submitted-cloud'),
+                                        ThisItem.Image
+                                    )
                                 OnSelect: =//Set(popup,true)
                                 Width: =Parent.TemplateWidth/2
                                 X: =0.5
@@ -1244,7 +1254,10 @@ FindingScreen As screen:
                                             CountRows(
                                                 Filter(
                                                     GC_checkpointItem_Images,
-                                                    assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = varCItemA && CIIstatusUpdate = 2 && IsBlank(Image)
+                                                    //assignmentId.Id = varAssignmentId &&
+                                                     bankUnitId.Id = varBankUnitId && 
+                                                      checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = ThisItem.'checkpointItemAssessment (quantum_checkpointitemassessment)' &&
+                                                      CIIstatusUpdate = 2 && IsBlank(Image)
                                                 )
                                             ) > 0,
                                             DisplayMode.Edit,
@@ -1301,7 +1314,7 @@ FindingScreen As screen:
                                             TempGetImages,
                                             Filter(
                                                 checkpointItem_Images,
-                                            bankUnitId.Id=varBankUnitId && checkpointItem_Id.checkpointItemId.checkpointItemId = varCheckpointitemID 
+                                            bankUnitId.Id=varBankUnitId && checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = ThisItem.'checkpointItemAssessment (quantum_checkpointitemassessment)' 
                                                
                                             )
                                         );
