@@ -384,13 +384,13 @@ BankScreen As screen:
                             Self.Fill
                         OnSelect: |
                             =
-                            ClearCollect(
+                            /*ClearCollect(
                                 GCCheckpointItemImages,
                                 Filter(
                                     checkpointItem_Images,
                                     assignmentId.Id = ThisItem.assignmentId.Id && bankUnitId.Id = ThisItem.bankUnitId.Id //&& Image.Value <> Blank()
                                 )
-                            );
+                            );*/
                             Set(
                                 CId,
                                 ThisItem.productModel
