@@ -1241,6 +1241,17 @@ FindingScreen As screen:
                                 OnSelect: =
                                 Size: =AllScreensCSS.RLabelFontSize
                                 Text: ="Image" 
+                                Visible: |-
+                                    =If(
+                                        CountRows(
+                                            Filter(
+                                                GC_checkpointItem_Images,
+                                                 bankUnitId.Id = varBankUnitId && checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = ThisItem.'checkpointItemAssessment (quantum_checkpointitemassessment)'
+                                            )
+                                        ) > 0,
+                                        true,
+                                        false
+                                    )
                                 X: =20
                                 Y: =20
                                 ZIndex: =1
@@ -1344,7 +1355,7 @@ FindingScreen As screen:
                                         CountRows(
                                             Filter(
                                                 GC_checkpointItem_Images,
-                                                assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = varCItemA
+                                                 bankUnitId.Id = varBankUnitId && checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = ThisItem.'checkpointItemAssessment (quantum_checkpointitemassessment)'
                                             )
                                         ) > 0,
                                         true,
