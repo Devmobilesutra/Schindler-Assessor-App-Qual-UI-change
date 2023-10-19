@@ -1869,7 +1869,7 @@ AssessmentScreen As screen:
                                //network not available to patch then set message
                                 Set(
                                     VarPopupText,
-                                    "Network is not available , please try after sometime 2345."
+                                    "Network is not available , please try after sometime ."
                                 );
                                 ,
                             //updating bank assessment status from 0 to 1 first time for detecting unpatched data
