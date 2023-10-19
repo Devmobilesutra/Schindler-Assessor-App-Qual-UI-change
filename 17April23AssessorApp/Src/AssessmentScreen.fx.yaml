@@ -1947,7 +1947,32 @@ AssessmentScreen As screen:
                                     "No new assessment records found for submission. "
                                 );
                                 ,
-                                Concurrent(
+                            
+                                If(
+                                CountRows(
+                                    Filter(
+                                        GC_checkpointItem_ActionItem,
+                                        (bankUnitId.Id = varBankUnitId && Action_status = "Close" && CIAstatusUpdate = 1)
+                                    )
+                                ) > 0,
+                                  UpdateIf(
+                                        checkpointItem_ActionItem,
+                                            bankUnitId.Id = varBankUnitId,
+                                                 {
+                                                       Action_status: "Close"
+                                                 }
+                                        );
+                                  
+                                    UpdateIf(
+                                        GC_checkpointItem_ActionItem,
+                                            bankUnitId.Id = varBankUnitId && Action_status = "Close" && CIAstatusUpdate = 1,
+                                                 {
+                                                       CIAstatusUpdate: 2
+                                                 }
+                                        )
+                                  );
+                            
+                               /* Concurrent(
                                     //if we update existing unit then do status 2 to 1 for show green and grey tick
                                     UpdateIf(
                                         GC_unitAssessment,
@@ -1968,7 +1993,7 @@ AssessmentScreen As screen:
                                         checkpointAssessment_id = GuidId && CstatusUpdate = 2,
                                         {CstatusUpdate: 1}
                                     );
-                                );
+                                );*/
                                 
                             //if network available then patch 1 status data to dataverse
                             If(
@@ -2541,7 +2566,8 @@ AssessmentScreen As screen:
                                                                     CountRows(
                                                                         Filter(
                                                                             GC_checkpointItem_ActionItem,
-                                                                            (assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpoint_id.checkpointAssessment_id = GuidId && CIAstatusUpdate = 1) || (bankUnitId.Id = varBankUnitId && Action_status = "Close" && CIAstatusUpdate = 1)
+                                                                            (assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpoint_id.checkpointAssessment_id = GuidId && CIAstatusUpdate = 1)
+                                                             //|| (bankUnitId.Id = varBankUnitId && Action_status = "Close" && CIAstatusUpdate = 1)
                                                                         )
                                                                     ) > 0 || CountRows(
                                                                         Filter(
@@ -2589,7 +2615,8 @@ AssessmentScreen As screen:
                                                                             DropColumns(
                                                                                 Filter(
                                                                                     GC_checkpointItem_ActionItem,
-                                                                                    (assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpoint_id.checkpointAssessment_id = GuidId && CIAstatusUpdate = 1) || (bankUnitId.Id = varBankUnitId && Action_status = "Close" && CIAstatusUpdate = 1)
+                                                                                    (assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpoint_id.checkpointAssessment_id = GuidId && CIAstatusUpdate = 1) 
+                                                                //|| (bankUnitId.Id = varBankUnitId && Action_status = "Close" && CIAstatusUpdate = 1)
                                                                                 ),
                                                                                 "CIAstatusUpdate"
                                                                             ),
@@ -2691,7 +2718,7 @@ AssessmentScreen As screen:
                                                                                 Filter(
                                                                                     GC_checkpointItem_ActionItem,
                                                                                     (assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpoint_id.checkpointAssessment_id = GuidId && CIAstatusUpdate = 1)
-                                                                                     || (bankUnitId.Id = varBankUnitId && Action_status = "Close" && CIAstatusUpdate = 1)
+                                                            //   || (bankUnitId.Id = varBankUnitId && Action_status = "Close" && CIAstatusUpdate = 1)
                                                                                 )
                                                                             ) > 0,
                                                                             If(
@@ -2720,13 +2747,13 @@ AssessmentScreen As screen:
                                                                                 )
                                                                             );
                                                                             
-                                                                             UpdateIf(
+                                                                         /*    UpdateIf(
                                                                                     GC_checkpointItem_ActionItem,
                                                                                    bankUnitId.Id = varBankUnitId && Action_status = "Close" && CIAstatusUpdate = 1,
                                                                                     {
                                                                                         CIAstatusUpdate: 2
                                                                                     }
-                                                                                )
+                                                                                )*/
                             
                                                                         );
                                                             //checkpointActionItem countrows
@@ -2774,7 +2801,7 @@ AssessmentScreen As screen:
                                                                                 Filter(
                                                                                     GC_checkpointItem_ActionItem,
                                                                                     (assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpoint_id.checkpointAssessment_id = GuidId && CIAstatusUpdate = 1) 
-                                                                                    || (bankUnitId.Id = varBankUnitId && Action_status = "Close" && CIAstatusUpdate = 1)
+                                                            // || (bankUnitId.Id = varBankUnitId && Action_status = "Close" && CIAstatusUpdate = 1)
                                                                                 )
                                                                             ) < 1 && CountRows(
                                                                                 Filter(
