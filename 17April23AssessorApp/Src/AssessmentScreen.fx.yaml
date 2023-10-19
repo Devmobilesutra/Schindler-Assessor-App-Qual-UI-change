@@ -1963,13 +1963,30 @@ AssessmentScreen As screen:
                                  As i,
                                       UpdateIf(
                                         checkpointItem_ActionItem,
-                                            check
+                                            checkpointItemActionItemsId =i.checkpointItemActionItemsId
                                             ,
                                                  {
                                                        Action_status: "Close"
                                                  }
                                         );
                                 );
+                            
+                            
+                                 If(
+                                                (!IsEmpty(Errors(checkpointItem_ActionItem))),
+                                                Set(
+                                                    VarSubmitError,
+                                                    true
+                                                );
+                                                Set(
+                                                    VarPopupText,
+                                                    "Something went wrong, Please try again ."
+                                                );
+                                                ,
+                                                Set(
+                                                    VarPopupText,
+                                                    "Assessment records submitted successfully."
+                                                );
                                     UpdateIf(
                                         GC_checkpointItem_ActionItem,
                                             bankUnitId.Id = varBankUnitId && Action_status = "Close" && CIAstatusUpdate = 1,
@@ -1977,6 +1994,7 @@ AssessmentScreen As screen:
                                                        CIAstatusUpdate: 2
                                                  }
                                         )
+                                 );
                                 
                                   );
                             
