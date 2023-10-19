@@ -1869,7 +1869,7 @@ AssessmentScreen As screen:
                                //network not available to patch then set message
                                 Set(
                                     VarPopupText,
-                                    "Network is not available , please try after sometime ."
+                                    "Network is not available , please try after sometime 2345."
                                 );
                                 ,
                             //updating bank assessment status from 0 to 1 first time for detecting unpatched data
@@ -1955,14 +1955,21 @@ AssessmentScreen As screen:
                                         (bankUnitId.Id = varBankUnitId && Action_status = "Close" && CIAstatusUpdate = 1)
                                     )
                                 ) > 0,
-                                  UpdateIf(
+                            
+                                ForAll(  Filter(
+                                        GC_checkpointItem_ActionItem,
+                                        (bankUnitId.Id = varBankUnitId && Action_status = "Close" && CIAstatusUpdate = 1)
+                                    )
+                                 As i,
+                                      UpdateIf(
                                         checkpointItem_ActionItem,
-                                            bankUnitId.Id = varBankUnitId,
+                                            check
+                                            ,
                                                  {
                                                        Action_status: "Close"
                                                  }
                                         );
-                                  
+                                );
                                     UpdateIf(
                                         GC_checkpointItem_ActionItem,
                                             bankUnitId.Id = varBankUnitId && Action_status = "Close" && CIAstatusUpdate = 1,
@@ -1970,6 +1977,7 @@ AssessmentScreen As screen:
                                                        CIAstatusUpdate: 2
                                                  }
                                         )
+                                
                                   );
                             
                                /* Concurrent(
