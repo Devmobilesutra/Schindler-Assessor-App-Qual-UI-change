@@ -591,7 +591,13 @@ SectionScreen As screen:
                                 Reset(tmr_logout);
                                 Set(UserLastNavigated, Now());
                                 */
-                                //for safety check
+                                Set(
+                                    ChId,
+                                    Blank()
+                                );
+                                
+                                Set(GuidId,Blank());
+                                        //for safety check
                                 If(
                                     DateDiff(
                                         UserLastNavigatedTime,
@@ -609,30 +615,28 @@ SectionScreen As screen:
                                     );
                                     
                                 );
-                                
                                 Set(
                                     ChId,
                                     ThisItem.checkpointId
                                 );
-                                
                                 If(
-                                    !IsBlank(LookUp(GcCheckpointAssessment,
-                                            assignmentId.Id=varAssignmentId && 
-                                            bankUnitId.Id = varBankUnitId && 
-                                            sectionId.sectionId.sectionId=VarSectionId && 
-                                            checkpointId.checkpointId = ChId)),
-                                     Set(GuidId,LookUp(
+                                    !IsBlank(
+                                        LookUp(
                                             GcCheckpointAssessment,
-                                            assignmentId.Id=varAssignmentId && 
-                                            bankUnitId.Id = varBankUnitId  && 
-                                            sectionId.'sectionAssessment (quantum_sectionassessment)'=varSA &&
-                                            checkpointId.checkpointId = ChId ,checkpointAssessment_id
-                                        ))
-                                       
-                                 
-                                    );
-                                     Navigate(AssessmentScreen);   
-                                       UpdateContext({locInfoExpanded:false});
+                                            assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && sectionId.sectionId.sectionId = VarSectionId && checkpointId.checkpointId = ChId
+                                        )
+                                    ),
+                                    Set(
+                                        GuidId,
+                                        LookUp(
+                                            GcCheckpointAssessment,
+                                            assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && sectionId.'sectionAssessment (quantum_sectionassessment)' = varSA && checkpointId.checkpointId = ChId,
+                                            checkpointAssessment_id
+                                        )
+                                    )
+                                );
+                                Navigate(AssessmentScreen);
+                                UpdateContext({locInfoExpanded: false});
                             PressedBorderColor: =Self.BorderColor
                             PressedColor: =Self.Color
                             PressedFill: =Self.Fill
@@ -824,6 +828,9 @@ SectionScreen As screen:
                             Reset(tmr_logout);
                             Set(UserLastNavigated, Now());
                             */
+                            Set(VarSectionId,Blank());
+                            Set(varSA,Blank());
+                            
                             //for safety check
                             If(
                                 DateDiff(
@@ -880,6 +887,7 @@ SectionScreen As screen:
                             Reset(tmr_logout);
                             Set(UserLastNavigated, Now());
                             */
+                            Set(VarSectionId,Blank());
                             Set(VarSectionId,ThisItem.sectionId);
                             UpdateContext({locInfoExpanded:false});
                             

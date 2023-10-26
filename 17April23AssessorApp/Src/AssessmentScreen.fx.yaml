@@ -480,7 +480,8 @@ AssessmentScreen As screen:
                             Self.Fill
                         OnSelect: |+
                             =//Notify("finding start",NotificationType.Information);
-                            
+                            Set(varCheckpointitemID,Blank());
+                            Set(varCItemA,Blank());
                             /*//for reset ideal timer
                             Reset(tmr_logout);
                             Set(UserLastNavigated, Now());*/
@@ -767,7 +768,8 @@ AssessmentScreen As screen:
                         Height: =115
                         HoverColor: =RGBA(0, 0, 0, 1)
                         OnCheck: |-
-                            =
+                            =Set(varCheckpointitemID,Blank());
+                            Set(varCItemA,Blank());
                             //for safety check
                             If(
                                 DateDiff(
