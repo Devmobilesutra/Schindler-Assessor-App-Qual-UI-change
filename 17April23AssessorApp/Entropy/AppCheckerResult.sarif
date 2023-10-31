@@ -12894,36 +12894,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "SectionScreen.ctnMainSection.ctnSectionSS.ctnSafetyCheckMainSS.ctnSafetyCheckSS.imgCollapseSS.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "SectionScreen.ctnMainSection.ctnSectionSS.ctnSafetyCheckMainSS.ctnSafetyCheckSS.imgCollapseSS.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "SectionScreen",
-                "type": "SectionScreen.ctnMainSection.ctnSectionSS.ctnSafetyCheckMainSS.ctnSafetyCheckSS.imgCollapseSS"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 1
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "SectionScreen.ctnMainSection.ctnSectionSS.ctnSafetyCheckMainSS.ctnSafetyCheckSS.imgCollapseSS.TabIndex"
                 }
               ],
@@ -12948,6 +12918,36 @@
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
           "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "SectionScreen.ctnMainSection.ctnSectionSS.ctnSafetyCheckMainSS.ctnSafetyCheckSS.imgCollapseSS.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "SectionScreen.ctnMainSection.ctnSectionSS.ctnSafetyCheckMainSS.ctnSafetyCheckSS.imgCollapseSS.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "SectionScreen",
+                "type": "SectionScreen.ctnMainSection.ctnSectionSS.ctnSafetyCheckMainSS.ctnSafetyCheckSS.imgCollapseSS"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 1
         },
         {
           "locations": [

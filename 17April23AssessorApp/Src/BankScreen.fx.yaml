@@ -265,7 +265,23 @@ BankScreen As screen:
                         HoverColor: =RGBA(0, 0, 0, 1)
                         HoverFill: =Self.Fill
                         OnSelect: |+
-                            =Set(
+                            =//for Logs
+                            UpdateIf(
+                                GcTraceLog,
+                                ID = 1,
+                                {
+                                    Path: LookUp(
+                                        GcTraceLog,
+                                        ID = 1,
+                                        Path
+                                    ) & "/TripReport=" & Text(
+                                        Now(),
+                                        "hh:mm am/pm"
+                                    )
+                                }
+                            );
+                            
+                            Set(
                                 varReportPopup,
                                 false
                             );
@@ -487,7 +503,22 @@ BankScreen As screen:
                         HoverColor: =Self.Color
                         HoverFill: =Self.Fill
                         OnSelect: |-
-                            =//for safety check to show default selected
+                            =//for Logs
+                            UpdateIf(
+                                GcTraceLog,
+                                ID = 1,
+                                {
+                                    Path: LookUp(
+                                        GcTraceLog,
+                                        ID = 1,
+                                        Path
+                                    ) & "/UStart:" & ThisItem.bankUnitId.unitNumber & "=" & Text(
+                                        Now(),
+                                        "hh:mm am/pm"
+                                    )
+                                }
+                            );
+                            //for safety check to show default selected
                             Set(
                                 varSpinner,
                                 true
@@ -1542,6 +1573,29 @@ BankScreen As screen:
                             Clear(GC_checkpointItemAssessmentTemp);
                             Clear(GC_checkpointItem_ActionItemTemp);
                             Clear(GC_checkpointItem_ImagesTemp);
+                            
+                            //for Logs
+                            UpdateIf(
+                                GcTraceLog,
+                                ID = 1,
+                                {
+                                    Path: LookUp(
+                                        GcTraceLog,
+                                        ID = 1,
+                                        Path
+                                    ) & "/UEnd:" & ThisItem.bankUnitId.unitNumber & "=" & Text(
+                                        Now(),
+                                        "hh:mm am/pm"
+                                    )
+                                }
+                            );
+                            
+                            
+                            
+                            
+                            
+                            
+                            
                             /*
                             If(
                                 IsEmpty(GcSectionAssessment) && IsEmpty(GcCheckpointAssessment) && IsEmpty(GC_checkpointItemAssessment) && IsEmpty(GC_checkpointItem_ActionItem) && IsEmpty(GC_checkpointItem_Images),
@@ -1956,7 +2010,22 @@ BankScreen As screen:
                         HoverColor: =RGBA(0, 0, 0, 1)
                         HoverFill: =Self.Fill
                         OnSelect: |
-                            =If(
+                            =//for Logs
+                            UpdateIf(
+                                GcTraceLog,
+                                ID = 1,
+                                {
+                                    Path: LookUp(
+                                        GcTraceLog,
+                                        ID = 1,
+                                        Path
+                                    ) & "/UComment:" & ThisItem.bankUnitId.unitNumber & " =" & Text(
+                                        Now(),
+                                        "hh:mm am/pm"
+                                    )
+                                }
+                            );
+                            If(
                                 Connection.Connected,
                                 Set(
                                     varBankUnitId,
@@ -2774,7 +2843,22 @@ BankScreen As screen:
                         HoverColor: =RGBA(0, 0, 0, 1)
                         HoverFill: =Self.Fill
                         OnSelect: |
-                            =Set(
+                            =//for Logs
+                            UpdateIf(
+                                GcTraceLog,
+                                ID = 1,
+                                {
+                                    Path: LookUp(
+                                        GcTraceLog,
+                                        ID = 1,
+                                        Path
+                                    ) & "/ ExportPDf=" & Text(
+                                        Now(),
+                                        "hh:mm am/pm"
+                                    )
+                                }
+                            );
+                            Set(
                                 VarPDFLable,
                                 "Unit " & ThisItem.bankUnitId.unitNumber & " Assessment PDF will be sent to your Email Id"
                             );
