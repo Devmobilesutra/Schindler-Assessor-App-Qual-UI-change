@@ -139,7 +139,22 @@ ProjectScreen As screen:
                         Height: =ctnBackButtonBS.Height/1.5
                         HoverColor: =RGBA(0, 0, 0, 1)
                         HoverFill: =
-                        OnSelect: =Navigate(DashboardScreen)
+                        OnSelect: |-
+                            =UpdateIf(
+                                GcTraceLog,
+                                ID = 1,
+                                {
+                                    Path: LookUp(
+                                        GcTraceLog,
+                                        ID = 1,
+                                        Path
+                                    ) & "/AssignmentBack=" & Text(
+                                        Now(),
+                                        "hh:mm am/pm"
+                                    )
+                                }
+                            );
+                            Navigate(DashboardScreen)
                         PaddingBottom: =10
                         PaddingLeft: =20
                         PaddingRight: =10
@@ -247,6 +262,22 @@ ProjectScreen As screen:
                         // set variable for selected assignmentId
                         Set(varAssignmentId,ThisItem.Id);
                         
+                        
+                        //for Logs
+                        UpdateIf(
+                            GcTraceLog,
+                            ID = 1,
+                            {
+                                Path: LookUp(
+                                    GcTraceLog,
+                                    ID = 1,
+                                    Path
+                                ) & "/Bank:" & ThisItem.GONumber & "=" & Text(
+                                    Now(),
+                                    "hh:mm am/pm"
+                                )
+                            }
+                        );
                         Navigate(BankScreen);
                     PressedBorderColor: =RGBA(230, 230, 230, 1)
                     Text: =""

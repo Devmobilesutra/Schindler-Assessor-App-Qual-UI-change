@@ -82,7 +82,23 @@ BankScreen As screen:
                         Height: =ctnBackButtonBS.Height/1.5
                         HoverColor: =RGBA(0, 0, 0, 1)
                         HoverFill: =
-                        OnSelect: =Navigate(ProjectScreen)
+                        OnSelect: |-
+                            =//for Logs
+                            UpdateIf(
+                                GcTraceLog,
+                                ID = 1,
+                                {
+                                    Path: LookUp(
+                                        GcTraceLog,
+                                        ID = 1,
+                                        Path
+                                    ) & "/BankBack=" & Text(
+                                        Now(),
+                                        "hh:mm am/pm"
+                                    )
+                                }
+                            );
+                            Navigate(ProjectScreen)
                         PaddingBottom: =10
                         PaddingLeft: =0
                         PaddingRight: =10

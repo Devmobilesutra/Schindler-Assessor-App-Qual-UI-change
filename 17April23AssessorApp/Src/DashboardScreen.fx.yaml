@@ -60,8 +60,24 @@ DashboardScreen As screen:
             Image2_34 As image:
                 Height: =40
                 Image: ='refresh-1x'
-                OnSelect: |+
-                    =//get new assignment and completed assignment updates
+                OnSelect: |
+                    =UpdateIf(
+                        GcTraceLog,
+                        ID = 1,
+                        {
+                            Path: LookUp(
+                                GcTraceLog,
+                                ID = 1,
+                                Path
+                            ) & "/Sync:Start=" & Text(
+                                Now(),
+                                "hh:mm am/pm"
+                            )
+                        }
+                    );
+                    
+                    
+                    //get new assignment and completed assignment updates
                     
                     If(
                         //here we check network is available or not
@@ -411,6 +427,20 @@ DashboardScreen As screen:
                     Clear(GC_bankAssessmentAdd);
                     Clear(GC_unitAssessmentAdd);
                     
+                    UpdateIf(
+                        GcTraceLog,
+                        ID = 1,
+                        {
+                            Path: LookUp(
+                                GcTraceLog,
+                                ID = 1,
+                                Path
+                            ) & "/Sync:End=" & Text(
+                                Now(),
+                                "hh:mm am/pm"
+                            )
+                        }
+                    );
                 Visible: =Connection.Connected=true
                 Width: =40
                 X: =Image2_33.X+Image2_33.Width+20
@@ -574,10 +604,33 @@ DashboardScreen As screen:
                     HoverBorderColor: =RGBA(0,0,0,0)
                     HoverColor: =RGBA(0,0,0,0)
                     HoverFill: =ColorFade(RGBA(0,0,0,0),-20%)
-                    OnSelect: |-
-                        =Set(comp,false);
-                        Set(upcomp,false);
-                        Set(inpro,true);
+                    OnSelect: |
+                        =Set(
+                            comp,
+                            false
+                        );
+                        Set(
+                            upcomp,
+                            false
+                        );
+                        Set(
+                            inpro,
+                            true
+                        );
+                        UpdateIf(
+                            GcTraceLog,
+                            ID = 1,
+                            {
+                                Path: LookUp(
+                                    GcTraceLog,
+                                    ID = 1,
+                                    Path
+                                ) & "/Inprogress=" & Text(
+                                    Now(),
+                                    "hh:mm am/pm"
+                                )
+                            }
+                        );
                         Navigate(ProjectScreen);
                     PressedBorderColor: =RGBA(0,0,0,0)
                     PressedColor: =RGBA(0,0,0,0)
@@ -688,6 +741,20 @@ DashboardScreen As screen:
                         =Set(comp,false);
                         Set(inpro,false);
                         Set(upcomp,true);
+                        UpdateIf(
+                            GcTraceLog,
+                            ID = 1,
+                            {
+                                Path: LookUp(
+                                    GcTraceLog,
+                                    ID = 1,
+                                    Path
+                                ) & "/Upcomming=" & Text(
+                                    Now(),
+                                    "hh:mm am/pm"
+                                )
+                            }
+                        );
                         Navigate(ProjectScreen);
                     PressedBorderColor: =RGBA(0,0,0,0)
                     PressedColor: =RGBA(0,0,0,0)
@@ -763,7 +830,23 @@ DashboardScreen As screen:
                 HoverColor: =Self.Color
                 HoverFill: =//ColorFade(Self.Fill, -20%)
                 OnSelect: |
-                    =//check collection is empty or not ? if empty then load data from local cache 
+                    =UpdateIf(
+                        GcTraceLog,
+                        ID = 1,
+                        {
+                            Path: LookUp(
+                                GcTraceLog,
+                                ID = 1,
+                                Path
+                            ) & "/ReportIssue=" & Text(
+                                Now(),
+                                "hh:mm am/pm"
+                            )
+                        }
+                    );
+                    
+                    
+                    //check collection is empty or not ? if empty then load data from local cache 
                     If(
                         IsEmpty(GC_checkpointItemAssessment) && IsEmpty(GC_checkpointItem_ActionItem) && IsEmpty(GC_checkpointItem_Images),
                         Concurrent(
@@ -1175,7 +1258,21 @@ DashboardScreen As screen:
             HoverColor: =Self.Color
             HoverFill: =//Self.Fill
             OnSelect: |
-                =If(
+                =UpdateIf(
+                    GcTraceLog,
+                    ID = 1,
+                    {
+                        Path: LookUp(
+                            GcTraceLog,
+                            ID = 1,
+                            Path
+                        ) & "/ReportSubmit=" & Text(
+                            Now(),
+                            "hh:mm am/pm"
+                        )
+                    }
+                );
+                If(
                     IsBlank(TextInput1.Text),
                     Notify(
                         "Please Enter Issue description.",
