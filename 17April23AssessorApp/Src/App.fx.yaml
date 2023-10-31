@@ -1,8 +1,38 @@
 App As appinfo:
     BackEnabled: =false
     ConfirmExitMessage: ="Are you sure you want to exit ?"
-    OnStart: |+
-        =//safety timer
+    OnStart: |
+        =Set(
+            VarDebug,
+            true
+        );
+        If(
+            VarDebug = true,
+            If(
+                IsEmpty(GcTraceLog),
+                ClearCollect(
+                    GcTraceLog,
+                    {
+                        ID: 1,
+                        Path: ""
+                    }
+                );
+                ,
+                UpdateIf(
+                    GcTraceLog,
+                    ID = 1,
+                    {
+                        Path: LookUp(
+                            GcTraceLog,
+                            ID = 1,
+                            Path
+                        ) & "/OnStart"
+                    }
+                )
+            );
+            
+        );
+        //safety timer
         Set(
             SafetyCheckTime,
             1800
@@ -147,7 +177,7 @@ App As appinfo:
             
         );
         //**********************************************************************************************************
-           //load  deleted action and image data  from local cache
+        //load  deleted action and image data  from local cache
         LoadData(
             gcActionItemDelete,
             "localgcActionItemDelete"
@@ -547,7 +577,6 @@ App As appinfo:
         Clear(gcProjectAssignmentAdd);
         Clear(GC_bankAssessmentAdd);
         Clear(GC_unitAssessmentAdd);
-        
     SizeBreakpoints: =[600,700, 900, 1200,1500,1800]
     Theme: =PowerAppsTheme
 
