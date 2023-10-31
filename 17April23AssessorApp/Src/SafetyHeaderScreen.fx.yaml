@@ -71,7 +71,23 @@ SafetyHeaderScreen As screen:
                         HoverColor: =RGBA(0, 0, 0, 1)
                         HoverFill: =
                         OnSelect: |+
-                            =Back();
+                            =
+                            //for Logs
+                            UpdateIf(
+                                GcTraceLog,
+                                ID = 1,
+                                {
+                                    Path: LookUp(
+                                        GcTraceLog,
+                                        ID = 1,
+                                        Path
+                                    ) & "SafetyBack=" & Text(
+                                        Now(),
+                                        "hh:mm am/pm"
+                                    )
+                                }
+                            );
+                            Back();
                             
                         PaddingBottom: =10
                         PaddingLeft: =20
@@ -425,7 +441,24 @@ SafetyHeaderScreen As screen:
                         HoverBorderColor: =
                         HoverFill: =Self.Fill
                         OnSelect: |-
-                            =Clear(security);
+                            =
+                            //for Logs
+                            UpdateIf(
+                                GcTraceLog,
+                                ID = 1,
+                                {
+                                    Path: LookUp(
+                                        GcTraceLog,
+                                        ID = 1,
+                                        Path
+                                    ) & "SafetyNext=" & Text(
+                                        Now(),
+                                        "hh:mm am/pm"
+                                    )
+                                }
+                            );
+                            
+                            Clear(security);
                             ForAll(
                                 glrySafetyCheck.AllItems,
                                 If(
