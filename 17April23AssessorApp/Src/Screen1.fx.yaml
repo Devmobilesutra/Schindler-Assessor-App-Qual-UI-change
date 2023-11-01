@@ -11,21 +11,22 @@ Screen1 As screen:
                 }
             );
         Text: ="Button"
+        Visible: =false
         X: =40
         Y: =40
         ZIndex: =1
 
     Label6 As label:
-        Height: =660
+        Height: =Parent.Height-80
+        PaddingBottom: =15
+        PaddingTop: =15
+        Size: =16
         Text: |-
-            ="Path  "& //for Logs
-            LookUp(
-                        GcTraceLog,
-                        ID = 1,
-                        Path
-                    ) 
-        Width: =966
-        X: =354
-        Y: =69
+            ="Path:   "& //for Logs
+            First(Sort(TraceUserLogs,'Created On',SortOrder.Descending)).LogPath 
+        VerticalAlign: =VerticalAlign.Top
+        Width: =Parent.Width-80
+        X: =40
+        Y: =40
         ZIndex: =2
 
