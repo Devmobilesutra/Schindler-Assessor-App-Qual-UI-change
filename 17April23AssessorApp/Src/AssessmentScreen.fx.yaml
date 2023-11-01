@@ -3550,40 +3550,49 @@ AssessmentScreen As screen:
                             //for Logs
                             UpdateIf(
                                 GcTraceLog,
-                                VarDebug=true,
+                                VarDebug = true,
                                 {
-                                    Path:First(GcTraceLog).Path  & "/SubmitEnd=" &Text(
+                                    Path: First(GcTraceLog).Path & "/SubmitEnd=" & Text(
                                         Now(),
                                         "mm/dd/yyyy hh:mm:ss am/pm"
                                     )
                                 }
                             );
-                            SaveData(GcTraceLog,"localGcTraceLog");
-                            If(VarDebug=true,
-                            //Patch logs to Dataverse
-                            Patch(TraceUserLogs,
-                                Defaults(TraceUserLogs),
-                                {
-                                    LogUser: VarUserEmail,
-                                    LogDate: Now(),
-                                    LogPath: First(GcTraceLog).Path
-                                }
+                            SaveData(
+                                GcTraceLog,
+                                "localGcTraceLog"
                             );
                             If(
-                                IsEmpty(Errors(TraceUserLogs)),
-                            //for Logs
-                                UpdateIf(
-                                    GcTraceLog,
-                                    VarDebug=true,
+                                VarDebug = true,
+                            //Patch logs to Dataverse
+                                Patch(
+                                    TraceUserLogs,
+                                    Defaults(TraceUserLogs),
                                     {
-                                        Path: "/OnSubmit=" & Text(
-                                        Now(),
-                                        "mm/dd/yyyy hh:mm:ss am/pm"
-                                    )
+                                        LogUser: VarUserEmail,
+                                        LogDate: Now(),
+                                        LogPath: First(GcTraceLog).Path
                                     }
                                 );
-                                SaveData(GcTraceLog,"localGcTraceLog");
-                            );
+                                If(
+                                    IsEmpty(Errors(TraceUserLogs)),
+                            //for Logs
+                                    UpdateIf(
+                                        GcTraceLog,
+                                        VarDebug = true,
+                                        {
+                                            Path: "/OnSubmit=" & Text(
+                                                Now(),
+                                                "mm/dd/yyyy hh:mm:ss am/pm"
+                                            )
+                                        }
+                                    );
+                                    SaveData(
+                                        GcTraceLog,
+                                        "localGcTraceLog"
+                                    );
+                                );
+                                
                             );
                             Set(
                                 Varpatchlabel,
