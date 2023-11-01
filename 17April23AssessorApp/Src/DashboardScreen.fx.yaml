@@ -1472,7 +1472,7 @@ DashboardScreen As screen:
                                     GcTraceLog,
                                     ID = 1,
                                     {
-                                        Path: "/ReportIssueSubmit=" & Text(
+                                        Path: "/OnReportIssue=" & Text(
                                             Now(),
                                             "hh:mm am/pm"
                                         )

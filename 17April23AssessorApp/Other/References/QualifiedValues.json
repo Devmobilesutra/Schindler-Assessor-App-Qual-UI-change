@@ -195,6 +195,13 @@
       }
     },
     {
+      "Kind": "default.cds_shlaf_traceuserlogs_forms",
+      "Namespace": "TraceUserLogs (Forms)",
+      "Values": {
+        "Information": "783ca64e-2a4e-455f-bc21-fc6cabf6be3c"
+      }
+    },
+    {
       "Kind": "default.cds_quantum_bank_forms",
       "Namespace": "bank (Forms)",
       "Values": {
@@ -352,13 +359,6 @@
       "Namespace": "Templates_1 (Forms)",
       "Values": {
         "Information": "39f81e84-581b-4f45-b75e-69def9cab56a"
-      }
-    },
-    {
-      "Kind": "default.cds_shlaf_traceuserlogs_forms",
-      "Namespace": "TraceUserLogs (Forms)",
-      "Values": {
-        "Information": "783ca64e-2a4e-455f-bc21-fc6cabf6be3c"
       }
     }
   ]

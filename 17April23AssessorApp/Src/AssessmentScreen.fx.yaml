@@ -3447,7 +3447,7 @@ AssessmentScreen As screen:
                                     GcTraceLog,
                                     ID = 1,
                                     {
-                                        Path: "/Submit=" & Text(
+                                        Path: "/OnSubmit=" & Text(
                                             Now(),
                                             "hh:mm am/pm"
                                         )
