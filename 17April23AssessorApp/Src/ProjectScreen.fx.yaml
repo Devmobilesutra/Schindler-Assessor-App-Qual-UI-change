@@ -142,17 +142,17 @@ ProjectScreen As screen:
                         OnSelect: |-
                             =UpdateIf(
                                 GcTraceLog,
-                                ID = 1,
+                                VarDebug = true,
                                 {
-                                    Path: LookUp(
-                                        GcTraceLog,
-                                        ID = 1,
-                                        Path
-                                    ) & "/AssignmentBack=" & Text(
+                                    Path: First(GcTraceLog).Path & "/AssignmentBack=" & Text(
                                         Now(),
-                                        "hh:mm am/pm"
+                                        "mm/dd/yyyy hh:mm:ss am/pm"
                                     )
                                 }
+                            );
+                            SaveData(
+                                GcTraceLog,
+                                "localGcTraceLog"
                             );
                             Navigate(DashboardScreen)
                         PaddingBottom: =10
@@ -255,26 +255,27 @@ ProjectScreen As screen:
                     HoverFill: =
                     OnSelect: |
                         =//for updating status of selected bank
-                        Set(VarBankId,ThisItem.bankId.Id);
-                        
-                        Set(VarCurrentAssignmentData,ThisItem);
-                        
+                        Set(
+                            VarBankId,
+                            ThisItem.bankId.Id
+                        );
+                        Set(
+                            VarCurrentAssignmentData,
+                            ThisItem
+                        );
                         // set variable for selected assignmentId
-                        Set(varAssignmentId,ThisItem.Id);
-                        
-                        
+                        Set(
+                            varAssignmentId,
+                            ThisItem.Id
+                        );
                         //for Logs
                         UpdateIf(
                             GcTraceLog,
-                            ID = 1,
+                            VarDebug = true,
                             {
-                                Path: LookUp(
-                                    GcTraceLog,
-                                    ID = 1,
-                                    Path
-                                ) & "/Bank:" & ThisItem.GONumber & "=" & Text(
+                                Path: First(GcTraceLog).Path & "/Bank:" & ThisItem.GONumber & "=" & Text(
                                     Now(),
-                                    "hh:mm am/pm"
+                                    "mm/dd/yyyy hh:mm:ss am/pm"
                                 )
                             }
                         );

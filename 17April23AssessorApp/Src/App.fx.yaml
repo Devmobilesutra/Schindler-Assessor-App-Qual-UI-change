@@ -6,8 +6,10 @@ App As appinfo:
             VarDebug,
             true
         );
+        
         If(
             VarDebug = true,
+            LoadData(GcTraceLog,"localGcTraceLog");
             If(
                 IsEmpty(GcTraceLog),
                 ClearCollect(
@@ -20,18 +22,13 @@ App As appinfo:
                 ,
                 UpdateIf(
                     GcTraceLog,
-                    ID = 1,
-                    {
-                        Path: LookUp(
-                            GcTraceLog,
-                            ID = 1,
-                            Path
-                        ) & "/OnStart"
-                    }
+                    VarDebug=true,
+                    {Path: First(GcTraceLog).Path & "/OnStart"}
                 )
             );
-            
+          SaveData(GcTraceLog,"localGcTraceLog");  
         );
+        
         //safety timer
         Set(
             SafetyCheckTime,

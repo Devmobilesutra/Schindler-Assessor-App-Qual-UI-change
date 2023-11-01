@@ -63,18 +63,15 @@ DashboardScreen As screen:
                 OnSelect: |
                     =UpdateIf(
                         GcTraceLog,
-                        ID = 1,
+                        VarDebug=true,
                         {
-                            Path: LookUp(
-                                GcTraceLog,
-                                ID = 1,
-                                Path
-                            ) & "/Sync:Start=" & Text(
+                            Path: First(GcTraceLog).Path & "/Sync:Start=" & Text(
                                 Now(),
-                                "hh:mm am/pm"
+                                "mm/dd/yyyy hh:mm:ss am/pm"
                             )
                         }
                     );
+                    SaveData(GcTraceLog,"localGcTraceLog");
                     
                     
                     //get new assignment and completed assignment updates
@@ -429,18 +426,15 @@ DashboardScreen As screen:
                     
                     UpdateIf(
                         GcTraceLog,
-                        ID = 1,
+                        VarDebug=true,
                         {
-                            Path: LookUp(
-                                GcTraceLog,
-                                ID = 1,
-                                Path
-                            ) & "/Sync:End=" & Text(
+                            Path:First(GcTraceLog).Path & "/Sync:End=" & Text(
                                 Now(),
-                                "hh:mm am/pm"
+                                "mm/dd/yyyy hh:mm:ss am/pm"
                             )
                         }
                     );
+                    SaveData(GcTraceLog,"localGcTraceLog");
                 Visible: =Connection.Connected=true
                 Width: =40
                 X: =Image2_33.X+Image2_33.Width+20
@@ -619,18 +613,15 @@ DashboardScreen As screen:
                         );
                         UpdateIf(
                             GcTraceLog,
-                            ID = 1,
+                          VarDebug=true,
                             {
-                                Path: LookUp(
-                                    GcTraceLog,
-                                    ID = 1,
-                                    Path
-                                ) & "/Inprogress=" & Text(
+                                Path: First(GcTraceLog).Path & "/Inprogress=" & Text(
                                     Now(),
-                                    "hh:mm am/pm"
+                                    "mm/dd/yyyy hh:mm:ss am/pm"
                                 )
                             }
                         );
+                        SaveData(GcTraceLog,"localGcTraceLog");
                         Navigate(ProjectScreen);
                     PressedBorderColor: =RGBA(0,0,0,0)
                     PressedColor: =RGBA(0,0,0,0)
@@ -743,18 +734,15 @@ DashboardScreen As screen:
                         Set(upcomp,true);
                         UpdateIf(
                             GcTraceLog,
-                            ID = 1,
+                            VarDebug=true,
                             {
-                                Path: LookUp(
-                                    GcTraceLog,
-                                    ID = 1,
-                                    Path
-                                ) & "/Upcomming=" & Text(
+                                Path: First(GcTraceLog).Path & "/Upcomming=" & Text(
                                     Now(),
-                                    "hh:mm am/pm"
+                                    "mm/dd/yyyy hh:mm:ss am/pm"
                                 )
                             }
                         );
+                        SaveData(GcTraceLog,"localGcTraceLog");
                         Navigate(ProjectScreen);
                     PressedBorderColor: =RGBA(0,0,0,0)
                     PressedColor: =RGBA(0,0,0,0)
@@ -830,21 +818,18 @@ DashboardScreen As screen:
                 HoverColor: =Self.Color
                 HoverFill: =//ColorFade(Self.Fill, -20%)
                 OnSelect: |
-                    =UpdateIf(
+                    =
+                    UpdateIf(
                         GcTraceLog,
-                        ID = 1,
+                        VarDebug=true,
                         {
-                            Path: LookUp(
-                                GcTraceLog,
-                                ID = 1,
-                                Path
-                            ) & "/ReportIssue=" & Text(
+                            Path: First(GcTraceLog).Path & "/ReportIssue=" & Text(
                                 Now(),
-                                "hh:mm am/pm"
+                                "mm/dd/yyyy hh:mm:ss am/pm"
                             )
                         }
                     );
-                    
+                    SaveData(GcTraceLog,"localGcTraceLog");
                     
                     //check collection is empty or not ? if empty then load data from local cache 
                     If(
@@ -1260,15 +1245,11 @@ DashboardScreen As screen:
             OnSelect: |
                 =UpdateIf(
                     GcTraceLog,
-                    ID = 1,
+                    VarDebug = true,
                     {
-                        Path: LookUp(
-                            GcTraceLog,
-                            ID = 1,
-                            Path
-                        ) & "/ReportSubmit=" & Text(
+                        Path: First(GcTraceLog).Path & "/ReportSubmit=" & Text(
                             Now(),
-                            "hh:mm am/pm"
+                            "mm/dd/yyyy hh:mm:ss am/pm"
                         )
                     }
                 );
@@ -1470,14 +1451,18 @@ DashboardScreen As screen:
                 //for Logs
                                 UpdateIf(
                                     GcTraceLog,
-                                    ID = 1,
+                                    VarDebug = true,
                                     {
                                         Path: "/OnReportIssue=" & Text(
                                             Now(),
-                                            "hh:mm am/pm"
+                                            "mm/dd/yyyy hh:mm:ss am/pm"
                                         )
                                     }
                                 );
+                            );
+                            SaveData(
+                                GcTraceLog,
+                                "localGcTraceLog"
                             );
                             Set(
                                 VarReportIssue,
