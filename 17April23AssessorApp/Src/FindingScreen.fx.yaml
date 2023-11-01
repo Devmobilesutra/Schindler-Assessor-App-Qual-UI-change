@@ -237,17 +237,17 @@ FindingScreen As screen:
                             =//for Logs
                             UpdateIf(
                                 GcTraceLog,
-                                ID = 1,
+                                VarDebug = true,
                                 {
-                                    Path: LookUp(
-                                        GcTraceLog,
-                                        ID = 1,
-                                        Path
-                                    ) & "/FindingBack=" & Text(
+                                    Path: First(GcTraceLog).Path & "/FindingBack=" & Text(
                                         Now(),
-                                        "hh:mm am/pm"
+                                        "mm/dd/yyyy hh:mm:ss am/pm"
                                     )
                                 }
+                            );
+                            SaveData(
+                                GcTraceLog,
+                                "localGcTraceLog"
                             );
                             //RemoveIf(G
                             Reset(txtAnnotationFS);
@@ -277,10 +277,10 @@ FindingScreen As screen:
                             UpdateIf(
                                 GC_checkpointItem_Images,
                                // assignmentId.Id = varAssignmentId && 
-                                bankUnitId.Id = varBankUnitId && 
+                                bankUnitId.Id = varBankUnitId &&
                                 //checkpoint_id.checkpointAssessment_id = GuidId && 
-                                //checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = varCItemA &&
-                                 CIIstatusUpdate = 2,
+                            //checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = varCItemA &&
+                             CIIstatusUpdate = 2,
                                 {Image: Blank()}
                             );
                             Navigate(AssessmentScreen);
@@ -1448,23 +1448,22 @@ FindingScreen As screen:
                             HoverFill: =RGBA(255, 255, 255, 1)
                             MaxLength: =500
                             Mode: =TextMode.MultiLine
-                            OnChange: |+
+                            OnChange: |
                                 =//for Logs
                                 UpdateIf(
                                     GcTraceLog,
-                                    ID = 1,
+                                    VarDebug = true,
                                     {
-                                        Path: LookUp(
-                                            GcTraceLog,
-                                            ID = 1,
-                                            Path
-                                        ) & "/Annotation=" & Text(
+                                        Path: First(GcTraceLog).Path & "/Annotation=" & Text(
                                             Now(),
-                                            "hh:mm am/pm"
+                                            "mm/dd/yyyy hh:mm:ss am/pm"
                                         )
                                     }
                                 );
-                                
+                                SaveData(
+                                    GcTraceLog,
+                                    "localGcTraceLog"
+                                );
                                 //for reset ideal timer
                                 /*Reset(tmr_logout);
                                 Set(
@@ -1489,8 +1488,13 @@ FindingScreen As screen:
                                     );
                                     
                                 );
-                                
-                                If(Len(txtAnnotationFS.Text)=500,Notify("Annotation should be less than 500 characters",NotificationType.Warning));
+                                If(
+                                    Len(txtAnnotationFS.Text) = 500,
+                                    Notify(
+                                        "Annotation should be less than 500 characters",
+                                        NotificationType.Warning
+                                    )
+                                );
                                 /*
                                 If(CountRows(Filter(GC_checkpointItemAssessment,bankUnitId.Id=varBankUnitId && checkpointItemId.checkpointItemId=varCheckpointitemID))<1,
                                   Set(varCItemA,Text(GUID()));
@@ -1539,7 +1543,6 @@ FindingScreen As screen:
                                                     GC_templateCheckpointsItem,
                                                 checkpointItemId =glryItmesAS.Selected.checkpointItemId),
                                                 checkpointItemName: glryItmesAS.Selected.cboxItemsAS.Text
-                                                
                                             }
                                         )
                                      );
@@ -1552,13 +1555,9 @@ FindingScreen As screen:
                                      'checkpointItemAssessment (quantum_checkpointitemassessment)' = varCItemA,
                                     {
                                         checkpointItem_annotation: TextInput4_5.Text
-                                        
                                     }
                                 );
                                 */
-                                
-                                
-                                
                             RadiusBottomLeft: =2
                             RadiusBottomRight: =2
                             RadiusTopLeft: =2
@@ -1810,27 +1809,25 @@ FindingScreen As screen:
                                 Fill: =AllScreensCSS.RActiveColor
                                 Font: =AllScreensCSS.ButtonFont
                                 HoverFill: =AllScreensCSS.RActiveColor
-                                OnSelect: |-
+                                OnSelect: |
                                     =//for Logs
                                     UpdateIf(
                                         GcTraceLog,
-                                        ID = 1,
+                                        VarDebug = true,
                                         {
-                                            Path: LookUp(
-                                                GcTraceLog,
-                                                ID = 1,
-                                                Path
-                                            ) & "/RemoveAction=" & Text(
+                                            Path: First(GcTraceLog).Path & "/RemoveAction=" & Text(
                                                 Now(),
-                                                "hh:mm am/pm"
+                                                "mm/dd/yyyy hh:mm:ss am/pm"
                                             )
                                         }
                                     );
-                                    
+                                    SaveData(
+                                        GcTraceLog,
+                                        "localGcTraceLog"
+                                    );
                                     /*//for reset ideal timer
                                     Reset(tmr_logout);
                                     Set(UserLastNavigated, Now());*/
-                                    
                                     //for safety check
                                     If(
                                         DateDiff(
@@ -1849,12 +1846,19 @@ FindingScreen As screen:
                                         );
                                         
                                     );
-                                    
-                                    Remove(GC_checkpointItem_ActionItem,ThisItem);
+                                    Remove(
+                                        GC_checkpointItem_ActionItem,
+                                        ThisItem
+                                    );
                                     //SaveData(GC_checkpointItem_ActionItem,"localcheckpointitemactionitem");
-                                    
-                                    Collect(gcActionItemDelete,{id:ThisItem.checkpointItemActionItemsId});
-                                     SaveData(gcActionItemDelete,"localgcActionItemDelete" );
+                                    Collect(
+                                        gcActionItemDelete,
+                                        {id: ThisItem.checkpointItemActionItemsId}
+                                    );
+                                    SaveData(
+                                        gcActionItemDelete,
+                                        "localgcActionItemDelete"
+                                    );
                                 PressedFill: =AllScreensCSS.RActiveColor
                                 RadiusBottomLeft: =1
                                 RadiusBottomRight: =1
@@ -2044,17 +2048,17 @@ FindingScreen As screen:
                                     =//for Logs
                                     UpdateIf(
                                         GcTraceLog,
-                                        ID = 1,
+                                        VarDebug = true,
                                         {
-                                            Path: LookUp(
-                                                GcTraceLog,
-                                                ID = 1,
-                                                Path
-                                            ) & "/AddAction=" & Text(
+                                            Path: First(GcTraceLog).Path & "/AddAction=" & Text(
                                                 Now(),
-                                                "hh:mm am/pm"
+                                                "mm/dd/yyyy hh:mm:ss am/pm"
                                             )
                                         }
+                                    );
+                                    SaveData(
+                                        GcTraceLog,
+                                        "localGcTraceLog"
                                     );
                                     /*//for reset ideal timer
                                     Reset(tmr_logout);
@@ -2143,7 +2147,7 @@ FindingScreen As screen:
                                                 checkpointItemId = varCheckpointitemID,
                                                 checkpointItemSequence
                                             ),
-                                              CIAstatusUpdate : Blank()
+                                            CIAstatusUpdate: Blank()
                                         }
                                     );
                                 PressedFill: =AllScreensCSS.RActiveColor
@@ -2189,17 +2193,17 @@ FindingScreen As screen:
                                         =//for Logs
                                         UpdateIf(
                                             GcTraceLog,
-                                            ID = 1,
+                                            VarDebug = true,
                                             {
-                                                Path: LookUp(
-                                                    GcTraceLog,
-                                                    ID = 1,
-                                                    Path
-                                                ) & "/DownloadImg=" & Text(
+                                                Path: First(GcTraceLog).Path & "/DownloadImg=" & Text(
                                                     Now(),
-                                                    "hh:mm am/pm"
+                                                    "mm/dd/yyyy hh:mm:ss am/pm"
                                                 )
                                             }
+                                        );
+                                        SaveData(
+                                            GcTraceLog,
+                                            "localGcTraceLog"
                                         );
                                         //for safety check
                                         If(
@@ -2263,8 +2267,8 @@ FindingScreen As screen:
                                                 VarImageIsDownloaded,
                                                 true
                                             );
+                                            Clear(TempGetImages);
                                             
-                                        Clear(TempGetImages);
                                         );
                                     PressedColor: =Self.Color
                                     PressedFill: =Self.Fill
@@ -2585,21 +2589,21 @@ FindingScreen As screen:
                                 Font: =AllScreensCSS.ButtonFont
                                 HoverFill: =AllScreensCSS.RActiveColor
                                 Italic: =true
-                                OnSelect: |-
+                                OnSelect: |
                                     =//for Logs
                                     UpdateIf(
                                         GcTraceLog,
-                                        ID = 1,
+                                        VarDebug = true,
                                         {
-                                            Path: LookUp(
-                                                GcTraceLog,
-                                                ID = 1,
-                                                Path
-                                            ) & "/RemoveImg=" & Text(
+                                            Path: First(GcTraceLog).Path & "/RemoveImg=" & Text(
                                                 Now(),
-                                                "hh:mm am/pm"
+                                                "mm/dd/yyyy hh:mm:ss am/pm"
                                             )
                                         }
+                                    );
+                                    SaveData(
+                                        GcTraceLog,
+                                        "localGcTraceLog"
                                     );
                                     //for safety check
                                     If(
@@ -2619,59 +2623,61 @@ FindingScreen As screen:
                                         );
                                         
                                     );
-                                    
-                                    If(VarImageIsDownloaded =true,
-                                    
                                     If(
-                                        glryItmesAS.Selected.checkpointItemImage = 'checkpointItemImage (templateCheckpointsItems)'.Yes && CountRows(
-                                            Filter(
-                                                GC_checkpointItem_Images,
-                                                assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && //checkpointItem_Id.checkpointItemId.checkpointItemId = varCheckpointitemID
-                                                checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' =varCItemA
+                                        VarImageIsDownloaded = true,
+                                        If(
+                                            glryItmesAS.Selected.checkpointItemImage = 'checkpointItemImage (templateCheckpointsItems)'.Yes && CountRows(
+                                                Filter(
+                                                    GC_checkpointItem_Images,
+                                                    assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId &&//checkpointItem_Id.checkpointItemId.checkpointItemId = varCheckpointitemID
+                                     checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = varCItemA
+                                                )
+                                            ) > 1,
+                                            Set(
+                                                varIsImage,
+                                                true
+                                            ),
+                                            Set(
+                                                varIsImage,
+                                                false
                                             )
-                                        ) > 1,
-                                        Set(
-                                            varIsImage,
-                                            true
-                                        ),
-                                        Set(
-                                            varIsImage,
-                                            false
-                                        )
-                                    );
-                                    If(
-                                        glryItmesAS.Selected.checkpointItemImage = 'checkpointItemImage (templateCheckpointsItems)'.No,
-                                        Set(
-                                            varIsImage1,
-                                            true
-                                        ),
-                                        Set(
-                                            varIsImage1,
-                                            false
-                                        )
-                                    );
-                                    If(
-                                        (varIsImage = true && varIsImage1 = false) || (varIsImage1 = true && varIsImage = false),
-                                        Remove(
-                                            GC_checkpointItem_Images,
-                                            ThisItem
                                         );
+                                        If(
+                                            glryItmesAS.Selected.checkpointItemImage = 'checkpointItemImage (templateCheckpointsItems)'.No,
+                                            Set(
+                                                varIsImage1,
+                                                true
+                                            ),
+                                            Set(
+                                                varIsImage1,
+                                                false
+                                            )
+                                        );
+                                        If(
+                                            (varIsImage = true && varIsImage1 = false) || (varIsImage1 = true && varIsImage = false),
+                                            Remove(
+                                                GC_checkpointItem_Images,
+                                                ThisItem
+                                            );
                                        /* SaveData(
                                             GC_checkpointItem_Images,
                                         "localcheckpointitemimage");*/
-                                    
-                                        Collect(
-                                            gcImageDelete,
-                                            {id: ThisItem.checkpointItemImagesId}
-                                        );
-                                        SaveData(
-                                            gcImageDelete,
-                                            "localgcImageDelete"
-                                        );
-                                        ,
-                                        Notify("Here,Image is mandatory.So you can't delete it,change the image.")
-                                    ),
-                                    Set(VarDownloadImagesRestrict,true));
+                                    Collect(
+                                                gcImageDelete,
+                                                {id: ThisItem.checkpointItemImagesId}
+                                            );
+                                            SaveData(
+                                                gcImageDelete,
+                                                "localgcImageDelete"
+                                            );
+                                            ,
+                                            Notify("Here,Image is mandatory.So you can't delete it,change the image.")
+                                        ),
+                                        Set(
+                                            VarDownloadImagesRestrict,
+                                            true
+                                        )
+                                    );
                                 RadiusBottomLeft: =1
                                 RadiusBottomRight: =1
                                 RadiusTopLeft: =1
@@ -2720,21 +2726,21 @@ FindingScreen As screen:
                                 Fill: =AllScreensCSS.RActiveColor
                                 Font: =AllScreensCSS.ButtonFont
                                 HoverFill: =AllScreensCSS.RActiveColor
-                                OnSelect: |-
+                                OnSelect: |
                                     =//for Logs
                                     UpdateIf(
                                         GcTraceLog,
-                                        ID = 1,
+                                        VarDebug = true,
                                         {
-                                            Path: LookUp(
-                                                GcTraceLog,
-                                                ID = 1,
-                                                Path
-                                            ) & "/AddImg=" & Text(
+                                            Path: First(GcTraceLog).Path & "/AddImg=" & Text(
                                                 Now(),
-                                                "hh:mm am/pm"
+                                                "mm/dd/yyyy hh:mm:ss am/pm"
                                             )
                                         }
+                                    );
+                                    SaveData(
+                                        GcTraceLog,
+                                        "localGcTraceLog"
                                     );
                                     //for safety check
                                     If(
@@ -2754,134 +2760,137 @@ FindingScreen As screen:
                                         );
                                         
                                     );
-                                    If(VarImageIsDownloaded =true,
                                     If(
-                                        CountRows(
-                                            Filter(
-                                                GC_checkpointItem_Images,
-                                                CIIstatusUpdate = 0 || CIIstatusUpdate = 1 || CIIstatusUpdate = Blank()
-                                            )
-                                        ) >= 50,
-                                        Set(
-                                            VarImagesExceedPopupText,
-                                            "You have reached limit of 50 Unsubmitted images. Please submit before continuing the assessment."
-                                        );
-                                     // Notify("You have reached limit of 75 images.You can not add Images.",NotificationType.Error);
-                                    Set(
-                                            VarImagesExceedPopup,
-                                            true
-                                        );
-                                        ,
+                                        VarImageIsDownloaded = true,
                                         If(
                                             CountRows(
                                                 Filter(
                                                     GC_checkpointItem_Images,
                                                     CIIstatusUpdate = 0 || CIIstatusUpdate = 1 || CIIstatusUpdate = Blank()
                                                 )
-                                            ) > 40,
+                                            ) >= 50,
                                             Set(
                                                 VarImagesExceedPopupText,
+                                                "You have reached limit of 50 Unsubmitted images. Please submit before continuing the assessment."
+                                            );
+                                     // Notify("You have reached limit of 75 images.You can not add Images.",NotificationType.Error);
+                                    Set(
+                                                VarImagesExceedPopup,
+                                                true
+                                            );
+                                            ,
+                                            If(
                                                 CountRows(
                                                     Filter(
                                                         GC_checkpointItem_Images,
                                                         CIIstatusUpdate = 0 || CIIstatusUpdate = 1 || CIIstatusUpdate = Blank()
                                                     )
-                                                ) & " Unsubmitted Images are already stored. Now you can add only " & 50 - CountRows(
-                                                    Filter(
-                                                        GC_checkpointItem_Images,
-                                                        CIIstatusUpdate = 0 || CIIstatusUpdate = 1 || CIIstatusUpdate = Blank()
-                                                    )
-                                                ) & " images more."
-                                            );
+                                                ) > 40,
+                                                Set(
+                                                    VarImagesExceedPopupText,
+                                                    CountRows(
+                                                        Filter(
+                                                            GC_checkpointItem_Images,
+                                                            CIIstatusUpdate = 0 || CIIstatusUpdate = 1 || CIIstatusUpdate = Blank()
+                                                        )
+                                                    ) & " Unsubmitted Images are already stored. Now you can add only " & 50 - CountRows(
+                                                        Filter(
+                                                            GC_checkpointItem_Images,
+                                                            CIIstatusUpdate = 0 || CIIstatusUpdate = 1 || CIIstatusUpdate = Blank()
+                                                        )
+                                                    ) & " images more."
+                                                );
                                       //Notify(CountRows(GC_checkpointItem_Images) & " Images are already stored. 75 is a limit.",NotificationType.Error);
                                     Set(
-                                                VarImagesExceedPopup,
+                                                    VarImagesExceedPopup,
+                                                    true
+                                                );
+                                            );
+                                            Set(
+                                                UP,
+                                                false
+                                            );
+                                            If(
+                                                CountRows(GlryImagesFS.AllItems) < 4,
+                                                Collect(
+                                                    GC_checkpointItem_Images,
+                                                    {
+                                                        // checkpointItemImagesId:GUID(),
+                                                        checkpointItemImagesId: varBankUnitId & "cii" & Text(
+                                                            Now(),
+                                                            "mmddyyyyhhmmss"
+                                                        ) & "-" & Rand(),
+                                                        assignmentId: LookUp(
+                                                            DropColumns(
+                                                                gcProjectAssignment,
+                                                                "AstatusUpdate"
+                                                            ),
+                                                            Id = varAssignmentId
+                                                        ),
+                                                        //  bankId:LookUp(gcBank,Id=VarBankId),
+                                                        bankUnitId: LookUp(
+                                                            gcBankunit,
+                                                            Id = varBankUnitId
+                                                        ),
+                                                        section_id: LookUp(
+                                                            DropColumns(
+                                                                GcSectionAssessment,
+                                                                "SstatusUpdate"
+                                                            ),
+                                                            'sectionAssessment (quantum_sectionassessment)' = varSA
+                                                        ),
+                                                        checkpoint_id: LookUp(
+                                                            DropColumns(
+                                                                GcCheckpointAssessment,
+                                                                "CstatusUpdate"
+                                                            ),
+                                                            checkpointAssessment_id = GuidId
+                                                        ),
+                                                        checkpointItem_Id: LookUp(
+                                                            DropColumns(
+                                                                GC_checkpointItemAssessment,
+                                                                "CIstatusUpdate"
+                                                            ),
+                                                            'checkpointItemAssessment (quantum_checkpointitemassessment)' = Text(varCItemA)
+                                                        ),
+                                                        product_id: LookUp(
+                                                            GC_product,
+                                                            product_Model = glryUnitBS.Selected.productModel
+                                                        ),
+                                                        image_annotation: "",
+                                                        ImageSortSequence: LookUp(
+                                                            GC_templateSections,
+                                                            sectionId = VarSectionId,
+                                                            sectionSequence
+                                                        ) & LookUp(
+                                                            GC_templateCheckpoints,
+                                                            checkpointId = ChId,
+                                                            checkpointSequence
+                                                        ) & LookUp(
+                                                            GC_templateCheckpointsItem,
+                                                            checkpointItemId = varCheckpointitemID,
+                                                            checkpointItemSequence
+                                                        ),
+                                                        CIIstatusUpdate: Blank()
+                                                    }
+                                                );
+                                                If(
+                                                    CountRows(GlryImagesFS.AllItems) >= 4,
+                                                    Notify("You can capture 4 images only."),
+                                                    NotificationType.Warning
+                                                )
+                                            );
+                                            Set(
+                                                varImage,
                                                 true
                                             );
                                         );
+                                        ,
                                         Set(
-                                            UP,
-                                            false
-                                        );
-                                        If(
-                                            CountRows(GlryImagesFS.AllItems) < 4,
-                                            Collect(
-                                                GC_checkpointItem_Images,
-                                                {
-                                                    // checkpointItemImagesId:GUID(),
-                                                    checkpointItemImagesId: varBankUnitId & "cii" & Text(
-                                                        Now(),
-                                                        "mmddyyyyhhmmss"
-                                                    ) & "-" & Rand(),
-                                                    assignmentId: LookUp(
-                                                        DropColumns(
-                                                            gcProjectAssignment,
-                                                            "AstatusUpdate"
-                                                        ),
-                                                        Id = varAssignmentId
-                                                    ),
-                                                    //  bankId:LookUp(gcBank,Id=VarBankId),
-                                                    bankUnitId: LookUp(
-                                                        gcBankunit,
-                                                        Id = varBankUnitId
-                                                    ),
-                                                    section_id: LookUp(
-                                                        DropColumns(
-                                                            GcSectionAssessment,
-                                                            "SstatusUpdate"
-                                                        ),
-                                                        'sectionAssessment (quantum_sectionassessment)' = varSA
-                                                    ),
-                                                    checkpoint_id: LookUp(
-                                                        DropColumns(
-                                                            GcCheckpointAssessment,
-                                                            "CstatusUpdate"
-                                                        ),
-                                                        checkpointAssessment_id = GuidId
-                                                    ),
-                                                    checkpointItem_Id: LookUp(
-                                                        DropColumns(
-                                                            GC_checkpointItemAssessment,
-                                                            "CIstatusUpdate"
-                                                        ),
-                                                        'checkpointItemAssessment (quantum_checkpointitemassessment)' = Text(varCItemA)
-                                                    ),
-                                                    product_id: LookUp(
-                                                        GC_product,
-                                                        product_Model = glryUnitBS.Selected.productModel
-                                                    ),
-                                                    image_annotation: "",
-                                                    ImageSortSequence: LookUp(
-                                                        GC_templateSections,
-                                                        sectionId = VarSectionId,
-                                                        sectionSequence
-                                                    ) & LookUp(
-                                                        GC_templateCheckpoints,
-                                                        checkpointId = ChId,
-                                                        checkpointSequence
-                                                    ) & LookUp(
-                                                        GC_templateCheckpointsItem,
-                                                        checkpointItemId = varCheckpointitemID,
-                                                        checkpointItemSequence
-                                                    ),
-                                                    CIIstatusUpdate: Blank()
-                                                }
-                                            );
-                                            If(
-                                                CountRows(GlryImagesFS.AllItems) >= 4,
-                                                Notify("You can capture 4 images only."),
-                                                NotificationType.Warning
-                                            )
-                                        );
-                                        Set(
-                                            varImage,
+                                            VarDownloadImagesRestrict,
                                             true
-                                        );
-                                        
+                                        )
                                     );
-                                    ,
-                                    Set(VarDownloadImagesRestrict,true));
-                                      
                                 PressedFill: =AllScreensCSS.RActiveColor
                                 RadiusBottomLeft: =1
                                 RadiusBottomRight: =1
@@ -2939,19 +2948,18 @@ FindingScreen As screen:
                                     =//for Logs
                                     UpdateIf(
                                         GcTraceLog,
-                                        ID = 1,
+                                        VarDebug = true,
                                         {
-                                            Path: LookUp(
-                                                GcTraceLog,
-                                                ID = 1,
-                                                Path
-                                            ) & "/SaveStart=" & Text(
+                                            Path: First(GcTraceLog).Path & "/SaveStart=" & Text(
                                                 Now(),
-                                                "hh:mm am/pm"
+                                                "mm/dd/yyyy hh:mm:ss am/pm"
                                             )
                                         }
                                     );
-                                    
+                                    SaveData(
+                                        GcTraceLog,
+                                        "localGcTraceLog"
+                                    );
                                     //Notify("save start");
                                     Set(
                                         VarBlankrow1,
@@ -2961,7 +2969,6 @@ FindingScreen As screen:
                                         VarBlankrow2,
                                         false
                                     );
-                                    
                                     //for safety check
                                     If(
                                         DateDiff(
@@ -3069,7 +3076,7 @@ FindingScreen As screen:
                                                 );
                                                 
                                     //for checkpoint  Item annotation - checkpoint Item Assessment
-                                           //record exist then update that record using update if function
+                                    //record exist then update that record using update if function
                                     UpdateIf(
                                                     GC_checkpointItemAssessment,
                                                     'checkpointItemAssessment (quantum_checkpointitemassessment)' = varCItemA,
@@ -3124,33 +3131,33 @@ FindingScreen As screen:
                                                 );
                                          // Notify("update images"& CountRows(GC_checkpointItem_Images));      
                                     //for checkpoint image 
-                                    
-                                    If(VarImageIsDownloaded = true,
-                                    ForAll(
-                                                    GlryImagesFS.AllItems As i,
-                                                    UpdateIf(
-                                                        GC_checkpointItem_Images,
-                                                        checkpointItemImagesId = i.checkpointItemImagesId,
-                                                        {
-                                                            Image: i.Image14_2.Image,
-                                                            image_annotation: i.TextInput6_2.Text,
-                                                            CIIstatusUpdate: 0,
-                                                            ImageSortSequence: LookUp(
-                                                                GC_templateSections,
-                                                                sectionId = VarSectionId,
-                                                                sectionSequence
-                                                            ) & LookUp(
-                                                                GC_templateCheckpoints,
-                                                                checkpointId = ChId,
-                                                                checkpointSequence
-                                                            ) & LookUp(
-                                                                GC_templateCheckpointsItem,
-                                                                checkpointItemId = varCheckpointitemID,
-                                                                checkpointItemSequence
-                                                            )
-                                                        }
-                                                    )
-                                                );
+                                    If(
+                                                    VarImageIsDownloaded = true,
+                                                    ForAll(
+                                                        GlryImagesFS.AllItems As i,
+                                                        UpdateIf(
+                                                            GC_checkpointItem_Images,
+                                                            checkpointItemImagesId = i.checkpointItemImagesId,
+                                                            {
+                                                                Image: i.Image14_2.Image,
+                                                                image_annotation: i.TextInput6_2.Text,
+                                                                CIIstatusUpdate: 0,
+                                                                ImageSortSequence: LookUp(
+                                                                    GC_templateSections,
+                                                                    sectionId = VarSectionId,
+                                                                    sectionSequence
+                                                                ) & LookUp(
+                                                                    GC_templateCheckpoints,
+                                                                    checkpointId = ChId,
+                                                                    checkpointSequence
+                                                                ) & LookUp(
+                                                                    GC_templateCheckpointsItem,
+                                                                    checkpointItemId = varCheckpointitemID,
+                                                                    checkpointItemSequence
+                                                                )
+                                                            }
+                                                        )
+                                                    );
                                                 );
                                                 Set(
                                                     popupsuccess1,
@@ -3158,344 +3165,371 @@ FindingScreen As screen:
                                                 );
                                             );
                                         );
-                                        );
+                                        
+                                    );
                                     //Notify("saving data to local cache");
                                     //************************************
                                     // savedata from collections to local cache .
                                     SaveData(
-                                            gcProjectAssignment,
-                                            "localprojectassignment"
-                                        );
-                                        SaveData(
-                                            GC_bankAssessment,
-                                            "localbankassessment"
-                                        );
-                                        SaveData(
-                                            GC_unitAssessment,
-                                            "localunitassessment"
-                                        );
-                                    
-                                    
-                                          ClearCollect(GcSectionAssessmentCache,Filter(GcSectionAssessment,SstatusUpdate = 0 || SstatusUpdate = 1));
+                                        gcProjectAssignment,
+                                        "localprojectassignment"
+                                    );
+                                    SaveData(
+                                        GC_bankAssessment,
+                                        "localbankassessment"
+                                    );
+                                    SaveData(
+                                        GC_unitAssessment,
+                                        "localunitassessment"
+                                    );
+                                    ClearCollect(
+                                        GcSectionAssessmentCache,
+                                        Filter(
+                                            GcSectionAssessment,
+                                            SstatusUpdate = 0 || SstatusUpdate = 1
+                                        )
+                                    );
                                          //update 
-                                            ForAll(
-                                                    GcSectionAssessmentCache1 As i,
-                                                    If(
-                                                        IsBlank(
-                                                            LookUp(
-                                                                GcSectionAssessmentCache,
-                                                                'sectionAssessment (quantum_sectionassessment)' = i.'sectionAssessment (quantum_sectionassessment)'
-                                                            )
-                                                        ),
-                                                        Patch(
-                                                            GcSectionAssessmentCache,
-                                                            Defaults(GcSectionAssessmentCache),
-                                                            {
-                                                                   'sectionAssessment (quantum_sectionassessmentid)': i.'sectionAssessment (quantum_sectionassessmentid)',
-                                                                'sectionAssessment (quantum_sectionassessment)': i.'sectionAssessment (quantum_sectionassessment)',
-                                                                assignmentId: i.assignmentId,
-                                                                bankUnitId: i.bankUnitId,
-                                                                product_id: i.product_id,
-                                                                sectionId: i.sectionId,
-                                                                sectionName: i.sectionName,
-                                                                AssessmentStatus: i.AssessmentStatus,
-                                                                SstatusUpdate: i.SstatusUpdate,
-                                                                sectionSequence: i.sectionSequence,
-                                                                sectionComment: i.sectionComment
-                                                            }
-                                                        );
-                                                        ,
-                                                        Patch(
-                                                            GcSectionAssessmentCache,
-                                                            LookUp(
-                                                                GcSectionAssessmentCache,
-                                                                'sectionAssessment (quantum_sectionassessment)' = i.'sectionAssessment (quantum_sectionassessment)'
-                                                            ),
-                                                            {
-                                                                  'sectionAssessment (quantum_sectionassessmentid)': i.'sectionAssessment (quantum_sectionassessmentid)',
-                                                                'sectionAssessment (quantum_sectionassessment)': i.'sectionAssessment (quantum_sectionassessment)',
-                                                                assignmentId: i.assignmentId,
-                                                                bankUnitId: i.bankUnitId,
-                                                                product_id: i.product_id,
-                                                                sectionId: i.sectionId,
-                                                                sectionName: i.sectionName,
-                                                                AssessmentStatus: i.AssessmentStatus,
-                                                                SstatusUpdate: i.SstatusUpdate,
-                                                                sectionSequence: i.sectionSequence,
-                                                                sectionComment: i.sectionComment
-                                                            }
-                                                        );
-                                                    );//if
-                                                );//forall
-                                        SaveData(
-                                            GcSectionAssessmentCache,
-                                            "localsectionassessment"
+                                    ForAll(
+                                        GcSectionAssessmentCache1 As i,
+                                        If(
+                                            IsBlank(
+                                                LookUp(
+                                                    GcSectionAssessmentCache,
+                                                    'sectionAssessment (quantum_sectionassessment)' = i.'sectionAssessment (quantum_sectionassessment)'
+                                                )
+                                            ),
+                                            Patch(
+                                                GcSectionAssessmentCache,
+                                                Defaults(GcSectionAssessmentCache),
+                                                {
+                                                    'sectionAssessment (quantum_sectionassessmentid)': i.'sectionAssessment (quantum_sectionassessmentid)',
+                                                    'sectionAssessment (quantum_sectionassessment)': i.'sectionAssessment (quantum_sectionassessment)',
+                                                    assignmentId: i.assignmentId,
+                                                    bankUnitId: i.bankUnitId,
+                                                    product_id: i.product_id,
+                                                    sectionId: i.sectionId,
+                                                    sectionName: i.sectionName,
+                                                    AssessmentStatus: i.AssessmentStatus,
+                                                    SstatusUpdate: i.SstatusUpdate,
+                                                    sectionSequence: i.sectionSequence,
+                                                    sectionComment: i.sectionComment
+                                                }
+                                            );
+                                            ,
+                                            Patch(
+                                                GcSectionAssessmentCache,
+                                                LookUp(
+                                                    GcSectionAssessmentCache,
+                                                    'sectionAssessment (quantum_sectionassessment)' = i.'sectionAssessment (quantum_sectionassessment)'
+                                                ),
+                                                {
+                                                    'sectionAssessment (quantum_sectionassessmentid)': i.'sectionAssessment (quantum_sectionassessmentid)',
+                                                    'sectionAssessment (quantum_sectionassessment)': i.'sectionAssessment (quantum_sectionassessment)',
+                                                    assignmentId: i.assignmentId,
+                                                    bankUnitId: i.bankUnitId,
+                                                    product_id: i.product_id,
+                                                    sectionId: i.sectionId,
+                                                    sectionName: i.sectionName,
+                                                    AssessmentStatus: i.AssessmentStatus,
+                                                    SstatusUpdate: i.SstatusUpdate,
+                                                    sectionSequence: i.sectionSequence,
+                                                    sectionComment: i.sectionComment
+                                                }
+                                            );
                                         );
-                                    
-                                        ClearCollect(GcCheckpointAssessmentCache,Filter(GcCheckpointAssessment,CstatusUpdate = 0 || CstatusUpdate = 1));
+                                        //if
+                                    );
+                                    //forall
+                                    SaveData(
+                                        GcSectionAssessmentCache,
+                                        "localsectionassessment"
+                                    );
+                                    ClearCollect(
+                                        GcCheckpointAssessmentCache,
+                                        Filter(
+                                            GcCheckpointAssessment,
+                                            CstatusUpdate = 0 || CstatusUpdate = 1
+                                        )
+                                    );
                                          //update
-                                           ForAll(
-                                                    GcCheckpointAssessmentCache1 As i,
-                                                    If(
-                                                        IsBlank(
-                                                            LookUp(
-                                                                GcCheckpointAssessmentCache,
-                                                                 checkpointAssessment_id = i.checkpointAssessment_id
-                                                            )
-                                                        ),
-                                                        Patch(
-                                                            GcCheckpointAssessmentCache,
-                                                            Defaults(GcCheckpointAssessmentCache),
-                                                            {
-                                                                checkpointAssessment: i.checkpointAssessment,
-                                                                checkpointAssessment_id: i.checkpointAssessment_id,
-                                                                assignmentId: i.assignmentId,
-                                                                bankUnitId: i.bankUnitId,
-                                                                product_id: i.product_id,
-                                                                sectionId: i.sectionId,
-                                                                checkpointId: i.checkpointId,
-                                                                checkpointName: i.checkpointName,
-                                                                AssessmentStatus: i.AssessmentStatus,
-                                                                CstatusUpdate: i.CstatusUpdate,
-                                                                CheckpointSequence: i.CheckpointSequence,
-                                                                checkpointComment: i.checkpointComment
-                                                            }
-                                                        );
-                                                        ,
-                                                        Patch(
-                                                            GcCheckpointAssessmentCache,
-                                                            LookUp(
-                                                                GcCheckpointAssessmentCache,
-                                                                checkpointAssessment_id= i.checkpointAssessment_id
-                                                            ),
-                                                            {
-                                                               checkpointAssessment: i.checkpointAssessment,
-                                                                checkpointAssessment_id: i.checkpointAssessment_id,
-                                                                assignmentId: i.assignmentId,
-                                                                bankUnitId: i.bankUnitId,
-                                                                product_id: i.product_id,
-                                                                sectionId: i.sectionId,
-                                                                checkpointId: i.checkpointId,
-                                                                checkpointName: i.checkpointName,
-                                                                AssessmentStatus: i.AssessmentStatus,
-                                                                CstatusUpdate: i.CstatusUpdate,
-                                                                CheckpointSequence: i.CheckpointSequence,
-                                                                checkpointComment: i.checkpointComment
-                                                            }
-                                                        );
-                                                    );//if
-                                                );//forall
-                                        SaveData(
-                                            GcCheckpointAssessmentCache,
-                                            "localcheckpointassessment"
+                                    ForAll(
+                                        GcCheckpointAssessmentCache1 As i,
+                                        If(
+                                            IsBlank(
+                                                LookUp(
+                                                    GcCheckpointAssessmentCache,
+                                                    checkpointAssessment_id = i.checkpointAssessment_id
+                                                )
+                                            ),
+                                            Patch(
+                                                GcCheckpointAssessmentCache,
+                                                Defaults(GcCheckpointAssessmentCache),
+                                                {
+                                                    checkpointAssessment: i.checkpointAssessment,
+                                                    checkpointAssessment_id: i.checkpointAssessment_id,
+                                                    assignmentId: i.assignmentId,
+                                                    bankUnitId: i.bankUnitId,
+                                                    product_id: i.product_id,
+                                                    sectionId: i.sectionId,
+                                                    checkpointId: i.checkpointId,
+                                                    checkpointName: i.checkpointName,
+                                                    AssessmentStatus: i.AssessmentStatus,
+                                                    CstatusUpdate: i.CstatusUpdate,
+                                                    CheckpointSequence: i.CheckpointSequence,
+                                                    checkpointComment: i.checkpointComment
+                                                }
+                                            );
+                                            ,
+                                            Patch(
+                                                GcCheckpointAssessmentCache,
+                                                LookUp(
+                                                    GcCheckpointAssessmentCache,
+                                                    checkpointAssessment_id = i.checkpointAssessment_id
+                                                ),
+                                                {
+                                                    checkpointAssessment: i.checkpointAssessment,
+                                                    checkpointAssessment_id: i.checkpointAssessment_id,
+                                                    assignmentId: i.assignmentId,
+                                                    bankUnitId: i.bankUnitId,
+                                                    product_id: i.product_id,
+                                                    sectionId: i.sectionId,
+                                                    checkpointId: i.checkpointId,
+                                                    checkpointName: i.checkpointName,
+                                                    AssessmentStatus: i.AssessmentStatus,
+                                                    CstatusUpdate: i.CstatusUpdate,
+                                                    CheckpointSequence: i.CheckpointSequence,
+                                                    checkpointComment: i.checkpointComment
+                                                }
+                                            );
                                         );
-                                    
-                                        ClearCollect(GC_checkpointItemAssessmentCache,Filter(GC_checkpointItemAssessment,CIstatusUpdate = 0 || CIstatusUpdate = 1));
+                                        //if
+                                    );
+                                    //forall
+                                    SaveData(
+                                        GcCheckpointAssessmentCache,
+                                        "localcheckpointassessment"
+                                    );
+                                    ClearCollect(
+                                        GC_checkpointItemAssessmentCache,
+                                        Filter(
+                                            GC_checkpointItemAssessment,
+                                            CIstatusUpdate = 0 || CIstatusUpdate = 1
+                                        )
+                                    );
                                         //update
-                                            ForAll(
-                                                    GC_checkpointItemAssessmentCache1 As i,
-                                                    If(
-                                                        IsBlank(
-                                                            LookUp(
-                                                                GC_checkpointItemAssessmentCache,
-                                                                 'checkpointItemAssessment (quantum_checkpointitemassessment)' = i.'checkpointItemAssessment (quantum_checkpointitemassessment)'
-                                                            )
-                                                        ),
-                                                        Patch(
-                                                            GC_checkpointItemAssessmentCache,
-                                                            Defaults(GC_checkpointItemAssessmentCache),
-                                                            {
-                                                               'checkpointItemAssessment (quantum_checkpointitemassessmentid)': i.'checkpointItemAssessment (quantum_checkpointitemassessmentid)',
-                                                                'checkpointItemAssessment (quantum_checkpointitemassessment)': i.'checkpointItemAssessment (quantum_checkpointitemassessment)',
-                                                                checkpointAssessment_Id: i.checkpointAssessment_Id,
-                                                                assignmentId: i.assignmentId,
-                                                                bankUnitId: i.bankUnitId,
-                                                                product_id: i.product_id,
-                                                                section_Id: i.section_Id,
-                                                                checkpointItem_annotation: i.checkpointItem_annotation,
-                                                                checkpointItemId: i.checkpointItemId,
-                                                                checkpointItemName: i.checkpointItemName,
-                                                                assessmentStatus: i.assessmentStatus,
-                                                                CIstatusUpdate: i.CIstatusUpdate,
-                                                                checkpointitemSequence: i.checkpointitemSequence,
-                                                                checkpointItemComment: i.checkpointItemComment
-                                                            }
-                                                        );
-                                                       ,
-                                                        Patch(
-                                                            GC_checkpointItemAssessmentCache,
-                                                            LookUp(
-                                                                GC_checkpointItemAssessmentCache,
-                                                                'checkpointItemAssessment (quantum_checkpointitemassessment)'= i.'checkpointItemAssessment (quantum_checkpointitemassessment)'
-                                                            ),
-                                                            {
-                                                               'checkpointItemAssessment (quantum_checkpointitemassessmentid)': i.'checkpointItemAssessment (quantum_checkpointitemassessmentid)',
-                                                                'checkpointItemAssessment (quantum_checkpointitemassessment)': i.'checkpointItemAssessment (quantum_checkpointitemassessment)',
-                                                                checkpointAssessment_Id: i.checkpointAssessment_Id,
-                                                                assignmentId: i.assignmentId,
-                                                                bankUnitId: i.bankUnitId,
-                                                                product_id: i.product_id,
-                                                                section_Id: i.section_Id,
-                                                                checkpointItem_annotation: i.checkpointItem_annotation,
-                                                                checkpointItemId: i.checkpointItemId,
-                                                                checkpointItemName: i.checkpointItemName,
-                                                                assessmentStatus: i.assessmentStatus,
-                                                                CIstatusUpdate: i.CIstatusUpdate,
-                                                                checkpointitemSequence: i.checkpointitemSequence,
-                                                                checkpointItemComment: i.checkpointItemComment
-                                                            }
-                                                        );
-                                                    );//if
-                                                );//forall
-                                        SaveData(
-                                            GC_checkpointItemAssessmentCache,
-                                            "localcheckpointitemassessment"
+                                    ForAll(
+                                        GC_checkpointItemAssessmentCache1 As i,
+                                        If(
+                                            IsBlank(
+                                                LookUp(
+                                                    GC_checkpointItemAssessmentCache,
+                                                    'checkpointItemAssessment (quantum_checkpointitemassessment)' = i.'checkpointItemAssessment (quantum_checkpointitemassessment)'
+                                                )
+                                            ),
+                                            Patch(
+                                                GC_checkpointItemAssessmentCache,
+                                                Defaults(GC_checkpointItemAssessmentCache),
+                                                {
+                                                    'checkpointItemAssessment (quantum_checkpointitemassessmentid)': i.'checkpointItemAssessment (quantum_checkpointitemassessmentid)',
+                                                    'checkpointItemAssessment (quantum_checkpointitemassessment)': i.'checkpointItemAssessment (quantum_checkpointitemassessment)',
+                                                    checkpointAssessment_Id: i.checkpointAssessment_Id,
+                                                    assignmentId: i.assignmentId,
+                                                    bankUnitId: i.bankUnitId,
+                                                    product_id: i.product_id,
+                                                    section_Id: i.section_Id,
+                                                    checkpointItem_annotation: i.checkpointItem_annotation,
+                                                    checkpointItemId: i.checkpointItemId,
+                                                    checkpointItemName: i.checkpointItemName,
+                                                    assessmentStatus: i.assessmentStatus,
+                                                    CIstatusUpdate: i.CIstatusUpdate,
+                                                    checkpointitemSequence: i.checkpointitemSequence,
+                                                    checkpointItemComment: i.checkpointItemComment
+                                                }
+                                            );
+                                            ,
+                                            Patch(
+                                                GC_checkpointItemAssessmentCache,
+                                                LookUp(
+                                                    GC_checkpointItemAssessmentCache,
+                                                    'checkpointItemAssessment (quantum_checkpointitemassessment)' = i.'checkpointItemAssessment (quantum_checkpointitemassessment)'
+                                                ),
+                                                {
+                                                    'checkpointItemAssessment (quantum_checkpointitemassessmentid)': i.'checkpointItemAssessment (quantum_checkpointitemassessmentid)',
+                                                    'checkpointItemAssessment (quantum_checkpointitemassessment)': i.'checkpointItemAssessment (quantum_checkpointitemassessment)',
+                                                    checkpointAssessment_Id: i.checkpointAssessment_Id,
+                                                    assignmentId: i.assignmentId,
+                                                    bankUnitId: i.bankUnitId,
+                                                    product_id: i.product_id,
+                                                    section_Id: i.section_Id,
+                                                    checkpointItem_annotation: i.checkpointItem_annotation,
+                                                    checkpointItemId: i.checkpointItemId,
+                                                    checkpointItemName: i.checkpointItemName,
+                                                    assessmentStatus: i.assessmentStatus,
+                                                    CIstatusUpdate: i.CIstatusUpdate,
+                                                    checkpointitemSequence: i.checkpointitemSequence,
+                                                    checkpointItemComment: i.checkpointItemComment
+                                                }
+                                            );
                                         );
-                                    
-                                    
-                                       
-                                        ClearCollect(GC_checkpointItem_ActionItemCache,Filter(GC_checkpointItem_ActionItem,CIAstatusUpdate = 0 || CIAstatusUpdate = 1));
-                                         ForAll(
-                                                    GC_checkpointItem_ActionItemCache1 As i,
-                                                    If(
-                                                        IsBlank(
-                                                            LookUp(
-                                                                GC_checkpointItem_ActionItemCache,
-                                                                  checkpointItemActionItemsId = i.checkpointItemActionItemsId
-                                                            )
-                                                        ),
-                                                        Patch(
-                                                            GC_checkpointItem_ActionItemCache,
-                                                            Defaults(GC_checkpointItem_ActionItemCache),
-                                                            {
-                                                               checkpointItem_ActionItems: i.checkpointItem_ActionItems,
-                                                                checkpointItemActionItemsId: i.checkpointItemActionItemsId,
-                                                                ActionItem_Name: i.ActionItem_Name,
-                                                                assignmentId: i.assignmentId,
-                                                                bankId: i.bankId,
-                                                                bankUnitId: i.bankUnitId,
-                                                                section_id: i.section_id,
-                                                                checkpoint_id: i.checkpoint_id,
-                                                                checkpointItem_Id: i.checkpointItem_Id,
-                                                                product_id: i.product_id,
-                                                                priority: i.priority,
-                                                                OwnerId: i.OwnerId,
-                                                                TimeEstimate: i.TimeEstimate,
-                                                                MaterialEstimate: i.MaterialEstimate,
-                                                                CIAstatusUpdate: i.CIAstatusUpdate,
-                                                                Action_status: i.Action_status
-                                    
-                                                            }
-                                                        );
-                                                       ,
-                                                        Patch(
-                                                            GC_checkpointItem_ActionItemCache,
-                                                            LookUp(
-                                                                GC_checkpointItem_ActionItemCache,
-                                                                 checkpointItemActionItemsId = i.checkpointItemActionItemsId
-                                                            ),
-                                                            {
-                                                               checkpointItem_ActionItems: i.checkpointItem_ActionItems,
-                                                                checkpointItemActionItemsId: i.checkpointItemActionItemsId,
-                                                                ActionItem_Name: i.ActionItem_Name,
-                                                                assignmentId: i.assignmentId,
-                                                                bankId: i.bankId,
-                                                                bankUnitId: i.bankUnitId,
-                                                                section_id: i.section_id,
-                                                                checkpoint_id: i.checkpoint_id,
-                                                                checkpointItem_Id: i.checkpointItem_Id,
-                                                                product_id: i.product_id,
-                                                                priority: i.priority,
-                                                                OwnerId: i.OwnerId,
-                                                                TimeEstimate: i.TimeEstimate,
-                                                                MaterialEstimate: i.MaterialEstimate,
-                                                                CIAstatusUpdate:i.CIAstatusUpdate,
-                                                                Action_status: i.Action_status
-                                    
-                                                            }
-                                                        );
-                                                    );//if
-                                                );//forall
-                                        SaveData(
-                                            GC_checkpointItem_ActionItemCache,
-                                            "localcheckpointitemactionitem"
+                                        //if
+                                    );
+                                    //forall
+                                    SaveData(
+                                        GC_checkpointItemAssessmentCache,
+                                        "localcheckpointitemassessment"
+                                    );
+                                    ClearCollect(
+                                        GC_checkpointItem_ActionItemCache,
+                                        Filter(
+                                            GC_checkpointItem_ActionItem,
+                                            CIAstatusUpdate = 0 || CIAstatusUpdate = 1
+                                        )
+                                    );
+                                    ForAll(
+                                        GC_checkpointItem_ActionItemCache1 As i,
+                                        If(
+                                            IsBlank(
+                                                LookUp(
+                                                    GC_checkpointItem_ActionItemCache,
+                                                    checkpointItemActionItemsId = i.checkpointItemActionItemsId
+                                                )
+                                            ),
+                                            Patch(
+                                                GC_checkpointItem_ActionItemCache,
+                                                Defaults(GC_checkpointItem_ActionItemCache),
+                                                {
+                                                    checkpointItem_ActionItems: i.checkpointItem_ActionItems,
+                                                    checkpointItemActionItemsId: i.checkpointItemActionItemsId,
+                                                    ActionItem_Name: i.ActionItem_Name,
+                                                    assignmentId: i.assignmentId,
+                                                    bankId: i.bankId,
+                                                    bankUnitId: i.bankUnitId,
+                                                    section_id: i.section_id,
+                                                    checkpoint_id: i.checkpoint_id,
+                                                    checkpointItem_Id: i.checkpointItem_Id,
+                                                    product_id: i.product_id,
+                                                    priority: i.priority,
+                                                    OwnerId: i.OwnerId,
+                                                    TimeEstimate: i.TimeEstimate,
+                                                    MaterialEstimate: i.MaterialEstimate,
+                                                    CIAstatusUpdate: i.CIAstatusUpdate,
+                                                    Action_status: i.Action_status
+                                                }
+                                            );
+                                            ,
+                                            Patch(
+                                                GC_checkpointItem_ActionItemCache,
+                                                LookUp(
+                                                    GC_checkpointItem_ActionItemCache,
+                                                    checkpointItemActionItemsId = i.checkpointItemActionItemsId
+                                                ),
+                                                {
+                                                    checkpointItem_ActionItems: i.checkpointItem_ActionItems,
+                                                    checkpointItemActionItemsId: i.checkpointItemActionItemsId,
+                                                    ActionItem_Name: i.ActionItem_Name,
+                                                    assignmentId: i.assignmentId,
+                                                    bankId: i.bankId,
+                                                    bankUnitId: i.bankUnitId,
+                                                    section_id: i.section_id,
+                                                    checkpoint_id: i.checkpoint_id,
+                                                    checkpointItem_Id: i.checkpointItem_Id,
+                                                    product_id: i.product_id,
+                                                    priority: i.priority,
+                                                    OwnerId: i.OwnerId,
+                                                    TimeEstimate: i.TimeEstimate,
+                                                    MaterialEstimate: i.MaterialEstimate,
+                                                    CIAstatusUpdate: i.CIAstatusUpdate,
+                                                    Action_status: i.Action_status
+                                                }
+                                            );
                                         );
-                                    
-                                        
-                                        ClearCollect(GC_checkpointItem_ImagesCache,Filter(GC_checkpointItem_Images,CIIstatusUpdate = 0 || CIIstatusUpdate = 1));
-                                       ForAll(
-                                                    GC_checkpointItem_ImagesCache1 As i,
-                                                    If(
-                                                        IsBlank(
-                                                            LookUp(
-                                                                GC_checkpointItem_ImagesCache,
-                                                                 checkpointItemImagesId= i.checkpointItemImagesId
-                                                            )
-                                                        ),
-                                                        Patch(
-                                                            GC_checkpointItem_ImagesCache,
-                                                            Defaults(GC_checkpointItem_ImagesCache),
-                                                            {
-                                                                checkpointItem_Images: i.checkpointItem_Images,
-                                                                checkpointItemImagesId: i.checkpointItemImagesId,
-                                                                assignmentId: i.assignmentId,
-                                                                bankUnitId: i.bankUnitId,
-                                                                section_id: i.section_id,
-                                                                checkpoint_id: i.checkpoint_id,
-                                                                checkpointItem_Id: i.checkpointItem_Id,
-                                                                product_id: i.product_id,
-                                                                // Image:Image14_2.Image,
-                                                                Image: i.Image,
-                                                                image_annotation: i.image_annotation,
-                                                                CIIstatusUpdate: i.CIIstatusUpdate
-                                                            }
-                                                        );
-                                                       ,
-                                                        Patch(
-                                                            GC_checkpointItem_ImagesCache,
-                                                            LookUp(
-                                                                GC_checkpointItem_ImagesCache,
-                                                                 checkpointItemImagesId= i.checkpointItemImagesId
-                                                            ),
-                                                            {
-                                                                checkpointItem_Images: i.checkpointItem_Images,
-                                                                checkpointItemImagesId: i.checkpointItemImagesId,
-                                                                assignmentId: i.assignmentId,
-                                                                bankUnitId: i.bankUnitId,
-                                                                section_id: i.section_id,
-                                                                checkpoint_id: i.checkpoint_id,
-                                                                checkpointItem_Id: i.checkpointItem_Id,
-                                                                product_id: i.product_id,
-                                                                // Image:Image14_2.Image,
-                                                                Image: i.Image,
-                                                                image_annotation: i.image_annotation,
-                                                                CIIstatusUpdate:i.CIIstatusUpdate
-                                                            }
-                                                        );
-                                                    );//if
-                                                );//forall
-                                        SaveData(
-                                            GC_checkpointItem_ImagesCache,
-                                            "localcheckpointitemimage"
+                                        //if
+                                    );
+                                    //forall
+                                    SaveData(
+                                        GC_checkpointItem_ActionItemCache,
+                                        "localcheckpointitemactionitem"
+                                    );
+                                    ClearCollect(
+                                        GC_checkpointItem_ImagesCache,
+                                        Filter(
+                                            GC_checkpointItem_Images,
+                                            CIIstatusUpdate = 0 || CIIstatusUpdate = 1
+                                        )
+                                    );
+                                    ForAll(
+                                        GC_checkpointItem_ImagesCache1 As i,
+                                        If(
+                                            IsBlank(
+                                                LookUp(
+                                                    GC_checkpointItem_ImagesCache,
+                                                    checkpointItemImagesId = i.checkpointItemImagesId
+                                                )
+                                            ),
+                                            Patch(
+                                                GC_checkpointItem_ImagesCache,
+                                                Defaults(GC_checkpointItem_ImagesCache),
+                                                {
+                                                    checkpointItem_Images: i.checkpointItem_Images,
+                                                    checkpointItemImagesId: i.checkpointItemImagesId,
+                                                    assignmentId: i.assignmentId,
+                                                    bankUnitId: i.bankUnitId,
+                                                    section_id: i.section_id,
+                                                    checkpoint_id: i.checkpoint_id,
+                                                    checkpointItem_Id: i.checkpointItem_Id,
+                                                    product_id: i.product_id,
+                                                    // Image:Image14_2.Image,
+                                                    Image: i.Image,
+                                                    image_annotation: i.image_annotation,
+                                                    CIIstatusUpdate: i.CIIstatusUpdate
+                                                }
+                                            );
+                                            ,
+                                            Patch(
+                                                GC_checkpointItem_ImagesCache,
+                                                LookUp(
+                                                    GC_checkpointItem_ImagesCache,
+                                                    checkpointItemImagesId = i.checkpointItemImagesId
+                                                ),
+                                                {
+                                                    checkpointItem_Images: i.checkpointItem_Images,
+                                                    checkpointItemImagesId: i.checkpointItemImagesId,
+                                                    assignmentId: i.assignmentId,
+                                                    bankUnitId: i.bankUnitId,
+                                                    section_id: i.section_id,
+                                                    checkpoint_id: i.checkpoint_id,
+                                                    checkpointItem_Id: i.checkpointItem_Id,
+                                                    product_id: i.product_id,
+                                                    // Image:Image14_2.Image,
+                                                    Image: i.Image,
+                                                    image_annotation: i.image_annotation,
+                                                    CIIstatusUpdate: i.CIIstatusUpdate
+                                                }
+                                            );
                                         );
-                                      
-                                    
+                                        //if
+                                    );
+                                    //forall
+                                    SaveData(
+                                        GC_checkpointItem_ImagesCache,
+                                        "localcheckpointitemimage"
+                                    );
                                     //Notify("save end");
-                                    
                                     //for Logs
                                     UpdateIf(
                                         GcTraceLog,
-                                        ID = 1,
+                                        VarDebug = true,
                                         {
-                                            Path: LookUp(
-                                                GcTraceLog,
-                                                ID = 1,
-                                                Path
-                                            ) & "/SaveEnd=" & Text(
+                                            Path: First(GcTraceLog).Path & "/SaveEnd=" & Text(
                                                 Now(),
-                                                "hh:mm am/pm"
+                                                "mm/dd/yyyy hh:mm:ss am/pm"
                                             )
                                         }
+                                    );
+                                    SaveData(
+                                        GcTraceLog,
+                                        "localGcTraceLog"
                                     );
                                 PressedFill: =AllScreensCSS.RActiveColor
                                 Text: ="Save "
@@ -3717,19 +3751,18 @@ FindingScreen As screen:
                 =//for Logs
                 UpdateIf(
                     GcTraceLog,
-                    ID = 1,
+                    VarDebug = true,
                     {
-                        Path: LookUp(
-                            GcTraceLog,
-                            ID = 1,
-                            Path
-                        ) & "/ClosePrevAction=" & Text(
+                        Path: First(GcTraceLog).Path & "/ClosePrevAction=" & Text(
                             Now(),
-                            "hh:mm am/pm"
+                            "mm/dd/yyyy hh:mm:ss am/pm"
                         )
                     }
                 );
-                
+                SaveData(
+                    GcTraceLog,
+                    "localGcTraceLog"
+                );
                 //Set(C, false );
                 //Set(P, true );
                 Set(
