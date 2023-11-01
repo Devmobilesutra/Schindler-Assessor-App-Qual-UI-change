@@ -168,19 +168,19 @@ SectionScreen As screen:
                             =//for Logs
                             UpdateIf(
                                 GcTraceLog,
-                                ID = 1,
+                                VarDebug = true,
                                 {
-                                    Path: LookUp(
-                                        GcTraceLog,
-                                        ID = 1,
-                                        Path
-                                    ) & "/SectionBack=" & Text(
+                                    Path: First(GcTraceLog).Path & "/SectionBack=" & Text(
                                         Now(),
-                                        "hh:mm am/pm"
+                                        "mm/dd/yyyy hh:mm:ss am/pm"
                                     )
                                 }
                             );
-                            UpdateContext({locInfoExpanded:false});
+                            SaveData(
+                                GcTraceLog,
+                                "localGcTraceLog"
+                            );
+                            UpdateContext({locInfoExpanded: false});
                             Navigate(BankScreen);
                         PaddingBottom: =10
                         PaddingLeft: =20
@@ -456,26 +456,19 @@ SectionScreen As screen:
                             =//for Logs
                             UpdateIf(
                                 GcTraceLog,
-                                ID = 1,
+                                VarDebug = true,
                                 {
-                                    Path: LookUp(
-                                        GcTraceLog,
-                                        ID = 1,
-                                        Path
-                                    ) & "/Safety+=" & Text(
+                                    Path: First(GcTraceLog).Path & "/Safety+=" & Text(
                                         Now(),
-                                        "hh:mm am/pm"
+                                        "mm/dd/yyyy hh:mm:ss am/pm"
                                     )
                                 }
                             );
-                            
-                            
+                            SaveData(
+                                GcTraceLog,
+                                "localGcTraceLog"
+                            );
                             Navigate(SafetyHeaderScreen);
-                            
-                            
-                            
-                            
-                            
                             ///////////////////Select(Parent);
                             /////UpdateContext({locInfoExpanded:true});
                             //Set(A,false);Set(B,true);
@@ -483,7 +476,6 @@ SectionScreen As screen:
                             //////////////////////////////Set(VarSectionId,ThisItem.sectionId);
                             //Set(VGuid,GUID());
                             //
-                            
                             /*
                             Set(varSA,GUID());
                             If(CountRows(Filter(GcSectionAssessment,bankUnitId.Id=glryBankGo_1.Selected.Id))<1,
@@ -500,7 +492,6 @@ SectionScreen As screen:
                                 }
                             ));
                             Set(varSA1,ThisItem.sectionId)
-                            
                             
                             */
                             //);
@@ -622,17 +613,17 @@ SectionScreen As screen:
                                 //for Logs
                                 UpdateIf(
                                     GcTraceLog,
-                                    ID = 1,
+                                    VarDebug = true,
                                     {
-                                        Path: LookUp(
-                                            GcTraceLog,
-                                            ID = 1,
-                                            Path
-                                        ) & "/Checkpoint:" & ThisItem.checkpointId & "=" & Text(
+                                        Path: First(GcTraceLog).Path & "/Checkpoint:" & ThisItem.checkpointId & "=" & Text(
                                             Now(),
-                                            "hh:mm am/pm"
+                                            "mm/dd/yyyy hh:mm:ss am/pm"
                                         )
                                     }
+                                );
+                                SaveData(
+                                    GcTraceLog,
+                                    "localGcTraceLog"
                                 );
                                 /*//for reset ideal timer
                                 Reset(tmr_logout);
@@ -642,8 +633,10 @@ SectionScreen As screen:
                                     ChId,
                                     Blank()
                                 );
-                                
-                                Set(GuidId,Blank());
+                                Set(
+                                    GuidId,
+                                    Blank()
+                                );
                                         //for safety check
                                 If(
                                     DateDiff(
@@ -733,22 +726,34 @@ SectionScreen As screen:
                                 //for Logs
                                 UpdateIf(
                                     GcTraceLog,
-                                    ID = 1,
+                                    VarDebug = true,
                                     {
-                                        Path: LookUp(
-                                            GcTraceLog,
-                                            ID = 1,
-                                            Path
-                                        ) & "/CComment:" & ThisItem.checkpointId & "=" & Text(
+                                        Path: First(GcTraceLog).Path & "/CComment:" & ThisItem.checkpointId & "=" & Text(
                                             Now(),
-                                            "hh:mm am/pm"
+                                            "mm/dd/yyyy hh:mm:ss am/pm"
                                         )
                                     }
                                 );
-                                Set(varComment,true);
-                                Set(ChId,ThisItem.checkpointId);
-                                Set(varSectionComment,false);
-                                Set(varCheckpointComment,true);
+                                SaveData(
+                                    GcTraceLog,
+                                    "localGcTraceLog"
+                                );
+                                Set(
+                                    varComment,
+                                    true
+                                );
+                                Set(
+                                    ChId,
+                                    ThisItem.checkpointId
+                                );
+                                Set(
+                                    varSectionComment,
+                                    false
+                                );
+                                Set(
+                                    varCheckpointComment,
+                                    true
+                                );
                             PaddingLeft: =15
                             PressedBorderColor: =Self.BorderColor
                             PressedColor: =Self.Color
@@ -884,32 +889,36 @@ SectionScreen As screen:
                     imgSectionCollapseSS As image:
                         Height: =40
                         Image: =accordianPlus
-                        OnSelect: |-
+                        OnSelect: |
                             =//for Logs
                             UpdateIf(
                                 GcTraceLog,
-                                ID = 1,
+                                VarDebug = true,
                                 {
-                                    Path: LookUp(
-                                        GcTraceLog,
-                                        ID = 1,
-                                        Path
-                                    ) & "/Section+:" & ThisItem.sectionId & "=" & Text(
+                                    Path: First(GcTraceLog).Path & "/Section+:" & ThisItem.sectionId & "=" & Text(
                                         Now(),
-                                        "hh:mm am/pm"
+                                        "mm/dd/yyyy hh:mm:ss am/pm"
                                     )
                                 }
                             );
-                            
+                            SaveData(
+                                GcTraceLog,
+                                "localGcTraceLog"
+                            );
                             //this code is executed when user clicks on + symbol for each section
                             /*
                             //for reset ideal timer
                             Reset(tmr_logout);
                             Set(UserLastNavigated, Now());
                             */
-                            Set(VarSectionId,Blank());
-                            Set(varSA,Blank());
-                            
+                            Set(
+                                VarSectionId,
+                                Blank()
+                            );
+                            Set(
+                                varSA,
+                                Blank()
+                            );
                             //for safety check
                             If(
                                 DateDiff(
@@ -928,27 +937,33 @@ SectionScreen As screen:
                                 );
                                 
                             );
-                            
-                            Set(VarSectionId,ThisItem.sectionId);
-                            UpdateContext({locInfoExpanded:true});
-                            Set(varExpanded,true);
+                            Set(
+                                VarSectionId,
+                                ThisItem.sectionId
+                            );
+                            UpdateContext({locInfoExpanded: true});
+                            Set(
+                                varExpanded,
+                                true
+                            );
                             //for collecting section assessment ID if record exist
                             //if user clicks first time then create a new GUID id for the section and sava in a variable.incase user adds any findings then create a new row for corsponding section in GcSectionAssessment collection 
-                            
-                               If(
-                                !IsBlank(LookUp(
-                                    GcSectionAssessment,
-                                     assignmentId.Id=varAssignmentId && 
-                                     bankUnitId.Id = varBankUnitId && 
-                                     sectionId.sectionId = ThisItem.sectionId
-                                )),
-                                Set(varSA,LookUp(
-                                    GcSectionAssessment,
-                                    assignmentId.Id=varAssignmentId && 
-                                    bankUnitId.Id= varBankUnitId && 
-                                    sectionId.sectionId = ThisItem.sectionId,'sectionAssessment (quantum_sectionassessment)') 
+                            If(
+                                !IsBlank(
+                                    LookUp(
+                                        GcSectionAssessment,
+                                        assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && sectionId.sectionId = ThisItem.sectionId
                                     )
-                                );
+                                ),
+                                Set(
+                                    varSA,
+                                    LookUp(
+                                        GcSectionAssessment,
+                                        assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && sectionId.sectionId = ThisItem.sectionId,
+                                        'sectionAssessment (quantum_sectionassessment)'
+                                    )
+                                )
+                            );
                         Visible: |-
                             =//ThisItem.IsSelected &&
                             //If(A,true)
@@ -965,27 +980,31 @@ SectionScreen As screen:
                             =//for Logs
                             UpdateIf(
                                 GcTraceLog,
-                                ID = 1,
+                                VarDebug = true,
                                 {
-                                    Path: LookUp(
-                                        GcTraceLog,
-                                        ID = 1,
-                                        Path
-                                    ) & "/Section-:" & ThisItem.sectionId & "=" & Text(
+                                    Path: First(GcTraceLog).Path & "/Section-:" & ThisItem.sectionId & "=" & Text(
                                         Now(),
-                                        "hh:mm am/pm"
+                                        "mm/dd/yyyy hh:mm:ss am/pm"
                                     )
                                 }
                             );
-                            
+                            SaveData(
+                                GcTraceLog,
+                                "localGcTraceLog"
+                            );
                             /*//for reset ideal timer
                             Reset(tmr_logout);
                             Set(UserLastNavigated, Now());
                             */
-                            Set(VarSectionId,Blank());
-                            Set(VarSectionId,ThisItem.sectionId);
-                            UpdateContext({locInfoExpanded:false});
-                            
+                            Set(
+                                VarSectionId,
+                                Blank()
+                            );
+                            Set(
+                                VarSectionId,
+                                ThisItem.sectionId
+                            );
+                            UpdateContext({locInfoExpanded: false});
                             //for safety check
                             If(
                                 DateDiff(
@@ -1023,26 +1042,38 @@ SectionScreen As screen:
                         Font: =AllScreensCSS.ButtonFont
                         HoverColor: =AllScreensCSS.RColorBlack
                         HoverFill: =Self.Fill
-                        OnSelect: |-
+                        OnSelect: |
                             =//for Logs
                             UpdateIf(
                                 GcTraceLog,
-                                ID = 1,
+                                VarDebug = true,
                                 {
-                                    Path: LookUp(
-                                        GcTraceLog,
-                                        ID = 1,
-                                        Path
-                                    ) & "/SComment:" & ThisItem.sectionId & "=" & Text(
+                                    Path: First(GcTraceLog).Path & "/SComment:" & ThisItem.sectionId & "=" & Text(
                                         Now(),
-                                        "hh:mm am/pm"
+                                        "mm/dd/yyyy hh:mm:ss am/pm"
                                     )
                                 }
                             );
-                            Set(varComment,true);
-                            Set(VarSectionId,ThisItem.sectionId);
-                            Set(varSectionComment,true);
-                            Set(varCheckpointComment,false);
+                            SaveData(
+                                GcTraceLog,
+                                "localGcTraceLog"
+                            );
+                            Set(
+                                varComment,
+                                true
+                            );
+                            Set(
+                                VarSectionId,
+                                ThisItem.sectionId
+                            );
+                            Set(
+                                varSectionComment,
+                                true
+                            );
+                            Set(
+                                varCheckpointComment,
+                                false
+                            );
                         PaddingLeft: =25
                         PressedBorderColor: =Self.Color
                         PressedColor: =Self.Color

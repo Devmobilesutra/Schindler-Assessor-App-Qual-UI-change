@@ -86,17 +86,17 @@ BankScreen As screen:
                             =//for Logs
                             UpdateIf(
                                 GcTraceLog,
-                                ID = 1,
+                                VarDebug = true,
                                 {
-                                    Path: LookUp(
-                                        GcTraceLog,
-                                        ID = 1,
-                                        Path
-                                    ) & "/BankBack=" & Text(
+                                    Path: First(GcTraceLog).Path & "/BankBack=" & Text(
                                         Now(),
-                                        "hh:mm am/pm"
+                                        "mm/dd/yyyy hh:mm:ss am/pm"
                                     )
                                 }
+                            );
+                            SaveData(
+                                GcTraceLog,
+                                "localGcTraceLog"
                             );
                             Navigate(ProjectScreen)
                         PaddingBottom: =10
@@ -264,31 +264,31 @@ BankScreen As screen:
                         Font: =AllScreensCSS.ButtonFont
                         HoverColor: =RGBA(0, 0, 0, 1)
                         HoverFill: =Self.Fill
-                        OnSelect: |+
+                        OnSelect: |
                             =//for Logs
                             UpdateIf(
                                 GcTraceLog,
-                                ID = 1,
+                                VarDebug = true,
                                 {
-                                    Path: LookUp(
-                                        GcTraceLog,
-                                        ID = 1,
-                                        Path
-                                    ) & "/TripReport=" & Text(
+                                    Path: First(GcTraceLog).Path & "/TripReport=" & Text(
                                         Now(),
-                                        "hh:mm am/pm"
+                                        "mm/dd/yyyy hh:mm:ss am/pm"
                                     )
                                 }
                             );
-                            
+                            SaveData(
+                                GcTraceLog,
+                                "localGcTraceLog"
+                            );
                             Set(
                                 varReportPopup,
                                 false
                             );
-                            Set(popupTripReportSuccess,false);
-                            
+                            Set(
+                                popupTripReportSuccess,
+                                false
+                            );
                             Refresh(BankTripReport);
-                            
                             //check checkpointItem ActionItem collection is empty or not if empty then load data from cache (only first time load )
                             If(
                                 IsEmpty(GC_checkpointItem_ActionItem),
@@ -299,7 +299,6 @@ BankScreen As screen:
                                 );
                                 
                             );
-                            
                             Clear(tempdata);
                             ForAll(
                                 Filter(
@@ -309,7 +308,7 @@ BankScreen As screen:
                                 If(
                                     CountRows(
                                         Filter(
-                                            GC_checkpointItemAssessment, //GC_checkpointItem_ActionItem,
+                                            GC_checkpointItemAssessment,//GC_checkpointItem_ActionItem,
                                             bankUnitId.Id = i.bankUnitId.Id
                                         )
                                     ) < 1,
@@ -325,7 +324,7 @@ BankScreen As screen:
                                     IsBlank(
                                         LookUp(
                                             BankTripReport,
-                                            assignmentId.Id = glryProject.Selected.Id 
+                                            assignmentId.Id = glryProject.Selected.Id
                                             //&& bankId.Id = glryProject.Selected.bankId.Id
                                         )
                                     ),
@@ -334,11 +333,14 @@ BankScreen As screen:
                                         "Trip report submmited successfully."
                                     ),
                                     Clear(localBanktripReport);
-                                    ClearCollect(localBanktripReport, LookUp(
+                                    ClearCollect(
+                                        localBanktripReport,
+                                        LookUp(
                                             BankTripReport,
-                                            assignmentId.Id = glryProject.Selected.Id 
+                                            assignmentId.Id = glryProject.Selected.Id
                                             //&& bankId.Id = glryProject.Selected.bankId.Id
-                                        ));
+                                        )
+                                    );
                                     Set(
                                         VarTripReportNotification,
                                         "Trip report Updated successfully."
@@ -376,13 +378,18 @@ BankScreen As screen:
                                 ),
                                 Ascending
                             ););*/
-                                Navigate(TripReportNewScreen);
+                            Navigate(TripReportNewScreen);
                                 ,
-                                Set(VarPopupSyncText,"Assessment records are not found in your local device . please click each unit to get assessment records from server .");
-                                Set(popupTripReportSuccess,true);
-                            
+                                Set(
+                                    VarPopupSyncText,
+                                    "Assessment records are not found in your local device . please click each unit to get assessment records from server ."
+                                );
+                                Set(
+                                    popupTripReportSuccess,
+                                    true
+                                );
+                                
                             );
-                            
                         PaddingLeft: =0
                         PaddingRight: =0
                         PressedBorderColor: =Self.Color
@@ -506,15 +513,11 @@ BankScreen As screen:
                             =//for Logs
                             UpdateIf(
                                 GcTraceLog,
-                                ID = 1,
+                                VarDebug = true,
                                 {
-                                    Path: LookUp(
-                                        GcTraceLog,
-                                        ID = 1,
-                                        Path
-                                    ) & "/UStart:" & ThisItem.bankUnitId.unitNumber & "=" & Text(
+                                    Path: First(GcTraceLog).Path & "/UStart:" & ThisItem.bankUnitId.unitNumber & "=" & Text(
                                         Now(),
-                                        "hh:mm am/pm"
+                                        "mm/dd/yyyy hh:mm:ss am/pm"
                                     )
                                 }
                             );
@@ -523,26 +526,25 @@ BankScreen As screen:
                                 varSpinner,
                                 true
                             );
-                             Set(
-                                    varSafety,
-                                    false
-                                );
-                                
+                            Set(
+                                varSafety,
+                                false
+                            );
                             //here set variable for selected product model.
                             Set(
-                                    CId,
-                                    ThisItem.productModel
-                                );
-                                
+                                CId,
+                                ThisItem.productModel
+                            );
                             //set variable for selected bankunitId.
                             Set(
-                                    varBankUnitId,
-                                    ThisItem.bankUnitId.Id
-                                );
-                            
+                                varBankUnitId,
+                                ThisItem.bankUnitId.Id
+                            );
                             //set variable for selected unit number.
-                            Set(VarCurrentUnitNumber,ThisItem.bankUnitId.unitNumber);
-                                
+                            Set(
+                                VarCurrentUnitNumber,
+                                ThisItem.bankUnitId.unitNumber
+                            );
                             If(
                                 IsEmpty(GcSectionAssessmentCache) && IsEmpty(GcCheckpointAssessmentCache) && IsEmpty(GC_checkpointItemAssessmentCache) && IsEmpty(GC_checkpointItem_ActionItemCache) && IsEmpty(GC_checkpointItem_ImagesCache),
                                 Concurrent(
@@ -1363,10 +1365,11 @@ BankScreen As screen:
                                                 2
                                             )
                                         );
-                                         UpdateIf(GC_checkpointItem_Images,bankUnitId.Id=ThisItem.bankUnitId.Id,
-                                        {
-                                            Image:Blank()
-                                        }); 
+                                        UpdateIf(
+                                            GC_checkpointItem_Images,
+                                            bankUnitId.Id = ThisItem.bankUnitId.Id,
+                                            {Image: Blank()}
+                                        );
                                         ForAll(
                                             Filter(
                                                 GC_checkpointItem_ImagesCache1,
@@ -1454,8 +1457,9 @@ BankScreen As screen:
                                                         checkpoint_id: i.checkpoint_id,
                                                         checkpointItem_Id: i.checkpointItem_Id,
                                                         product_id: i.product_id,
-                                                        Image: Blank(),     // i.Image,
-                                                        image_annotation: i.image_annotation,
+                                                        Image: Blank(),
+                                                        // i.Image,
+                            image_annotation: i.image_annotation,
                                                         CIIstatusUpdate: 2
                                                     }
                                                 );
@@ -1521,7 +1525,6 @@ BankScreen As screen:
                                         );
                                     );
                                 );
-                               
                                 Navigate(SectionScreen);
                                 ,//net not connected
                                 If(
@@ -1540,7 +1543,6 @@ BankScreen As screen:
                                                 assignmentId.Id = varAssignmentId && bankUnitId.Id = ThisItem.bankUnitId.Id
                                             )
                                         ) < 1,
-                                       
                                         Set(
                                             VarUnitDataText,
                                             "Network not available, Unable to get submitted data from cloud."
@@ -1550,7 +1552,6 @@ BankScreen As screen:
                                             true
                                         );
                                         ,
-                                      
                                         Navigate(SectionScreen);
                                     );
                                 );
@@ -1561,41 +1562,31 @@ BankScreen As screen:
                                 false
                             );
                             //net connected
-                            
                             Clear(GcSectionAssessmentAdd);
                             Clear(GcCheckpointAssessmentAdd);
                             Clear(GC_checkpointItemAssessmentAdd);
                             Clear(GC_checkpointItem_ActionItemAdd);
                             Clear(GC_checkpointItem_ImagesAdd);
-                            
                             Clear(GcSectionAssessmentTemp);
                             Clear(GcCheckpointAssessmentTemp);
                             Clear(GC_checkpointItemAssessmentTemp);
                             Clear(GC_checkpointItem_ActionItemTemp);
                             Clear(GC_checkpointItem_ImagesTemp);
-                            
                             //for Logs
                             UpdateIf(
                                 GcTraceLog,
-                                ID = 1,
+                                VarDebug = true,
                                 {
-                                    Path: LookUp(
-                                        GcTraceLog,
-                                        ID = 1,
-                                        Path
-                                    ) & "/UEnd:" & ThisItem.bankUnitId.unitNumber & "=" & Text(
+                                    Path: First(GcTraceLog).Path & "/UEnd:" & ThisItem.bankUnitId.unitNumber & "=" & Text(
                                         Now(),
-                                        "hh:mm am/pm"
+                                        "mm/dd/yyyy hh:mm:ss am/pm"
                                     )
                                 }
                             );
-                            
-                            
-                            
-                            
-                            
-                            
-                            
+                            SaveData(
+                                GcTraceLog,
+                                "localGcTraceLog"
+                            );
                             /*
                             If(
                                 IsEmpty(GcSectionAssessment) && IsEmpty(GcCheckpointAssessment) && IsEmpty(GC_checkpointItemAssessment) && IsEmpty(GC_checkpointItem_ActionItem) && IsEmpty(GC_checkpointItem_Images),
@@ -1800,7 +1791,6 @@ BankScreen As screen:
                                                         CIstatusUpdate: 2,
                                                         checkpointitemSequence: i.checkpointitemSequence,
                                                         checkpointItemComment: i.checkpointItemComment
-                                                       
                                                            }
                                                 )
                                             )
@@ -2013,17 +2003,17 @@ BankScreen As screen:
                             =//for Logs
                             UpdateIf(
                                 GcTraceLog,
-                                ID = 1,
+                                VarDebug = true,
                                 {
-                                    Path: LookUp(
-                                        GcTraceLog,
-                                        ID = 1,
-                                        Path
-                                    ) & "/UComment:" & ThisItem.bankUnitId.unitNumber & " =" & Text(
+                                    Path: First(GcTraceLog).Path & "/UComment:" & ThisItem.bankUnitId.unitNumber & " =" & Text(
                                         Now(),
-                                        "hh:mm am/pm"
+                                        "mm/dd/yyyy hh:mm:ss am/pm"
                                     )
                                 }
+                            );
+                            SaveData(
+                                GcTraceLog,
+                                "localGcTraceLog"
                             );
                             If(
                                 Connection.Connected,
@@ -2054,10 +2044,7 @@ BankScreen As screen:
                                     UpdateIf(
                                         GcSectionAssessment,
                                         'sectionAssessment (quantum_sectionassessment)' = i.'sectionAssessment (quantum_sectionassessment)',
-                                        {
-                                            sectionComment: i.sectionComment
-                                                  
-                            }
+                                        {sectionComment: i.sectionComment}
                                     )
                                 );
                              //getting specific unit assessment data from dataverse and store it into temporary collection 
@@ -2075,10 +2062,7 @@ BankScreen As screen:
                                     UpdateIf(
                                         GcCheckpointAssessment,
                                         checkpointAssessment_id = j.checkpointAssessment_id,
-                                        {
-                                            checkpointComment: j.checkpointComment
-                                                   
-                            }
+                                        {checkpointComment: j.checkpointComment}
                                     )
                                 );
                                //getting specific unit assessment data from dataverse and store it into temporary collection.
@@ -2096,11 +2080,7 @@ BankScreen As screen:
                                     UpdateIf(
                                         GC_checkpointItemAssessment,
                                         'checkpointItemAssessment (quantum_checkpointitemassessment)' = k.'checkpointItemAssessment (quantum_checkpointitemassessment)',
-                                        {
-                                                  
-                            checkpointItemComment: k.checkpointItemComment
-                                                   
-                            }
+                                        {checkpointItemComment: k.checkpointItemComment}
                                     )
                                 );
                                 Set(
@@ -2136,7 +2116,6 @@ BankScreen As screen:
                                     popupSyncSuccess,
                                     true
                                 );
-                                
                                 Set(
                                     varUnitId,
                                     ThisItem.bankUnitId
@@ -2153,7 +2132,7 @@ BankScreen As screen:
                                     varCheckpoinitemComment,
                                     true
                                 );
-                                 Set(
+                                Set(
                                     popupSyncSuccess,
                                     false
                                 );
@@ -2846,18 +2825,15 @@ BankScreen As screen:
                             =//for Logs
                             UpdateIf(
                                 GcTraceLog,
-                                ID = 1,
+                                VarDebug=true,
                                 {
-                                    Path: LookUp(
-                                        GcTraceLog,
-                                        ID = 1,
-                                        Path
-                                    ) & "/ExportPDf=" & Text(
+                                    Path: First(GcTraceLog).Path  & "/ExportPDf=" & Text(
                                         Now(),
-                                        "hh:mm am/pm"
+                                        "mm/dd/yyyy hh:mm:ss am/pm"
                                     )
                                 }
                             );
+                            SaveData(GcTraceLog,"localGcTraceLog");
                             Set(
                                 VarPDFLable,
                                 "Unit " & ThisItem.bankUnitId.unitNumber & " Assessment PDF will be sent to your Email Id"

@@ -70,25 +70,24 @@ SafetyHeaderScreen As screen:
                         Height: =ctnBackButtonSH.Height/1.5
                         HoverColor: =RGBA(0, 0, 0, 1)
                         HoverFill: =
-                        OnSelect: |+
+                        OnSelect: |
                             =
                             //for Logs
                             UpdateIf(
                                 GcTraceLog,
-                                ID = 1,
+                                VarDebug = true,
                                 {
-                                    Path: LookUp(
-                                        GcTraceLog,
-                                        ID = 1,
-                                        Path
-                                    ) & "/SafetyBack=" & Text(
+                                    Path: First(GcTraceLog).Path & "/SafetyBack=" & Text(
                                         Now(),
                                         "hh:mm am/pm"
                                     )
                                 }
                             );
+                            SaveData(
+                                GcTraceLog,
+                                "localGcTraceLog"
+                            );
                             Back();
-                            
                         PaddingBottom: =10
                         PaddingLeft: =20
                         PaddingRight: =10
@@ -445,18 +444,15 @@ SafetyHeaderScreen As screen:
                             //for Logs
                             UpdateIf(
                                 GcTraceLog,
-                                ID = 1,
+                                VarDebug=true,
                                 {
-                                    Path: LookUp(
-                                        GcTraceLog,
-                                        ID = 1,
-                                        Path
-                                    ) & "/SafetyNext=" & Text(
+                                    Path: First(GcTraceLog).Path & "/SafetyNext=" & Text(
                                         Now(),
-                                        "hh:mm am/pm"
+                                        "mm/dd/yyyy hh:mm:ss am/pm"
                                     )
                                 }
                             );
+                            SaveData(GcTraceLog,"localGcTraceLog");
                             
                             Clear(security);
                             ForAll(
