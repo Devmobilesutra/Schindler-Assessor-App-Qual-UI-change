@@ -808,6 +808,13 @@ DashboardScreen As screen:
                 Width: =Parent.Width-40
                 ZIndex: =2
 
+            Button5 As button:
+                AlignInContainer: =AlignInContainer.Start
+                OnSelect: =Navigate(Screen1)
+                Text: ="View Path"
+                Width: =200
+                ZIndex: =3
+
             Button2_3 As button:
                 AlignInContainer: =AlignInContainer.Start
                 BorderThickness: =0
@@ -865,14 +872,14 @@ DashboardScreen As screen:
                     =//CountRows(tempReportIssueAssessment) & CountRows(GC_checkpointItemAssessment)  &
                      " Report Issue" 
                 Width: =200
-                ZIndex: =3
+                ZIndex: =4
 
             imgGraphicDS As image:
                 AlignInContainer: =AlignInContainer.End
                 Height: =Parent.Height-100
                 Image: ='lift image-1x'
                 Width: =Parent.Width-500
-                ZIndex: =4
+                ZIndex: =5
 
         ctnlpdname As groupContainer.verticalAutoLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
