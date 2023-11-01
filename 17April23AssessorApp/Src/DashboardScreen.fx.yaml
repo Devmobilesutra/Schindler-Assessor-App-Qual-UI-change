@@ -1321,16 +1321,13 @@ DashboardScreen As screen:
                             CheckpointItemImagesCount: CountRows(GC_checkpointItem_Images),
                             MasterTemplateCheckpointItemCount: CountRows(GC_templateCheckpointsItem),
                             MasterTemplateActionItemCount: CountRows(GC_actionItems),
-                
-                            CurrentClientName:VarCurrentAssignmentData.clientId.name,
-                            CurrentGONumber:VarCurrentAssignmentData.GONumber,
+                            CurrentClientName: VarCurrentAssignmentData.clientId.name,
+                            CurrentGONumber: VarCurrentAssignmentData.GONumber,
                             CurrentUnitNumber: VarCurrentUnitNumber,
-                
                             CurrentAssignmentID: VarCurrentAssignmentData.Id,
                             CurrentBankID: VarCurrentAssignmentData.bankId.Id,
-                            CurrentBankUnitID:varBankUnitId,
-                            
-                            CurrentAppVersion:lblappVersion.Text
+                            CurrentBankUnitID: varBankUnitId,
+                            CurrentAppVersion: lblappVersion.Text
                         }
                     );
                     If(
@@ -1458,6 +1455,30 @@ DashboardScreen As screen:
                                 false
                             );
                             ,
+                            //Patch logs to Dataverse
+                            Patch(
+                                TraceUserLogs,
+                                Defaults(TraceUserLogs),
+                                {
+                                    LogUser: VarUserEmail,
+                                    LogDate: Now(),
+                                    LogPath: First(GcTraceLog).Path
+                                }
+                            );
+                            If(
+                                IsEmpty(Errors(TraceUserLogs)),
+                //for Logs
+                                UpdateIf(
+                                    GcTraceLog,
+                                    ID = 1,
+                                    {
+                                        Path: "/ReportIssueSubmit=" & Text(
+                                            Now(),
+                                            "hh:mm am/pm"
+                                        )
+                                    }
+                                );
+                            );
                             Set(
                                 VarReportIssue,
                                 false

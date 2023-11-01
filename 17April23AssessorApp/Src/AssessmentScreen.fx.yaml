@@ -3430,6 +3430,7 @@ AssessmentScreen As screen:
                                     )
                                 }
                             );
+                            //Patch logs to Dataverse
                             Patch(
                                 TraceUserLogs,
                                 Defaults(TraceUserLogs),
@@ -3438,6 +3439,21 @@ AssessmentScreen As screen:
                                     LogDate: Now(),
                                     LogPath: First(GcTraceLog).Path
                                 }
+                            );
+                            If(
+                                IsEmpty(Errors(TraceUserLogs)),
+                            //for Logs
+                                UpdateIf(
+                                    GcTraceLog,
+                                    ID = 1,
+                                    {
+                                        Path: "/Submit=" & Text(
+                                            Now(),
+                                            "hh:mm am/pm"
+                                        )
+                                    }
+                                );
+                                
                             );
                             Set(
                                 Varpatchlabel,
