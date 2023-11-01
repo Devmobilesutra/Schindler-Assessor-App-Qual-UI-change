@@ -146,7 +146,7 @@ ProjectScreen As screen:
                                 {
                                     Path: First(GcTraceLog).Path & "/AssignmentBack=" & Text(
                                         Now(),
-                                        "mm/dd/yyyy hh:mm:ss am/pm"
+                                        "mm-dd-yy hh:mm:ss am/pm"
                                     )
                                 }
                             );
@@ -275,7 +275,7 @@ ProjectScreen As screen:
                             {
                                 Path: First(GcTraceLog).Path & "/Bank:" & ThisItem.GONumber & "=" & Text(
                                     Now(),
-                                    "mm/dd/yyyy hh:mm:ss am/pm"
+                                    "mm-dd-yy hh:mm:ss am/pm"
                                 )
                             }
                         );

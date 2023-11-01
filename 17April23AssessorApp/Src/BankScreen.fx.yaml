@@ -90,7 +90,7 @@ BankScreen As screen:
                                 {
                                     Path: First(GcTraceLog).Path & "/BankBack=" & Text(
                                         Now(),
-                                        "mm/dd/yyyy hh:mm:ss am/pm"
+                                        "mm-dd-yy hh:mm:ss am/pm"
                                     )
                                 }
                             );
@@ -272,7 +272,7 @@ BankScreen As screen:
                                 {
                                     Path: First(GcTraceLog).Path & "/TripReport=" & Text(
                                         Now(),
-                                        "mm/dd/yyyy hh:mm:ss am/pm"
+                                        "mm-dd-yy hh:mm:ss am/pm"
                                     )
                                 }
                             );
@@ -517,7 +517,7 @@ BankScreen As screen:
                                 {
                                     Path: First(GcTraceLog).Path & "/UStart:" & ThisItem.bankUnitId.unitNumber & "=" & Text(
                                         Now(),
-                                        "mm/dd/yyyy hh:mm:ss am/pm"
+                                        "mm-dd-yy hh:mm:ss am/pm"
                                     )
                                 }
                             );
@@ -1579,7 +1579,7 @@ BankScreen As screen:
                                 {
                                     Path: First(GcTraceLog).Path & "/UEnd:" & ThisItem.bankUnitId.unitNumber & "=" & Text(
                                         Now(),
-                                        "mm/dd/yyyy hh:mm:ss am/pm"
+                                        "mm-dd-yy hh:mm:ss am/pm"
                                     )
                                 }
                             );
@@ -2007,7 +2007,7 @@ BankScreen As screen:
                                 {
                                     Path: First(GcTraceLog).Path & "/UComment:" & ThisItem.bankUnitId.unitNumber & " =" & Text(
                                         Now(),
-                                        "mm/dd/yyyy hh:mm:ss am/pm"
+                                        "mm-dd-yy hh:mm:ss am/pm"
                                     )
                                 }
                             );
@@ -2829,7 +2829,7 @@ BankScreen As screen:
                                 {
                                     Path: First(GcTraceLog).Path  & "/ExportPDf=" & Text(
                                         Now(),
-                                        "mm/dd/yyyy hh:mm:ss am/pm"
+                                        "mm-dd-yy hh:mm:ss am/pm"
                                     )
                                 }
                             );

@@ -314,7 +314,7 @@
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "Navigate(SectionScreen)",
+          "AutoRuleBindingString": "",
           "InvariantPropertyName": "OnSelect",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
@@ -3102,7 +3102,7 @@
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "Select(Parent)",
+          "AutoRuleBindingString": "",
           "InvariantPropertyName": "OnSelect",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
@@ -3604,7 +3604,7 @@
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "Navigate(SScreen4);",
+          "AutoRuleBindingString": "",
           "InvariantPropertyName": "OnSelect",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
@@ -3991,7 +3991,7 @@
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "false",
+          "AutoRuleBindingString": "",
           "InvariantPropertyName": "OnCheck",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
@@ -4015,7 +4015,7 @@
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "RemoveIf(GC_checkpointItemAssessment,checkpointItemId.checkpointItemId=varCheckpointitemID && bankUnitId.Id=varBankUnitId && 'checkpointItemAssessment (quantum_checkpointitemassessment)'=Text(varCItemA))\r\n",
+          "AutoRuleBindingString": "",
           "InvariantPropertyName": "OnUncheck",
           "IsLockable": false,
           "NameMapSourceSchema": "?"

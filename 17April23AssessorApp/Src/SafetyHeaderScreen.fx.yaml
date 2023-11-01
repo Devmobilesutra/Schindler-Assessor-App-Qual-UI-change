@@ -448,7 +448,7 @@ SafetyHeaderScreen As screen:
                                 {
                                     Path: First(GcTraceLog).Path & "/SafetyNext=" & Text(
                                         Now(),
-                                        "mm/dd/yyyy hh:mm:ss am/pm"
+                                        "mm-dd-yy hh:mm:ss am/pm"
                                     )
                                 }
                             );

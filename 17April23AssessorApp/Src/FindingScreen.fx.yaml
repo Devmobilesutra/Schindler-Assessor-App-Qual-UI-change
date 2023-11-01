@@ -241,7 +241,7 @@ FindingScreen As screen:
                                 {
                                     Path: First(GcTraceLog).Path & "/FindingBack=" & Text(
                                         Now(),
-                                        "mm/dd/yyyy hh:mm:ss am/pm"
+                                        "mm-dd-yy hh:mm:ss am/pm"
                                     )
                                 }
                             );
@@ -1456,7 +1456,7 @@ FindingScreen As screen:
                                     {
                                         Path: First(GcTraceLog).Path & "/Annotation=" & Text(
                                             Now(),
-                                            "mm/dd/yyyy hh:mm:ss am/pm"
+                                            "mm-dd-yy hh:mm:ss am/pm"
                                         )
                                     }
                                 );
@@ -1817,7 +1817,7 @@ FindingScreen As screen:
                                         {
                                             Path: First(GcTraceLog).Path & "/RemoveAction=" & Text(
                                                 Now(),
-                                                "mm/dd/yyyy hh:mm:ss am/pm"
+                                                "mm-dd-yy hh:mm:ss am/pm"
                                             )
                                         }
                                     );
@@ -2052,7 +2052,7 @@ FindingScreen As screen:
                                         {
                                             Path: First(GcTraceLog).Path & "/AddAction=" & Text(
                                                 Now(),
-                                                "mm/dd/yyyy hh:mm:ss am/pm"
+                                                "mm-dd-yy hh:mm:ss am/pm"
                                             )
                                         }
                                     );
@@ -2197,7 +2197,7 @@ FindingScreen As screen:
                                             {
                                                 Path: First(GcTraceLog).Path & "/DownloadImg=" & Text(
                                                     Now(),
-                                                    "mm/dd/yyyy hh:mm:ss am/pm"
+                                                    "mm-dd-yy hh:mm:ss am/pm"
                                                 )
                                             }
                                         );
@@ -2597,7 +2597,7 @@ FindingScreen As screen:
                                         {
                                             Path: First(GcTraceLog).Path & "/RemoveImg=" & Text(
                                                 Now(),
-                                                "mm/dd/yyyy hh:mm:ss am/pm"
+                                                "mm-dd-yy hh:mm:ss am/pm"
                                             )
                                         }
                                     );
@@ -2734,7 +2734,7 @@ FindingScreen As screen:
                                         {
                                             Path: First(GcTraceLog).Path & "/AddImg=" & Text(
                                                 Now(),
-                                                "mm/dd/yyyy hh:mm:ss am/pm"
+                                                "mm-dd-yy hh:mm:ss am/pm"
                                             )
                                         }
                                     );
@@ -2952,7 +2952,7 @@ FindingScreen As screen:
                                         {
                                             Path: First(GcTraceLog).Path & "/SaveStart=" & Text(
                                                 Now(),
-                                                "mm/dd/yyyy hh:mm:ss am/pm"
+                                                "mm-dd-yy hh:mm:ss am/pm"
                                             )
                                         }
                                     );
@@ -3523,7 +3523,7 @@ FindingScreen As screen:
                                         {
                                             Path: First(GcTraceLog).Path & "/SaveEnd=" & Text(
                                                 Now(),
-                                                "mm/dd/yyyy hh:mm:ss am/pm"
+                                                "mm-dd-yy hh:mm:ss am/pm"
                                             )
                                         }
                                     );
@@ -3755,7 +3755,7 @@ FindingScreen As screen:
                     {
                         Path: First(GcTraceLog).Path & "/ClosePrevAction=" & Text(
                             Now(),
-                            "mm/dd/yyyy hh:mm:ss am/pm"
+                            "mm-dd-yy hh:mm:ss am/pm"
                         )
                     }
                 );

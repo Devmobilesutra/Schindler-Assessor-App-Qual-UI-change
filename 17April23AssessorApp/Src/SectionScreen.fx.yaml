@@ -172,7 +172,7 @@ SectionScreen As screen:
                                 {
                                     Path: First(GcTraceLog).Path & "/SectionBack=" & Text(
                                         Now(),
-                                        "mm/dd/yyyy hh:mm:ss am/pm"
+                                        "mm-dd-yy hh:mm:ss am/pm"
                                     )
                                 }
                             );
@@ -460,7 +460,7 @@ SectionScreen As screen:
                                 {
                                     Path: First(GcTraceLog).Path & "/Safety+=" & Text(
                                         Now(),
-                                        "mm/dd/yyyy hh:mm:ss am/pm"
+                                        "mm-dd-yy hh:mm:ss am/pm"
                                     )
                                 }
                             );
@@ -617,7 +617,7 @@ SectionScreen As screen:
                                     {
                                         Path: First(GcTraceLog).Path & "/Checkpoint:" & ThisItem.checkpointId & "=" & Text(
                                             Now(),
-                                            "mm/dd/yyyy hh:mm:ss am/pm"
+                                            "mm-dd-yy hh:mm:ss am/pm"
                                         )
                                     }
                                 );
@@ -730,7 +730,7 @@ SectionScreen As screen:
                                     {
                                         Path: First(GcTraceLog).Path & "/CComment:" & ThisItem.checkpointId & "=" & Text(
                                             Now(),
-                                            "mm/dd/yyyy hh:mm:ss am/pm"
+                                            "mm-dd-yy hh:mm:ss am/pm"
                                         )
                                     }
                                 );
@@ -897,7 +897,7 @@ SectionScreen As screen:
                                 {
                                     Path: First(GcTraceLog).Path & "/Section+:" & ThisItem.sectionId & "=" & Text(
                                         Now(),
-                                        "mm/dd/yyyy hh:mm:ss am/pm"
+                                        "mm-dd-yy hh:mm:ss am/pm"
                                     )
                                 }
                             );
@@ -984,7 +984,7 @@ SectionScreen As screen:
                                 {
                                     Path: First(GcTraceLog).Path & "/Section-:" & ThisItem.sectionId & "=" & Text(
                                         Now(),
-                                        "mm/dd/yyyy hh:mm:ss am/pm"
+                                        "mm-dd-yy hh:mm:ss am/pm"
                                     )
                                 }
                             );
@@ -1050,7 +1050,7 @@ SectionScreen As screen:
                                 {
                                     Path: First(GcTraceLog).Path & "/SComment:" & ThisItem.sectionId & "=" & Text(
                                         Now(),
-                                        "mm/dd/yyyy hh:mm:ss am/pm"
+                                        "mm-dd-yy hh:mm:ss am/pm"
                                     )
                                 }
                             );

@@ -578,7 +578,7 @@
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "\r\nClear(security);\r\nForAll(\r\n    Gallery6_1.AllItems,\r\n    If(\r\n        ThisRecord.Checkbox5.Value = true,\r\n        Collect(\r\n            security,\r\n            {status: true}\r\n        ),\r\n        Collect(\r\n            security,\r\n            {status: false}\r\n        )\r\n    )\r\n);\r\nIf(\r\n    CountRows(\r\n        Filter(\r\n            security,\r\n            status = false\r\n        )\r\n    ) < 1,\r\n    //for safety check to show default selected\r\n    Set(varSafety,true);\r\n\r\n    UpdateIf(\r\n        GC_unitAssessment,bankUnitId.Id=varBankUnitId && assignmentId.Id=glryProject.Selected.Id,\r\n        {Assessment_status: \"Inprogress\"}\r\n    );\r\n    Navigate(SectionScreen),\r\n    Notify(\r\n        \"Check boxes required for each item and you cannot proceed without checking each box.\",\r\n        NotificationType.Error\r\n    )\r\n)",
+          "AutoRuleBindingString": "",
           "InvariantPropertyName": "OnSelect",
           "IsLockable": false,
           "NameMapSourceSchema": "?"

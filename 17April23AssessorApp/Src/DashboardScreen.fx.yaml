@@ -67,7 +67,7 @@ DashboardScreen As screen:
                         {
                             Path: First(GcTraceLog).Path & "/Sync:Start=" & Text(
                                 Now(),
-                                "mm/dd/yyyy hh:mm:ss am/pm"
+                                "mm-dd-yy hh:mm:ss am/pm"
                             )
                         }
                     );
@@ -430,7 +430,7 @@ DashboardScreen As screen:
                         {
                             Path:First(GcTraceLog).Path & "/Sync:End=" & Text(
                                 Now(),
-                                "mm/dd/yyyy hh:mm:ss am/pm"
+                                "mm-dd-yy hh:mm:ss am/pm"
                             )
                         }
                     );
@@ -617,7 +617,7 @@ DashboardScreen As screen:
                             {
                                 Path: First(GcTraceLog).Path & "/Inprogress=" & Text(
                                     Now(),
-                                    "mm/dd/yyyy hh:mm:ss am/pm"
+                                    "mm-dd-yy hh:mm:ss am/pm"
                                 )
                             }
                         );
@@ -738,7 +738,7 @@ DashboardScreen As screen:
                             {
                                 Path: First(GcTraceLog).Path & "/Upcomming=" & Text(
                                     Now(),
-                                    "mm/dd/yyyy hh:mm:ss am/pm"
+                                    "mm-dd-yy hh:mm:ss am/pm"
                                 )
                             }
                         );
@@ -825,7 +825,7 @@ DashboardScreen As screen:
                         {
                             Path: First(GcTraceLog).Path & "/ReportIssue=" & Text(
                                 Now(),
-                                "mm/dd/yyyy hh:mm:ss am/pm"
+                                "mm-dd-yy hh:mm:ss am/pm"
                             )
                         }
                     );
@@ -1249,7 +1249,7 @@ DashboardScreen As screen:
                     {
                         Path: First(GcTraceLog).Path & "/ReportSubmit=" & Text(
                             Now(),
-                            "mm/dd/yyyy hh:mm:ss am/pm"
+                            "mm-dd-yy hh:mm:ss am/pm"
                         )
                     }
                 );
@@ -1455,7 +1455,7 @@ DashboardScreen As screen:
                                     {
                                         Path: "/OnReportIssue=" & Text(
                                             Now(),
-                                            "mm/dd/yyyy hh:mm:ss am/pm"
+                                            "mm-dd-yy hh:mm:ss am/pm"
                                         )
                                     }
                                 );

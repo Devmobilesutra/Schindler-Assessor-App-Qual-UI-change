@@ -227,7 +227,7 @@
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "Back()",
+          "AutoRuleBindingString": "",
           "InvariantPropertyName": "OnSelect",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
@@ -281,7 +281,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btnBackPS",
-      "ParentIndex": 0,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -494,7 +494,7 @@
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "Select(Parent)",
+          "AutoRuleBindingString": "",
           "InvariantPropertyName": "OnSelect",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
@@ -7246,7 +7246,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblAssignmentImgCount",
-      "ParentIndex": 12,
+      "ParentIndex": 13,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -7901,7 +7901,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblBankName",
-      "ParentIndex": 13,
+      "ParentIndex": 12,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -11842,7 +11842,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "TimerglryProject",
-      "ParentIndex": 1,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {

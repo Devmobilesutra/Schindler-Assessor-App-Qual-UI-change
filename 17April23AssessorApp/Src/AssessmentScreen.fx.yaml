@@ -89,7 +89,7 @@ AssessmentScreen As screen:
                                 {
                                     Path: First(GcTraceLog).Path & "/ItemBack=" & Text(
                                         Now(),
-                                        "mm/dd/yyyy hh:mm:ss am/pm"
+                                        "mm-dd-yy hh:mm:ss am/pm"
                                     )
                                 }
                             );
@@ -513,7 +513,7 @@ AssessmentScreen As screen:
                                 {
                                     Path: First(GcTraceLog).Path & "/Finding:" & ThisItem.checkpointItemId & "=" & Text(
                                         Now(),
-                                        "mm/dd/yyyy hh:mm:ss am/pm"
+                                        "mm-dd-yy hh:mm:ss am/pm"
                                     )
                                 }
                             );
@@ -914,7 +914,7 @@ AssessmentScreen As screen:
                                 {
                                     Path: First(GcTraceLog).Path & "/OnCheck:" & ThisItem.checkpointItemId & "=" & Text(
                                         Now(),
-                                        "mm/dd/yyyy hh:mm:ss am/pm"
+                                        "mm-dd-yy hh:mm:ss am/pm"
                                     )
                                 }
                             );
@@ -1491,7 +1491,7 @@ AssessmentScreen As screen:
                                 {
                                     Path: First(GcTraceLog).Path & "/Uncheck:" & ThisItem.checkpointItemId & "=" & Text(
                                         Now(),
-                                        "mm/dd/yyyy hh:mm:ss am/pm"
+                                        "mm-dd-yy hh:mm:ss am/pm"
                                     )
                                 }
                             );
@@ -1796,7 +1796,7 @@ AssessmentScreen As screen:
                                 {
                                     Path: First(GcTraceLog).Path & "/CIComment:" & ThisItem.checkpointItemId & "=" & Text(
                                         Now(),
-                                        "mm/dd/yyyy hh:mm:ss am/pm"
+                                        "mm-dd-yy hh:mm:ss am/pm"
                                     )
                                 }
                             );
@@ -2019,7 +2019,7 @@ AssessmentScreen As screen:
                                 {
                                     Path: First(GcTraceLog).Path & "/SubmitStart=" & Text(
                                         Now(),
-                                        "mm/dd/yyyy hh:mm:ss am/pm"
+                                        "mm-dd-yy hh:mm:ss am/pm"
                                     )
                                 }
                             );
@@ -3554,7 +3554,7 @@ AssessmentScreen As screen:
                                 {
                                     Path: First(GcTraceLog).Path & "/SubmitEnd=" & Text(
                                         Now(),
-                                        "mm/dd/yyyy hh:mm:ss am/pm"
+                                        "mm-dd-yy hh:mm:ss am/pm"
                                     )
                                 }
                             );
@@ -3583,7 +3583,7 @@ AssessmentScreen As screen:
                                         {
                                             Path: "/OnSubmit=" & Text(
                                                 Now(),
-                                                "mm/dd/yyyy hh:mm:ss am/pm"
+                                                "mm-dd-yy hh:mm:ss am/pm"
                                             )
                                         }
                                     );

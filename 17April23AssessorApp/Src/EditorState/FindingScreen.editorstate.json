@@ -411,7 +411,7 @@
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "\r\nIf(\r\n    CountRows(Gallery13_2.AllItems) < 6,\r\n    Set(\r\n        MoreImage,\r\n        MoreImage + 1\r\n    );\r\n    If(\r\n    CountRows(\r\n        Filter(\r\n            GC_templateCheckpointsItems,\r\n            checkpointItemId = varCheckpointitemID\r\n        )\r\n    ) = 1,\r\n    Collect(\r\n        Act2,\r\n        {\r\n            lineNo: MoreImage,\r\n            ID: GUID(),\r\n             checkpointItemActionItemsId:\"\",\r\n            checkpointitemID: varCheckpointitemID,\r\n            checkpointID:chglryCheckpointsSS_2.Selected.checkpointId,\r\n            sectionID:VarSectionId,\r\n            productID:LookUp(GC_product,product_Model=CId,'product (quantum_product)'),\r\n            unitID:varBankUnitId,\r\n                assignmentId:glryProject.Selected.Id,\r\n                    Image: UploadedImage1_2,\r\n                    ImageAnnotation:\"\"\r\n        }\r\n    )\r\n));\r\nIf(\r\n    CountRows(Gallery13_2.AllItems) >6,\r\n    Notify(\"You can capture 6 images only.\"),\r\n    NotificationType.Warning\r\n);\r\n",
+          "AutoRuleBindingString": "",
           "InvariantPropertyName": "OnSelect",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
@@ -527,7 +527,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btnAddImageFS",
-      "ParentIndex": 2,
+      "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -785,7 +785,7 @@
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "Navigate(AssessmentScreen)",
+          "AutoRuleBindingString": "",
           "InvariantPropertyName": "OnSelect",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
@@ -1757,7 +1757,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btnExitSave",
-      "ParentIndex": 1,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -1975,7 +1975,7 @@
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "//Set(VarAction,Gallery2_1.AllItems);\r\n/*ForAll(\r\n  Gallery2_1.AllItems,\r\n    Collect(\r\n        Act,\r\n        {\r\n            checkpointitemID:varCheckpointitemID,\r\n            Action:ThisRecord.Dropdown5.Selected.actionItemName,\r\n            Priority: ThisRecord.Dropdown5_1.Selected.Value,\r\n            Owner: ThisRecord.Dropdown5_2.Selected.Value,\r\n            Time_Estimate: ThisRecord.TextInput5.Text,\r\n            Material_Estimate:ThisRecord.TextInput5_1.Text\r\n        }\r\n    )\r\n);      */\r\nSet(varCItemA,GUID());\r\nIf(CountRows(Filter(GC_checkpointItemAssessment,bankUnitId.Id=glryBankGo_1.Selected.Id))<1,\r\n    Patch\r\n        (\r\n               GC_checkpointItemAssessment,\r\n            Defaults(GC_checkpointItemAssessment),\r\n            {\r\n             'checkpointItemAssessment (quantum_checkpointitemassessment)': varCItemA,\r\n             checkpointAssessment_Id:LookUp(GC_checkpointAssessment,checkpointAssessment_id=Text(GuidId)),             // LookUp(GC_checkpointAssessment,'checkpointAssessment (quantum_checkpointassessment)'=varcheckpointAssessmentID.'checkpointAssessment (quantum_checkpointassessment)'\r\n               // ),\r\n                assignmentId: LookUp(\r\n                    GcAssignments,\r\n                    Id = glryProject.Selected.Id\r\n                ),\r\n                bankUnitId: LookUp(\r\n                  gcBankunit,\r\n                    Id = glryBankGo_1.Selected.bankUnitId.Id\r\n                ),\r\n                product_id:LookUp(GC_product,product_Model=glryBankGo_1.Selected.productModel)\r\n                                //LookUp\r\n                    //GC_product,'product (quantum_product)'='product (quantum_product)'  \r\n                                   //LookUp(GC_product,product_Model=CId,'product (quantum_product)')\r\n                ,\r\n                section_Id: LookUp\r\n                    //gcsectionAssessment,'sectionAssessment (quantum_sectionassessment)'=,\r\n                     (gcsectionAssessment,sectionId.sectionId= glrySectionSS_2.Selected.sectionId),\r\n             checkpointItem_annotation: TextInput4_5.Text,\r\n                checkpointItemId: LookUp(\r\n                    GC_templateCheckpointsItem,\r\n                checkpointItemId = glryItmesAS.Selected.checkpointItemId\r\n                ),\r\n                checkpointItemName: glryItmesAS.Selected.cboxItemsAS.Text,\r\n                assessmentStatus: \"open\"\r\n            }\r\n    \r\n         )\r\n);\r\n    If(CountRows(Filter(GC_checkpointItem_ActionItem,bankUnitId.Id=glryBankGo_1.Selected.Id))<1,\r\nForAll(Gallery2_5.AllItems,\r\nPatch\r\n            (\r\n                GC_checkpointItem_ActionItem,\r\n                Defaults(GC_checkpointItem_ActionItem),\r\n            {\r\n                checkpointItemActionItemsId: GUID(),\r\n                ActionItem_Name: ThisRecord.Dropdown5_10.Selected.actionItemName,\r\n                assignmentId: LookUp(\r\n                     GcAssignments,\r\n                     Id = glryProject.Selected.Id\r\n                 ),\r\n                 bankUnitId: LookUp(\r\n                  gcBankunit,\r\n                    Id = glryBankGo_1.Selected.bankUnitId.Id),\r\n                    \r\n                section_id: LookUp(\r\n                    gcsectionAssessment,\r\n                     sectionId.sectionId = glrySectionSS_2.Selected.sectionId\r\n                ),\r\n                checkpoint_id: LookUp(\r\n                    GC_checkpointAssessment,\r\n                    checkpointId.checkpointId = chglryCheckpointsSS_2.Selected.checkpointId\r\n                ),\r\n                 checkpointItem_Id: LookUp(\r\n                     GC_checkpointItemAssessment,\r\n                    checkpointItemId.checkpointItemId = varCheckpointitemID\r\n                ),\r\n                 product_id: LookUp(GC_product,product_Model=glryBankGo_1.Selected.productModel\r\n                ),\r\n                priority: ThisRecord.Dropdown5_11.Selected.Value,\r\n                OwnerId: ThisRecord.Dropdown5_12.Selected.Value,\r\n                TimeEstimate: ThisRecord.TextInput5_10.Text,\r\n                 MaterialEstimate: ThisRecord.TextInput5_11.Text\r\n            }\r\n            )\r\n));\r\nIf(CountRows(Filter(Act1,IsBlank(TextInput5_12.Text)))>0,\r\n     ForAll(\r\n        Gallery2_6.AllItems,\r\n        Patch(\r\n          GC_actionItems,\r\n          Defaults(GC_actionItems),\r\n            {\r\n            actionItemId: GUID(),\r\n            actionItemName: TextInput5_4.Text,\r\n            checkpointItemId: LookUp(\r\n                GC_templateCheckpointsItem,\r\n                checkpointItemId = varCheckpointitemID\r\n            )\r\n            }\r\n        )\r\n        ));\r\n    ForAll(\r\n    Gallery13_2.AllItems,\r\n    Patch(\r\n      GC_checkpointItem_Images,Defaults(GC_checkpointItem_Images),\r\n        {\r\n             assignmentId: LookUp(\r\n                     GcAssignments,\r\n                     Id = glryProject.Selected.Id\r\n                 ),\r\n                 bankUnitId: LookUp(\r\n                  gcBankunit,\r\n                    Id = glryBankGo_1.Selected.bankUnitId.Id),\r\n                    \r\n                section_id: LookUp(\r\n                    gcsectionAssessment,\r\n                     sectionId.sectionId = glrySectionSS_2.Selected.sectionId\r\n                ),\r\n                checkpoint_id: LookUp(\r\n                   // GC_checkpointAssessment,checkpointAssessment_id=Text(GuidId)\r\n                   GC_checkpointAssessment, \r\n                   checkpointId.checkpointId = chglryCheckpointsSS_2.Selected.checkpointId\r\n                ),\r\n                 checkpointItem_Id: LookUp(\r\n                     GC_checkpointItemAssessment,'checkpointItemAssessment (quantum_checkpointitemassessment)'=Text(varCItemA)\r\n                ),\r\n                 product_id: LookUp(GC_product,product_Model=glryBankGo_1.Selected.productModel\r\n                ),\r\n                checkpointItemImagesId:GUID(),\r\n            Image: ThisRecord.UploadedImage1_2.Image,\r\n            image_annotation: ThisRecord.TextInput6_2.Text\r\n        }\r\n    )\r\n);\r\nSet(popupsuccess,true);\r\n\r\n       /*ForAll(\r\n            Gallery2_1.AllItems,\r\n            Patch\r\n            (\r\n                GC_checkpointItem_ActionItem,\r\n                Defaults(GC_checkpointItem_ActionItem),\r\n            {\r\n                checkpointItemActionItemsId: GUID(),\r\n                ActionItem_Name: Dropdown5.Selected.actionItemName,\r\n                assignmentId: LookUp(\r\n                     GcAssignments,\r\n                     Id = glryProject.Selected.Id\r\n                 ),\r\n                 bankUnitId: LookUp(\r\n                  gcBankunit,\r\n                    Id = glryBankGo_1.Selected.bankUnitId.Id),\r\n                    \r\n                section_id: LookUp(\r\n                    gcsectionAssessment,\r\n                     sectionId.sectionId = glrySectionSS_2.Selected.sectionId\r\n                ),\r\n                checkpoint_id: LookUp(\r\n                    GC_checkpointAssessment,\r\n                    checkpointId.checkpointId = chglryCheckpointsSS_2.Selected.checkpointId\r\n                ),\r\n                 checkpointItem_Id: LookUp(\r\n                     GC_checkpointItemAssessment,\r\n                    checkpointItemId.checkpointItemId = varCheckpointitemID\r\n                ),\r\n                 product_id: LookUp(GC_product,product_Model=glryBankGo_1.Selected.productModel\r\n                ),\r\n                priority: Dropdown5_1.Selected.Value,\r\n                OwnerId: Dropdown5_2.Selected.Value,\r\n                TimeEstimate: TextInput5.Text,\r\n                 MaterialEstimate: TextInput5_1.Text\r\n            }\r\n            )\r\n       );\r\n       Navigate(Screen6)\r\n   /*ForAll(\r\n    Gallery2_2.AllItems,\r\n    Patch(\r\n        GC_checkpointItem_ActionItem,\r\n        Defaults(GC_checkpointItem_ActionItem),\r\n        {\r\n            checkpointItemActionItemsId: GUID(),\r\n            ActionItem_Name: TextInput5_4.Text,\r\n            assignmentId: LookUp(\r\n                GcAssignments,\r\n                Id = glryProject.Selected.Id\r\n            ),\r\n            bankUnitId: LookUp(\r\n                gcBankunit,\r\n                Id = glryBankGo_1.Selected.Id\r\n            ),\r\n            section_id: LookUp(\r\n                gcsectionAssessment,\r\n                sectionId.sectionId = glrySectionSS_2.Selected.sectionId\r\n            ),\r\n            checkpoint_id: LookUp(\r\n                GC_checkpointAssessment,\r\n                checkpointId.checkpointId = chglryCheckpointsSS_2.Selected.checkpointId\r\n            ),\r\n            checkpointItem_Id: LookUp(\r\n                GC_checkpointItemAssessment,\r\n                checkpointItemId.checkpointItemId = varCheckpointitemID\r\n            ),\r\n            product_id: LookUp(\r\n                GC_product,\r\n                'product (quantum_product)' = CId\r\n            ),\r\n            priority: Dropdown5_3.Selected.Value,\r\n            OwnerId: Dropdown5_4.Selected.Value,\r\n            TimeEstimate: TextInput5_2.Text,\r\n            MaterialEstimate: TextInput5_3.Text\r\n            }\r\n        )\r\n        );\r\n        ForAll(\r\n        Gallery2_2.AllItems,\r\n        Patch(\r\n          GC_actionItems,\r\n          Defaults(GC_actionItems),\r\n            {\r\n            actionItemId: GUID(),\r\n            actionItemName: TextInput5_4.Text,\r\n            checkpointItemId: LookUp(\r\n                GC_templateCheckpointsItem,\r\n                checkpointItemId = varCheckpointitemID\r\n            )\r\n            }\r\n        )\r\n        )\r\n      /*  Patch\r\n        (\r\n            checkpointItemAssessment,\r\n            {\r\n             'checkpointItemAssessment (quantum_checkpointitemassessment)': GUID(),\r\n             checkpointAssessment_Id: LookUp(\r\n                  checkpointAssessment,\r\n                    'checkpointAssessment (quantum_checkpointassessment)' = ChId\r\n                ),\r\n                assignmentId: LookUp(\r\n                    GcAssignments,\r\n                    Id = glryProject.Selected.Id\r\n                ),\r\n                bankUnitId: LookUp(\r\n                  gcBankunit,\r\n                    Id = glryBankGo_1.Selected.Id\r\n                ),\r\n                product_id: LookUp(\r\n                    GC_product,\r\n                 'product (quantum_product)' = CId\r\n                ),\r\n                checkpointItem_annotation: TextInput4_1.Text,\r\n                checkpointItemId: LookUp(\r\n                    GC_templateCheckpointsItem,\r\n                checkpointItemId = varCheckpointitemID\r\n                ),\r\n                checkpointItemName: glryItmesAS.Selected.cboxItemsAS.Text,\r\n                assessmentStatus: \"open\"\r\n            }\r\n    \r\n         );\r\n        \r\n        ForAll(\r\n            Gallery2_1.AllItems,\r\n            Patch\r\n            (\r\n                checkpointItem_ActionItem,Defaults(checkpointItem_ActionItem),\r\n            {\r\n                checkpointItemActionItemsId: GUID(),\r\n                ActionItem_Name: Dropdown5.Selected.actionItemName,\r\n                assignmentId: LookUp(\r\n                     GcAssignments,\r\n                     Id = glryProject.Selected.Id\r\n                ),\r\n                bankUnitId: LookUp(\r\n                     gcBankunit,\r\n                    Id = glryBankGo_1.Selected.Id\r\n                ),\r\n                section_id: LookUp(\r\n                    gcsectionAssessment,\r\n                     sectionId.sectionId = glrySectionSS_2.Selected.sectionId\r\n                ),\r\n                checkpoint_id: LookUp(\r\n                    GC_checkpointAssessment,\r\n                    checkpointId.checkpointId = chglryCheckpointsSS_2.Selected.checkpointId\r\n                ),\r\n                 checkpointItem_Id: LookUp(\r\n                     GC_checkpointItemAssessment,\r\n                    checkpointItemId.checkpointItemName = varCheckpointitemID\r\n                ),\r\n                 product_id: LookUp(\r\n                     GC_product,\r\n                                product_Model = CId\r\n                ),\r\n                priority: Dropdown5_1.Selected.Value,\r\n                OwnerId: Dropdown5_2.Selected.Value,\r\n                TimeEstimate: TextInput5.Text,\r\n                MaterialEstimate: TextInput5_1.Text\r\n            }\r\n            )\r\n       );\r\n  /* ForAll(\r\n    Gallery2_2.AllItems,\r\n    Patch(\r\n        checkpointItem_ActionItem,Defaults(checkpointItem_ActionItem),\r\n        {\r\n            checkpointItemActionItemsId: GUID(),\r\n            ActionItem_Name: TextInput5_4.Text,\r\n            assignmentId: LookUp(\r\n                GcAssignments,\r\n                Id = glryProject.Selected.Id\r\n            ),\r\n            bankUnitId: LookUp(\r\n                gcBankunit,\r\n                Id = glryBankGo_1.Selected.Id\r\n            ),\r\n            section_id: LookUp(\r\n                gcsectionAssessment,\r\n                sectionId.sectionId = glrySectionSS_2.Selected.sectionId\r\n            ),\r\n            checkpoint_id: LookUp(\r\n                GC_checkpointAssessment,\r\n                checkpointId.checkpointId = chglryCheckpointsSS_2.Selected.checkpointId\r\n            ),\r\n            checkpointItem_Id: LookUp(\r\n                GC_checkpointItemAssessment,\r\n                checkpointItemId.checkpointItemId = varCheckpointitemID\r\n            ),\r\n            product_id: LookUp(\r\n                GC_product,\r\n                'product (quantum_product)' = CId\r\n            ),\r\n            priority: Dropdown5_3.Selected.Value,\r\n            OwnerId: Dropdown5_4.Selected.Value,\r\n            TimeEstimate: TextInput5_2.Text,\r\n            MaterialEstimate: TextInput5_3.Text\r\n            }\r\n        )\r\n        );\r\n      /* ForAll(\r\n        Gallery2_2.AllItems,\r\n        Patch(\r\n          actionItems,\r\n            {\r\n            actionItemId: GUID(),\r\n            actionItemName: TextInput5_4.Text,\r\n            checkpointItemId: LookUp(\r\n                GC_templateCheckpointsItem,\r\n                checkpointItemId = varCheckpointitemID\r\n            )\r\n            }\r\n        ) \r\n      );\r\n      ClearCollect(GC_actionItems,actionItems);*/\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n/*ForAll(\r\n    Gallery13.AllItems,\r\n    Patch(\r\n        GC_checkpointItem_Images,\r\n        Defaults(GC_checkpointItem_Images),\r\n        {assignmentId:}\r\n   )*/\r\n/*CountRows(Filter(Action1,IsBlank(Action.text)))>0,\r\n         Notify(\"Please enter units details .\",NotificationType.Error);\r\n         Clear(LCunit),*/\r\n//ForAll(GC_checkpointItem_ActionItem,checkpointItem_Id.checkpointItemId=varCheckpointitemID);\r\n/*ForAll(\r\n    Gallery2_2.AllItems,\r\n    Collect(\r\n        LC_Action1,\r\n        {\r\n            Action: ThisRecord.TextInput5_4,\r\n            Priority: ThisRecord.Dropdown5_3,\r\n            Owner: ThisRecord.Dropdown5_4,\r\n            Time_Estimate:ThisRecord.TextInput5_2,\r\n            Material_Estimate: ThisRecord.TextInput5_3\r\n        }\r\n    )\r\n);*/\r\n/*ForAll(\r\n    Gallery13.AllItems,\r\n    Collect(\r\n        LC_Image,\r\n        {\r\n            Image: ThisRecord.Image14,\r\n            ImageAnnotation: ThisRecord.TextInput6\r\n        }\r\n    )\r\n);*/\r\n",
+          "AutoRuleBindingString": "",
           "InvariantPropertyName": "OnSelect",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
@@ -2140,7 +2140,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btnSaveFS",
-      "ParentIndex": 0,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -3777,7 +3777,7 @@
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "Set(popupsuccess,false);Navigate(AssessmentScreen)",
+          "AutoRuleBindingString": "",
           "InvariantPropertyName": "OnSelect",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
@@ -4932,7 +4932,7 @@
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "false",
+          "AutoRuleBindingString": "",
           "InvariantPropertyName": "OnSelect",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
@@ -6690,7 +6690,7 @@
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "Set(\r\n    MoreAction,\r\n    MoreAction + 1\r\n);\r\nIf(CountRows(Filter(GC_templateCheckpointsItems,checkpointItemId=varCheckpointitemID))=1,\r\nCollect(\r\n    Act,\r\n    {\r\n        lineno: MoreAction,\r\n        ID: GUID(),\r\n        checkpointItemActionItemsId:\"\",\r\n         checkpointitemID: varCheckpointitemID,\r\n         checkpointID:chglryCheckpointsSS_2.Selected.checkpointId,\r\n         sectionID:VarSectionId,\r\n         productID:LookUp(GC_product,product_Model=CId,'product (quantum_product)'),\r\n         unitID:varBankUnitId,\r\n         assignmentId:glryProject.Selected.Id,\r\n            Action: \"\",\r\n            Priority: \"\",\r\n            Owner: \"\",\r\n            Time_Estimate: \"\",\r\n            Material_Estimate: \"\"\r\n        \r\n    }\r\n));\r\n\r\n\r\n",
+          "AutoRuleBindingString": "",
           "InvariantPropertyName": "OnSelect",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
@@ -6799,7 +6799,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Button5_16",
-      "ParentIndex": 1,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -7057,7 +7057,7 @@
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "RemoveIf(Act,ID=ThisItem.ID)\r\n",
+          "AutoRuleBindingString": "",
           "InvariantPropertyName": "OnSelect",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
@@ -7400,7 +7400,7 @@
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "RemoveIf(Act2,ID=ThisItem.ID)\r\n",
+          "AutoRuleBindingString": "",
           "InvariantPropertyName": "OnSelect",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
@@ -8352,7 +8352,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Container1",
-      "ParentIndex": 2,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -32407,7 +32407,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Label20_8",
-      "ParentIndex": 0,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -33832,7 +33832,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Label4",
-      "ParentIndex": 3,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -34136,7 +34136,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Label9",
-      "ParentIndex": 9,
+      "ParentIndex": 8,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -48534,7 +48534,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "TextInput5_11",
-      "ParentIndex": 8,
+      "ParentIndex": 9,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -50718,7 +50718,7 @@
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "UpdateIf(GC_checkpointItemAssessment,checkpointItemId.checkpointItemId=varCheckpointitemID && bankUnitId.Id=varBankUnitId && 'checkpointItemAssessment (quantum_checkpointitemassessment)'=ThisRecord.'checkpointItemAssessment (quantum_checkpointitemassessment)',{checkpointItem_annotation:TextInput4_5.Text});",
+          "AutoRuleBindingString": "",
           "InvariantPropertyName": "OnChange",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
