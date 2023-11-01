@@ -2852,7 +2852,7 @@ BankScreen As screen:
                                         GcTraceLog,
                                         ID = 1,
                                         Path
-                                    ) & "/ ExportPDf=" & Text(
+                                    ) & "/ExportPDf=" & Text(
                                         Now(),
                                         "hh:mm am/pm"
                                     )

@@ -81,7 +81,7 @@ SafetyHeaderScreen As screen:
                                         GcTraceLog,
                                         ID = 1,
                                         Path
-                                    ) & "SafetyBack=" & Text(
+                                    ) & "/SafetyBack=" & Text(
                                         Now(),
                                         "hh:mm am/pm"
                                     )
@@ -451,7 +451,7 @@ SafetyHeaderScreen As screen:
                                         GcTraceLog,
                                         ID = 1,
                                         Path
-                                    ) & "SafetyNext=" & Text(
+                                    ) & "/SafetyNext=" & Text(
                                         Now(),
                                         "hh:mm am/pm"
                                     )

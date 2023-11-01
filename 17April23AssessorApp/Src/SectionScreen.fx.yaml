@@ -462,7 +462,7 @@ SectionScreen As screen:
                                         GcTraceLog,
                                         ID = 1,
                                         Path
-                                    ) & "Safety+=" & Text(
+                                    ) & "/Safety+=" & Text(
                                         Now(),
                                         "hh:mm am/pm"
                                     )
@@ -628,7 +628,7 @@ SectionScreen As screen:
                                             GcTraceLog,
                                             ID = 1,
                                             Path
-                                        ) & "Checkpoint:" & ThisItem.checkpointId & "=" & Text(
+                                        ) & "/Checkpoint:" & ThisItem.checkpointId & "=" & Text(
                                             Now(),
                                             "hh:mm am/pm"
                                         )
@@ -739,7 +739,7 @@ SectionScreen As screen:
                                             GcTraceLog,
                                             ID = 1,
                                             Path
-                                        ) & "CComment:" & ThisItem.checkpointId & "=" & Text(
+                                        ) & "/CComment:" & ThisItem.checkpointId & "=" & Text(
                                             Now(),
                                             "hh:mm am/pm"
                                         )
@@ -894,7 +894,7 @@ SectionScreen As screen:
                                         GcTraceLog,
                                         ID = 1,
                                         Path
-                                    ) & "Section+:" & ThisItem.sectionId & "=" & Text(
+                                    ) & "/Section+:" & ThisItem.sectionId & "=" & Text(
                                         Now(),
                                         "hh:mm am/pm"
                                     )
@@ -971,7 +971,7 @@ SectionScreen As screen:
                                         GcTraceLog,
                                         ID = 1,
                                         Path
-                                    ) & "Section-:" & ThisItem.sectionId & "=" & Text(
+                                    ) & "/Section-:" & ThisItem.sectionId & "=" & Text(
                                         Now(),
                                         "hh:mm am/pm"
                                     )
@@ -1033,7 +1033,7 @@ SectionScreen As screen:
                                         GcTraceLog,
                                         ID = 1,
                                         Path
-                                    ) & "SComment:" & ThisItem.sectionId & "=" & Text(
+                                    ) & "/SComment:" & ThisItem.sectionId & "=" & Text(
                                         Now(),
                                         "hh:mm am/pm"
                                     )
