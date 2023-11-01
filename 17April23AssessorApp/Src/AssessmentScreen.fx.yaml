@@ -493,27 +493,33 @@ AssessmentScreen As screen:
                         HoverFill: |-
                             =///ColorFade(RGBA(56, 96, 178, 1), -20%)
                             Self.Fill
-                        OnSelect: |+
+                        OnSelect: |
                             =//Notify("finding start",NotificationType.Information);
-                            Set(varCheckpointitemID,Blank());
-                            Set(varCItemA,Blank());
+                            Set(
+                                varCheckpointitemID,
+                                Blank()
+                            );
+                            Set(
+                                varCItemA,
+                                Blank()
+                            );
                             /*//for reset ideal timer
                             Reset(tmr_logout);
                             Set(UserLastNavigated, Now());*/
                             //for Logs
                             UpdateIf(
                                 GcTraceLog,
-                                ID = 1,
+                                VarDebug = true,
                                 {
-                                    Path: LookUp(
-                                        GcTraceLog,
-                                        ID = 1,
-                                        Path
-                                    ) & "/Finding:"& ThisItem.checkpointItemId &"=" & Text(
+                                    Path: First(GcTraceLog).Path & "/Finding:" & ThisItem.checkpointItemId & "=" & Text(
                                         Now(),
-                                        "hh:mm am/pm"
+                                        "mm/dd/yyyy hh:mm:ss am/pm"
                                     )
                                 }
+                            );
+                            SaveData(
+                                GcTraceLog,
+                                "localGcTraceLog"
                             );
                             //for safety check
                             If(
@@ -533,9 +539,10 @@ AssessmentScreen As screen:
                                 );
                                 
                             );
-                            
-                            Set(varCheckpointitemID,ThisItem.checkpointItemId);
-                            
+                            Set(
+                                varCheckpointitemID,
+                                ThisItem.checkpointItemId
+                            );
                             //for updating status of section assessment
                             If(/*CountRows(
                                  Filter(GcSectionAssessment,
@@ -543,50 +550,77 @@ AssessmentScreen As screen:
                                      bankUnitId.Id = varBankUnitId && 
                                      sectionId.sectionId = VarSectionId
                                 ))<1*/
-                                IsBlank(LookUp(GcSectionAssessment,
-                                     assignmentId.Id=varAssignmentId && 
-                                     bankUnitId.Id = varBankUnitId && 
-                                     sectionId.sectionId = VarSectionId)),
-                                
-                               //Set(varSA,Text(GUID()));
-                                Set(varSA,varBankUnitId & "Se" & Text( Now(), "mmddyyyyhhmmss" )&"-" & Rand()
-                                );
-                               Patch(
-                                GcSectionAssessment,
-                                Defaults(GcSectionAssessment),
-                                {
-                                'sectionAssessment (quantum_sectionassessment)':varSA,
-                                assignmentId:LookUp(DropColumns(gcProjectAssignment,"AstatusUpdate"),Id=varAssignmentId),
-                                bankUnitId:LookUp(gcBankunit,Id=varBankUnitId),
-                                product_id:LookUp(GC_product,product_Model=glryUnitBS.Selected.productModel),
-                                sectionId:LookUp(GC_templateSections,sectionId=VarSectionId),
-                                sectionName:glrySectionSS.Selected.sectionname,
-                                AssessmentStatus:"Inprogress",
-                                SstatusUpdate:Blank(),
-                                sectionSequence:LookUp(GC_templateSections,sectionId=VarSectionId,sectionSequence)
-                                }
-                                ),
-                                Set(varSA,LookUp(
-                                    GcSectionAssessment,
-                                    assignmentId.Id=varAssignmentId && 
-                                    bankUnitId.Id= varBankUnitId && 
-                                    sectionId.sectionId = VarSectionId,'sectionAssessment (quantum_sectionassessment)') 
+                                IsBlank(
+                                    LookUp(
+                                        GcSectionAssessment,
+                                        assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && sectionId.sectionId = VarSectionId
                                     )
+                                ),
+                               //Set(varSA,Text(GUID()));
+                                Set(
+                                    varSA,
+                                    varBankUnitId & "Se" & Text(
+                                        Now(),
+                                        "mmddyyyyhhmmss"
+                                    ) & "-" & Rand()
                                 );
-                                 If(
-                                 !IsEmpty(Errors(GcSectionAssessment)),
-                                 Notify(
-                                     Concat(Errors(GcSectionAssessment), Column&": "&Message),
-                                     NotificationType.Error
-                                 )/*,
+                                Patch(
+                                    GcSectionAssessment,
+                                    Defaults(GcSectionAssessment),
+                                    {
+                                        'sectionAssessment (quantum_sectionassessment)': varSA,
+                                        assignmentId: LookUp(
+                                            DropColumns(
+                                                gcProjectAssignment,
+                                                "AstatusUpdate"
+                                            ),
+                                            Id = varAssignmentId
+                                        ),
+                                        bankUnitId: LookUp(
+                                            gcBankunit,
+                                            Id = varBankUnitId
+                                        ),
+                                        product_id: LookUp(
+                                            GC_product,
+                                            product_Model = glryUnitBS.Selected.productModel
+                                        ),
+                                        sectionId: LookUp(
+                                            GC_templateSections,
+                                            sectionId = VarSectionId
+                                        ),
+                                        sectionName: glrySectionSS.Selected.sectionname,
+                                        AssessmentStatus: "Inprogress",
+                                        SstatusUpdate: Blank(),
+                                        sectionSequence: LookUp(
+                                            GC_templateSections,
+                                            sectionId = VarSectionId,
+                                            sectionSequence
+                                        )
+                                    }
+                                ),
+                                Set(
+                                    varSA,
+                                    LookUp(
+                                        GcSectionAssessment,
+                                        assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && sectionId.sectionId = VarSectionId,
+                                        'sectionAssessment (quantum_sectionassessment)'
+                                    )
+                                )
+                            );
+                            If(
+                                !IsEmpty(Errors(GcSectionAssessment)),
+                                Notify(
+                                    Concat(
+                                        Errors(GcSectionAssessment),
+                                        Column & ": " & Message
+                                    ),
+                                    NotificationType.Error
+                                )/*,
                                  Notify(
                                      "Section Patch successfully.",
                                      NotificationType.Error
                                  )*/
-                             );
-                              
-                            
-                            
+                            );
                             //for updating assessment of checkpoint assessment
                             If(/*CountRows(
                                    Filter(GcCheckpointAssessment,
@@ -596,52 +630,93 @@ AssessmentScreen As screen:
                                         checkpointAssessment_id=GuidId
                                         )
                                     )<1*/
-                                    IsBlank(LookUp(GcCheckpointAssessment,
-                                       assignmentId.Id=varAssignmentId && 
-                                        bankUnitId.Id = varBankUnitId && 
-                                        sectionId.'sectionAssessment (quantum_sectionassessment)'=varSA &&
-                                        checkpointId.checkpointId=ChId)),
-                               
-                                //Set(GuidId,Text(GUID()));
-                                Set(GuidId,varBankUnitId & "ch" & Text( Now(), "mmddyyyyhhmmss" )&"-" & Rand());
-                                Patch(
-                                GcCheckpointAssessment,
-                                Defaults(GcCheckpointAssessment),
-                                {
-                                   checkpointAssessment_id:GuidId,
-                                   assignmentId:LookUp(DropColumns(gcProjectAssignment,"AstatusUpdate"),Id=varAssignmentId),
-                                   bankUnitId:LookUp(gcBankunit,Id=varBankUnitId),
-                                   product_id:LookUp(GC_product,product_Model=glryUnitBS.Selected.productModel),
-                                   sectionId: LookUp(DropColumns(GcSectionAssessment,"SstatusUpdate"),'sectionAssessment (quantum_sectionassessment)'=varSA),
-                                   checkpointId:LookUp(GC_templateCheckpoints,checkpointId= ChId),
-                                   checkpointName:LookUp(GC_templateCheckpoints,checkpointId= ChId,checkpointName),
-                                   AssessmentStatus:"Inprogress",
-                                   CstatusUpdate:Blank(),
-                                   CheckpointSequence:LookUp(GC_templateCheckpoints,checkpointId= ChId,checkpointSequence)
-                                   //sectionAssessmentid:LookUp(GcSectionAssessment,'sectionAssessment (quantum_sectionassessment)'=varSA)
-                                }
-                                ),
-                                Set(GuidId,LookUp(
+                                IsBlank(
+                                    LookUp(
                                         GcCheckpointAssessment,
-                                        assignmentId.Id=varAssignmentId && 
-                                        bankUnitId.Id = varBankUnitId  && 
+                                        assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && sectionId.'sectionAssessment (quantum_sectionassessment)' = varSA && checkpointId.checkpointId = ChId
+                                    )
+                                ),
+                                //Set(GuidId,Text(GUID()));
+                                Set(
+                                    GuidId,
+                                    varBankUnitId & "ch" & Text(
+                                        Now(),
+                                        "mmddyyyyhhmmss"
+                                    ) & "-" & Rand()
+                                );
+                                Patch(
+                                    GcCheckpointAssessment,
+                                    Defaults(GcCheckpointAssessment),
+                                    {
+                                        checkpointAssessment_id: GuidId,
+                                        assignmentId: LookUp(
+                                            DropColumns(
+                                                gcProjectAssignment,
+                                                "AstatusUpdate"
+                                            ),
+                                            Id = varAssignmentId
+                                        ),
+                                        bankUnitId: LookUp(
+                                            gcBankunit,
+                                            Id = varBankUnitId
+                                        ),
+                                        product_id: LookUp(
+                                            GC_product,
+                                            product_Model = glryUnitBS.Selected.productModel
+                                        ),
+                                        sectionId: LookUp(
+                                            DropColumns(
+                                                GcSectionAssessment,
+                                                "SstatusUpdate"
+                                            ),
+                                            'sectionAssessment (quantum_sectionassessment)' = varSA
+                                        ),
+                                        checkpointId: LookUp(
+                                            GC_templateCheckpoints,
+                                            checkpointId = ChId
+                                        ),
+                                        checkpointName: LookUp(
+                                            GC_templateCheckpoints,
+                                            checkpointId = ChId,
+                                            checkpointName
+                                        ),
+                                        AssessmentStatus: "Inprogress",
+                                        CstatusUpdate: Blank(),
+                                        CheckpointSequence: LookUp(
+                                            GC_templateCheckpoints,
+                                            checkpointId = ChId,
+                                            checkpointSequence
+                                        )
+                                   //sectionAssessmentid:LookUp(GcSectionAssessment,'sectionAssessment (quantum_sectionassessment)'=varSA)
+                                    }
+                                ),
+                                Set(
+                                    GuidId,
+                                    LookUp(
+                                        GcCheckpointAssessment,
+                                        assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId &&
                                         //sectionId.sectionId.sectionId=VarSectionId && 
-                                        sectionId.'sectionAssessment (quantum_sectionassessment)'=varSA &&
-                                        checkpointId.checkpointId = ChId,checkpointAssessment_id
-                                    )););
-                                 If(
-                                 !IsEmpty(Errors(GcCheckpointAssessment)),
-                                 Notify(
-                                     Concat(Errors(GcCheckpointAssessment), Column&": "&Message),
-                                     NotificationType.Error
-                                 )/*,
+                             sectionId.'sectionAssessment (quantum_sectionassessment)' = varSA && checkpointId.checkpointId = ChId,
+                                        checkpointAssessment_id
+                                    )
+                                );
+                                
+                            );
+                            If(
+                                !IsEmpty(Errors(GcCheckpointAssessment)),
+                                Notify(
+                                    Concat(
+                                        Errors(GcCheckpointAssessment),
+                                        Column & ": " & Message
+                                    ),
+                                    NotificationType.Error
+                                )/*,
                                  Trace("checkpoint successfully :" ,TraceSeverity.Information);
                                  Notify(
                                      "CheckpointAssessment Patch successfully.",
                                      NotificationType.Error
                                  )*/
-                                  );
-                            
+                            );
                             If(/*CountRows(
                                 Filter(GC_checkpointItemAssessment,
                                      assignmentId.Id=varAssignmentId && bankUnitId.Id=varBankUnitId &&                                                              checkpointItemId.checkpointItemId=varCheckpointitemID &&
@@ -649,79 +724,114 @@ AssessmentScreen As screen:
                                       checkpointAssessment_Id.checkpointAssessment_id=GuidId &&
                                      'checkpointItemAssessment (quantum_checkpointitemassessment)'= varCItemA
                                  ))<1*/
-                                 IsBlank(LookUp(
-                                      GC_checkpointItemAssessment,
-                                              assignmentId.Id=varAssignmentId && bankUnitId.Id=varBankUnitId &&                                                              checkpointItemId.checkpointItemId=varCheckpointitemID &&
-                                      section_Id.'sectionAssessment (quantum_sectionassessment)'=varSA &&
-                                      checkpointAssessment_Id.checkpointAssessment_id=GuidId
-                                     )),
-                                   
+                                IsBlank(
+                                    LookUp(
+                                        GC_checkpointItemAssessment,
+                                        assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpointItemId.checkpointItemId = varCheckpointitemID && section_Id.'sectionAssessment (quantum_sectionassessment)' = varSA && checkpointAssessment_Id.checkpointAssessment_id = GuidId
+                                    )
+                                ),
                                //Set(varCItemA,Text(GUID()));
-                               Set(varCItemA,varBankUnitId & "ci" & Text( Now(), "mmddyyyyhhmmss" )&"-"& Rand());
-                                Patch(
-                                GC_checkpointItemAssessment,
-                                Defaults(GC_checkpointItemAssessment),
-                                        {
-                                         'checkpointItemAssessment (quantum_checkpointitemassessment)': varCItemA,
-                                            assignmentId: LookUp(
-                                                DropColumns(
-                                                gcProjectAssignment,
-                                                "AstatusUpdate"),
-                                                Id = varAssignmentId
-                                            ),
-                                            bankUnitId: LookUp(
-                                              gcBankunit,
-                                                Id = varBankUnitId
-                                            ),
-                                            product_id:LookUp(GC_product,product_Model=glryUnitBS.Selected.productModel)
-                                            ,
-                                            section_Id:LookUp(
-                                                DropColumns(
-                                                    GcSectionAssessment,
-                                                "SstatusUpdate"),
-                                                'sectionAssessment (quantum_sectionassessment)'=varSA),
-                                            checkpointAssessment_Id:LookUp(
-                                                DropColumns(
-                                                    GcCheckpointAssessment,
-                                                    "CstatusUpdate"),
-                                                    checkpointAssessment_id=GuidId),
-                                            checkpointItem_annotation:"",
-                                            checkpointItemId: LookUp(
-                                                GC_templateCheckpointsItem,
-                                            checkpointItemId = varCheckpointitemID
-                                            ),
-                                            checkpointItemName: glryItmesAS.Selected.cboxItemsAS.Text,
-                                            assessmentStatus:"Uncheck",
-                                            CIstatusUpdate:Blank(),
-                                            checkpointitemSequence: LookUp(GC_templateCheckpointsItem,checkpointItemId = varCheckpointitemID,checkpointItemSequence),
-                                            CheckpointItemSortSequence: LookUp(GC_templateSections,sectionId=VarSectionId,sectionSequence) & LookUp(GC_templateCheckpoints,checkpointId= ChId,checkpointSequence) & LookUp(GC_templateCheckpointsItem,checkpointItemId = varCheckpointitemID,checkpointItemSequence)
-                                        }
-                                
-                                    ),
-                            Set(varCItemA,LookUp(GC_checkpointItemAssessment,
-                                   assignmentId.Id=glryProject.Selected.Id && bankUnitId.Id=varBankUnitId && 
-                                   checkpointItemId.checkpointItemId=varCheckpointitemID,'checkpointItemAssessment (quantum_checkpointitemassessment)'));
+                                Set(
+                                    varCItemA,
+                                    varBankUnitId & "ci" & Text(
+                                        Now(),
+                                        "mmddyyyyhhmmss"
+                                    ) & "-" & Rand()
                                 );
-                                If(
-                                 !IsEmpty(Errors(GC_checkpointItemAssessment)),
-                                  Notify(
-                                     Concat(Errors(GC_checkpointItemAssessment), Column&": "&Message),
-                                     NotificationType.Error
-                                 );
-                            
-                            
-                            
+                                Patch(
+                                    GC_checkpointItemAssessment,
+                                    Defaults(GC_checkpointItemAssessment),
+                                    {
+                                        'checkpointItemAssessment (quantum_checkpointitemassessment)': varCItemA,
+                                        assignmentId: LookUp(
+                                            DropColumns(
+                                                gcProjectAssignment,
+                                                "AstatusUpdate"
+                                            ),
+                                            Id = varAssignmentId
+                                        ),
+                                        bankUnitId: LookUp(
+                                            gcBankunit,
+                                            Id = varBankUnitId
+                                        ),
+                                        product_id: LookUp(
+                                            GC_product,
+                                            product_Model = glryUnitBS.Selected.productModel
+                                        ),
+                                        section_Id: LookUp(
+                                            DropColumns(
+                                                GcSectionAssessment,
+                                                "SstatusUpdate"
+                                            ),
+                                            'sectionAssessment (quantum_sectionassessment)' = varSA
+                                        ),
+                                        checkpointAssessment_Id: LookUp(
+                                            DropColumns(
+                                                GcCheckpointAssessment,
+                                                "CstatusUpdate"
+                                            ),
+                                            checkpointAssessment_id = GuidId
+                                        ),
+                                        checkpointItem_annotation: "",
+                                        checkpointItemId: LookUp(
+                                            GC_templateCheckpointsItem,
+                                            checkpointItemId = varCheckpointitemID
+                                        ),
+                                        checkpointItemName: glryItmesAS.Selected.cboxItemsAS.Text,
+                                        assessmentStatus: "Uncheck",
+                                        CIstatusUpdate: Blank(),
+                                        checkpointitemSequence: LookUp(
+                                            GC_templateCheckpointsItem,
+                                            checkpointItemId = varCheckpointitemID,
+                                            checkpointItemSequence
+                                        ),
+                                        CheckpointItemSortSequence: LookUp(
+                                            GC_templateSections,
+                                            sectionId = VarSectionId,
+                                            sectionSequence
+                                        ) & LookUp(
+                                            GC_templateCheckpoints,
+                                            checkpointId = ChId,
+                                            checkpointSequence
+                                        ) & LookUp(
+                                            GC_templateCheckpointsItem,
+                                            checkpointItemId = varCheckpointitemID,
+                                            checkpointItemSequence
+                                        )
+                                    }
+                                ),
+                                Set(
+                                    varCItemA,
+                                    LookUp(
+                                        GC_checkpointItemAssessment,
+                                        assignmentId.Id = glryProject.Selected.Id && bankUnitId.Id = varBankUnitId && checkpointItemId.checkpointItemId = varCheckpointitemID,
+                                        'checkpointItemAssessment (quantum_checkpointitemassessment)'
+                                    )
+                                );
+                                
+                            );
+                            If(
+                                !IsEmpty(Errors(GC_checkpointItemAssessment)),
+                                Notify(
+                                    Concat(
+                                        Errors(GC_checkpointItemAssessment),
+                                        Column & ": " & Message
+                                    ),
+                                    NotificationType.Error
+                                );
                                  /*,
                                  Notify(
                                      "checkpointItemAssessment Patch sucssessfully.",
                                      NotificationType.Error
                                  )*/
-                             );  
+                            );
                              // For navigation from Previous finding 
-                                 Set(VarPrevNav,true);
+                            Set(
+                                VarPrevNav,
+                                true
+                            );
                             //Notify("finding endd",NotificationType.Information);
                             Navigate(FindingScreen);
-                            
                         PressedBorderColor: =Self.BorderColor
                         PressedColor: =Self.Color
                         PressedFill: =Self.Fill
@@ -796,24 +906,30 @@ AssessmentScreen As screen:
                         Font: =AllScreensCSS.RFont
                         Height: =115
                         HoverColor: =RGBA(0, 0, 0, 1)
-                        OnCheck: |-
+                        OnCheck: |
                             =//for Logs
                             UpdateIf(
                                 GcTraceLog,
-                                ID = 1,
+                                VarDebug = true,
                                 {
-                                    Path: LookUp(
-                                        GcTraceLog,
-                                        ID = 1,
-                                        Path
-                                    ) & "/OnCheck:" & ThisItem.checkpointItemId & "=" & Text(
+                                    Path: First(GcTraceLog).Path & "/OnCheck:" & ThisItem.checkpointItemId & "=" & Text(
                                         Now(),
-                                        "hh:mm am/pm"
+                                        "mm/dd/yyyy hh:mm:ss am/pm"
                                     )
                                 }
                             );
-                            Set(varCheckpointitemID,Blank());
-                            Set(varCItemA,Blank());
+                            SaveData(
+                                GcTraceLog,
+                                "localGcTraceLog"
+                            );
+                            Set(
+                                varCheckpointitemID,
+                                Blank()
+                            );
+                            Set(
+                                varCItemA,
+                                Blank()
+                            );
                             //for safety check
                             If(
                                 DateDiff(
@@ -848,14 +964,13 @@ AssessmentScreen As screen:
                             );
                             /////////////check is image is mandatory for selected checkpointitem in the template templatecheckpointitems and check if there is np row in collection GC_checkpointitem_Images for selected checkpointitem.then flag error message and reset value of checkbox to false.
                             //else 
-                              // allow user to check this checkpoinitem as complete .
-                              // update status of selected row in  collection GC_checkpointitemAssessment as Check.
+                            // allow user to check this checkpoinitem as complete .
+                            // update status of selected row in  collection GC_checkpointitemAssessment as Check.
                             If(
                                 (glryItmesAS.Selected.checkpointItemImage = 'checkpointItemImage (templateCheckpointsItems)'.Yes && Not("NA option" in glryItmesAS.Selected.checkpointItemName) && IsBlank(
                                     LookUp(
                                         GC_checkpointItem_Images,
-                                        assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId &&
-                             checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = varCItemA
+                                        assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = varCItemA
                                     )
                                 )),
                                 Notify(
@@ -868,281 +983,281 @@ AssessmentScreen As screen:
                                     false
                                 );
                                 ,
-                            glryItmesAS.Selected.cboxItemsAS.Value = true;
-                            Set(
-                                IsResetCboxItemsAS,
-                                true
-                            );
-                            If(
-                                IsResetCboxItemsAS = true,
-                            //Assignment status update      
-                                UpdateIf(
-                                    gcProjectAssignment,
-                                    Id = varAssignmentId && bankId.Id = VarBankId && isCompleted = "Upcomming",
-                                    {
-                                        isCompleted: "Inprogress1",
-                                        AstatusUpdate: 0
-                                    }
+                                glryItmesAS.Selected.cboxItemsAS.Value = true;
+                                Set(
+                                    IsResetCboxItemsAS,
+                                    true
                                 );
-                                
+                                If(
+                                    IsResetCboxItemsAS = true,
+                            //Assignment status update      
+                                    UpdateIf(
+                                        gcProjectAssignment,
+                                        Id = varAssignmentId && bankId.Id = VarBankId && isCompleted = "Upcomming",
+                                        {
+                                            isCompleted: "Inprogress1",
+                                            AstatusUpdate: 0
+                                        }
+                                    );
+                                    
                             //here one row already exist for varBankId in GC_BankAssessment  with Assessment_Status = "Upcomming" ,then updating status of bank assessment
                             UpdateIf(
-                                    GC_bankAssessment,
-                                    assignmentId.Id = varAssignmentId && bankId.Id = VarBankId && Assessment_Status = "Upcomming",
-                                    {
-                                        Assessment_Status: "Inprogress",
-                                        BstatusUpdate: 0
-                                    }
-                                );
-                                
+                                        GC_bankAssessment,
+                                        assignmentId.Id = varAssignmentId && bankId.Id = VarBankId && Assessment_Status = "Upcomming",
+                                        {
+                                            Assessment_Status: "Inprogress",
+                                            BstatusUpdate: 0
+                                        }
+                                    );
+                                    
                             // here one row already exist for varBankunitId in GC_UnitAssessment with Assessment_Status ="Upcomming", updating status of unit assessment.
                             UpdateIf(
-                                    GC_unitAssessment,
-                                    assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && Assessment_status = "Upcomming",
-                                    {
-                                        Assessment_status: "Inprogress",
-                                        UstatusUpdate: 0
-                                    }
-                                );
-                                
+                                        GC_unitAssessment,
+                                        assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && Assessment_status = "Upcomming",
+                                        {
+                                            Assessment_status: "Inprogress",
+                                            UstatusUpdate: 0
+                                        }
+                                    );
+                                    
                             // unit assessment status update 0  for save status update
                             UpdateIf(
-                                    GC_unitAssessment,
-                                    assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId,
+                                        GC_unitAssessment,
+                                        assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId,
                                     //&& Assessment_status ="Inprogress",
-                                    {UstatusUpdate: 0}
-                                );
-                                
+                                        {UstatusUpdate: 0}
+                                    );
+                                    
                             //here, If there is no row for VarSectionId in GectionAssessment, then set new GUID in Variable varSA and collect row for varSectionId .If a row  is already exist  for VarsectionId then set it's primary column key in variable.
                             If(
-                                    IsBlank(
-                                        LookUp(
-                                            GcSectionAssessment,
-                                            assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && sectionId.sectionId = VarSectionId
-                                        )
-                                    ),
-                                    Set(
-                                        varSA,
-                                        varBankUnitId & "Se" & Text(
-                                            Now(),
-                                            "mmddyyyyhhmmss"
-                                        ) & "-" & Rand()
-                                    );
-                                    Patch(
-                                        GcSectionAssessment,
-                                        Defaults(GcSectionAssessment),
-                                        {
-                                            'sectionAssessment (quantum_sectionassessment)': varSA,
-                                            assignmentId: LookUp(
-                                                DropColumns(
-                                                    gcProjectAssignment,
-                                                    "AstatusUpdate"
-                                                ),
-                                                Id = varAssignmentId
-                                            ),
-                                            bankUnitId: LookUp(
-                                                gcBankunit,
-                                                Id = varBankUnitId
-                                            ),
-                                            product_id: LookUp(
-                                                GC_product,
-                                                product_Model = glryUnitBS.Selected.productModel
-                                            ),
-                                            sectionId: LookUp(
-                                                GC_templateSections,
-                                                sectionId = VarSectionId
-                                            ),
-                                            sectionName: glrySectionSS.Selected.sectionname,
-                                            AssessmentStatus: "Inprogress",
-                                            SstatusUpdate: 0,
-                                            sectionSequence: LookUp(
-                                                GC_templateSections,
-                                                sectionId = VarSectionId,
-                                                sectionSequence
+                                        IsBlank(
+                                            LookUp(
+                                                GcSectionAssessment,
+                                                assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && sectionId.sectionId = VarSectionId
                                             )
-                                        }
-                                    ),
-                                    Set(
-                                        varSA,
-                                        LookUp(
+                                        ),
+                                        Set(
+                                            varSA,
+                                            varBankUnitId & "Se" & Text(
+                                                Now(),
+                                                "mmddyyyyhhmmss"
+                                            ) & "-" & Rand()
+                                        );
+                                        Patch(
                                             GcSectionAssessment,
-                                            assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && sectionId.sectionId = VarSectionId,
-                                            'sectionAssessment (quantum_sectionassessment)'
-                                        )
-                                    );
+                                            Defaults(GcSectionAssessment),
+                                            {
+                                                'sectionAssessment (quantum_sectionassessment)': varSA,
+                                                assignmentId: LookUp(
+                                                    DropColumns(
+                                                        gcProjectAssignment,
+                                                        "AstatusUpdate"
+                                                    ),
+                                                    Id = varAssignmentId
+                                                ),
+                                                bankUnitId: LookUp(
+                                                    gcBankunit,
+                                                    Id = varBankUnitId
+                                                ),
+                                                product_id: LookUp(
+                                                    GC_product,
+                                                    product_Model = glryUnitBS.Selected.productModel
+                                                ),
+                                                sectionId: LookUp(
+                                                    GC_templateSections,
+                                                    sectionId = VarSectionId
+                                                ),
+                                                sectionName: glrySectionSS.Selected.sectionname,
+                                                AssessmentStatus: "Inprogress",
+                                                SstatusUpdate: 0,
+                                                sectionSequence: LookUp(
+                                                    GC_templateSections,
+                                                    sectionId = VarSectionId,
+                                                    sectionSequence
+                                                )
+                                            }
+                                        ),
+                                        Set(
+                                            varSA,
+                                            LookUp(
+                                                GcSectionAssessment,
+                                                assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && sectionId.sectionId = VarSectionId,
+                                                'sectionAssessment (quantum_sectionassessment)'
+                                            )
+                                        );
                               //section assessment status update 0 for save status update
                             UpdateIf(
-                                        GcSectionAssessment,
-                                        'sectionAssessment (quantum_sectionassessment)' = varSA,
-                                        {SstatusUpdate: 0}
+                                            GcSectionAssessment,
+                                            'sectionAssessment (quantum_sectionassessment)' = varSA,
+                                            {SstatusUpdate: 0}
+                                        );
                                     );
-                                );
-                                
+                                    
                             // a row present for checkpoint Assessment. If there is no row for ChId in GcCheckpointAssessment, then set new GUID in Variable GuidId and collect row for ChId.If a row  is already exist  for ChId then set it's primary column key in variable.
                             If(
-                                    IsBlank(
-                                        LookUp(
-                                            GcCheckpointAssessment,
-                                            assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && sectionId.'sectionAssessment (quantum_sectionassessment)' = varSA && checkpointId.checkpointId = ChId
-                                        )
-                                    ),
-                                    Set(
-                                        GuidId,
-                                        varBankUnitId & "ch" & Text(
-                                            Now(),
-                                            "mmddyyyyhhmmss"
-                                        ) & "-" & Rand()
-                                    );
-                                    Patch(
-                                        GcCheckpointAssessment,
-                                        Defaults(GcCheckpointAssessment),
-                                        {
-                                            checkpointAssessment_id: GuidId,
-                                            assignmentId: LookUp(
-                                                DropColumns(
-                                                    gcProjectAssignment,
-                                                    "AstatusUpdate"
-                                                ),
-                                                Id = varAssignmentId
-                                            ),
-                                            bankUnitId: LookUp(
-                                                gcBankunit,
-                                                Id = varBankUnitId
-                                            ),
-                                            product_id: LookUp(
-                                                GC_product,
-                                                product_Model = glryUnitBS.Selected.productModel
-                                            ),
-                                            sectionId: LookUp(
-                                                DropColumns(
-                                                    GcSectionAssessment,
-                                                    "SstatusUpdate"
-                                                ),
-                                                'sectionAssessment (quantum_sectionassessment)' = varSA
-                                            ),
-                                            checkpointId: LookUp(
-                                                GC_templateCheckpoints,
-                                                checkpointId = ChId
-                                            ),
-                                            checkpointName: LookUp(
-                                                GC_templateCheckpoints,
-                                                checkpointId = ChId,
-                                                checkpointName
-                                            ),
-                                            AssessmentStatus: "Inprogress",
-                                            CstatusUpdate: 0,
-                                            CheckpointSequence: LookUp(
-                                                GC_templateCheckpoints,
-                                                checkpointId = ChId,
-                                                checkpointSequence
+                                        IsBlank(
+                                            LookUp(
+                                                GcCheckpointAssessment,
+                                                assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && sectionId.'sectionAssessment (quantum_sectionassessment)' = varSA && checkpointId.checkpointId = ChId
                                             )
-                                        }
-                                    ),
-                                    Set(
-                                        GuidId,
-                                        LookUp(
+                                        ),
+                                        Set(
+                                            GuidId,
+                                            varBankUnitId & "ch" & Text(
+                                                Now(),
+                                                "mmddyyyyhhmmss"
+                                            ) & "-" & Rand()
+                                        );
+                                        Patch(
                                             GcCheckpointAssessment,
-                                            assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && sectionId.'sectionAssessment (quantum_sectionassessment)' = varSA && checkpointId.checkpointId = ChId,
-                                            checkpointAssessment_id
-                                        )
-                                    );
+                                            Defaults(GcCheckpointAssessment),
+                                            {
+                                                checkpointAssessment_id: GuidId,
+                                                assignmentId: LookUp(
+                                                    DropColumns(
+                                                        gcProjectAssignment,
+                                                        "AstatusUpdate"
+                                                    ),
+                                                    Id = varAssignmentId
+                                                ),
+                                                bankUnitId: LookUp(
+                                                    gcBankunit,
+                                                    Id = varBankUnitId
+                                                ),
+                                                product_id: LookUp(
+                                                    GC_product,
+                                                    product_Model = glryUnitBS.Selected.productModel
+                                                ),
+                                                sectionId: LookUp(
+                                                    DropColumns(
+                                                        GcSectionAssessment,
+                                                        "SstatusUpdate"
+                                                    ),
+                                                    'sectionAssessment (quantum_sectionassessment)' = varSA
+                                                ),
+                                                checkpointId: LookUp(
+                                                    GC_templateCheckpoints,
+                                                    checkpointId = ChId
+                                                ),
+                                                checkpointName: LookUp(
+                                                    GC_templateCheckpoints,
+                                                    checkpointId = ChId,
+                                                    checkpointName
+                                                ),
+                                                AssessmentStatus: "Inprogress",
+                                                CstatusUpdate: 0,
+                                                CheckpointSequence: LookUp(
+                                                    GC_templateCheckpoints,
+                                                    checkpointId = ChId,
+                                                    checkpointSequence
+                                                )
+                                            }
+                                        ),
+                                        Set(
+                                            GuidId,
+                                            LookUp(
+                                                GcCheckpointAssessment,
+                                                assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && sectionId.'sectionAssessment (quantum_sectionassessment)' = varSA && checkpointId.checkpointId = ChId,
+                                                checkpointAssessment_id
+                                            )
+                                        );
                                //for checkpoint assessment status update 0 to save update
                             UpdateIf(
-                                        GcCheckpointAssessment,
-                                        checkpointAssessment_id = GuidId,
-                                        {CstatusUpdate: 0}
+                                            GcCheckpointAssessment,
+                                            checkpointAssessment_id = GuidId,
+                                            {CstatusUpdate: 0}
+                                        );
                                     );
-                                );
-                                
+                                    
                             //a row present for varcheckpointitem in GC_checkpointItemAssessment.If there is no row for GC_checkpointitemAssessment ,then set new GUID in variable VarCItemA.and collect row for varCItemA.
                             If(
-                                    IsBlank(
-                                        LookUp(
-                                            GC_checkpointItemAssessment,
-                                            assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && section_Id.'sectionAssessment (quantum_sectionassessment)' = varSA && checkpointItemId.checkpointItemId = varCheckpointitemID
-                                        )
-                                    ),
-                                    Set(
-                                        varCItemA,
-                                        varBankUnitId & "ci" & Text(
-                                            Now(),
-                                            "mmddyyyyhhmmss"
-                                        ) & "-" & Rand()
-                                    );
-                                    Patch(
-                                        GC_checkpointItemAssessment,
-                                        Defaults(GC_checkpointItemAssessment),
-                                        {
-                                            'checkpointItemAssessment (quantum_checkpointitemassessment)': varCItemA,
-                                            checkpointAssessment_Id: LookUp(
-                                                DropColumns(
-                                                    GcCheckpointAssessment,
-                                                    "CstatusUpdate"
-                                                ),
-                                                checkpointAssessment_id = GuidId
-                                            ),
-                                            assignmentId: LookUp(
-                                                DropColumns(
-                                                    gcProjectAssignment,
-                                                    "AstatusUpdate"
-                                                ),
-                                                Id = varAssignmentId
-                                            ),
-                                            bankUnitId: LookUp(
-                                                gcBankunit,
-                                                Id = varBankUnitId
-                                            ),
-                                            product_id: LookUp(
-                                                GC_product,
-                                                product_Model = glryUnitBS.Selected.productModel
-                                            ),
-                                            section_Id: LookUp(
-                                                DropColumns(
-                                                    GcSectionAssessment,
-                                                    "SstatusUpdate"
-                                                ),
-                                                'sectionAssessment (quantum_sectionassessment)' = varSA
-                                            ),
-                                            checkpointItem_annotation: "",
-                                            checkpointItemId: LookUp(
-                                                GC_templateCheckpointsItem,
-                                                checkpointItemId = glryItmesAS.Selected.checkpointItemId
-                                            ),
-                                            checkpointItemName: glryItmesAS.Selected.cboxItemsAS.Text,
-                                            assessmentStatus: "Check",
-                                            CIstatusUpdate: 0,
-                                            checkpointitemSequence: LookUp(
-                                                GC_templateCheckpointsItem,
-                                                checkpointItemId = glryItmesAS.Selected.checkpointItemId,
-                                                checkpointItemSequence
-                                            ),
-                                            CheckpointItemSortSequence: LookUp(
-                                                GC_templateSections,
-                                                sectionId = VarSectionId,
-                                                sectionSequence
-                                            ) & LookUp(
-                                                GC_templateCheckpoints,
-                                                checkpointId = ChId,
-                                                checkpointSequence
-                                            ) & LookUp(
-                                                GC_templateCheckpointsItem,
-                                                checkpointItemId = varCheckpointitemID,
-                                                checkpointItemSequence
+                                        IsBlank(
+                                            LookUp(
+                                                GC_checkpointItemAssessment,
+                                                assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && section_Id.'sectionAssessment (quantum_sectionassessment)' = varSA && checkpointItemId.checkpointItemId = varCheckpointitemID
                                             )
-                                        }
-                                    ),
-                                    UpdateIf(
-                                        GC_checkpointItemAssessment,
-                                        assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpointItemId.checkpointItemId = varCheckpointitemID,
-                                        {
-                                            assessmentStatus: "Check",
-                                            CIstatusUpdate: 0
-                                        }
-                                    );
-                                )
+                                        ),
+                                        Set(
+                                            varCItemA,
+                                            varBankUnitId & "ci" & Text(
+                                                Now(),
+                                                "mmddyyyyhhmmss"
+                                            ) & "-" & Rand()
+                                        );
+                                        Patch(
+                                            GC_checkpointItemAssessment,
+                                            Defaults(GC_checkpointItemAssessment),
+                                            {
+                                                'checkpointItemAssessment (quantum_checkpointitemassessment)': varCItemA,
+                                                checkpointAssessment_Id: LookUp(
+                                                    DropColumns(
+                                                        GcCheckpointAssessment,
+                                                        "CstatusUpdate"
+                                                    ),
+                                                    checkpointAssessment_id = GuidId
+                                                ),
+                                                assignmentId: LookUp(
+                                                    DropColumns(
+                                                        gcProjectAssignment,
+                                                        "AstatusUpdate"
+                                                    ),
+                                                    Id = varAssignmentId
+                                                ),
+                                                bankUnitId: LookUp(
+                                                    gcBankunit,
+                                                    Id = varBankUnitId
+                                                ),
+                                                product_id: LookUp(
+                                                    GC_product,
+                                                    product_Model = glryUnitBS.Selected.productModel
+                                                ),
+                                                section_Id: LookUp(
+                                                    DropColumns(
+                                                        GcSectionAssessment,
+                                                        "SstatusUpdate"
+                                                    ),
+                                                    'sectionAssessment (quantum_sectionassessment)' = varSA
+                                                ),
+                                                checkpointItem_annotation: "",
+                                                checkpointItemId: LookUp(
+                                                    GC_templateCheckpointsItem,
+                                                    checkpointItemId = glryItmesAS.Selected.checkpointItemId
+                                                ),
+                                                checkpointItemName: glryItmesAS.Selected.cboxItemsAS.Text,
+                                                assessmentStatus: "Check",
+                                                CIstatusUpdate: 0,
+                                                checkpointitemSequence: LookUp(
+                                                    GC_templateCheckpointsItem,
+                                                    checkpointItemId = glryItmesAS.Selected.checkpointItemId,
+                                                    checkpointItemSequence
+                                                ),
+                                                CheckpointItemSortSequence: LookUp(
+                                                    GC_templateSections,
+                                                    sectionId = VarSectionId,
+                                                    sectionSequence
+                                                ) & LookUp(
+                                                    GC_templateCheckpoints,
+                                                    checkpointId = ChId,
+                                                    checkpointSequence
+                                                ) & LookUp(
+                                                    GC_templateCheckpointsItem,
+                                                    checkpointItemId = varCheckpointitemID,
+                                                    checkpointItemSequence
+                                                )
+                                            }
+                                        ),
+                                        UpdateIf(
+                                            GC_checkpointItemAssessment,
+                                            assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpointItemId.checkpointItemId = varCheckpointitemID,
+                                            {
+                                                assessmentStatus: "Check",
+                                                CIstatusUpdate: 0
+                                            }
+                                        );
+                                    )
+                                );
+                                
                             );
-                            );
-                            
                             /*************************************/
                             ///Save data from collections to local cache
                             SaveData(
@@ -1346,8 +1461,10 @@ AssessmentScreen As screen:
                                             checkpointItemComment: i.checkpointItemComment
                                         }
                                     );
-                                );//if
-                            );//forall
+                                );
+                                //if
+                            );
+                            //forall
                             SaveData(
                                 GC_checkpointItemAssessmentCache,
                                 "localcheckpointitemassessment"
@@ -1898,17 +2015,17 @@ AssessmentScreen As screen:
                             =//for Logs
                             UpdateIf(
                                 GcTraceLog,
-                                ID = 1,
+                                VarDebug = true,
                                 {
-                                    Path: LookUp(
-                                        GcTraceLog,
-                                        ID = 1,
-                                        Path
-                                    ) & "/SubmitStart=" & Text(
+                                    Path: First(GcTraceLog).Path & "/SubmitStart=" & Text(
                                         Now(),
-                                        "hh:mm am/pm"
+                                        "mm/dd/yyyy hh:mm:ss am/pm"
                                     )
                                 }
+                            );
+                            SaveData(
+                                GcTraceLog,
+                                "localGcTraceLog"
                             );
                             Set(
                                 VarSubmitError,
@@ -3433,21 +3550,18 @@ AssessmentScreen As screen:
                             //for Logs
                             UpdateIf(
                                 GcTraceLog,
-                                ID = 1,
+                                VarDebug=true,
                                 {
-                                    Path: LookUp(
-                                        GcTraceLog,
-                                        ID = 1,
-                                        Path
-                                    ) & "/SubmitEnd=" & Text(
+                                    Path:First(GcTraceLog).Path  & "/SubmitEnd=" &Text(
                                         Now(),
-                                        "hh:mm am/pm"
+                                        "mm/dd/yyyy hh:mm:ss am/pm"
                                     )
                                 }
                             );
+                            SaveData(GcTraceLog,"localGcTraceLog");
+                            If(VarDebug=true,
                             //Patch logs to Dataverse
-                            Patch(
-                                TraceUserLogs,
+                            Patch(TraceUserLogs,
                                 Defaults(TraceUserLogs),
                                 {
                                     LogUser: VarUserEmail,
@@ -3460,15 +3574,16 @@ AssessmentScreen As screen:
                             //for Logs
                                 UpdateIf(
                                     GcTraceLog,
-                                    ID = 1,
+                                    VarDebug=true,
                                     {
                                         Path: "/OnSubmit=" & Text(
-                                            Now(),
-                                            "hh:mm am/pm"
-                                        )
+                                        Now(),
+                                        "mm/dd/yyyy hh:mm:ss am/pm"
+                                    )
                                     }
                                 );
-                                
+                                SaveData(GcTraceLog,"localGcTraceLog");
+                            );
                             );
                             Set(
                                 Varpatchlabel,
