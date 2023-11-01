@@ -1,0 +1,98 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "shlaf_traceuserlogses",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "shlaf_traceuserlogs",
+    "Name": "TraceUserLogs",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "shlaf_logdate": "LogDate",
+      "shlaf_logpath": "LogPath",
+      "shlaf_loguser": "LogUser",
+      "shlaf_traceuserlogs_AsyncOperations": "System Jobs",
+      "shlaf_traceuserlogs_BulkDeleteFailures": "Bulk Delete Failures",
+      "shlaf_traceuserlogs_DuplicateBaseRecord": "Duplicate Records (shlaf_traceuserlogs_DuplicateBaseRecord)",
+      "shlaf_traceuserlogs_DuplicateMatchingRecord": "Duplicate Records (shlaf_traceuserlogs_DuplicateMatchingRecord)",
+      "shlaf_traceuserlogs_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "shlaf_traceuserlogs_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "shlaf_traceuserlogs_ProcessSession": "Process Sessions",
+      "shlaf_traceuserlogs_SyncErrors": "Sync Errors",
+      "shlaf_traceuserlogsid": "TraceUserLogs",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "TraceUserLogs",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "TraceUserLogs (Views)",
+    "Name": "_shlaf_traceuserlogs_views",
+    "RelatedEntityName": "TraceUserLogs",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "702e2320-6615-46b3-921a-67ec53801211": "TraceUserLogs Associated View",
+      "79bb485c-8612-4c00-9373-f1b239493b62": "Inactive TraceUserLogs",
+      "936bbb2b-d34b-448a-9e54-240605aa20eb": "TraceUserLogs Advanced Find View",
+      "be2dd83c-0614-4875-91e2-7644a9b10752": "Active TraceUserLogs",
+      "c76ac95e-bc23-4bd9-82e2-fc9f6f4220b7": "TraceUserLogs Lookup View"
+    }
+  },
+  {
+    "DisplayName": "Status (TraceUserLogs)",
+    "Name": "shlaf_traceuserlogs_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "TraceUserLogs"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "TraceUserLogs",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (TraceUserLogs)",
+    "Name": "shlaf_traceuserlogs_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "TraceUserLogs"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "TraceUserLogs",
+    "Type": "OptionSetInfo"
+  }
+]

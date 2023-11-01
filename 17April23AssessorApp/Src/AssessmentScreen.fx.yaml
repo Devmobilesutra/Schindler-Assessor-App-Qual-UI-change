@@ -1879,7 +1879,7 @@ AssessmentScreen As screen:
                         HoverFill: |-
                             =///ColorFade(RGBA(56, 96, 178, 1), -20%)
                             Self.Fill
-                        OnSelect: |-
+                        OnSelect: |
                             =//for Logs
                             UpdateIf(
                                 GcTraceLog,
@@ -2040,57 +2040,46 @@ AssessmentScreen As screen:
                                     "No new assessment records found for submission. "
                                 );
                                 ,
-                            
                                 If(
-                                CountRows(
-                                    Filter(
-                                        GC_checkpointItem_ActionItem,
-                                        (bankUnitId.Id = varBankUnitId && Action_status = "Close" && CIAstatusUpdate = 1)
-                                    )
-                                ) > 0,
-                            
-                                ForAll(  Filter(
-                                        GC_checkpointItem_ActionItem,
-                                        (bankUnitId.Id = varBankUnitId && Action_status = "Close" && CIAstatusUpdate = 1)
-                                    )
-                                 As i,
-                                      UpdateIf(
-                                        checkpointItem_ActionItem,
-                                            checkpointItemActionItemsId =i.checkpointItemActionItemsId
-                                            ,
-                                                 {
-                                                       Action_status: "Close"
-                                                 }
-                                        );
-                                );
-                            
-                            
-                                 If(
-                                                (!IsEmpty(Errors(checkpointItem_ActionItem))),
-                                                Set(
-                                                    VarSubmitError,
-                                                    true
-                                                );
-                                                Set(
-                                                    VarPopupText,
-                                                    "Something went wrong, Please try again ."
-                                                );
-                                                ,
-                                                Set(
-                                                    VarPopupText,
-                                                    "Assessment records submitted successfully."
-                                                );
-                                    UpdateIf(
-                                        GC_checkpointItem_ActionItem,
-                                            bankUnitId.Id = varBankUnitId && Action_status = "Close" && CIAstatusUpdate = 1,
-                                                 {
-                                                       CIAstatusUpdate: 2
-                                                 }
+                                    CountRows(
+                                        Filter(
+                                            GC_checkpointItem_ActionItem,
+                                            (bankUnitId.Id = varBankUnitId && Action_status = "Close" && CIAstatusUpdate = 1)
                                         )
-                                 );
-                                
-                                  );
-                            
+                                    ) > 0,
+                                    ForAll(
+                                        Filter(
+                                            GC_checkpointItem_ActionItem,
+                                            (bankUnitId.Id = varBankUnitId && Action_status = "Close" && CIAstatusUpdate = 1)
+                                        ) As i,
+                                        UpdateIf(
+                                            checkpointItem_ActionItem,
+                                            checkpointItemActionItemsId = i.checkpointItemActionItemsId,
+                                            {Action_status: "Close"}
+                                        );
+                                    );
+                                    If(
+                                        (!IsEmpty(Errors(checkpointItem_ActionItem))),
+                                        Set(
+                                            VarSubmitError,
+                                            true
+                                        );
+                                        Set(
+                                            VarPopupText,
+                                            "Something went wrong, Please try again ."
+                                        );
+                                        ,
+                                        Set(
+                                            VarPopupText,
+                                            "Assessment records submitted successfully."
+                                        );
+                                        UpdateIf(
+                                            GC_checkpointItem_ActionItem,
+                                            bankUnitId.Id = varBankUnitId && Action_status = "Close" && CIAstatusUpdate = 1,
+                                            {CIAstatusUpdate: 2}
+                                        )
+                                    );
+                                );
                                /* Concurrent(
                                     //if we update existing unit then do status 2 to 1 for show green and grey tick
                                     UpdateIf(
@@ -2113,7 +2102,6 @@ AssessmentScreen As screen:
                                         {CstatusUpdate: 1}
                                     );
                                 );*/
-                                
                             //if network available then patch 1 status data to dataverse
                             If(
                                     Connection.Connected,
@@ -2734,7 +2722,7 @@ AssessmentScreen As screen:
                                                                             DropColumns(
                                                                                 Filter(
                                                                                     GC_checkpointItem_ActionItem,
-                                                                                    (assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpoint_id.checkpointAssessment_id = GuidId && CIAstatusUpdate = 1) 
+                                                                                    (assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpoint_id.checkpointAssessment_id = GuidId && CIAstatusUpdate = 1)
                                                                 //|| (bankUnitId.Id = varBankUnitId && Action_status = "Close" && CIAstatusUpdate = 1)
                                                                                 ),
                                                                                 "CIAstatusUpdate"
@@ -2865,7 +2853,6 @@ AssessmentScreen As screen:
                                                                                     }
                                                                                 )
                                                                             );
-                                                                            
                                                                          /*    UpdateIf(
                                                                                     GC_checkpointItem_ActionItem,
                                                                                    bankUnitId.Id = varBankUnitId && Action_status = "Close" && CIAstatusUpdate = 1,
@@ -2873,7 +2860,6 @@ AssessmentScreen As screen:
                                                                                         CIAstatusUpdate: 2
                                                                                     }
                                                                                 )*/
-                            
                                                                         );
                                                             //checkpointActionItem countrows
                             //    ,
@@ -2919,7 +2905,7 @@ AssessmentScreen As screen:
                                                                             CountRows(
                                                                                 Filter(
                                                                                     GC_checkpointItem_ActionItem,
-                                                                                    (assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpoint_id.checkpointAssessment_id = GuidId && CIAstatusUpdate = 1) 
+                                                                                    (assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpoint_id.checkpointAssessment_id = GuidId && CIAstatusUpdate = 1)
                                                             // || (bankUnitId.Id = varBankUnitId && Action_status = "Close" && CIAstatusUpdate = 1)
                                                                                 )
                                                                             ) < 1 && CountRows(
@@ -2928,7 +2914,6 @@ AssessmentScreen As screen:
                                                                                     assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpoint_id.checkpointAssessment_id = GuidId && CIIstatusUpdate = 1
                                                                                 )
                                                                             ) < 1,
-                                                                                                     
                                                                             Concurrent(
                             //updating checkpoint assessment status from 0 to 1 for detecting unpatched data and sync status update
                                                                                 UpdateIf(
@@ -2992,8 +2977,7 @@ AssessmentScreen As screen:
                                         //Section IfError
                                         );
                                     //Section countrows
-                            
-                                        ,
+                            ,
                                         Set(
                                             VarSubmitError,
                                             true
@@ -3011,75 +2995,74 @@ AssessmentScreen As screen:
                                 //Net connected 
                             );
                             ///data availabel
-                            
                             //updating Section assessment status from 0 to 1 for detecting unpatched data and sync status update    
                             UpdateIf(
-                                            GcSectionAssessment,
-                                            'sectionAssessment (quantum_sectionassessment)' = varSA && SstatusUpdate = 1,
-                                            {
-                                                SstatusUpdate: If(
-                                                    CountRows(
-                                                        Filter(
-                                                            GcCheckpointAssessment,
-                                                            assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && sectionId.'sectionAssessment (quantum_sectionassessment)' = varSA && CstatusUpdate = 0
-                                                        )
-                                                    ) > 0,
-                                                    0,
-                                                    If(
-                                                        CountRows(
-                                                            Filter(
-                                                                GcCheckpointAssessment,
-                                                                assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && sectionId.'sectionAssessment (quantum_sectionassessment)' = varSA && CstatusUpdate = 1
-                                                            )
-                                                        ) > 0,
-                                                        1,
-                                                        If(
-                                                            CountRows(
-                                                                Filter(
-                                                                    GcCheckpointAssessment,
-                                                                    assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && sectionId.'sectionAssessment (quantum_sectionassessment)' = varSA && CstatusUpdate = 2
-                                                                )
-                                                            ) > 0,
-                                                            2
-                                                        )//If status 2
-                                                    )//If status 1
-                                                )//If status 0
-                                            }
-                                        );
+                                GcSectionAssessment,
+                                'sectionAssessment (quantum_sectionassessment)' = varSA && SstatusUpdate = 1,
+                                {
+                                    SstatusUpdate: If(
+                                        CountRows(
+                                            Filter(
+                                                GcCheckpointAssessment,
+                                                assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && sectionId.'sectionAssessment (quantum_sectionassessment)' = varSA && CstatusUpdate = 0
+                                            )
+                                        ) > 0,
+                                        0,
+                                        If(
+                                            CountRows(
+                                                Filter(
+                                                    GcCheckpointAssessment,
+                                                    assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && sectionId.'sectionAssessment (quantum_sectionassessment)' = varSA && CstatusUpdate = 1
+                                                )
+                                            ) > 0,
+                                            1,
+                                            If(
+                                                CountRows(
+                                                    Filter(
+                                                        GcCheckpointAssessment,
+                                                        assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && sectionId.'sectionAssessment (quantum_sectionassessment)' = varSA && CstatusUpdate = 2
+                                                    )
+                                                ) > 0,
+                                                2
+                                            )//If status 2
+                                        )//If status 1
+                                    )//If status 0
+                                }
+                            );
                                         //updating Section assessment status from 0 to 1 for detecting unpatched data and sync status update
                             UpdateIf(
-                                            GC_unitAssessment,
-                                            assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && UstatusUpdate = 1,
-                                            {
-                                                UstatusUpdate: If(
-                                                    CountRows(
-                                                        Filter(
-                                                            GcCheckpointAssessment,
-                                                            assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && CstatusUpdate = 0
-                                                        )
-                                                    ) > 0,
-                                                    0,
-                                                    If(
-                                                        CountRows(
-                                                            Filter(
-                                                                GcCheckpointAssessment,
-                                                                assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && CstatusUpdate = 1
-                                                            )
-                                                        ) > 0,
-                                                        1,
-                                                        If(
-                                                            CountRows(
-                                                                Filter(
-                                                                    GcCheckpointAssessment,
-                                                                    assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && CstatusUpdate = 2
-                                                                )
-                                                            ) > 0,
-                                                            2
-                                                        )
-                                                    )
+                                GC_unitAssessment,
+                                assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && UstatusUpdate = 1,
+                                {
+                                    UstatusUpdate: If(
+                                        CountRows(
+                                            Filter(
+                                                GcCheckpointAssessment,
+                                                assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && CstatusUpdate = 0
+                                            )
+                                        ) > 0,
+                                        0,
+                                        If(
+                                            CountRows(
+                                                Filter(
+                                                    GcCheckpointAssessment,
+                                                    assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && CstatusUpdate = 1
                                                 )
-                                            }
-                                        );
+                                            ) > 0,
+                                            1,
+                                            If(
+                                                CountRows(
+                                                    Filter(
+                                                        GcCheckpointAssessment,
+                                                        assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && CstatusUpdate = 2
+                                                    )
+                                                ) > 0,
+                                                2
+                                            )
+                                        )
+                                    )
+                                }
+                            );
                             //*****************************************************************************************************************************
                             //saving data to local cashe
                             SaveData(
@@ -3432,19 +3415,6 @@ AssessmentScreen As screen:
                             Clear(TempCheckpointItemAssessment);
                             Clear(TempcheckpointItem_ActionItem);
                             Clear(TempCheckpointItem_Images);
-                            Set(
-                                Varpatchlabel,
-                                " "
-                            );
-                            Set(
-                                popupsuccess,
-                                true
-                            );
-                            Set(
-                                varSpinner,
-                                false
-                            );
-                            
                             //for Logs
                             UpdateIf(
                                 GcTraceLog,
@@ -3459,6 +3429,27 @@ AssessmentScreen As screen:
                                         "hh:mm am/pm"
                                     )
                                 }
+                            );
+                            Patch(
+                                TraceUserLogs,
+                                Defaults(TraceUserLogs),
+                                {
+                                    LogUser: VarUserEmail,
+                                    LogDate: Now(),
+                                    LogPath: First(GcTraceLog).Path
+                                }
+                            );
+                            Set(
+                                Varpatchlabel,
+                                " "
+                            );
+                            Set(
+                                popupsuccess,
+                                true
+                            );
+                            Set(
+                                varSpinner,
+                                false
                             );
                         PaddingBottom: =2
                         PaddingTop: =2
