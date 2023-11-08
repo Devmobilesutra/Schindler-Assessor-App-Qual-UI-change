@@ -808,13 +808,6 @@ DashboardScreen As screen:
                 Width: =Parent.Width-40
                 ZIndex: =2
 
-            Button5 As button:
-                AlignInContainer: =AlignInContainer.Start
-                OnSelect: =Navigate(Screen1)
-                Text: ="View Path"
-                Width: =200
-                ZIndex: =3
-
             Button2_3 As button:
                 AlignInContainer: =AlignInContainer.Start
                 BorderThickness: =0

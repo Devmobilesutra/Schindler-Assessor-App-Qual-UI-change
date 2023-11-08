@@ -51,7 +51,6 @@
       "enableruntimepolicies": false,
       "enablesaveloadcleardataonweb": false,
       "enableupdateifdelegation": false,
-      "enhancedgalleryinitialization": true,
       "errorhandling": true,
       "expandedsavedatasupport": true,
       "exportimportcomponents2": true,
@@ -138,7 +137,6 @@
     "SafetyHeaderScreen",
     "SectionScreen",
     "AssessmentScreen",
-    "FindingScreen",
-    "Screen1"
+    "FindingScreen"
   ]
 }
