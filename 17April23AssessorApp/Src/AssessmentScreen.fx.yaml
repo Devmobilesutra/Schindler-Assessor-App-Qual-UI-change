@@ -727,7 +727,9 @@ AssessmentScreen As screen:
                                 IsBlank(
                                     LookUp(
                                         GC_checkpointItemAssessment,
-                                        assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpointItemId.checkpointItemId = varCheckpointitemID && section_Id.'sectionAssessment (quantum_sectionassessment)' = varSA && checkpointAssessment_Id.checkpointAssessment_id = GuidId
+                                        assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpointItemId.checkpointItemId = varCheckpointitemID 
+                                        //&& section_Id.'sectionAssessment (quantum_sectionassessment)' = varSA && checkpointAssessment_Id.checkpointAssessment_id = GuidId
+                                        
                                     )
                                 ),
                                //Set(varCItemA,Text(GUID()));
@@ -1221,14 +1223,14 @@ AssessmentScreen As screen:
                                                 checkpointItem_annotation: "",
                                                 checkpointItemId: LookUp(
                                                     GC_templateCheckpointsItem,
-                                                    checkpointItemId = glryItmesAS.Selected.checkpointItemId
+                                                    checkpointItemId = varCheckpointitemID
                                                 ),
                                                 checkpointItemName: glryItmesAS.Selected.cboxItemsAS.Text,
                                                 assessmentStatus: "Check",
                                                 CIstatusUpdate: 0,
                                                 checkpointitemSequence: LookUp(
                                                     GC_templateCheckpointsItem,
-                                                    checkpointItemId = glryItmesAS.Selected.checkpointItemId,
+                                                    checkpointItemId =varCheckpointitemID,
                                                     checkpointItemSequence
                                                 ),
                                                 CheckpointItemSortSequence: LookUp(
@@ -1479,6 +1481,11 @@ AssessmentScreen As screen:
                             /*If(glryItmesAS.Selected.checkpointItemImage='checkpointItemImage (templateCheckpointsItems)'.Yes&&
                                     //(UploadedImage1_2.Image=Blank()
                             CountRows(Filter(GC_checkpointItem_Images,assignmentId.Id=varAssignmentId&&bankUnitId.Id=varBankUnitId&&checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)'=varCItemA))<1,Set(IsResetCboxItemsAS, false );glryItmesAS.Selected.cboxItemsAS.Value= false ,glryItmesAS.Selected.cboxItemsAS.Value= true ;Set(IsResetCboxItemsAS, true ))*/
+                            
+                            Set(
+                                varCheckpointitemID,
+                                ThisItem.checkpointItemId
+                            );
                             Set(IsResetCboxItemsAS,false);Set(IsResetCboxItemsAS,true);
                         OnUncheck: |
                             =/*//for reset ideal timer
