@@ -673,7 +673,7 @@ SectionScreen As screen:
                                     !IsBlank(
                                         LookUp(
                                             GcCheckpointAssessment,
-                                            assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId 
+                                            assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && sectionId.'sectionAssessment (quantum_sectionassessment)' = varSA
                                             //&& sectionId.sectionId.sectionId = VarSectionId 
                                             && checkpointId.checkpointId = ChId
                                         )

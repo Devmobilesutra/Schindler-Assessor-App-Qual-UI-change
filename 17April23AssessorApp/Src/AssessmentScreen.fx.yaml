@@ -727,7 +727,7 @@ AssessmentScreen As screen:
                                 IsBlank(
                                     LookUp(
                                         GC_checkpointItemAssessment,
-                                        assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpointItemId.checkpointItemId = varCheckpointitemID 
+                                        assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && section_Id.'sectionAssessment (quantum_sectionassessment)' = varSA && checkpointItemId.checkpointItemId = varCheckpointitemID 
                                         //&& section_Id.'sectionAssessment (quantum_sectionassessment)' = varSA && checkpointAssessment_Id.checkpointAssessment_id = GuidId
                                         
                                     )
