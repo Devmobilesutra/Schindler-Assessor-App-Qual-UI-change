@@ -33,6 +33,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Component1",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -143,6 +144,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ctnHeaderAS_1",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -342,6 +344,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "icoNotificationHeaderAS_1",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -575,6 +578,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "iconSignoutHeaderAS_1",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -816,6 +820,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "imgLogoAS_1",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -1081,6 +1086,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "imgUserHeaderAS_1",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 5,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -1349,6 +1355,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblAssessmentAS_1",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -1674,6 +1681,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblUsernameHeaderAS_1",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [

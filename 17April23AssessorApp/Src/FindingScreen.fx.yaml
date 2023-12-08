@@ -1242,6 +1242,7 @@ FindingScreen As screen:
                             ZIndex: =12
 
                         Container4 As groupContainer.horizontalAutoLayoutContainer:
+                            BorderThickness: =1
                             Height: =80
                             LayoutAlignItems: =LayoutAlignItems.Center
                             LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween

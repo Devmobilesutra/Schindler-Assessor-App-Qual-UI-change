@@ -34,6 +34,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "CompHeader",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -142,6 +143,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "DisplayPicture",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 5,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -437,6 +439,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "HeaderContainer_1",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -712,6 +715,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Heading",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -1028,6 +1032,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Notification",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -1329,6 +1334,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "SchindlerLogo",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -1639,6 +1645,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "SignOut",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -1898,6 +1905,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "UserName",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [

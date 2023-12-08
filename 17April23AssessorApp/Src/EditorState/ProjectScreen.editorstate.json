@@ -281,7 +281,8 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btnBackPS",
-      "ParentIndex": 0,
+      "OptimizeForDevices": "Off",
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -643,6 +644,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btnProjectClick",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -978,6 +980,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btnprojecttype",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -1298,6 +1301,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ctnBack&onlinestatusPS",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -1584,6 +1588,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ctnBackPS",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -1827,6 +1832,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ctnHeaderPS",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -2027,6 +2033,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ctnMainPS",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -2264,6 +2271,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ctnMiddlePS",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -2401,6 +2409,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "galleryTemplate2",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -2548,6 +2557,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "glryProject",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -2704,6 +2714,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "grImageIcons",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 28,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -2755,6 +2766,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "grLabel",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 29,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -2806,6 +2818,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "grLabelValue",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 30,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -2910,6 +2923,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Image2_32",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -3146,6 +3160,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "imgAddress",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 7,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -3382,6 +3397,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "imgAssignedDate",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 17,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -3618,6 +3634,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "imgBank",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 14,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -3854,6 +3871,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "imgContact",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 10,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -4090,6 +4108,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "imgDueDate",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 24,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -4326,6 +4345,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "imglogo",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 23,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -4589,6 +4609,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "imgLogoPS",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -4820,6 +4841,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "imgReviewer",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 27,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -5056,6 +5078,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "imgStartDate",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 20,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -5326,6 +5349,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "imgUserHeaderPS",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -5609,6 +5633,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblADate",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 16,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -5926,6 +5951,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblAddress",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 5,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -6272,6 +6298,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblAddressdetails",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 6,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -6607,6 +6634,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblAssessmentPS",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -6926,6 +6954,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblAssignedDate",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 15,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -7246,7 +7275,8 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblAssignmentImgCount",
-      "ParentIndex": 12,
+      "OptimizeForDevices": "Off",
+      "ParentIndex": 13,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -7558,6 +7588,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblBank",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 11,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -7901,7 +7932,8 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblBankName",
-      "ParentIndex": 13,
+      "OptimizeForDevices": "Off",
+      "ParentIndex": 12,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -8226,6 +8258,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "%TemplateBrowseGalleryBody.ID%",
       "Name": "lblContact",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 9,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -8520,6 +8553,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblContactNumber",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 8,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -8859,6 +8893,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblDDate",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 22,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -9188,6 +9223,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblDueDate",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 21,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -9500,6 +9536,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "%TemplateBrowseGalleryTitle.ID%",
       "Name": "lblProjectName",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -9807,6 +9844,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblReviewerName",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 26,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -10136,6 +10174,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblRName",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 25,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -10474,6 +10513,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblSDate",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 19,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -10798,6 +10838,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblStartDate",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 18,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -11143,6 +11184,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblUsernameHeaderPS",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -11379,6 +11421,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ProjectScreen",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -11502,6 +11545,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Rectangle1_1",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 5,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -11648,6 +11692,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "%TemplateBrowseGallerySeparator1.ID%",
       "Name": "SepGlryProject",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -11842,7 +11887,8 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "TimerglryProject",
-      "ParentIndex": 1,
+      "OptimizeForDevices": "Off",
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
