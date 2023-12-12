@@ -9712,7 +9712,7 @@
       "MetaDataIDKey": "",
       "Name": "Container4",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 8,
+      "ParentIndex": 9,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -18399,7 +18399,8 @@
         "minimumHeight",
         "maximumWidth",
         "maximumHeight",
-        "ZIndex"
+        "ZIndex",
+        "MaxTemplateSize"
       ],
       "GalleryTemplateChildName": "Gallery14template1_2",
       "HasDynamicProperties": false,
@@ -18413,7 +18414,7 @@
       "MetaDataIDKey": "",
       "Name": "Gallery14_2",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 9,
+      "ParentIndex": 10,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -18635,6 +18636,11 @@
           "Category": "Design",
           "PropertyName": "maximumHeight",
           "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "MaxTemplateSize",
+          "RuleProviderType": "Unknown"
         }
       ],
       "StyleName": "defaultGalleryStyle",
@@ -18841,7 +18847,8 @@
         "minimumHeight",
         "maximumWidth",
         "maximumHeight",
-        "ZIndex"
+        "ZIndex",
+        "MaxTemplateSize"
       ],
       "GalleryTemplateChildName": "Gallery5_4template1_2",
       "HasDynamicProperties": false,
@@ -19077,6 +19084,11 @@
           "Category": "Design",
           "PropertyName": "maximumHeight",
           "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "MaxTemplateSize",
+          "RuleProviderType": "Unknown"
         }
       ],
       "StyleName": "defaultGalleryStyle",
@@ -19156,7 +19168,8 @@
         "minimumHeight",
         "maximumWidth",
         "maximumHeight",
-        "ZIndex"
+        "ZIndex",
+        "MaxTemplateSize"
       ],
       "DynamicProperties": [
         {
@@ -19430,6 +19443,11 @@
           "Category": "Design",
           "PropertyName": "FocusedBorderColor",
           "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "MaxTemplateSize",
+          "RuleProviderType": "Unknown"
         }
       ],
       "StyleName": "defaultGalleryStyle",
@@ -19502,7 +19520,8 @@
         "minimumHeight",
         "maximumWidth",
         "maximumHeight",
-        "ZIndex"
+        "ZIndex",
+        "MaxTemplateSize"
       ],
       "DynamicProperties": [
         {
@@ -19776,6 +19795,11 @@
           "Category": "Design",
           "PropertyName": "FocusedBorderColor",
           "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "MaxTemplateSize",
+          "RuleProviderType": "Unknown"
         }
       ],
       "StyleName": "defaultGalleryStyle",
@@ -19848,7 +19872,8 @@
         "minimumHeight",
         "maximumWidth",
         "maximumHeight",
-        "ZIndex"
+        "ZIndex",
+        "MaxTemplateSize"
       ],
       "DynamicProperties": [
         {
@@ -20121,6 +20146,11 @@
         {
           "Category": "Design",
           "PropertyName": "FocusedBorderColor",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "MaxTemplateSize",
           "RuleProviderType": "Unknown"
         }
       ],
@@ -21091,7 +21121,7 @@
       "MetaDataIDKey": "",
       "Name": "Icon3_15",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 10,
+      "ParentIndex": 8,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -33951,7 +33981,7 @@
       "MetaDataIDKey": "",
       "Name": "Label4",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 1,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -42743,7 +42773,7 @@
       "MetaDataIDKey": "",
       "Name": "lblImageRequiredFS",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 2,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {

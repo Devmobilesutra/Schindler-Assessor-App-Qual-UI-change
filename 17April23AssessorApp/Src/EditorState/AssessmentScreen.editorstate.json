@@ -8529,7 +8529,8 @@
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
-        "ShowScrollbar"
+        "ShowScrollbar",
+        "MaxTemplateSize"
       ],
       "DynamicProperties": [
         {
@@ -8726,6 +8727,11 @@
         {
           "Category": "Design",
           "PropertyName": "Visible",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "MaxTemplateSize",
           "RuleProviderType": "Unknown"
         }
       ],

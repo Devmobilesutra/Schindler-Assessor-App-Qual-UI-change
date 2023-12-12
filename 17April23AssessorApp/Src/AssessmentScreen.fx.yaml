@@ -2763,7 +2763,8 @@ AssessmentScreen As screen:
                                                                         TempCheckpointItemAssessment,
                                                                         Filter(
                                                                             checkpointItemAssessment,
-                                                                            assignmentId.assessorId = varLoggedAssessor && assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpointAssessment_Id.checkpointAssessment_id = GuidId
+                                                                           //$ assignmentId.assessorId = varLoggedAssessor && 
+                                                                            assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpointAssessment_Id.checkpointAssessment_id = GuidId
                                                                         )
                                                                     );
                                                                 );
@@ -2836,7 +2837,8 @@ AssessmentScreen As screen:
                                                                             TempcheckpointItem_ActionItem,
                                                                             Filter(
                                                                                 checkpointItem_ActionItem,
-                                                                                assignmentId.assessorId = varLoggedAssessor && assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpoint_id.checkpointAssessment_id = GuidId
+                                                                               //$ assignmentId.assessorId = varLoggedAssessor &&
+                                                                                 assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpoint_id.checkpointAssessment_id = GuidId
                                                                             )
                                                                         );
                                                                     );
@@ -2893,7 +2895,8 @@ AssessmentScreen As screen:
                                                                             TempCheckpointItem_Images,
                                                                             Filter(
                                                                                 checkpointItem_Images,
-                                                                                assignmentId.assessorId = varLoggedAssessor && assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpoint_id.checkpointAssessment_id = GuidId
+                                                                               //$ assignmentId.assessorId = varLoggedAssessor && 
+                                                                                assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpoint_id.checkpointAssessment_id = GuidId
                                                                             )
                                                                         );
                                                                     );
@@ -2974,7 +2977,8 @@ AssessmentScreen As screen:
                                                                                     TempcheckpointItem_ActionItem,
                                                                                     Filter(
                                                                                         checkpointItem_ActionItem,
-                                                                                        assignmentId.assessorId = varLoggedAssessor && assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpoint_id.checkpointAssessment_id = GuidId
+                                                                                        //$assignmentId.assessorId = varLoggedAssessor && 
+                                                                                        assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpoint_id.checkpointAssessment_id = GuidId
                                                                                     )
                                                                                 );
                                                                             );
@@ -3017,7 +3021,8 @@ AssessmentScreen As screen:
                                                                                     TempCheckpointItem_Images,
                                                                                     Filter(
                                                                                         checkpointItem_Images,
-                                                                                        assignmentId.assessorId = varLoggedAssessor && assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpoint_id.checkpointAssessment_id = GuidId
+                                                                                        //$ assignmentId.assessorId = varLoggedAssessor && 
+                                                                                        assignmentId.Id = varAssignmentId && bankUnitId.Id = varBankUnitId && checkpoint_id.checkpointAssessment_id = GuidId
                                                                                     )
                                                                                 );
                                                                             );
