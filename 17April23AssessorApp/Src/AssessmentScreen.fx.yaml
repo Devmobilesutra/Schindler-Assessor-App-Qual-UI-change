@@ -2400,9 +2400,9 @@ AssessmentScreen As screen:
                                                     GcSectionAssessment,
                                                     'sectionAssessment (quantum_sectionassessment)' = i.'sectionAssessment (quantum_sectionassessment)' && SstatusUpdate = 1,
                                                     {
-                                                        'sectionAssessment (quantum_sectionassessmentid)': i.'sectionAssessment (quantum_sectionassessmentid)',
-                                                        sectionComment: i.sectionComment,
-                                                        AssessmentStatus: i.AssessmentStatus//,
+                                                        'sectionAssessment (quantum_sectionassessmentid)': i.'sectionAssessment (quantum_sectionassessmentid)'//,
+                                                        //sectionComment: i.sectionComment,
+                                                       // AssessmentStatus: i.AssessmentStatus//,
                             // SstatusUpdate: 2
                                                     }
                                                 );
@@ -2556,9 +2556,9 @@ AssessmentScreen As screen:
                                                             GcCheckpointAssessment,
                                                             checkpointAssessment_id = j.checkpointAssessment_id && CstatusUpdate = 1,
                                                             {
-                                                                checkpointAssessment: j.checkpointAssessment,
-                                                                checkpointComment: j.checkpointComment,
-                                                                AssessmentStatus: j.AssessmentStatus//,
+                                                                checkpointAssessment: j.checkpointAssessment//,
+                                                            //    checkpointComment: j.checkpointComment,
+                                                               // AssessmentStatus: j.AssessmentStatus//,
                             // CstatusUpdate: 2
                                                             }
                                                         );
@@ -2700,9 +2700,9 @@ AssessmentScreen As screen:
                                                                     GC_checkpointItemAssessment,
                                                                     'checkpointItemAssessment (quantum_checkpointitemassessment)' = k.'checkpointItemAssessment (quantum_checkpointitemassessment)' && CIstatusUpdate = 1,
                                                                     {
-                                                                        'checkpointItemAssessment (quantum_checkpointitemassessmentid)': k.'checkpointItemAssessment (quantum_checkpointitemassessmentid)',
-                                                                        assessmentStatus: k.assessmentStatus,
-                                                                        checkpointItemComment: k.checkpointItemComment//,
+                                                                        'checkpointItemAssessment (quantum_checkpointitemassessmentid)': k.'checkpointItemAssessment (quantum_checkpointitemassessmentid)'//,
+                                                                       // assessmentStatus: k.assessmentStatus,
+                                                                      //  checkpointItemComment: k.checkpointItemComment//,
                             // CIstatusUpdate: 2
                                                                     }
                                                                 );
@@ -2849,9 +2849,9 @@ AssessmentScreen As screen:
                                                                             GC_checkpointItem_ActionItem,
                                                                             checkpointItemActionItemsId = i.checkpointItemActionItemsId && CIAstatusUpdate = 1,
                                                                             {
-                                                                                checkpointItem_ActionItems: i.checkpointItem_ActionItems,
+                                                                                checkpointItem_ActionItems: i.checkpointItem_ActionItems//,
                                                                                 //unique key
-                                                                                Action_status: i.Action_status//,
+                                                                               // Action_status: i.Action_status//,
                             //  CIAstatusUpdate: 2
                                                                             }
                                                                         )
