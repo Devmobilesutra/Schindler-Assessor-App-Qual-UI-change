@@ -614,9 +614,10 @@ DashboardScreen As screen:
                             inpro,
                             true
                         );
+                        //Log Update
                         UpdateIf(
                             GcTraceLog,
-                          VarDebug=true,
+                            VarDebug = true,
                             {
                                 Path: First(GcTraceLog).Path & "/Inprogress=" & Text(
                                     Now(),
@@ -624,7 +625,10 @@ DashboardScreen As screen:
                                 )
                             }
                         );
-                        SaveData(GcTraceLog,"localGcTraceLog");
+                        SaveData(
+                            GcTraceLog,
+                            "localGcTraceLog"
+                        );
                         Navigate(ProjectScreen);
                     PressedBorderColor: =RGBA(0,0,0,0)
                     PressedColor: =RGBA(0,0,0,0)
@@ -731,13 +735,23 @@ DashboardScreen As screen:
                     HoverBorderColor: =RGBA(0,0,0,0)
                     HoverColor: =RGBA(0,0,0,0)
                     HoverFill: =ColorFade(RGBA(0,0,0,0),-20%)
-                    OnSelect: |-
-                        =Set(comp,false);
-                        Set(inpro,false);
-                        Set(upcomp,true);
+                    OnSelect: |
+                        =Set(
+                            comp,
+                            false
+                        );
+                        Set(
+                            inpro,
+                            false
+                        );
+                        Set(
+                            upcomp,
+                            true
+                        );
+                        //Log Update
                         UpdateIf(
                             GcTraceLog,
-                            VarDebug=true,
+                            VarDebug = true,
                             {
                                 Path: First(GcTraceLog).Path & "/Upcomming=" & Text(
                                     Now(),
@@ -745,7 +759,10 @@ DashboardScreen As screen:
                                 )
                             }
                         );
-                        SaveData(GcTraceLog,"localGcTraceLog");
+                        SaveData(
+                            GcTraceLog,
+                            "localGcTraceLog"
+                        );
                         Navigate(ProjectScreen);
                     PressedBorderColor: =RGBA(0,0,0,0)
                     PressedColor: =RGBA(0,0,0,0)
@@ -821,10 +838,10 @@ DashboardScreen As screen:
                 HoverColor: =Self.Color
                 HoverFill: =//ColorFade(Self.Fill, -20%)
                 OnSelect: |
-                    =
+                    =//Log Update
                     UpdateIf(
                         GcTraceLog,
-                        VarDebug=true,
+                        VarDebug = true,
                         {
                             Path: First(GcTraceLog).Path & "/ReportIssue=" & Text(
                                 Now(),
@@ -832,8 +849,10 @@ DashboardScreen As screen:
                             )
                         }
                     );
-                    SaveData(GcTraceLog,"localGcTraceLog");
-                    
+                    SaveData(
+                        GcTraceLog,
+                        "localGcTraceLog"
+                    );
                     //check collection is empty or not ? if empty then load data from local cache 
                     If(
                         IsEmpty(GC_checkpointItemAssessment) && IsEmpty(GC_checkpointItem_ActionItem) && IsEmpty(GC_checkpointItem_Images),
