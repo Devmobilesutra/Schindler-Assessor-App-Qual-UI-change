@@ -63,7 +63,7 @@ DashboardScreen As screen:
                 OnSelect: |
                     =UpdateIf(
                         GcTraceLog,
-                        VarDebug=true,
+                        VarDebug = true,
                         {
                             Path: First(GcTraceLog).Path & "/Sync:Start=" & Text(
                                 Now(),
@@ -71,11 +71,11 @@ DashboardScreen As screen:
                             )
                         }
                     );
-                    SaveData(GcTraceLog,"localGcTraceLog");
-                    
-                    
+                    SaveData(
+                        GcTraceLog,
+                        "localGcTraceLog"
+                    );
                     //get new assignment and completed assignment updates
-                    
                     If(
                         //here we check network is available or not
                         Connection.Connected,
@@ -419,22 +419,25 @@ DashboardScreen As screen:
                         gcProjectAssignment,
                         "localprojectassignment"
                     );
-                    
                     Clear(gcProjectAssignmentAdd);
                     Clear(GC_bankAssessmentAdd);
                     Clear(GC_unitAssessmentAdd);
                     
+                    //Log Update
                     UpdateIf(
                         GcTraceLog,
-                        VarDebug=true,
+                        VarDebug = true,
                         {
-                            Path:First(GcTraceLog).Path & "/Sync:End=" & Text(
+                            Path: First(GcTraceLog).Path & "/Sync:End=" & Text(
                                 Now(),
                                 "mm-dd-yy hh:mm:ss am/pm"
                             )
                         }
                     );
-                    SaveData(GcTraceLog,"localGcTraceLog");
+                    SaveData(
+                        GcTraceLog,
+                        "localGcTraceLog"
+                    );
                 Visible: =Connection.Connected=true
                 Width: =40
                 X: =Image2_33.X+Image2_33.Width+20
