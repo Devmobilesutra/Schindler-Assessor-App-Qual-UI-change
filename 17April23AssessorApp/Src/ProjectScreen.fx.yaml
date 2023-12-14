@@ -140,7 +140,8 @@ ProjectScreen As screen:
                         HoverColor: =RGBA(0, 0, 0, 1)
                         HoverFill: =
                         OnSelect: |-
-                            =UpdateIf(
+                            =//Log Update
+                            UpdateIf(
                                 GcTraceLog,
                                 VarDebug = true,
                                 {
