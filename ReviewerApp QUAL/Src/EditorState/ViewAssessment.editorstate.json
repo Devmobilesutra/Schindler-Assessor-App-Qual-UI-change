@@ -70,6 +70,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btnActionVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 15,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -530,6 +531,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "BtnBackVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -829,6 +831,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btnCheckointCommentVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 6,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -1128,6 +1131,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btnCheckpointitemCommentVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 8,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -1485,6 +1489,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btnExportreportBS",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -1779,6 +1784,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btnSectionCommentVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -2106,7 +2112,8 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btOkActiionItemTrackerBS_4",
-      "ParentIndex": 10,
+      "OptimizeForDevices": "Off",
+      "ParentIndex": 5,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -2419,6 +2426,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Button11",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 12,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -2715,6 +2723,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Container13",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -2967,6 +2976,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Container2",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -3167,7 +3177,8 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Container38",
-      "ParentIndex": 4,
+      "OptimizeForDevices": "Off",
+      "ParentIndex": 6,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -3350,6 +3361,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ctnActionVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -3623,6 +3635,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ctnAnnotationVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 11,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -3892,6 +3905,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ctnAssessmentbyVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -4161,6 +4175,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ctnAssessmentDateVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -4420,6 +4435,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ctnAssessmentDetailsVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -4689,6 +4705,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ctnAssessmentTypeVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -4989,6 +5006,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ctnAssessmntTypeVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 5,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -5247,6 +5265,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ctnAssessorAS_1",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -5523,6 +5542,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ctnBackVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -5751,6 +5771,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ctnBackViewAssessment",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -5991,6 +6012,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ctnbank_3",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -6216,6 +6238,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ctnbank_6",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -6485,6 +6508,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ctnCheckpointitemVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -6708,6 +6732,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ctnCheckpointVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 5,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -7030,6 +7055,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ctnClintName_2",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -7232,6 +7258,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ctnfindingVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 10,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -7532,6 +7559,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ctnGonumberBS_1",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -7777,6 +7805,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ctnGonumberVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 6,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -7968,6 +7997,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ctnHeaderViewAssessment",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -8176,6 +8206,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ctnItemVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 7,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -8480,6 +8511,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ctnlabelsactionVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -8727,6 +8759,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ctnMainBankViewAssessment",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -8953,6 +8986,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ctnMiddleBS_2",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -9198,6 +9232,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ctnProductTypeVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -9404,6 +9439,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ctnSectionVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -9701,6 +9737,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ctnValueactionVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -9900,6 +9937,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Gallery1_2template1_1",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -9939,6 +9977,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Gallery14template1_2",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -9978,6 +10017,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Gallery5_4template1_2",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -10102,7 +10142,8 @@
         "minimumHeight",
         "maximumWidth",
         "maximumHeight",
-        "ZIndex"
+        "ZIndex",
+        "MaxTemplateSize"
       ],
       "GalleryTemplateChildName": "Gallery5_4template1_2",
       "HasDynamicProperties": false,
@@ -10115,6 +10156,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "glryActionItemsVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 13,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -10337,6 +10379,11 @@
           "Category": "Design",
           "PropertyName": "LoadingSpinnerColor",
           "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "MaxTemplateSize",
+          "RuleProviderType": "Unknown"
         }
       ],
       "StyleName": "defaultGalleryStyle",
@@ -10444,7 +10491,8 @@
         "minimumHeight",
         "maximumWidth",
         "maximumHeight",
-        "ZIndex"
+        "ZIndex",
+        "MaxTemplateSize"
       ],
       "DynamicProperties": [
         {
@@ -10509,6 +10557,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "glryCheckpointIiemVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -10731,6 +10780,11 @@
           "Category": "Design",
           "PropertyName": "maximumHeight",
           "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "MaxTemplateSize",
+          "RuleProviderType": "Unknown"
         }
       ],
       "StyleName": "defaultGalleryStyle",
@@ -10859,7 +10913,8 @@
         "minimumHeight",
         "maximumWidth",
         "maximumHeight",
-        "ZIndex"
+        "ZIndex",
+        "MaxTemplateSize"
       ],
       "GalleryTemplateChildName": "Gallery14template1_2",
       "HasDynamicProperties": false,
@@ -10872,6 +10927,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "glryCheckpointitemimagesVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 14,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -11094,6 +11150,11 @@
           "Category": "Design",
           "PropertyName": "maximumHeight",
           "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "MaxTemplateSize",
+          "RuleProviderType": "Unknown"
         }
       ],
       "StyleName": "defaultGalleryStyle",
@@ -11118,6 +11179,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Group1",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 13,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -11169,6 +11231,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "grpActionItemTrackerBS_4",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 14,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -11305,6 +11368,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Icon2",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -11526,6 +11590,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Icon4",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 11,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -11731,6 +11796,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "iconglrybroderVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -11885,7 +11951,8 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "iconInnerrectangleBS_4",
-      "ParentIndex": 7,
+      "OptimizeForDevices": "Off",
+      "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -12047,6 +12114,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "iconlineActionVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -12343,6 +12411,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "iconlineannotationVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 12,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -12653,6 +12722,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "iconLineVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 9,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -12918,7 +12988,8 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "iconOuterrectangleBS_4",
-      "ParentIndex": 2,
+      "OptimizeForDevices": "Off",
+      "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -13155,6 +13226,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "imgcheckpointitemimageVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -13466,7 +13538,8 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "imgInfoBS_4",
-      "ParentIndex": 8,
+      "OptimizeForDevices": "Off",
+      "ParentIndex": 7,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -13729,6 +13802,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "imgLogoVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -13994,6 +14068,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "imgUserprofileVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -14279,6 +14354,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Label34_1",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -14607,6 +14683,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Label35_1",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -14935,6 +15012,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Label41",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -15254,7 +15332,8 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblActionItemtrackerBS_4",
-      "ParentIndex": 9,
+      "OptimizeForDevices": "Off",
+      "ParentIndex": 10,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -15547,6 +15626,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblActionnameVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -15909,6 +15989,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblActionVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -16290,6 +16371,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblADateVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -16609,6 +16691,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblAnnotationVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -17011,6 +17094,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblAssesorNameAS_1",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -17346,6 +17430,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblAssessmentdate_VA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -17651,6 +17736,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblAssessmentDateVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -18053,6 +18139,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblAssessmentttypeVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -18358,6 +18445,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblAssessmentTypeVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -18767,6 +18855,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblAssessmenttypevalueVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -19086,6 +19175,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblAssessmenttypeValueVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -19451,6 +19541,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblAssessmntbyVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -19860,6 +19951,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblAssessorAS_1",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -20179,6 +20271,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblAssessordateVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -20558,6 +20651,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblAssessornameVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -20975,6 +21069,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblAssStatusBS_3",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -21337,6 +21432,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblAssStatusBS_6",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -21678,6 +21774,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "LblAssStatuscountBS_2",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -22019,6 +22116,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "LblAssStatuscountBS_5",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -22350,6 +22448,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblCheckpointnameVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -22722,6 +22821,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblCheckpointVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -23094,6 +23194,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblfindingVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -23510,6 +23611,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblGonumber1BS_1",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -23873,6 +23975,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblGonumberVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -24177,6 +24280,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblHeaderVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -24507,6 +24611,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblimageannotationVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -24928,6 +25033,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblItemAnnotationVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -25314,6 +25420,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblItemnameVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -25686,6 +25793,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblItemVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -26086,6 +26194,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblMaterialEstimateVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -26486,6 +26595,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblMaterialestimatevalueVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -26886,6 +26996,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblOwnerVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -27279,6 +27390,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblOwnervalueVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -27700,6 +27812,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblPriorityVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -28093,6 +28206,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblPriorityvalueVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -28474,6 +28588,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblproductnameVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -28802,6 +28917,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblProductTypeVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -29135,6 +29251,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblSectionNameVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -29514,6 +29631,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblSectionVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -29914,6 +30032,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblTimeEstimateVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -30307,6 +30426,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblTimeestimatevalueVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -30685,6 +30805,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblUsernameVA",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -30959,6 +31080,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Rectangle1",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -31118,7 +31240,8 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Rectangle5",
-      "ParentIndex": 3,
+      "OptimizeForDevices": "Off",
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -31291,7 +31414,8 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Rectangle6",
-      "ParentIndex": 5,
+      "OptimizeForDevices": "Off",
+      "ParentIndex": 8,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -31551,7 +31675,8 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "TextInput2",
-      "ParentIndex": 6,
+      "OptimizeForDevices": "Off",
+      "ParentIndex": 9,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -31787,6 +31912,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ViewAssessment",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [

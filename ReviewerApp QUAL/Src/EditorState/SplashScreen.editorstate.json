@@ -85,6 +85,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ImgLS",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -332,6 +333,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblVersionLS",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -555,6 +557,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "SplashScreen",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -684,6 +687,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "TimerLS",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [

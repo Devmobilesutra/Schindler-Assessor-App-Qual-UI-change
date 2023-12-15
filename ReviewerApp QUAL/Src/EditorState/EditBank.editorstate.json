@@ -208,6 +208,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btnBackEditBank",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -556,6 +557,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btnCancekEditBank",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 10,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -884,6 +886,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btnCancelEditBank",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -1285,6 +1288,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btnOkEditBank",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 11,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -1612,6 +1616,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btnOkSuccessEditBank",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -1933,6 +1938,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btnSaveEditBank",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -2371,6 +2377,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "btnUnitEditBank",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -2717,6 +2724,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "cboxClientEditBank",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -3271,6 +3279,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "cboxProductTypeEditBank",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 8,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -3740,6 +3749,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ctcHeaderEditBank",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -3961,6 +3971,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ctnBackEditBank",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -4175,6 +4186,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ctnbuttonsEditBanks",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 11,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -4415,6 +4427,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ctnEditBank",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -4614,6 +4627,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ctnEditBankEB",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -4897,6 +4911,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ctnMaineditbank",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -5263,6 +5278,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ctnMainEditBank",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -5499,6 +5515,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ctnTitleEditBank",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -5799,6 +5816,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ctnunitEditBank",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 9,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -5955,6 +5973,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "EditBank",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -6022,6 +6041,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "galleryTemplate19_2",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -6095,7 +6115,8 @@
           "InvariantPropertyName": "ShowScrollbar",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
-        }
+        },
+        "MaxTemplateSize"
       ],
       "DynamicProperties": [
         {
@@ -6153,6 +6174,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "glryUnitEditBank",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 10,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -6275,6 +6297,11 @@
           "Category": "Design",
           "PropertyName": "ShowScrollbar",
           "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "MaxTemplateSize",
+          "RuleProviderType": "Unknown"
         }
       ],
       "StyleName": "defaultGalleryStyle",
@@ -6299,6 +6326,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "GroupRemoveEditBank",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 14,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -6350,6 +6378,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "grpSuccessEditBank",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 13,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -6462,6 +6491,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "iconCancelEditBank",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -6661,6 +6691,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "iconInnerRectangleEditbank",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -6813,6 +6844,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "iconInnerRectangleEditBank",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 5,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -6958,6 +6990,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "iconOuterRectabgleEditbank",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -7103,6 +7136,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "iconOuterRectangleEditBank",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -7268,6 +7302,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "imgLogoEB",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -7499,6 +7534,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "imgSuccessEditBank",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 6,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -7769,6 +7805,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "imguserprofileEB",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -8073,6 +8110,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblAddUnitEditBank",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -8473,6 +8511,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblClientEditbank",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -8837,6 +8876,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblDashboardEB",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -9156,6 +9196,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblEditBank",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -9549,6 +9590,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblGonumberEditBank",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -9949,6 +9991,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblLocationEditBank",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 5,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -10342,6 +10385,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblProductTypeEditbank",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 7,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -10735,6 +10779,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblRemoveBankEditBank",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 7,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -11059,6 +11104,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblSuccessEditBank",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 9,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -11404,6 +11450,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblunitEditBank",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -11818,6 +11865,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblunitexistEditBank",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -12180,6 +12228,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblUnitnumberexistEditBank",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -12559,6 +12608,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblUpdatedSuccessEditBank",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 12,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -12882,6 +12932,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblusernameEB",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -13182,6 +13233,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "TimerUnitEdit",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 8,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -13531,6 +13583,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "TxtGonumberEditBank",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -14000,6 +14053,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "txtLocationEditBank",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 6,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -14445,6 +14499,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "txtUnitEditBank",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [

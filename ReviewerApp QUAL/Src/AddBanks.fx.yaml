@@ -855,8 +855,9 @@ AddBanks As screen:
                         iconCancelNB As icon.Cancel:
                             Height: =20
                             Icon: =Icon.Cancel
-                            OnSelect: |
+                            OnSelect: |+
                                 =RemoveIf(rows1,id=ThisItem.id);
+                                
                             Width: =20
                             X: =txtunitnumberNB.X +txtunitnumberNB.Width+20
                             Y: =(txtunitnumberNB.Height - Self.Height)/2 +5
@@ -873,29 +874,55 @@ AddBanks As screen:
                             OnChange: |-
                                 =
                                 //Set(unitTimer,false);
-                                
-                                Collect(
-                                    uniqueUnits,
-                                    {unit:  txtunitnumberNB.Text,id:ThisItem.id,status:false}
+                                //New Change
+                                If(
+                                    IsBlank(
+                                        LookUp(
+                                            uniqueUnits,
+                                            id = ThisItem.id,
+                                            id
+                                        )
+                                    ),
+                                    Collect(
+                                        uniqueUnits,
+                                        {
+                                            unit: txtunitnumberNB.Text,
+                                            id: ThisItem.id,
+                                            status: false
+                                        }
+                                    );
+                                    ,
+                                    UpdateIf(
+                                        uniqueUnits,
+                                        id = ThisItem.id,
+                                        {
+                                            unit: txtunitnumberNB.Text,
+                                            status: false
+                                        }
+                                    );
+                                    
                                 );
-                                
-                                
                                 If(
                                     CountRows(
                                         Filter(
                                             uniqueUnits,
-                                            unit= txtunitnumberNB.Text
+                                            unit = txtunitnumberNB.Text
                                         )
                                     ) > 1,
-                                  
-                                  
-                                UpdateIf(
+                                 
+                                    UpdateIf(
                                         rows1,
                                         id = ThisItem.id,
                                         {status: true}
                                     );
-                                    Set(varUnitId,ThisItem.id);
-                                    Set(unitTimer,true);
+                                    Set(
+                                        varUnitId,
+                                        ThisItem.id
+                                    );
+                                    Set(
+                                        unitTimer,
+                                        true
+                                    );
                                     
                                 )
                             PaddingBottom: =0
