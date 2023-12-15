@@ -189,6 +189,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "DatePicker3_4",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 13,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -528,6 +529,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Gallery5_4template1_6",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -652,7 +654,8 @@
         "minimumHeight",
         "maximumWidth",
         "maximumHeight",
-        "ZIndex"
+        "ZIndex",
+        "MaxTemplateSize"
       ],
       "GalleryTemplateChildName": "Gallery5_4template1_6",
       "HasDynamicProperties": false,
@@ -665,6 +668,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "glryActionItemsVA_4",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -887,6 +891,11 @@
           "Category": "Design",
           "PropertyName": "LoadingSpinnerColor",
           "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "MaxTemplateSize",
+          "RuleProviderType": "Unknown"
         }
       ],
       "StyleName": "defaultGalleryStyle",
@@ -911,6 +920,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Group2",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 14,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -962,6 +972,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Group3",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 15,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -1083,6 +1094,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "iconlineActionVA_4",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -1376,6 +1388,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblActionnameVA_4",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -1738,6 +1751,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblActionVA_4",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -2135,6 +2149,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblDurationAR_2",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 8,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -2497,6 +2512,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblMaterialEstimateVA_4",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 7,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -2859,6 +2875,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblOwnerVA_4",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 5,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -3228,6 +3245,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblOwnervalueVA_4",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 10,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -3597,6 +3615,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblPriorityVA_4",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -3966,6 +3985,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblPriorityvalueVA_4",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 9,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -4328,6 +4348,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lblTimeEstimateVA_4",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 6,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -4611,6 +4632,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Screen1",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -4850,6 +4872,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "txtMaterialValueAR_2",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 12,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -5330,6 +5353,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "txtTimeEstimateValueAR_2",
+      "OptimizeForDevices": "Off",
       "ParentIndex": 11,
       "PersistMetaDataIDKey": false,
       "Properties": [
