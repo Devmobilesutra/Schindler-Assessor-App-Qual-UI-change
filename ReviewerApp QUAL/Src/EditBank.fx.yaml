@@ -680,6 +680,7 @@ EditBank As screen:
                                                     existingUnits,
                                                     {}
                                                 );
+                                                Clear(lcUnitedit);
                                             );
                                         );
                                     )
