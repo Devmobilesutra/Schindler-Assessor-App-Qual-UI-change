@@ -1115,6 +1115,7 @@ AddBanks As screen:
                                                         lineno1: 1
                                                     }
                                                 );
+                                                Clear(uniqueUnits);
                                             );
                                         );
                                     )

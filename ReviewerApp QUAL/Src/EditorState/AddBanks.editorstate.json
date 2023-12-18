@@ -4625,7 +4625,7 @@
       "MetaDataIDKey": "",
       "Name": "cboxClientNameNB",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 1,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -15128,7 +15128,7 @@
       "MetaDataIDKey": "",
       "Name": "lblClientNewClientNB",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 0,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -15515,7 +15515,7 @@
       "MetaDataIDKey": "",
       "Name": "lblGoNumberNB",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 2,
+      "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -17243,7 +17243,7 @@
       "MetaDataIDKey": "",
       "Name": "lblnotificationexistNB",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 4,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -21386,7 +21386,7 @@
       "MetaDataIDKey": "",
       "Name": "txtgONumberNB",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 3,
+      "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
