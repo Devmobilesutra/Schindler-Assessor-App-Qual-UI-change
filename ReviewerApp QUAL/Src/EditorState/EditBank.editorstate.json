@@ -1617,7 +1617,7 @@
       "MetaDataIDKey": "",
       "Name": "btnOkSuccessEditBank",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 3,
+      "ParentIndex": 12,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -2725,7 +2725,7 @@
       "MetaDataIDKey": "",
       "Name": "cboxClientEditBank",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 1,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -6692,7 +6692,7 @@
       "MetaDataIDKey": "",
       "Name": "iconInnerRectangleEditbank",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 2,
+      "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -6845,7 +6845,7 @@
       "MetaDataIDKey": "",
       "Name": "iconInnerRectangleEditBank",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 5,
+      "ParentIndex": 6,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -7137,7 +7137,7 @@
       "MetaDataIDKey": "",
       "Name": "iconOuterRectangleEditBank",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 4,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -7535,7 +7535,7 @@
       "MetaDataIDKey": "",
       "Name": "imgSuccessEditBank",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 6,
+      "ParentIndex": 5,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -8512,7 +8512,7 @@
       "MetaDataIDKey": "",
       "Name": "lblClientEditbank",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 0,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -9591,7 +9591,7 @@
       "MetaDataIDKey": "",
       "Name": "lblGonumberEditBank",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 2,
+      "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -11105,7 +11105,7 @@
       "MetaDataIDKey": "",
       "Name": "lblSuccessEditBank",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 9,
+      "ParentIndex": 8,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -11866,7 +11866,7 @@
       "MetaDataIDKey": "",
       "Name": "lblunitexistEditBank",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 4,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -12609,7 +12609,7 @@
       "MetaDataIDKey": "",
       "Name": "lblUpdatedSuccessEditBank",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 12,
+      "ParentIndex": 9,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -13234,7 +13234,7 @@
       "MetaDataIDKey": "",
       "Name": "TimerUnitEdit",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 8,
+      "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -13584,7 +13584,7 @@
       "MetaDataIDKey": "",
       "Name": "TxtGonumberEditBank",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 3,
+      "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {

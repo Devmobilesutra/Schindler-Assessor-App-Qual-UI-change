@@ -855,9 +855,15 @@ AddBanks As screen:
                         iconCancelNB As icon.Cancel:
                             Height: =20
                             Icon: =Icon.Cancel
-                            OnSelect: |+
-                                =RemoveIf(rows1,id=ThisItem.id);
-                                
+                            OnSelect: |
+                                =RemoveIf(
+                                    rows1,
+                                    id = ThisItem.id
+                                );
+                                RemoveIf(
+                                    uniqueUnits,
+                                    id = ThisItem.id
+                                );
                             Width: =20
                             X: =txtunitnumberNB.X +txtunitnumberNB.Width+20
                             Y: =(txtunitnumberNB.Height - Self.Height)/2 +5
@@ -876,21 +882,13 @@ AddBanks As screen:
                                 //Set(unitTimer,false);
                                 //New Change
                                 If(
-                                    IsBlank(
+                                    !IsBlank(
                                         LookUp(
                                             uniqueUnits,
                                             id = ThisItem.id,
                                             id
                                         )
-                                    ),
-                                    Collect(
-                                        uniqueUnits,
-                                        {
-                                            unit: txtunitnumberNB.Text,
-                                            id: ThisItem.id,
-                                            status: false
-                                        }
-                                    );
+                                    )
                                     ,
                                     UpdateIf(
                                         uniqueUnits,
@@ -900,13 +898,23 @@ AddBanks As screen:
                                             status: false
                                         }
                                     );
+                                    ,
+                                    Collect(
+                                        uniqueUnits,
+                                        {
+                                            unit: txtunitnumberNB.Text,
+                                            id: ThisItem.id,
+                                            status: false
+                                        }
+                                    );
                                     
                                 );
                                 If(
                                     CountRows(
                                         Filter(
                                             uniqueUnits,
-                                            unit = txtunitnumberNB.Text
+                                            !IsBlank(txtunitnumberNB.Text) &&
+                                            unit =txtunitnumberNB.Text
                                         )
                                     ) > 1,
                                  
