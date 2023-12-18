@@ -493,6 +493,7 @@ EditBank As screen:
                                     CountRows(
                                         Filter(
                                             lcUnitedit,
+                                            !IsBlank(txtUnitEditBank.Text) &&
                                             unit = txtUnitEditBank.Text
                                         )
                                     ) > 1,
