@@ -523,7 +523,7 @@ BankScreen As screen:
                                 }
                             );
                             
-                            If(CountRows(GC_checkpointItemAssessment)>1000 || CountRows(GC_checkpointItem_ActionItem)>1000 || CountRows(GC_checkpointItem_Images)>1000
+                            If(CountRows(GC_checkpointItemAssessment)>10 || CountRows(GC_checkpointItem_ActionItem)>10|| CountRows(GC_checkpointItem_Images)>10
                             ,
                             Set(VarMemoryPressurePopup,true),Set(VarMemoryPressurePopup,false)
                             );
@@ -3738,7 +3738,7 @@ BankScreen As screen:
             FontWeight: =FontWeight.Bold
             Height: =100
             Size: =15
-            Text: ="Are you sure you want to exit ?"
+            Text: ="Your Memory has full, please reopen the App."
             Visible: =VarMemoryPressurePopup
             Width: =350
             X: =(Parent.Width-Self.Width)/2
