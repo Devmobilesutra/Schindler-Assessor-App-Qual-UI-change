@@ -521,6 +521,12 @@ BankScreen As screen:
                                     )
                                 }
                             );
+                            
+                            If(CountRows(GC_checkpointItemAssessment)>1000 || CountRows(GC_checkpointItem_ActionItem)>1000 || CountRows(GC_checkpointItem_Images)>1000
+                            ,
+                            Set(VarMemoryPressurePopup,true),Set(VarMemoryPressurePopup,false)
+                            );
+                            
                             //for safety check to show default selected
                             Set(
                                 varSpinner,
