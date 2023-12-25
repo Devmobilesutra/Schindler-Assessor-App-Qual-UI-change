@@ -245,10 +245,10 @@ FindingScreen As screen:
                                     )
                                 }
                             );
-                            SaveData(
+                            /*SaveData(
                                 GcTraceLog,
                                 "localGcTraceLog"
-                            );
+                            );*/
                             //RemoveIf(G
                             Reset(txtAnnotationFS);
                             RemoveIf(
@@ -1460,10 +1460,10 @@ FindingScreen As screen:
                                         )
                                     }
                                 );
-                                SaveData(
+                                /*SaveData(
                                     GcTraceLog,
                                     "localGcTraceLog"
-                                );
+                                );*/
                                 //for reset ideal timer
                                 /*Reset(tmr_logout);
                                 Set(
@@ -1821,10 +1821,10 @@ FindingScreen As screen:
                                             )
                                         }
                                     );
-                                    SaveData(
+                                    /*SaveData(
                                         GcTraceLog,
                                         "localGcTraceLog"
-                                    );
+                                    );*/
                                     /*//for reset ideal timer
                                     Reset(tmr_logout);
                                     Set(UserLastNavigated, Now());*/
@@ -2056,10 +2056,10 @@ FindingScreen As screen:
                                             )
                                         }
                                     );
-                                    SaveData(
+                                    /*SaveData(
                                         GcTraceLog,
                                         "localGcTraceLog"
-                                    );
+                                    );*/
                                     /*//for reset ideal timer
                                     Reset(tmr_logout);
                                     Set(UserLastNavigated, Now());*/
@@ -2201,10 +2201,10 @@ FindingScreen As screen:
                                                 )
                                             }
                                         );
-                                        SaveData(
+                                        /*SaveData(
                                             GcTraceLog,
                                             "localGcTraceLog"
-                                        );
+                                        );*/
                                         //for safety check
                                         If(
                                             DateDiff(
@@ -2601,10 +2601,10 @@ FindingScreen As screen:
                                             )
                                         }
                                     );
-                                    SaveData(
+                                    /*SaveData(
                                         GcTraceLog,
                                         "localGcTraceLog"
-                                    );
+                                    );*/
                                     //for safety check
                                     If(
                                         DateDiff(
@@ -2738,10 +2738,10 @@ FindingScreen As screen:
                                             )
                                         }
                                     );
-                                    SaveData(
+                                    /*SaveData(
                                         GcTraceLog,
                                         "localGcTraceLog"
-                                    );
+                                    );*/
                                     //for safety check
                                     If(
                                         DateDiff(
@@ -3759,10 +3759,10 @@ FindingScreen As screen:
                         )
                     }
                 );
-                SaveData(
+                /*SaveData(
                     GcTraceLog,
                     "localGcTraceLog"
-                );
+                );*/
                 //Set(C, false );
                 //Set(P, true );
                 Set(

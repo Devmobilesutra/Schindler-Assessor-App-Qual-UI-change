@@ -2,9 +2,11 @@ App As appinfo:
     BackEnabled: =false
     ConfirmExitMessage: ="Are you sure you want to exit ?"
     OnStart: |
-        =Set(
+        =
+        Set(
             VarDebug,
-            false
+            //false
+            LookUp(LogFlags,UserEmail=User().Email,IsFlagEnable)
         );
         
         If(
@@ -26,7 +28,7 @@ App As appinfo:
                     {Path: First(GcTraceLog).Path & "/OnStart"}
                 )
             );
-          SaveData(GcTraceLog,"localGcTraceLog");  
+          //SaveData(GcTraceLog,"localGcTraceLog");  
         );
         
         //safety timer

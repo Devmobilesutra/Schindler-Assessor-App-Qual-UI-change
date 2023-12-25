@@ -176,10 +176,10 @@ SectionScreen As screen:
                                     )
                                 }
                             );
-                            SaveData(
+                            /*SaveData(
                                 GcTraceLog,
                                 "localGcTraceLog"
-                            );
+                            );*/
                             UpdateContext({locInfoExpanded: false});
                             Navigate(BankScreen);
                         PaddingBottom: =10
@@ -464,10 +464,10 @@ SectionScreen As screen:
                                     )
                                 }
                             );
-                            SaveData(
+                            /*SaveData(
                                 GcTraceLog,
                                 "localGcTraceLog"
-                            );
+                            );*/
                             Navigate(SafetyHeaderScreen);
                             ///////////////////Select(Parent);
                             /////UpdateContext({locInfoExpanded:true});
@@ -492,7 +492,6 @@ SectionScreen As screen:
                                 }
                             ));
                             Set(varSA1,ThisItem.sectionId)
-                            
                             */
                             //);
                             //Navigate(Screen7)
@@ -631,10 +630,10 @@ SectionScreen As screen:
                                         )
                                     }
                                 );
-                                SaveData(
+                                /*SaveData(
                                     GcTraceLog,
                                     "localGcTraceLog"
-                                );
+                                );*/
                                 /*//for reset ideal timer
                                 Reset(tmr_logout);
                                 Set(UserLastNavigated, Now());
@@ -746,10 +745,10 @@ SectionScreen As screen:
                                         )
                                     }
                                 );
-                                SaveData(
+                                /*SaveData(
                                     GcTraceLog,
                                     "localGcTraceLog"
-                                );
+                                );*/
                                 Set(
                                     varComment,
                                     true
@@ -913,10 +912,10 @@ SectionScreen As screen:
                                     )
                                 }
                             );
-                            SaveData(
+                            /*SaveData(
                                 GcTraceLog,
                                 "localGcTraceLog"
-                            );
+                            );*/
                             //this code is executed when user clicks on + symbol for each section
                             /*
                             //for reset ideal timer
@@ -1000,10 +999,10 @@ SectionScreen As screen:
                                     )
                                 }
                             );
-                            SaveData(
+                            /*SaveData(
                                 GcTraceLog,
                                 "localGcTraceLog"
-                            );
+                            );*/
                             /*//for reset ideal timer
                             Reset(tmr_logout);
                             Set(UserLastNavigated, Now());
@@ -1066,10 +1065,10 @@ SectionScreen As screen:
                                     )
                                 }
                             );
-                            SaveData(
+                            /*SaveData(
                                 GcTraceLog,
                                 "localGcTraceLog"
-                            );
+                            );*/
                             Set(
                                 varComment,
                                 true

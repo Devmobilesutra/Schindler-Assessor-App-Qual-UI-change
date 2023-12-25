@@ -177,6 +177,13 @@
       }
     },
     {
+      "Kind": "default.cds_shlaf_traceuserlogs_forms",
+      "Namespace": "TraceUserLogs (Forms)",
+      "Values": {
+        "Information": "783ca64e-2a4e-455f-bc21-fc6cabf6be3c"
+      }
+    },
+    {
       "Kind": "default.cds_quantum_unitassessment_forms",
       "Namespace": "unitAssessment (Forms)",
       "Values": {
@@ -192,13 +199,6 @@
         "User": "c2cd9e55-d4b4-4b55-9951-16ead79643e5",
         "User form – Business": "c2413504-7eb2-4c59-a087-95d819866114",
         "User Hierarchy Tile Form": "c68d6c09-d7a7-4959-8d0f-44b8cff9b452"
-      }
-    },
-    {
-      "Kind": "default.cds_shlaf_traceuserlogs_forms",
-      "Namespace": "TraceUserLogs (Forms)",
-      "Values": {
-        "Information": "783ca64e-2a4e-455f-bc21-fc6cabf6be3c"
       }
     },
     {
@@ -359,6 +359,13 @@
       "Namespace": "Templates_1 (Forms)",
       "Values": {
         "Information": "39f81e84-581b-4f45-b75e-69def9cab56a"
+      }
+    },
+    {
+      "Kind": "default.cds_shlaf_logflag_forms",
+      "Namespace": "LogFlags (Forms)",
+      "Values": {
+        "Information": "3b2756c0-2632-46e1-b25c-9209a8853630"
       }
     }
   ]

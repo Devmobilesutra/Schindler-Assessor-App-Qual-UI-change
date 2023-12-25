@@ -94,10 +94,10 @@ BankScreen As screen:
                                     )
                                 }
                             );
-                            SaveData(
+                            /*SaveData(
                                 GcTraceLog,
                                 "localGcTraceLog"
-                            );
+                            );*/
                             Navigate(ProjectScreen)
                         PaddingBottom: =10
                         PaddingLeft: =0
@@ -276,10 +276,10 @@ BankScreen As screen:
                                     )
                                 }
                             );
-                            SaveData(
+                            /*SaveData(
                                 GcTraceLog,
                                 "localGcTraceLog"
-                            );
+                            );*/
                             Set(
                                 varReportPopup,
                                 false
@@ -1583,10 +1583,10 @@ BankScreen As screen:
                                     )
                                 }
                             );
-                            SaveData(
+                            /*SaveData(
                                 GcTraceLog,
                                 "localGcTraceLog"
-                            );
+                            );*/
                             /*
                             If(
                                 IsEmpty(GcSectionAssessment) && IsEmpty(GcCheckpointAssessment) && IsEmpty(GC_checkpointItemAssessment) && IsEmpty(GC_checkpointItem_ActionItem) && IsEmpty(GC_checkpointItem_Images),
@@ -2011,10 +2011,10 @@ BankScreen As screen:
                                     )
                                 }
                             );
-                            SaveData(
+                            /*SaveData(
                                 GcTraceLog,
                                 "localGcTraceLog"
-                            );
+                            );*/
                             If(
                                 Connection.Connected,
                                 Set(
@@ -2833,7 +2833,7 @@ BankScreen As screen:
                                     )
                                 }
                             );
-                            SaveData(GcTraceLog,"localGcTraceLog");
+                            //SaveData(GcTraceLog,"localGcTraceLog");
                             Set(
                                 VarPDFLable,
                                 "Unit " & ThisItem.bankUnitId.unitNumber & " Assessment PDF will be sent to your Email Id"

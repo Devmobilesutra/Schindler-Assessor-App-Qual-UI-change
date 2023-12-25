@@ -71,10 +71,10 @@ DashboardScreen As screen:
                             )
                         }
                     );
-                    SaveData(
+                    /*SaveData(
                         GcTraceLog,
                         "localGcTraceLog"
-                    );
+                    );*/
                     //get new assignment and completed assignment updates
                     If(
                         //here we check network is available or not
@@ -434,10 +434,10 @@ DashboardScreen As screen:
                             )
                         }
                     );
-                    SaveData(
+                    /*SaveData(
                         GcTraceLog,
                         "localGcTraceLog"
-                    );
+                    );*/
                 Visible: =Connection.Connected=true
                 Width: =40
                 X: =Image2_33.X+Image2_33.Width+20
@@ -625,10 +625,10 @@ DashboardScreen As screen:
                                 )
                             }
                         );
-                        SaveData(
+                        /*SaveData(
                             GcTraceLog,
                             "localGcTraceLog"
-                        );
+                        );*/
                         Navigate(ProjectScreen);
                     PressedBorderColor: =RGBA(0,0,0,0)
                     PressedColor: =RGBA(0,0,0,0)
@@ -759,10 +759,10 @@ DashboardScreen As screen:
                                 )
                             }
                         );
-                        SaveData(
+                        /*SaveData(
                             GcTraceLog,
                             "localGcTraceLog"
-                        );
+                        );*/
                         Navigate(ProjectScreen);
                     PressedBorderColor: =RGBA(0,0,0,0)
                     PressedColor: =RGBA(0,0,0,0)
@@ -849,10 +849,10 @@ DashboardScreen As screen:
                             )
                         }
                     );
-                    SaveData(
+                    /*SaveData(
                         GcTraceLog,
                         "localGcTraceLog"
-                    );
+                    );*/
                     //check collection is empty or not ? if empty then load data from local cache 
                     If(
                         IsEmpty(GC_checkpointItemAssessment) && IsEmpty(GC_checkpointItem_ActionItem) && IsEmpty(GC_checkpointItem_Images),
@@ -1265,7 +1265,8 @@ DashboardScreen As screen:
             HoverColor: =Self.Color
             HoverFill: =//Self.Fill
             OnSelect: |
-                =UpdateIf(
+                =
+                UpdateIf(
                     GcTraceLog,
                     VarDebug = true,
                     {
@@ -1459,6 +1460,7 @@ DashboardScreen As screen:
                             );
                             ,
                             //Patch logs to Dataverse
+                            If(VarDebug=true,
                             Patch(
                                 TraceUserLogs,
                                 Defaults(TraceUserLogs),
@@ -1482,9 +1484,10 @@ DashboardScreen As screen:
                                     }
                                 );
                             );
-                            SaveData(
+                            /*SaveData(
                                 GcTraceLog,
                                 "localGcTraceLog"
+                            );*/
                             );
                             Set(
                                 VarReportIssue,

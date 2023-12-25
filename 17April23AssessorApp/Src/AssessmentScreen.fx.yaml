@@ -93,10 +93,10 @@ AssessmentScreen As screen:
                                     )
                                 }
                             );
-                            SaveData(
+                            /*SaveData(
                                 GcTraceLog,
                                 "localGcTraceLog"
-                            );
+                            );*/
                             //UpdateContext({locInfoExpanded: false});
                             Set(
                                 varExpanded,
@@ -517,10 +517,10 @@ AssessmentScreen As screen:
                                     )
                                 }
                             );
-                            SaveData(
+                            /*SaveData(
                                 GcTraceLog,
                                 "localGcTraceLog"
-                            );
+                            );*/
                             //for safety check
                             If(
                                 DateDiff(
@@ -1502,10 +1502,10 @@ AssessmentScreen As screen:
                                     )
                                 }
                             );
-                            SaveData(
+                            /*SaveData(
                                 GcTraceLog,
                                 "localGcTraceLog"
-                            );
+                            );*/
                             //for safety check
                             If(
                                 DateDiff(
@@ -1807,10 +1807,10 @@ AssessmentScreen As screen:
                                     )
                                 }
                             );
-                            SaveData(
+                            /*SaveData(
                                 GcTraceLog,
                                 "localGcTraceLog"
-                            );
+                            );*/
                             Set(
                                 varComment,
                                 true
@@ -2030,10 +2030,10 @@ AssessmentScreen As screen:
                                     )
                                 }
                             );
-                            SaveData(
+                            /*SaveData(
                                 GcTraceLog,
                                 "localGcTraceLog"
-                            );
+                            );*/
                             Set(
                                 VarSubmitError,
                                 false
@@ -3570,10 +3570,10 @@ AssessmentScreen As screen:
                                     )
                                 }
                             );
-                            SaveData(
+                            /*SaveData(
                                 GcTraceLog,
                                 "localGcTraceLog"
-                            );
+                            );*/
                             If(
                                 VarDebug = true,
                             //Patch logs to Dataverse
@@ -3599,10 +3599,10 @@ AssessmentScreen As screen:
                                             )
                                         }
                                     );
-                                    SaveData(
+                                   /* SaveData(
                                         GcTraceLog,
                                         "localGcTraceLog"
-                                    );
+                                    );*/
                                 );
                                 
                             );

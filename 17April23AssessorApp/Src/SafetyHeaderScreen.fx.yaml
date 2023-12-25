@@ -83,10 +83,10 @@ SafetyHeaderScreen As screen:
                                     )
                                 }
                             );
-                            SaveData(
+                            /*SaveData(
                                 GcTraceLog,
                                 "localGcTraceLog"
-                            );
+                            );*/
                             Back();
                         PaddingBottom: =10
                         PaddingLeft: =20
@@ -452,7 +452,7 @@ SafetyHeaderScreen As screen:
                                     )
                                 }
                             );
-                            SaveData(GcTraceLog,"localGcTraceLog");
+                            //SaveData(GcTraceLog,"localGcTraceLog");
                             
                             Clear(security);
                             ForAll(

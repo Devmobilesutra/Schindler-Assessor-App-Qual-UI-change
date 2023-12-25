@@ -1,0 +1,117 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "shlaf_logflags",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "shlaf_logflag",
+    "Name": "LogFlags",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "shlaf_id": "UserEmail",
+      "shlaf_isflagenable": "IsFlagEnable",
+      "shlaf_logflag_AsyncOperations": "System Jobs",
+      "shlaf_logflag_BulkDeleteFailures": "Bulk Delete Failures",
+      "shlaf_logflag_DuplicateBaseRecord": "Duplicate Records (shlaf_logflag_DuplicateBaseRecord)",
+      "shlaf_logflag_DuplicateMatchingRecord": "Duplicate Records (shlaf_logflag_DuplicateMatchingRecord)",
+      "shlaf_logflag_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "shlaf_logflag_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "shlaf_logflag_ProcessSession": "Process Sessions",
+      "shlaf_logflag_SyncErrors": "Sync Errors",
+      "shlaf_logflagid": "LogFlag",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "LogFlags",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "LogFlags (Views)",
+    "Name": "_shlaf_logflag_views",
+    "RelatedEntityName": "LogFlags",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "59b23660-ee72-4588-b973-35fbe92ff5e6": "LogFlag Advanced Find View",
+      "740d8629-3341-433d-b6fe-88f96bdaa67d": "Active LogFlags",
+      "80fdce3c-f591-48f5-971c-0253292d0feb": "LogFlag Associated View",
+      "a79d4afd-5a39-4e94-8c63-0f045e1590d0": "Inactive LogFlags",
+      "be3b64d4-190d-4f5a-8e66-d4df69b7dd9b": "LogFlag Lookup View"
+    }
+  },
+  {
+    "DisplayName": "IsFlagEnable (LogFlags)",
+    "Name": "shlaf_logflag_shlaf_isflagenable",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "shlaf_isflagenable",
+        "OptionSetReferenceEntityName": "LogFlags"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "shlaf_isflagenable",
+    "RelatedEntityName": "LogFlags",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status (LogFlags)",
+    "Name": "shlaf_logflag_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "LogFlags"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "LogFlags",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (LogFlags)",
+    "Name": "shlaf_logflag_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "LogFlags"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "LogFlags",
+    "Type": "OptionSetInfo"
+  }
+]
