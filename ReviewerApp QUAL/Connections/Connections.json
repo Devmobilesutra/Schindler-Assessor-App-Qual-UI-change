@@ -106,6 +106,13 @@
   "337474db-be8a-490c-8c7e-5bb53255809f": {
     "connectionRef": {
       "displayName": "Power Apps Notification V2",
+      "executionRestrictions": {
+        "apiId": "unknown",
+        "appVer": "3.23122.17",
+        "modifiedOn": "2023-12-26 07:49:31",
+        "policy": "{\"type\":\"unused\"}",
+        "version": 1
+      },
       "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1609/1.0.1609.3084/powerappsnotificationv2/icon.png",
       "id": "/providers/microsoft.powerapps/apis/shared_powerappsnotificationv2",
       "sharedConnectionId": "/providers/microsoft.powerapps/apis/shared_powerappsnotificationv2/connections/shared-powerappsnoti-fbb0b732-85c6-4b0c-8f74-1a4ee469a8ae",
