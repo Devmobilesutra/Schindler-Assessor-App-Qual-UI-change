@@ -511,7 +511,9 @@ BankScreen As screen:
                         HoverColor: =Self.Color
                         HoverFill: =Self.Fill
                         OnSelect: |-
-                            =//for Logs
+                            =//Set(aaaa,JSON(GC_checkpointItemAssessment));
+                            
+                            //for Logs
                             UpdateIf(
                                 GcTraceLog,
                                 VarDebug = true,
@@ -523,7 +525,8 @@ BankScreen As screen:
                                 }
                             );
                             
-                            If(CountRows(GC_checkpointItemAssessment)>10 || CountRows(GC_checkpointItem_ActionItem)>10|| CountRows(GC_checkpointItem_Images)>10
+                            
+                            If(CountRows(GC_checkpointItemAssessment)>500 || CountRows(GC_checkpointItem_ActionItem)>500 || CountRows(GC_checkpointItem_Images)>500
                             ,
                             Set(VarMemoryPressurePopup,true),Set(VarMemoryPressurePopup,false)
                             );
@@ -2997,7 +3000,8 @@ BankScreen As screen:
                 Height: =81
                 PaddingLeft: =20
                 Size: =Header.HeaderUserFontSize-2
-                Text: =username
+                Text: |
+                    =username
                 Width: =ctnHeaderDS.Width/5.08
                 X: =imgUserHeaderPS_2.X+imgUserHeaderPS_2.Width
                 ZIndex: =4

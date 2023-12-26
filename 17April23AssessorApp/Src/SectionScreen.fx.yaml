@@ -92,7 +92,8 @@ SectionScreen As screen:
                 Height: =80
                 PaddingLeft: =20
                 Size: =Header.HeaderUserFontSize-2
-                Text: =username
+                Text: |
+                    =//username
                 Width: =ctnHeaderBS.Width/6
                 X: =imgUserHeaderBS_4.Width+imgUserHeaderBS_4.X
                 ZIndex: =4
