@@ -632,6 +632,7 @@ AddBanks As screen:
                         Reset: =true
                         SearchFields: =["shlaf_name"]
                         SearchItems: =[]
+                        SelectionFill: =RGBA(0, 0, 0, 1)
                         SelectMultiple: =false
                         Size: =referenceCSS.RInputFontSize
                         Width: =Parent.Width/3
@@ -718,10 +719,12 @@ AddBanks As screen:
                         Font: =referenceCSS.RFont
                         Height: =50 
                         HintText: ="Unit location"
+                        HoverBorderColor: =RGBA(0, 0, 0, 1)
                         HoverFill: =RGBA(0, 0, 0, 0)
                         PaddingBottom: =0
                         PaddingLeft: =5
                         PaddingTop: =0
+                        PressedBorderColor: =Self.Color
                         RadiusBottomLeft: =1
                         RadiusBottomRight: =1
                         RadiusTopLeft: =1
