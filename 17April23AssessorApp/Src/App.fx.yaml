@@ -2,7 +2,8 @@ App As appinfo:
     BackEnabled: =false
     ConfirmExitMessage: ="Are you sure you want to exit ?"
     OnStart: |
-        =//Set(aaaa,JSON(GC_bankAssessment));
+        =Set(aaaa,JSON(DropColumns(GC_bankAssessment,"_ownerid_value")));
+        
         Set(
             VarDebug,
             //false
