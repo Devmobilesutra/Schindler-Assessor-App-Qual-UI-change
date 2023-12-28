@@ -2,9 +2,17 @@ App As appinfo:
     BackEnabled: =false
     ConfirmExitMessage: ="Are you sure you want to exit ?"
     OnStart: |
-        =Set(aaaa,JSON(DropColumns(GC_bankAssessment,"_ownerid_value")));
+        =/*Set(aaaa,JSON(DropColumns(GC_bankAssessment,"_ownerid_value")));
+        Set(kkl,Len(aaaa));*/
         
-        Set(
+        // Calculate the length of the JSON string
+        Set(JsonString, JSON(DropColumns(GC_checkpointItemAssessment,"_ownerid_value")));
+        Set(JsonLength, Len(JsonString));
+        
+        // Convert characters to bytes (considering UTF-16 encoding)
+        Set(BytesEstimate, JsonLength * 2);
+            
+            Set(
             VarDebug,
             //false
             LookUp(LogFlags,UserEmail=User().Email,IsFlagEnable)
