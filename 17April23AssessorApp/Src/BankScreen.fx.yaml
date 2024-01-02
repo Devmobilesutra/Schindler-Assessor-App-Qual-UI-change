@@ -511,12 +511,12 @@ BankScreen As screen:
                         HoverColor: =Self.Color
                         HoverFill: =Self.Fill
                         OnSelect: |-
-                            =// Calculate the length of the JSON string
+                            =/*// Calculate the length of the JSON string
                             Set(JsonString, JSON(DropColumns(GC_checkpointItemAssessment,"_ownerid_value")));
                             Set(JsonLength, Len(JsonString));
                             
                             // Convert characters to bytes (considering UTF-16 encoding)
-                            Set(BytesEstimate, JsonLength * 2);
+                            Set(BytesEstimate, JsonLength * 2);*/
                             
                             //for Logs
                             UpdateIf(
@@ -531,7 +531,9 @@ BankScreen As screen:
                             );
                             
                             
-                            If(CountRows(GC_checkpointItemAssessment)>500 || CountRows(GC_checkpointItem_ActionItem)>500 || CountRows(GC_checkpointItem_Images)>500
+                            If(First(CollectionCapCounts).IsIndividualCollection = true &&
+                                (CountRows(GC_checkpointItemAssessment) > Value(First(CollectionCapCounts).IndividualCollectionCount)  
+                                 || CountRows(GC_checkpointItem_ActionItem) > Value(First(CollectionCapCounts).IndividualCollectionCount) || CountRows(GC_checkpointItem_Images) > Value(First(CollectionCapCounts).IndividualCollectionCount))
                             ,
                             Set(VarMemoryPressurePopup,true),Set(VarMemoryPressurePopup,false)
                             );

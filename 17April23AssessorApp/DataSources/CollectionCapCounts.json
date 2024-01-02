@@ -1,0 +1,140 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "shlaf_collectioncapcounts",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "shlaf_collectioncapcount",
+    "Name": "CollectionCapCounts",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "shlaf_collectioncapcount_AsyncOperations": "System Jobs",
+      "shlaf_collectioncapcount_BulkDeleteFailures": "Bulk Delete Failures",
+      "shlaf_collectioncapcount_DuplicateBaseRecord": "Duplicate Records (shlaf_collectioncapcount_DuplicateBaseRecord)",
+      "shlaf_collectioncapcount_DuplicateMatchingRecord": "Duplicate Records (shlaf_collectioncapcount_DuplicateMatchingRecord)",
+      "shlaf_collectioncapcount_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "shlaf_collectioncapcount_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "shlaf_collectioncapcount_ProcessSession": "Process Sessions",
+      "shlaf_collectioncapcount_SyncErrors": "Sync Errors",
+      "shlaf_collectioncapcountid": "CollectionCapCount",
+      "shlaf_combinedcollectioncount": "CombinedCollectionCount",
+      "shlaf_id": "ID",
+      "shlaf_individualcollectioncount": "IndividualCollectionCount",
+      "shlaf_isallcollection": "IsAllCollection",
+      "shlaf_isindividualcollection": "IsIndividualCollection",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "CollectionCapCounts",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "CollectionCapCounts (Views)",
+    "Name": "_shlaf_collectioncapcount_views",
+    "RelatedEntityName": "CollectionCapCounts",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "31936c01-64b9-4c6b-a547-ae427e0dc8c4": "CollectionCapCount Lookup View",
+      "50fbcb27-6b26-42bf-871e-987db052fd9e": "CollectionCapCount Advanced Find View",
+      "60a25c56-c243-4502-addb-66ae3571bc0a": "CollectionCapCount Associated View",
+      "d81acec8-f32a-4243-9b18-2262f8fa138e": "Inactive CollectionCapCounts",
+      "d8eaee1d-a5cc-4687-aee4-93514ce7e53e": "Active CollectionCapCounts"
+    }
+  },
+  {
+    "DisplayName": "IsAllCollection (CollectionCapCounts)",
+    "Name": "shlaf_collectioncapcount_shlaf_isallcollection",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "shlaf_isallcollection",
+        "OptionSetReferenceEntityName": "CollectionCapCounts"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "shlaf_isallcollection",
+    "RelatedEntityName": "CollectionCapCounts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "IsIndividualCollection (CollectionCapCounts)",
+    "Name": "shlaf_collectioncapcount_shlaf_isindividualcollection",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "shlaf_isindividualcollection",
+        "OptionSetReferenceEntityName": "CollectionCapCounts"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "shlaf_isindividualcollection",
+    "RelatedEntityName": "CollectionCapCounts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status (CollectionCapCounts)",
+    "Name": "shlaf_collectioncapcount_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "CollectionCapCounts"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "CollectionCapCounts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (CollectionCapCounts)",
+    "Name": "shlaf_collectioncapcount_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "CollectionCapCounts"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "CollectionCapCounts",
+    "Type": "OptionSetInfo"
+  }
+]

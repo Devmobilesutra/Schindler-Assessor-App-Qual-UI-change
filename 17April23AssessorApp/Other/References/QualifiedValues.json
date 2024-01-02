@@ -367,6 +367,13 @@
       "Values": {
         "Information": "39f81e84-581b-4f45-b75e-69def9cab56a"
       }
+    },
+    {
+      "Kind": "default.cds_shlaf_collectioncapcount_forms",
+      "Namespace": "CollectionCapCounts (Forms)",
+      "Values": {
+        "Information": "da8d7163-1873-452a-b150-820e14f9efdb"
+      }
     }
   ]
 }
