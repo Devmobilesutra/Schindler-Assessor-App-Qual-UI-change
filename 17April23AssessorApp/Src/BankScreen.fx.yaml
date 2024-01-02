@@ -535,8 +535,17 @@ BankScreen As screen:
                                 (CountRows(GC_checkpointItemAssessment) > Value(First(CollectionCapCounts).IndividualCollectionCount)  
                                  || CountRows(GC_checkpointItem_ActionItem) > Value(First(CollectionCapCounts).IndividualCollectionCount) || CountRows(GC_checkpointItem_Images) > Value(First(CollectionCapCounts).IndividualCollectionCount))
                             ,
+                            Set(VarMemoryPressurePopupMessage,"Your Memory has full, please reopen the App to reset some collections.");
                             Set(VarMemoryPressurePopup,true),Set(VarMemoryPressurePopup,false)
                             );
+                            
+                            If(First(CollectionCapCounts).IsAllCollection =true && 
+                            (CountRows(GC_actionItems)+CountRows(GC_bankAssessment)+CountRows(GC_checkpointItem_ActionItem)+CountRows(GC_checkpointItemAssessment)+CountRows(GC_unitAssessment)+CountRows(gcAssignmentunit)+CountRows(gcProjectAssignment)+CountRows(gcBankunit)+CountRows(gcBank)+CountRows(gcClient)+CountRows(GC_product)+CountRows(GC_templateCheckpointsItem)+CountRows(GC_templateCheckpoints)+CountRows(GC_templateSections)+CountRows(gcImageDelete)+CountRows(gcActionItemDelete)+CountRows(GC_checkpointItem_Images)+CountRows(GcCheckpointAssessment)+CountRows(GcSectionAssessment)) > Value(First(CollectionCapCounts).CombinedCollectionCount),
+                            Set(VarMemoryPressurePopupMessage,"Your Memory has full, please reopen the App to reset all collections.");
+                            Set(VarMemoryPressurePopup,true),Set(VarMemoryPressurePopup,false)
+                            );
+                            
+                            
                             
                             If(VarMemoryPressurePopup=false,
                             //for safety check to show default selected
@@ -3749,7 +3758,7 @@ BankScreen As screen:
             FontWeight: =FontWeight.Bold
             Height: =100
             Size: =15
-            Text: ="Your Memory has full, please reopen the App."
+            Text: =VarMemoryPressurePopupMessage
             Visible: =VarMemoryPressurePopup
             Width: =350
             X: =(Parent.Width-Self.Width)/2
