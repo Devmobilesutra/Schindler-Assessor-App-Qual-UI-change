@@ -58,7 +58,7 @@ LoadingScreen As screen:
         Align: =Align.Center
         FontWeight: =FontWeight.Bold
         Height: =47
-        Text: ="   Version 3.3"
+        Text: ="   Version 3.2"
         Width: =120
         X: =(Parent.Width-Self.Width)/2
         Y: =Parent.Height/1.5
