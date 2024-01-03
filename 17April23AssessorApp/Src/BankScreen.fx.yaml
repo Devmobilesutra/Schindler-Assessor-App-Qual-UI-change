@@ -18,6 +18,8 @@ BankScreen As screen:
             false
         );
         Set(VarMemoryPressurePopup,false);
+        Set(VarMemoryPressurePopupMessage," ");
+        Set(VarMemoryPressurePopup1,false);
         Refresh(unitAssessment);
         Trace(
             First(gcBank).productId.product_Model,
@@ -531,23 +533,23 @@ BankScreen As screen:
                             );
                             
                             
-                            If(First(CollectionCapCounts).IsIndividualCollection = true &&
-                                (CountRows(GC_checkpointItemAssessment) > Value(First(CollectionCapCounts).IndividualCollectionCount)  
-                                 || CountRows(GC_checkpointItem_ActionItem) > Value(First(CollectionCapCounts).IndividualCollectionCount) || CountRows(GC_checkpointItem_Images) > Value(First(CollectionCapCounts).IndividualCollectionCount))
+                            If(First(gcCollectionCapCounts).IsIndividualCollection = true &&
+                                (CountRows(GC_checkpointItemAssessment) > Value(First(gcCollectionCapCounts).IndividualCollectionCount)  
+                                 || CountRows(GC_checkpointItem_ActionItem) > Value(First(gcCollectionCapCounts).IndividualCollectionCount) || CountRows(GC_checkpointItem_Images) > Value(First(gcCollectionCapCounts).IndividualCollectionCount))
                             ,
                             Set(VarMemoryPressurePopupMessage,"Your Memory has full, please reopen the App to reset some collections.");
                             Set(VarMemoryPressurePopup,true),Set(VarMemoryPressurePopup,false)
                             );
                             
-                            If(First(CollectionCapCounts).IsAllCollection =true && 
-                            (CountRows(GC_actionItems)+CountRows(GC_bankAssessment)+CountRows(GC_checkpointItem_ActionItem)+CountRows(GC_checkpointItemAssessment)+CountRows(GC_unitAssessment)+CountRows(gcAssignmentunit)+CountRows(gcProjectAssignment)+CountRows(gcBankunit)+CountRows(gcBank)+CountRows(gcClient)+CountRows(GC_product)+CountRows(GC_templateCheckpointsItem)+CountRows(GC_templateCheckpoints)+CountRows(GC_templateSections)+CountRows(gcImageDelete)+CountRows(gcActionItemDelete)+CountRows(GC_checkpointItem_Images)+CountRows(GcCheckpointAssessment)+CountRows(GcSectionAssessment)) > Value(First(CollectionCapCounts).CombinedCollectionCount),
+                            If(First(gcCollectionCapCounts).IsAllCollection =true && 
+                            (CountRows(GC_actionItems)+CountRows(GC_bankAssessment)+CountRows(GC_checkpointItem_ActionItem)+CountRows(GC_checkpointItemAssessment)+CountRows(GC_unitAssessment)+CountRows(gcAssignmentunit)+CountRows(gcProjectAssignment)+CountRows(gcBankunit)+CountRows(gcBank)+CountRows(gcClient)+CountRows(GC_product)+CountRows(GC_templateCheckpointsItem)+CountRows(GC_templateCheckpoints)+CountRows(GC_templateSections)+CountRows(gcImageDelete)+CountRows(gcActionItemDelete)+CountRows(GC_checkpointItem_Images)+CountRows(GcCheckpointAssessment)+CountRows(GcSectionAssessment)) > Value(First(gcCollectionCapCounts).CombinedCollectionCount),
                             Set(VarMemoryPressurePopupMessage,"Your Memory has full, please reopen the App to reset all collections.");
-                            Set(VarMemoryPressurePopup,true),Set(VarMemoryPressurePopup,false)
+                            Set(VarMemoryPressurePopup1,true),Set(VarMemoryPressurePopup1,false)
                             );
                             
                             
                             
-                            If(VarMemoryPressurePopup=false,
+                            If(VarMemoryPressurePopup=false && VarMemoryPressurePopup1=false,
                             //for safety check to show default selected
                             Set(
                                 varSpinner,
@@ -3730,14 +3732,14 @@ BankScreen As screen:
         Rectangle1_22 As rectangle:
             Fill: =RGBA(0, 0, 0, 0.29)
             Height: =Parent.Height
-            Visible: =VarMemoryPressurePopup
+            Visible: =VarMemoryPressurePopup || VarMemoryPressurePopup1
             Width: =Parent.Width
             ZIndex: =27
 
         Rectangle2_19 As rectangle:
             Fill: =RGBA(255, 255, 255, 1)
             Height: =280
-            Visible: =VarMemoryPressurePopup
+            Visible: =VarMemoryPressurePopup || VarMemoryPressurePopup1
             Width: =400
             X: =(Parent.Width-Self.Width)/2
             Y: =Parent.Height/3
@@ -3746,7 +3748,7 @@ BankScreen As screen:
         Image2_41 As image:
             Height: =52
             Image: =info
-            Visible: =VarMemoryPressurePopup
+            Visible: =VarMemoryPressurePopup || VarMemoryPressurePopup1
             Width: =52
             X: =(Parent.Width-Self.Width)/2
             Y: =Rectangle2_19.Y+20
@@ -3759,7 +3761,7 @@ BankScreen As screen:
             Height: =100
             Size: =15
             Text: =VarMemoryPressurePopupMessage
-            Visible: =VarMemoryPressurePopup
+            Visible: =VarMemoryPressurePopup || VarMemoryPressurePopup1
             Width: =350
             X: =(Parent.Width-Self.Width)/2
             Y: =Image2_41.Y+ Image2_41.Height+2
@@ -3785,7 +3787,7 @@ BankScreen As screen:
             PressedBorderColor: =RGBA(1, 43, 1, 0)
             PressedFill: =Self.Fill
             Text: ="Yes"
-            Visible: =VarMemoryPressurePopup
+            Visible: =VarMemoryPressurePopup || VarMemoryPressurePopup1
             Width: =120
             X: =(Parent.Width-Self.Width)/2.3
             Y: =Label2_21.Y+ Label2_21.Height+10
@@ -3810,6 +3812,7 @@ BankScreen As screen:
                     }
                 );
                 Set(VarMemoryPressurePopup,false);
+                Set(VarMemoryPressurePopup1,false);
                 //for safety check to show default selected
                 Set(
                     varSpinner,
@@ -4876,7 +4879,7 @@ BankScreen As screen:
             PressedBorderColor: =RGBA(1, 43, 1, 0)
             PressedFill: =Self.Fill
             Text: ="No"
-            Visible: =VarMemoryPressurePopup
+            Visible: =VarMemoryPressurePopup || VarMemoryPressurePopup1
             Width: =120
             X: =btnExitOk_3.X+btnExitOk_3.Width+20
             Y: =Label2_21.Y+ Label2_21.Height+10

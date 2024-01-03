@@ -8,7 +8,7 @@ App As appinfo:
         
         // Convert characters to bytes (considering UTF-16 encoding)
         Set(BytesEstimate, JsonLength * 2); */
-            
+            ClearCollect(gcCollectionCapCounts,CollectionCapCounts);
             Set(
             VarDebug,
             //false
