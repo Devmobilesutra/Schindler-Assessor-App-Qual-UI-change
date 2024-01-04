@@ -214,7 +214,7 @@ BankScreen As screen:
                                     Id = VarBankId,
                                     productId.product_Model
                                 ) & " series"
-                            )
+                            ) &" " & "Item" & CountRows(GC_checkpointItemAssessment) & "Action" & CountRows(GC_checkpointItem_ActionItem) & "Images" & CountRows(GC_checkpointItem_Images)
                         Width: |-
                             =//If(Parent.Width>800,Parent.Width/1.9,Parent.Width/2.5)
                             Parent.Width-(btnProjecttypeBS.Width+btnTripReportBS.Width+50)
