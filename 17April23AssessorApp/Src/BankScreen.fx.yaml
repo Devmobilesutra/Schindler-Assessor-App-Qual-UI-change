@@ -537,13 +537,13 @@ BankScreen As screen:
                                 (CountRows(GC_checkpointItemAssessment) > Value(First(gcCollectionCapCounts).IndividualCollectionCount)  
                                  || CountRows(GC_checkpointItem_ActionItem) > Value(First(gcCollectionCapCounts).IndividualCollectionCount) || CountRows(GC_checkpointItem_Images) > Value(First(gcCollectionCapCounts).IndividualCollectionCount))
                             ,
-                            Set(VarMemoryPressurePopupMessage,"Your Memory has full, please reopen the App to reset some collections.");
+                            Set(VarMemoryPressurePopupMessage,"Your device's memory is getting full. Please restart the App by clicking on YES button.");
                             Set(VarMemoryPressurePopup,true),Set(VarMemoryPressurePopup,false)
                             );
                             
                             If(First(gcCollectionCapCounts).IsAllCollection =true && 
                             (CountRows(GC_actionItems)+CountRows(GC_bankAssessment)+CountRows(GC_checkpointItem_ActionItem)+CountRows(GC_checkpointItemAssessment)+CountRows(GC_unitAssessment)+CountRows(gcAssignmentunit)+CountRows(gcProjectAssignment)+CountRows(gcBankunit)+CountRows(gcBank)+CountRows(gcClient)+CountRows(GC_product)+CountRows(GC_templateCheckpointsItem)+CountRows(GC_templateCheckpoints)+CountRows(GC_templateSections)+CountRows(gcImageDelete)+CountRows(gcActionItemDelete)+CountRows(GC_checkpointItem_Images)+CountRows(GcCheckpointAssessment)+CountRows(GcSectionAssessment)) > Value(First(gcCollectionCapCounts).CombinedCollectionCount),
-                            Set(VarMemoryPressurePopupMessage,"Your Memory has full, please reopen the App to reset all collections.");
+                            Set(VarMemoryPressurePopupMessage,"Your device's memory is getting full, please restart the App by clicking on YES button.");
                             Set(VarMemoryPressurePopup1,true),Set(VarMemoryPressurePopup1,false)
                             );
                             
