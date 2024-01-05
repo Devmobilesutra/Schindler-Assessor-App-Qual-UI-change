@@ -1,6 +1,6 @@
 BankScreen As screen:
     OnVisible: |-
-        =Set(P,false);
+        =Set(VarExportActionitem,false);
         Set(VarGeneratePDF,false);
         Set(VarDistributePDF,false);
 
@@ -208,8 +208,8 @@ BankScreen As screen:
                             If((LookUp(checkpointItem_ActionItem,assignmentId.Id=glryProject.Selected.Id,checkpointItemActionItemsId)<> Blank()),settingsActive,settingsInactive)
                         OnSelect: |-
                             =//ExportActionitem.Run(
-                                Set(P,ExportActionitem.Run(glryProject.Selected.assignments));
-                            If(P=true,Notify("Action Item Exported Successfully",NotificationType.Success));
+                                Set(VarExportActionitem,ExportActionitem.Run(glryProject.Selected.assignments));
+                            If(VarExportActionitem=true,Notify("Action Item Exported Successfully",NotificationType.Success));
                         Visible: =//If(comp=true,false,true)
                         Width: =32
                         X: =Parent.Width/1.1
@@ -261,7 +261,7 @@ BankScreen As screen:
                             Self.Fill
                         OnSelect: |
                             =//ExportActionitem.Run(
-                                Set(P,ExportActionitem.Run(glryProject.Selected.assignments));
+                                Set(VarExportActionitem,ExportActionitem.Run(glryProject.Selected.assignments));
                             //If(P=true,Notify("Action Item Exported Successfully",NotificationType.Success));
                         PressedColor: =Self.Color
                         PressedFill: =Self.Fill
