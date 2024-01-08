@@ -144,51 +144,13 @@
     "dependents": [],
     "id": "29ae782d-dbcd-411a-9810-755a98b01c06"
   },
-  "2e5ebe2e-7397-4171-b161-989c15bda410": {
-    "connectionRef": {
-      "displayName": "Logic flows",
-      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1664/1.0.1664.3477/logicflows/icon.png",
-      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
-      "parameterHints": {
-        "41a0a068-ee29-4489-b11d-1303de8b439a": {
-          "value": "shared_powerappsnotificationv2"
-        },
-        "workflowEntityId": {
-          "value": "edb23a35-0d0c-ed11-82e5-0022481e0393"
-        },
-        "workflowName": {
-          "value": "ea09546f-679a-d844-51a8-bb30be62ce0b"
-        }
-      },
-      "parameterHintsV2": {
-        "shared_powerappsnotificationv2": {
-          "value": "41a0a068-ee29-4489-b11d-1303de8b439a"
-        },
-        "workflowEntityId": {
-          "value": "edb23a35-0d0c-ed11-82e5-0022481e0393"
-        },
-        "workflowName": {
-          "value": "ea09546f-679a-d844-51a8-bb30be62ce0b"
-        }
-      }
-    },
-    "datasets": {},
-    "dataSources": [
-      "WellnessAssessmentComment"
-    ],
-    "dependencies": {
-      "shared_powerappsnotificationv2": "41a0a068-ee29-4489-b11d-1303de8b439a"
-    },
-    "dependents": [],
-    "id": "2e5ebe2e-7397-4171-b161-989c15bda410"
-  },
   "41a0a068-ee29-4489-b11d-1303de8b439a": {
     "connectionRef": {
       "displayName": "Power Apps Notification V2",
       "executionRestrictions": {
         "apiId": "unknown",
         "appVer": "3.23122.17",
-        "modifiedOn": "2024-01-05 06:54:29",
+        "modifiedOn": "2024-01-08 10:57:31",
         "policy": "{\"type\":\"unused\"}",
         "version": 1
       },
@@ -203,7 +165,7 @@
     "dependents": [
       "21aef00a-5eb5-4da7-b3ec-772bbda3270c",
       "263b71c4-eab3-4fbd-b757-862b984e9f0f",
-      "2e5ebe2e-7397-4171-b161-989c15bda410"
+      "70060aec-5d07-4252-88d2-a9429f8153a6"
     ],
     "id": "41a0a068-ee29-4489-b11d-1303de8b439a"
   },
@@ -265,6 +227,38 @@
     },
     "dependents": [],
     "id": "673c75e0-2949-4f64-acc6-1d6efa2b090b"
+  },
+  "70060aec-5d07-4252-88d2-a9429f8153a6": {
+    "connectionRef": {
+      "displayName": "Logic flows",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1664/1.0.1664.3477/logicflows/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
+      "parameterHints": {
+        "workflowEntityId": {
+          "value": "edb23a35-0d0c-ed11-82e5-0022481e0393"
+        },
+        "workflowName": {
+          "value": "ea09546f-679a-d844-51a8-bb30be62ce0b"
+        }
+      },
+      "parameterHintsV2": {
+        "workflowEntityId": {
+          "value": "edb23a35-0d0c-ed11-82e5-0022481e0393"
+        },
+        "workflowName": {
+          "value": "ea09546f-679a-d844-51a8-bb30be62ce0b"
+        }
+      }
+    },
+    "datasets": {},
+    "dataSources": [
+      "WellnessAssessmentComment"
+    ],
+    "dependencies": {
+      "shared_powerappsnotificationv2": "41a0a068-ee29-4489-b11d-1303de8b439a"
+    },
+    "dependents": [],
+    "id": "70060aec-5d07-4252-88d2-a9429f8153a6"
   },
   "a2cd73c8-ac7c-4534-9608-444947f90356": {
     "connectionRef": {

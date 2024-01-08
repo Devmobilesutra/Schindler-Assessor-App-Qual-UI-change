@@ -1253,19 +1253,20 @@ ViewAssessment As screen:
             FocusedBorderThickness: =
             HoverFill: =//ColorFade(RGBA(56, 96, 178, 1), -20%)
             OnSelect: |
-                = If(
+                =WellnessAssessmentComment.Run(glryCheckpointIiemVA.Selected.bankUnitId.unitNumber,glryProject.Selected.reviewerName,glryCheckpointIiemVA.Selected.section_Id.sectionName,glryProject.Selected.assessorEmail);
+                 If(
                     //For Section Comment
                     varSectionComment = true,
                    Set(lo, UpdateIf(sectionAssessment,'sectionAssessment (quantum_sectionassessment)'=glryCheckpointIiemVA.Selected.section_Id.'sectionAssessment (quantum_sectionassessment)' && assignmentId.Id=glryProject.Selected.Id && bankUnitId.Id=glryCheckpointIiemVA.Selected.bankUnitId.Id,{sectionComment:TextInput2.Text}));
-                WellnessAssessmentComment.Run(glryProject.Selected.assessorEmail,glryCheckpointIiemVA.Selected.bankUnitId.unitNumber,glryProject.Selected.reviewerName,glryCheckpointIiemVA.Selected.section_Id.sectionName);,
+                /*WellnessAssessmentComment.Run(glryCheckpointIiemVA.Selected.bankUnitId.unitNumber,glryProject.Selected.reviewerName,glryCheckpointIiemVA.Selected.section_Id.sectionName,glryProject.Selected.assessorEmail);*/,
                     //For Checkpoint Comment
                     varCheckpointComment = true,
                     Set(lo,UpdateIf(checkpointAssessment,checkpointAssessment = glryCheckpointIiemVA.Selected.checkpointAssessment_Id.checkpointAssessment && assignmentId.Id=glryProject.Selected.Id && bankUnitId.Id=glryCheckpointIiemVA.Selected.bankUnitId.Id  , {checkpointComment: TextInput2.Text}));
-                WellnessAssessmentComment.Run(glryProject.Selected.assessorEmail,glryCheckpointIiemVA.Selected.bankUnitId.unitNumber,glryProject.Selected.reviewerName,glryCheckpointIiemVA.Selected.section_Id.sectionName);,
+                /*WellnessAssessmentComment.Run(glryCheckpointIiemVA.Selected.bankUnitId.unitNumber,glryProject.Selected.reviewerName,glryCheckpointIiemVA.Selected.section_Id.sectionName,glryProject.Selected.assessorEmail);*/,
                     
                     varItemComment = true,
                    Set(lo, UpdateIf(checkpointItemAssessment,'checkpointItemAssessment (quantum_checkpointitemassessment)'= glryCheckpointIiemVA.Selected.'checkpointItemAssessment (quantum_checkpointitemassessment)' && assignmentId.Id=glryProject.Selected.Id && bankUnitId.Id=glryCheckpointIiemVA.Selected.bankUnitId.Id,{checkpointItemComment:TextInput2.Text}));
-                WellnessAssessmentComment.Run(glryProject.Selected.assessorEmail,glryCheckpointIiemVA.Selected.bankUnitId.unitNumber,glryProject.Selected.reviewerName,glryCheckpointIiemVA.Selected.section_Id.sectionName);
+                /*WellnessAssessmentComment.Run(glryCheckpointIiemVA.Selected.bankUnitId.unitNumber,glryProject.Selected.reviewerName,glryCheckpointIiemVA.Selected.section_Id.sectionName,glryProject.Selected.assessorEmail);*/
                 
                 
                 );
