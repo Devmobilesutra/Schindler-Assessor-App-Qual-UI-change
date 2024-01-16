@@ -1,0 +1,19 @@
+Screen1 As screen:
+
+    Image1 As image:
+        Height: =271
+        Image: ='Sample Image'
+        Width: =290
+        X: =117
+        Y: =35
+        ZIndex: =2
+
+    Button4 As button:
+        Height: =78
+        OnSelect: =Navigate(Screen2);
+        Text: ="Button"
+        Width: =278
+        X: =123
+        Y: =317
+        ZIndex: =3
+

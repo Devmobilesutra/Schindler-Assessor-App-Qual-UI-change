@@ -1,0 +1,21 @@
+Screen2 As screen:
+    ImagePosition: =ImagePosition.Fill
+
+    Camera1 As camera:
+        Camera: =0
+        Height: =Parent.Height
+        Width: =Parent.Width
+        ZIndex: =1
+
+    Icon3 As icon.Add:
+        Color: =RGBA(255, 255, 255, 1)
+        Height: =96
+        Icon: =Icon.Camera
+        OnSelect: |-
+            =Set(VarPhoto,Camera1.Photo);
+            Navigate(Screen3);
+        Width: =140
+        X: =(Parent.Width-Self.Width)/2
+        Y: =Parent.Height-100
+        ZIndex: =2
+

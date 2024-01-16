@@ -1,0 +1,23 @@
+Screen3 As screen:
+
+    Image2 As image:
+        Height: =Parent.Height-80
+        Image: =If(IsBlank(VarPhoto),'Sample Image',VarPhoto)
+        Width: =Parent.Width
+        Y: =40
+        ZIndex: =1
+
+    "Icon4 As icon.'3DPrinting'":
+        Icon: =Icon.Cancel
+        OnSelect: =Navigate(Screen2,ScreenTransition.UnCoverRight);
+        X: =20
+        Y: =40
+        ZIndex: =2
+
+    Icon5 As icon.Add:
+        Icon: =Icon.Check
+        OnSelect: =Navigate(Screen1,ScreenTransition.Cover)
+        X: =Parent.Width-80
+        Y: =40
+        ZIndex: =3
+
