@@ -25,3 +25,9 @@ Screen1 As screen:
         Y: =57
         ZIndex: =4
 
+    Image4 As image:
+        Image: =Camera2.Photo
+        X: =639
+        Y: =369
+        ZIndex: =5
+
