@@ -2,7 +2,7 @@ Screen1 As screen:
 
     Image1 As image:
         Height: =271
-        Image: ='Sample Image'
+        Image: =LookUp(tempPhoto,Id=1,image)
         Width: =290
         X: =117
         Y: =35
@@ -10,7 +10,9 @@ Screen1 As screen:
 
     Button4 As button:
         Height: =78
-        OnSelect: =Navigate(Screen2);
+        OnSelect: |-
+            =ClearCollect(tempPhoto,{Id:1,image:'Sample Image'});
+            Navigate(Screen2);
         Text: ="Button"
         Width: =278
         X: =123
