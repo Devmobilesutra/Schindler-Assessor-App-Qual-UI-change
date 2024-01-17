@@ -1599,8 +1599,8 @@ DashboardScreen As screen:
     Button5 As button:
         OnSelect: =Navigate(Screen1,ScreenTransition.CoverRight)
         Text: ="Button"
-        X: =280
-        Y: =390
+        X: =300
+        Y: =200
         ZIndex: =40
 
     GrpPopupReportIssueSuccess As group:
