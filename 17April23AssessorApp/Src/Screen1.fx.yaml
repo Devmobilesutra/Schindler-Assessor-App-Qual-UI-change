@@ -1,9 +1,9 @@
 Screen1 As screen:
 
     Image1 As image:
-        Height: =271
+        Height: =227
         Image: =LookUp(tempPhoto,Id=1,image)
-        Width: =290
+        Width: =270
         X: =117
         Y: =35
         ZIndex: =2
@@ -15,19 +15,21 @@ Screen1 As screen:
             Navigate(Screen2);
         Text: ="Button"
         Width: =278
-        X: =123
-        Y: =317
+        X: =109
+        Y: =287
         ZIndex: =3
 
     Camera2 As camera:
         Camera: =0
+        Height: =160
+        Width: =232
         X: =507
         Y: =57
         ZIndex: =4
 
     Image4 As image:
         Image: =Camera2.Photo
-        X: =639
-        Y: =369
+        X: =546
+        Y: =252
         ZIndex: =5
 
