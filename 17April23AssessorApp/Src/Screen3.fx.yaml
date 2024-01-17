@@ -4,22 +4,24 @@ Screen3 As screen:
         Height: =Parent.Height-80
         Image: =If(IsBlank(VarPhoto),'Sample Image',VarPhoto)
         Width: =Parent.Width
-        Y: =40
+        Y: =20
         ZIndex: =1
 
-    "Icon4 As icon.'3DPrinting'":
-        Icon: =Icon.Cancel
+    Button6 As button:
         OnSelect: =Navigate(Screen2,ScreenTransition.UnCoverRight);
+        Text: ="Retake"
+        Width: =200
         X: =20
-        Y: =40
-        ZIndex: =2
+        Y: =Parent.Height-50
+        ZIndex: =4
 
-    Icon5 As icon.Add:
-        Icon: =Icon.Check
+    Button8 As button:
         OnSelect: |-
             =UpdateIf(tempPhoto,Id=1,{image:VarPhoto});
             Navigate(Screen1,ScreenTransition.Cover)
-        X: =Parent.Width-80
-        Y: =40
-        ZIndex: =3
+        Text: ="Use Photo"
+        Width: =200
+        X: =Parent.Width-Self.Width-20
+        Y: =Parent.Height-50
+        ZIndex: =5
 

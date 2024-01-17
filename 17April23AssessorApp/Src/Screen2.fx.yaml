@@ -19,3 +19,11 @@ Screen2 As screen:
         Y: =Parent.Height-100
         ZIndex: =2
 
+    Icon6 As icon.Add:
+        Icon: =Icon.ArrowLeft
+        OnSelect: |
+            =Navigate(Screen1,ScreenTransition.CoverRight)
+        X: =40
+        Y: =40
+        ZIndex: =3
+

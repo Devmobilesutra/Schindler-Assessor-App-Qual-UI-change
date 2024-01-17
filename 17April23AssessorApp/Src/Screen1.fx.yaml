@@ -19,3 +19,9 @@ Screen1 As screen:
         Y: =317
         ZIndex: =3
 
+    Camera2 As camera:
+        Camera: =0
+        X: =507
+        Y: =57
+        ZIndex: =4
+
