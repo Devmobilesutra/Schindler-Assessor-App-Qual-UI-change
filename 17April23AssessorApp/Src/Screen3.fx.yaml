@@ -8,7 +8,11 @@ Screen3 As screen:
         ZIndex: =1
 
     Button6 As button:
+        Color: =RGBA(0, 0, 0, 1)
+        Fill: =RGBA(0, 0, 0, 0)
         OnSelect: =Navigate(Screen2,ScreenTransition.UnCoverRight);
+        PressedColor: =Self.Color
+        PressedFill: =Self.Fill
         Text: ="Retake"
         Width: =200
         X: =20
@@ -16,9 +20,13 @@ Screen3 As screen:
         ZIndex: =4
 
     Button8 As button:
+        Color: =RGBA(0, 0, 0, 1)
+        Fill: =RGBA(0, 0, 0, 0)
         OnSelect: |-
             =UpdateIf(tempPhoto,Id=1,{image:VarPhoto});
             Navigate(Screen1,ScreenTransition.Cover)
+        PressedColor: =Self.Color
+        PressedFill: =Self.Fill
         Text: ="Use Photo"
         Width: =200
         X: =Parent.Width-Self.Width-20
