@@ -1425,7 +1425,7 @@ FindingScreen As screen:
                             Size: =AllScreensCSS.RLabelFontSize
                             Text: ="Add annotation" 
                             Width: =Parent.Width
-                            ZIndex: =1
+                            ZIndex: =2
 
                         txtAnnotationFS As text:
                             AlignInContainer: =AlignInContainer.Start
@@ -1566,7 +1566,7 @@ FindingScreen As screen:
                             Size: =AllScreensCSS.RLabelFontSize
                             Width: =If(App.Width<1024,Parent.Width/1.1,Parent.Width/1.06)
                             Y: =lblAnnotationFS.Height+lblAnnotationFS.Y
-                            ZIndex: =2
+                            ZIndex: =3
 
                         "GlryActionItemFS As gallery.'BrowseLayout_Flexible_SocialFeed_ver4.0'":
                             AlignInContainer: =AlignInContainer.SetByContainer
@@ -1586,7 +1586,7 @@ FindingScreen As screen:
                             Visible: =Q
                             Width: =Parent.Width/1.05
                             Y: =ctnAddActionFS.Height
-                            ZIndex: =3
+                            ZIndex: =4
 
                             TextInput5_10 As text:
                                 BorderColor: =RGBA(0, 0, 0, 1)
@@ -2026,7 +2026,7 @@ FindingScreen As screen:
                             LayoutMinWidth: =250
                             LayoutMode: =LayoutMode.Auto
                             LayoutWrap: =true
-                            ZIndex: =4
+                            ZIndex: =5
 
                             Label20_8 As label:
                                 Font: =AllScreensCSS.RFont
@@ -2309,7 +2309,7 @@ FindingScreen As screen:
                             Visible: =Q
                             Width: =Parent.Width/1.2
                             WrapCount: =2
-                            ZIndex: =5
+                            ZIndex: =6
 
                             Image14_2 As image:
                                 BorderColor: =RGBA(179, 179, 179, 1)
@@ -2432,7 +2432,7 @@ FindingScreen As screen:
                                 Size: =AllScreensCSS.RLabelFontSize-4
                                 Width: =Parent.Width/3
                                 X: =AddMediaButton1_2.X+5
-                                Y: =AddMediaButton1_2.Height+AddMediaButton1_2.Y+2
+                                Y: =Button4_1.Height+Button4_1.Y+2
                                 ZIndex: =2
 
                             Image9_2 As image:
@@ -2476,112 +2476,6 @@ FindingScreen As screen:
                                 X: =Parent.TemplateWidth/7
                                 Y: =16
                                 ZIndex: =5
-
-                            AddMediaWithImage1_2 As group:
-                                Height: =5
-                                Width: =5
-                                X: =40
-                                Y: =40
-                                ZIndex: =5
-
-                                UploadedImage1_2 As image:
-                                    FocusedBorderThickness: =
-                                    Height: =AddMediaButton1_2.Height
-                                    Image: |-
-                                        =If(
-                                            IsBlank(ThisItem),
-                                            SampleImage,
-                                            AddMediaButton1_2.Media
-                                        )
-                                    OnSelect: |
-                                        =/*//for reset ideal timer
-                                        Reset(tmr_logout);
-                                        Set(UserLastNavigated, Now());*/
-                                        
-                                        //for safety check
-                                        If(
-                                            DateDiff(
-                                                UserLastNavigatedTime,
-                                                Now(),
-                                                TimeUnit.Seconds
-                                            ) > SafetyCheckTime,
-                                            Set(
-                                                safetyPopup,
-                                                true
-                                            );
-                                            ,
-                                            Set(
-                                                UserLastNavigatedTime,
-                                                Now()
-                                            );
-                                            
-                                        );
-                                        
-                                        
-                                        
-                                        //UpdateIf(GC_checkpointItem_Images,checkpointItemImagesId=ThisItem.checkpointItemImagesId,{Image:ThisItem.Image});
-                                    Visible: =If(UP,false)
-                                    Width: =AddMediaButton1_2.Width
-                                    Y: =AddMediaButton1_2.Y
-                                    ZIndex: =3
-
-                                AddMediaButton1_2 As addMedia:
-                                    ChangePictureText: ="Change Picture"
-                                    Color: =RGBA(102, 102, 102, 1)
-                                    DisabledColor: =RGBA(255, 0, 0, 1)
-                                    DisabledFill: =RGBA(255, 255, 255, 1)
-                                    DisplayMode: |-
-                                        =If(
-                                            VarImageIsDownloaded = true,
-                                            DisplayMode.Edit,
-                                            DisplayMode.Disabled
-                                        )
-                                    Fill: =RGBA(175, 191, 224, 1)
-                                    FocusedBorderThickness: =
-                                    Font: =AllScreensCSS.ButtonFont
-                                    Height: =40
-                                    OnChange: |-
-                                        =Set(UP,true);
-                                        /*UpdateIf(
-                                                                GC_checkpointItem_Images,
-                                                                checkpointItemImagesId = ThisItem.checkpointItemImagesId,
-                                                                {
-                                                                    Image: Image14_2.Image
-                                                                    //image_annotation: TextInput6_2.Text
-                                                                }
-                                                            );*/
-                                                            If(App.Width>App.Height,App.ActiveScreen.Orientation="Landscape",App.ActiveScreen.Orientation="Landscape")
-                                    OnSelect: |-
-                                        =
-                                        
-                                        //for safety check
-                                        If(
-                                            DateDiff(
-                                                UserLastNavigatedTime,
-                                                Now(),
-                                                TimeUnit.Seconds
-                                            ) > SafetyCheckTime,
-                                            Set(
-                                                safetyPopup,
-                                                true
-                                            );
-                                            ,
-                                            Set(
-                                                UserLastNavigatedTime,
-                                                Now()
-                                            );
-                                            
-                                        );
-                                        If(VarImageIsDownloaded =true,Set(UP,true);,
-                                        Set(VarDownloadImagesRestrict,true));
-                                        
-                                        //UpdateIf(GC_checkpointItem_Images,checkpointItemImagesId=ThisItem.checkpointItemImagesId,{Image:UploadedImage1_2});
-                                        //If(App.Width>App.Height,App.ActiveScreen.Orientation="Landscape",App.ActiveScreen.Orientation="Landscape")
-                                    Size: =AllScreensCSS.RLabelFontSize-2
-                                    Width: =Parent.Width/3
-                                    X: =30
-                                    Y: =Image14_2.Height+Image14_2.Y
-                                    ZIndex: =4
 
                             Button5_22 As button:
                                 BorderColor: =AllScreensCSS.RActiveColor
@@ -2685,9 +2579,19 @@ FindingScreen As screen:
                                 Size: =12
                                 Text: ="X"
                                 Width: =40
-                                X: =AddMediaButton1_2.Width+30
+                                X: =Image14_2.Width+30
                                 Y: =Image14_2.Y
                                 ZIndex: =6
+
+                            Button4_1 As button:
+                                OnSelect: |-
+                                    =ClearCollect(tempPhoto,{Id:1,image:'Sample Image'});
+                                    Navigate(Screen2);
+                                Text: ="Button"
+                                Width: =Parent.TemplateWidth/1.8
+                                X: =Parent.TemplateWidth/7
+                                Y: =Image14_2.Height+Image14_2.Y+10
+                                ZIndex: =7
 
                         ctnAddImageFS As groupContainer.horizontalAutoLayoutContainer:
                             FillPortions: =0
@@ -2696,7 +2600,7 @@ FindingScreen As screen:
                             LayoutMinWidth: =250
                             LayoutMode: =LayoutMode.Auto
                             LayoutWrap: =true
-                            ZIndex: =6
+                            ZIndex: =7
 
                             lblAddImageFS As label:
                                 Color: =AllScreensCSS.RColorBlack
@@ -2935,7 +2839,7 @@ FindingScreen As screen:
                             LayoutMode: =LayoutMode.Auto
                             Width: =Parent.Width -40
                             Y: =btnAddImageFS.Height+btnAddImageFS.Y+50
-                            ZIndex: =9
+                            ZIndex: =8
 
                             btnSaveFS As button:
                                 BorderColor: =Self.Fill
