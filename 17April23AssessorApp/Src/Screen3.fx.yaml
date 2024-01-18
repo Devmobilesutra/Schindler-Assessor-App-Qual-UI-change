@@ -10,6 +10,8 @@ Screen3 As screen:
     Button6 As button:
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
+        HoverColor: =Self.Color
+        HoverFill: =Self.Fill
         OnSelect: =Navigate(Screen2,ScreenTransition.UnCoverRight);
         PressedColor: =Self.Color
         PressedFill: =Self.Fill
@@ -22,6 +24,8 @@ Screen3 As screen:
     Button8 As button:
         Color: =RGBA(0, 0, 0, 1)
         Fill: =RGBA(0, 0, 0, 0)
+        HoverColor: =Self.Color
+        HoverFill: =Self.Fill
         OnSelect: |-
             =UpdateIf(tempPhoto,Id=1,{image:VarPhoto});
             Navigate(Screen1,ScreenTransition.Cover)

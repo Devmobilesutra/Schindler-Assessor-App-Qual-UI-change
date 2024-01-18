@@ -36,7 +36,7 @@ Screen1 As screen:
 
     Icon4 As icon.ArrowLeft:
         Icon: =Icon.ArrowLeft
-        OnSelect: =Back()
+        OnSelect: =Navigate(DashboardScreen);
         X: =40
         Y: =40
         ZIndex: =4
