@@ -1858,7 +1858,8 @@ FindingScreen_1 As screen:
                                 RadiusTopLeft: =1
                                 RadiusTopRight: =1
                                 Text: ="X"
-                                Width: =1
+                                Width: =40
+                                X: =TextInput8_1.X+TextInput8_1.Width+10
                                 Y: =ComboBox1_3.Y
                                 ZIndex: =14
 
@@ -1948,7 +1949,7 @@ FindingScreen_1 As screen:
                                 RadiusTopLeft: =1
                                 RadiusTopRight: =1
                                 Width: =ComboBox1_3.Width
-                                X: =1
+                                X: =ComboBox1_3.X+ComboBox1_3.Width+10
                                 Y: =50
                                 ZIndex: =17
 
@@ -2570,7 +2571,7 @@ FindingScreen_1 As screen:
                                         //UpdateIf(GC_checkpointItem_Images,checkpointItemImagesId=ThisItem.checkpointItemImagesId,{Image:UploadedImage1_2});
                                         //If(App.Width>App.Height,App.ActiveScreen.Orientation="Landscape",App.ActiveScreen.Orientation="Landscape")
                                     Size: =AllScreensCSS.RLabelFontSize-2
-                                    Width: =1
+                                    Width: =Parent.Width/3
                                     X: =1
                                     Y: =Image14_3.Height+Image14_3.Y
                                     ZIndex: =4
@@ -2677,6 +2678,7 @@ FindingScreen_1 As screen:
                                 Size: =12
                                 Text: ="X"
                                 Width: =40
+                                X: =AddMediaButton1_3.X+AddMediaButton1_3.Width+20
                                 Y: =Image14_3.Y
                                 ZIndex: =6
 

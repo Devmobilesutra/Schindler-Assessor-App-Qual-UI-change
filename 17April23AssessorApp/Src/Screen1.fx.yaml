@@ -2,7 +2,22 @@ Screen1 As screen:
 
     Image1 As image:
         Height: =227
-        Image: =LookUp(tempPhoto,Id=1,image)
+        Image: |-
+            =If(
+                IsBlank(
+                    LookUp(
+                        tempPhoto,
+                        Id = 1,
+                        image
+                    )
+                ),
+                'Sample Image',
+                LookUp(
+                    tempPhoto,
+                    Id = 1,
+                    image
+                )
+            )
         Width: =270
         X: =117
         Y: =35
@@ -13,23 +28,16 @@ Screen1 As screen:
         OnSelect: |-
             =ClearCollect(tempPhoto,{Id:1,image:'Sample Image'});
             Navigate(Screen2);
-        Text: ="Button"
+        Text: ="Tap or click to add a picture"
         Width: =278
         X: =109
         Y: =287
         ZIndex: =3
 
-    Camera2 As camera:
-        Camera: =0
-        Height: =160
-        Width: =232
-        X: =507
-        Y: =57
+    Icon4 As icon.ArrowLeft:
+        Icon: =Icon.ArrowLeft
+        OnSelect: =Back()
+        X: =40
+        Y: =40
         ZIndex: =4
-
-    Image4 As image:
-        Image: =Camera2.Photo
-        X: =546
-        Y: =252
-        ZIndex: =5
 
