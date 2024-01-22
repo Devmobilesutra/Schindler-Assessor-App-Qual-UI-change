@@ -27,8 +27,15 @@ Screen3 As screen:
         HoverColor: =Self.Color
         HoverFill: =Self.Fill
         OnSelect: |-
-            =UpdateIf(tempPhoto,Id=1,{image:VarPhoto});
-            Navigate(Screen1,ScreenTransition.Cover)
+            =UpdateIf(
+                GC_checkpointItem_Images,
+                checkpointItemImagesId = GlryImagesFS.Selected.checkpointItemImagesId,
+                {Image: VarPhoto}
+            );
+            Navigate(
+                FindingScreen,
+                ScreenTransition.Cover
+            )
         PressedColor: =Self.Color
         PressedFill: =Self.Fill
         Text: ="Use Photo"

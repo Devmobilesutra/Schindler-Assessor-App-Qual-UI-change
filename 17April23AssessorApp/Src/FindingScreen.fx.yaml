@@ -2311,48 +2311,6 @@ FindingScreen As screen:
                             WrapCount: =2
                             ZIndex: =6
 
-                            Image14_2 As image:
-                                BorderColor: =RGBA(179, 179, 179, 1)
-                                BorderThickness: =4
-                                Height: =Min(Self.Width, Parent.TemplateHeight - 115)
-                                Image: |-
-                                    =If(
-                                        IsBlank(UploadedImage1_2),
-                                        If(
-                                            ThisItem.CIIstatusUpdate = 2 &&   IsBlank(ThisItem.Image) ,
-                                            'submitted-cloud',
-                                            ThisItem.Image
-                                        ),
-                                        UploadedImage1_2
-                                    )
-                                OnSelect: |-
-                                    =
-                                    //for safety check
-                                    If(
-                                        DateDiff(
-                                            UserLastNavigatedTime,
-                                            Now(),
-                                            TimeUnit.Seconds
-                                        ) > SafetyCheckTime,
-                                        Set(
-                                            safetyPopup,
-                                            true
-                                        );
-                                        ,
-                                        Set(
-                                            UserLastNavigatedTime,
-                                            Now()
-                                        );
-                                        
-                                    );
-                                    
-                                    //Set(popup,true)
-                                Visible: =Q
-                                Width: =Parent.TemplateWidth/1.8
-                                X: =Parent.TemplateWidth/7
-                                Y: =16
-                                ZIndex: =1
-
                             TextInput6_2 As text:
                                 BorderColor: =RGBA(0, 0, 0, 1)
                                 Default: |-
@@ -2431,8 +2389,8 @@ FindingScreen As screen:
                                 RadiusTopRight: =1
                                 Size: =AllScreensCSS.RLabelFontSize-4
                                 Width: =Parent.Width/3
-                                X: =AddMediaButton1_2.X+5
-                                Y: =Button4_1.Height+Button4_1.Y+2
+                                X: =Parent.TemplateWidth/12
+                                Y: =Button4_1.Height+Button4_1.Y+10
                                 ZIndex: =2
 
                             Image9_2 As image:
@@ -2472,7 +2430,7 @@ FindingScreen As screen:
                                     
                                     Select(Parent)
                                 Visible: =If(UP,false)
-                                Width: =Image14_2.Width
+                                Width: =Parent.TemplateWidth/1.8
                                 X: =Parent.TemplateWidth/7
                                 Y: =16
                                 ZIndex: =5
@@ -2579,18 +2537,25 @@ FindingScreen As screen:
                                 Size: =12
                                 Text: ="X"
                                 Width: =40
-                                X: =Image14_2.Width+30
-                                Y: =Image14_2.Y
+                                X: =Image9_2.X+Image9_2.Width+10
+                                Y: =Image9_2.Y
                                 ZIndex: =6
 
                             Button4_1 As button:
+                                BorderThickness: =0
+                                Fill: =RGBA(136, 160, 209, 1)
+                                FocusedBorderThickness: =0
+                                HoverColor: =Self.Color
+                                HoverFill: =Self.Fill
                                 OnSelect: |-
                                     =ClearCollect(tempPhoto,{Id:1,image:'Sample Image'});
                                     Navigate(Screen2);
-                                Text: ="Button"
+                                PressedColor: =Self.Color
+                                PressedFill: =Self.Fill
+                                Text: ="Capture Image"
                                 Width: =Parent.TemplateWidth/1.8
                                 X: =Parent.TemplateWidth/7
-                                Y: =Image14_2.Height+Image14_2.Y+10
+                                Y: =Image9_2.Height+Image9_2.Y+10
                                 ZIndex: =7
 
                         ctnAddImageFS As groupContainer.horizontalAutoLayoutContainer:
@@ -2907,7 +2872,7 @@ FindingScreen As screen:
                                         !IsBlank(
                                             LookUp(
                                                 GlryImagesFS.AllItems,
-                                                (Image14_2.Image) = Blank()
+                                                (Image9_2.Image) = Blank()
                                             )
                                         ),
                                         Set(
@@ -3043,7 +3008,7 @@ FindingScreen As screen:
                                                             GC_checkpointItem_Images,
                                                             checkpointItemImagesId = i.checkpointItemImagesId,
                                                             {
-                                                                Image: i.Image14_2.Image,
+                                                                Image: i.Image9_2.Image,
                                                                 image_annotation: i.TextInput6_2.Text,
                                                                 CIIstatusUpdate: 0,
                                                                 ImageSortSequence: LookUp(

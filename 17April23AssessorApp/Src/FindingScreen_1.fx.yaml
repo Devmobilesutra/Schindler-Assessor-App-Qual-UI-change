@@ -2996,7 +2996,7 @@ FindingScreen_1 As screen:
                                         !IsBlank(
                                             LookUp(
                                                 GlryImagesFS_1.AllItems,
-                                                (Image14_2.Image) = Blank()
+                                                (Image9_2.Image) = Blank()
                                             )
                                         ),
                                         Set(

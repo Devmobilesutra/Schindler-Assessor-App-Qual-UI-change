@@ -33,7 +33,7 @@ Screen2 As screen:
         Height: =45
         Icon: =Icon.ArrowLeft
         OnSelect: |
-            =Navigate(Screen1,ScreenTransition.CoverRight)
+            =Navigate(FindingScreen,ScreenTransition.CoverRight)
         Width: =45
         X: =30
         Y: =40

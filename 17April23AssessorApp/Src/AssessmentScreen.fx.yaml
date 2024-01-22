@@ -833,7 +833,7 @@ AssessmentScreen As screen:
                                 true
                             );
                             //Notify("finding endd",NotificationType.Information);
-                            Navigate(FindingScreen_1);
+                            Navigate(FindingScreen);
                         PressedBorderColor: =Self.BorderColor
                         PressedColor: =Self.Color
                         PressedFill: =Self.Fill
