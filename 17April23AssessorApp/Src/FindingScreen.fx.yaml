@@ -2305,7 +2305,7 @@ FindingScreen As screen:
                             LayoutMinWidth: =320
                             ShowScrollbar: =false
                             TemplatePadding: =0
-                            TemplateSize: =350
+                            TemplateSize: =370
                             Visible: =Q
                             Width: =Parent.Width/1.2
                             WrapCount: =2
@@ -2429,7 +2429,7 @@ FindingScreen As screen:
                                     );
                                     
                                     Select(Parent)
-                                Visible: =If(UP,false)
+                                Visible: =true//If(UP,false)
                                 Width: =Parent.TemplateWidth/1.8
                                 X: =Parent.TemplateWidth/7
                                 Y: =16
@@ -2439,6 +2439,7 @@ FindingScreen As screen:
                                 BorderColor: =AllScreensCSS.RActiveColor
                                 Fill: =AllScreensCSS.RActiveColor
                                 Font: =AllScreensCSS.ButtonFont
+                                FontWeight: =FontWeight.Bold
                                 HoverFill: =AllScreensCSS.RActiveColor
                                 Italic: =true
                                 OnSelect: |
@@ -2543,7 +2544,14 @@ FindingScreen As screen:
 
                             Button4_1 As button:
                                 BorderThickness: =0
-                                Fill: =RGBA(136, 160, 209, 1)
+                                DisabledFill: =RGBA(202, 202, 202, 1)
+                                DisplayMode: |-
+                                    =If(
+                                        VarImageIsDownloaded = true,
+                                        DisplayMode.Edit,
+                                        DisplayMode.Disabled
+                                    )
+                                Fill: =RGBA(153, 188, 242, 1)
                                 FocusedBorderThickness: =0
                                 HoverColor: =Self.Color
                                 HoverFill: =Self.Fill
@@ -2552,7 +2560,18 @@ FindingScreen As screen:
                                     Navigate(Screen2);
                                 PressedColor: =Self.Color
                                 PressedFill: =Self.Fill
-                                Text: ="Capture Image"
+                                Text: |-
+                                    =If(
+                                        IsBlank(
+                                            LookUp(
+                                                GC_checkpointItem_Images,
+                                                checkpointItemImagesId = ThisItem.checkpointItemImagesId,
+                                                Image
+                                            )
+                                        ),
+                                        "Capture Image",
+                                        "Change Image"
+                                    )
                                 Width: =Parent.TemplateWidth/1.8
                                 X: =Parent.TemplateWidth/7
                                 Y: =Image9_2.Height+Image9_2.Y+10
