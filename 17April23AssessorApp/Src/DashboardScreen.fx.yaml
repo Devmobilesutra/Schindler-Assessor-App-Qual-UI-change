@@ -1599,6 +1599,7 @@ DashboardScreen As screen:
     Button5 As button:
         OnSelect: =Navigate(Screen1,ScreenTransition.CoverRight)
         Text: ="Add Image +"
+        Visible: =false
         X: =173
         Y: =54
         ZIndex: =40
