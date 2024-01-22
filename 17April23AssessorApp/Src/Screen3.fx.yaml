@@ -30,7 +30,8 @@ Screen3 As screen:
             =UpdateIf(
                 GC_checkpointItem_Images,
                 checkpointItemImagesId = GlryImagesFS.Selected.checkpointItemImagesId,
-                {Image: VarPhoto}
+                {Image: VarPhoto,
+                CIIstatusUpdate:0}
             );
             Navigate(
                 FindingScreen,
