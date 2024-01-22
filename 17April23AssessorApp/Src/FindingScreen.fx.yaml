@@ -2403,7 +2403,6 @@ FindingScreen As screen:
                                         'Sample Image'),
                                         ThisItem.Image
                                     )
-                                ImagePosition: =ImagePosition.Fill
                                 OnSelect: |-
                                     =/*//for reset ideal timer
                                     Reset(tmr_logout);
@@ -2891,8 +2890,9 @@ FindingScreen As screen:
                                         !IsBlank(
                                             LookUp(
                                                 GlryImagesFS.AllItems,
-                                                (Image9_2.Image) = Blank()
-                                            )
+                                                //(Image9_2.Image) = Blank()
+                                                Image9_2.Image='Sample Image'|| Image9_2.Image = 'submitted-cloud'
+                                                       )
                                         ),
                                         Set(
                                             VarBlankrow2,
