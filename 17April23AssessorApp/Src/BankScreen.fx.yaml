@@ -537,7 +537,7 @@ BankScreen As screen:
                                 (CountRows(GC_checkpointItemAssessment) > Value(First(gcCollectionCapCounts).IndividualCollectionCount)  
                                  || CountRows(GC_checkpointItem_ActionItem) > Value(First(gcCollectionCapCounts).IndividualCollectionCount) || CountRows(GC_checkpointItem_Images) > Value(First(gcCollectionCapCounts).IndividualCollectionCount))
                             ,
-                            Set(VarMemoryPressurePopupMessage,"Your device's memory is getting full. Please restart the App by clicking on YES button.");
+                            Set(VarMemoryPressurePopupMessage,"Your device's memory is getting full. Please restart the App by clicking on YES button and submit your findings.");
                             Set(VarMemoryPressurePopup,true),Set(VarMemoryPressurePopup,false)
                             );
                             
