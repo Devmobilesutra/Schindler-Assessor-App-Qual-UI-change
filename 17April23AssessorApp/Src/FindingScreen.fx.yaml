@@ -2556,7 +2556,7 @@ FindingScreen As screen:
                                 HoverFill: =Self.Fill
                                 OnSelect: |-
                                     =ClearCollect(tempPhoto,{Id:1,image:'Sample Image'});
-                                    Set(VarCameraFlag,1);
+                                    Set(VarCameraFlag,0);
                                     Navigate(Screen2);
                                 PressedColor: =Self.Color
                                 PressedFill: =Self.Fill
