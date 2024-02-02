@@ -237,7 +237,10 @@ App As appinfo:
                     //template section
                     ClearCollect(
                         GC_templateSections,
-                        templateSections
+                        Filter(
+                            templateSections,
+                            seriesName = "7000" || seriesName = "5500" || seriesName = "9000"
+                        )
                     );
                     SaveData(
                         GC_templateSections,
@@ -247,7 +250,10 @@ App As appinfo:
                     //template checkpoints
                     ClearCollect(
                         GC_templateCheckpoints,
-                        templateCheckpoints
+                         Filter(
+                            templateCheckpoints,
+                            seriesName = "7000" || seriesName = "5500" || seriesName = "9000"
+                        )
                     );
                     SaveData(
                         GC_templateCheckpoints,
@@ -257,7 +263,10 @@ App As appinfo:
                     //template checkpoint Items
                     ClearCollect(
                         GC_templateCheckpointsItem,
-                        templateCheckpointsItems
+                        Filter(
+                            templateCheckpointsItems,
+                            seriesName = "7000" || seriesName = "5500" || seriesName = "9000"
+                        )
                     );
                     SaveData(
                         GC_templateCheckpointsItem,
