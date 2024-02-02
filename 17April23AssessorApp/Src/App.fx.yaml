@@ -246,6 +246,7 @@ App As appinfo:
                         GC_templateSections,
                         "localtemplatesections"
                     );
+                    CountRows(GC_templateSections);
                     ,
                     //template checkpoints
                     ClearCollect(
@@ -259,6 +260,7 @@ App As appinfo:
                         GC_templateCheckpoints,
                         "localtemplateCheckpoints"
                     );
+                     CountRows(GC_templateCheckpoints);
                     ,
                     //template checkpoint Items
                     ClearCollect(
@@ -272,6 +274,7 @@ App As appinfo:
                         GC_templateCheckpointsItem,
                         "localtemplatecheckpointitems"
                     );
+                     CountRows(GC_templateCheckpointsItem);
                     ,
                     //master products data
                     ClearCollect(
