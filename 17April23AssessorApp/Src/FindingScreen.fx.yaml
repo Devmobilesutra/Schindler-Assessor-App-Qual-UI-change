@@ -1319,10 +1319,10 @@ FindingScreen As screen:
                                                 GC_checkpointItem_Images,
                                                 CIIstatusUpdate = 0 || CIIstatusUpdate = 1 || CIIstatusUpdate = Blank()
                                             )
-                                        ) >= 50,
+                                        ) >= First(gcCollectionCapCounts).SavedImageCount,
                                         Set(
                                             VarImagesExceedPopupText,
-                                            "You have reached limit of 50 Unsubmitted images. Please submit before continuing the assessment."
+                                            "You have reached limit of " & First(gcCollectionCapCounts).SavedImageCount & " Unsubmitted images. Please submit before continuing the assessment."
                                         );
                                      // Notify("You have reached limit of 75 images.You can not add Images.",NotificationType.Error);
                                     Set(
@@ -1340,8 +1340,7 @@ FindingScreen As screen:
                                             TempGetImages,
                                             Filter(
                                                 checkpointItem_Images,
-                                            bankUnitId.Id=varBankUnitId && checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = ThisItem.'checkpointItemAssessment (quantum_checkpointitemassessment)' 
-                                               
+                                                bankUnitId.Id = varBankUnitId && checkpointItem_Id.'checkpointItemAssessment (quantum_checkpointitemassessment)' = ThisItem.'checkpointItemAssessment (quantum_checkpointitemassessment)'
                                             )
                                         );
                                         
@@ -1358,8 +1357,8 @@ FindingScreen As screen:
                                             VarImageIsDownloaded,
                                             true
                                         );
+                                        Clear(TempGetImages);
                                         
-                                    Clear(TempGetImages);
                                     );
                                 PressedColor: =Self.Color
                                 PressedFill: =Self.Fill
@@ -2229,10 +2228,10 @@ FindingScreen As screen:
                                                     GC_checkpointItem_Images,
                                                     CIIstatusUpdate = 0 || CIIstatusUpdate = 1 || CIIstatusUpdate = Blank()
                                                 )
-                                            ) >= 50,
+                                            ) >= First(gcCollectionCapCounts).SavedImageCount,
                                             Set(
                                                 VarImagesExceedPopupText,
-                                                "You have reached limit of 50 Unsubmitted images. Please submit before continuing the assessment."
+                                                "You have reached limit of " & First(gcCollectionCapCounts).SavedImageCount & " Unsubmitted images. Please submit before continuing the assessment."
                                             );
                                          // Notify("You have reached limit of 75 images.You can not add Images.",NotificationType.Error);
                                         Set(
@@ -2656,10 +2655,10 @@ FindingScreen As screen:
                                                     GC_checkpointItem_Images,
                                                     CIIstatusUpdate = 0 || CIIstatusUpdate = 1 || CIIstatusUpdate = Blank()
                                                 )
-                                            ) >= 50,
+                                            ) >= First(gcCollectionCapCounts).SavedImageCount,
                                             Set(
                                                 VarImagesExceedPopupText,
-                                                "You have reached limit of 50 Unsubmitted images. Please submit before continuing the assessment."
+                                                "You have reached limit of " & First(gcCollectionCapCounts).SavedImageCount & " Unsubmitted images. Please submit before continuing the assessment."
                                             );
                                      // Notify("You have reached limit of 75 images.You can not add Images.",NotificationType.Error);
                                     Set(
@@ -2673,7 +2672,7 @@ FindingScreen As screen:
                                                         GC_checkpointItem_Images,
                                                         CIIstatusUpdate = 0 || CIIstatusUpdate = 1 || CIIstatusUpdate = Blank()
                                                     )
-                                                ) > 40,
+                                                ) > First(gcCollectionCapCounts).SavedImageCount - 10,
                                                 Set(
                                                     VarImagesExceedPopupText,
                                                     CountRows(
@@ -2681,7 +2680,7 @@ FindingScreen As screen:
                                                             GC_checkpointItem_Images,
                                                             CIIstatusUpdate = 0 || CIIstatusUpdate = 1 || CIIstatusUpdate = Blank()
                                                         )
-                                                    ) & " Unsubmitted Images are already stored. Now you can add only " & 50 - CountRows(
+                                                    ) & " Unsubmitted Images are already stored. Now you can add only " & First(gcCollectionCapCounts).SavedImageCount - CountRows(
                                                         Filter(
                                                             GC_checkpointItem_Images,
                                                             CIIstatusUpdate = 0 || CIIstatusUpdate = 1 || CIIstatusUpdate = Blank()

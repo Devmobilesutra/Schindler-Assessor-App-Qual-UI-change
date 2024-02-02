@@ -819,7 +819,7 @@ DashboardScreen As screen:
                 FontWeight: =FontWeight.Bold
                 Size: =14
                 Text: |-
-                    ="This app will allow only 50 unsubmitted images across all assignments. " & CountRows(
+                    ="This app will allow only " & First(gcCollectionCapCounts).SavedImageCount & " unsubmitted images across all assignments. " & CountRows(
                         Filter(
                             GC_checkpointItem_Images,
                             CIIstatusUpdate = 0 || CIIstatusUpdate = 1
