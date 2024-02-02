@@ -7,7 +7,6 @@ App As appinfo:
         Set(JsonLength, Len(JsonString));
         // Convert characters to bytes (considering UTF-16 encoding)
         Set(BytesEstimate, JsonLength * 2); */
-        
         ClearCollect(
             gcCollectionCapCounts,
             CollectionCapCounts
@@ -246,12 +245,11 @@ App As appinfo:
                         GC_templateSections,
                         "localtemplatesections"
                     );
-                  
                     ,
                     //template checkpoints
                     ClearCollect(
                         GC_templateCheckpoints,
-                         Filter(
+                        Filter(
                             templateCheckpoints,
                             seriesName = "7000" || seriesName = "5500" || seriesName = "9000"
                         )
@@ -260,7 +258,6 @@ App As appinfo:
                         GC_templateCheckpoints,
                         "localtemplateCheckpoints"
                     );
-                 
                     ,
                     //template checkpoint Items
                     ClearCollect(
@@ -274,7 +271,6 @@ App As appinfo:
                         GC_templateCheckpointsItem,
                         "localtemplatecheckpointitems"
                     );
-                   
                     ,
                     //master products data
                     ClearCollect(
