@@ -2593,7 +2593,7 @@ FindingScreen As screen:
                                 Font: =AllScreensCSS.RFont
                                 FontWeight: =FontWeight.Bold
                                 Size: =18
-                                Text: ="Add Image" & VarBytesEstimate
+                                Text: ="Add Image" 
                                 ZIndex: =1
 
                             lblImageRequiredFS As label:
@@ -2649,14 +2649,68 @@ FindingScreen As screen:
                                     );
                                     
                                     // Calculate the length of the JSON string
-                                    Set(VarJsonStringItem, Len(JSON(DropColumns(GC_checkpointItemAssessment,"_ownerid_value"))));
-                                    Set(VarJsonStringAction, Len(JSON(DropColumns(GC_checkpointItem_ActionItem,"_ownerid_value"))));
-                                    Set(VarJsonStringImage, Len(JSON(DropColumns(GC_checkpointItem_Images,"_ownerid_value"),JSONFormat.IncludeBinaryData)));
-                                    //Set(VarJsonLength, Len(VarJsonString));
+                                    Set(
+                                        VarJsonStringItem,
+                                        Len(
+                                            JSON(
+                                                DropColumns(
+                                                    GC_checkpointItemAssessment,
+                                                    "_ownerid_value"
+                                                )
+                                            )
+                                        )
+                                    );
+                                    Set(
+                                        VarJsonStringAction,
+                                        Len(
+                                            JSON(
+                                                DropColumns(
+                                                    GC_checkpointItem_ActionItem,
+                                                    "_ownerid_value"
+                                                )
+                                            )
+                                        )
+                                    );
+                                    Set(
+                                        VarJsonStringImage,
+                                        Len(
+                                            JSON(
+                                                DropColumns(
+                                                    GC_checkpointItem_Images,
+                                                    "_ownerid_value"
+                                                ),
+                                                JSONFormat.IncludeBinaryData
+                                            )
+                                        )
+                                    );
                                     // Convert characters to bytes (considering UTF-16 encoding)
-                                    Set(VarBytesEstimate, (((VarJsonStringItem + VarJsonStringAction +VarJsonStringImage )* 2)/1024)*0.0009765625); 
-                                    
-                                    
+                                    Set(
+                                        VarBytesEstimate,
+                                        ((VarJsonStringItem + VarJsonStringAction + VarJsonStringImage) * 2)
+                                    );
+                                    //*0.0009765625mb
+                                    //convert bytes to MB
+                                    Set(
+                                        VarBytestoMB,
+                                        (VarBytesEstimate / (1024 * 1024))
+                                    );
+                                    //*0.0009765625mb
+                                    If(
+                                        VarBytestoMB > 20,
+                                        Set(
+                                            VarMemoryPressurePopupMessage,
+                                            "Your device's memory is getting full. Please submit the findings as soon as possible and restart the App."
+                                        );
+                                        Set(
+                                            VarMemoryPressurePopup,
+                                            true
+                                        ),
+                                        Set(
+                                            VarMemoryPressurePopup,
+                                            false
+                                        )
+                                    );
+                                    /*
                                     If(
                                         First(gcCollectionCapCounts).IsIndividualCollection = true && (CountRows(GC_checkpointItemAssessment) > Value(First(gcCollectionCapCounts).IndividualCollectionCount)
                                           || CountRows(GC_checkpointItem_ActionItem) > Value(First(gcCollectionCapCounts).IndividualCollectionCount) || CountRows(GC_checkpointItem_Images) > Value(First(gcCollectionCapCounts).IndividualCollectionCount)),
@@ -2687,7 +2741,7 @@ FindingScreen As screen:
                                             VarMemoryPressurePopup1,
                                             false
                                         )
-                                    );
+                                    );*/
                                     If(
                                         VarImageIsDownloaded = true,
                                         If(
@@ -2837,7 +2891,7 @@ FindingScreen As screen:
                                             GC_checkpointItem_Images,
                                             CIIstatusUpdate = 0 || CIIstatusUpdate = 1
                                         )
-                                    ) & " )"
+                                    ) & " ) " & VarBytestoMB & "MB"
                                 Visible: |-
                                     =If(
                                         CountRows(
