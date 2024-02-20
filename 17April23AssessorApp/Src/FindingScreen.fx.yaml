@@ -2647,69 +2647,6 @@ FindingScreen As screen:
                                         );
                                         
                                     );
-                                    
-                                    // Calculate the length of the JSON string
-                                    Set(
-                                        VarJsonStringItem,
-                                        Len(
-                                            JSON(
-                                                DropColumns(
-                                                    GC_checkpointItemAssessment,
-                                                    "_ownerid_value"
-                                                )
-                                            )
-                                        )
-                                    );
-                                    Set(
-                                        VarJsonStringAction,
-                                        Len(
-                                            JSON(
-                                                DropColumns(
-                                                    GC_checkpointItem_ActionItem,
-                                                    "_ownerid_value"
-                                                )
-                                            )
-                                        )
-                                    );
-                                    Set(
-                                        VarJsonStringImage,
-                                        Len(
-                                            JSON(
-                                                DropColumns(
-                                                    GC_checkpointItem_Images,
-                                                    "_ownerid_value"
-                                                ),
-                                                JSONFormat.IncludeBinaryData
-                                            )
-                                        )
-                                    );
-                                    // Convert characters to bytes (considering UTF-16 encoding)
-                                    Set(
-                                        VarBytesEstimate,
-                                        ((VarJsonStringItem + VarJsonStringAction + VarJsonStringImage) * 2)
-                                    );
-                                    //*0.0009765625mb
-                                    //convert bytes to MB
-                                    Set(
-                                        VarBytestoMB,
-                                        (VarBytesEstimate / (1024 * 1024))
-                                    );
-                                    //*0.0009765625mb
-                                    If(
-                                        VarBytestoMB > 20,
-                                        Set(
-                                            VarMemoryPressurePopupMessage,
-                                            "Your device's memory is getting full. Please submit the findings as soon as possible and restart the App."
-                                        );
-                                        Set(
-                                            VarMemoryPressurePopup,
-                                            true
-                                        ),
-                                        Set(
-                                            VarMemoryPressurePopup,
-                                            false
-                                        )
-                                    );
                                     /*
                                     If(
                                         First(gcCollectionCapCounts).IsIndividualCollection = true && (CountRows(GC_checkpointItemAssessment) > Value(First(gcCollectionCapCounts).IndividualCollectionCount)
@@ -2871,6 +2808,201 @@ FindingScreen As screen:
                                         Set(
                                             VarDownloadImagesRestrict,
                                             true
+                                        )
+                                    );
+                                    
+                                    // Calculate the length of the JSON string
+                                    Set(
+                                        VarJsonStringAllCol,
+                                        Len(
+                                            JSON(
+                                                DropColumns(
+                                                    GC_actionItems,
+                                                    "_ownerid_value"
+                                                )
+                                            )
+                                        ) + Len(
+                                            JSON(
+                                                DropColumns(
+                                                    GC_product,
+                                                    "_ownerid_value"
+                                                )
+                                            )
+                                        ) + Len(
+                                            JSON(
+                                                DropColumns(
+                                                    GC_templateSections,
+                                                    "_ownerid_value"
+                                                )
+                                            )
+                                        ) + Len(
+                                            JSON(
+                                                DropColumns(
+                                                    GC_templateCheckpoints,
+                                                    "_ownerid_value"
+                                                )
+                                            )
+                                        ) + Len(
+                                            JSON(
+                                                DropColumns(
+                                                    GC_templateCheckpointsItem,
+                                                    "_ownerid_value"
+                                                )
+                                            )
+                                        ) + Len(JSON(gcActionItemDelete)) + Len(JSON(gcImageDelete)) + Len(
+                                            JSON(
+                                                DropColumns(
+                                                    gcClient,
+                                                    "_ownerid_value"
+                                                )
+                                            )
+                                        ) + Len(
+                                            JSON(
+                                                DropColumns(
+                                                    gcBank,
+                                                    "_ownerid_value"
+                                                )
+                                            )
+                                        ) + Len(
+                                            JSON(
+                                                DropColumns(
+                                                    gcBankunit,
+                                                    "_ownerid_value"
+                                                )
+                                            )
+                                        ) + Len(
+                                            JSON(
+                                                DropColumns(
+                                                    gcProjectAssignment,
+                                                    "_ownerid_value"
+                                                )
+                                            )
+                                        ) + Len(
+                                            JSON(
+                                                DropColumns(
+                                                    gcAssignmentunit,
+                                                    "_ownerid_value"
+                                                )
+                                            )
+                                        ) + Len(
+                                            JSON(
+                                                DropColumns(
+                                                    GC_bankAssessment,
+                                                    "_ownerid_value"
+                                                )
+                                            )
+                                        ) + Len(
+                                            JSON(
+                                                DropColumns(
+                                                    GC_unitAssessment,
+                                                    "_ownerid_value"
+                                                )
+                                            )
+                                        ) + Len(
+                                            JSON(
+                                                DropColumns(
+                                                    GcSectionAssessment,
+                                                    "_ownerid_value"
+                                                )
+                                            )
+                                        ) + Len(
+                                            JSON(
+                                                DropColumns(
+                                                    GcCheckpointAssessment,
+                                                    "_ownerid_value"
+                                                )
+                                            )
+                                        ) + Len(
+                                            JSON(
+                                                DropColumns(
+                                                    GC_checkpointItemAssessment,
+                                                    "_ownerid_value"
+                                                )
+                                            )
+                                        ) + Len(
+                                            JSON(
+                                                DropColumns(
+                                                    GC_checkpointItem_ActionItem,
+                                                    "_ownerid_value"
+                                                )
+                                            )
+                                        ) + Len(
+                                            JSON(
+                                                DropColumns(
+                                                    GC_checkpointItem_Images,
+                                                    "_ownerid_value"
+                                                ),
+                                                JSONFormat.IncludeBinaryData
+                                            )
+                                        )+ Len(
+                                            JSON(
+                                                DropColumns(
+                                                    gcCollectionCapCounts,
+                                                    "_ownerid_value"
+                                                )
+                                            )
+                                        )
+                                    );
+                                    /*Set(
+                                        VarJsonStringItem,
+                                        Len(
+                                            JSON(
+                                                DropColumns(
+                                                    GC_checkpointItemAssessment,
+                                                    "_ownerid_value"
+                                                )
+                                            )
+                                        )
+                                    );
+                                    Set(
+                                        VarJsonStringAction,
+                                        Len(
+                                            JSON(
+                                                DropColumns(
+                                                    GC_checkpointItem_ActionItem,
+                                                    "_ownerid_value"
+                                                )
+                                            )
+                                        )
+                                    );
+                                    Set(
+                                        VarJsonStringImage,
+                                        Len(
+                                            JSON(
+                                                DropColumns(
+                                                    GC_checkpointItem_Images,
+                                                    "_ownerid_value"
+                                                ),
+                                                JSONFormat.IncludeBinaryData
+                                            )
+                                        )
+                                    );*/
+                                    // Convert characters to bytes (considering UTF-16 encoding)
+                                    Set(
+                                        VarBytesEstimate,
+                                        (VarJsonStringAllCol * 2)
+                                    );
+                                    //((VarJsonStringItem + VarJsonStringAction + VarJsonStringImage) * 2)
+                                    //*0.0009765625mb
+                                    //convert bytes to MB
+                                    Set(
+                                        VarBytestoMB,
+                                        (VarBytesEstimate / (1024 * 1024))
+                                    );
+                                    //*0.0009765625mb
+                                    If(
+                                        VarBytestoMB > 20,
+                                        Set(
+                                            VarMemoryPressurePopupMessage,
+                                            "Your device's memory is getting full. Please submit the findings as soon as possible and restart the App."
+                                        );
+                                        Set(
+                                            VarMemoryPressurePopup,
+                                            true
+                                        ),
+                                        Set(
+                                            VarMemoryPressurePopup,
+                                            false
                                         )
                                     );
                                 PressedFill: =AllScreensCSS.RActiveColor
