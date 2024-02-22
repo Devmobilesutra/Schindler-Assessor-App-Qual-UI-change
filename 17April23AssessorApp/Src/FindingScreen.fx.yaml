@@ -2813,7 +2813,7 @@ FindingScreen As screen:
                                     
                                     // Calculate the length of the JSON string
                                     Set(
-                                        VarJsonStringAllCol,
+                                        VarBytesEstimate,
                                         Len(
                                             JSON(
                                                 DropColumns(
@@ -2978,10 +2978,10 @@ FindingScreen As screen:
                                         )
                                     );*/
                                     // Convert characters to bytes (considering UTF-16 encoding)
-                                    Set(
+                                    /*Set(
                                         VarBytesEstimate,
-                                        (VarJsonStringAllCol * 2)
-                                    );
+                                        (VarJsonStringAllCol)
+                                    );*/
                                     //((VarJsonStringItem + VarJsonStringAction + VarJsonStringImage) * 2)
                                     //*0.0009765625mb
                                     //convert bytes to MB
@@ -2991,7 +2991,7 @@ FindingScreen As screen:
                                     );
                                     //*0.0009765625mb
                                     If(
-                                        VarBytestoMB > 20,
+                                        VarBytestoMB > 40,
                                         Set(
                                             VarMemoryPressurePopupMessage,
                                             "Your device's memory is getting full. Please submit the findings as soon as possible and restart the App."
@@ -3053,7 +3053,7 @@ FindingScreen As screen:
 
                             btnSaveFS As button:
                                 BorderColor: =Self.Fill
-                                DisplayMode: =If(IsBlank(txtAnnotationFS) && CountRows(GlryActionItemFS.AllItems)=0 && CountRows(GlryImagesFS.AllItems)=0,DisplayMode.Disabled,DisplayMode.Edit)
+                                DisplayMode: =If(IsBlank(txtAnnotationFS.Text) && CountRows(GlryActionItemFS.AllItems)=0 && CountRows(GlryImagesFS.AllItems)=0,DisplayMode.Disabled,DisplayMode.Edit)
                                 Fill: =AllScreensCSS.RActiveColor
                                 Font: =AllScreensCSS.ButtonFont
                                 FontWeight: =FontWeight.Normal
@@ -3138,7 +3138,7 @@ FindingScreen As screen:
                                             NotificationType.Error
                                         ),
                                         If(
-                                            IsBlank(txtAnnotationFS) && VarBlankrow1 = false && VarBlankrow2 = false,
+                                            IsBlank(txtAnnotationFS.Text) && VarBlankrow1 = false && VarBlankrow2 = false,
                                             Notify(
                                                 "Annotation is required.",
                                                 NotificationType.Error

@@ -2310,13 +2310,13 @@ FindingScreen_1 As screen:
                                 Height: =Min(Self.Width, Parent.TemplateHeight - 115)
                                 Image: |-
                                     =If(
-                                        IsBlank(UploadedImage1_3),
+                                        IsBlank(UploadedImage1_3.Image),
                                         If(
                                             ThisItem.CIIstatusUpdate = 2 &&   IsBlank(ThisItem.Image) ,
                                             'submitted-cloud',
                                             ThisItem.Image
                                         ),
-                                        UploadedImage1_3
+                                        UploadedImage1_3.Image
                                     )
                                 OnSelect: |-
                                     =
@@ -2932,7 +2932,7 @@ FindingScreen_1 As screen:
 
                             btnSaveFS_1 As button:
                                 BorderColor: =Self.Fill
-                                DisplayMode: =If(IsBlank(txtAnnotationFS_1) && CountRows(GlryActionItemFS_1.AllItems)=0 && CountRows(GlryImagesFS_1.AllItems)=0,DisplayMode.Disabled,DisplayMode.Edit)
+                                DisplayMode: =If(IsBlank(txtAnnotationFS_1.Text) && CountRows(GlryActionItemFS_1.AllItems)=0 && CountRows(GlryImagesFS_1.AllItems)=0,DisplayMode.Disabled,DisplayMode.Edit)
                                 Fill: =AllScreensCSS.RActiveColor
                                 Font: =AllScreensCSS.ButtonFont
                                 FontWeight: =FontWeight.Normal
@@ -3016,7 +3016,7 @@ FindingScreen_1 As screen:
                                             NotificationType.Error
                                         ),
                                         If(
-                                            IsBlank(txtAnnotationFS_1) && VarBlankrow1 = false && VarBlankrow2 = false,
+                                            IsBlank(txtAnnotationFS_1.Text) && VarBlankrow1 = false && VarBlankrow2 = false,
                                             Notify(
                                                 "Annotation is required.",
                                                 NotificationType.Error
