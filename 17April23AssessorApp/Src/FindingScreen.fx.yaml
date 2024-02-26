@@ -3023,7 +3023,7 @@ FindingScreen As screen:
                                             GC_checkpointItem_Images,
                                             CIIstatusUpdate = 0 || CIIstatusUpdate = 1
                                         )
-                                    ) & " ) " & VarBytestoMB & "MB"
+                                    ) & " ) " & Text(VarBytestoMB,"00.0000") & "MB"
                                 Visible: |-
                                     =If(
                                         CountRows(
